@@ -1,0 +1,80 @@
+if (name == "app")
+    apply plugin: "com.android.application"
+else apply plugin: "com.android.library"
+
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+apply plugin: "org.jetbrains.dokka-android"
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+    }
+
+    buildTypes {
+        // the default build type is only _production (if the plugin is not configured)
+        "$BuildTypes.PRODUCTION" {}
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+        abortOnError false
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding false
+    }
+
+    variantFilter { variant ->
+        def buildType = variant.buildType.name
+
+        // we are using custom build types, so we need to exclude the default ones
+        if (buildType == 'debug' || buildType == 'release') {
+            setIgnore(true)
+        }
+    }
+
+    android {
+        testOptions {
+            unitTests.returnDefaultValues = true
+        }
+    }
+
+}
+
+dokka {
+    moduleName = "$rootProject.name"
+    outputFormat = 'markdown'
+    outputDirectory = "doc/${this.name}"
+    reportUndocumented = false
+    includes = ['README.md']
+}
+
+dependencies {
+    implementation TestLibraries.junit
+    implementation TestLibraries.espresso
+    implementation TestLibraries.testRunner
+    implementation TestLibraries.mockK
+    implementation TestLibraries.androidMockK
+    implementation TestLibraries.arch
+    api Libraries.ktxCore
+
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // new color
+    <color name="appPrimaryColor">#0099FF</color>
+    <color name="appPrimaryColor_10">#100099FF</color>
+    <color name="appPrimaryColor_30">#4D0099FF</color>
+    <color name="appPrimaryColor_40">#660099FF</color>
+    <color name="nextButtonBackgroundColor">#0099FF</color>
+    <color name="otpTimerResentLabelColor">#0099FF</color>
+    <color name="editTextDisabledTextColor">#626262</color>
+
+</resources>

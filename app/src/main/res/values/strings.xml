@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Space Design System</string>
+    <string name="all_component">Design System Components</string>
+    <string name="all_component_description">List of all available components v%s</string>
+    <string name="show_btn">show</string>
+
+    <string name="component_colors">Colors</string>
+    <string name="component_colors_description">Colors description</string>
+
+    <string name="default_button_description">Default button description</string>
+    <string name="default_buttons">Default button</string>
+
+    <string name="horizontal_button_description">Horizontal button description</string>
+    <string name="horizontal_buttons">Horizontal button</string>
+
+    <string name="vertical_button_description">Vertical button description</string>
+    <string name="vertical_buttons">Vertical button</string>
+</resources>

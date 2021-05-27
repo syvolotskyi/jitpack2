@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPBaseView" parent="ThemeLight">
+        <item name="sp_backgroundColor">?attr/static_white</item>
+        <item name="sp_roundedCorners">0dp</item>
+        <item name="sp_shadowOffsetX">0dp</item>
+        <item name="sp_shadowOffsetY">0dp</item>
+        <item name="sp_shadowColor">?attr/static_black</item>
+        <item name="sp_shadowAlpha">100%</item>
+        <item name="sp_shadowRadius">@dimen/dimen_p_5</item>
+    </style>
+</resources>

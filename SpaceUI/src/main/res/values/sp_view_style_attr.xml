@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="sp_backgroundColor" format="color|reference" />
+    <attr name="sp_shadowAlpha" format="fraction" />
+    <attr name="sp_shadowColor" format="color|reference" />
+    <attr name="sp_shadowRadius" format="dimension|reference" />
+    <attr name="sp_topLeftCornerRadius" format="dimension|reference" />
+    <attr name="sp_topRightCornerRadius" format="dimension|reference" />
+    <attr name="sp_bottomRightCornerRadius" format="dimension|reference" />
+    <attr name="sp_bottomLeftCornerRadius" format="dimension|reference" />
+    <attr name="sp_roundedCorners" format="dimension|reference" />
+    <attr name="sp_shadowOffsetX" format="dimension|reference" />
+    <attr name="sp_shadowOffsetY" format="dimension|reference" />
+    <attr name="sp_isCircle" format="boolean" />
+
+    <attr name="sp_directionArrow" format="enum">
+        <enum name="none" value="0" />
+        <enum name="left" value="1" />
+        <enum name="right" value="2" />
+    </attr>
+
+    <attr name="sp_iconPadding" format="enum">
+        <enum name="normal" value="0" />
+        <enum name="large" value="1" />
+    </attr>
+
+    <declare-styleable name="SPViewStyle">
+        <attr name="sp_backgroundColor" />
+        <attr name="sp_shadowAlpha" />
+        <attr name="sp_shadowColor" />
+        <attr name="sp_shadowRadius" />
+        <attr name="sp_topLeftCornerRadius" />
+        <attr name="sp_topRightCornerRadius" />
+        <attr name="sp_bottomRightCornerRadius" />
+        <attr name="sp_bottomLeftCornerRadius" />
+        <attr name="sp_roundedCorners" />
+        <attr name="sp_shadowOffsetX" />
+        <attr name="sp_shadowOffsetY" />
+        <attr name="sp_isCircle" />
+
+        <attr name="sp_directionArrow" />
+        <attr name="sp_iconPadding" />
+        <attr name="android:textColor" format="color|reference" />
+        <attr name="android:fontFamily" format="reference" />
+        <attr name="android:textSize" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SPBaseView">
+        <attr name="sp_viewStyle" format="reference" />
+    </declare-styleable>
+
+</resources>

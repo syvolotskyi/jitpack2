@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="InputFieldTitleTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/inputFieldTitleLabelColor</item>
+        <item name="android:fontFamily">@font/myriad_geo_mtavruli_medium</item>
+    </style>
+
+    <style name="CheckPointViewDisabledStyle">
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:textColor">@color/alto</item>
+        <item name="android:fontFamily">@font/myriad_geo_regular</item>
+    </style>
+
+    <style name="CheckPointViewActiveStyle">
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:textColor">@color/labelGray</item>
+        <item name="android:fontFamily">@font/myriad_geo_regular</item>
+    </style>
+
+    <style name="LoanAmountInputField">
+        <item name="android:textSize">@dimen/dimen_sp_50</item>
+        <item name="android:textColor">@color/appPrimaryColor</item>
+        <item name="android:fontFamily">@font/myriad_medium</item>
+        <item name="android:text">0</item>
+    </style>
+</resources>

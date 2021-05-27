@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NextButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dimen_p_55</item>
+        <item name="android:background">@color/nextButtonBackgroundColor</item>
+    </style>
+
+    <style name="NextButtonTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen_sp_15</item>
+        <item name="android:textColor">@color/nextButtonTextColor</item>
+        <item name="android:fontFamily">@font/myriad_geo_mtavruli_bold</item>
+    </style>
+
+    <style name="ActionButtonTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen_sp_15</item>
+        <item name="android:textColor">@color/nextButtonTextColor</item>
+        <item name="android:fontFamily">@font/myriad_geo_mtavruli_medium</item>
+    </style>
+
+    <style name="MenuConfirmTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen_sp_15</item>
+        <item name="android:textColor">@color/nextButtonTextColor</item>
+        <item name="android:fontFamily">@font/myriad_geo_mtavruli_bold</item>
+    </style>
+
+</resources>

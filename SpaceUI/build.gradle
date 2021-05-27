@@ -1,0 +1,16 @@
+apply plugin: 'GradleConfigPlugin'
+
+configPlugin {
+    config {
+        flavors = [new CountryFlavor()]
+        buildTypes = [BuildTypes.PRODUCTION]
+    }
+}
+
+dependencies {
+    implementation SupportLibraries.appCompat
+    implementation SupportLibraries.constraintLayout
+    implementation SupportLibraries.legacy
+    implementation SupportLibraries.palette
+    implementation SupportLibraries.material
+}

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTest1"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent"/>
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTest2"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTest1"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.White" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTest3"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTest2"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Dark" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTest4"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTest3"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Transparent" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestLeft1"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/btnTest1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent.ArrowLeft" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestLeft2"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/btnTest2"
+        app:layout_constraintTop_toBottomOf="@id/btnTest1"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.White.ArrowLeft" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestLeft3"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/btnTest3"
+        app:layout_constraintTop_toBottomOf="@id/btnTest2"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Dark.ArrowLeft" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestLeft4"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button label"
+        app:layout_constraintStart_toEndOf="@id/btnTest4"
+        app:layout_constraintTop_toBottomOf="@id/btnTest3"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Transparent.ArrowLeft" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestRight1"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:paddingStart="@dimen/dimen_p_10"
+        android:paddingEnd="@dimen/dimen_p_10"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/btnTestLeft1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent.ArrowRight" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestRight2"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/btnTestLeft2"
+        app:layout_constraintTop_toBottomOf="@id/btnTest1"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.White.ArrowRight" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestRight3"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@id/btnTestLeft3"
+        app:layout_constraintTop_toBottomOf="@id/btnTest2"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Dark.ArrowRight" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnTestRight4"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_marginStart="@dimen/dimen_p_15"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:text="Button label"
+        app:layout_constraintStart_toEndOf="@id/btnTestLeft4"
+        app:layout_constraintTop_toBottomOf="@id/btnTest3"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Transparent.ArrowRight" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

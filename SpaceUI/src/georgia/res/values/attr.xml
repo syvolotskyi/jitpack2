@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="cardBackground" format="color"/>
+    <attr name="cardBackgroundShadow" format="reference"/>
+    <attr name="cardTitleBackground" format="color|reference"/>
+    <attr name="cardTitleBackgroundLineHeight" format="dimension|reference"/>
+    <attr name="themeLoadingBackgroundColor" format="color|reference"/>
+    <attr name="themeMistColorLight" format="reference"/>
+    <attr name="themeMistColorDark" format="reference"/>
+    <attr name="shadowColor" format="color"/>
+
+    <attr name="themeMySpaceBackgroundColor" format="color|reference"/>
+    <attr name="themeMySpaceTitleColor" format="color|reference"/>
+    <attr name="themeHomeBackgroundColor" format="color|reference"/>
+    <attr name="themeHomePlusMinusTextColor" format="color|reference"/>
+    <attr name="themeHomeCircleImage" format="reference"/>
+    <attr name="themeHomeCircleImageColor" format="reference"/>
+    <attr name="themeHomePlusMinusBackgroundImage" format="reference"/>
+    <attr name="themeHomeBalanceBackgroundImage" format="reference"/>
+    <attr name="themeLoginBackgroundColor" format="color|reference"/>
+    <attr name="themeLoginTextColor" format="color|reference"/>
+    <attr name="themeLoginImageColor" format="reference"/>
+    <attr name="themeStoryAnimationRead" format="reference"/>
+    <attr name="themeStoryAnimationUnRead" format="color"/>
+    <attr name="themeStoryTextColor" format="color"/>
+
+</resources>

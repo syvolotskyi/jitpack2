@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="static_primary_white">#ffffff</color>
+    <color name="static_primary_black">#000000</color>
+    <color name="static_secondary_blue">#0099ff</color>
+    <color name="static_secondary_teal">#3596b5</color>
+    <color name="static_secondary_pink">#c031b5</color>
+    <color name="static_secondary_plum">#b7265f</color>
+    <color name="static_secondary_jade">#008d82</color>
+    <color name="static_secondary_purple">#8371cd</color>
+    <color name="static_secondary_maroon">#973e72</color>
+    <color name="static_secondary_green">#6fc079</color>
+    <color name="static_secondary_slate">#7b89ff</color>
+    <color name="static_secondary_grey">#a3abbd</color>
+    <color name="static_secondary_lead">#3f4756</color>
+    <color name="static_secondary_secondary_barry">#004ca5</color>
+    <color name="static_secondary_spruce">#406493</color>
+    <color name="static_secondary_tomato">#ee5961</color>
+</resources>

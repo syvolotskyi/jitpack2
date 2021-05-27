@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@color/transparent_15</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/light_blue</item>
+
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="static_white">@color/static_primary_white</item>
+        <item name="static_black">@color/static_primary_black</item>
+        <item name="static_blue">@color/static_secondary_blue</item>
+        <item name="static_teal">@color/static_secondary_teal</item>
+        <item name="static_pink">@color/static_secondary_pink</item>
+        <item name="static_plum">@color/static_secondary_plum</item>
+        <item name="static_jade">@color/static_secondary_jade</item>
+        <item name="static_purple">@color/static_secondary_purple</item>
+        <item name="static_maroon">@color/static_secondary_maroon</item>
+        <item name="static_green">@color/static_secondary_green</item>
+        <item name="static_slate">@color/static_secondary_slate</item>
+        <item name="static_grey">@color/static_secondary_green</item>
+        <item name="static_lead">@color/static_secondary_lead</item>
+        <item name="static_barry">@color/static_secondary_secondary_barry</item>
+        <item name="static_spruce">@color/static_secondary_spruce</item>
+        <item name="static_tomato">@color/static_secondary_tomato</item>
+    </style>
+
+    <style name="SPCoreTheme" parent="BaseTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <!--<item name="android:windowEnterTransition">@transition/slide_in_up</item>-->
+        <!--<item name="android:windowExitTransition">@transition/slide_in_up</item>-->
+    </style>
+
+    <style name="AppTheme" parent="SPCoreTheme">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/appPrimaryColor</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowFullscreen">false</item>
+
+        <item name="checkboxStyle">@style/CheckboxStyle</item>
+
+    </style>
+
+    <style name="AppThemeDark" parent="AppTheme">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/appPrimaryColor</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="cardBackground">@color/black</item>
+         <item name="cardTitleBackground">@color/dark_white</item>
+        <item name="cardTitleBackgroundLineHeight">0dp</item>
+        <item name="themeMySpaceBackgroundColor">@color/black</item>
+        <item name="themeMySpaceTitleColor">@color/transparent</item>
+        <item name="themeLoadingBackgroundColor">@color/loading_transparent_black</item>
+        <item name="themeMistColorLight">@color/white</item>
+        <item name="themeMistColorDark">@color/black</item>
+
+        <!-- for testing purposes -->
+        <item name="themeTextColor">@color/white</item>
+        <item name="themeCheckBoxButtonTint">@color/white</item>
+    </style>
+
+
+    <style name="AppThemeWhite" parent="AppTheme">
+
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/appPrimaryColor</item>
+        <item name="colorAccent">@color/appPrimaryColor</item>
+        <item name="android:windowBackground">@color/white</item>
+
+        <item name="cardBackground">@color/white</item>
+         <item name="cardTitleBackground">@color/white</item>
+        <item name="cardTitleBackgroundLineHeight">0.5dp</item>
+        <item name="themeMySpaceBackgroundColor">@color/white</item>
+        <item name="themeMySpaceTitleColor">@color/white</item>
+        <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half</item>
+        <item name="themeMistColorLight">@color/white</item>
+        <item name="themeMistColorDark">@color/white</item>
+
+        <!-- for testing purposes -->
+        <item name="themeTextColor">@color/black</item>
+        <item name="themeCheckBoxButtonTint">@color/black</item>
+
+    </style>
+
+    <style name="AppThemeIdNow" parent="AppThemeDark">
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="SPDialogThemeTransparent" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+
+    </style>
+
+    <style name="option">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="FormInputField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dimen_p_30</item>
+        <item name="android:layout_marginEnd">@dimen/dimen_p_30</item>
+        <item name="android:layout_marginTop">@dimen/dimen_sp_25</item>
+    </style>
+
+    <declare-styleable name="SPActionButton">
+        <attr name="ab_icon" format="reference"/>
+        <attr name="ab_width" format="reference|dimension"/>
+        <attr name="ab_height" format="reference|dimension"/>
+        <attr name="ab_label" format="reference|string"/>
+        <attr name="ab_label_size" format="reference|dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="SPInfoItem">
+        <attr name="ii_view_height" format="reference|dimension"/>
+        <attr name="ii_view_padding_left" format="reference|dimension"/>
+        <attr name="ii_value_weight" format="float"/>
+        <attr name="ii_view_background_color" format="reference|color"/>
+        <attr name="ii_key_label" format="reference|string"/>
+    </declare-styleable>
+
+    <declare-styleable name="SPTemplateView">
+        <attr name="imageEnabled" format="boolean"/>
+    </declare-styleable>
+
+    <style name="DynamicFormInputField" parent="FormInputField">
+        <item name="android:layout_marginTop">@dimen/dimen_sp_10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_sp_10</item>
+    </style>
+
+    <style name="StepDescriptionSmallTextStyle" parent="StepDescriptionTextStyle">
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+    </style>
+
+    <style name="StepDescriptionTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen_sp_17</item>
+        <item name="android:textColor">@color/titleLabelTextColor</item>
+        <item name="android:fontFamily">@font/myriad_medium</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <declare-styleable name="SPTabButton">
+        <attr name="ttb_isActive" format="boolean"/>
+        <attr name="ttb_active_color" format="color"/>
+        <attr name="ttb_inactive_color" format="color"/>
+    </declare-styleable>
+
+    <style name="ActionStyleSecondary">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:textColor">@color/menuItemTextColor</item>
+        <item name="android:fontFamily">@font/myriad_geo_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.1</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="DialogAnimation">
+
+    </style>
+
+    <style name="bottom_sheet_title_style">
+        <item name="android:fontFamily">@font/myriad_geo_mtavruli_bold</item>
+    </style>
+
+    <style name="CoreTheme" parent="AppTheme">
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+
+    </style>
+
+    <style name="ThemeDark" parent="CoreTheme">
+        <item name="colorPrimary">@color/dark_background_primary</item>
+        <item name="colorPrimaryDark">@color/dark_background_primary</item>
+        <item name="colorAccent">@color/dark_brand_primary</item>
+        <item name="android:windowBackground">@color/dark_background_primary</item>
+
+        //brand
+        <item name="brand_primary">@color/dark_brand_primary</item>
+        <item name="brand_secondary">@color/dark_brand_secondary</item>
+
+        //accent
+        <item name="accent_red">@color/dark_accent_red</item>
+        <item name="accent_orange">@color/dark_accent_orange</item>
+        <item name="accent_yellow">@color/dark_accent_yellow</item>
+        <item name="accent_green">@color/dark_accent_green</item>
+        <item name="accent_pink">@color/dark_accent_pink</item>
+        <item name="accent_magenta">@color/dark_accent_magenta</item>
+
+        //gray scale
+        <item name="greyscale_gray_1">@color/dark_greyscale_gray_1</item>
+        <item name="greyscale_gray_2">@color/dark_greyscale_gray_2</item>
+        <item name="greyscale_gray_3">@color/dark_greyscale_gray_3</item>
+        <item name="greyscale_gray_4">@color/dark_greyscale_gray_4</item>
+        <item name="greyscale_gray_5">@color/dark_greyscale_gray_5</item>
+        <item name="greyscale_gray_6">@color/dark_greyscale_gray_6</item>
+
+        // background
+        <item name="background_primary">@color/dark_background_primary</item>
+        <item name="background_secondary">@color/dark_background_secondary</item>
+        <item name="background_tertiary">@color/dark_background_tertiary</item>
+
+        //label
+        <item name="label_primary">@color/dark_label_primary</item>
+        <item name="label_secondary">@color/dark_label_secondary</item>
+        <item name="label_tertiary">@color/dark_label_tertiary</item>
+        <item name="label_quaternary">@color/dark_label_quaternary</item>
+
+        //separator
+        <item name="separator_opaque">@color/dark_separator_opaque</item>
+        <item name="separator_non_opaque">@color/dark_separator_non_opaque</item>
+
+        //fill
+        <item name="fill_primary">@color/dark_fill_primary</item>
+        <item name="fill_secondary">@color/dark_fill_secondary</item>
+        <item name="fill_tertiary">@color/dark_fill_tertiary</item>
+        <item name="fill_quaternary">@color/dark_fill_quaternary</item>
+    </style>
+
+    <style name="ThemeLight" parent="BaseTheme">
+        <item name="colorPrimary">@color/light_background_primary</item>
+        <item name="colorPrimaryDark">@color/light_brand_primary</item>
+        <item name="colorAccent">@color/light_brand_primary</item>
+        <item name="android:windowBackground">@color/light_background_primary</item>
+
+        //brand
+        <item name="brand_primary">@color/light_brand_primary</item>
+        <item name="brand_secondary">@color/light_brand_secondary</item>
+
+        //accent
+        <item name="accent_red">@color/light_accent_red</item>
+        <item name="accent_orange">@color/light_accent_orange</item>
+        <item name="accent_yellow">@color/light_accent_yellow</item>
+        <item name="accent_green">@color/light_accent_green</item>
+        <item name="accent_pink">@color/light_accent_pink</item>
+        <item name="accent_magenta">@color/light_accent_magenta</item>
+
+        //gray scale
+        <item name="greyscale_gray_1">@color/light_greyscale_gray_1</item>
+        <item name="greyscale_gray_2">@color/light_greyscale_gray_2</item>
+        <item name="greyscale_gray_3">@color/light_greyscale_gray_3</item>
+        <item name="greyscale_gray_4">@color/light_greyscale_gray_4</item>
+        <item name="greyscale_gray_5">@color/light_greyscale_gray_5</item>
+        <item name="greyscale_gray_6">@color/light_greyscale_gray_6</item>
+
+        // background
+        <item name="background_primary">@color/light_background_primary</item>
+        <item name="background_secondary">@color/light_background_secondary</item>
+        <item name="background_tertiary">@color/light_background_tertiary</item>
+
+        //label
+        <item name="label_primary">@color/light_label_primary</item>
+        <item name="label_secondary">@color/light_label_secondary</item>
+        <item name="label_tertiary">@color/light_label_tertiary</item>
+        <item name="label_quaternary">@color/light_label_quaternary</item>
+
+        //separator
+        <item name="separator_opaque">@color/light_separator_opaque</item>
+        <item name="separator_non_opaque">@color/light_separator_non_opaque</item>
+
+        //fill
+        <item name="fill_primary">@color/light_fill_primary</item>
+        <item name="fill_secondary">@color/light_fill_secondary</item>
+        <item name="fill_tertiary">@color/light_fill_tertiary</item>
+        <item name="fill_quaternary">@color/light_fill_quaternary</item>
+    </style>
+
+
+    //show case app
+    <style name="CheckboxStyle">
+        <item name="buttonTint">?attr/themeCheckBoxButtonTint</item>
+        <item name="android:textColor">?attr/themeTextColor</item>  // for unchecked
+    </style>
+</resources>

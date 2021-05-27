@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/sp_vertical_button_bubble_layout" />
+
+        <TextView
+            android:id="@+id/buttonLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_p_8"
+            android:layout_marginEnd="@dimen/dimen_p_8"
+            android:textColor="@color/text_color_grey"
+            tools:fontFamily="@font/myriad_geo_bold"
+            tools:text="Title" />
+
+    </LinearLayout>
+</merge>
