@@ -10,7 +10,7 @@ import ge.space.design.main.showcaseError
 
 
 
-class ShowCaseEnvironment(
+class SPShowCaseEnvironment(
     val context: Context
 ) {
     fun requireActivity(): Activity {

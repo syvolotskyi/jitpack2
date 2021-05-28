@@ -7,24 +7,24 @@ import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemHorizontalBtnShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
-import ge.space.design.main.ComponentFactory
-import ge.space.design.main.ShowCaseComponent
-import ge.space.design.main.ShowCaseEnvironment
+import ge.space.design.main.SPComponentFactory
+import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpHorizontalButtonLayoutBinding
 import ge.space.ui.base.SPBaseButton
 
-class SPHorizontalButtonsComponent : ShowCaseComponent {
+class SPHorizontalButtonsComponentSP : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.horizontal_buttons
 
     override fun getDescriptionResId(): Int = R.string.horizontal_button_description
 
-    override fun getComponentClass(): Class<*>? = Factory::class.java
+    override fun getComponentClass(): Class<*>? = FactorySP::class.java
 
 
-    class Factory : ComponentFactory {
-        override fun create(environment: ShowCaseEnvironment): Any {
+    class FactorySP : SPComponentFactory {
+        override fun create(environmentSP: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
-                environment.requireLayoutInflater()
+                environmentSP.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPBaseButton<SpHorizontalButtonLayoutBinding>>()
             SPHorizontalButtonStyles.list.onEach { buttonSample ->
@@ -34,7 +34,7 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
 
 
                 val itemBinding = SpItemHorizontalBtnShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                    environmentSP.requireThemedLayoutInflater(resId),
                     layoutBinding.buttonsLayout,
                     true
                 )
@@ -50,7 +50,7 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
                 buttons.add(itemBinding.button)
 
                 itemBinding.button.setOnClickListener {
-                    Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(environmentSP.context, "Clicked", Toast.LENGTH_SHORT).show()
                 }
 
                 itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->

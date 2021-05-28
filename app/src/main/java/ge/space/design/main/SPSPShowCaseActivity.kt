@@ -28,7 +28,7 @@ import ge.space.design.main.*
 import ge.space.design.showThemeDialog
 
 
-class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
+class SPSPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
 
     val preferesManager by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -42,17 +42,17 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
         const val PREFERENCES_THEME = "PREFERENCES_THEME"
 
         fun start(
-            context: Context,
-            component: ShowCaseComponent
+                context: Context,
+                componentSP: SPShowCaseComponent
         ) {
-            val intent = Intent(context, SimpleShowCaseActivity::class.java)
-                .apply { putExtra(EXTRA_SHOWCASE_COMPONENT, component) }
+            val intent = Intent(context, SPSPShowCaseActivity::class.java)
+                .apply { putExtra(EXTRA_SHOWCASE_COMPONENT, componentSP) }
             context.startActivity(intent)
         }
     }
 
-    private lateinit var component: ShowCaseComponent
-    private lateinit var components: List<ShowCaseComponent>
+    private lateinit var componentSP: SPShowCaseComponent
+    private lateinit var componentSPS: List<SPShowCaseComponent>
     private lateinit var componentsListBinding: SpLayoutSimpleShowcaseListBinding
 
     // filtering
@@ -61,7 +61,7 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
 
             // lookup collection
             val componentNames by lazy {
-                components.flatMap { it.flattenSubComponents }
+                componentSPS.flatMap { it.flattenSubComponentSPS }
                     .map { getString(it.getNameResId()) to it }
             }
 
@@ -69,8 +69,8 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
                     : FilterResults {
                 val result = FilterResults()
                 if (constraint.isNullOrBlank()) {
-                    result.values = components
-                    result.count = components.count()
+                    result.values = componentSPS
+                    result.count = componentSPS.count()
                 } else {
                     val filteredItems = componentNames
                         .filter { (name) -> name.contains(constraint.trim(), ignoreCase = true) }
@@ -87,8 +87,8 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
                 constraint: CharSequence?,
                 results: FilterResults
             ) {
-                val filteredItems = results.values as List<ShowCaseComponent>
-                (componentsListBinding.recyclerView.adapter as? SimpleListAdapter<*, ShowCaseComponent>)
+                val filteredItems = results.values as List<SPShowCaseComponent>
+                (componentsListBinding.recyclerView.adapter as? SimpleListAdapter<*, SPShowCaseComponent>)
                     ?.setItems(filteredItems)
             }
         }
@@ -106,30 +106,30 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
         /*
             Android Studio launch flag: -e "component_name" "yourComponent"
         */
-        component = (if (intent.hasExtra(EXTRA_COMPONENT_NAME)) {
+        componentSP = (if (intent.hasExtra(EXTRA_COMPONENT_NAME)) {
             try {
                 val componentName = requireNotNull(intent.getStringExtra(EXTRA_COMPONENT_NAME))
-                Class.forName(componentName).newInstance() as? ShowCaseComponent
+                Class.forName(componentName).newInstance() as? SPShowCaseComponent
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
             }
         } else {
-            intent?.getSerializableExtra(EXTRA_SHOWCASE_COMPONENT) as? ShowCaseComponent
+            intent?.getSerializableExtra(EXTRA_SHOWCASE_COMPONENT) as? SPShowCaseComponent
         }) ?: DesignSystemComponents
 
         setUpToolbar()
 
-        if (component.hasSubComponents) {
-            bindComponentsList(component.flattenSubComponents)
+        if (componentSP.hasSubComponents) {
+            bindComponentsList(componentSP.flattenSubComponentSPS)
         } else {
-            val componentClass = component.getComponentClass()
+            val componentClass = componentSP.getComponentClass()
             if (componentClass == null) {
                 finishWithError("Component not found")
                 return
             }
             try {
-                ComponentLauncher.launch(componentClass, this, ShowCaseEnvironment(this))
+                ComponentLauncher.launch(componentClass, this, SPShowCaseEnvironment(this))
             } catch (e: Exception) {
                 e.printStackTrace()
                 finishWithError("Can't show component: ${e.message}")
@@ -147,7 +147,7 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        if (component.hasSubComponents) {
+        if (componentSP.hasSubComponents) {
             menuInflater.inflate(R.menu.sp_showcase_menu, menu)
             val searchView = menu.findItem(R.id.action_search).actionView as? SearchView
             searchView?.apply {
@@ -184,27 +184,27 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbarView)
 
-        supportActionBar?.setTitle(component.getNameResId())
+        supportActionBar?.setTitle(componentSP.getNameResId())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbarView.navigationIcon?.setColorFilter(resources.getColor(R.color.appPrimaryColor), PorterDuff.Mode.SRC_ATOP);
 
 
-        if (component.getDescriptionResId() != NO_RES_ID) {
+        if (componentSP.getDescriptionResId() != NO_RES_ID) {
             binding.descriptionText.text = getString(
-                component.getDescriptionResId(), *component.getDescriptionFormatArgs()
+                componentSP.getDescriptionResId(), *componentSP.getDescriptionFormatArgs()
             )
         } else {
             binding.descriptionText.visibility = View.GONE
         }
     }
 
-    private fun bindComponentsList(components: List<ShowCaseComponent>) {
+    private fun bindComponentsList(componentSPS: List<SPShowCaseComponent>) {
         val listBinding = SpLayoutSimpleShowcaseListBinding.inflate(
             layoutInflater, binding.contentView, true
         )
 
-        this.components = components
+        this.componentSPS = componentSPS
         this.componentsListBinding = listBinding
 
         listBinding.recyclerView.layoutManager = LinearLayoutManager(this)
@@ -212,8 +212,8 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
 
-        val adapter = SimpleListAdapter<SpItemComponentBinding, ShowCaseComponent>(
-            components
+        val adapter = SimpleListAdapter<SpItemComponentBinding, SPShowCaseComponent>(
+            componentSPS
         ).setup {
             onCreate { parent ->
                 SpItemComponentBinding.inflate(layoutInflater, parent, false)
@@ -236,7 +236,7 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
                 }
             }
             onClick { _, item, _ ->
-                start(this@SimpleShowCaseActivity, item)
+                start(this@SPSPShowCaseActivity, item)
             }
         }
         listBinding.recyclerView.adapter = adapter
@@ -275,11 +275,11 @@ class SimpleShowCaseActivity : AppCompatActivity(), ShowCaseDisplay {
     }
 
 
-      override fun show(launchAction: LaunchAction) {
+      override fun show(SPLaunchAction: SPLaunchAction) {
           val actionBinding = SpLayoutSimpleShowcaseActionBinding.inflate(
               layoutInflater, binding.contentView, true
           )
-          actionBinding.showButton.setOnClickListener { launchAction.launch() }
+          actionBinding.showButton.setOnClickListener { SPLaunchAction.launch() }
       }
 
     private fun finishWithError(message: String) {

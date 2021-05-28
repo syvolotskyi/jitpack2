@@ -6,10 +6,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 
 
-interface ShowCaseDisplay {
+interface SPShowCaseDisplay {
     fun show(intent: Intent)
     fun show(fragment: Fragment)
     fun show(dialog: Dialog)
     fun show(view: View)
-    fun show(launchAction: LaunchAction)
+    fun show(SPLaunchAction: SPLaunchAction)
 }

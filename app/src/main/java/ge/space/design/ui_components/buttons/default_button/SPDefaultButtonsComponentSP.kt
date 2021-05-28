@@ -1,40 +1,50 @@
-package ge.space.design.ui_components.buttons.vertical_button
+package ge.space.design.ui_components.buttons.default_button
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemVerticalButtonsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpItemButtonsShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
-import ge.space.design.main.ComponentFactory
-import ge.space.design.main.ShowCaseComponent
-import ge.space.design.main.ShowCaseEnvironment
-import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
+import ge.space.design.main.SPComponentFactory
+import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.SPShowCaseEnvironment
+import ge.space.design.ui_components.buttons.horizontal_button.SPHorizontalButtonsComponentSP
+import ge.space.design.ui_components.buttons.vertical_button.SPVerticalButtonsComponentSP
+import ge.space.spaceui.databinding.SpButtonLayoutBinding
 import ge.space.ui.base.SPBaseButton
 
-class SPVerticalButtonsComponent : ShowCaseComponent {
-    override fun getNameResId(): Int = R.string.vertical_buttons
 
-    override fun getDescriptionResId(): Int = R.string.vertical_button_description
+class SPDefaultButtonsComponentSP : SPShowCaseComponent {
 
-    override fun getComponentClass(): Class<*>? = Factory::class.java
+    override fun getNameResId(): Int = R.string.default_buttons
 
+    override fun getDescriptionResId(): Int = R.string.default_button_description
 
-    class Factory : ComponentFactory {
-        override fun create(environment: ShowCaseEnvironment): Any {
+    override fun getComponentClass(): Class<*>? = FactorySP::class.java
+
+    override fun getSubComponents(): List<SPShowCaseComponent> {
+        return listOf(
+            SPVerticalButtonsComponentSP(),
+            SPHorizontalButtonsComponentSP()
+        )
+    }
+
+    class FactorySP : SPComponentFactory {
+        override fun create(environmentSP: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
-                environment.requireLayoutInflater()
+                environmentSP.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPBaseButton<SpVerticalButtonLayoutBinding>>()
-            SPVerticalButtonStyles.list.onEach { buttonSample ->
+            val buttons = mutableListOf<SPBaseButton<SpButtonLayoutBinding>>()
+            SPButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
                 val supportsDisable = buttonSample.supportsDisabled
 
 
-                val itemBinding = SpItemVerticalButtonsShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                val itemBinding = SpItemButtonsShowcaseBinding.inflate(
+                    environmentSP.requireThemedLayoutInflater(resId),
                     layoutBinding.buttonsLayout,
                     true
                 )
@@ -50,7 +60,7 @@ class SPVerticalButtonsComponent : ShowCaseComponent {
                 buttons.add(itemBinding.button)
 
                 itemBinding.button.setOnClickListener {
-                    Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(environmentSP.context, "Clicked", Toast.LENGTH_SHORT).show()
                 }
 
                 itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->

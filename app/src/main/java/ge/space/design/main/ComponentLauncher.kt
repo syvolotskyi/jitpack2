@@ -12,26 +12,26 @@ enum class ComponentLauncher(private val target: Class<*>) {
 
     ActivityLauncher(Activity::class.java) {
         override fun launch(
-            componentClass: Class<*>,
-            display: ShowCaseDisplay,
-            environment: ShowCaseEnvironment
+                componentClass: Class<*>,
+                displaySP: SPShowCaseDisplay,
+                environmentSP: SPShowCaseEnvironment
         ) {
-            val intent = Intent(environment.context, componentClass)
-            display.show(intent)
+            val intent = Intent(environmentSP.context, componentClass)
+            displaySP.show(intent)
         }
     },
 
     FragmentLauncher(Fragment::class.java) {
         override fun launch(
-            componentClass: Class<*>,
-            display: ShowCaseDisplay,
-            environment: ShowCaseEnvironment
+                componentClass: Class<*>,
+                displaySP: SPShowCaseDisplay,
+                environmentSP: SPShowCaseEnvironment
         ) {
             val fr = try {
                 val fragmentFactory =
-                    environment.requireAppCompatActivity().supportFragmentManager.fragmentFactory
+                    environmentSP.requireAppCompatActivity().supportFragmentManager.fragmentFactory
                 fragmentFactory.instantiate(
-                    environment.context.classLoader,
+                    environmentSP.context.classLoader,
                     componentClass.name
                 )
             } catch (e: Exception) {
@@ -41,19 +41,19 @@ enum class ComponentLauncher(private val target: Class<*>) {
             checkNotNull(fr) {
                 "Failed to instantiate fragment: ${componentClass.name}"
             }
-            display.show(fr)
+            displaySP.show(fr)
         }
     },
 
     DialogLauncher(Dialog::class.java) {
         override fun launch(
-            componentClass: Class<*>,
-            display: ShowCaseDisplay,
-            environment: ShowCaseEnvironment
+                componentClass: Class<*>,
+                displaySP: SPShowCaseDisplay,
+                environmentSP: SPShowCaseEnvironment
         ) {
             val dialog = try {
                 componentClass.getConstructor(Context::class.java)
-                    .newInstance(environment.context)
+                    .newInstance(environmentSP.context)
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
@@ -61,19 +61,19 @@ enum class ComponentLauncher(private val target: Class<*>) {
             checkNotNull(dialog) {
                 "Failed to instantiate dialog: ${componentClass.name}"
             }
-            display.show(dialog)
+            displaySP.show(dialog)
         }
     },
 
     ViewLauncher(View::class.java) {
         override fun launch(
-            componentClass: Class<*>,
-            display: ShowCaseDisplay,
-            environment: ShowCaseEnvironment
+                componentClass: Class<*>,
+                displaySP: SPShowCaseDisplay,
+                environmentSP: SPShowCaseEnvironment
         ) {
             val view = try {
                 componentClass.getConstructor(Context::class.java)
-                    .newInstance(environment.context)
+                    .newInstance(environmentSP.context)
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
@@ -81,31 +81,31 @@ enum class ComponentLauncher(private val target: Class<*>) {
             checkNotNull(view) {
                 "Failed to instantiate view: ${componentClass.name}"
             }
-            display.show(view)
+            displaySP.show(view)
         }
     },
 
-    ComponentFactoryLauncher(ComponentFactory::class.java) {
+    ComponentFactoryLauncher(SPComponentFactory::class.java) {
         override fun launch(
-            componentClass: Class<*>,
-            display: ShowCaseDisplay,
-            environment: ShowCaseEnvironment
+                componentClass: Class<*>,
+                displaySP: SPShowCaseDisplay,
+                environmentSP: SPShowCaseEnvironment
         ) {
             val factory = try {
                 componentClass.getConstructor().newInstance()
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
-            } as? ComponentFactory
+            } as? SPComponentFactory
             checkNotNull(factory) {
                 "Failed to instantiate component factory: ${componentClass.name}"
             }
-            when (val component = factory.create(environment)) {
-                is Intent -> display.show(component)
-                is Fragment -> display.show(component)
-                is Dialog -> display.show(component)
-                is View -> display.show(component)
-                is LaunchAction -> display.show(component)
+            when (val component = factory.create(environmentSP)) {
+                is Intent -> displaySP.show(component)
+                is Fragment -> displaySP.show(component)
+                is Dialog -> displaySP.show(component)
+                is View -> displaySP.show(component)
+                is SPLaunchAction -> displaySP.show(component)
                 else -> showcaseError("Unknown component type")
             }
         }
@@ -116,9 +116,9 @@ enum class ComponentLauncher(private val target: Class<*>) {
     }
 
     protected abstract fun launch(
-        componentClass: Class<*>,
-        display: ShowCaseDisplay,
-        environment: ShowCaseEnvironment
+            componentClass: Class<*>,
+            displaySP: SPShowCaseDisplay,
+            environmentSP: SPShowCaseEnvironment
     )
 
     companion object {
@@ -127,12 +127,12 @@ enum class ComponentLauncher(private val target: Class<*>) {
 
         @Throws(Exception::class)
         fun launch(
-            componentClass: Class<*>,
-            display: ShowCaseDisplay,
-            environment: ShowCaseEnvironment
+                componentClass: Class<*>,
+                displaySP: SPShowCaseDisplay,
+                environmentSP: SPShowCaseEnvironment
         ) {
             LAUNCHERS.find { it.canLaunch(componentClass) }
-                ?.launch(componentClass, display, environment)
+                ?.launch(componentClass, displaySP, environmentSP)
                 ?: showcaseError("Unknown component type")
         }
     }
