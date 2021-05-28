@@ -1,4 +1,4 @@
-package ge.space.design.main
+package ge.space.design.main.util
 
 
 @Suppress("NOTHING_TO_INLINE")

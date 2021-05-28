@@ -9,7 +9,7 @@ import com.example.spacedesignsystem.databinding.SpItemHorizontalBtnShowcaseBind
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.main.SPShowCaseEnvironment
+import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpHorizontalButtonLayoutBinding
 import ge.space.ui.base.SPBaseButton
 

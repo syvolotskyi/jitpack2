@@ -1,4 +1,4 @@
-package ge.space.design.main
+package ge.space.design.main.util
 
 import android.graphics.Color
 import android.graphics.Typeface
@@ -9,6 +9,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import ge.space.design.NEW_COMPONENTS
+import ge.space.design.main.SPShowCaseComponent
 
 /**
     helper extensions/methods

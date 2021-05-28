@@ -7,6 +7,9 @@
     <string name="component_colors">Colors</string>
     <string name="component_colors_description">Colors description</string>
 
+    <string name="button_description">Button description</string>
+    <string name="buttons">Button</string>
+
     <string name="default_button_description">Default button description</string>
     <string name="default_buttons">Default button</string>
 

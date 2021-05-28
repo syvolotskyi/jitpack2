@@ -9,8 +9,8 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.ItemColorBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.main.SPShowCaseEnvironment
-import ge.space.design.main.SimpleListAdapter
+import ge.space.design.main.ui.SimpleListAdapter
+import ge.space.design.main.util.SPShowCaseEnvironment
 import kotlin.math.roundToInt
 
 
