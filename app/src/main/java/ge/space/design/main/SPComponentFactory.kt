@@ -1,5 +1,7 @@
 package ge.space.design.main
 
+import ge.space.design.main.util.SPShowCaseEnvironment
+
 interface SPComponentFactory {
     /**
      * Returns a component object.

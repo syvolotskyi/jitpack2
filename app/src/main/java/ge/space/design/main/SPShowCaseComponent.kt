@@ -2,6 +2,7 @@ package ge.space.design.main
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import ge.space.design.main.util.NO_RES_ID
 import java.io.Serializable
 
 

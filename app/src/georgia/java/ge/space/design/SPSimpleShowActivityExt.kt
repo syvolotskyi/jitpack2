@@ -1,17 +1,17 @@
 package ge.space.design
 
 import android.app.AlertDialog
-import ge.space.design.main.SPSPShowCaseActivity
+import ge.space.design.main.ui.SPShowCaseActivity
 
-fun SPSPShowCaseActivity.showThemeDialog() {
+fun SPShowCaseActivity.showThemeDialog() {
     AlertDialog.Builder(this)
         .setTitle("Choose theme")
         .setSingleChoiceItems(
             arrayOf("Space Dark","Space Light"),
-            preferesManager.getInt(SPSPShowCaseActivity.PREFERENCES_THEME, 0)
+            preferesManager.getInt(SPShowCaseActivity.PREFERENCES_THEME, 0)
         ) { dialog, which ->
             preferesManager.edit()?.apply {
-                putInt(SPSPShowCaseActivity.PREFERENCES_THEME, which)
+                putInt(SPShowCaseActivity.PREFERENCES_THEME, which)
                 apply()
             }
             dialog.dismiss()

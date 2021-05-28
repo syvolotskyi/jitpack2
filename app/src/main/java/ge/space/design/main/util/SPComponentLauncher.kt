@@ -1,4 +1,4 @@
-package ge.space.design.main
+package ge.space.design.main.util
 
 import android.app.Activity
 import android.app.Dialog
@@ -6,11 +6,14 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
+import ge.space.design.main.SPComponentFactory
+import ge.space.design.main.SPLaunchAction
+import ge.space.design.main.SPShowCaseDisplay
 
 
-enum class ComponentLauncher(private val target: Class<*>) {
+enum class SPComponentLauncher(private val target: Class<*>) {
 
-    ActivityLauncher(Activity::class.java) {
+    ActivityLauncherSP(Activity::class.java) {
         override fun launch(
                 componentClass: Class<*>,
                 displaySP: SPShowCaseDisplay,
@@ -21,7 +24,7 @@ enum class ComponentLauncher(private val target: Class<*>) {
         }
     },
 
-    FragmentLauncher(Fragment::class.java) {
+    FragmentLauncherSP(Fragment::class.java) {
         override fun launch(
                 componentClass: Class<*>,
                 displaySP: SPShowCaseDisplay,
@@ -45,7 +48,7 @@ enum class ComponentLauncher(private val target: Class<*>) {
         }
     },
 
-    DialogLauncher(Dialog::class.java) {
+    DialogLauncherSP(Dialog::class.java) {
         override fun launch(
                 componentClass: Class<*>,
                 displaySP: SPShowCaseDisplay,
@@ -65,7 +68,7 @@ enum class ComponentLauncher(private val target: Class<*>) {
         }
     },
 
-    ViewLauncher(View::class.java) {
+    ViewLauncherSP(View::class.java) {
         override fun launch(
                 componentClass: Class<*>,
                 displaySP: SPShowCaseDisplay,
@@ -85,7 +88,7 @@ enum class ComponentLauncher(private val target: Class<*>) {
         }
     },
 
-    ComponentFactoryLauncher(SPComponentFactory::class.java) {
+    SPComponentFactoryLauncher(SPComponentFactory::class.java) {
         override fun launch(
                 componentClass: Class<*>,
                 displaySP: SPShowCaseDisplay,

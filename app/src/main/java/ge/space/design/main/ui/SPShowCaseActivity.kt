@@ -1,4 +1,4 @@
-package ge.space.design.main
+package ge.space.design.main.ui
 
 import android.app.Dialog
 import android.content.Context
@@ -25,10 +25,11 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseActionBin
 import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBinding
 import ge.space.design.DesignSystemComponents
 import ge.space.design.main.*
+import ge.space.design.main.util.*
 import ge.space.design.showThemeDialog
 
 
-class SPSPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
+class SPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
 
     val preferesManager by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -45,7 +46,7 @@ class SPSPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
                 context: Context,
                 componentSP: SPShowCaseComponent
         ) {
-            val intent = Intent(context, SPSPShowCaseActivity::class.java)
+            val intent = Intent(context, SPShowCaseActivity::class.java)
                 .apply { putExtra(EXTRA_SHOWCASE_COMPONENT, componentSP) }
             context.startActivity(intent)
         }
@@ -129,7 +130,7 @@ class SPSPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
                 return
             }
             try {
-                ComponentLauncher.launch(componentClass, this, SPShowCaseEnvironment(this))
+                SPComponentLauncher.launch(componentClass, this, SPShowCaseEnvironment(this))
             } catch (e: Exception) {
                 e.printStackTrace()
                 finishWithError("Can't show component: ${e.message}")
@@ -236,7 +237,7 @@ class SPSPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
                 }
             }
             onClick { _, item, _ ->
-                start(this@SPSPShowCaseActivity, item)
+                start(this@SPShowCaseActivity, item)
             }
         }
         listBinding.recyclerView.adapter = adapter

@@ -9,7 +9,7 @@ import com.example.spacedesignsystem.databinding.SpItemButtonsShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.main.SPShowCaseEnvironment
+import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.buttons.horizontal_button.SPHorizontalButtonsComponentSP
 import ge.space.design.ui_components.buttons.vertical_button.SPVerticalButtonsComponentSP
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
@@ -18,11 +18,15 @@ import ge.space.ui.base.SPBaseButton
 
 class SPDefaultButtonsComponentSP : SPShowCaseComponent {
 
-    override fun getNameResId(): Int = R.string.default_buttons
+    override fun getNameResId(): Int = R.string.buttons
 
-    override fun getDescriptionResId(): Int = R.string.default_button_description
+    override fun getDescriptionResId(): Int = R.string.button_description
 
     override fun getComponentClass(): Class<*>? = FactorySP::class.java
+
+    override fun getIconResId(): Int {
+        return R.drawable.ic_launcher_foreground
+    }
 
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(

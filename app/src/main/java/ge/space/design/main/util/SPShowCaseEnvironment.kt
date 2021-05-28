@@ -1,4 +1,4 @@
-package ge.space.design.main
+package ge.space.design.main.util
 
 import android.app.Activity
 import android.content.Context
@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-import ge.space.design.main.showcaseError
-
 
 
 class SPShowCaseEnvironment(

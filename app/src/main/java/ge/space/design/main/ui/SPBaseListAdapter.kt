@@ -1,4 +1,4 @@
-package ge.space.design.main
+package ge.space.design.main.ui
 
 import android.view.View
 import android.view.ViewGroup
