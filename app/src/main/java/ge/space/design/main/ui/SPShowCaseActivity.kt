@@ -1,19 +1,11 @@
 package ge.space.design.main.ui
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.Filter
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,79 +18,13 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.DesignSystemComponents
 import ge.space.design.main.*
 import ge.space.design.main.util.*
-import ge.space.design.showThemeDialog
 
 
-class SPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
-
-    val preferesManager by lazy {
-        PreferenceManager.getDefaultSharedPreferences(this)
-    }
-
-    companion object {
-
-        private const val EXTRA_COMPONENT_NAME = "component_name"
-        private const val EXTRA_SHOWCASE_COMPONENT = "showcase_component"
-
-        const val PREFERENCES_THEME = "PREFERENCES_THEME"
-
-        fun start(
-                context: Context,
-                componentSP: SPShowCaseComponent
-        ) {
-            val intent = Intent(context, SPShowCaseActivity::class.java)
-                .apply { putExtra(EXTRA_SHOWCASE_COMPONENT, componentSP) }
-            context.startActivity(intent)
-        }
-    }
-
-    private lateinit var componentSP: SPShowCaseComponent
-    private lateinit var componentSPS: List<SPShowCaseComponent>
-    private lateinit var componentsListBinding: SpLayoutSimpleShowcaseListBinding
-
-    // filtering
-    private val componentsFilter: Filter by lazy {
-        object : Filter() {
-
-            // lookup collection
-            val componentNames by lazy {
-                componentSPS.flatMap { it.flattenSubComponentSPS }
-                    .map { getString(it.getNameResId()) to it }
-            }
-
-            override fun performFiltering(constraint: CharSequence?)
-                    : FilterResults {
-                val result = FilterResults()
-                if (constraint.isNullOrBlank()) {
-                    result.values = componentSPS
-                    result.count = componentSPS.count()
-                } else {
-                    val filteredItems = componentNames
-                        .filter { (name) -> name.contains(constraint.trim(), ignoreCase = true) }
-                        .map { (_, component) -> component }
-                        .toList()
-                    result.values = filteredItems
-                    result.count = filteredItems.count()
-                }
-                return result
-            }
-
-            @Suppress("UNCHECKED_CAST")
-            override fun publishResults(
-                constraint: CharSequence?,
-                results: FilterResults
-            ) {
-                val filteredItems = results.values as List<SPShowCaseComponent>
-                (componentsListBinding.recyclerView.adapter as? SimpleListAdapter<*, SPShowCaseComponent>)
-                    ?.setItems(filteredItems)
-            }
-        }
-    }
+class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
 
     private lateinit var binding: SpActivitySimpleShowcaseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setProperTheme()
         super.onCreate(savedInstanceState)
 
         binding = SpActivitySimpleShowcaseBinding.inflate(layoutInflater)
@@ -138,49 +64,6 @@ class SPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
         }
     }
 
-    private fun setProperTheme() {
-        val theme = when (preferesManager.getInt(PREFERENCES_THEME, 0)) {
-            0 -> R.style.AppThemeDark
-            1 -> R.style.AppThemeWhite
-            else -> null
-        }
-        theme?.let { setTheme(it) }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        if (componentSP.hasSubComponents) {
-            menuInflater.inflate(R.menu.sp_showcase_menu, menu)
-            val searchView = menu.findItem(R.id.action_search).actionView as? SearchView
-            searchView?.apply {
-                maxWidth = Int.MAX_VALUE
-                setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        componentsFilter.filter(newText)
-                        return true
-                    }
-                })
-            }
-        }
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            R.id.action_theme -> {
-                showThemeDialog()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbarView)
@@ -188,7 +71,10 @@ class SPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
         supportActionBar?.setTitle(componentSP.getNameResId())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.toolbarView.navigationIcon?.setColorFilter(resources.getColor(R.color.appPrimaryColor), PorterDuff.Mode.SRC_ATOP);
+        binding.toolbarView.navigationIcon?.setColorFilter(
+            resources.getColor(R.color.appPrimaryColor),
+            PorterDuff.Mode.SRC_ATOP
+        );
 
 
         if (componentSP.getDescriptionResId() != NO_RES_ID) {
@@ -242,6 +128,7 @@ class SPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
         }
         listBinding.recyclerView.adapter = adapter
     }
+
     override fun show(intent: Intent) {
         val actionBinding = SpLayoutSimpleShowcaseActionBinding.inflate(
             layoutInflater, binding.contentView, true
@@ -276,15 +163,10 @@ class SPShowCaseActivity : AppCompatActivity(), SPShowCaseDisplay {
     }
 
 
-      override fun show(SPLaunchAction: SPLaunchAction) {
-          val actionBinding = SpLayoutSimpleShowcaseActionBinding.inflate(
-              layoutInflater, binding.contentView, true
-          )
-          actionBinding.showButton.setOnClickListener { SPLaunchAction.launch() }
-      }
-
-    private fun finishWithError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        finish()
+    override fun show(SPLaunchAction: SPLaunchAction) {
+        val actionBinding = SpLayoutSimpleShowcaseActionBinding.inflate(
+            layoutInflater, binding.contentView, true
+        )
+        actionBinding.showButton.setOnClickListener { SPLaunchAction.launch() }
     }
 }
