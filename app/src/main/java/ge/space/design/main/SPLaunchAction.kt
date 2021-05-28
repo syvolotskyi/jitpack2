@@ -1,6 +1,6 @@
 package ge.space.design.main
 
 
-fun interface LaunchAction {
+fun interface SPLaunchAction {
     fun launch()
 }

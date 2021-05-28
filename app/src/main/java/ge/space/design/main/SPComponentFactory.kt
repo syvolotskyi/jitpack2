@@ -1,6 +1,6 @@
 package ge.space.design.main
 
-interface ComponentFactory {
+interface SPComponentFactory {
     /**
      * Returns a component object.
      *
@@ -11,5 +11,5 @@ interface ComponentFactory {
      * View,
      * LaunchAction
      */
-    fun create(environment: ShowCaseEnvironment): Any
+    fun create(environmentSP: SPShowCaseEnvironment): Any
 }

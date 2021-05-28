@@ -6,7 +6,7 @@ import java.io.Serializable
 
 
 
-interface ShowCaseComponent : Serializable {
+interface SPShowCaseComponent : Serializable {
 
     @StringRes
     fun getNameResId(): Int
@@ -29,5 +29,5 @@ interface ShowCaseComponent : Serializable {
      */
     fun getComponentClass(): Class<*>? = null
 
-    fun getSubComponents(): List<ShowCaseComponent> = listOf()
+    fun getSubComponents(): List<SPShowCaseComponent> = listOf()
 }
