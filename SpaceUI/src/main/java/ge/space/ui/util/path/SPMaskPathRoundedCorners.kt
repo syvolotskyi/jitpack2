@@ -2,17 +2,16 @@ package ge.space.ui.util.path
 
 import android.graphics.Path
 import android.graphics.RectF
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.util.extension.withSideRatio
 
 /**
  * Helper which allows to handle [Path] object that is for draw [SPBaseView] views.
  */
 class SPMaskPathRoundedCorners(
-        topLefRadiusPx: Float = DEFAULT_START_POINT,
-        topRightRadiusPx: Float = DEFAULT_START_POINT,
-        bottomRightRadiusPx: Float = DEFAULT_START_POINT,
-        bottomLefRadiusPx: Float = DEFAULT_START_POINT
+    topLefRadiusPx: Float = DEFAULT_START_POINT,
+    topRightRadiusPx: Float = DEFAULT_START_POINT,
+    bottomRightRadiusPx: Float = DEFAULT_START_POINT,
+    bottomLefRadiusPx: Float = DEFAULT_START_POINT
 ) {
     private val path = Path()
 
