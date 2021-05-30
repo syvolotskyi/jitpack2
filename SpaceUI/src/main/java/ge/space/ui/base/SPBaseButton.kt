@@ -56,7 +56,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            updateTextColor(color)
+            updateTextColor(value)
         }
 
     /**
@@ -122,7 +122,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Allows to update button style using ViewBinding
      */
-    protected abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
+    abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
 
     private fun changeFontFace() {
         if (!isInEditMode) {

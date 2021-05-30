@@ -97,4 +97,27 @@
         <item name="sp_shadowRadius">@dimen/dimen_p_10</item>
         <item name="sp_roundedCorners">@dimen/dimen_p_10</item>
     </style>
+
+    <style name="SPBaseView.SPBaseButton.Medium">
+        <item name="android:fontFamily">@font/myriad_geo_medium</item>
+    </style>
+
+
+    <style name="SPBaseView.SPBaseButton.Medium.Transparent">
+        <item name="sp_shadowOffsetX">0dp</item>
+        <item name="sp_shadowOffsetY">0dp</item>
+        <item name="sp_shadowAlpha">100%</item>
+        <item name="sp_backgroundColor">@color/transparent</item>
+        <item name="sp_shadowRadius">0dp</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="SPBaseView.SPBaseButton.Medium.Transparent.Remove">
+        <item name="android:textColor">?attr/accent_magenta</item>
+    </style>
+
+    <style name="SPBaseView.SPBaseButton.Medium.Transparent.Cancel">
+        <item name="android:textColor">?attr/greyscale_gray_1</item>
+    </style>
+
 </resources>
