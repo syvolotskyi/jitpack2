@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_32"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Title"
+            android:textColor="?attr/themeTextColor"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/title_and_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Title with close"
+            android:textColor="?attr/themeTextColor"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/title_and_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Title with icon"
+            android:textColor="?attr/themeTextColor"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/only_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Only icon"
+            android:textColor="?attr/themeTextColor"
+            tools:ignore="HardcodedText" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/two_button_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+         android:text="With two button"
+        app:layout_constraintBottom_toBottomOf="@id/radio_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/radio_group"
+        app:layout_constraintTop_toTopOf="@id/radio_group" />
+
+    <EditText
+        android:id="@+id/title_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_p_32"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:textColor="?attr/themeTextColor"
+        android:hint="@string/dialog_title"
+        android:textColorHint="?attr/themeTextColor"
+        app:layout_constraintBottom_toTopOf="@id/info_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/info_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_p_32"
+        android:layout_marginTop="16dp"
+        android:textColor="?attr/themeTextColor"
+        android:layout_marginBottom="@dimen/dimen_p_16"
+        android:hint="@string/dialog_label"
+        android:textColorHint="?attr/themeTextColor"
+        app:layout_constraintBottom_toTopOf="@id/show_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_input" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/show_button"
+        android:layout_width="@dimen/sp_button_width"
+        android:layout_height="@dimen/sp_button_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="show dialog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_input"
+        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
