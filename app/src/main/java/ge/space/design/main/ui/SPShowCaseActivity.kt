@@ -6,6 +6,7 @@ import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,6 +19,9 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.DesignSystemComponents
 import ge.space.design.main.*
 import ge.space.design.main.util.*
+import ge.space.ui.view.dialog.SPDialogInfoHolder
+import ge.space.ui.view.dialog.SPInfoDialog
+import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 
 class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
@@ -62,6 +66,30 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
                 finishWithError("Can't show component: ${e.message}")
             }
         }
+
+
+        SPInfoDialog.SPInfoDialogBuilder(this)
+                .setTitle("Title")
+                .setLabel("Label")
+                .setButtons(
+                        multiple = true,
+                        buttons = arrayOf(
+                                SPDialogInfoHolder("Label 1",SPDialogBottomVerticalButton.BottomButtonType.Default) {
+                                    Toast.makeText(this, "hello from label 1", Toast.LENGTH_SHORT).show()
+                                },
+                                SPDialogInfoHolder("Label 2",SPDialogBottomVerticalButton.BottomButtonType.Default) {
+                                    Toast.makeText(this, "hello from label 2", Toast.LENGTH_SHORT).show()
+                                }
+                        )
+                )
+                .build()
+                .onButtonsClick { label ->
+                    println(label)
+                }
+                .show(supportFragmentManager, SPInfoDialog::class.java.name)
+
+
+
     }
 
 

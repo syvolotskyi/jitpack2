@@ -80,7 +80,7 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             dialogButton.buttonType = button.type
             dialogButton.text = button.label
             dialogButton.setOnClickListener {
-                clickAction?.invoke(dialogButton.text)
+                button.clickEvent?.invoke()
             }
 
             binding.lytMultiple.addView(dialogButton)
@@ -120,7 +120,7 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
      */
     data class SPDialogBottomButtonModel(
         val label: String,
-        val type: SPDialogBottomVerticalButton.BottomButtonType =
-            SPDialogBottomVerticalButton.BottomButtonType.Default
+        val type: SPDialogBottomVerticalButton.BottomButtonType = SPDialogBottomVerticalButton.BottomButtonType.Default,
+        val clickEvent: (() -> Unit?)? = null
     )
 }
