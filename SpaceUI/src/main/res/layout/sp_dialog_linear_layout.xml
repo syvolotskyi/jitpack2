@@ -10,25 +10,31 @@
     <ImageView
         android:id="@+id/ivDialogType"
         style="@style/SPBaseDialogInfoImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/sp_dialog_icon_size"
+        android:layout_height="@dimen/sp_dialog_icon_size"
         android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_alert_circle_24_regular"
-        tools:visibility="visible"/>
+        android:src="@drawable/ic_alert_circle_24_regular" />
 
     <View
+        android:id="@+id/vIconDivider"
         android:layout_width="@dimen/sp_dialog_divider_width"
         android:layout_height="@dimen/sp_dialog_space_size"
         android:layout_marginTop="@dimen/sp_dialog_divider_margin_top" />
 
+    <View
+        android:id="@+id/vTitleDivider"
+        android:layout_width="@dimen/sp_dialog_divider_width"
+        android:layout_height="@dimen/sp_dialog_space_size"
+        android:layout_marginTop="@dimen/sp_dialog_space_margin_top"
+        tools:visibility="gone" />
+
     <TextView
         android:id="@+id/tvDialogTitle"
         style="@style/mtavruliLargeLabelStyle.Medium"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/sp_dialog_label_margin_top"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         tools:text="Title" />
@@ -36,21 +42,28 @@
     <TextView
         android:id="@+id/tvDialogLabel"
         style="@style/mtavruliMediumLabelStyle.Medium"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
         tools:text="Label" />
 
     <View
-        android:id="@+id/vSpace"
-        android:layout_width="@dimen/sp_dialog_space_size"
+        android:id="@+id/vIconSpace"
+        android:layout_width="@dimen/sp_dialog_divider_width"
         android:layout_height="@dimen/sp_dialog_space_size"
-        android:layout_marginBottom="@dimen/sp_dialog_divider_margin_top" />
+        android:layout_marginBottom="25dp" />
+
+    <View
+        android:id="@+id/vTitleSpace"
+        android:layout_width="@dimen/sp_dialog_divider_width"
+        android:layout_height="@dimen/sp_dialog_space_size"
+        android:layout_marginBottom="@dimen/sp_dialog_space_margin_top"
+        tools:visibility="gone" />
 
     <ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
         android:id="@+id/lytButtons"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        tools:visibility="visible" />
+        android:layout_width="match_parent" />
 
 </LinearLayout>

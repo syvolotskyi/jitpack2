@@ -12,9 +12,11 @@ import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.view.dialog.base.SPBaseDialog
 import ge.space.ui.view.dialog.base.SPBaseDialogBuilder
+import ge.space.ui.view.dialog.data.SPDialogData
+import ge.space.ui.view.dialog.data.SPDialogDismissHandler
+import ge.space.ui.view.dialog.data.SPDialogInfoHolder
 import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
 import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
-
 
 /**
  * Dialog for info show which allows to manipulate next parameters:
@@ -26,7 +28,6 @@ import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
  * @property buttonObjects describes dialog bottom buttons
  * @property isButtonsMultiple sets the dialog bottom buttons multiple flag
  * @property buttonsVisible describes the dialog bottom buttons visibility
- * @property clickAction is triggered when a button of the dialog is triggered
  */
 class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
 
@@ -44,30 +45,22 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
 
     private val isButtonsMultiple: Boolean by nonNullArgument(KEY_MULTIPLE, false)
 
-    private val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(BUTTON_OBJECT, arrayOf())
+    private val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(
+        KEY_BUTTON_OBJECT,
+        arrayOf()
+    )
 
-
-    private var clickAction: ((String) -> Unit)? = null
+    override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
 
     override fun getViewBinding(): SpInfoDialogBinding =
-            SpInfoDialogBinding.inflate(LayoutInflater.from(context))
+        SpInfoDialogBinding.inflate(LayoutInflater.from(context))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         handleDialogTitles()
         handleVisibility()
-        setClicksHandle()
         setButtons()
-
-    }
-
-    /**
-     * Sets an action which is triggered when a button of the dialog is clicked
-     */
-    fun onButtonsClick(action: (String) -> Unit): SPInfoDialog {
-        clickAction = action
-        return this
     }
 
     private fun handleDialogTitles() {
@@ -85,12 +78,10 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
             lytButtons.visibleOrGone(buttonsVisible)
             tvDialogLabel.visibleOrGone(labelVisible)
             tvDialogTitle.visibleOrGone(titleVisible)
-        }
-    }
-
-    private fun setClicksHandle() {
-        binding.lytDialogLinear.lytButtons.setOnClick { label ->
-            clickAction?.invoke(label)
+            vIconDivider.visibleOrGone(iconVisible)
+            vIconSpace.visibleOrGone(iconVisible)
+            vTitleDivider.visibleOrGone(!iconVisible)
+            vTitleSpace.visibleOrGone(!iconVisible)
         }
     }
 
@@ -98,29 +89,29 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
         if (buttonsVisible) {
             with(binding.lytDialogLinear) {
                 lytButtons.setBottomButtons(
-                        convertDialogButtonsType()
+                    convertDialogButtonsType()
                 )
             }
         }
     }
 
     private fun convertDialogButtonsType(): SPDialogBottomButtonLayout.SPDialogBottomButton =
-            if (isButtonsMultiple) {
-                SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonMultiple(
-                        getMultipleButtons()
-                )
-            } else {
-                SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonTwice(
-                        createDialogButtonModel(buttonObjects[LEFT_PAIR_INDEX]),
-                        createDialogButtonModel(buttonObjects.get(RIGHT_PAIR_INDEX)),
-                )
-            }
+        if (isButtonsMultiple) {
+            SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonMultiple(
+                getMultipleButtons()
+            )
+        } else {
+            SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonTwice(
+                createDialogButtonModel(buttonObjects[LEFT_PAIR_INDEX]),
+                createDialogButtonModel(buttonObjects[RIGHT_PAIR_INDEX]),
+            )
+        }
 
     private fun getMultipleButtons(): List<SPDialogBottomButtonLayout.SPDialogBottomButtonModel> {
         val buttons = mutableListOf<SPDialogBottomButtonLayout.SPDialogBottomButtonModel>()
         buttonObjects.forEach {
             buttons.add(
-                    createDialogButtonModel(it)
+                createDialogButtonModel(it)
             )
         }
 
@@ -128,11 +119,13 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
     }
 
     private fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
-            SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
-                    buttonObj.labelTxt,
-                    SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString()),
-                    buttonObj.clickEvent
-            )
+        SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
+            buttonObj.labelTxt,
+            SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString())
+        ) {
+            buttonObj.clickEvent?.invoke()
+            dismiss()
+        }
 
     override fun setDismissAction() {
         binding.lytRoot.setOnClickListener {
@@ -148,8 +141,8 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
         const val KEY_LABEL_VISIBLE = "KEY_LABEL_VISIBLE"
         const val KEY_BUTTONS_VISIBLE = "KEY_BUTTONS_VISIBLE"
         const val KEY_MULTIPLE = "KEY_MULTIPLE"
-        const val KEY_BUTTONS = "KEY_BUTTONS"
-        const val BUTTON_OBJECT = "BUTTON_OBJECT"
+        const val KEY_BUTTON_OBJECT = "KEY_BUTTON_OBJECT"
+        const val KEY_DISMISS = "KEY_DISMISS"
 
         private const val LEFT_PAIR_INDEX = 0
         private const val RIGHT_PAIR_INDEX = 1
@@ -161,7 +154,7 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
      * Builder class which allows to create [SPInfoDialog]
      */
     class SPInfoDialogBuilder(
-            activity: FragmentActivity
+        activity: FragmentActivity
     ) : SPBaseDialogBuilder<SPInfoDialog>(activity) {
 
         private var title: String? = null
@@ -172,54 +165,67 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
         private var buttonsVisible: Boolean = true
         private var isMultiple: Boolean = false
         private var buttons: Array<SPDialogInfoHolder> = arrayOf()
-
-
-        /**
-         * Defines data for the top title
-         */
-        fun setTitle(title: String?): SPInfoDialogBuilder {
-            this.title = title
-            return this
-        }
-
-        /**
-         * Defines data for the second title
-         */
-        fun setLabel(label: String?): SPInfoDialogBuilder {
-            this.label = label
-            return this
-        }
-
-        /**
-         * Defines data for the first title visibility
-         */
-        fun setTitleVisible(visible: Boolean): SPInfoDialogBuilder {
-            this.titleVisible = visible
-            return this
-        }
-
-        /**
-         * Defines data for the second title visibility
-         */
-        fun setLabelVisible(visible: Boolean): SPInfoDialogBuilder {
-            this.labelVisible = visible
-            return this
-        }
-
-        /**
-         * Defines data for the dialog icon visibility
-         */
-        fun setInfoIconVisible(visible: Boolean): SPInfoDialogBuilder {
-            this.infoIconVisible = visible
-            return this
-        }
+        private var dismissHandler: SPDialogDismissHandler? = null
 
         /**
          * Defines data for the dialog bottom buttons visibility
          */
-        fun setButtonsVisible(visible: Boolean): SPInfoDialogBuilder {
-            this.buttonsVisible = visible
+        fun setDismissHandler(onDismissed: () -> Unit): SPInfoDialogBuilder {
+            this.dismissHandler = SPDialogDismissHandler(onDismissed)
             return this
+        }
+
+        /**
+         * Dialog initializing by passing [SPDialogData]
+         *
+         * @param dialog allows to configure SPInfoDialog by using specific parameters
+         */
+        fun initDialog(dialog: SPDialogData): SPInfoDialogBuilder {
+            handleDialog(dialog)
+
+            return this
+        }
+
+        private fun handleDialog(dialog: SPDialogData) {
+            when (dialog) {
+                is SPDialogData.SPInfoDialogData -> initInfoDialog(dialog)
+                is SPDialogData.SPTitleLabelDialogData -> initTitleLabelDialog(dialog)
+                is SPDialogData.SPTitleDialogData -> initTitleDialog(dialog)
+                is SPDialogData.SPLabelDialogData -> initLabelDialog(dialog)
+            }
+        }
+
+        private fun initInfoDialog(dialog: SPDialogData.SPInfoDialogData) {
+            titleVisible = dialog.title?.let {
+                title = dialog.title
+                true
+            } ?: false
+            labelVisible = dialog.label?.let {
+                label = dialog.label
+                true
+            } ?: false
+            setButtons(dialog.buttonMultiple, dialog.buttons.toTypedArray())
+        }
+
+        private fun initTitleLabelDialog(dialog: SPDialogData.SPTitleLabelDialogData) {
+            title = dialog.title
+            label = dialog.label
+            infoIconVisible = false
+            buttonsVisible = false
+        }
+
+        private fun initTitleDialog(dialog: SPDialogData.SPTitleDialogData) {
+            title = dialog.title
+            labelVisible = false
+            infoIconVisible = false
+            buttonsVisible = false
+        }
+
+        private fun initLabelDialog(dialog: SPDialogData.SPLabelDialogData) {
+            label = dialog.label
+            titleVisible = false
+            infoIconVisible = false
+            buttonsVisible = false
         }
 
         /**
@@ -228,15 +234,15 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
          * @param multiple applies if the dialog bottom buttons is multiple. By default it's false
          * and it means that the dialog bottom buttons type is twice - for the right button and
          * for the left one.
-         * @param pairs applies button models
+         * @param buttons applies button models
          * @throws IllegalStateException if the dialog bottom button type is twice and the [pairs]
          * count is less then [MINIMUM_TWICE_BUTTONS] the exception throws because there are no any
          * possibilities to add both right button and left one.
          */
-        fun setButtons(
-                multiple: Boolean = false,
-                buttons: Array<SPDialogInfoHolder>
-        ): SPInfoDialogBuilder {
+        private fun setButtons(
+            multiple: Boolean = false,
+            buttons: Array<SPDialogInfoHolder>
+        ) {
             this.isMultiple = multiple
 
             if (!isMultiple && buttons.count() < MINIMUM_TWICE_BUTTONS) {
@@ -244,29 +250,24 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
             }
 
             this.buttons = buttons
-            return this
         }
-
-        private fun convertPairToParcelable(
-                vararg pairs: Pair<String, SPDialogBottomVerticalButton.BottomButtonType>
-        ): Array<Pair<String, String>> =
-                pairs.toList().map { Pair(it.first, it.second.toString()) }.toTypedArray()
 
         /**
          * Builds [SPInfoDialog] by using properties with keys
          */
         override fun build(): SPInfoDialog =
-                SPInfoDialog().apply {
-                    arguments = bundleOf(
-                            KEY_TITLE to this@SPInfoDialogBuilder.title,
-                            KEY_LABEL to this@SPInfoDialogBuilder.label,
-                            KEY_INFO_ICON_VISIBLE to this@SPInfoDialogBuilder.infoIconVisible,
-                            KEY_TITLE_VISIBLE to this@SPInfoDialogBuilder.titleVisible,
-                            KEY_LABEL_VISIBLE to this@SPInfoDialogBuilder.labelVisible,
-                            KEY_BUTTONS_VISIBLE to this@SPInfoDialogBuilder.buttonsVisible,
-                            KEY_MULTIPLE to this@SPInfoDialogBuilder.isMultiple,
-                            BUTTON_OBJECT to this@SPInfoDialogBuilder.buttons,
-                    )
-                }
+            SPInfoDialog().apply {
+                arguments = bundleOf(
+                    KEY_TITLE to this@SPInfoDialogBuilder.title,
+                    KEY_LABEL to this@SPInfoDialogBuilder.label,
+                    KEY_INFO_ICON_VISIBLE to this@SPInfoDialogBuilder.infoIconVisible,
+                    KEY_TITLE_VISIBLE to this@SPInfoDialogBuilder.titleVisible,
+                    KEY_LABEL_VISIBLE to this@SPInfoDialogBuilder.labelVisible,
+                    KEY_BUTTONS_VISIBLE to this@SPInfoDialogBuilder.buttonsVisible,
+                    KEY_MULTIPLE to this@SPInfoDialogBuilder.isMultiple,
+                    KEY_BUTTON_OBJECT to this@SPInfoDialogBuilder.buttons,
+                    KEY_DISMISS to this@SPInfoDialogBuilder.dismissHandler,
+                )
+            }
     }
 }
