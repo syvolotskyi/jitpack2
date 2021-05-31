@@ -6,11 +6,11 @@ import com.example.spacedesignsystem.R
 data class SPButtonSupportsLoading(
     val resId: Int,
     val supportsDisabled: Boolean = false,
-    val src: Int = R.drawable.ic_launcher_foreground,
+    val src: Int = R.drawable.ic_share_ios_24_regular,
 )
 
 object SPHorizontalButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseHorizontalButton, true),
+        SPButtonSupportsLoading(R.style.SPBaseHorizontalButton, true),
     )
 }

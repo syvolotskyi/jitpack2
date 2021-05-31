@@ -66,7 +66,7 @@ class SPVerticalButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseView_SPBaseVerticalButton)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseVerticalButton)
             )
         }
 
@@ -136,11 +136,6 @@ class SPVerticalButton @JvmOverloads constructor(
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        alpha = if (enabled) {
-            DEFAULT_ALPHA
-        } else {
-            DISABLED_ALPHA
-        }
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
     }
 
@@ -172,7 +167,5 @@ class SPVerticalButton @JvmOverloads constructor(
     companion object {
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ICON_PADDING = 0
-        private const val DISABLED_ALPHA = 0.25f
-        private const val DEFAULT_ALPHA = 1f
     }
 }

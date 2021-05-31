@@ -94,7 +94,6 @@ class SPHorizontalButton @JvmOverloads constructor(
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
         styleAttrs.run {
-            textColor = getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
             text = getString(R.styleable.SPButton_android_text).orEmpty()
             fontFamilyId = getResourceId(
                 R.styleable.SPViewStyle_android_fontFamily,
