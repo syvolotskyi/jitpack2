@@ -73,7 +73,7 @@
         <item name="sp_directionArrow">right</item>
     </style>
 
-    <style name="SPBaseView.SPBaseVerticalButton" >
+    <style name="SPBaseVerticalButton" parent="SPBaseView" >
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_bold</item>
@@ -83,11 +83,11 @@
         <item name="sp_iconPadding">normal</item>
     </style>
 
-    <style name="SPBaseView.SPBaseVerticalButton.Large" >
+    <style name="SPLargeVerticalButton" parent="SPBaseVerticalButton" >
         <item name="sp_iconPadding">large</item>
     </style>
 
-    <style name="SPBaseView.SPBaseHorizontalButton" >
+    <style name="SPBaseHorizontalButton" parent="SPBaseView" >
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_bold</item>
