@@ -31,7 +31,6 @@ abstract class SPBaseActivity : AppCompatActivity() {
     // filtering
     private val componentsFilter: Filter by lazy {
         object : Filter() {
-
             // lookup collection
             val componentNames by lazy {
                 componentSPS.flatMap { it.flattenSubComponentSPS }
