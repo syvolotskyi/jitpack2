@@ -35,6 +35,8 @@
         style="@style/mtavruliLargeLabelStyle.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/sp_dialog_title_padding_default"
+        android:paddingEnd="@dimen/sp_dialog_title_padding_default"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         tools:text="Title" />
@@ -44,6 +46,8 @@
         style="@style/mtavruliMediumLabelStyle.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/sp_dialog_title_padding_default"
+        android:paddingEnd="@dimen/sp_dialog_title_padding_default"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         tools:text="Label" />

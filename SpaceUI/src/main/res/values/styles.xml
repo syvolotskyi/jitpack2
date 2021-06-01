@@ -19,7 +19,50 @@
 
     </style>
 
-    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme.Core" parent="Theme.AppCompat.Light.NoActionBar">
+        //brand
+        <item name="brand_primary">@color/light_brand_primary</item>
+        <item name="brand_secondary">@color/light_brand_secondary</item>
+
+        //accent
+        <item name="accent_red">@color/light_accent_red</item>
+        <item name="accent_orange">@color/light_accent_orange</item>
+        <item name="accent_yellow">@color/light_accent_yellow</item>
+        <item name="accent_green">@color/light_accent_green</item>
+        <item name="accent_pink">@color/light_accent_pink</item>
+        <item name="accent_magenta">@color/light_accent_magenta</item>
+
+        //gray scale
+        <item name="greyscale_gray_1">@color/light_greyscale_gray_1</item>
+        <item name="greyscale_gray_2">@color/light_greyscale_gray_2</item>
+        <item name="greyscale_gray_3">@color/light_greyscale_gray_3</item>
+        <item name="greyscale_gray_4">@color/light_greyscale_gray_4</item>
+        <item name="greyscale_gray_5">@color/light_greyscale_gray_5</item>
+        <item name="greyscale_gray_6">@color/light_greyscale_gray_6</item>
+
+        // background
+        <item name="background_primary">@color/light_background_primary</item>
+        <item name="background_secondary">@color/light_background_secondary</item>
+        <item name="background_tertiary">@color/light_background_tertiary</item>
+
+        //label
+        <item name="label_primary">@color/light_label_primary</item>
+        <item name="label_secondary">@color/light_label_secondary</item>
+        <item name="label_tertiary">@color/light_label_tertiary</item>
+        <item name="label_quaternary">@color/light_label_quaternary</item>
+
+        //separator
+        <item name="separator_opaque">@color/light_separator_opaque</item>
+        <item name="separator_non_opaque">@color/light_separator_non_opaque</item>
+
+        //fill
+        <item name="fill_primary">@color/light_fill_primary</item>
+        <item name="fill_secondary">@color/light_fill_secondary</item>
+        <item name="fill_tertiary">@color/light_fill_tertiary</item>
+        <item name="fill_quaternary">@color/light_fill_quaternary</item>
+    </style>
+
+    <style name="BaseTheme" parent="BaseTheme.Core">
         <item name="static_white">@color/static_primary_white</item>
         <item name="static_black">@color/static_primary_black</item>
         <item name="static_blue">@color/static_secondary_blue</item>

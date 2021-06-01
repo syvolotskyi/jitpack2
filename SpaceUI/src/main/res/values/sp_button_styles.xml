@@ -117,7 +117,7 @@
     </style>
 
     <style name="SPBaseView.SPBaseButton.Medium.Transparent.Cancel">
-        <item name="android:textColor">?attr/greyscale_gray_1</item>
+        <item name="android:textColor">?attr/greyscale_gray_1 </item>
     </style>
 
 </resources>
