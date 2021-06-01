@@ -1,8 +1,14 @@
 package ge.space.ui.view.text_field
 
 import android.content.Context
+import android.media.AudioManager
+import android.media.ToneGenerator
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
@@ -43,6 +49,15 @@ class SPPinEntryView @JvmOverloads constructor(
         get() = binding.pinEntryEditText.isError
         set(hasError) {
             binding.pinEntryEditText.isError = hasError
+            if (hasError) {
+                binding.pinEntryEditText.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        binding.pinEntryEditText.context,
+                        R.anim.shake
+                    )
+                )
+                makeVibration()
+            }
         }
 
     /**
@@ -74,6 +89,21 @@ class SPPinEntryView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Request focus on this PinEntryEditText
+     */
+    fun focus() {
+        binding.pinEntryEditText.focus()
+    }
+
+    private fun makeVibration() {
+        val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(VibrationEffect.createOneShot(400, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(400)
+        }
+    }
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         binding.pinEntryEditText.isEnabled = enabled
