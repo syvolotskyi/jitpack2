@@ -16,10 +16,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_p_8"
             android:layout_marginEnd="@dimen/dimen_p_8"
+            android:layout_marginTop="@dimen/dimen_p_8"
             android:ellipsize="end"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:lines="1"
             android:textColor="@color/text_color_grey"
-            tools:fontFamily="@font/myriad_geo_bold"
+            tools:fontFamily="@font/myriad_geo_medium"
             tools:text="Title" />
 
     </LinearLayout>
