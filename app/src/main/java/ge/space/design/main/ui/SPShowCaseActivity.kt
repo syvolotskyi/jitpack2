@@ -81,7 +81,7 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
                 Toast.makeText(this, "hello from label 2", Toast.LENGTH_SHORT).show()
             }
         )
-        showTwiceDialog(
+        showMultipleDialog(
             SPDialogInfo(
                 "Title",
                 "Label",

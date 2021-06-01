@@ -14,7 +14,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseVerticalButton" />
+        app:sp_viewStyle="@style/SPBaseVerticalButton" />
 
     <ge.space.ui.view.button.SPVerticalButton
         android:id="@+id/vbtnSimpleDisabled"
@@ -27,7 +27,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@+id/vbtnSimple"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseVerticalButton" />
+        app:sp_viewStyle="@style/SPBaseVerticalButton" />
 
     <ge.space.ui.view.button.SPVerticalButton
         android:id="@+id/vbtnLarge"
@@ -39,7 +39,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vbtnSimple"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseVerticalButton.Large" />
+        app:sp_viewStyle="@style/SPLargeVerticalButton" />
 
     <ge.space.ui.view.button.SPVerticalButton
         android:id="@+id/vbtnLargeDisabled"
@@ -52,5 +52,5 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@+id/vbtnLarge"
         app:layout_constraintTop_toBottomOf="@id/vbtnSimpleDisabled"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseVerticalButton.Large" />
+        app:sp_viewStyle="@style/SPLargeVerticalButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

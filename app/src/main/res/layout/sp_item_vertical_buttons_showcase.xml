@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:src="@drawable/ic_launcher_foreground"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseVerticalButton.Large"
+        app:sp_viewStyle="@style/SPLargeVerticalButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center_horizontal" />
