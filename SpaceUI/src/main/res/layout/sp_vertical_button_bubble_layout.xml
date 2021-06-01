@@ -5,7 +5,7 @@
 
     <ge.space.ui.view.layout.SPFrameLayout
         android:id="@+id/btnContainer"
-        app:sp_viewStyle="@style/SPBaseView.Bubble"
+        app:sp_viewStyle="@style/SPVerticalButtonBubbleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">

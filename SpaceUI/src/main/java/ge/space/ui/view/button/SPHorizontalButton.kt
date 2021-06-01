@@ -43,7 +43,7 @@ class SPHorizontalButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseView_SPBaseButton)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseButtonView)
             )
         }
 

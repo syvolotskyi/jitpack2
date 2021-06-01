@@ -5,7 +5,7 @@ import com.example.spacedesignsystem.R
 
 data class SPButtonSupportsLoading(
     val resId: Int,
-    val supportsDisabled: Boolean = false,
+    val supportsDisabled: Boolean = true,
     val src: Int = R.drawable.ic_share_ios_24_regular,
 )
 
