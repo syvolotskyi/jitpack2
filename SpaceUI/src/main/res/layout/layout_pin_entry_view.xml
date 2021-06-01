@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/buttonLabel"
+        style="@style/Typography.Base.MyriadGEO.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/dimen_p_8"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/lightGray"
+        android:textSize="@dimen/dimen_sp_14"
+        tools:text="Title" />
+
+    <ge.space.ui.view.text_field.SPPinEntryEditText
+        android:id="@+id/pinEntryEditText"
+        style="@style/SPPinEntryEditText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_p_35"
+        android:layout_marginTop="@dimen/dimen_p_16"
+        android:background="@null"
+        android:focusable="true"
+        android:fontFamily="@font/myriad_geo_bold"
+        android:imeOptions="actionNone"
+        android:textColor="@color/appPrimaryColor"
+        android:textSize="@dimen/dimen_sp_20" />
+</LinearLayout>

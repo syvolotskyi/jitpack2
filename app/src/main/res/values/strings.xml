@@ -18,4 +18,6 @@
 
     <string name="vertical_button_description">Vertical button description</string>
     <string name="vertical_buttons">Vertical button</string>
+    <string name="password_pin">Password pin</string>
+    <string name="password_pin_desc">password pin description</string>
 </resources>
