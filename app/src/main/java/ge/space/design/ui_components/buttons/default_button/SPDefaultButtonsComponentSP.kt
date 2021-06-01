@@ -3,6 +3,7 @@ package ge.space.design.ui_components.buttons.default_button
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemButtonsShowcaseBinding
@@ -71,6 +72,19 @@ class SPDefaultButtonsComponentSP : SPShowCaseComponent {
                     itemBinding.button.isEnabled = !isChecked
                 }
 
+                itemBinding.wrapContentCheck.setOnCheckedChangeListener { _, isChecked ->
+                    with(itemBinding.button) {
+                        val newParams = layoutParams
+
+                        newParams.width = if (isChecked) {
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        } else {
+                            LinearLayout.LayoutParams.MATCH_PARENT
+                        }
+
+                        layoutParams = newParams
+                    }
+                }
 
                 layoutBinding.textInput.addTextChangedListener(object : TextWatcher {
 

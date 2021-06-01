@@ -3,28 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/buttonContentWrapper"
+    <TextView
+        android:id="@+id/buttonLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/buttonLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_p_8"
-            android:layout_marginEnd="@dimen/dimen_p_8"
-            android:ellipsize="end"
-            android:lines="1"
-            tools:fontFamily="@font/myriad_geo_bold"
-            tools:text="Title"
-            app:drawableTint="@color/black"
-            android:drawablePadding="@dimen/dimen_p_8"
-            app:drawableStartCompat="@drawable/ic_arrow_left_16_regular"
-            app:drawableEndCompat="@drawable/ic_arrow_right_16_regular" />
-
-    </LinearLayout>
+        android:paddingEnd="@dimen/dimen_p_16"
+        android:paddingStart="@dimen/dimen_p_16"
+        android:layout_marginStart="@dimen/dimen_p_8"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:drawablePadding="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:lines="1"
+        app:drawableEndCompat="@drawable/ic_arrow_right_16_regular"
+        app:drawableStartCompat="@drawable/ic_arrow_left_16_regular"
+        app:drawableTint="@color/black"
+        tools:fontFamily="@font/myriad_geo_bold"
+        tools:text="Title" />
 
 </merge>

@@ -2,8 +2,6 @@ package ge.space.ui.view.button
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -12,8 +10,6 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
 import ge.space.ui.base.SPBaseButton
@@ -58,7 +54,7 @@ class SPButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseView_SPBaseButton)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseButtonView)
             )
         }
 
@@ -155,6 +151,7 @@ class SPButton @JvmOverloads constructor(
             null,
             null
         )
+        updateTextColor(color)
     }
 
     private fun directRight() {
@@ -165,6 +162,7 @@ class SPButton @JvmOverloads constructor(
             ContextCompat.getDrawable(context, R.drawable.ic_arrow_right_16_regular),
            null
         )
+        updateTextColor(color)
     }
 
     /**
