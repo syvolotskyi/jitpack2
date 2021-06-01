@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -8,15 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/leftArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_spbutton_arrow"
-            tools:tint="@color/black" />
 
         <TextView
             android:id="@+id/buttonLabel"
@@ -27,17 +19,11 @@
             android:ellipsize="end"
             android:lines="1"
             tools:fontFamily="@font/myriad_geo_bold"
-            tools:text="Title" />
-
-        <ImageView
-            android:id="@+id/rightArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:rotation="180"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_spbutton_arrow"
-            tools:tint="@color/black" />
+            tools:text="Title"
+            app:drawableTint="@color/black"
+            android:drawablePadding="@dimen/dimen_p_8"
+            app:drawableStartCompat="@drawable/ic_arrow_left_16_regular"
+            app:drawableEndCompat="@drawable/ic_arrow_right_16_regular" />
 
     </LinearLayout>
 

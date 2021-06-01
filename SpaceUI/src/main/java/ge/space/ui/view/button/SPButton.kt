@@ -2,12 +2,15 @@ package ge.space.ui.view.button
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -75,7 +78,7 @@ class SPButton @JvmOverloads constructor(
     /**
      * Inflates and returns [SpButtonLayoutBinding] value
      */
-    override fun getViewBinding() : SpButtonLayoutBinding =
+    override fun getViewBinding(): SpButtonLayoutBinding =
         SpButtonLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     /**
@@ -111,8 +114,9 @@ class SPButton @JvmOverloads constructor(
     override fun updateTextColor(color: Int) {
         with(binding) {
             buttonLabel.setTextColor(textColor)
-            leftArrow.setColorFilter(textColor)
-            rightArrow.setColorFilter(textColor)
+            buttonLabel.compoundDrawables.forEach {
+                it?.setTint(textColor)
+            }
         }
     }
 
@@ -139,24 +143,28 @@ class SPButton @JvmOverloads constructor(
     }
 
     private fun directNone() {
-        with(binding) {
-            leftArrow.isGone = true
-            rightArrow.isGone = true
-        }
+        //remove all drawables
+        binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
     }
 
     private fun directLeft() {
-        with(binding) {
-            leftArrow.isVisible = true
-            rightArrow.isGone = true
-        }
+        //sets left drawable only
+        binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
+            ContextCompat.getDrawable(context, R.drawable.ic_arrow_left_16_regular),
+            null,
+            null,
+            null
+        )
     }
 
     private fun directRight() {
-        with(binding) {
-            leftArrow.isGone = true
-            rightArrow.isVisible = true
-        }
+        //sets right drawable only
+        binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
+            null,
+            null,
+            ContextCompat.getDrawable(context, R.drawable.ic_arrow_right_16_regular),
+           null
+        )
     }
 
     /**
