@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.dialog
+package ge.space.design.ui_components.dialogs
 
 import android.content.Context
 import android.widget.EditText

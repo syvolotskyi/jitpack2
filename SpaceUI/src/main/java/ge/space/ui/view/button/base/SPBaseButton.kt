@@ -1,4 +1,4 @@
-package ge.space.ui.base
+package ge.space.ui.view.button.base
 
 import android.content.Context
 import android.graphics.Color
@@ -11,6 +11,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
+import ge.space.ui.base.SPBaseView
 
 /**
  * Abstract base Button view extended from [SPBaseView] that allows to change its configuration.

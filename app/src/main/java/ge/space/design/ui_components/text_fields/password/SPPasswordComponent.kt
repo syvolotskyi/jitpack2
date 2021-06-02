@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.pins.password
+package ge.space.design.ui_components.text_fields.password
 
 import android.content.Context
 import android.widget.Toast

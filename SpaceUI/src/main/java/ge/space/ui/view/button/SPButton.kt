@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
-import ge.space.ui.base.SPBaseButton
+import ge.space.ui.view.button.base.SPBaseButton
 import ge.space.ui.util.extension.handleAttributeAction
 
 

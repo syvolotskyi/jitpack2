@@ -10,13 +10,12 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.res.TypedArrayUtils.getResourceId
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpVerticalButtonBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
-import ge.space.ui.base.SPBaseButton
+import ge.space.ui.view.button.base.SPBaseButton
 import ge.space.ui.view.button.SPVerticalButton.IconPadding
 import ge.space.ui.view.button.SPVerticalButton.IconPadding.Large
 import ge.space.ui.view.button.SPVerticalButton.IconPadding.Normal

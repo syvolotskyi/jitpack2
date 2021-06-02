@@ -26,10 +26,10 @@
     <string name="dialog_label">Dialog label</string>
 
     <string name="password_pin">Password pin</string>
-    <string name="password_pin_desc">password pin description</string>
+    <string name="password_pin_desc">Correct passwords 888888 and 1010</string>
 
-    <string name="otp_input">otp input</string>
-    <string name="otp_description">cases for otp input</string>
+    <string name="otp_input">OTP input</string>
+    <string name="otp_description">Correct passwords 888888 and 1010</string>
 
     <string name="text_fields">Text fields</string>
     <string name="text_fields_desc">Text fields desc</string>

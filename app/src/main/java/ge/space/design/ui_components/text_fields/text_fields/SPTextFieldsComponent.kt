@@ -1,9 +1,9 @@
-package ge.space.design.ui_components.pins.text_fields
+package ge.space.design.ui_components.text_fields.text_fields
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.ui_components.pins.otp.SPOtpComponent
-import ge.space.design.ui_components.pins.password.SPPasswordComponent
+import ge.space.design.ui_components.text_fields.otp.SPOtpComponent
+import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
 
 class SPTextFieldsComponent : SPShowCaseComponent {
 

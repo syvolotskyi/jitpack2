@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.pins.otp
+package ge.space.design.ui_components.text_fields.otp
 
 import android.content.Context
 import android.widget.Toast
@@ -8,7 +8,7 @@ import com.example.spacedesignsystem.databinding.SpOtpShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.pins.password.SPPasswordComponent
+import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
 import ge.space.ui.view.text_field.OnPinEnteredListener
 import ge.space.ui.view.text_field.SPPinEntryView
 
