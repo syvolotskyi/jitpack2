@@ -157,7 +157,6 @@ class SPPinEntryEditText : AppCompatEditText {
             isClickable = false
             setTextIsSelectable(false)
             includeFontPadding = false
-            movementMethod = null
 
             pinType = PinType.values()[pinTypeId]
             isDisableCopyPaste =
