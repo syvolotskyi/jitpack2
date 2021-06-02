@@ -24,4 +24,13 @@
 
     <string name="dialog_title">Dialog title</string>
     <string name="dialog_label">Dialog label</string>
+
+    <string name="password_pin">Password pin</string>
+    <string name="password_pin_desc">password pin description</string>
+
+    <string name="otp_input">otp input</string>
+    <string name="otp_description">cases for otp input</string>
+
+    <string name="text_fields">Text fields</string>
+    <string name="text_fields_desc">Text fields desc</string>
 </resources>

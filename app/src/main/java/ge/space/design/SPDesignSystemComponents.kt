@@ -4,6 +4,7 @@ import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.ui_components.buttons.default_button.SPDefaultButtonsComponentSP
 import ge.space.design.ui_components.colors.SPColorsComponentSP
+import ge.space.design.ui_components.pins.text_fields.SPTextFieldsComponent
 import ge.space.design.ui_components.dialog.SPDialogComponent
 
 object DesignSystemComponents : SPShowCaseComponent {
@@ -19,6 +20,8 @@ object DesignSystemComponents : SPShowCaseComponent {
                 new { SPColorsComponentSP() },
                 new { SPDefaultButtonsComponentSP() },
                 new { SPDialogComponent() }
+                new { SPDefaultButtonsComponentSP() },
+                new { SPTextFieldsComponent() }
         )
     }
 }
