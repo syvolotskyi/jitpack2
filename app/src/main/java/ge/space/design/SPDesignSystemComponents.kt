@@ -19,8 +19,7 @@ object DesignSystemComponents : SPShowCaseComponent {
         return listOf(
                 new { SPColorsComponentSP() },
                 new { SPDefaultButtonsComponentSP() },
-                new { SPDialogComponent() }
-                new { SPDefaultButtonsComponentSP() },
+                new { SPDialogComponent() },
                 new { SPTextFieldsComponent() }
         )
     }
