@@ -98,7 +98,7 @@ class SPPinEntryEditText : AppCompatEditText {
 
     fun setPinLength(maxLength: Int) {
         val params = this.layoutParams
-        params.width = (pinWidth * maxLength).toInt()
+        params.width = (pinWidth * maxLength).toInt() - (pinWidth/2).toInt()
         this.layoutParams = params
         requestLayout()
         applyMaxLength(maxLength)
@@ -121,6 +121,7 @@ class SPPinEntryEditText : AppCompatEditText {
                 R.styleable.SPPinEntryEditText_sp_pinType, DEFAULT_PIN_TYPE
             )
 
+            movementMethod = null
             pinType = PinType.values()[pinTypeId]
             isDisableCopyPaste =
                 getBoolean(R.styleable.SPPinEntryEditText_sp_disableCopyPaste, false)
@@ -233,9 +234,9 @@ class SPPinEntryEditText : AppCompatEditText {
     private fun handlePassportInputState() {
         setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
         setPadding(
-            0,
+            resources.getDimensionPixelSize(R.dimen.dimen_p_16),
             resources.getDimensionPixelSize(R.dimen.dimen_p_10),
-            0,
+            resources.getDimensionPixelSize(R.dimen.dimen_p_16),
             resources.getDimensionPixelSize(R.dimen.dimen_p_10)
         )
     }

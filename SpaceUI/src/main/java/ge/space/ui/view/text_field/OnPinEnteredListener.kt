@@ -1,5 +1,5 @@
 package ge.space.ui.view.text_field
 
 interface OnPinEnteredListener {
-    fun onPinEntered(str: CharSequence)
+    fun onPinEntered(pinCode: CharSequence)
 }

@@ -35,9 +35,9 @@ class SPPasswordComponent : SPShowCaseComponent {
 
         private fun setupBigPasswordView(pinEntryViewPassword: SPPinEntryView, context: Context) {
             pinEntryViewPassword.setPinEnteredListener(object : OnPinEnteredListener {
-                override fun onPinEntered(str: CharSequence) {
+                override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
-                    if (str.toString() == CORRECT_BIG_PASSWORD) {
+                    if (pinCode.toString() == CORRECT_BIG_PASSWORD) {
                         pinEntryViewPassword.isError = false
                         Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
                     } else {
@@ -51,9 +51,9 @@ class SPPasswordComponent : SPShowCaseComponent {
 
         private fun setupSmallPasswordView(pinEntryViewPassword: SPPinEntryView, context: Context) {
             pinEntryViewPassword.setPinEnteredListener(object : OnPinEnteredListener {
-                override fun onPinEntered(str: CharSequence) {
+                override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 1010
-                    if (str.toString() == CORRECT_SMALL_PASSWORD) {
+                    if (pinCode.toString() == CORRECT_SMALL_PASSWORD) {
                         pinEntryViewPassword.isError = false
                         Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
                     } else {
