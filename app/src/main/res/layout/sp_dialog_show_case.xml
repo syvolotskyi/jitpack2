@@ -95,7 +95,7 @@
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/show_button"
-        android:layout_width="@dimen/sp_button_width"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/sp_button_height"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
