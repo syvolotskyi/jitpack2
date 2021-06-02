@@ -98,7 +98,7 @@ class SPPinEntryEditText : AppCompatEditText {
 
     fun setPinLength(maxLength: Int) {
         val params = this.layoutParams
-        params.width = (pinWidth * maxLength).toInt() - (pinWidth/2).toInt()
+        params.width = (pinWidth * maxLength).toInt()
         this.layoutParams = params
         requestLayout()
         applyMaxLength(maxLength)
