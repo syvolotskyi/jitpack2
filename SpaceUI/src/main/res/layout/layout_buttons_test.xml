@@ -13,7 +13,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent"/>
+        app:sp_viewStyle="@style/SPAccentButtonView"/>
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTest2"
@@ -24,7 +24,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnTest1"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.White" />
+        app:sp_viewStyle="@style/SPWhiteButtonView" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTest3"
@@ -35,7 +35,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnTest2"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Dark" />
+        app:sp_viewStyle="@style/SPDarkButtonView" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTest4"
@@ -46,7 +46,7 @@
         android:text="Button label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnTest3"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Transparent" />
+        app:sp_viewStyle="@style/SPTransparentButtonView" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestLeft1"
@@ -57,7 +57,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@id/btnTest1"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent.ArrowLeft" />
+        app:sp_viewStyle="@style/SPAccentButtonViewWithLeftArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestLeft2"
@@ -68,7 +68,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@id/btnTest2"
         app:layout_constraintTop_toBottomOf="@id/btnTest1"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.White.ArrowLeft" />
+        app:sp_viewStyle="@style/SPWhiteButtonViewWithLeftArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestLeft3"
@@ -79,7 +79,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@id/btnTest3"
         app:layout_constraintTop_toBottomOf="@id/btnTest2"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Dark.ArrowLeft" />
+        app:sp_viewStyle="@style/SPDarkButtonViewWithLeftArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestLeft4"
@@ -90,7 +90,7 @@
         android:text="Button label"
         app:layout_constraintStart_toEndOf="@id/btnTest4"
         app:layout_constraintTop_toBottomOf="@id/btnTest3"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Transparent.ArrowLeft" />
+        app:sp_viewStyle="@style/SPTransparentButtonViewWithLeftArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestRight1"
@@ -103,7 +103,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@id/btnTestLeft1"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent.ArrowRight" />
+        app:sp_viewStyle="@style/SPAccentButtonViewWithRightArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestRight2"
@@ -114,7 +114,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@id/btnTestLeft2"
         app:layout_constraintTop_toBottomOf="@id/btnTest1"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.White.ArrowRight" />
+        app:sp_viewStyle="@style/SPWhiteButtonViewWithRightArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestRight3"
@@ -125,7 +125,7 @@
         android:text="Button"
         app:layout_constraintStart_toEndOf="@id/btnTestLeft3"
         app:layout_constraintTop_toBottomOf="@id/btnTest2"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Dark.ArrowRight" />
+        app:sp_viewStyle="@style/SPDarkButtonViewWithRightArrow" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnTestRight4"
@@ -136,6 +136,6 @@
         android:text="Button label"
         app:layout_constraintStart_toEndOf="@id/btnTestLeft4"
         app:layout_constraintTop_toBottomOf="@id/btnTest3"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Transparent.ArrowRight" />
+        app:sp_viewStyle="@style/SPTransparentButtonViewWithRightArrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

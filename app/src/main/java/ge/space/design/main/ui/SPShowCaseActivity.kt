@@ -6,6 +6,7 @@ import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,7 +19,10 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.DesignSystemComponents
 import ge.space.design.main.*
 import ge.space.design.main.util.*
-
+import ge.space.ui.util.extension.*
+import ge.space.ui.view.dialog.data.SPDialogInfoHolder
+import ge.space.ui.view.dialog.data.SPDialogInfo
+import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
 
@@ -62,8 +66,31 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
                 finishWithError("Can't show component: ${e.message}")
             }
         }
-    }
 
+        val buttonConfigs = arrayListOf(
+            SPDialogInfoHolder(
+                "Label 1",
+                SPDialogBottomVerticalButton.BottomButtonType.Default
+            ) {
+                Toast.makeText(this, "hello from label 1", Toast.LENGTH_SHORT).show()
+            },
+            SPDialogInfoHolder(
+                "Label 2",
+                SPDialogBottomVerticalButton.BottomButtonType.Remove
+            ) {
+                Toast.makeText(this, "hello from label 2", Toast.LENGTH_SHORT).show()
+            }
+        )
+        showMultipleDialog(
+            SPDialogInfo(
+                "Title",
+                "Label",
+                buttonConfigs
+            )
+        ) {
+            Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbarView)

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="sp_dialog_icon_size">@dimen/dimen_p_26</dimen>
     <dimen name="sp_dialog_icon_margin_top">@dimen/dimen_p_33</dimen>
     <dimen name="sp_dialog_title_margin_top">@dimen/dimen_p_28</dimen>
     <dimen name="sp_dialog_label_margin_top">@dimen/dimen_p_5</dimen>
     <dimen name="sp_dialog_divider_height">0.5dp</dimen>
     <dimen name="sp_dialog_divider_width">@dimen/dimen_p_277</dimen>
-    <dimen name="sp_dialog_divider_margin_top">@dimen/dimen_p_25</dimen>
+    <dimen name="sp_dialog_divider_margin_top">@dimen/dimen_p_28</dimen>
+    <dimen name="sp_dialog_space_margin_top">@dimen/dimen_p_30</dimen>
     <dimen name="sp_dialog_layout_corners_radius">@dimen/dimen_p_13</dimen>
     <dimen name="sp_dialog_button_height">@dimen/dimen_p_44</dimen>
     <dimen name="sp_dialog_space_size">@dimen/dimen_p_1</dimen>
+    <dimen name="sp_dialog_title_padding_default">@dimen/dimen_p_19</dimen>
 </resources>

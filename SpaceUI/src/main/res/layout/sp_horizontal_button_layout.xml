@@ -18,7 +18,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:ellipsize="end"
+            android:lines="1"
             android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
             android:paddingStart="@dimen/dimen_p_4"
             android:paddingEnd="@dimen/dimen_p_8"
             tools:fontFamily="@font/myriad_geo_bold"
@@ -26,14 +29,14 @@
 
         <ImageView
             android:id="@+id/ivRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dimen_p_20"
+            android:layout_height="@dimen/dimen_p_20"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/dimen_p_8"
             android:layout_marginEnd="@dimen/dimen_p_4"
             android:layout_weight="0"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_share_ios_24_regular"
+            tools:src="@drawable/ic_share_ios_24_regular"
             app:tint="?attr/colorAccent" />
 
     </LinearLayout>

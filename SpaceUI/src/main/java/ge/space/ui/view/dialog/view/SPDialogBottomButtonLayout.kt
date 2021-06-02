@@ -24,8 +24,6 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             LayoutInflater.from(context), this
         )
 
-    private var clickAction : ((label: String) -> Unit)? = null
-
     /**
      * Sets a group of buttons and applies their types
      */
@@ -40,13 +38,6 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
         }
     }
 
-    /**
-     * Handles when a button is clicked
-     */
-    fun setOnClick(action: (label: String) -> Unit) {
-        clickAction = action
-    }
-
     private fun handleTwice(bottomButton: SPDialogBottomButton.SPDialogBottomButtonTwice) {
         visibleTwice()
         with(binding) {
@@ -56,11 +47,11 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             btnDialogRight.text = bottomButton.buttonRight.label
 
             btnDialogLeft.setOnClickListener {
-                clickAction?.invoke(btnDialogLeft.text)
+                bottomButton.buttonLeft.clickEvent?.invoke()
             }
 
             btnDialogRight.setOnClickListener {
-                clickAction?.invoke(btnDialogRight.text)
+                bottomButton.buttonRight.clickEvent?.invoke()
             }
         }
     }
@@ -80,7 +71,7 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             dialogButton.buttonType = button.type
             dialogButton.text = button.label
             dialogButton.setOnClickListener {
-                clickAction?.invoke(dialogButton.text)
+                button.clickEvent?.invoke()
             }
 
             binding.lytMultiple.addView(dialogButton)
@@ -120,7 +111,7 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
      */
     data class SPDialogBottomButtonModel(
         val label: String,
-        val type: SPDialogBottomVerticalButton.BottomButtonType =
-            SPDialogBottomVerticalButton.BottomButtonType.Default
+        val type: SPDialogBottomVerticalButton.BottomButtonType = SPDialogBottomVerticalButton.BottomButtonType.Default,
+        val clickEvent: (() -> Unit?)? = null
     )
 }
