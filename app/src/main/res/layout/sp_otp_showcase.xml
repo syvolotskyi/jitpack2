@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ge.space.ui.view.text_field.SPPinEntryView
-        android:id="@+id/pinEntryViewPassword"
+        android:id="@+id/pinEntryViewOTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_p_64"
@@ -15,10 +14,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_pinStyle="@style/SPPinEntryPassword" />
+        app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
     <ge.space.ui.view.text_field.SPPinEntryView
-        android:id="@+id/pinEntryViewPasswordSmall"
+        android:id="@+id/pinEntryViewOTPSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_p_64"
@@ -26,8 +25,21 @@
         android:text="Label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewPassword"
-        app:sp_pinStyle="@style/SPPinEntryPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTP"
+        app:sp_pinStyle="@style/SPPinEntryOTPCode" />
+
+    <ge.space.ui.view.text_field.SPPinEntryView
+        android:id="@+id/pinEntryViewOTPDisabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_64"
+        android:maxLength="6"
+        android:enabled="false"
+        android:text="Label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTPSmall"
+        app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/labelTextInput"
@@ -41,5 +53,4 @@
         android:padding="10dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
