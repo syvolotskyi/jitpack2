@@ -28,44 +28,6 @@ abstract class SPBaseActivity : AppCompatActivity() {
         setProperTheme()
     }
 
-    // filtering
-    private val componentsFilter: Filter by lazy {
-        object : Filter() {
-            // lookup collection
-            val componentNames by lazy {
-                componentSPS.flatMap { it.flattenSubComponentSPS }
-                    .map { getString(it.getNameResId()) to it }
-            }
-
-            override fun performFiltering(constraint: CharSequence?)
-                    : FilterResults {
-                val result = FilterResults()
-                if (constraint.isNullOrBlank()) {
-                    result.values = componentSPS
-                    result.count = componentSPS.count()
-                } else {
-                    val filteredItems = componentNames
-                        .filter { (name) -> name.contains(constraint.trim(), ignoreCase = true) }
-                        .map { (_, component) -> component }
-                        .toList()
-                    result.values = filteredItems
-                    result.count = filteredItems.count()
-                }
-                return result
-            }
-
-            @Suppress("UNCHECKED_CAST")
-            override fun publishResults(
-                constraint: CharSequence?,
-                results: FilterResults
-            ) {
-                val filteredItems = results.values as List<SPShowCaseComponent>
-                (componentsListBinding.recyclerView.adapter as? SimpleListAdapter<*, SPShowCaseComponent>)
-                    ?.setItems(filteredItems)
-            }
-        }
-    }
-
     private fun setProperTheme() {
         val theme = when (preferesManager.getInt(PREFERENCES_THEME, 0)) {
             0 -> R.style.AppThemeDark
@@ -107,6 +69,44 @@ abstract class SPBaseActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    // filtering
+    private val componentsFilter: Filter by lazy {
+        object : Filter() {
+            // lookup collection
+            val componentNames by lazy {
+                componentSPS.flatMap { it.flattenSubComponentSPS }
+                    .map { getString(it.getNameResId()) to it }
+            }
+
+            override fun performFiltering(constraint: CharSequence?)
+                    : FilterResults {
+                val result = FilterResults()
+                if (constraint.isNullOrBlank()) {
+                    result.values = componentSPS
+                    result.count = componentSPS.count()
+                } else {
+                    val filteredItems = componentNames
+                        .filter { (name) -> name.contains(constraint.trim(), ignoreCase = true) }
+                        .map { (_, component) -> component }
+                        .toList()
+                    result.values = filteredItems
+                    result.count = filteredItems.count()
+                }
+                return result
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(
+                constraint: CharSequence?,
+                results: FilterResults
+            ) {
+                val filteredItems = results.values as List<SPShowCaseComponent>
+                (componentsListBinding.recyclerView.adapter as? SimpleListAdapter<*, SPShowCaseComponent>)
+                    ?.setItems(filteredItems)
+            }
         }
     }
 
