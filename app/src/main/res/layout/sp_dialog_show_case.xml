@@ -19,50 +19,48 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:layout_marginVertical="8dp"
             android:text="Title"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
-            android:id="@+id/title_and_close"
+            android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:text="Title with close"
+            android:text="Label"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
-            android:id="@+id/title_and_icon"
+            android:id="@+id/title_and_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:text="Title with icon"
+            android:text="Title with label"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
-            android:id="@+id/only_icon"
+            android:id="@+id/title_label_twice_buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:text="Only icon"
+            android:text="Title, label, and twice buttons"
+            android:textColor="?attr/themeTextColor"
+            tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/title_label_multiple_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Title, Label, and multiple buttons"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
     </RadioGroup>
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/two_button_check_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-         android:text="With two button"
-        app:layout_constraintBottom_toBottomOf="@id/radio_group"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/radio_group"
-        app:layout_constraintTop_toTopOf="@id/radio_group" />
 
     <EditText
         android:id="@+id/title_input"
@@ -106,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/info_input"
-        app:sp_viewStyle="@style/SPBaseView.SPBaseButton.Accent"
+        app:sp_viewStyle="@style/SPWhiteButtonView"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

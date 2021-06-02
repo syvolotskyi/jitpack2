@@ -1,6 +1,9 @@
 package ge.space.ui.view.dialog.data
 
+import android.os.Parcelable
 import ge.space.ui.view.dialog.SPInfoDialog
+import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Sealed class which allows to init [SPInfoDialog]
@@ -28,8 +31,8 @@ sealed class SPDialogData {
      * @property label applies the second title
      */
     data class SPTitleLabelDialogData(
-        val title: String,
-        val label: String
+        val title: String?,
+        val label: String?
     ) : SPDialogData()
 
     /**
@@ -50,3 +53,41 @@ sealed class SPDialogData {
         val label: String
     ) : SPDialogData()
 }
+
+/**
+ * Wrapper which allows pass a dismiss handler action
+ *
+ * @property onDismissed keeps an action for dismiss handle
+ */
+@Parcelize
+class SPDialogDismissHandler(
+    val onDismissed: (() -> Unit?)? = null
+): Parcelable
+
+/**
+ * Allows to wrap data for creating [SPInfoDialog]
+ *
+ * @property title applies a title of the dialog
+ * @property label applies a label of the dialog
+ * @property buttonModels applies a list of buttons
+ */
+data class SPDialogInfo(
+    val title: String?,
+    val label: String?,
+    val buttonModels: ArrayList<SPDialogInfoHolder> = arrayListOf()
+)
+
+/**
+ * Wrapper which allows to pass texts for both button Label and button type with click action
+ * for a button model.
+ *
+ * @property labelTxt applies a button title
+ * @property buttonType applies a button type for its style
+ * @property clickEvent applies a click action for a button
+ */
+@Parcelize
+class SPDialogInfoHolder(
+    val labelTxt: String,
+    val buttonType: SPDialogBottomVerticalButton.BottomButtonType,
+    val clickEvent: (() -> Unit?)? = null
+) : Parcelable
