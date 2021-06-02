@@ -1,7 +1,11 @@
 package ge.space.ui.util.extension
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -44,3 +48,35 @@ fun <T> T.handleAttributeAction(defVal: T, action: (T) -> Unit) {
  * on [SIDE_RATIO].
  */
 fun Float.withSideRatio() = this / SIDE_RATIO
+
+/**
+ * Lazy instantiation of fragment argument by [key]
+ *
+ * @param key sets a key of value for getting from a bundle
+ * @param default sets a default value if there is no any possibilities to fetching that
+ */
+fun <T> Fragment.argument(key: String, default: T?) =
+    lazy { arguments?.get(key) as? T ?: default }
+
+/**
+ * Lazy instantiation of fragment argument by [key]
+ *
+ * @param key sets a key of value for getting from a bundle
+ * @param default sets a default value if there is no any possibilities to fetching that
+ */
+fun <T> Fragment.nonNullArgument(key: String, default: T) =
+    lazy { arguments?.get(key) as? T ?: default }
+
+/**
+ * Sets a visibility of a view
+ *
+ * @param visible allows to set a view visibility. if true the view is visible
+ * if false - view is gone
+ */
+fun View.visibleOrGone(visible: Boolean) {
+    if (visible) {
+        isVisible = visible
+    } else {
+        isGone = !visible
+    }
+}

@@ -56,7 +56,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            updateTextColor(color)
+            updateTextColor(value)
         }
 
     /**
@@ -94,6 +94,15 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
         }
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        alpha = if (enabled) {
+            DEFAULT_ALPHA
+        } else {
+            DISABLED_ALPHA
+        }
+    }
+
     /**
      * Allows to init ViewBinding
      */
@@ -122,7 +131,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Allows to update button style using ViewBinding
      */
-    protected abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
+    abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
 
     private fun changeFontFace() {
         if (!isInEditMode) {
@@ -133,5 +142,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
 
     companion object {
         private const val FLOAT_ZERO = 0f
+        private const val DEFAULT_ALPHA = 1f
+        private const val DISABLED_ALPHA = 0.25f
     }
 }

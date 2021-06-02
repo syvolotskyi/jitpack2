@@ -19,6 +19,12 @@
     <string name="vertical_button_description">Vertical button description</string>
     <string name="vertical_buttons">Vertical button</string>
 
+    <string name="component_dialog">Dialog</string>
+    <string name="component_dialog_description">Dialog description</string>
+
+    <string name="dialog_title">Dialog title</string>
+    <string name="dialog_label">Dialog label</string>
+
     <string name="password_pin">Password pin</string>
     <string name="password_pin_desc">password pin description</string>
 

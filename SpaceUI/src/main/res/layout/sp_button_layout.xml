@@ -1,42 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/buttonContentWrapper"
+    <TextView
+        android:id="@+id/buttonLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:id="@+id/leftArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_spbutton_arrow"
-            android:scaleType="centerInside"
-            tools:tint="@color/black" />
-
-        <TextView
-            android:id="@+id/buttonLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_p_8"
-            android:layout_marginEnd="@dimen/dimen_p_8"
-            tools:fontFamily="@font/myriad_geo_bold"
-            tools:text="Title" />
-
-        <ImageView
-            android:id="@+id/rightArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_spbutton_arrow"
-            android:rotation="180"
-            tools:tint="@color/black" />
-
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:paddingEnd="@dimen/dimen_p_16"
+        android:paddingStart="@dimen/dimen_p_16"
+        android:layout_marginStart="@dimen/dimen_p_8"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:drawablePadding="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:lines="1"
+        app:drawableEndCompat="@drawable/ic_arrow_right_16_regular"
+        app:drawableStartCompat="@drawable/ic_arrow_left_16_regular"
+        app:drawableTint="@color/black"
+        tools:fontFamily="@font/myriad_geo_bold"
+        tools:text="Title" />
 
 </merge>

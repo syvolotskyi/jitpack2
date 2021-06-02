@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/vButtonTwiceDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sp_dialog_divider_height"
+        android:background="@color/lineColor"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/lytTwice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ge.space.ui.view.button.SPButton
+            android:id="@+id/btnDialogLeft"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sp_dialog_button_height"
+            android:layout_weight="1"
+            app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+            tools:text="Label" />
+
+        <View
+            android:id="@+id/vDivider"
+            android:layout_width="@dimen/sp_dialog_divider_height"
+            android:layout_height="@dimen/sp_dialog_button_height"
+            android:background="@color/lineColor" />
+
+        <ge.space.ui.view.button.SPButton
+            android:id="@+id/btnDialogRight"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sp_dialog_button_height"
+            android:layout_weight="1"
+            app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+            tools:text="Label" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lytMultiple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+</merge>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPBaseView.SPBaseButton" parent="SPBaseView">
+    <style name="SPBaseButtonView" parent="SPBaseView">
         <item name="sp_roundedCorners">@dimen/dimen_p_10</item>
         <item name="sp_shadowOffsetX">0dp</item>
         <item name="sp_shadowOffsetY">@dimen/dimen_p_4</item>
@@ -12,51 +12,51 @@
         <item name="sp_directionArrow">none</item>
     </style>
 
-    <style name="SPBaseView.Bubble" parent="SPBaseView">
+    <style name="SPVerticalButtonBubbleView" parent="SPBaseView">
         <item name="sp_shadowOffsetX">0dp</item>
-        <item name="sp_shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="sp_shadowAlpha">20%</item>
+        <item name="sp_shadowOffsetY">@dimen/dimen_p_8</item>
+        <item name="sp_shadowAlpha">15%</item>
         <item name="sp_backgroundColor">?attr/colorAccent</item>
         <item name="sp_isCircle">true</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.White">
+    <style name="SPWhiteButtonView" parent="SPBaseButtonView">
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.White.ArrowLeft">
+    <style name="SPWhiteButtonViewWithLeftArrow" parent="SPWhiteButtonView">
         <item name="sp_directionArrow">left</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.White.ArrowRight">
+    <style name="SPWhiteButtonViewWithRightArrow" parent="SPWhiteButtonView">
         <item name="sp_directionArrow">right</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Accent">
+    <style name="SPAccentButtonView" parent="SPBaseButtonView">
         <item name="sp_backgroundColor">?attr/colorAccent</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Accent.ArrowLeft">
+    <style name="SPAccentButtonViewWithLeftArrow" parent="SPAccentButtonView">
         <item name="sp_directionArrow">left</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Accent.ArrowRight">
+    <style name="SPAccentButtonViewWithRightArrow" parent="SPAccentButtonView">
         <item name="sp_directionArrow">right</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Dark">
+    <style name="SPDarkButtonView" parent="SPBaseButtonView">
         <item name="sp_backgroundColor">?attr/static_black</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Dark.ArrowLeft">
+    <style name="SPDarkButtonViewWithLeftArrow" parent="SPDarkButtonView">
         <item name="sp_directionArrow">left</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Dark.ArrowRight">
+    <style name="SPDarkButtonViewWithRightArrow" parent="SPDarkButtonView">
         <item name="sp_directionArrow">right</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Transparent">
+    <style name="SPTransparentButtonView" parent="SPBaseButtonView">
         <item name="sp_shadowOffsetX">0dp</item>
         <item name="sp_shadowOffsetY">0dp</item>
         <item name="sp_shadowAlpha">100%</item>
@@ -65,36 +65,58 @@
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Transparent.ArrowLeft">
+    <style name="SPTransparentButtonViewWithLeftArrow" parent="SPTransparentButtonView">
         <item name="sp_directionArrow">left</item>
     </style>
 
-    <style name="SPBaseView.SPBaseButton.Transparent.ArrowRight">
+    <style name="SPTransparentButtonViewWithRightArrow" parent="SPTransparentButtonView">
         <item name="sp_directionArrow">right</item>
     </style>
 
-    <style name="SPBaseView.SPBaseVerticalButton" >
+    <style name="SPBaseVerticalButton" parent="SPBaseView" >
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
-        <item name="android:fontFamily">@font/myriad_geo_bold</item>
+        <item name="android:fontFamily">@font/myriad_geo_medium</item>
         <item name="sp_shadowAlpha">100%</item>
         <item name="sp_backgroundColor">@color/transparent</item>
         <item name="sp_shadowRadius">0dp</item>
         <item name="sp_iconPadding">normal</item>
     </style>
 
-    <style name="SPBaseView.SPBaseVerticalButton.Large" >
+    <style name="SPLargeVerticalButton" parent="SPBaseVerticalButton" >
         <item name="sp_iconPadding">large</item>
     </style>
 
-    <style name="SPBaseView.SPBaseHorizontalButton" >
+    <style name="SPBaseHorizontalButton" parent="SPBaseView" >
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_bold</item>
-        <item name="sp_shadowAlpha">10%</item>"
+        <item name="sp_shadowAlpha">25%</item>
         <item name="sp_shadowOffsetY">@dimen/dimen_p_4</item>
         <item name="sp_backgroundColor">@color/white</item>
         <item name="sp_shadowRadius">@dimen/dimen_p_10</item>
         <item name="sp_roundedCorners">@dimen/dimen_p_10</item>
     </style>
+
+    <style name="SPMediumButtonView" parent="SPBaseButtonView">
+        <item name="android:fontFamily">@font/myriad_geo_medium</item>
+    </style>
+
+    <style name="SPMediumTransparentButtonView" parent="SPMediumButtonView">
+        <item name="sp_shadowOffsetX">0dp</item>
+        <item name="sp_shadowOffsetY">0dp</item>
+        <item name="sp_shadowAlpha">100%</item>
+        <item name="sp_backgroundColor">@color/transparent</item>
+        <item name="sp_shadowRadius">0dp</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="SPRemoveMediumTransparentButtonView" parent="SPMediumTransparentButtonView">
+        <item name="android:textColor">?attr/accent_magenta</item>
+    </style>
+
+    <style name="SPCancelMediumTransparentButtonView" parent="SPMediumTransparentButtonView">
+        <item name="android:textColor">?attr/greyscale_gray_1</item>
+    </style>
+
 </resources>

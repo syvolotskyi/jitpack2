@@ -18,7 +18,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.DesignSystemComponents
 import ge.space.design.main.*
 import ge.space.design.main.util.*
-
+import ge.space.ui.util.extension.*
 
 class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
 
@@ -71,7 +71,6 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
             }
         }
     }
-
 
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbarView)
