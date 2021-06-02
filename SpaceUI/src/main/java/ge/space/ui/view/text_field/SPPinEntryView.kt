@@ -1,17 +1,17 @@
 package ge.space.ui.view.text_field
 
 import android.content.Context
-import android.media.AudioManager
-import android.media.ToneGenerator
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.addTextChangedListener
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.LayoutPinEntryViewBinding
 
@@ -50,12 +50,7 @@ class SPPinEntryView @JvmOverloads constructor(
         set(hasError) {
             binding.pinEntryEditText.isError = hasError
             if (hasError) {
-                binding.pinEntryEditText.startAnimation(
-                    AnimationUtils.loadAnimation(
-                        binding.pinEntryEditText.context,
-                        R.anim.shake
-                    )
-                )
+                showErrorAnimation()
                 makeVibration()
             }
         }
@@ -86,6 +81,10 @@ class SPPinEntryView @JvmOverloads constructor(
                     R.style.SPPinEntryEditText
                 )
             )
+
+            binding.pinEntryEditText.addTextChangedListener {
+                binding.pinEntryEditText.isError = false
+            }
         }
     }
 
@@ -96,6 +95,31 @@ class SPPinEntryView @JvmOverloads constructor(
         binding.pinEntryEditText.focus()
     }
 
+    /**
+     * Clean previously set password
+     */
+    fun clean() {
+        binding.pinEntryEditText.setText("")
+    }
+
+    private fun showErrorAnimation(){
+        val animation = AnimationUtils.loadAnimation(
+            binding.pinEntryEditText.context,
+            R.anim.shake
+        )
+
+        animation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {}
+            override fun onAnimationEnd(animation: Animation) {
+                binding.pinEntryEditText.setText("")
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {}
+        })
+
+        binding.pinEntryEditText.startAnimation(animation)
+    }
+
     private fun makeVibration() {
         val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -104,6 +128,7 @@ class SPPinEntryView @JvmOverloads constructor(
             vibrator.vibrate(400)
         }
     }
+
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         binding.pinEntryEditText.isEnabled = enabled
