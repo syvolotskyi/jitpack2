@@ -39,6 +39,16 @@ class SPPinEntryView @JvmOverloads constructor(
         set(value) {
             field = value
 
+            binding.pinEntryEditText.setText(value)
+        }
+
+    /**
+     * Sets a labelText
+     */
+    var labelText: String = EMPTY_TEXT
+        set(value) {
+            field = value
+
             binding.buttonLabel.text = value
         }
 
@@ -61,8 +71,8 @@ class SPPinEntryView @JvmOverloads constructor(
     var maxLength: Int = DEFAULT_MAX_LENGTH
         set(value) {
             field = value
-            binding.pinEntryEditText.setPinLength(maxLength)
-            binding.pinEntryEditText.setPasscodeLength(maxLength)
+
+            binding.pinEntryEditText.setMaxLength(maxLength)
         }
 
     init {
@@ -72,6 +82,7 @@ class SPPinEntryView @JvmOverloads constructor(
             defStyleAttr
         ) {
             text = getString(R.styleable.SPPinEntryView_android_text).orEmpty()
+            labelText = getString(R.styleable.SPPinEntryView_sp_labelText).orEmpty()
             isEnabled = getBoolean(R.styleable.SPPinEntryView_android_enabled, true)
             maxLength = getInt(R.styleable.SPPinEntryView_android_maxLength, DEFAULT_MAX_LENGTH)
 
@@ -98,7 +109,7 @@ class SPPinEntryView @JvmOverloads constructor(
     /**
      * Clean previously set password
      */
-    fun clean() {
+    fun resetPin() {
         binding.pinEntryEditText.setText("")
     }
 
@@ -111,7 +122,7 @@ class SPPinEntryView @JvmOverloads constructor(
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
             override fun onAnimationEnd(animation: Animation) {
-                binding.pinEntryEditText.setText("")
+                resetPin()
             }
 
             override fun onAnimationRepeat(animation: Animation) {}

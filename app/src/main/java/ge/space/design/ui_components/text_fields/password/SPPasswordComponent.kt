@@ -27,8 +27,8 @@ class SPPasswordComponent : SPShowCaseComponent {
             }
 
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->
-                binding.pinEntryViewPassword.text = text.toString()
-                binding.pinEntryViewPasswordSmall.text = text.toString()
+                binding.pinEntryViewPassword.labelText = text.toString()
+                binding.pinEntryViewPasswordSmall.labelText = text.toString()
             }
             return binding.root
         }

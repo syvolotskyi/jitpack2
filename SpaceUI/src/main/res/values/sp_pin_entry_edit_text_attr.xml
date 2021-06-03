@@ -13,6 +13,7 @@
 
     <declare-styleable name="SPPinEntryView">
         <attr name="android:text" format="string|reference" />
+        <attr name="sp_labelText" format="string|reference" />
         <attr name="android:enabled" format="boolean" />
         <attr name="android:maxLength" format="boolean" />
         <attr name="sp_pinStyle" format="reference" />
