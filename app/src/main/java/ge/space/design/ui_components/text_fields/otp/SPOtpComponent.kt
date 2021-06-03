@@ -39,15 +39,24 @@ class SPOtpComponent : SPShowCaseComponent {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
                     if (pinCode.toString() == SPPasswordComponent.CORRECT_BIG_PASSWORD) {
-                        pinEntryViewOtp.isError = false
-                        Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
+                        pinEntryViewOtp.handleResult(
+                            context.getString(R.string.correct_password),
+                            false
+                        )
                     } else {
-                        pinEntryViewOtp.isError = true
-                        Toast.makeText(context, "incorrect password", Toast.LENGTH_SHORT).show()
+                        pinEntryViewOtp.handleResult(
+                            context.getString(R.string.incorrect_password),
+                            true
+                        )
                     }
                 }
 
             })
+        }
+
+        private fun SPPinEntryView.handleResult(messageText: String, isError: Boolean) {
+            this.isError = isError
+            Toast.makeText(context, messageText, Toast.LENGTH_SHORT).show()
         }
 
         private fun setupSmallOtpView(pinEntryViewOtp: SPPinEntryView, context: Context) {

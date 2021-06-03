@@ -33,4 +33,7 @@
 
     <string name="text_fields">Text fields</string>
     <string name="text_fields_desc">Text fields desc</string>
+
+    <string name="correct_password">Correct password</string>
+    <string name="incorrect_password">Incorrect password</string>
 </resources>

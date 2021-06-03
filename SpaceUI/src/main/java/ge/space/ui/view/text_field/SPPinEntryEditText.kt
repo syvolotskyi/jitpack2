@@ -270,9 +270,9 @@ class SPPinEntryEditText : AppCompatEditText {
                     updateDrawableState(i < textLength, i == textLength)
                     pinBackground?.setBounds(
                         cords[i]?.left?.toInt() ?: 0,
-                        (cords[i]?.top?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt() / 2,
-                        (cords[i]?.right?.toInt() ?: 0),
-                        (cords[i]?.bottom?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt() / 2
+                        (cords[i]?.top?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt(),
+                        cords[i]?.right?.toInt() ?: 0,
+                        (cords[i]?.bottom?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt()
                     )
                     pinBackground?.draw(canvas)
                 }
