@@ -109,7 +109,7 @@ class SPPinEntryView @JvmOverloads constructor(
     /**
      * Clean previously set password
      */
-    fun clean() {
+    fun resetPin() {
         binding.pinEntryEditText.setText("")
     }
 
@@ -122,7 +122,7 @@ class SPPinEntryView @JvmOverloads constructor(
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
             override fun onAnimationEnd(animation: Animation) {
-                clean()
+                resetPin()
             }
 
             override fun onAnimationRepeat(animation: Animation) {}
