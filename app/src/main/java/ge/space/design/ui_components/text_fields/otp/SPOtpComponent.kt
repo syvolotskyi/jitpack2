@@ -27,9 +27,9 @@ class SPOtpComponent : SPShowCaseComponent {
             }
 
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->
-                binding.pinEntryViewOTP.text = text.toString()
-                binding.pinEntryViewOTPSmall.text = text.toString()
-                binding.pinEntryViewOTPDisabled.text = text.toString()
+                binding.pinEntryViewOTP.labelText = text.toString()
+                binding.pinEntryViewOTPSmall.labelText = text.toString()
+                binding.pinEntryViewOTPDisabled.labelText = text.toString()
             }
             return binding.root
         }
