@@ -71,8 +71,8 @@ class SPPinEntryView @JvmOverloads constructor(
     var maxLength: Int = DEFAULT_MAX_LENGTH
         set(value) {
             field = value
-            binding.pinEntryEditText.setPinLength(maxLength)
-            binding.pinEntryEditText.setPasscodeLength(maxLength)
+
+            binding.pinEntryEditText.setMaxLength(maxLength)
         }
 
     init {

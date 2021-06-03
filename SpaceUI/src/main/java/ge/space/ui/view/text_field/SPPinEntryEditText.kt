@@ -73,7 +73,7 @@ class SPPinEntryEditText : AppCompatEditText {
     private var textHeight = Rect()
 
     private val space: Float by lazy { resources.getDimension(R.dimen.dimen_p_16) }
-    private val pinWidth: Float by lazy { resources.getDimension(R.dimen.dimen_p_30) }
+    private val pinWidth: Float by lazy { resources.getDimension(R.dimen.dimen_p_16) }
     private val lineStroke: Float by lazy { resources.getDimension(R.dimen.dimen_p_1) }
 
     private var hasError = false
@@ -96,17 +96,10 @@ class SPPinEntryEditText : AppCompatEditText {
         init(context, attrs)
     }
 
-    fun setPinLength(maxLength: Int) {
+    fun setMaxLength(maxLength: Int) {
         val params = this.layoutParams
-        params.width = (pinWidth * maxLength).toInt()
-        this.layoutParams = params
-        requestLayout()
-        applyMaxLength(maxLength)
-    }
-
-    fun setPasscodeLength(maxLength: Int) {
-        val params = this.layoutParams
-        params.width = (pinWidth * (maxLength + 1)).toInt()
+        params.width = (pinWidth * maxLength).toInt() +
+                (space * maxLength).withPadding()
         this.layoutParams = params
         requestLayout()
         applyMaxLength(maxLength)
@@ -262,7 +255,7 @@ class SPPinEntryEditText : AppCompatEditText {
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         // When tapped, move cursor to end of text.
-        super.setOnClickListener { v ->
+        super.setOnClickListener {
             setSelection(fullText.length)
         }
 
@@ -277,9 +270,9 @@ class SPPinEntryEditText : AppCompatEditText {
                     updateDrawableState(i < textLength, i == textLength)
                     pinBackground?.setBounds(
                         cords[i]?.left?.toInt() ?: 0,
-                        (cords[i]?.top?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt(),
-                        cords[i]?.right?.toInt() ?: 0,
-                        (cords[i]?.bottom?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt()
+                        (cords[i]?.top?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt() / 2,
+                        (cords[i]?.right?.toInt() ?: 0),
+                        (cords[i]?.bottom?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt() / 2
                     )
                     pinBackground?.draw(canvas)
                 }
@@ -334,6 +327,10 @@ class SPPinEntryEditText : AppCompatEditText {
         })
     }
 
+    private fun Float.withPadding(): Int {
+        return this.toInt() + ViewCompat.getPaddingEnd(this@SPPinEntryEditText)
+    }
+
     private fun updateDrawableState(hasText: Boolean, isNext: Boolean) {
         if (hasError) {
             pinBackground?.state = intArrayOf(android.R.attr.state_active)
@@ -347,7 +344,13 @@ class SPPinEntryEditText : AppCompatEditText {
                     intArrayOf(android.R.attr.state_focused, android.R.attr.state_checked)
             }
         } else {
-            pinBackground?.state = intArrayOf(-android.R.attr.state_focused)
+            if (isNext) {
+                pinBackground?.state =
+                    intArrayOf(android.R.attr.state_focused, android.R.attr.state_selected)
+            } else if (hasText) {
+                pinBackground?.state =
+                    intArrayOf(android.R.attr.state_focused, android.R.attr.state_checked)
+            }
         }
     }
 
