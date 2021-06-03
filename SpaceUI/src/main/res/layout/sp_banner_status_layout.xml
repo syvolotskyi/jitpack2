@@ -17,28 +17,43 @@
 
     <TextView
         android:id="@+id/statusTitle"
-        style="@style/StepDescriptionTextStyle"
+        style="@style/h600_bold_caps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_30"
         android:layout_marginTop="@dimen/dimen_p_30"
         android:gravity="center"
         android:maxWidth="@dimen/dimen_p_250"
-        android:textSize="@dimen/dimen_sp_16"
-        app:layout_constraintTop_toBottomOf="@id/statusImage"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusImage"
         tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
 
     <TextView
         android:id="@+id/statusSubtitle"
-        style="@style/StepDescriptionSmallTextStyle"
+        style="@style/label_senary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_p_30"
         android:layout_marginTop="@dimen/dimen_p_15"
         android:layout_marginEnd="@dimen/dimen_p_30"
-        android:gravity="center" />
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusTitle"
+        tools:text="შენ წარმატებით გადარიცხე ფული" />
 
+    <TextView
+        android:id="@+id/statusDescription"
+        style="@style/h700_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_30"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:layout_marginEnd="@dimen/dimen_p_30"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusSubtitle"
+        tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
