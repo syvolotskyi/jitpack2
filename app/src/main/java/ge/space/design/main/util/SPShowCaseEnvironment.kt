@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
-
+import androidx.fragment.app.FragmentActivity
 
 class SPShowCaseEnvironment(
     val context: Context
 ) {
     fun requireActivity(): Activity {
         return (context as? Activity) ?: showcaseError("Failed require Activity")
+    }
+
+    fun requireFragmentActivity(): FragmentActivity {
+        return (context as? FragmentActivity) ?: showcaseError("Failed require Activity")
     }
 
     fun requireAppCompatActivity(): AppCompatActivity {

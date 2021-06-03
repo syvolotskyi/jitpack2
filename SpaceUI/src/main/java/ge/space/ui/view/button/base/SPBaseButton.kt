@@ -1,4 +1,4 @@
-package ge.space.ui.base
+package ge.space.ui.view.button.base
 
 import android.content.Context
 import android.graphics.Color
@@ -11,6 +11,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
+import ge.space.ui.base.SPBaseView
 
 /**
  * Abstract base Button view extended from [SPBaseView] that allows to change its configuration.
@@ -56,7 +57,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            updateTextColor(color)
+            updateTextColor(value)
         }
 
     /**
@@ -94,6 +95,15 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
         }
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        alpha = if (enabled) {
+            DEFAULT_ALPHA
+        } else {
+            DISABLED_ALPHA
+        }
+    }
+
     /**
      * Allows to init ViewBinding
      */
@@ -122,7 +132,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Allows to update button style using ViewBinding
      */
-    protected abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
+    abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
 
     private fun changeFontFace() {
         if (!isInEditMode) {
@@ -133,5 +143,7 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
 
     companion object {
         private const val FLOAT_ZERO = 0f
+        private const val DEFAULT_ALPHA = 1f
+        private const val DISABLED_ALPHA = 0.25f
     }
 }

@@ -1,7 +1,6 @@
 package ge.space.ui.view.button
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -12,7 +11,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpHorizontalButtonLayoutBinding
-import ge.space.ui.base.SPBaseButton
+import ge.space.ui.view.button.base.SPBaseButton
 
 /**
  * Button view extended from [SPBaseButton] that allows to change its configuration.
@@ -43,7 +42,7 @@ class SPHorizontalButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseView_SPBaseButton)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseButtonView)
             )
         }
 
@@ -94,7 +93,6 @@ class SPHorizontalButton @JvmOverloads constructor(
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
         styleAttrs.run {
-            textColor = getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
             text = getString(R.styleable.SPButton_android_text).orEmpty()
             fontFamilyId = getResourceId(
                 R.styleable.SPViewStyle_android_fontFamily,

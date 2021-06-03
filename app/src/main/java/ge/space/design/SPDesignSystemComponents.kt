@@ -2,8 +2,10 @@ package ge.space.design
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.ui_components.buttons.default_button.SPDefaultButtonsComponentSP
+import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponentSP
+import ge.space.design.ui_components.text_fields.text_fields.SPTextFieldsComponent
+import ge.space.design.ui_components.dialogs.SPDialogComponent
 
 object DesignSystemComponents : SPShowCaseComponent {
 
@@ -16,7 +18,9 @@ object DesignSystemComponents : SPShowCaseComponent {
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(
                 new { SPColorsComponentSP() },
-                new { SPDefaultButtonsComponentSP() }
+                new { SPButtonComponent() },
+                new { SPDialogComponent() },
+                new { SPTextFieldsComponent() }
         )
     }
 }

@@ -5,22 +5,22 @@ import com.example.spacedesignsystem.R
 
 data class SPButtonSupportsLoading(
     val resId: Int,
-    val supportsDisabled: Boolean = false,
+    val supportsDisabled: Boolean = true,
 )
 
 object SPButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_White, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_White_ArrowLeft, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_White_ArrowRight, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Accent, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Accent_ArrowLeft, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Accent_ArrowRight, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Dark, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Dark_ArrowLeft, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Dark_ArrowRight, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Transparent, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Transparent_ArrowLeft, true),
-        SPButtonSupportsLoading(R.style.SPBaseView_SPBaseButton_Transparent_ArrowRight, true)
+        SPButtonSupportsLoading(R.style.SPWhiteButtonView, true),
+        SPButtonSupportsLoading(R.style.SPWhiteButtonViewWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPWhiteButtonViewWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPAccentButtonView, true),
+        SPButtonSupportsLoading(R.style.SPAccentButtonViewWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPAccentButtonViewWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPDarkButtonView, true),
+        SPButtonSupportsLoading(R.style.SPDarkButtonViewWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPDarkButtonViewWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPTransparentButtonView, true),
+        SPButtonSupportsLoading(R.style.SPTransparentButtonViewWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPTransparentButtonViewWithRightArrow, true)
     )
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sp_dialog_divider_height"
+        android:background="@color/lineColor" />
+
+    <ge.space.ui.view.button.SPButton
+        android:id="@+id/btnDialog"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sp_dialog_button_height"
+        app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+        tools:text="Label" />
+
+</merge>

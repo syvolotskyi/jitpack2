@@ -10,13 +10,12 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.res.TypedArrayUtils.getResourceId
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpVerticalButtonBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
-import ge.space.ui.base.SPBaseButton
+import ge.space.ui.view.button.base.SPBaseButton
 import ge.space.ui.view.button.SPVerticalButton.IconPadding
 import ge.space.ui.view.button.SPVerticalButton.IconPadding.Large
 import ge.space.ui.view.button.SPVerticalButton.IconPadding.Normal
@@ -66,7 +65,7 @@ class SPVerticalButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseView_SPBaseVerticalButton)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseVerticalButton)
             )
         }
 
@@ -136,11 +135,6 @@ class SPVerticalButton @JvmOverloads constructor(
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
-        alpha = if (enabled) {
-            DEFAULT_ALPHA
-        } else {
-            DISABLED_ALPHA
-        }
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
     }
 
@@ -172,7 +166,5 @@ class SPVerticalButton @JvmOverloads constructor(
     companion object {
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ICON_PADDING = 0
-        private const val DISABLED_ALPHA = 0.25f
-        private const val DEFAULT_ALPHA = 1f
     }
 }

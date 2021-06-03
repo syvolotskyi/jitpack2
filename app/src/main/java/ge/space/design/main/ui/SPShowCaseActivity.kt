@@ -18,7 +18,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.DesignSystemComponents
 import ge.space.design.main.*
 import ge.space.design.main.util.*
-
+import ge.space.ui.util.extension.*
 
 class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
 
@@ -26,13 +26,21 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = SpActivitySimpleShowcaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*
-            Android Studio launch flag: -e "component_name" "yourComponent"
-        */
+        initBundle()
+
+        checkComponent()
+
+        setUpToolbar()
+
+    }
+
+    /**
+     *  Android Studio launch flag: -e "component_name" "yourComponent"
+     */
+    private fun initBundle() {
         componentSP = (if (intent.hasExtra(EXTRA_COMPONENT_NAME)) {
             try {
                 val componentName = requireNotNull(intent.getStringExtra(EXTRA_COMPONENT_NAME))
@@ -44,9 +52,9 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
         } else {
             intent?.getSerializableExtra(EXTRA_SHOWCASE_COMPONENT) as? SPShowCaseComponent
         }) ?: DesignSystemComponents
+    }
 
-        setUpToolbar()
-
+    private fun checkComponent() {
         if (componentSP.hasSubComponents) {
             bindComponentsList(componentSP.flattenSubComponentSPS)
         } else {
@@ -63,7 +71,6 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
             }
         }
     }
-
 
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbarView)
