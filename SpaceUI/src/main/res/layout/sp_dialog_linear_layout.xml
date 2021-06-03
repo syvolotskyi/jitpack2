@@ -27,7 +27,7 @@
         android:id="@+id/vTitleDivider"
         android:layout_width="@dimen/sp_dialog_divider_width"
         android:layout_height="@dimen/sp_dialog_space_size"
-        android:layout_marginTop="@dimen/sp_dialog_space_margin_top"
+        android:layout_marginTop="@dimen/sp_dialog_space_def_margin"
         tools:visibility="gone" />
 
     <TextView
@@ -62,7 +62,7 @@
         android:id="@+id/vTitleSpace"
         android:layout_width="@dimen/sp_dialog_divider_width"
         android:layout_height="@dimen/sp_dialog_space_size"
-        android:layout_marginBottom="@dimen/sp_dialog_space_margin_top"
+        android:layout_marginBottom="@dimen/sp_dialog_space_def_margin"
         tools:visibility="gone" />
 
     <ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout

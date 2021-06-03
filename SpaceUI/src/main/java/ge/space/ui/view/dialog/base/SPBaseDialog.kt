@@ -9,6 +9,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
 import ge.space.ui.view.dialog.data.SPDialogDismissHandler
+import ge.space.ui.view.dialog.data.SPDialogInfoHolder
+import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
+import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 /**
  * Abstract base Dialog extended from [DialogFragment] that allows to change its configuration.
@@ -38,6 +41,16 @@ abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
      */
     protected abstract val dismissHandler: SPDialogDismissHandler?
 
+    /**
+     * Lazy abstract property for button positions
+     */
+    protected abstract val isButtonsMultiple: Boolean
+
+    /**
+     * Comment
+     */
+    protected abstract val buttonObjects: Array<SPDialogInfoHolder>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -57,6 +70,38 @@ abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
         dismissHandler?.onDismissed?.invoke()
     }
 
+    protected fun convertDialogButtonsType(): SPDialogBottomButtonLayout.SPDialogBottomButton =
+        if (isButtonsMultiple) {
+            SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonMultiple(
+                getMultipleButtons()
+            )
+        } else {
+            SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonTwice(
+                createDialogButtonModel(buttonObjects[LEFT_PAIR_INDEX]),
+                createDialogButtonModel(buttonObjects[RIGHT_PAIR_INDEX]),
+            )
+        }
+
+    private fun getMultipleButtons(): List<SPDialogBottomButtonLayout.SPDialogBottomButtonModel> {
+        val buttons = mutableListOf<SPDialogBottomButtonLayout.SPDialogBottomButtonModel>()
+        buttonObjects.forEach {
+            buttons.add(
+                createDialogButtonModel(it)
+            )
+        }
+
+        return buttons
+    }
+
+    private fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
+        SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
+            buttonObj.labelTxt,
+            SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString())
+        ) {
+            buttonObj.clickEvent?.invoke()
+            dismiss()
+        }
+
     override fun getTheme(): Int = R.style.SPBaseDialog
 
     /**
@@ -68,4 +113,21 @@ abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
+
+    companion object {
+        const val KEY_TITLE = "KEY_TITLE"
+        const val KEY_LABEL = "KEY_LABEL"
+        const val KEY_INFO_ICON_VISIBLE = "KEY_INFO_ICON_VISIBLE"
+        const val KEY_TITLE_VISIBLE = "KEY_TITLE_VISIBLE"
+        const val KEY_LABEL_VISIBLE = "KEY_LABEL_VISIBLE"
+        const val KEY_BUTTONS_VISIBLE = "KEY_BUTTONS_VISIBLE"
+        const val KEY_MULTIPLE = "KEY_MULTIPLE"
+        const val KEY_BUTTON_OBJECT = "KEY_BUTTON_OBJECT"
+        const val KEY_DISMISS = "KEY_DISMISS"
+
+        const val LEFT_PAIR_INDEX = 0
+        const val RIGHT_PAIR_INDEX = 1
+
+        const val MINIMUM_TWICE_BUTTONS = 2
+    }
 }

@@ -1,6 +1,7 @@
 package ge.space.ui.view.dialog.data
 
 import android.os.Parcelable
+import ge.space.ui.view.dialog.SPEditTextDialog
 import ge.space.ui.view.dialog.SPInfoDialog
 import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 import kotlinx.android.parcel.Parcelize
@@ -55,6 +56,17 @@ sealed class SPDialogData {
 }
 
 /**
+ * Allows to init default [SPEditTextDialog] with both a title and buttons
+ *
+ * @property title applies the top title. If it's null its view is gone
+ * @property buttons applies buttons models with their click handlers
+ */
+data class SPEditTextDialogData(
+    val title: String?,
+    val buttons: ArrayList<SPDialogInfoHolder>
+) : SPDialogData()
+
+/**
  * Wrapper which allows pass a dismiss handler action
  *
  * @property onDismissed keeps an action for dismiss handle
@@ -62,6 +74,16 @@ sealed class SPDialogData {
 @Parcelize
 class SPDialogDismissHandler(
     val onDismissed: (() -> Unit?)? = null
+): Parcelable
+
+/**
+ * Wrapper which allows pass a change EditText handler
+ *
+ * @property onChanged keeps an action for EditText listener
+ */
+@Parcelize
+class SPEditTextDialogChangeHandler(
+    val onChanged: ((String) -> Unit?)? = null
 ): Parcelable
 
 /**
@@ -74,6 +96,17 @@ class SPDialogDismissHandler(
 data class SPDialogInfo(
     val title: String?,
     val label: String?,
+    val buttonModels: ArrayList<SPDialogInfoHolder> = arrayListOf()
+)
+
+/**
+ * Allows to wrap data for creating [SPEditTextDialog]
+ *
+ * @property title applies a title of the dialog
+ * @property buttonModels applies a list of buttons
+ */
+data class SPEditTextDialogInfo(
+    val title: String,
     val buttonModels: ArrayList<SPDialogInfoHolder> = arrayListOf()
 )
 

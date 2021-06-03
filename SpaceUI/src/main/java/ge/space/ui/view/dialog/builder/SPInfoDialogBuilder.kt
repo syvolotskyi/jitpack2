@@ -3,7 +3,16 @@ package ge.space.ui.view.dialog.builder
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import ge.space.ui.view.dialog.SPInfoDialog
-import ge.space.ui.view.dialog.SPInfoDialog.Companion.MINIMUM_TWICE_BUTTONS
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_BUTTONS_VISIBLE
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_INFO_ICON_VISIBLE
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_LABEL
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_LABEL_VISIBLE
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_MULTIPLE
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_TITLE
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_TITLE_VISIBLE
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MINIMUM_TWICE_BUTTONS
 import ge.space.ui.view.dialog.base.SPBaseDialogBuilder
 import ge.space.ui.view.dialog.data.SPDialogData
 import ge.space.ui.view.dialog.data.SPDialogDismissHandler
@@ -46,7 +55,7 @@ class SPInfoDialogBuilder(
     }
 
     private fun handleDialog(dialog: SPDialogData) {
-        when (dialog) {
+        when(dialog) {
             is SPDialogData.SPInfoDialogData -> initInfoDialog(dialog)
             is SPDialogData.SPTitleLabelDialogData -> initTitleLabelDialog(dialog)
             is SPDialogData.SPTitleDialogData -> initTitleDialog(dialog)
@@ -117,15 +126,15 @@ class SPInfoDialogBuilder(
     override fun build(): SPInfoDialog =
         SPInfoDialog().apply {
             arguments = bundleOf(
-                SPInfoDialog.KEY_TITLE to this@SPInfoDialogBuilder.title,
-                SPInfoDialog.KEY_LABEL to this@SPInfoDialogBuilder.label,
-                SPInfoDialog.KEY_INFO_ICON_VISIBLE to this@SPInfoDialogBuilder.infoIconVisible,
-                SPInfoDialog.KEY_TITLE_VISIBLE to this@SPInfoDialogBuilder.titleVisible,
-                SPInfoDialog.KEY_LABEL_VISIBLE to this@SPInfoDialogBuilder.labelVisible,
-                SPInfoDialog.KEY_BUTTONS_VISIBLE to this@SPInfoDialogBuilder.buttonsVisible,
-                SPInfoDialog.KEY_MULTIPLE to this@SPInfoDialogBuilder.isMultiple,
-                SPInfoDialog.KEY_BUTTON_OBJECT to this@SPInfoDialogBuilder.buttons,
-                SPInfoDialog.KEY_DISMISS to this@SPInfoDialogBuilder.dismissHandler,
+                KEY_TITLE to this@SPInfoDialogBuilder.title,
+                KEY_LABEL to this@SPInfoDialogBuilder.label,
+                KEY_INFO_ICON_VISIBLE to this@SPInfoDialogBuilder.infoIconVisible,
+                KEY_TITLE_VISIBLE to this@SPInfoDialogBuilder.titleVisible,
+                KEY_LABEL_VISIBLE to this@SPInfoDialogBuilder.labelVisible,
+                KEY_BUTTONS_VISIBLE to this@SPInfoDialogBuilder.buttonsVisible,
+                KEY_MULTIPLE to this@SPInfoDialogBuilder.isMultiple,
+                KEY_BUTTON_OBJECT to this@SPInfoDialogBuilder.buttons,
+                KEY_DISMISS to this@SPInfoDialogBuilder.dismissHandler,
             )
         }
 }

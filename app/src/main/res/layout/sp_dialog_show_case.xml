@@ -60,6 +60,15 @@
             android:text="Title, Label, and multiple buttons"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
+
+        <RadioButton
+            android:id="@+id/edit_text_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:text="Dialog with EditText"
+            android:textColor="?attr/themeTextColor"
+            tools:ignore="HardcodedText" />
     </RadioGroup>
 
     <EditText
