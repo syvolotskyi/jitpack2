@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.text_fields.text_fields
+package ge.space.design.ui_components.text_fields
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
