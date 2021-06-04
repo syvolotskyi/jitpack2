@@ -233,19 +233,13 @@ abstract class SPBaseView @JvmOverloads constructor(
     private fun handleShadowOffsetY(viewParams: LayoutParams) {
         val ratioOffsetY = shadowOffsetY.withSideRatio()
         if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
-            setPadding(
-                paddingStart + abs(ratioOffsetY.withSideRatio().roundToInt()),
-                paddingTop + abs(ratioOffsetY.toInt()),
-                paddingEnd + abs(ratioOffsetY.withSideRatio().roundToInt()),
-                paddingBottom
-            )
+            viewParams.topMargin = abs(ratioOffsetY.toInt())
+            viewParams.marginStart = abs(ratioOffsetY.withSideRatio().roundToInt())
+            viewParams.marginEnd = abs(ratioOffsetY.withSideRatio().roundToInt())
         } else {
-            setPadding(
-                paddingStart + ratioOffsetY.withSquareRatio().roundToInt(),
-                paddingTop,
-                paddingEnd + ratioOffsetY.withSquareRatio().roundToInt(),
-                paddingBottom + ratioOffsetY.toInt()
-            )
+            viewParams.bottomMargin = ratioOffsetY.toInt()
+            viewParams.marginStart = ratioOffsetY.withSideRatio().roundToInt()
+            viewParams.marginEnd = ratioOffsetY.withSideRatio().roundToInt()
         }
     }
 
