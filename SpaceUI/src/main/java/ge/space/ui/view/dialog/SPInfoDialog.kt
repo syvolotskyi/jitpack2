@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isGone
+import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpInfoDialogBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
@@ -25,7 +26,7 @@ import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
  * @property isButtonsMultiple sets the dialog bottom buttons multiple flag
  * @property buttonsVisible describes the dialog bottom buttons visibility
  */
-class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
+class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding, SPDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 
@@ -39,12 +40,12 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
 
     private val buttonsVisible: Boolean by nonNullArgument(KEY_BUTTONS_VISIBLE, true)
 
-    private val isButtonsMultiple: Boolean by nonNullArgument(KEY_MULTIPLE, false)
-
-    private val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(
+    override val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(
         KEY_BUTTON_OBJECT,
         arrayOf()
     )
+
+    override val isButtonsMultiple: Boolean by nonNullArgument(KEY_MULTIPLE, false)
 
     override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
 
@@ -91,30 +92,7 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
         }
     }
 
-    private fun convertDialogButtonsType(): SPDialogBottomButtonLayout.SPDialogBottomButton =
-        if (isButtonsMultiple) {
-            SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonMultiple(
-                getMultipleButtons()
-            )
-        } else {
-            SPDialogBottomButtonLayout.SPDialogBottomButton.SPDialogBottomButtonTwice(
-                createDialogButtonModel(buttonObjects[LEFT_PAIR_INDEX]),
-                createDialogButtonModel(buttonObjects[RIGHT_PAIR_INDEX]),
-            )
-        }
-
-    private fun getMultipleButtons(): List<SPDialogBottomButtonLayout.SPDialogBottomButtonModel> {
-        val buttons = mutableListOf<SPDialogBottomButtonLayout.SPDialogBottomButtonModel>()
-        buttonObjects.forEach {
-            buttons.add(
-                createDialogButtonModel(it)
-            )
-        }
-
-        return buttons
-    }
-
-    private fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
+    override fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
         SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
             buttonObj.labelTxt,
             SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString())
@@ -124,25 +102,8 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
         }
 
     override fun setDismissAction() {
-        binding.lytRoot.setOnClickListener {
+        binding.lytRoot.onClick {
             dismiss()
         }
-    }
-
-    companion object {
-        const val KEY_TITLE = "KEY_TITLE"
-        const val KEY_LABEL = "KEY_LABEL"
-        const val KEY_INFO_ICON_VISIBLE = "KEY_INFO_ICON_VISIBLE"
-        const val KEY_TITLE_VISIBLE = "KEY_TITLE_VISIBLE"
-        const val KEY_LABEL_VISIBLE = "KEY_LABEL_VISIBLE"
-        const val KEY_BUTTONS_VISIBLE = "KEY_BUTTONS_VISIBLE"
-        const val KEY_MULTIPLE = "KEY_MULTIPLE"
-        const val KEY_BUTTON_OBJECT = "KEY_BUTTON_OBJECT"
-        const val KEY_DISMISS = "KEY_DISMISS"
-
-        private const val LEFT_PAIR_INDEX = 0
-        private const val RIGHT_PAIR_INDEX = 1
-
-        const val MINIMUM_TWICE_BUTTONS = 2
     }
 }

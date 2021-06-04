@@ -1,11 +1,11 @@
 package ge.space.ui.util.extension
 
 import androidx.fragment.app.FragmentActivity
+import ge.space.ui.view.dialog.SPEditTextDialog
 import ge.space.ui.view.dialog.SPInfoDialog
+import ge.space.ui.view.dialog.builder.SPEditTextDialogBuilder
 import ge.space.ui.view.dialog.builder.SPInfoDialogBuilder
-import ge.space.ui.view.dialog.data.SPDialogData
-import ge.space.ui.view.dialog.data.SPDialogInfo
-import ge.space.ui.view.dialog.data.SPDialogInfoHolder
+import ge.space.ui.view.dialog.data.*
 
 /**
  * Creates and shows [SPInfoDialog] by using both a title and a label with multiple buttons
@@ -15,6 +15,19 @@ import ge.space.ui.view.dialog.data.SPDialogInfoHolder
  */
 fun FragmentActivity.showMultipleDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
     buildInfoDialog(dialogInfo.title, dialogInfo.label, true, dialogInfo.buttonModels, dismiss)
+        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+}
+
+/**
+ * Creates and shows [SPEditTextDialog] by using both a title and buttons with an EditText
+ *
+ * @param dialogInfo sets both a title and a label of the dialog with buttons
+ * @param dismiss sets a lambda action which the dialog dismissing handles
+ */
+fun FragmentActivity.showEditTextDialog(
+    dialogInfo: SPEditTextDialogInfo, dismiss: () -> Unit = { }
+) {
+    buildEditTextDialog(dialogInfo.title, dialogInfo.buttonModels, dismiss)
         .show(supportFragmentManager, SPInfoDialog::class.java.name)
 }
 
@@ -145,6 +158,26 @@ private fun FragmentActivity.buildLabelDialog(
         .initDialog(
             SPDialogData.SPLabelDialogData(
                 label = label
+            )
+        )
+        .setDismissHandler {
+            dismiss()
+        }
+        .build()
+
+/**
+ * Helper extension which helps to build [SPEditTextDialog] using [SPEditTextDialogData]
+ */
+private fun FragmentActivity.buildEditTextDialog(
+    title: String,
+    buttons: ArrayList<SPEditTextDialogInfoHolder>,
+    dismiss: () -> Unit = { }
+) =
+    SPEditTextDialogBuilder(this)
+        .initDialog(
+            SPEditTextDialogData(
+                title = title,
+                buttons = buttons
             )
         )
         .setDismissHandler {

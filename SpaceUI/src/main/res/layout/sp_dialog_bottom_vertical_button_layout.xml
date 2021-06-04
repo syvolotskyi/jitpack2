@@ -10,7 +10,7 @@
         android:id="@+id/vDivider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_dialog_divider_height"
-        android:background="@color/lineColor" />
+        android:background="?attr/separator_non_opaque" />
 
     <ge.space.ui.view.button.SPButton
         android:id="@+id/btnDialog"
