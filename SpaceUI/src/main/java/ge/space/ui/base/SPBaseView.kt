@@ -163,7 +163,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     /**
      * Sets a background color.
      */
-    protected var color: Int = Color.WHITE
+    var color: Int = Color.WHITE
         set(value) {
             field = value
 
