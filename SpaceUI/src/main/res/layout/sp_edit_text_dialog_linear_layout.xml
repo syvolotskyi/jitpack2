@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvDialogTitle"
-        style="@style/mtavruliMediumLabelStyle.Medium"
+        style="@style/mtavruliMediumLabelStyle.DialogLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_et_dialog_margin_top"

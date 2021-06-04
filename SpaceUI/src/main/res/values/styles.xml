@@ -125,6 +125,47 @@
         <item name="themeMistColorLight">@color/white</item>
         <item name="themeMistColorDark">@color/black</item>
 
+        //brand
+        <item name="brand_primary">@color/dark_brand_primary</item>
+        <item name="brand_secondary">@color/dark_brand_secondary</item>
+
+        //accent
+        <item name="accent_red">@color/dark_accent_red</item>
+        <item name="accent_orange">@color/dark_accent_orange</item>
+        <item name="accent_yellow">@color/dark_accent_yellow</item>
+        <item name="accent_green">@color/dark_accent_green</item>
+        <item name="accent_pink">@color/dark_accent_pink</item>
+        <item name="accent_magenta">@color/dark_accent_magenta</item>
+
+        //gray scale
+        <item name="greyscale_gray_1">@color/dark_greyscale_gray_1</item>
+        <item name="greyscale_gray_2">@color/dark_greyscale_gray_2</item>
+        <item name="greyscale_gray_3">@color/dark_greyscale_gray_3</item>
+        <item name="greyscale_gray_4">@color/dark_greyscale_gray_4</item>
+        <item name="greyscale_gray_5">@color/dark_greyscale_gray_5</item>
+        <item name="greyscale_gray_6">@color/dark_greyscale_gray_6</item>
+
+        //label
+        <item name="label_primary">@color/dark_label_primary</item>
+        <item name="label_secondary">@color/dark_label_secondary</item>
+        <item name="label_tertiary">@color/dark_label_tertiary</item>
+        <item name="label_quaternary">@color/dark_label_quaternary</item>
+
+        //separator
+        <item name="separator_opaque">@color/dark_separator_opaque</item>
+        <item name="separator_non_opaque">@color/dark_separator_non_opaque</item>
+
+        //fill
+        <item name="fill_primary">@color/dark_fill_primary</item>
+        <item name="fill_secondary">@color/dark_fill_secondary</item>
+        <item name="fill_tertiary">@color/dark_fill_tertiary</item>
+        <item name="fill_quaternary">@color/dark_fill_quaternary</item>
+
+        // background
+        <item name="background_primary">@color/dark_background_primary</item>
+        <item name="background_secondary">@color/dark_background_secondary</item>
+        <item name="background_tertiary">@color/dark_background_tertiary</item>
+
         <!-- for testing purposes -->
         <item name="themeTextColor">@color/white</item>
         <item name="themeCheckBoxButtonTint">@color/white</item>
@@ -132,20 +173,60 @@
 
 
     <style name="AppThemeWhite" parent="AppTheme">
-
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/appPrimaryColor</item>
         <item name="colorAccent">@color/appPrimaryColor</item>
         <item name="android:windowBackground">@color/white</item>
 
         <item name="cardBackground">@color/white</item>
-         <item name="cardTitleBackground">@color/white</item>
+        <item name="cardTitleBackground">@color/white</item>
         <item name="cardTitleBackgroundLineHeight">0.5dp</item>
         <item name="themeMySpaceBackgroundColor">@color/white</item>
         <item name="themeMySpaceTitleColor">@color/white</item>
         <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half</item>
         <item name="themeMistColorLight">@color/white</item>
         <item name="themeMistColorDark">@color/white</item>
+
+        //brand
+        <item name="brand_primary">@color/light_brand_primary</item>
+        <item name="brand_secondary">@color/light_brand_secondary</item>
+
+        //accent
+        <item name="accent_red">@color/light_accent_red</item>
+        <item name="accent_orange">@color/light_accent_orange</item>
+        <item name="accent_yellow">@color/light_accent_yellow</item>
+        <item name="accent_green">@color/light_accent_green</item>
+        <item name="accent_pink">@color/light_accent_pink</item>
+        <item name="accent_magenta">@color/light_accent_magenta</item>
+
+        //gray scale
+        <item name="greyscale_gray_1">@color/light_greyscale_gray_1</item>
+        <item name="greyscale_gray_2">@color/light_greyscale_gray_2</item>
+        <item name="greyscale_gray_3">@color/light_greyscale_gray_3</item>
+        <item name="greyscale_gray_4">@color/light_greyscale_gray_4</item>
+        <item name="greyscale_gray_5">@color/light_greyscale_gray_5</item>
+        <item name="greyscale_gray_6">@color/light_greyscale_gray_6</item>
+
+        // background
+        <item name="background_primary">@color/light_background_primary</item>
+        <item name="background_secondary">@color/light_background_secondary</item>
+        <item name="background_tertiary">@color/light_background_tertiary</item>
+
+        //label
+        <item name="label_primary">@color/light_label_primary</item>
+        <item name="label_secondary">@color/light_label_secondary</item>
+        <item name="label_tertiary">@color/light_label_tertiary</item>
+        <item name="label_quaternary">@color/light_label_quaternary</item>
+
+        //separator
+        <item name="separator_opaque">@color/light_separator_opaque</item>
+        <item name="separator_non_opaque">@color/light_separator_non_opaque</item>
+
+        //fill
+        <item name="fill_primary">@color/light_fill_primary</item>
+        <item name="fill_secondary">@color/light_fill_secondary</item>
+        <item name="fill_tertiary">@color/light_fill_tertiary</item>
+        <item name="fill_quaternary">@color/light_fill_quaternary</item>
 
         <!-- for testing purposes -->
         <item name="themeTextColor">@color/black</item>
@@ -279,105 +360,11 @@
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
-
     </style>
 
-    <style name="ThemeDark" parent="CoreTheme">
-        <item name="colorPrimary">@color/dark_background_primary</item>
-        <item name="colorPrimaryDark">@color/dark_background_primary</item>
-        <item name="colorAccent">@color/dark_brand_primary</item>
-        <item name="android:windowBackground">@color/dark_background_primary</item>
+    <style name="ThemeDark" parent="AppThemeDark" />
 
-        //brand
-        <item name="brand_primary">@color/dark_brand_primary</item>
-        <item name="brand_secondary">@color/dark_brand_secondary</item>
-
-        //accent
-        <item name="accent_red">@color/dark_accent_red</item>
-        <item name="accent_orange">@color/dark_accent_orange</item>
-        <item name="accent_yellow">@color/dark_accent_yellow</item>
-        <item name="accent_green">@color/dark_accent_green</item>
-        <item name="accent_pink">@color/dark_accent_pink</item>
-        <item name="accent_magenta">@color/dark_accent_magenta</item>
-
-        //gray scale
-        <item name="greyscale_gray_1">@color/dark_greyscale_gray_1</item>
-        <item name="greyscale_gray_2">@color/dark_greyscale_gray_2</item>
-        <item name="greyscale_gray_3">@color/dark_greyscale_gray_3</item>
-        <item name="greyscale_gray_4">@color/dark_greyscale_gray_4</item>
-        <item name="greyscale_gray_5">@color/dark_greyscale_gray_5</item>
-        <item name="greyscale_gray_6">@color/dark_greyscale_gray_6</item>
-
-        // background
-        <item name="background_primary">@color/dark_background_primary</item>
-        <item name="background_secondary">@color/dark_background_secondary</item>
-        <item name="background_tertiary">@color/dark_background_tertiary</item>
-
-        //label
-        <item name="label_primary">@color/dark_label_primary</item>
-        <item name="label_secondary">@color/dark_label_secondary</item>
-        <item name="label_tertiary">@color/dark_label_tertiary</item>
-        <item name="label_quaternary">@color/dark_label_quaternary</item>
-
-        //separator
-        <item name="separator_opaque">@color/dark_separator_opaque</item>
-        <item name="separator_non_opaque">@color/dark_separator_non_opaque</item>
-
-        //fill
-        <item name="fill_primary">@color/dark_fill_primary</item>
-        <item name="fill_secondary">@color/dark_fill_secondary</item>
-        <item name="fill_tertiary">@color/dark_fill_tertiary</item>
-        <item name="fill_quaternary">@color/dark_fill_quaternary</item>
-    </style>
-
-    <style name="ThemeLight" parent="BaseTheme">
-        <item name="colorPrimary">@color/light_background_primary</item>
-        <item name="colorPrimaryDark">@color/light_brand_primary</item>
-        <item name="colorAccent">@color/light_brand_primary</item>
-        <item name="android:windowBackground">@color/light_background_primary</item>
-
-        //brand
-        <item name="brand_primary">@color/light_brand_primary</item>
-        <item name="brand_secondary">@color/light_brand_secondary</item>
-
-        //accent
-        <item name="accent_red">@color/light_accent_red</item>
-        <item name="accent_orange">@color/light_accent_orange</item>
-        <item name="accent_yellow">@color/light_accent_yellow</item>
-        <item name="accent_green">@color/light_accent_green</item>
-        <item name="accent_pink">@color/light_accent_pink</item>
-        <item name="accent_magenta">@color/light_accent_magenta</item>
-
-        //gray scale
-        <item name="greyscale_gray_1">@color/light_greyscale_gray_1</item>
-        <item name="greyscale_gray_2">@color/light_greyscale_gray_2</item>
-        <item name="greyscale_gray_3">@color/light_greyscale_gray_3</item>
-        <item name="greyscale_gray_4">@color/light_greyscale_gray_4</item>
-        <item name="greyscale_gray_5">@color/light_greyscale_gray_5</item>
-        <item name="greyscale_gray_6">@color/light_greyscale_gray_6</item>
-
-        // background
-        <item name="background_primary">@color/light_background_primary</item>
-        <item name="background_secondary">@color/light_background_secondary</item>
-        <item name="background_tertiary">@color/light_background_tertiary</item>
-
-        //label
-        <item name="label_primary">@color/light_label_primary</item>
-        <item name="label_secondary">@color/light_label_secondary</item>
-        <item name="label_tertiary">@color/light_label_tertiary</item>
-        <item name="label_quaternary">@color/light_label_quaternary</item>
-
-        //separator
-        <item name="separator_opaque">@color/light_separator_opaque</item>
-        <item name="separator_non_opaque">@color/light_separator_non_opaque</item>
-
-        //fill
-        <item name="fill_primary">@color/light_fill_primary</item>
-        <item name="fill_secondary">@color/light_fill_secondary</item>
-        <item name="fill_tertiary">@color/light_fill_tertiary</item>
-        <item name="fill_quaternary">@color/light_fill_quaternary</item>
-    </style>
-
+    <style name="ThemeLight" parent="AppThemeWhite" />
 
     //show case app
     <style name="CheckboxStyle">
