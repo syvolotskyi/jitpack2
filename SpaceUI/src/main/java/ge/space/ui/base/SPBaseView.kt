@@ -230,24 +230,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         }
     }
 
-    private fun handleShadowOffsetY(viewParams: LayoutParams) {
-        val ratioOffsetY = shadowOffsetY.withSideRatio()
-        if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
-            setPadding(
-                paddingStart + abs(ratioOffsetY.withSideRatio().roundToInt()),
-                paddingTop + abs(ratioOffsetY.toInt()),
-                paddingEnd + abs(ratioOffsetY.withSideRatio().roundToInt()),
-                paddingBottom
-            )
-        } else {
-            setPadding(
-                paddingStart + ratioOffsetY.withSquareRatio().roundToInt(),
-                paddingTop,
-                paddingEnd + ratioOffsetY.withSquareRatio().roundToInt(),
-                paddingBottom + ratioOffsetY.toInt()
-            )
-        }
-    }
+    abstract fun handleShadowOffsetY(viewParams: LayoutParams)
 
     private fun checkRoundedCorners() {
         if (isCircle && measuredHeight > 0 && measuredWidth > 0) {

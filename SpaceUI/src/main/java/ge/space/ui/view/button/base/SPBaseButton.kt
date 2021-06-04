@@ -12,6 +12,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.util.extension.withSideRatio
+import kotlin.math.abs
+import kotlin.math.roundToInt
 
 /**
  * Abstract base Button view extended from [SPBaseView] that allows to change its configuration.
@@ -133,6 +136,19 @@ abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
      * Allows to update button style using ViewBinding
      */
     abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
+
+    override fun handleShadowOffsetY(viewParams: LayoutParams) {
+        val ratioOffsetY = shadowOffsetY.withSideRatio()
+        if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
+            viewParams.topMargin = abs(ratioOffsetY.toInt())
+            viewParams.marginStart = abs(ratioOffsetY.withSideRatio().roundToInt())
+            viewParams.marginEnd = abs(ratioOffsetY.withSideRatio().roundToInt())
+        } else {
+            viewParams.bottomMargin = ratioOffsetY.toInt()
+            viewParams.marginStart = ratioOffsetY.withSideRatio().roundToInt()
+            viewParams.marginEnd = ratioOffsetY.withSideRatio().roundToInt()
+        }
+    }
 
     private fun changeFontFace() {
         if (!isInEditMode) {
