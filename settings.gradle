@@ -1,3 +1,5 @@
+include ':SpaceExtensions'
 include ':SpaceUI'
 include ':app'
+
 rootProject.name = "Space Design System"

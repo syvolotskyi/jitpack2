@@ -13,4 +13,6 @@ dependencies {
     implementation SupportLibraries.legacy
     implementation SupportLibraries.palette
     implementation SupportLibraries.material
+
+    implementation project(':SpaceExtensions')
 }

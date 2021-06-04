@@ -2,6 +2,7 @@
 <resources>
     <style name="SPDialogFrameLayout" parent="SPBaseView">
         <item name="sp_roundedCorners">@dimen/sp_dialog_layout_corners_radius</item>
+        <item name="sp_backgroundColor">?attr/background_tertiary</item>
         <item name="sp_shadowRadius">0dp</item>
     </style>
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lytWrapper"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        style="@style/mtavruliMediumLabelStyle.DialogLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_et_dialog_margin_top"
+        android:paddingStart="@dimen/sp_dialog_title_padding_default"
+        android:paddingEnd="@dimen/sp_dialog_title_padding_default"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        tools:text="ბარათის სახელის შეცვლა" />
+
+    <!-- TODO: has to be a custom SPEditText here -->
+    <EditText
+        android:id="@+id/etDialog"
+        style="@style/mtavruliMediumLabelStyle.Medium"
+        android:layout_width="@dimen/sp_et_dialog_edit_text_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_et_dialog_margin_top"
+        android:layout_marginStart="@dimen/sp_dialog_space_def_margin"
+        android:layout_marginEnd="@dimen/sp_dialog_space_def_margin"
+        android:layout_gravity="center_horizontal"
+        tools:text="Bank o" />
+
+    <ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
+        android:id="@+id/lytButtons"
+        android:layout_marginTop="@dimen/sp_et_dialog_margin_top"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
+
+</LinearLayout>

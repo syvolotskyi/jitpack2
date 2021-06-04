@@ -222,10 +222,22 @@
         <item name="android:textColor">@color/lightGray</item>
     </style>
 
+    <style name="mtavruliMediumLabelStyle.DialogLabel" parent="mtavruliMediumLabelStyle.Medium">
+        <item name="android:textColor">?attr/themeTextColor</item>
+    </style>
+
+    <style name="mtavruliMediumLabelSecondaryStyle.DialogLabel" parent="mtavruliMediumLabelStyle.Medium">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
     <style name="mtavruliLargeLabelStyle.Medium" parent="baseStyle">
         <item name="android:textSize">@dimen/dimen_sp_17</item>
         <item name="android:fontFamily">@font/myriad_geo_mtavruli_medium</item>
         <item name="android:textColor">@color/lightGray</item>
+    </style>
+
+    <style name="mtavruliLargeLabelStyle.DialogTitle" parent="mtavruliLargeLabelStyle.Medium">
+        <item name="android:textColor">?attr/themeTextColor</item>
     </style>
 
     <style name="myriadGeoSmallLabelStyle.Medium" parent="baseStyle">
