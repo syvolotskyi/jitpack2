@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPCircleShape" parent="SPBaseView">
+        <item name="sp_shadowOffsetY">@dimen/dimen_p_8</item>
+        <item name="sp_isCircle">true</item>
+    </style>
+
+</resources>
