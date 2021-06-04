@@ -14,6 +14,7 @@ import androidx.core.view.children
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.scaleTo
 import ge.space.ui.util.extension.withSideRatio
+import ge.space.ui.util.extension.withSquareRatio
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -37,9 +38,9 @@ import kotlin.math.roundToInt
  * @property color describes [Int] value which is a color of the view background
  */
 abstract class SPBaseView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        @AttrRes defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    @AttrRes defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -232,13 +233,19 @@ abstract class SPBaseView @JvmOverloads constructor(
     private fun handleShadowOffsetY(viewParams: LayoutParams) {
         val ratioOffsetY = shadowOffsetY.withSideRatio()
         if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
-            viewParams.topMargin = abs(ratioOffsetY.toInt())
-            viewParams.marginStart = abs(ratioOffsetY.withSideRatio().roundToInt())
-            viewParams.marginEnd = abs(ratioOffsetY.withSideRatio().roundToInt())
-          } else {
-            viewParams.bottomMargin = ratioOffsetY.toInt()
-            viewParams.marginStart = ratioOffsetY.withSideRatio().roundToInt()
-            viewParams.marginEnd = ratioOffsetY.withSideRatio().roundToInt()
+            setPadding(
+                paddingStart + abs(ratioOffsetY.withSideRatio().roundToInt()),
+                paddingTop + abs(ratioOffsetY.toInt()),
+                paddingEnd + abs(ratioOffsetY.withSideRatio().roundToInt()),
+                paddingBottom
+            )
+        } else {
+            setPadding(
+                paddingStart + ratioOffsetY.withSquareRatio().roundToInt(),
+                paddingTop,
+                paddingEnd + ratioOffsetY.withSquareRatio().roundToInt(),
+                paddingBottom + ratioOffsetY.toInt()
+            )
         }
     }
 
@@ -369,6 +376,7 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     companion object {
         const val SIDE_RATIO = 2
+        const val SQUARE_RATIO = 4
 
         const val EMPTY_TEXT = ""
 

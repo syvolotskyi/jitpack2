@@ -7,6 +7,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
+import ge.space.ui.base.SPBaseView.Companion.SQUARE_RATIO
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -48,6 +49,12 @@ fun <T> T.handleAttributeAction(defVal: T, action: (T) -> Unit) {
  * on [SIDE_RATIO].
  */
 fun Float.withSideRatio() = this / SIDE_RATIO
+
+/**
+ * A helper method which allows to return a result divided
+ * on [SQUARE_RATIO].
+ */
+fun Float.withSquareRatio() = this / SQUARE_RATIO
 
 /**
  * Lazy instantiation of fragment argument by [key]
