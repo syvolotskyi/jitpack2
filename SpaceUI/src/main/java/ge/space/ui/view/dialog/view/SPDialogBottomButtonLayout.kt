@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import ge.space.extensions.onClick
 import ge.space.ui.util.extension.bottomType
 import ge.space.spaceui.databinding.SpDialogBottomButtonLayoutBinding
 
@@ -46,11 +47,11 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             btnDialogLeft.text = bottomButton.buttonLeft.label
             btnDialogRight.text = bottomButton.buttonRight.label
 
-            btnDialogLeft.setOnClickListener {
+            btnDialogLeft.onClick {
                 bottomButton.buttonLeft.clickEvent?.invoke()
             }
 
-            btnDialogRight.setOnClickListener {
+            btnDialogRight.onClick {
                 bottomButton.buttonRight.clickEvent?.invoke()
             }
         }
@@ -70,7 +71,7 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             val dialogButton = SPDialogBottomVerticalButton(context)
             dialogButton.buttonType = button.type
             dialogButton.text = button.label
-            dialogButton.setOnClickListener {
+            dialogButton.onClick {
                 button.clickEvent?.invoke()
             }
 

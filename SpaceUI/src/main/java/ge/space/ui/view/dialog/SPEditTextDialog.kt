@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.widget.addTextChangedListener
+import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpEditTextDialogBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.view.dialog.base.SPBaseDialog
 import ge.space.ui.view.dialog.data.SPDialogDismissHandler
-import ge.space.ui.view.dialog.data.SPDialogInfoHolder
 import ge.space.ui.view.dialog.data.SPEditTextDialogChangeHandler
+import ge.space.ui.view.dialog.data.SPEditTextDialogInfoHolder
+import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
+import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 /**
  * Dialog with EditText which allows to manipulate next parameters:
@@ -19,7 +22,7 @@ import ge.space.ui.view.dialog.data.SPEditTextDialogChangeHandler
  * @property buttonObjects describes dialog bottom buttons
  * @property editTextChange handles text change
  */
-class SPEditTextDialog : SPBaseDialog<SpEditTextDialogBinding>() {
+class SPEditTextDialog : SPBaseDialog<SpEditTextDialogBinding, SPEditTextDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 
@@ -27,7 +30,7 @@ class SPEditTextDialog : SPBaseDialog<SpEditTextDialogBinding>() {
         KEY_EDIT_TEXT_CHANGE, null
     )
 
-    override val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(
+    override val buttonObjects: Array<SPEditTextDialogInfoHolder> by nonNullArgument(
         KEY_BUTTON_OBJECT,
         arrayOf()
     )
@@ -62,8 +65,19 @@ class SPEditTextDialog : SPBaseDialog<SpEditTextDialogBinding>() {
         }
     }
 
+    override fun createDialogButtonModel(buttonObj: SPEditTextDialogInfoHolder) =
+        SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
+            buttonObj.labelTxt,
+            SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString())
+        ) {
+            buttonObj.clickEvent?.invoke(
+                binding.lytDialogLinear.etDialog.text.toString()
+            )
+            dismiss()
+        }
+
     override fun setDismissAction() {
-        binding.lytRoot.setOnClickListener {
+        binding.lytRoot.onClick {
             dismiss()
         }
     }

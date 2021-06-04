@@ -7,7 +7,8 @@ import ge.space.ui.view.dialog.SPEditTextDialog.Companion.KEY_EDIT_TEXT_CHANGE
 import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
 import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
 import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_TITLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MINIMUM_TWICE_BUTTONS
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
+import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
 import ge.space.ui.view.dialog.base.SPBaseDialogBuilder
 import ge.space.ui.view.dialog.data.*
 
@@ -19,7 +20,7 @@ class SPEditTextDialogBuilder(
 ) : SPBaseDialogBuilder<SPEditTextDialog>(activity) {
 
     private var title: String? = null
-    private var buttons: Array<SPDialogInfoHolder> = arrayOf()
+    private var buttons: Array<SPEditTextDialogInfoHolder> = arrayOf()
     private var dismissHandler: SPDialogDismissHandler? = null
     private var onChange: SPEditTextDialogChangeHandler? = null
 
@@ -56,14 +57,18 @@ class SPEditTextDialogBuilder(
      *
      * @param buttons applies button models
      * @throws IllegalStateException if the dialog bottom button type is twice and the [pairs]
-     * count is less then [MINIMUM_TWICE_BUTTONS] the exception throws because there are no any
+     * count is less then [MIN_TWICE_BUTTONS] the exception throws because there are no any
      * possibilities to add both right button and left one.
      */
     private fun setButtons(
-        buttons: Array<SPDialogInfoHolder>
+        buttons: Array<SPEditTextDialogInfoHolder>
     ) {
-        if (buttons.count() < MINIMUM_TWICE_BUTTONS) {
-            throw IllegalStateException("Pairs parameter has to contain at least $MINIMUM_TWICE_BUTTONS elements for using Twice button type")
+        if (buttons.count() < MIN_TWICE_BUTTONS) {
+            throw IllegalStateException("buttons parameter has to contain at least $MIN_TWICE_BUTTONS elements for using Twice button type")
+        }
+
+        if (buttons.count() > MAX_TWICE_BUTTONS) {
+            throw IllegalStateException("buttons parameter has to contain at most $MIN_TWICE_BUTTONS elements")
         }
 
         this.buttons = buttons

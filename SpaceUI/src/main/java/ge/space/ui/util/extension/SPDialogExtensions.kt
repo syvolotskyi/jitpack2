@@ -25,9 +25,9 @@ fun FragmentActivity.showMultipleDialog(dialogInfo: SPDialogInfo, dismiss: () ->
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
 fun FragmentActivity.showEditTextDialog(
-    dialogInfo: SPEditTextDialogInfo, dismiss: () -> Unit = { }, onChanged: (String) -> Unit = { }
+    dialogInfo: SPEditTextDialogInfo, dismiss: () -> Unit = { }
 ) {
-    buildEditTextDialog(dialogInfo.title, dialogInfo.buttonModels, dismiss, onChanged)
+    buildEditTextDialog(dialogInfo.title, dialogInfo.buttonModels, dismiss)
         .show(supportFragmentManager, SPInfoDialog::class.java.name)
 }
 
@@ -170,9 +170,8 @@ private fun FragmentActivity.buildLabelDialog(
  */
 private fun FragmentActivity.buildEditTextDialog(
     title: String,
-    buttons: ArrayList<SPDialogInfoHolder>,
-    dismiss: () -> Unit = { },
-    onChanged: (String) -> Unit = { }
+    buttons: ArrayList<SPEditTextDialogInfoHolder>,
+    dismiss: () -> Unit = { }
 ) =
     SPEditTextDialogBuilder(this)
         .initDialog(
@@ -181,9 +180,6 @@ private fun FragmentActivity.buildEditTextDialog(
                 buttons = buttons
             )
         )
-        .setOnChanged { input ->
-            onChanged(input)
-        }
         .setDismissHandler {
             dismiss()
         }

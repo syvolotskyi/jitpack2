@@ -63,7 +63,7 @@ sealed class SPDialogData {
  */
 data class SPEditTextDialogData(
     val title: String?,
-    val buttons: ArrayList<SPDialogInfoHolder>
+    val buttons: ArrayList<SPEditTextDialogInfoHolder>
 ) : SPDialogData()
 
 /**
@@ -107,8 +107,15 @@ data class SPDialogInfo(
  */
 data class SPEditTextDialogInfo(
     val title: String,
-    val buttonModels: ArrayList<SPDialogInfoHolder> = arrayListOf()
+    val buttonModels: ArrayList<SPEditTextDialogInfoHolder> = arrayListOf()
 )
+
+
+/**
+ * Marker class for buttons dialogs
+ */
+@Parcelize
+open class SPButtonsDialogHolder : Parcelable
 
 /**
  * Wrapper which allows to pass texts for both button Label and button type with click action
@@ -123,4 +130,19 @@ class SPDialogInfoHolder(
     val labelTxt: String,
     val buttonType: SPDialogBottomVerticalButton.BottomButtonType,
     val clickEvent: (() -> Unit?)? = null
-) : Parcelable
+) : SPButtonsDialogHolder()
+
+/**
+ * Wrapper which allows to pass texts for both button Label and button type with click action
+ * for a button model.
+ *
+ * @property labelTxt applies a button title
+ * @property buttonType applies a button type for its style
+ * @property clickEvent applies a click action for a button
+ */
+@Parcelize
+class SPEditTextDialogInfoHolder(
+    val labelTxt: String,
+    val buttonType: SPDialogBottomVerticalButton.BottomButtonType,
+    val clickEvent: ((String?) -> Unit?)? = null
+) : SPButtonsDialogHolder()

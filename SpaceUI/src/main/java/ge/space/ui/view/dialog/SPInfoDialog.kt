@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isGone
+import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpInfoDialogBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
@@ -11,6 +12,8 @@ import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.view.dialog.base.SPBaseDialog
 import ge.space.ui.view.dialog.data.SPDialogDismissHandler
 import ge.space.ui.view.dialog.data.SPDialogInfoHolder
+import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
+import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 /**
  * Dialog for info show which allows to manipulate next parameters:
@@ -23,7 +26,7 @@ import ge.space.ui.view.dialog.data.SPDialogInfoHolder
  * @property isButtonsMultiple sets the dialog bottom buttons multiple flag
  * @property buttonsVisible describes the dialog bottom buttons visibility
  */
-class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
+class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding, SPDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 
@@ -89,8 +92,17 @@ class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding>() {
         }
     }
 
+    override fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
+        SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
+            buttonObj.labelTxt,
+            SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString())
+        ) {
+            buttonObj.clickEvent?.invoke()
+            dismiss()
+        }
+
     override fun setDismissAction() {
-        binding.lytRoot.setOnClickListener {
+        binding.lytRoot.onClick {
             dismiss()
         }
     }

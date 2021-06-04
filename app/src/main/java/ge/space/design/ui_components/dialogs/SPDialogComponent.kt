@@ -14,6 +14,7 @@ import ge.space.ui.util.extension.*
 import ge.space.ui.view.dialog.data.SPDialogInfo
 import ge.space.ui.view.dialog.data.SPDialogInfoHolder
 import ge.space.ui.view.dialog.data.SPEditTextDialogInfo
+import ge.space.ui.view.dialog.data.SPEditTextDialogInfoHolder
 import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 class SPDialogComponent : SPShowCaseComponent {
@@ -57,7 +58,7 @@ class SPDialogComponent : SPShowCaseComponent {
             infoInput: EditText,
             buttonConfigs: ArrayList<SPDialogInfoHolder>,
             multipleButtonConfigs: ArrayList<SPDialogInfoHolder>,
-            editTextButtonConfigs: ArrayList<SPDialogInfoHolder>
+            editTextButtonConfigs: ArrayList<SPEditTextDialogInfoHolder>
         ) {
             when(radioGroup.checkedRadioButtonId) {
                 R.id.title ->
@@ -87,17 +88,15 @@ class SPDialogComponent : SPShowCaseComponent {
         private fun showEditTextDialog(
             fragmentActivity: FragmentActivity,
             titleInput: EditText,
-            editTextButtonConfigs: ArrayList<SPDialogInfoHolder>
+            editTextButtonConfigs: ArrayList<SPEditTextDialogInfoHolder>
         ) {
             fragmentActivity.showEditTextDialog(
                 SPEditTextDialogInfo(
                     titleInput.text.toString(),
                     editTextButtonConfigs
-                ), {
-                    Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
-                }
+                )
             ) {
-                println(it)
+                Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -212,17 +211,17 @@ class SPDialogComponent : SPShowCaseComponent {
 
         private fun createEditTextTwiceButtonConfigs(context: Context) =
             arrayListOf(
-                SPDialogInfoHolder(
+                SPEditTextDialogInfoHolder(
                     "Label 1",
                     SPDialogBottomVerticalButton.BottomButtonType.Cancel
                 ) {
                     Toast.makeText(context, "hello from label 1", Toast.LENGTH_SHORT).show()
                 },
-                SPDialogInfoHolder(
+                SPEditTextDialogInfoHolder(
                     "Label 2",
                     SPDialogBottomVerticalButton.BottomButtonType.Default
                 ) {
-                    Toast.makeText(context, "hello from label 2", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, it.orEmpty(), Toast.LENGTH_SHORT).show()
                 }
             )
     }

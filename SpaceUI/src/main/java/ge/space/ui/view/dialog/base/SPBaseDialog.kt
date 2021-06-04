@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
+import ge.space.ui.view.dialog.data.SPButtonsDialogHolder
 import ge.space.ui.view.dialog.data.SPDialogDismissHandler
-import ge.space.ui.view.dialog.data.SPDialogInfoHolder
 import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
-import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
 
 /**
  * Abstract base Dialog extended from [DialogFragment] that allows to change its configuration.
@@ -20,8 +19,11 @@ import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
  * @property binding [VB] has to be realized by overriding getViewBinding() method
  * @property dismissHandler every button click triggers dialog dismissing and then this
  * action can be handled
+ *
+ * @param VB keeps ViewBinding type
+ * @param BT keeps SPButtonsDialogHolder type
  */
-abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
+abstract class SPBaseDialog<VB : ViewBinding, BT : SPButtonsDialogHolder> : DialogFragment() {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
@@ -47,9 +49,9 @@ abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
     protected abstract val isButtonsMultiple: Boolean
 
     /**
-     * Comment
+     * Lazy abstract property for button models
      */
-    protected abstract val buttonObjects: Array<SPDialogInfoHolder>
+    protected abstract val buttonObjects: Array<BT>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -93,16 +95,13 @@ abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
         return buttons
     }
 
-    private fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
-        SPDialogBottomButtonLayout.SPDialogBottomButtonModel(
-            buttonObj.labelTxt,
-            SPDialogBottomVerticalButton.BottomButtonType.valueOf(buttonObj.buttonType.toString())
-        ) {
-            buttonObj.clickEvent?.invoke()
-            dismiss()
-        }
-
     override fun getTheme(): Int = R.style.SPBaseDialog
+
+    /**
+     * Creates a specific button model
+     */
+    protected abstract fun createDialogButtonModel(buttonObj: BT)
+        : SPDialogBottomButtonLayout.SPDialogBottomButtonModel
 
     /**
      * Allows to set a dialog dismiss action
@@ -128,6 +127,7 @@ abstract class SPBaseDialog<VB : ViewBinding> : DialogFragment() {
         const val LEFT_PAIR_INDEX = 0
         const val RIGHT_PAIR_INDEX = 1
 
-        const val MINIMUM_TWICE_BUTTONS = 2
+        const val MIN_TWICE_BUTTONS = 2
+        const val MAX_TWICE_BUTTONS = 5
     }
 }
