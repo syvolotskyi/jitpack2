@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPDialogTheme" parent="Theme.AppCompat.Light.Dialog">
-
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-        <!-- No backgrounds, titles or window float -->
-        <item name="android:windowBackground">@color/transparent_15</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
-
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:backgroundDimEnabled">true</item>
-
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/light_blue</item>
-
-    </style>
-
     <style name="BaseTheme.Core" parent="Theme.AppCompat.Light.NoActionBar">
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
@@ -109,6 +91,8 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="checkboxStyle">@style/CheckboxStyle</item>
+
     </style>
 
     <style name="AppThemeDark" parent="AppTheme">
@@ -234,40 +218,6 @@
 
     </style>
 
-    <style name="AppThemeIdNow" parent="AppThemeDark">
-        <item name="android:windowBackground">@color/white</item>
-    </style>
-
-    <style name="SPDialogThemeTransparent" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowTitleStyle">@null</item>
-        <item name="android:windowAnimationStyle">@null</item>
-        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
-        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
-        <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:windowMinWidthMajor">100%</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowMinWidthMinor">100%</item>
-
-    </style>
-
-    <style name="option">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">15dp</item>
-        <item name="android:paddingRight">15dp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
-
     <style name="FormInputField">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -342,29 +292,10 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
-    <style name="DialogAnimation">
-
-    </style>
-
     <style name="bottom_sheet_title_style">
         <item name="android:fontFamily">@font/myriad_geo_mtavruli_bold</item>
     </style>
 
-    <style name="CoreTheme" parent="AppTheme">
-        <item name="android:windowEnableSplitTouch">false</item>
-        <item name="android:splitMotionEvents">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowActivityTransitions">true</item>
-        <item name="android:windowFullscreen">false</item>
-        <item name="android:windowAllowEnterTransitionOverlap">true</item>
-    </style>
-
-    <style name="ThemeDark" parent="AppThemeDark" />
-
-    <style name="ThemeLight" parent="AppThemeWhite" />
 
     //show case app
     <style name="CheckboxStyle">

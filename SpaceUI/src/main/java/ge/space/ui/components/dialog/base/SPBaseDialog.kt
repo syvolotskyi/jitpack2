@@ -1,4 +1,4 @@
-package ge.space.ui.view.dialog.base
+package ge.space.ui.components.dialog.base
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
-import ge.space.ui.view.dialog.data.SPButtonsDialogHolder
-import ge.space.ui.view.dialog.data.SPDialogDismissHandler
-import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
+import ge.space.ui.components.dialog.data.SPButtonsDialogHolder
+import ge.space.ui.components.dialog.data.SPDialogDismissHandler
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomButtonLayout
 
 /**
  * Abstract base Dialog extended from [DialogFragment] that allows to change its configuration.

@@ -11,10 +11,8 @@ import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.buttons.horizontal_button.SPHorizontalButtonsComponentSP
-import ge.space.design.ui_components.buttons.vertical_button.SPVerticalButtonsComponentSP
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
-import ge.space.ui.view.button.base.SPBaseButton
+import ge.space.ui.components.button.base.SPBaseButton
 
 
 class SPDefaultButtonsComponentSP : SPShowCaseComponent {

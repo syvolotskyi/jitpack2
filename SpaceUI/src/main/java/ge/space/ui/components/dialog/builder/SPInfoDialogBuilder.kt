@@ -1,30 +1,30 @@
-package ge.space.ui.view.dialog.builder
+package ge.space.ui.components.dialog.builder
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
-import ge.space.ui.view.dialog.SPInfoDialog
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_BUTTONS_VISIBLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_INFO_ICON_VISIBLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_LABEL
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_LABEL_VISIBLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_MULTIPLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_TITLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_TITLE_VISIBLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
-import ge.space.ui.view.dialog.base.SPBaseDialogBuilder
-import ge.space.ui.view.dialog.data.SPDialogData
-import ge.space.ui.view.dialog.data.SPDialogDismissHandler
-import ge.space.ui.view.dialog.data.SPDialogInfoHolder
+import ge.space.ui.components.dialog.dialog_types.SPDialog
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_BUTTONS_VISIBLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_INFO_ICON_VISIBLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_LABEL
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_LABEL_VISIBLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_MULTIPLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_TITLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_TITLE_VISIBLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
+import ge.space.ui.components.dialog.base.SPBaseDialogBuilder
+import ge.space.ui.components.dialog.data.SPDialogData
+import ge.space.ui.components.dialog.data.SPDialogDismissHandler
+import ge.space.ui.components.dialog.data.SPDialogInfoHolder
 
 /**
- * Builder class which allows to create [SPInfoDialog]
+ * Builder class which allows to create [SPDialog]
  */
 class SPInfoDialogBuilder(
     activity: FragmentActivity
-) : SPBaseDialogBuilder<SPInfoDialog>(activity) {
+) : SPBaseDialogBuilder<SPDialog>(activity) {
 
     private var title: String? = null
     private var label: String? = null
@@ -126,10 +126,10 @@ class SPInfoDialogBuilder(
     }
 
     /**
-     * Builds [SPInfoDialog] by using properties with keys
+     * Builds [SPDialog] by using properties with keys
      */
-    override fun build(): SPInfoDialog =
-        SPInfoDialog().apply {
+    override fun build(): SPDialog =
+        SPDialog().apply {
             arguments = bundleOf(
                 KEY_TITLE to this@SPInfoDialogBuilder.title,
                 KEY_LABEL to this@SPInfoDialogBuilder.label,

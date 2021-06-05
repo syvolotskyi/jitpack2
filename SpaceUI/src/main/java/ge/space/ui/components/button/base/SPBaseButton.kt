@@ -1,4 +1,4 @@
-package ge.space.ui.view.button.base
+package ge.space.ui.components.button.base
 
 import android.content.Context
 import android.graphics.Color

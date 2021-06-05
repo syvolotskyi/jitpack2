@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTest1"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:sp_viewStyle="@style/SPAccentButtonView"/>
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTest2"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest1"
         app:sp_viewStyle="@style/SPWhiteButtonView" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTest3"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest2"
         app:sp_viewStyle="@style/SPDarkButtonView" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTest4"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest3"
         app:sp_viewStyle="@style/SPTransparentButtonView" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestLeft1"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:sp_viewStyle="@style/SPAccentButtonViewWithLeftArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestLeft2"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest1"
         app:sp_viewStyle="@style/SPWhiteButtonViewWithLeftArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestLeft3"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest2"
         app:sp_viewStyle="@style/SPDarkButtonViewWithLeftArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestLeft4"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest3"
         app:sp_viewStyle="@style/SPTransparentButtonViewWithLeftArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestRight1"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -105,7 +105,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:sp_viewStyle="@style/SPAccentButtonViewWithRightArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestRight2"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest1"
         app:sp_viewStyle="@style/SPWhiteButtonViewWithRightArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestRight3"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toBottomOf="@id/btnTest2"
         app:sp_viewStyle="@style/SPDarkButtonViewWithRightArrow" />
 
-    <ge.space.ui.view.button.SPButton
+    <ge.space.ui.components.button.SPButton
         android:id="@+id/btnTestRight4"
         android:layout_width="@dimen/sp_button_width"
         android:layout_height="@dimen/sp_button_height"

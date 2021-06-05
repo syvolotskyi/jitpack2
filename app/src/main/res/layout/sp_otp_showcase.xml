@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ge.space.ui.view.text_field.SPPinEntryView
+    <ge.space.ui.components.text_field.SPPinEntryView
         android:id="@+id/pinEntryViewOTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:sp_labelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
-    <ge.space.ui.view.text_field.SPPinEntryView
+    <ge.space.ui.components.text_field.SPPinEntryView
         android:id="@+id/pinEntryViewOTPSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         app:sp_labelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
-    <ge.space.ui.view.text_field.SPPinEntryView
+    <ge.space.ui.components.text_field.SPPinEntryView
         android:id="@+id/pinEntryViewOTPDisabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

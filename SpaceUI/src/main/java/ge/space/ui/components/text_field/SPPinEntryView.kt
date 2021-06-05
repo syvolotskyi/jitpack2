@@ -1,4 +1,4 @@
-package ge.space.ui.view.text_field
+package ge.space.ui.components.text_field
 
 import android.content.Context
 import android.os.Build

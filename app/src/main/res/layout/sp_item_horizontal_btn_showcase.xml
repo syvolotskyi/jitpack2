@@ -15,7 +15,7 @@
         android:textColor="@color/black"
         tools:text="Button" />
 
-    <ge.space.ui.view.button.SPHorizontalButton
+    <ge.space.ui.components.button.SPHorizontalButton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

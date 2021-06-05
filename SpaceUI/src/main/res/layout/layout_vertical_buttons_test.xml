@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ge.space.ui.view.button.SPVerticalButton
+    <ge.space.ui.components.button.SPVerticalButton
         android:id="@+id/vbtnSimple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:sp_viewStyle="@style/SPBaseVerticalButton" />
 
-    <ge.space.ui.view.button.SPVerticalButton
+    <ge.space.ui.components.button.SPVerticalButton
         android:id="@+id/vbtnSimpleDisabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:sp_viewStyle="@style/SPBaseVerticalButton" />
 
-    <ge.space.ui.view.button.SPVerticalButton
+    <ge.space.ui.components.button.SPVerticalButton
         android:id="@+id/vbtnLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/vbtnSimple"
         app:sp_viewStyle="@style/SPLargeVerticalButton" />
 
-    <ge.space.ui.view.button.SPVerticalButton
+    <ge.space.ui.components.button.SPVerticalButton
         android:id="@+id/vbtnLargeDisabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

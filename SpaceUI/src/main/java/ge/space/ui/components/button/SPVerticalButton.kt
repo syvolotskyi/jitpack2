@@ -1,4 +1,4 @@
-package ge.space.ui.view.button
+package ge.space.ui.components.button
 
 import android.content.Context
 import android.graphics.Color
@@ -15,10 +15,10 @@ import androidx.core.view.children
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpVerticalButtonBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
-import ge.space.ui.view.button.base.SPBaseButton
-import ge.space.ui.view.button.SPVerticalButton.IconPadding
-import ge.space.ui.view.button.SPVerticalButton.IconPadding.Large
-import ge.space.ui.view.button.SPVerticalButton.IconPadding.Normal
+import ge.space.ui.components.button.base.SPBaseButton
+import ge.space.ui.components.button.SPVerticalButton.IconPadding
+import ge.space.ui.components.button.SPVerticalButton.IconPadding.Large
+import ge.space.ui.components.button.SPVerticalButton.IconPadding.Normal
 
 /**
  * Button view extended from [LinearLayout] that allows to change its configuration.

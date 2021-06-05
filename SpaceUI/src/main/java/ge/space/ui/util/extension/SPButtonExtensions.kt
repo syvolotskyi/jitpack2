@@ -1,8 +1,8 @@
 package ge.space.ui.util.extension
 
 import ge.space.spaceui.R
-import ge.space.ui.view.button.SPButton
-import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
+import ge.space.ui.components.button.SPButton
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
 
 /**
  * Sets a dialog bottom button style by a specific type

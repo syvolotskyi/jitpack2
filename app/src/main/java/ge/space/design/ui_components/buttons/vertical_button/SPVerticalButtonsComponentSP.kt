@@ -11,7 +11,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
-import ge.space.ui.view.button.base.SPBaseButton
+import ge.space.ui.components.button.base.SPBaseButton
 
 class SPVerticalButtonsComponentSP : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.vertical_buttons

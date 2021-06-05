@@ -1,4 +1,4 @@
-package ge.space.ui.view.dialog.base
+package ge.space.ui.components.dialog.base
 
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity

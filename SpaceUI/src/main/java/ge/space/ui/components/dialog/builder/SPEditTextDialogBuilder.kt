@@ -1,16 +1,16 @@
-package ge.space.ui.view.dialog.builder
+package ge.space.ui.components.dialog.builder
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
-import ge.space.ui.view.dialog.SPEditTextDialog
-import ge.space.ui.view.dialog.SPEditTextDialog.Companion.KEY_EDIT_TEXT_CHANGE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.KEY_TITLE
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
-import ge.space.ui.view.dialog.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
-import ge.space.ui.view.dialog.base.SPBaseDialogBuilder
-import ge.space.ui.view.dialog.data.*
+import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog
+import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog.Companion.KEY_EDIT_TEXT_CHANGE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_TITLE
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
+import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
+import ge.space.ui.components.dialog.base.SPBaseDialogBuilder
+import ge.space.ui.components.dialog.data.*
 
 /**
  * Builder class which allows to create [SPEditTextDialog]

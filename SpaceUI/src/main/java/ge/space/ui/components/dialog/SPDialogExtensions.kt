@@ -1,21 +1,21 @@
-package ge.space.ui.util.extension
+package ge.space.ui.components.dialog
 
 import androidx.fragment.app.FragmentActivity
-import ge.space.ui.view.dialog.SPEditTextDialog
-import ge.space.ui.view.dialog.SPInfoDialog
-import ge.space.ui.view.dialog.builder.SPEditTextDialogBuilder
-import ge.space.ui.view.dialog.builder.SPInfoDialogBuilder
-import ge.space.ui.view.dialog.data.*
+import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog
+import ge.space.ui.components.dialog.dialog_types.SPDialog
+import ge.space.ui.components.dialog.builder.SPEditTextDialogBuilder
+import ge.space.ui.components.dialog.builder.SPInfoDialogBuilder
+import ge.space.ui.components.dialog.data.*
 
 /**
- * Creates and shows [SPInfoDialog] by using both a title and a label with multiple buttons
+ * Creates and shows [SPDialog] by using both a title and a label with multiple buttons
  *
  * @param dialogInfo sets both a title and a label of the dialog with buttons
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
-fun FragmentActivity.showMultipleDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
+fun FragmentActivity.showMultipleButtonDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
     buildInfoDialog(dialogInfo.title, dialogInfo.label, true, dialogInfo.buttonModels, dismiss)
-        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+        .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
 /**
@@ -28,37 +28,36 @@ fun FragmentActivity.showEditTextDialog(
     dialogInfo: SPEditTextDialogInfo, dismiss: () -> Unit = { }
 ) {
     buildEditTextDialog(dialogInfo.title, dialogInfo.buttonModels, dismiss)
-        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+        .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
 /**
- * Creates and shows [SPInfoDialog] by using both a title and a label with twice buttons
+ * Creates and shows [SPDialog] by using both a title and a label with twice buttons
  *
  * @param dialogInfo sets both a title and a label of the dialog with buttons
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
-fun FragmentActivity.showTwiceDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
+fun FragmentActivity.showQuestionnaireDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
     buildInfoDialog(dialogInfo.title, dialogInfo.label, false, dialogInfo.buttonModels, dismiss)
-        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+        .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
 /**
- * Creates and shows [SPInfoDialog] by using both a title and a label
+ * Creates and shows [SPDialog] by using both a title and a label
  *
  * @param dialogInfo sets both a title and a label of the dialog
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
-fun FragmentActivity.showRichTitleDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
+fun FragmentActivity.showStandardInfoDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
     buildRichTitleDialog(
         title = dialogInfo.title,
         label = dialogInfo.label,
         dismiss = dismiss
-    )
-        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+    ).show(supportFragmentManager, SPDialog::class.java.name)
 }
 
 /**
- * Creates and shows [SPInfoDialog] by using a title
+ * Creates and shows [SPDialog] by using a title
  *
  * @param title sets a title of the dialog
  * @param dismiss sets a lambda action which the dialog dismissing handles
@@ -68,11 +67,11 @@ fun FragmentActivity.showTitleDialog(title: String, dismiss: () -> Unit = { }) {
         title = title,
         dismiss = dismiss
     )
-        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+        .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
 /**
- * Creates and shows [SPInfoDialog] by using a label
+ * Creates and shows [SPDialog] by using a label
  *
  * @param label sets a label of the dialog
  * @param dismiss sets a lambda action which the dialog dismissing handles
@@ -82,11 +81,11 @@ fun FragmentActivity.showLabelDialog(label: String, dismiss: () -> Unit = { }) {
         label = label,
         dismiss = dismiss
     )
-        .show(supportFragmentManager, SPInfoDialog::class.java.name)
+        .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
 /**
- * Helper extension which helps to build [SPInfoDialog] using [SPDialogData.SPInfoDialogData]
+ * Helper extension which helps to build [SPDialog] using [SPDialogData.SPInfoDialogData]
  */
 private fun FragmentActivity.buildInfoDialog(
     title: String?,
@@ -110,7 +109,7 @@ private fun FragmentActivity.buildInfoDialog(
         .build()
 
 /**
- * Helper extension which helps to build [SPInfoDialog] using [SPDialogData.SPTitleLabelDialogData]
+ * Helper extension which helps to build [SPDialog] using [SPDialogData.SPTitleLabelDialogData]
  */
 private fun FragmentActivity.buildRichTitleDialog(
     title: String?,
@@ -130,7 +129,7 @@ private fun FragmentActivity.buildRichTitleDialog(
         .build()
 
 /**
- * Helper extension which helps to build [SPInfoDialog] using [SPDialogData.SPTitleDialogData]
+ * Helper extension which helps to build [SPDialog] using [SPDialogData.SPTitleDialogData]
  */
 private fun FragmentActivity.buildTitleDialog(
     title: String,
@@ -148,7 +147,7 @@ private fun FragmentActivity.buildTitleDialog(
         .build()
 
 /**
- * Helper extension which helps to build [SPInfoDialog] using [SPDialogData.SPLabelDialogData]
+ * Helper extension which helps to build [SPDialog] using [SPDialogData.SPLabelDialogData]
  */
 private fun FragmentActivity.buildLabelDialog(
     label: String,

@@ -1,4 +1,4 @@
-package ge.space.ui.view.dialog
+package ge.space.ui.components.dialog.dialog_types
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,11 @@ import ge.space.spaceui.databinding.SpInfoDialogBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.util.extension.visibleOrGone
-import ge.space.ui.view.dialog.base.SPBaseDialog
-import ge.space.ui.view.dialog.data.SPDialogDismissHandler
-import ge.space.ui.view.dialog.data.SPDialogInfoHolder
-import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
-import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialog.base.SPBaseDialog
+import ge.space.ui.components.dialog.data.SPDialogDismissHandler
+import ge.space.ui.components.dialog.data.SPDialogInfoHolder
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomButtonLayout
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
 
 /**
  * Dialog for info show which allows to manipulate next parameters:
@@ -26,7 +26,7 @@ import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
  * @property isButtonsMultiple sets the dialog bottom buttons multiple flag
  * @property buttonsVisible describes the dialog bottom buttons visibility
  */
-class SPInfoDialog : SPBaseDialog<SpInfoDialogBinding, SPDialogInfoHolder>() {
+class SPDialog : SPBaseDialog<SpInfoDialogBinding, SPDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 

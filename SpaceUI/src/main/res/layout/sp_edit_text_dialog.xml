@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/lytRoot">
 
-    <ge.space.ui.view.layout.SPFrameLayout
+    <ge.space.ui.components.layout.SPFrameLayout
         android:id="@+id/spDialogLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +19,6 @@
             android:id="@+id/lytDialogLinear"
             layout="@layout/sp_edit_text_dialog_linear_layout" />
 
-    </ge.space.ui.view.layout.SPFrameLayout>
+    </ge.space.ui.components.layout.SPFrameLayout>
 
 </FrameLayout>

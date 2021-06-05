@@ -1,4 +1,4 @@
-package ge.space.ui.view.dialog
+package ge.space.ui.components.dialog.dialog_types
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpEditTextDialogBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
-import ge.space.ui.view.dialog.base.SPBaseDialog
-import ge.space.ui.view.dialog.data.SPDialogDismissHandler
-import ge.space.ui.view.dialog.data.SPEditTextDialogChangeHandler
-import ge.space.ui.view.dialog.data.SPEditTextDialogInfoHolder
-import ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
-import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialog.base.SPBaseDialog
+import ge.space.ui.components.dialog.data.SPDialogDismissHandler
+import ge.space.ui.components.dialog.data.SPEditTextDialogChangeHandler
+import ge.space.ui.components.dialog.data.SPEditTextDialogInfoHolder
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomButtonLayout
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
 
 /**
  * Dialog with EditText which allows to manipulate next parameters:

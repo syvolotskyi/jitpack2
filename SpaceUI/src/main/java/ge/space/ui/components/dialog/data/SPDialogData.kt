@@ -1,17 +1,17 @@
-package ge.space.ui.view.dialog.data
+package ge.space.ui.components.dialog.data
 
 import android.os.Parcelable
-import ge.space.ui.view.dialog.SPEditTextDialog
-import ge.space.ui.view.dialog.SPInfoDialog
-import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog
+import ge.space.ui.components.dialog.dialog_types.SPDialog
+import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
 import kotlinx.android.parcel.Parcelize
 
 /**
- * Sealed class which allows to init [SPInfoDialog]
+ * Sealed class which allows to init [SPDialog]
  */
 sealed class SPDialogData {
     /**
-     * Allows to init default [SPInfoDialog] with icon, buttons, title and label
+     * Allows to init default [SPDialog] with icon, buttons, title and label
      *
      * @property title applies the top title. If it's null its view is gone
      * @property label applies the second title. If it's null its view is gone
@@ -26,7 +26,7 @@ sealed class SPDialogData {
     ) : SPDialogData()
 
     /**
-     * Allows to init [SPInfoDialog] just with the top and the second titles
+     * Allows to init [SPDialog] just with the top and the second titles
      *
      * @property title applies the top title
      * @property label applies the second title
@@ -37,7 +37,7 @@ sealed class SPDialogData {
     ) : SPDialogData()
 
     /**
-     * Allows to init [SPInfoDialog] just with the top title
+     * Allows to init [SPDialog] just with the top title
      *
      * @property title applies the top title
      */
@@ -46,7 +46,7 @@ sealed class SPDialogData {
     ) : SPDialogData()
 
     /**
-     * Allows to init [SPInfoDialog] just with the second title
+     * Allows to init [SPDialog] just with the second title
      *
      * @property label applies the second title
      */
@@ -87,7 +87,7 @@ class SPEditTextDialogChangeHandler(
 ): Parcelable
 
 /**
- * Allows to wrap data for creating [SPInfoDialog]
+ * Allows to wrap data for creating [SPDialog]
  *
  * @property title applies a title of the dialog
  * @property label applies a label of the dialog

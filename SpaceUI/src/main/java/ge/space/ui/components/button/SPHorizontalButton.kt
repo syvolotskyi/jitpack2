@@ -1,4 +1,4 @@
-package ge.space.ui.view.button
+package ge.space.ui.components.button
 
 import android.content.Context
 import android.graphics.Typeface
@@ -11,7 +11,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpHorizontalButtonLayoutBinding
-import ge.space.ui.view.button.base.SPBaseButton
+import ge.space.ui.components.button.base.SPBaseButton
 
 /**
  * Button view extended from [SPBaseButton] that allows to change its configuration.
