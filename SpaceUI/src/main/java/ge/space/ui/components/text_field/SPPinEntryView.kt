@@ -116,7 +116,7 @@ class SPPinEntryView @JvmOverloads constructor(
     private fun showErrorAnimation(){
         val animation = AnimationUtils.loadAnimation(
             binding.pinEntryEditText.context,
-            R.anim.shake
+            R.anim.sp_shake_anim
         )
 
         animation.setAnimationListener(object : Animation.AnimationListener {

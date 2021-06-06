@@ -11,7 +11,8 @@
 
     <item android:state_enabled="true">
         <shape>
-            <stroke android:width="@dimen/dimen_p_1" android:color="@color/appPrimaryColor" />
+            <stroke android:width="@dimen/dimen_p_1"
+                android:color="@color/appPrimaryColor" />
             <solid android:color="@color/white" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>
