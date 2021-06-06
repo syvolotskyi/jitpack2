@@ -9,8 +9,8 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
-import ge.space.ui.components.text_field.OnPinEnteredListener
-import ge.space.ui.components.text_field.SPPinEntryView
+import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
+import ge.space.ui.components.text_fields.pin.SPPinEntryView
 
 class SPOtpComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.otp_input

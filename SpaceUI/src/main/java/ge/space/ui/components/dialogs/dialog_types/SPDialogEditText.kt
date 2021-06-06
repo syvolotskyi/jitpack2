@@ -1,4 +1,4 @@
-package ge.space.ui.components.dialog.dialog_types
+package ge.space.ui.components.dialogs.dialog_types
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpDialogEditTextLayoutBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
-import ge.space.ui.components.dialog.base.SPBaseDialog
-import ge.space.ui.components.dialog.data.SPDialogDismissHandler
-import ge.space.ui.components.dialog.data.SPEditTextDialogChangeHandler
-import ge.space.ui.components.dialog.data.SPEditTextDialogInfoHolder
-import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomButtonLayout
-import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialogs.base.SPBaseDialog
+import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
+import ge.space.ui.components.dialogs.data.SPEditTextDialogChangeHandler
+import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 
 /**
  * Dialog with EditText which allows to manipulate next parameters:
@@ -22,7 +22,7 @@ import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
  * @property buttonObjects describes dialog bottom buttons
  * @property editTextChange handles text change
  */
-class SPEditTextDialog : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
+class SPDialogEditText : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 

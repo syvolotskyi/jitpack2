@@ -10,12 +10,12 @@ import com.example.spacedesignsystem.databinding.SpDialogShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.dialog.*
-import ge.space.ui.components.dialog.data.SPDialogInfo
-import ge.space.ui.components.dialog.data.SPDialogInfoHolder
-import ge.space.ui.components.dialog.data.SPEditTextDialogInfo
-import ge.space.ui.components.dialog.data.SPEditTextDialogInfoHolder
-import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialogs.*
+import ge.space.ui.components.dialogs.data.SPDialogInfo
+import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
+import ge.space.ui.components.dialogs.data.SPEditTextDialogInfo
+import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 
 class SPDialogComponent : SPShowCaseComponent {
     override fun getNameResId(): Int =

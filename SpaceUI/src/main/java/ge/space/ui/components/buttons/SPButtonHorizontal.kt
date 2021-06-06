@@ -1,4 +1,4 @@
-package ge.space.ui.components.button
+package ge.space.ui.components.buttons
 
 import android.content.Context
 import android.graphics.Typeface
@@ -11,18 +11,18 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
-import ge.space.ui.components.button.base.SPBaseButton
+import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 /**
- * Button view extended from [SPBaseButton] that allows to change its configuration.
+ * Button view extended from [SPButtonBaseView] that allows to change its configuration.
  *
  * @property src [Int] value which applies a button image using a resource ID.
  */
-class SPHorizontalButton @JvmOverloads constructor(
+class SPButtonHorizontal @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseButton<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Sets a image resource
@@ -42,17 +42,17 @@ class SPHorizontalButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseButtonView)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPHorizontalButton,
+            R.styleable.SPButtonHorizontal,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPHorizontalButton_android_src, 0)
-            text = getString(R.styleable.SPHorizontalButton_android_text).orEmpty()
+            src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
+            text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
         }
     }
 

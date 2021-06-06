@@ -1,4 +1,4 @@
-package ge.space.ui.components.button.base
+package ge.space.ui.components.buttons.base
 
 import android.content.Context
 import android.graphics.Color
@@ -22,7 +22,7 @@ import ge.space.ui.base.SPBaseView
  * @property fontFamilyId [Int] value which applies a button label font
  * @property textSize [Int] value which applies a button label size
  */
-abstract class SPBaseButton<VB : ViewBinding> @JvmOverloads constructor(
+abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0

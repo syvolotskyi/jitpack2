@@ -31,7 +31,7 @@
         android:layout_gravity="center_horizontal"
         tools:text="Bank o" />
 
-    <ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomButtonLayout
+    <ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
         android:id="@+id/lytButtons"
         android:layout_marginTop="@dimen/sp_et_dialog_margin_top"
         android:layout_height="wrap_content"

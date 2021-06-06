@@ -1,9 +1,9 @@
-package ge.space.ui.components.dialog.data
+package ge.space.ui.components.dialogs.data
 
 import android.os.Parcelable
-import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog
-import ge.space.ui.components.dialog.dialog_types.SPDialog
-import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
+import ge.space.ui.components.dialogs.dialog_types.SPDialog
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -56,7 +56,7 @@ sealed class SPDialogData {
 }
 
 /**
- * Allows to init default [SPEditTextDialog] with both a title and buttons
+ * Allows to init default [SPDialogEditText] with both a title and buttons
  *
  * @property title applies the top title. If it's null its view is gone
  * @property buttons applies buttons models with their click handlers
@@ -100,7 +100,7 @@ data class SPDialogInfo(
 )
 
 /**
- * Allows to wrap data for creating [SPEditTextDialog]
+ * Allows to wrap data for creating [SPDialogEditText]
  *
  * @property title applies a title of the dialog
  * @property buttonModels applies a list of buttons

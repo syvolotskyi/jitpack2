@@ -1,8 +1,8 @@
 package ge.space.ui.util.extension
 
 import ge.space.spaceui.R
-import ge.space.ui.components.button.SPButton
-import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.buttons.SPButton
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 
 /**
  * Sets a dialog bottom button style by a specific type
@@ -14,15 +14,15 @@ fun SPButton.bottomType(type : SPDialogBottomVerticalButton.BottomButtonType) {
     when(type) {
         SPDialogBottomVerticalButton.BottomButtonType.Default ->
             setButtonStyle(
-                R.style.SPMediumTransparentButtonView
+                R.style.SPButtonMediumTransparent
             )
         SPDialogBottomVerticalButton.BottomButtonType.Remove ->
             setButtonStyle(
-                R.style.SPRemoveMediumTransparentButtonView
+                R.style.SPButtonRemoveMediumTransparentView
             )
         SPDialogBottomVerticalButton.BottomButtonType.Cancel ->
             setButtonStyle(
-                R.style.SPCancelMediumTransparentButtonView
+                R.style.SPButtonCancelMediumTransparentView
             )
     }
 }

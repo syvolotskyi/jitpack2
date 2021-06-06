@@ -11,7 +11,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
-import ge.space.ui.components.button.base.SPBaseButton
+import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 class SPHorizontalButtonsComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.horizontal_buttons
@@ -26,7 +26,7 @@ class SPHorizontalButtonsComponent : SPShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPBaseButton<SpButtonHorizontalLayoutBinding>>()
+            val buttons = mutableListOf<SPButtonBaseView<SpButtonHorizontalLayoutBinding>>()
             SPHorizontalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId

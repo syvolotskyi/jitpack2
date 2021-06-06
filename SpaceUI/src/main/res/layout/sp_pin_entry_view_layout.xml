@@ -20,7 +20,7 @@
         android:textSize="@dimen/dimen_sp_14"
         tools:text="Title" />
 
-    <ge.space.ui.components.text_field.SPPinEntryEditText
+    <ge.space.ui.components.text_fields.pin.SPPinEntryEditText
         android:id="@+id/pinEntryEditText"
         style="@style/SPPinEntryEditText"
         android:layout_width="match_parent"

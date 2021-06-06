@@ -11,7 +11,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
-import ge.space.ui.components.button.base.SPBaseButton
+import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 class SPVerticalButtonsComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.vertical_buttons
@@ -26,7 +26,7 @@ class SPVerticalButtonsComponent : SPShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPBaseButton<SpButtonVerticalLayoutBinding>>()
+            val buttons = mutableListOf<SPButtonBaseView<SpButtonVerticalLayoutBinding>>()
             SPVerticalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId

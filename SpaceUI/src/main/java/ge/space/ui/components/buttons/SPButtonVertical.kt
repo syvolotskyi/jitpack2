@@ -1,4 +1,4 @@
-package ge.space.ui.components.button
+package ge.space.ui.components.buttons
 
 import android.content.Context
 import android.graphics.Color
@@ -15,10 +15,10 @@ import androidx.core.view.children
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
-import ge.space.ui.components.button.base.SPBaseButton
-import ge.space.ui.components.button.SPVerticalButton.IconPadding
-import ge.space.ui.components.button.SPVerticalButton.IconPadding.Large
-import ge.space.ui.components.button.SPVerticalButton.IconPadding.Normal
+import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.components.buttons.SPButtonVertical.IconPadding
+import ge.space.ui.components.buttons.SPButtonVertical.IconPadding.Large
+import ge.space.ui.components.buttons.SPButtonVertical.IconPadding.Normal
 
 /**
  * Button view extended from [LinearLayout] that allows to change its configuration.
@@ -27,11 +27,11 @@ import ge.space.ui.components.button.SPVerticalButton.IconPadding.Normal
  * @property iconPadding [IconPadding] value which applies a drawable padding.
  *  This property can have a value from [IconPadding.Normal], [IconPadding.Large].
  */
-class SPVerticalButton @JvmOverloads constructor(
+class SPButtonVertical @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseButton<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
 
     private val bubbleLayoutBinding by lazy {
         SpButtonVerticalBubbleLayoutBinding.bind(binding.root)
@@ -65,18 +65,18 @@ class SPVerticalButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseVerticalButton)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseVertical)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPVerticalButton,
+            R.styleable.SPButtonVertical,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPVerticalButton_android_src, 0)
-            text = getString(R.styleable.SPVerticalButton_android_text).orEmpty()
-            isEnabled = getBoolean(R.styleable.SPVerticalButton_android_enabled, true)
+            src = getResourceId(R.styleable.SPButtonVertical_android_src, 0)
+            text = getString(R.styleable.SPButtonVertical_android_text).orEmpty()
+            isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
         }
     }
 

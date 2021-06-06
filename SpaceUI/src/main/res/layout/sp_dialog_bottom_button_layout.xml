@@ -19,12 +19,12 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <ge.space.ui.components.button.SPButton
+        <ge.space.ui.components.buttons.SPButton
             android:id="@+id/btnDialogLeft"
             android:layout_width="match_parent"
             android:layout_height="@dimen/sp_dialog_button_height"
             android:layout_weight="1"
-            app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+            app:sp_viewStyle="@style/SPButtonMediumTransparent"
             tools:text="Label" />
 
         <View
@@ -33,12 +33,12 @@
             android:layout_height="@dimen/sp_dialog_button_height"
             android:background="?attr/separator_non_opaque" />
 
-        <ge.space.ui.components.button.SPButton
+        <ge.space.ui.components.buttons.SPButton
             android:id="@+id/btnDialogRight"
             android:layout_width="match_parent"
             android:layout_height="@dimen/sp_dialog_button_height"
             android:layout_weight="1"
-            app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+            app:sp_viewStyle="@style/SPButtonMediumTransparent"
             tools:text="Label" />
 
     </LinearLayout>

@@ -1,4 +1,4 @@
-package ge.space.ui.components.dialog.dialog_buttons
+package ge.space.ui.components.dialogs.dialog_buttons
 
 import android.content.Context
 import android.util.AttributeSet

@@ -15,14 +15,14 @@
         android:textColor="@color/black"
         tools:text="Button" />
 
-    <ge.space.ui.components.button.SPVerticalButton
+    <ge.space.ui.components.buttons.SPButtonVertical
         android:id="@+id/button"
         android:layout_margin="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
         android:src="@drawable/ic_bell_24_regular"
-        app:sp_viewStyle="@style/SPLargeVerticalButton"
+        app:sp_viewStyle="@style/SPButtonLargeVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center_horizontal" />

@@ -15,13 +15,13 @@
         android:textColor="?attr/themeTextColor"
         tools:text="Button" />
 
-    <ge.space.ui.components.button.SPButton
+    <ge.space.ui.components.buttons.SPButton
         android:id="@+id/button"
         android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_button_height"
         android:text="Button"
-        app:sp_viewStyle="@style/SPAccentButtonView"
+        app:sp_viewStyle="@style/SPButtonAccentView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center_horizontal" />

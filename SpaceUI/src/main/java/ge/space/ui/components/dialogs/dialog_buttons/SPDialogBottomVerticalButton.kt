@@ -1,4 +1,4 @@
-package ge.space.ui.components.dialog.dialog_buttons
+package ge.space.ui.components.dialogs.dialog_buttons
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,7 +10,7 @@ import ge.space.spaceui.R
 import ge.space.ui.util.extension.bottomType
 import ge.space.spaceui.databinding.SpDialogBottomVerticalButtonLayoutBinding
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_TEXT
-import ge.space.ui.components.dialog.base.SPBaseDialog
+import ge.space.ui.components.dialogs.base.SPBaseDialog
 
 /**
  * Helper view which allows to manipulate [SPBaseDialog] bottom buttons easily. The view
@@ -48,9 +48,9 @@ class SPDialogBottomVerticalButton @JvmOverloads constructor(
     /**
      * Applies a button type. [BottomButtonType.Default] by default.
      *
-     * [BottomButtonType.Default] applies default style [R.style.SPMediumTransparentButtonView]
-     * [BottomButtonType.Cancel] applies cancel button style [R.style.SPCancelMediumTransparentButtonView]
-     * [BottomButtonType.Remove] applies remove button style [R.style.SPRemoveMediumTransparentButtonView]
+     * [BottomButtonType.Default] applies default style [R.style.SPButtonMediumTransparent]
+     * [BottomButtonType.Cancel] applies cancel button style [R.style.SPButtonCancelMediumTransparentView]
+     * [BottomButtonType.Remove] applies remove button style [R.style.SPButtonRemoveMediumTransparentView]
      */
     var buttonType = BottomButtonType.Default
         set(value) {
@@ -64,17 +64,17 @@ class SPDialogBottomVerticalButton @JvmOverloads constructor(
      */
     enum class BottomButtonType {
         /**
-         * Applies default style [R.style.SPMediumTransparentButtonView]
+         * Applies default style [R.style.SPButtonMediumTransparent]
          */
         Default,
 
         /**
-         * Applies remove button style [R.style.SPRemoveMediumTransparentButtonView]
+         * Applies remove button style [R.style.SPButtonRemoveMediumTransparentView]
          */
         Remove,
 
         /**
-         * Applies cancel button style [R.style.SPCancelMediumTransparentButtonView]
+         * Applies cancel button style [R.style.SPButtonCancelMediumTransparentView]
          */
         Cancel
     }

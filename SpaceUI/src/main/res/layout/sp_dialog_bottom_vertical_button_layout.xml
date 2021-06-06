@@ -12,11 +12,11 @@
         android:layout_height="@dimen/sp_dialog_divider_height"
         android:background="?attr/separator_non_opaque" />
 
-    <ge.space.ui.components.button.SPButton
+    <ge.space.ui.components.buttons.SPButton
         android:id="@+id/btnDialog"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_dialog_button_height"
-        app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+        app:sp_viewStyle="@style/SPButtonMediumTransparent"
         tools:text="Label" />
 
 </merge>

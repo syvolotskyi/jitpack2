@@ -66,7 +66,7 @@
         android:layout_marginBottom="@dimen/sp_dialog_space_def_margin"
         tools:visibility="gone" />
 
-    <ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomButtonLayout
+    <ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
         android:id="@+id/lytButtons"
         android:layout_height="wrap_content"
         android:layout_width="match_parent" />

@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_field
+package ge.space.ui.components.text_fields.pin
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -21,8 +21,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
-import ge.space.ui.components.text_field.SPPinEntryEditText.PinType.OTP
-import ge.space.ui.components.text_field.SPPinEntryEditText.PinType.Password
+import ge.space.ui.components.text_fields.pin.SPPinEntryEditText.PinType.OTP
+import ge.space.ui.components.text_fields.pin.SPPinEntryEditText.PinType.Password
 import java.util.*
 
 class SPPinEntryEditText : AppCompatEditText {

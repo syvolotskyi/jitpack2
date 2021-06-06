@@ -1,11 +1,11 @@
-package ge.space.ui.components.dialog
+package ge.space.ui.components.dialogs
 
 import androidx.fragment.app.FragmentActivity
-import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog
-import ge.space.ui.components.dialog.dialog_types.SPDialog
-import ge.space.ui.components.dialog.builder.SPEditTextDialogBuilder
-import ge.space.ui.components.dialog.builder.SPInfoDialogBuilder
-import ge.space.ui.components.dialog.data.*
+import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
+import ge.space.ui.components.dialogs.dialog_types.SPDialog
+import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
+import ge.space.ui.components.dialogs.builder.SPInfoDialogBuilder
+import ge.space.ui.components.dialogs.data.*
 
 /**
  * Creates and shows [SPDialog] by using both a title and a label with multiple buttons
@@ -19,7 +19,7 @@ fun FragmentActivity.showMultipleButtonDialog(dialogInfo: SPDialogInfo, dismiss:
 }
 
 /**
- * Creates and shows [SPEditTextDialog] by using both a title and buttons with an EditText
+ * Creates and shows [SPDialogEditText] by using both a title and buttons with an EditText
  *
  * @param dialogInfo sets both a title and a label of the dialog with buttons
  * @param dismiss sets a lambda action which the dialog dismissing handles
@@ -165,7 +165,7 @@ private fun FragmentActivity.buildLabelDialog(
         .build()
 
 /**
- * Helper extension which helps to build [SPEditTextDialog] using [SPEditTextDialogData]
+ * Helper extension which helps to build [SPDialogEditText] using [SPEditTextDialogData]
  */
 private fun FragmentActivity.buildEditTextDialog(
     title: String,

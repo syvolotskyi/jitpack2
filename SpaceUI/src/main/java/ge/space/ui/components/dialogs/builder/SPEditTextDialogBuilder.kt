@@ -1,23 +1,23 @@
-package ge.space.ui.components.dialog.builder
+package ge.space.ui.components.dialogs.builder
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
-import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog
-import ge.space.ui.components.dialog.dialog_types.SPEditTextDialog.Companion.KEY_EDIT_TEXT_CHANGE
-import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
-import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_DISMISS
-import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.KEY_TITLE
-import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
-import ge.space.ui.components.dialog.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
-import ge.space.ui.components.dialog.base.SPBaseDialogBuilder
-import ge.space.ui.components.dialog.data.*
+import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
+import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText.Companion.KEY_EDIT_TEXT_CHANGE
+import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
+import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_DISMISS
+import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_TITLE
+import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
+import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
+import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
+import ge.space.ui.components.dialogs.data.*
 
 /**
- * Builder class which allows to create [SPEditTextDialog]
+ * Builder class which allows to create [SPDialogEditText]
  */
 class SPEditTextDialogBuilder(
     activity: FragmentActivity
-) : SPBaseDialogBuilder<SPEditTextDialog>(activity) {
+) : SPBaseDialogBuilder<SPDialogEditText>(activity) {
 
     private var title: String? = null
     private var buttons: Array<SPEditTextDialogInfoHolder> = arrayOf()
@@ -75,10 +75,10 @@ class SPEditTextDialogBuilder(
     }
 
     /**
-     * Builds [SPEditTextDialog] by using properties with keys
+     * Builds [SPDialogEditText] by using properties with keys
      */
-    override fun build(): SPEditTextDialog =
-        SPEditTextDialog().apply {
+    override fun build(): SPDialogEditText =
+        SPDialogEditText().apply {
             arguments = bundleOf(
                 KEY_TITLE to this@SPEditTextDialogBuilder.title,
                 KEY_BUTTON_OBJECT to this@SPEditTextDialogBuilder.buttons,

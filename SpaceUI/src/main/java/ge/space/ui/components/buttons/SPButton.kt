@@ -1,4 +1,4 @@
-package ge.space.ui.components.button
+package ge.space.ui.components.buttons
 
 import android.content.Context
 import android.graphics.Color
@@ -12,12 +12,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
-import ge.space.ui.components.button.base.SPBaseButton
+import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.util.extension.handleAttributeAction
 
 
 /**
- * Button view extended from abstract [SPBaseButton] generic that allows to change its configuration.
+ * Button view extended from abstract [SPButtonBaseView] generic that allows to change its configuration.
  * There are 4 realized styles which can be applied to the view:
  *
  * <p>
@@ -35,7 +35,7 @@ class SPButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseButton<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Makes a button arrow direction.
@@ -54,7 +54,7 @@ class SPButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseButtonView)
+                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
             )
         }
 
