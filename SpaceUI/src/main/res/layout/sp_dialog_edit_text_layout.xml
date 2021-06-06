@@ -17,7 +17,7 @@
 
         <include
             android:id="@+id/lytDialogLinear"
-            layout="@layout/sp_edit_text_dialog_linear_layout" />
+            layout="@layout/sp_dialog_edit_text_linear_layout" />
 
     </ge.space.ui.components.layout.SPFrameLayout>
 

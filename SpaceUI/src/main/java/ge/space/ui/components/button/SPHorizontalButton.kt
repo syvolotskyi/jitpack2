@@ -10,7 +10,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpHorizontalButtonLayoutBinding
+import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.button.base.SPBaseButton
 
 /**
@@ -22,7 +22,7 @@ class SPHorizontalButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseButton<SpHorizontalButtonLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPBaseButton<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Sets a image resource
@@ -57,10 +57,10 @@ class SPHorizontalButton @JvmOverloads constructor(
     }
 
     /**
-     * Inflates and returns [SpHorizontalButtonLayoutBinding] value
+     * Inflates and returns [SpButtonHorizontalLayoutBinding] value
      */
-    override fun getViewBinding(): SpHorizontalButtonLayoutBinding =
-        SpHorizontalButtonLayoutBinding.inflate(LayoutInflater.from(context), this)
+    override fun getViewBinding(): SpButtonHorizontalLayoutBinding =
+            SpButtonHorizontalLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     override fun updateTextColor(color: Int) {
         binding.buttonLabel.setTextColor(color)

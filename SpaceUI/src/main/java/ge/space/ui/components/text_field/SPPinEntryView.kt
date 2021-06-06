@@ -13,7 +13,7 @@ import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.addTextChangedListener
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.LayoutPinEntryViewBinding
+import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
 
 /**
  * Field view extended from [LinearLayout] that allows to change its configuration.
@@ -28,8 +28,8 @@ class SPPinEntryView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private val binding: LayoutPinEntryViewBinding by lazy {
-        LayoutPinEntryViewBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding: SpPinEntryViewLayoutBinding by lazy {
+        SpPinEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
     /**

@@ -1,22 +1,22 @@
-package ge.space.design.ui_components.buttons.horizontal_button
+package ge.space.design.ui_components.buttons.vertical_button
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemHorizontalBtnShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpItemVerticalButtonsShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.spaceui.databinding.SpHorizontalButtonLayoutBinding
+import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
 import ge.space.ui.components.button.base.SPBaseButton
 
-class SPHorizontalButtonsComponentSP : SPShowCaseComponent {
-    override fun getNameResId(): Int = R.string.horizontal_buttons
+class SPVerticalButtonsComponent : SPShowCaseComponent {
+    override fun getNameResId(): Int = R.string.vertical_buttons
 
-    override fun getDescriptionResId(): Int = R.string.horizontal_button_description
+    override fun getDescriptionResId(): Int = R.string.vertical_button_description
 
     override fun getComponentClass(): Class<*>? = FactorySP::class.java
 
@@ -26,14 +26,14 @@ class SPHorizontalButtonsComponentSP : SPShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPBaseButton<SpHorizontalButtonLayoutBinding>>()
-            SPHorizontalButtonStyles.list.onEach { buttonSample ->
+            val buttons = mutableListOf<SPBaseButton<SpButtonVerticalLayoutBinding>>()
+            SPVerticalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
                 val supportsDisable = buttonSample.supportsDisabled
 
 
-                val itemBinding = SpItemHorizontalBtnShowcaseBinding.inflate(
+                val itemBinding = SpItemVerticalButtonsShowcaseBinding.inflate(
                     environmentSP.requireThemedLayoutInflater(resId),
                     layoutBinding.buttonsLayout,
                     true
@@ -81,7 +81,6 @@ class SPHorizontalButtonsComponentSP : SPShowCaseComponent {
                     }
                 })
                 itemBinding.button.style(buttonSample.resId)
-                itemBinding.button.src = buttonSample.src
                 itemBinding.button.text = "Button"
             }
             return layoutBinding.root

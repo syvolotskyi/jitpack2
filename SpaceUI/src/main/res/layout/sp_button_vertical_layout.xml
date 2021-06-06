@@ -8,7 +8,7 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <include layout="@layout/sp_vertical_button_bubble_layout" />
+        <include layout="@layout/sp_button_vertical_bubble_layout" />
 
         <TextView
             android:id="@+id/buttonLabel"

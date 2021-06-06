@@ -13,8 +13,8 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpVerticalButtonBubbleLayoutBinding
-import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
+import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
+import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
 import ge.space.ui.components.button.base.SPBaseButton
 import ge.space.ui.components.button.SPVerticalButton.IconPadding
 import ge.space.ui.components.button.SPVerticalButton.IconPadding.Large
@@ -31,10 +31,10 @@ class SPVerticalButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseButton<SpVerticalButtonLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPBaseButton<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
 
     private val bubbleLayoutBinding by lazy {
-        SpVerticalButtonBubbleLayoutBinding.bind(binding.root)
+        SpButtonVerticalBubbleLayoutBinding.bind(binding.root)
     }
 
     /**
@@ -81,10 +81,10 @@ class SPVerticalButton @JvmOverloads constructor(
     }
 
     /**
-     * Inflates and returns [SpVerticalButtonLayoutBinding] value
+     * Inflates and returns [SpButtonVerticalLayoutBinding] value
      */
-    override fun getViewBinding(): SpVerticalButtonLayoutBinding =
-        SpVerticalButtonLayoutBinding.inflate(LayoutInflater.from(context),this)
+    override fun getViewBinding(): SpButtonVerticalLayoutBinding =
+            SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context),this)
 
     /**
      * Sets a style for the SPButton view.

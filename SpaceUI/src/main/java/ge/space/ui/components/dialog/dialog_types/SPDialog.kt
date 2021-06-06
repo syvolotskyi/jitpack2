@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isGone
 import ge.space.extensions.onClick
-import ge.space.spaceui.databinding.SpInfoDialogBinding
+import ge.space.spaceui.databinding.SpDialogLayoutBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.util.extension.visibleOrGone
@@ -26,7 +26,7 @@ import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
  * @property isButtonsMultiple sets the dialog bottom buttons multiple flag
  * @property buttonsVisible describes the dialog bottom buttons visibility
  */
-class SPDialog : SPBaseDialog<SpInfoDialogBinding, SPDialogInfoHolder>() {
+class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 
@@ -49,8 +49,8 @@ class SPDialog : SPBaseDialog<SpInfoDialogBinding, SPDialogInfoHolder>() {
 
     override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
 
-    override fun getViewBinding(): SpInfoDialogBinding =
-        SpInfoDialogBinding.inflate(LayoutInflater.from(context))
+    override fun getViewBinding(): SpDialogLayoutBinding =
+            SpDialogLayoutBinding.inflate(LayoutInflater.from(context))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

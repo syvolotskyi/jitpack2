@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import ge.space.extensions.onClick
-import ge.space.spaceui.databinding.SpEditTextDialogBinding
+import ge.space.spaceui.databinding.SpDialogEditTextLayoutBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.components.dialog.base.SPBaseDialog
@@ -22,7 +22,7 @@ import ge.space.ui.components.dialog.dialog_buttons.SPDialogBottomVerticalButton
  * @property buttonObjects describes dialog bottom buttons
  * @property editTextChange handles text change
  */
-class SPEditTextDialog : SPBaseDialog<SpEditTextDialogBinding, SPEditTextDialogInfoHolder>() {
+class SPEditTextDialog : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
 
     private val title: String? by argument(KEY_TITLE, null)
 
@@ -40,8 +40,8 @@ class SPEditTextDialog : SPBaseDialog<SpEditTextDialogBinding, SPEditTextDialogI
 
     override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
 
-    override fun getViewBinding(): SpEditTextDialogBinding =
-        SpEditTextDialogBinding.inflate(LayoutInflater.from(context))
+    override fun getViewBinding(): SpDialogEditTextLayoutBinding =
+            SpDialogEditTextLayoutBinding.inflate(LayoutInflater.from(context))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
