@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/ivDialogType"
-        style="@style/SPBaseDialogInfoImage"
+        style="@style/SPDialogBaseInfoImage"
         android:layout_width="@dimen/sp_dialog_icon_size"
         android:layout_height="@dimen/sp_dialog_icon_size"
         android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
