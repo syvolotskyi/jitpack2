@@ -10,8 +10,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.spaceui.databinding.SpVerticalButtonLayoutBinding
-import ge.space.ui.view.button.base.SPBaseButton
+import ge.space.ui.view.button.SPVerticalButton
 
 class SPVerticalButtonsComponentSP : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.vertical_buttons
@@ -20,13 +19,12 @@ class SPVerticalButtonsComponentSP : SPShowCaseComponent {
 
     override fun getComponentClass(): Class<*>? = FactorySP::class.java
 
-
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPBaseButton<SpVerticalButtonLayoutBinding>>()
+            val buttons = mutableListOf<SPVerticalButton>()
             SPVerticalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
@@ -87,5 +85,4 @@ class SPVerticalButtonsComponentSP : SPShowCaseComponent {
 
         }
     }
-
 }

@@ -14,10 +14,9 @@ import androidx.core.view.children
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.scaleTo
 import ge.space.ui.util.extension.withSideRatio
-import ge.space.ui.util.extension.withSquareRatio
+import ge.space.ui.util.path.SPMaskPath
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
 import kotlin.math.abs
-import kotlin.math.roundToInt
 
 /**
  * Abstract base view which has to be extended. This view allows to change corners radius,
@@ -48,7 +47,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         style = Paint.Style.FILL
     }
 
-    private val clippingMaskPath = SPMaskPathRoundedCorners()
+    private val clippingMaskPath : SPMaskPath = SPMaskPathRoundedCorners()
 
     /**
      * Makes a circled shape of the view.
@@ -57,7 +56,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            checkRoundedCorners()
+            reBuildClippingMaskAndInvalidate()
         }
 
     /**
@@ -200,12 +199,11 @@ abstract class SPBaseView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        checkRoundedCorners()
         checkShadowMarginContent()
     }
 
     private fun checkShadowMarginContent() {
-        if (measuredHeight > 0 && measuredWidth > 0) {
+        if (measuredHeight > 0 && measuredWidth > 0 && !isCircle) {
             children.forEach { childView ->
                 handleShadowOffset(childView)
             }
@@ -234,18 +232,8 @@ abstract class SPBaseView @JvmOverloads constructor(
         val ratioOffsetY = shadowOffsetY.withSideRatio()
         if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
             viewParams.topMargin = abs(ratioOffsetY.toInt())
-            viewParams.marginStart = abs(ratioOffsetY.withSideRatio().roundToInt())
-            viewParams.marginEnd = abs(ratioOffsetY.withSideRatio().roundToInt())
         } else {
             viewParams.bottomMargin = ratioOffsetY.toInt()
-            viewParams.marginStart = ratioOffsetY.withSideRatio().roundToInt()
-            viewParams.marginEnd = ratioOffsetY.withSideRatio().roundToInt()
-        }
-    }
-
-    private fun checkRoundedCorners() {
-        if (isCircle && measuredHeight > 0 && measuredWidth > 0) {
-            roundedCorners = measuredWidth.coerceAtLeast(measuredHeight).toFloat()
         }
     }
 
@@ -341,8 +329,7 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     private fun invalidateRoundRadius() {
         reInitRoundRadius()
-        reBuildClippingMask()
-        invalidate()
+        reBuildClippingMaskAndInvalidate()
     }
 
     private fun reInitRoundRadius() {
@@ -354,14 +341,26 @@ abstract class SPBaseView @JvmOverloads constructor(
         )
     }
 
+    private fun reBuildClippingMaskAndInvalidate() {
+        reBuildClippingMask()
+        invalidate()
+    }
+
     private fun reBuildClippingMask() {
-        clippingMaskPath.rebuildPath(
-            measuredWidth,
-            measuredHeight,
-            shadowRadius,
-            shadowOffsetX,
-            shadowOffsetY
-        )
+        if (isCircle) {
+            clippingMaskPath.circle(
+                (measuredWidth / SIDE_RATIO).toFloat(),
+                shadowRadius
+            )
+        } else {
+            clippingMaskPath.rebuildPath(
+                measuredWidth,
+                measuredHeight,
+                shadowRadius,
+                shadowOffsetX,
+                shadowOffsetY
+            )
+        }
     }
 
     private fun getCornerRadius(cornerRadius: Float) =
