@@ -15,7 +15,7 @@
         android:textColor="@color/black"
         tools:text="Button" />
 
-    <ge.space.ui.view.button.SPHorizontalButton
+    <ge.space.ui.components.buttons.SPButtonHorizontal
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:src="@drawable/ic_flag_24_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPBaseHorizontalButton" />
+        app:sp_viewStyle="@style/SPButtonBaseHorizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            style="@style/CheckboxStyle"
             android:text="disable" />
 
 

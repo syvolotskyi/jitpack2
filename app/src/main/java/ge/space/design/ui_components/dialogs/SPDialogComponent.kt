@@ -10,12 +10,12 @@ import com.example.spacedesignsystem.databinding.SpDialogShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.util.extension.*
-import ge.space.ui.view.dialog.data.SPDialogInfo
-import ge.space.ui.view.dialog.data.SPDialogInfoHolder
-import ge.space.ui.view.dialog.data.SPEditTextDialogInfo
-import ge.space.ui.view.dialog.data.SPEditTextDialogInfoHolder
-import ge.space.ui.view.dialog.view.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialogs.*
+import ge.space.ui.components.dialogs.data.SPDialogInfo
+import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
+import ge.space.ui.components.dialogs.data.SPEditTextDialogInfo
+import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 
 class SPDialogComponent : SPShowCaseComponent {
     override fun getNameResId(): Int =
@@ -66,11 +66,11 @@ class SPDialogComponent : SPShowCaseComponent {
                 R.id.label ->
                     showLabelDialog(fragmentActivity, infoInput)
                 R.id.title_and_label ->
-                    showRichTitleDialog(fragmentActivity, titleInput, infoInput)
+                    showStandardInfoDialog(fragmentActivity, titleInput, infoInput)
                 R.id.title_label_twice_buttons ->
-                    showTwiceDialog(fragmentActivity, titleInput, infoInput, buttonConfigs)
+                    showQuestionnaireDialog(fragmentActivity, titleInput, infoInput, buttonConfigs)
                 R.id.title_label_multiple_buttons ->
-                    showMultipleDialog(
+                    showMultipleButtonDialog(
                         fragmentActivity,
                         titleInput,
                         infoInput,
@@ -100,13 +100,13 @@ class SPDialogComponent : SPShowCaseComponent {
             }
         }
 
-        private fun showMultipleDialog(
+        private fun showMultipleButtonDialog(
             fragmentActivity: FragmentActivity,
             titleInput: EditText,
             infoInput: EditText,
             multipleButtonConfigs: ArrayList<SPDialogInfoHolder>
         ) {
-            fragmentActivity.showMultipleDialog(
+            fragmentActivity.showMultipleButtonDialog(
                 SPDialogInfo(
                     titleInput.text.toString(),
                     infoInput.text.toString(),
@@ -117,13 +117,13 @@ class SPDialogComponent : SPShowCaseComponent {
             }
         }
 
-        private fun showTwiceDialog(
+        private fun showQuestionnaireDialog(
             fragmentActivity: FragmentActivity,
             titleInput: EditText,
             infoInput: EditText,
             buttonConfigs: ArrayList<SPDialogInfoHolder>
         ) {
-            fragmentActivity.showTwiceDialog(
+            fragmentActivity.showQuestionnaireDialog(
                 SPDialogInfo(
                     titleInput.text.toString(),
                     infoInput.text.toString(),
@@ -134,12 +134,12 @@ class SPDialogComponent : SPShowCaseComponent {
             }
         }
 
-        private fun showRichTitleDialog(
+        private fun showStandardInfoDialog(
             fragmentActivity: FragmentActivity,
             titleInput: EditText,
             infoInput: EditText
         ) {
-            fragmentActivity.showRichTitleDialog(
+            fragmentActivity.showStandardInfoDialog(
                 SPDialogInfo(
                     titleInput.text.toString(),
                     infoInput.text.toString()

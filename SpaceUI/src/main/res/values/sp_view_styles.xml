@@ -4,5 +4,4 @@
         <item name="sp_shadowOffsetY">@dimen/dimen_p_8</item>
         <item name="sp_isCircle">true</item>
     </style>
-
 </resources>

@@ -8,8 +8,8 @@ import com.example.spacedesignsystem.databinding.SpPasswordShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.view.text_field.OnPinEnteredListener
-import ge.space.ui.view.text_field.SPPinEntryView
+import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
+import ge.space.ui.components.text_fields.pin.SPPinEntryView
 
 class SPPasswordComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.password_pin
