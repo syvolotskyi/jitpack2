@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/ivDialogType"
-        style="@style/SPBaseDialogInfoImage"
+        style="@style/SPDialogBaseInfoImage"
         android:layout_width="@dimen/sp_dialog_icon_size"
         android:layout_height="@dimen/sp_dialog_icon_size"
         android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
@@ -27,12 +27,12 @@
         android:id="@+id/vTitleDivider"
         android:layout_width="@dimen/sp_dialog_divider_width"
         android:layout_height="@dimen/sp_dialog_space_size"
-        android:layout_marginTop="@dimen/sp_dialog_space_margin_top"
+        android:layout_marginTop="@dimen/sp_dialog_space_def_margin"
         tools:visibility="gone" />
 
     <TextView
         android:id="@+id/tvDialogTitle"
-        style="@style/mtavruliLargeLabelStyle.Medium"
+        style="@style/mtavruliLargeLabelStyle.DialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/sp_dialog_title_padding_default"
@@ -43,9 +43,10 @@
 
     <TextView
         android:id="@+id/tvDialogLabel"
-        style="@style/mtavruliMediumLabelStyle.Medium"
+        style="@style/mtavruliMediumLabelSecondaryStyle.DialogLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_dialog_label_margin_top"
         android:paddingStart="@dimen/sp_dialog_title_padding_default"
         android:paddingEnd="@dimen/sp_dialog_title_padding_default"
         android:layout_gravity="center_horizontal"
@@ -62,10 +63,10 @@
         android:id="@+id/vTitleSpace"
         android:layout_width="@dimen/sp_dialog_divider_width"
         android:layout_height="@dimen/sp_dialog_space_size"
-        android:layout_marginBottom="@dimen/sp_dialog_space_margin_top"
+        android:layout_marginBottom="@dimen/sp_dialog_space_def_margin"
         tools:visibility="gone" />
 
-    <ge.space.ui.view.dialog.view.SPDialogBottomButtonLayout
+    <ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
         android:id="@+id/lytButtons"
         android:layout_height="wrap_content"
         android:layout_width="match_parent" />

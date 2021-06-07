@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPBaseView" parent="ThemeLight">
+    <style name="SPBaseView" parent="AppTheme">
         <item name="sp_backgroundColor">?attr/static_white</item>
         <item name="sp_roundedCorners">0dp</item>
         <item name="sp_shadowOffsetX">0dp</item>

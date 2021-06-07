@@ -7,7 +7,7 @@
         android:id="@+id/vButtonTwiceDivider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_dialog_divider_height"
-        android:background="@color/lineColor"
+        android:background="?attr/separator_non_opaque"
         android:visibility="gone"
         tools:visibility="visible" />
 
@@ -19,26 +19,26 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <ge.space.ui.view.button.SPButton
+        <ge.space.ui.components.buttons.SPButton
             android:id="@+id/btnDialogLeft"
             android:layout_width="match_parent"
             android:layout_height="@dimen/sp_dialog_button_height"
             android:layout_weight="1"
-            app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+            app:sp_viewStyle="@style/SPButtonTransparent"
             tools:text="Label" />
 
         <View
             android:id="@+id/vDivider"
             android:layout_width="@dimen/sp_dialog_divider_height"
             android:layout_height="@dimen/sp_dialog_button_height"
-            android:background="@color/lineColor" />
+            android:background="?attr/separator_non_opaque" />
 
-        <ge.space.ui.view.button.SPButton
+        <ge.space.ui.components.buttons.SPButton
             android:id="@+id/btnDialogRight"
             android:layout_width="match_parent"
             android:layout_height="@dimen/sp_dialog_button_height"
             android:layout_weight="1"
-            app:sp_viewStyle="@style/SPMediumTransparentButtonView"
+            app:sp_viewStyle="@style/SPButtonTransparent"
             tools:text="Label" />
 
     </LinearLayout>

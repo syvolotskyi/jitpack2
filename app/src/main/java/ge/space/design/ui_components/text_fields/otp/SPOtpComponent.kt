@@ -9,8 +9,8 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
-import ge.space.ui.view.text_field.OnPinEnteredListener
-import ge.space.ui.view.text_field.SPPinEntryView
+import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
+import ge.space.ui.components.text_fields.pin.SPPinEntryView
 
 class SPOtpComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.otp_input
@@ -27,9 +27,9 @@ class SPOtpComponent : SPShowCaseComponent {
             }
 
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->
-                binding.pinEntryViewOTP.text = text.toString()
-                binding.pinEntryViewOTPSmall.text = text.toString()
-                binding.pinEntryViewOTPDisabled.text = text.toString()
+                binding.pinEntryViewOTP.labelText = text.toString()
+                binding.pinEntryViewOTPSmall.labelText = text.toString()
+                binding.pinEntryViewOTPDisabled.labelText = text.toString()
             }
             return binding.root
         }
@@ -39,15 +39,24 @@ class SPOtpComponent : SPShowCaseComponent {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
                     if (pinCode.toString() == SPPasswordComponent.CORRECT_BIG_PASSWORD) {
-                        pinEntryViewOtp.isError = false
-                        Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
+                        pinEntryViewOtp.handleResult(
+                            context.getString(R.string.correct_password),
+                            false
+                        )
                     } else {
-                        pinEntryViewOtp.isError = true
-                        Toast.makeText(context, "incorrect password", Toast.LENGTH_SHORT).show()
+                        pinEntryViewOtp.handleResult(
+                            context.getString(R.string.incorrect_password),
+                            true
+                        )
                     }
                 }
 
             })
+        }
+
+        private fun SPPinEntryView.handleResult(messageText: String, isError: Boolean) {
+            this.isError = isError
+            Toast.makeText(context, messageText, Toast.LENGTH_SHORT).show()
         }
 
         private fun setupSmallOtpView(pinEntryViewOtp: SPPinEntryView, context: Context) {
