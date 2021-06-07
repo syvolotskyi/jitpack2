@@ -1,52 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-
-    <color name="borderGray">#929292</color>
-    <color name="borderGrayHint">#80929292</color>
-    <color name="baseShadow10">#1A000000</color>
-    <color name="baseShadow">#1A000000</color>
-
     <color name="loading_transparent_black">#D9000000</color>
     <color name="loading_transparent_black_half">#80000000</color>
 
     <color name="magenta">#FF008E</color>
     <color name="labelDarkGray">#626262</color>
-    <color name="selfie_tint_color">#80000000</color>
     <color name="black">#000000</color>
-    <color name="lightestGray">#C0C0C0</color>
-    <color name="gray_lightish">#f5f5f5</color>
     <color name="shimmer_color">#a2878787</color>
-    <color name="spinnerLabelColor">#626262</color>
     <color name="white">#FFFFFF</color>
-    <color name="shadow_view_default_shadow_color">#DCDDE0</color>
-    <color name="shadow_view_foreground_color_dark">#1f000000</color>
-    <color name="shadow_color">#30000000</color>
-    <color name="pin_normal">#6B767E</color>
-    <color name="light_blue">#0099FF</color>
-    <color name="light_black">#666666</color>
-    <color name="light_blue_secondary">#E5F4FF</color>
-
-    <color name="whiteTransparent_10">#1AF5F5F5</color>
-    <color name="pickerActiveTextColor">#0099FF</color>
-
     <color name="transparent">#00b8860b</color>
-    <color name="transparent_15">#26000000</color>
-    <color name="magenta_dark">#A72CAD</color>
-    <color name="lineColor">#C0C0C0</color>
-    <color name="gray">#929292</color>
-    <color name="gray_dark">#3C3C3C</color>
-    <color name="normal_gray">#2E2E2E</color>
-
     <color name="lightGray">#626262</color>
-    <color name="labelGray">#929292</color>
-    <color name="lowLightGray">#C8C8C8</color>
     <color name="titleLabelTextColor">#626262</color>
     <color name="dark_white">#F5F5F5</color>
-
     <color name="text_color_grey">#626262</color>
 
 </resources>
