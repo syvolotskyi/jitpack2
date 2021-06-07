@@ -20,13 +20,13 @@ class SPVerticalButtonsComponent : SPShowCaseComponent {
 
     override fun getComponentClass(): Class<*>? = FactorySP::class.java
 
-
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPButtonBaseView<SpButtonVerticalLayoutBinding>>()
+            
             SPVerticalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
@@ -87,5 +87,4 @@ class SPVerticalButtonsComponent : SPShowCaseComponent {
 
         }
     }
-
 }

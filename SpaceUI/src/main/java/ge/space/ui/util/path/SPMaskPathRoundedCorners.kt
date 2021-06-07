@@ -2,6 +2,7 @@ package ge.space.ui.util.path
 
 import android.graphics.Path
 import android.graphics.RectF
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.util.extension.withSideRatio
 
 /**
@@ -12,7 +13,8 @@ class SPMaskPathRoundedCorners(
     topRightRadiusPx: Float = DEFAULT_START_POINT,
     bottomRightRadiusPx: Float = DEFAULT_START_POINT,
     bottomLefRadiusPx: Float = DEFAULT_START_POINT
-) {
+) : SPMaskPath {
+
     private val path = Path()
 
     private val radii = floatArrayOf(
@@ -30,16 +32,7 @@ class SPMaskPathRoundedCorners(
         setRadius(topLefRadiusPx, topRightRadiusPx, bottomRightRadiusPx, bottomLefRadiusPx)
     }
 
-    /**
-     * Sets radii for all corners. After this method path has to be rebuilt by
-     * rebuildPath(..) method.
-     *
-     * @param topLefRadiusPx sets a radius for a top left corner
-     * @param topRightRadiusPx sets a radius for a top right corner
-     * @param bottomRightRadiusPx sets a radius for a bottom right corner
-     * @param bottomLefRadiusPx sets a radius for a bottom left corner
-     */
-    fun setRadius(
+    override fun setRadius(
         topLefRadiusPx: Float,
         topRightRadiusPx: Float,
         bottomRightRadiusPx: Float,
@@ -55,16 +48,7 @@ class SPMaskPathRoundedCorners(
         radii[BOTTOM_LEFT_SECOND_RAD] = bottomLefRadiusPx
     }
 
-    /**
-     * Rebuilds a path with already set radii.
-     *
-     * @param containerWidthPx sets [Int] value for width in Px
-     * @param containerHeightPx sets [Int] value for height in Px
-     * @param radiusShadow sets an elevation for the view
-     * @param offsetX sets an offset for the shadow by X
-     * @param offsetY sets an offset for the shadow by Y
-     */
-    fun rebuildPath(
+    override fun rebuildPath(
         containerWidthPx: Int,
         containerHeightPx: Int,
         radiusShadow: Float,
@@ -87,6 +71,25 @@ class SPMaskPathRoundedCorners(
         return path
     }
 
+    override fun circle(
+        radius: Float,
+        radiusShadow: Float
+    ) : Path {
+        path.reset()
+        path.addCircle(
+            DEFAULT_START_POINT + radius,
+            DEFAULT_START_POINT + radius,
+            radius - radiusShadow,
+            Path.Direction.CW
+        )
+        path.close()
+
+        return path
+    }
+
+    override fun getPath(): Path =
+        path
+
     private fun getStartPathPoint(radius: Float, offset: Float) =
         DEFAULT_START_POINT + handleNegativeOffset(
             offset = radius.withSideRatio() - offset.withSideRatio()
@@ -97,14 +100,6 @@ class SPMaskPathRoundedCorners(
 
     private fun handleNegativeOffset(offset: Float) =
         if (offset < DEFAULT_START_POINT) DEFAULT_START_POINT else offset
-
-    /**
-     * Returns a path of a shape.
-     *
-     * @return [Path] object which describes a shape of a view.
-     */
-    fun getPath(): Path =
-        path
 
     companion object {
         const val DEFAULT_START_POINT = 0f
