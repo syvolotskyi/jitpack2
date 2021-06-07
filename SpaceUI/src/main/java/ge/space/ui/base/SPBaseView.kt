@@ -17,6 +17,7 @@ import ge.space.ui.util.extension.withSideRatio
 import ge.space.ui.util.path.SPMaskPath
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
 import kotlin.math.abs
+import kotlin.math.roundToInt
 
 /**
  * Abstract base view which has to be extended. This view allows to change corners radius,
@@ -235,6 +236,9 @@ abstract class SPBaseView @JvmOverloads constructor(
         } else {
             viewParams.bottomMargin = ratioOffsetY.toInt()
         }
+
+        viewParams.marginStart = abs(ratioOffsetY.withSideRatio().roundToInt())
+        viewParams.marginEnd = abs(ratioOffsetY.withSideRatio().roundToInt())
     }
 
     override fun onDraw(canvas: Canvas) {
