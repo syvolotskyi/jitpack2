@@ -10,17 +10,17 @@ data class SPButtonSupportsLoading(
 
 object SPButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPWhiteButtonView, true),
-        SPButtonSupportsLoading(R.style.SPWhiteButtonViewWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPWhiteButtonViewWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPAccentButtonView, true),
-        SPButtonSupportsLoading(R.style.SPAccentButtonViewWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPAccentButtonViewWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPDarkButtonView, true),
-        SPButtonSupportsLoading(R.style.SPDarkButtonViewWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPDarkButtonViewWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPTransparentButtonView, true),
-        SPButtonSupportsLoading(R.style.SPTransparentButtonViewWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPTransparentButtonViewWithRightArrow, true)
+        SPButtonSupportsLoading(R.style.SPButtonWhiteView, true),
+        SPButtonSupportsLoading(R.style.SPButtonWhiteWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonWhiteWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonAccentView, true),
+        SPButtonSupportsLoading(R.style.SPButtonAccentWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonAccentWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonDarkView, true),
+        SPButtonSupportsLoading(R.style.SPButtonDarkWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonDarkWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonTransparentView, true),
+        SPButtonSupportsLoading(R.style.SPButtonTransparentWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPButtonTransparentWithRightArrow, true)
     )
 }
