@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPBaseTextView" >
+        <attr name="sp_titleText" format="string|reference" />
+        <attr name="sp_descText" format="string|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SPTextInput">
+        <attr name="android:text" format="string|reference" />
+        <attr name="android:maxLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="SPTextInputPassword" >
+        <attr name="sp_mask" format="string" />
+        <attr name="sp_enable_ime_action" format="boolean" />
+
+        <attr name="android:text" format="string|reference" />
+        <attr name="android:hint" format="string|reference" />
+        <attr name="android:maxLength" format="integer" />
+    </declare-styleable>
+
+
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textLabel"
+        style="@style/Typography.Base.MyriadGEO.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/lightGray"
+        android:textSize="@dimen/dimen_sp_14"
+        tools:text="First label" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dimen_p_8"
+        android:id="@+id/etInputField"
+        android:paddingStart="@dimen/dimen_p_16"
+        android:paddingEnd="@dimen/dimen_p_16"
+        android:paddingTop="@dimen/dimen_p_8"
+        android:textSize="@dimen/dimen_sp_16"
+        android:hint="XXX XX XX XX"
+        android:paddingBottom="@dimen/dimen_p_8"
+        android:gravity="start|center_vertical"
+        android:textColor="@color/appPrimaryColor"
+        style="@style/Typography.Base.MyriadGEO.Bold"
+        android:textColorHint="@color/textColorLightBlue"
+        android:background="@drawable/bkg_text_field"
+        android:layout_height="@dimen/dimen_p_38"/>
+
+    <TextView
+        android:id="@+id/textDesc"
+        style="@style/Typography.Base.MyriadGEO.Regular"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_8"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/lightGray"
+        android:textSize="@dimen/dimen_sp_12"
+        tools:text="First label" />
+</LinearLayout>
