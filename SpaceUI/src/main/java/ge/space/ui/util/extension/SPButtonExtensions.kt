@@ -14,15 +14,15 @@ fun SPButton.bottomType(type : SPDialogBottomVerticalButton.BottomButtonType) {
     when(type) {
         SPDialogBottomVerticalButton.BottomButtonType.Default ->
             setButtonStyle(
-                R.style.SPButtonMediumTransparent
+                R.style.SPButtonTransparent
             )
         SPDialogBottomVerticalButton.BottomButtonType.Remove ->
             setButtonStyle(
-                R.style.SPButtonRemoveMediumTransparentView
+                R.style.SPButtonRemoveTransparentView
             )
         SPDialogBottomVerticalButton.BottomButtonType.Cancel ->
             setButtonStyle(
-                R.style.SPButtonCancelMediumTransparentView
+                R.style.SPButtonCancelTransparentView
             )
     }
 }

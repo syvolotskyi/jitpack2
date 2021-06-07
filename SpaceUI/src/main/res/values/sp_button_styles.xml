@@ -98,11 +98,11 @@
         <item name="sp_roundedCorners">@dimen/dimen_p_10</item>
     </style>
 
-    <style name="SPButtonMediumView" parent="SPButtonBaseView">
+    <style name="SPButtonView" parent="SPButtonBaseView">
         <item name="android:fontFamily">@font/myriad_geo_medium</item>
     </style>
 
-    <style name="SPButtonMediumTransparent" parent="SPButtonMediumView">
+    <style name="SPButtonTransparent" parent="SPButtonView">
         <item name="sp_shadowOffsetX">0dp</item>
         <item name="sp_shadowOffsetY">0dp</item>
         <item name="sp_shadowAlpha">100%</item>
@@ -111,11 +111,11 @@
         <item name="android:textColor">?attr/colorAccent</item>
     </style>
 
-    <style name="SPButtonRemoveMediumTransparentView" parent="SPButtonMediumTransparent">
+    <style name="SPButtonRemoveTransparentView" parent="SPButtonTransparent">
         <item name="android:textColor">?attr/accent_magenta</item>
     </style>
 
-    <style name="SPButtonCancelMediumTransparentView" parent="SPButtonMediumTransparent">
+    <style name="SPButtonCancelTransparentView" parent="SPButtonTransparent">
         <item name="android:textColor">?attr/greyscale_gray_1</item>
     </style>
 
