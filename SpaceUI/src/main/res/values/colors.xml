@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="nextButtonBackgroundColor">#0099FF</color>
-    <color name="appPrimaryColor">#0099FF</color>
-    <color name="appPrimaryColor_10">#100099FF</color>
-    <color name="appPrimaryColor_30">#4D0099FF</color>
 
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
@@ -45,39 +41,12 @@
     <color name="gray_dark">#3C3C3C</color>
     <color name="normal_gray">#2E2E2E</color>
 
-    <color name="light_gray">#C0C0C0</color>
     <color name="lightGray">#626262</color>
     <color name="labelGray">#929292</color>
     <color name="lowLightGray">#C8C8C8</color>
     <color name="titleLabelTextColor">#626262</color>
-    <color name="inputFieldTitleLabelColor">#626262</color>
     <color name="dark_white">#F5F5F5</color>
-    <color name="darkWhite">#F5F5F5</color>
-    <color name="alto">#D7D7D7</color>
-    <color name="bond_blue">#00A2B7</color>
-
-    <color name="lightGreen">#5ED700</color>
-    <color name="colorGreen">#63CB00</color>
-
-    <color name="nextButtonTextColor">#FFFFFF</color>
-
-    <color name="map_search_shadow">#1A000000</color>
-
-    <color name="pinkish">#EC008C</color>
-    <color name="otpTimerColor">#EC008C</color>
-    <color name="darkGreen">#6FCD33</color>
-
-    <color name="orange">#FFB232</color>
-
-    <color name="menuItemTextColor">#929292</color>
-    <color name="gray_lightest">#d8d8d8</color>
-    <color name="gray_pale">#B7B7B7</color>
-
-    <color name="menu_item_text_color_red">#ec008c</color>
 
     <color name="text_color_grey">#626262</color>
-
-    <color name="text_color_grey_20">#33626262</color>
-    <color name="textColorLightBlue">#8FD4FF</color>
 
 </resources>
