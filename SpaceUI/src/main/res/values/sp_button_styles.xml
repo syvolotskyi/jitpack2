@@ -9,6 +9,7 @@
         <item name="android:textColor">?attr/static_white</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_bold</item>
+        <item name="android:textAppearance">@style/h600_medium</item>
         <item name="sp_directionArrow">none</item>
     </style>
 

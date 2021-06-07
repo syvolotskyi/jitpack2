@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/tvDialogTitle"
-        style="@style/mtavruliLargeLabelStyle.DialogTitle"
+        style="@style/SPDialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/sp_dialog_title_padding_default"
@@ -43,7 +43,7 @@
 
     <TextView
         android:id="@+id/tvDialogLabel"
-        style="@style/mtavruliMediumLabelSecondaryStyle.DialogLabel"
+        style="@style/SPDialogLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_dialog_label_margin_top"
