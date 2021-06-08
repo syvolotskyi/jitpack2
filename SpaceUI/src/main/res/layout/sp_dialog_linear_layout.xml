@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_alert_circle_24_regular" />
+        android:src="@drawable/ic_info_circle_24_regular" />
 
     <View
         android:id="@+id/vIconDivider"
@@ -32,25 +32,29 @@
 
     <TextView
         android:id="@+id/tvDialogTitle"
-        style="@style/mtavruliLargeLabelStyle.DialogTitle"
+        style="@style/SPDialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/sp_dialog_title_padding_default"
         android:paddingEnd="@dimen/sp_dialog_title_padding_default"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         tools:text="Title" />
+
+    <View
+        android:id="@+id/dividerDialogLabel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/sp_dialog_label_margin_top" />
 
     <TextView
         android:id="@+id/tvDialogLabel"
-        style="@style/mtavruliMediumLabelSecondaryStyle.DialogLabel"
+        style="@style/SPDialogLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sp_dialog_label_margin_top"
         android:paddingStart="@dimen/sp_dialog_title_padding_default"
         android:paddingEnd="@dimen/sp_dialog_title_padding_default"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         tools:text="Label" />
 
     <View

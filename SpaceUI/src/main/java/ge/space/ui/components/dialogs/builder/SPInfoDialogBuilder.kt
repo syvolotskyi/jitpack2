@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import ge.space.ui.components.dialogs.dialog_types.SPDialog
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_BUTTONS_VISIBLE
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
+import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_DIALOG_ICON
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_DISMISS
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_INFO_ICON_VISIBLE
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_LABEL
@@ -17,6 +18,7 @@ import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MIN_TWICE_BUTT
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.dialogs.data.SPDialogData
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
+import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 
 /**
@@ -35,6 +37,7 @@ class SPInfoDialogBuilder(
     private var isMultiple: Boolean = false
     private var buttons: Array<SPDialogInfoHolder> = arrayOf()
     private var dismissHandler: SPDialogDismissHandler? = null
+    private var dialogIcon: SPDialogIcon = SPDialogIcon.Info()
 
     /**
      * Defines data for the dialog bottom buttons visibility
@@ -53,6 +56,21 @@ class SPInfoDialogBuilder(
         handleDialog(dialog)
 
         return this
+    }
+
+    /**
+     * Dialog icon changing by passing [SPDialogIcon]
+     *
+     * @param icon configures an icon with a color
+     */
+    fun setIcon(icon: SPDialogIcon): SPInfoDialogBuilder {
+        changeIcon(icon)
+
+        return this
+    }
+
+    private fun changeIcon(icon: SPDialogIcon) {
+        dialogIcon = icon
     }
 
     private fun handleDialog(dialog: SPDialogData) {
@@ -140,6 +158,7 @@ class SPInfoDialogBuilder(
                 KEY_MULTIPLE to this@SPInfoDialogBuilder.isMultiple,
                 KEY_BUTTON_OBJECT to this@SPInfoDialogBuilder.buttons,
                 KEY_DISMISS to this@SPInfoDialogBuilder.dismissHandler,
+                KEY_DIALOG_ICON to this@SPInfoDialogBuilder.dialogIcon,
             )
         }
 }

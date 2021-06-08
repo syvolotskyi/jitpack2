@@ -11,10 +11,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.dialogs.*
-import ge.space.ui.components.dialogs.data.SPDialogInfo
-import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
-import ge.space.ui.components.dialogs.data.SPEditTextDialogInfo
-import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
+import ge.space.ui.components.dialogs.data.*
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 
 class SPDialogComponent : SPShowCaseComponent {
@@ -111,7 +108,8 @@ class SPDialogComponent : SPShowCaseComponent {
                     titleInput.text.toString(),
                     infoInput.text.toString(),
                     multipleButtonConfigs
-                )
+                ),
+                SPDialogIcon.Alert(R.attr.accent_magenta)
             ) {
                 Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
             }
@@ -127,8 +125,9 @@ class SPDialogComponent : SPShowCaseComponent {
                 SPDialogInfo(
                     titleInput.text.toString(),
                     infoInput.text.toString(),
-                    buttonConfigs
-                )
+                    buttonConfigs,
+                ),
+                SPDialogIcon.Info()
             ) {
                 Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
             }

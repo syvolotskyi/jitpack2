@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvDialogTitle"
-        style="@style/mtavruliMediumLabelStyle.DialogLabel"
+        style="@style/SPDialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_et_dialog_margin_top"
@@ -22,7 +22,6 @@
     <!-- TODO: has to be a custom SPEditText here -->
     <EditText
         android:id="@+id/etDialog"
-        style="@style/mtavruliMediumLabelStyle.Medium"
         android:layout_width="@dimen/sp_et_dialog_edit_text_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_et_dialog_margin_top"

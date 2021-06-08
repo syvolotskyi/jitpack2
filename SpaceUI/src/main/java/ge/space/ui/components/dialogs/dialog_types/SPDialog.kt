@@ -1,8 +1,11 @@
 package ge.space.ui.components.dialogs.dialog_types
 
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
@@ -11,6 +14,7 @@ import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
+import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
@@ -40,6 +44,11 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
 
     private val buttonsVisible: Boolean by nonNullArgument(KEY_BUTTONS_VISIBLE, true)
 
+    private val dialogIcon: SPDialogIcon by nonNullArgument(
+        KEY_DIALOG_ICON,
+        SPDialogIcon.Info()
+    )
+
     override val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(
         KEY_BUTTON_OBJECT,
         arrayOf()
@@ -57,6 +66,7 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
 
         handleDialogTitles()
         handleVisibility()
+        setIconWithColor()
         setButtons()
     }
 
@@ -74,6 +84,7 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
             ivDialogType.visibleOrGone(iconVisible)
             lytButtons.visibleOrGone(buttonsVisible)
             tvDialogLabel.visibleOrGone(labelVisible)
+            dividerDialogLabel.visibleOrGone(titleVisible)
             tvDialogTitle.visibleOrGone(titleVisible)
             vIconDivider.visibleOrGone(iconVisible)
             vIconSpace.visibleOrGone(iconVisible)
@@ -89,6 +100,27 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
                     convertDialogButtonsType()
                 )
             }
+        }
+    }
+
+    private fun setIconWithColor() {
+        with(binding) {
+            lytDialogLinear.ivDialogType.setImageDrawable(
+                ContextCompat.getDrawable(requireContext(), dialogIcon.icon)
+            )
+            lytDialogLinear.ivDialogType.setColorFilter(
+                resolveColor(), PorterDuff.Mode.SRC_IN
+            )
+        }
+    }
+
+    private fun resolveColor(): Int {
+        TypedValue().apply {
+            requireContext().theme.resolveAttribute(
+                dialogIcon.colorAttr, this, true
+            )
+
+            return data
         }
     }
 
