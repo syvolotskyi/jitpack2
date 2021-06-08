@@ -65,16 +65,8 @@
 
     <style name="SPCoreTheme" parent="BaseTheme">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/black</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
-        <!--<item name="android:windowEnterTransition">@transition/slide_in_up</item>-->
-        <!--<item name="android:windowExitTransition">@transition/slide_in_up</item>-->
-
-        <item name="checkboxStyle">@style/CheckboxStyle</item>
-
     </style>
 
     <style name="AppTheme" parent="SPCoreTheme">
@@ -91,8 +83,6 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
-        <item name="checkboxStyle">@style/CheckboxStyle</item>
-
     </style>
 
     <style name="AppThemeDark" parent="AppTheme">
@@ -101,7 +91,7 @@
         <item name="colorAccent">@color/appPrimaryColor</item>
         <item name="android:windowBackground">@color/black</item>
         <item name="cardBackground">@color/black</item>
-         <item name="cardTitleBackground">@color/dark_white</item>
+        <item name="cardTitleBackground">@color/dark_white</item>
         <item name="cardTitleBackgroundLineHeight">0dp</item>
         <item name="themeMySpaceBackgroundColor">@color/black</item>
         <item name="themeMySpaceTitleColor">@color/transparent</item>
@@ -150,9 +140,10 @@
         <item name="background_secondary">@color/dark_background_secondary</item>
         <item name="background_tertiary">@color/dark_background_tertiary</item>
 
-        <!-- for testing purposes -->
         <item name="themeTextColor">@color/white</item>
         <item name="themeCheckBoxButtonTint">@color/white</item>
+
+        <item name="android:checkboxStyle">@style/CheckboxStyle</item>
     </style>
 
 
@@ -212,94 +203,10 @@
         <item name="fill_tertiary">@color/light_fill_tertiary</item>
         <item name="fill_quaternary">@color/light_fill_quaternary</item>
 
-        <!-- for testing purposes -->
         <item name="themeTextColor">@color/black</item>
         <item name="themeCheckBoxButtonTint">@color/black</item>
 
+        <item name="android:checkboxStyle">@style/CheckboxStyle</item>
     </style>
 
-    <style name="FormInputField">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/dimen_p_30</item>
-        <item name="android:layout_marginEnd">@dimen/dimen_p_30</item>
-        <item name="android:layout_marginTop">@dimen/dimen_sp_25</item>
-    </style>
-
-    <declare-styleable name="SPActionButton">
-        <attr name="ab_icon" format="reference"/>
-        <attr name="ab_width" format="reference|dimension"/>
-        <attr name="ab_height" format="reference|dimension"/>
-        <attr name="ab_label" format="reference|string"/>
-        <attr name="ab_label_size" format="reference|dimension"/>
-    </declare-styleable>
-
-    <declare-styleable name="SPInfoItem">
-        <attr name="ii_view_height" format="reference|dimension"/>
-        <attr name="ii_view_padding_left" format="reference|dimension"/>
-        <attr name="ii_value_weight" format="float"/>
-        <attr name="ii_view_background_color" format="reference|color"/>
-        <attr name="ii_key_label" format="reference|string"/>
-    </declare-styleable>
-
-    <declare-styleable name="SPTemplateView">
-        <attr name="imageEnabled" format="boolean"/>
-    </declare-styleable>
-
-    <style name="DynamicFormInputField" parent="FormInputField">
-        <item name="android:layout_marginTop">@dimen/dimen_sp_10</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_sp_10</item>
-    </style>
-
-    <style name="StepDescriptionSmallTextStyle" parent="StepDescriptionTextStyle">
-        <item name="android:textSize">@dimen/dimen_sp_14</item>
-    </style>
-
-    <style name="StepDescriptionTextStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/dimen_sp_17</item>
-        <item name="android:textColor">@color/titleLabelTextColor</item>
-        <item name="android:fontFamily">@font/myriad_medium</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <declare-styleable name="SPTabButton">
-        <attr name="ttb_isActive" format="boolean"/>
-        <attr name="ttb_active_color" format="color"/>
-        <attr name="ttb_inactive_color" format="color"/>
-    </declare-styleable>
-
-    <style name="ActionStyleSecondary">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/dimen_sp_14</item>
-        <item name="android:textColor">@color/menuItemTextColor</item>
-        <item name="android:fontFamily">@font/myriad_geo_medium</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:lineSpacingMultiplier">1.2</item>
-    </style>
-
-    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
-        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:colorBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:backgroundDimAmount">0.1</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-    </style>
-
-    <style name="bottom_sheet_title_style">
-        <item name="android:fontFamily">@font/myriad_geo_mtavruli_bold</item>
-    </style>
-
-
-    //show case app
-    <style name="CheckboxStyle">
-        <item name="buttonTint">?attr/themeCheckBoxButtonTint</item>
-        <item name="android:textColor">?attr/themeTextColor</item>  // for unchecked
-    </style>
 </resources>
