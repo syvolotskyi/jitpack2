@@ -29,7 +29,6 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
             cleanUp()
         }
 
-    private var charRepresentation = "#"
     private var keepHint = true
     private var rawText: RawText = RawText()
     private var editingBefore = false
@@ -118,11 +117,6 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         }
     }
 
-    fun getRawText(): String {
-        return rawText.text
-    }
-
-
     /**
      * Generates positions for values characters. For instance:
      * Input data: mask = "+7(###)###-##-##
@@ -138,7 +132,7 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         var charIndex = 0
         for (i in mask.indices) {
             val currentChar = mask[i]
-            if (currentChar.toString() == charRepresentation) {
+            if (currentChar.toString() == CHAR_REPRESENTATION) {
                 aux[charIndex] = i
                 maskToRaw[i] = charIndex++
             } else {
@@ -152,7 +146,7 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         if (charsInMaskAux.indexOf(' ') < 0) {
             charsInMaskAux += SPACE
         }
-        val charsInMask = charsInMaskAux.toCharArray()
+        charsInMaskAux.toCharArray()
         rawToMask = IntArray(charIndex)
         System.arraycopy(aux, 0, rawToMask, 0, charIndex)
     }
@@ -195,8 +189,8 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         }
     }
 
-    private fun erasingStart(start: Int): Int {
-        var start = start
+    private fun erasingStart(position: Int): Int {
+        var start = position
         while (start > 0 && maskToRaw[start] == -1) {
             start--
         }
@@ -281,16 +275,16 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         }
     }
 
-    private fun nextValidPosition(currentPosition: Int): Int {
-        var currentPosition = currentPosition
+    private fun nextValidPosition(position: Int): Int {
+        var currentPosition = position
         while (currentPosition < lastValidMaskPosition && maskToRaw[currentPosition] == -1) {
             currentPosition++
         }
         return if (currentPosition > lastValidMaskPosition) lastValidMaskPosition + 1 else currentPosition
     }
 
-    private fun previousValidPosition(currentPosition: Int): Int {
-        var currentPosition = currentPosition
+    private fun previousValidPosition(position: Int): Int {
+        var currentPosition = position
         while (currentPosition >= 0 && maskToRaw[currentPosition] == -1) {
             currentPosition--
             if (currentPosition < 0) {
@@ -389,5 +383,6 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
     companion object {
         const val SPACE = " "
         const val ALLOWED_CHARS = "1234567890"
+        const val CHAR_REPRESENTATION = "#"
     }
 }

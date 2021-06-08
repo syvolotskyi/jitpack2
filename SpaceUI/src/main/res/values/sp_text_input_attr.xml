@@ -9,6 +9,7 @@
         <attr name="android:maxLength" format="integer" />
         <attr name="sp_titleText" format="string|reference" />
         <attr name="sp_descText" format="string|reference" />
+        <attr name="android:imeOptions" format="reference" />
     </declare-styleable>
 
 </resources>

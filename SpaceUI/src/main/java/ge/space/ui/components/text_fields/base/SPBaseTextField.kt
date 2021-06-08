@@ -90,6 +90,8 @@ open class SPBaseTextField @JvmOverloads constructor(
                 labelText = it
             }
 
+            binding.etInputField.imeOptions = getResourceId(R.styleable.SPBaseTextView_android_imeOptions,0)
+
             getString(R.styleable.SPBaseTextView_sp_descText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
