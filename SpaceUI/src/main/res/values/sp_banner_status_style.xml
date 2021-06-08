@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPBannerStatusSuccess">
+        <item name="sp_bannerImage">@drawable/ic_status_success</item>
+    </style>
+
+    <style name="SPBannerStatusError">
+        <item name="sp_bannerImage">@drawable/ic_status_error</item>
+    </style>
+
+    <style name="SPBannerStatusPending">
+        <item name="sp_bannerImage">@drawable/ic_status_pending</item>
+    </style>
+
+    <style name="SPBannerStatusInfo">
+        <item name="sp_bannerImage">@drawable/ic_status_info</item>
+    </style>
+
+</resources>

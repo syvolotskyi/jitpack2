@@ -3,16 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/white"
+    android:padding="@dimen/dimen_p_30">
 
     <ImageView
         android:id="@+id/statusImage"
         android:layout_width="@dimen/dimen_p_120"
         android:layout_height="@dimen/dimen_p_120"
+        app:layout_constraintBottom_toTopOf="@+id/statusTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:src="@drawable/ic_status_success" />
 
     <TextView
@@ -23,9 +27,10 @@
         android:layout_marginTop="@dimen/dimen_p_30"
         android:gravity="center"
         android:maxWidth="@dimen/dimen_p_250"
+        app:layout_constraintBottom_toTopOf="@+id/statusSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusImage"
+        app:layout_constraintTop_toBottomOf="@+id/statusImage"
         tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
 
     <TextView
@@ -37,9 +42,10 @@
         android:layout_marginTop="@dimen/dimen_p_15"
         android:layout_marginEnd="@dimen/dimen_p_30"
         android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/statusDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusTitle"
+        app:layout_constraintTop_toBottomOf="@+id/statusTitle"
         tools:text="შენ წარმატებით გადარიცხე ფული" />
 
     <TextView
@@ -51,9 +57,10 @@
         android:layout_marginTop="@dimen/dimen_p_15"
         android:layout_marginEnd="@dimen/dimen_p_30"
         android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusSubtitle"
+        app:layout_constraintTop_toBottomOf="@+id/statusSubtitle"
         tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

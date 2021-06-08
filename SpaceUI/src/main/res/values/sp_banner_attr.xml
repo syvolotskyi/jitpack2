@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SPBannerBaseView">
+        <attr name="sp_bannerTitle" format="string|reference" />
+        <attr name="sp_bannerSubTitle" format="string|reference" />
+        <attr name="sp_bannerDescription" format="string|reference"/>
+
+        <attr name="sp_bannerTitle_isVisible" format="boolean"/>
+        <attr name="sp_bannerSubTitle_isVisible" format="boolean"/>
+        <attr name="sp_bannerDescription_isVisible" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="SPBannerStatus" parent="SPBannerBaseView">
+        <attr name="sp_bannerStatusStyle" format="enum">
+            <enum name="success" value="0" />
+            <enum name="pending" value="1" />
+            <enum name="error" value="2" />
+            <enum name="info" value="3" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="SPBannerIllustration" parent="SPBannerBaseView">
+        <attr name="sp_bannerImage" format="reference" />
+    </declare-styleable>
+
+</resources>
