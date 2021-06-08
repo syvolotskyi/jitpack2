@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.phone
+package ge.space.ui.components.text_fields.utils
 
 
 class RawText (var text: String = "") {

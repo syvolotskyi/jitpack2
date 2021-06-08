@@ -19,7 +19,7 @@
         android:textSize="@dimen/dimen_sp_14"
         tools:text="First label" />
 
-    <EditText
+    <ge.space.ui.components.text_fields.utils.SPMaskedEditText
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/dimen_p_8"
         android:id="@+id/etInputField"
@@ -27,8 +27,9 @@
         android:paddingEnd="@dimen/dimen_p_16"
         android:paddingTop="@dimen/dimen_p_8"
         android:textSize="@dimen/dimen_sp_16"
-        android:hint="XXX XX XX XX"
+        android:hint="XXXXXXXXX"
         android:paddingBottom="@dimen/dimen_p_8"
+        android:inputType="number"
         android:gravity="start|center_vertical"
         android:textColor="@color/appPrimaryColor"
         style="@style/Typography.Base.MyriadGEO.Bold"
