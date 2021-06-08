@@ -5,25 +5,36 @@
         <attr name="sp_bannerTitle" format="string|reference" />
         <attr name="sp_bannerSubTitle" format="string|reference" />
         <attr name="sp_bannerDescription" format="string|reference"/>
-
         <attr name="sp_bannerTitle_isVisible" format="boolean"/>
         <attr name="sp_bannerSubTitle_isVisible" format="boolean"/>
         <attr name="sp_bannerDescription_isVisible" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="SPBannerIllustration" parent="SPBannerBaseView">
+        <attr name="sp_bannerImage" format="reference" />
+    </declare-styleable>
+
 
     <declare-styleable name="SPBannerStatus" parent="SPBannerBaseView">
-        <attr name="sp_bannerStatusStyle" format="enum">
-            <enum name="success" value="0" />
-            <enum name="pending" value="1" />
-            <enum name="error" value="2" />
-            <enum name="info" value="3" />
+        <attr name="sp_bannerStatusStyle" format="reference">
         </attr>
     </declare-styleable>
 
 
-    <declare-styleable name="SPBannerIllustration" parent="SPBannerBaseView">
-        <attr name="sp_bannerImage" format="reference" />
-    </declare-styleable>
+    <style name="SPBannerStatusSuccess">
+        <item name="sp_bannerImage">@drawable/ic_status_success</item>
+    </style>
+
+    <style name="SPBannerStatusError">
+        <item name="sp_bannerImage">@drawable/ic_status_error</item>
+    </style>
+
+    <style name="SPBannerStatusPending">
+        <item name="sp_bannerImage">@drawable/ic_status_pending</item>
+    </style>
+
+    <style name="SPBannerStatusInfo">
+        <item name="sp_bannerImage">@drawable/ic_status_info</item>
+    </style>
 
 </resources>

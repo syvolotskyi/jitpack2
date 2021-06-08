@@ -21,4 +21,14 @@
         <item name="android:textColor">?attr/label_quaternary</item>
     </style>
 
+    <style name="label_senary">
+        <item name="android:textAppearance">@style/h600_medium</item>
+        <item name="android:textColor">?attr/label_quaternary</item>
+    </style>
+
+    <style name="label_septenary">
+        <item name="android:textAppearance">@style/h700_medium</item>
+        <item name="android:textColor">?attr/label_quaternary</item>
+    </style>
+
 </resources>
