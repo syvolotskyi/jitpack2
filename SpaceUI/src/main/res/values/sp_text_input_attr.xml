@@ -2,7 +2,6 @@
 <resources>
     <declare-styleable name="SPMaskedEditText">
         <attr name="sp_mask" format="string" />
-        <attr name="sp_enable_ime_action" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="SPBaseTextView">
@@ -10,10 +9,6 @@
         <attr name="android:maxLength" format="integer" />
         <attr name="sp_titleText" format="string|reference" />
         <attr name="sp_descText" format="string|reference" />
-    </declare-styleable>
-
-    <declare-styleable name="SPTextInputPassword">
-        <attr name="sp_mask" format="string" />
     </declare-styleable>
 
 </resources>

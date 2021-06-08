@@ -12,11 +12,20 @@ import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.util.extension.handleAttributeAction
 
+/**
+ * Field view extended from [LinearLayout] that allows to change its configuration.
+ *
+ * @property text [String] value which sets a text.
+ * @property labelText [String] value which sets a label text.
+ * @property descText [String] value which sets a description text.
+ * @property maxLength [Int] value which applies a max Length.
+ */
 open class SPBaseTextField @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
+
     /**
      * Sets a button title.
      */
@@ -25,6 +34,9 @@ open class SPBaseTextField @JvmOverloads constructor(
             field = value
 
             binding.etInputField.setText(value)
+        }
+        get() {
+            return binding.etInputField.text.toString()
         }
 
     /**
@@ -49,7 +61,7 @@ open class SPBaseTextField @JvmOverloads constructor(
 
 
     /**
-     * Sets a description text.
+     * Sets a max length.
      */
     var maxLength: Int = 0
         set(value) {
@@ -67,36 +79,26 @@ open class SPBaseTextField @JvmOverloads constructor(
     }
 
     init {
-    /*    getContext().withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.SPBaseTextView,
             defStyleAttr
         ) {
-                setButtonStyle(
-                    getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
-                )
-        }*/
+            getString(R.styleable.SPBaseTextView_sp_titleText).orEmpty().handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                labelText = it
+            }
 
-         getContext().withStyledAttributes(
-             attrs,
-             R.styleable.SPBaseTextView,
-             defStyleAttr
-         ) {
-             getString(R.styleable.SPBaseTextView_sp_titleText).orEmpty().handleAttributeAction(
-                 SPBaseView.EMPTY_TEXT
-             ) {
-                 labelText = it
-             }
-
-             getString(R.styleable.SPBaseTextView_sp_descText).orEmpty().handleAttributeAction(
-                 SPBaseView.EMPTY_TEXT
-             ) {
-                 descText = it
-             }
-         }
+            getString(R.styleable.SPBaseTextView_sp_descText).orEmpty().handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                descText = it
+            }
+        }
     }
 
-    fun setEditTextMaxLength(length: Int) {
+    private fun setEditTextMaxLength(length: Int) {
         val filterArray = arrayOfNulls<InputFilter>(1)
         filterArray[0] = InputFilter.LengthFilter(length)
         binding.etInputField.filters = filterArray

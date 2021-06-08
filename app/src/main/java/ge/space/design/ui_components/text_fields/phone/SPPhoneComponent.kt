@@ -1,6 +1,9 @@
 package ge.space.design.ui_components.text_fields.phone
 
 import android.content.Context
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
@@ -9,6 +12,7 @@ import com.example.spacedesignsystem.databinding.SpPhoneInputShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.ui.components.text_fields.phone.SPPhoneInput
 import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
 import ge.space.ui.components.text_fields.pin.SPPinEntryView
 
@@ -22,48 +26,42 @@ class SPPhoneComponent : SPShowCaseComponent {
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
             val binding = SpPhoneInputShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
-           /* with(binding) {
-                setupBigPasswordView(pinEntryViewPassword, environmentSP.context)
-                setupSmallPasswordView(pinEntryViewPasswordSmall, environmentSP.context)
+            with(binding) {
+                setupPhoneInputTextWithDone(phoneInput, environmentSP.context)
+                setupPhoneInputTextWithDone(phoneInputSecond, environmentSP.context)
+
             }
 
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->
-                binding.pinEntryViewPassword.labelText = text.toString()
-                binding.pinEntryViewPasswordSmall.labelText = text.toString()
-            }*/
+                binding.phoneInput.labelText = text.toString()
+                binding.phoneInputSecond.labelText = text.toString()
+            }
             return binding.root
         }
 
-        private fun setupBigPasswordView(pinEntryViewPassword: SPPinEntryView, context: Context) {
-            pinEntryViewPassword.setPinEnteredListener(object : OnPinEnteredListener {
-                override fun onPinEntered(pinCode: CharSequence) {
-                    // correct password is 888888
-                    if (pinCode.toString() == CORRECT_BIG_PASSWORD) {
-                        pinEntryViewPassword.isError = false
-                        Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
-                    } else {
-                        pinEntryViewPassword.isError = true
-                        Toast.makeText(context, "incorrect password", Toast.LENGTH_SHORT).show()
-                    }
+        private fun setupPhoneInputTextWithDone(phoneInput: SPPhoneInput, context: Context) {
+            phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
+            { _: TextView?, actionId: Int, event: KeyEvent? ->
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || event?.action == KeyEvent.ACTION_DOWN
+                ) {
+                    showToast(context, "Action Done: " + phoneInput.text)
+                    return@OnEditorActionListener true
+                } else if (actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_FLAG_NAVIGATE_NEXT) {
+                    showToast(context, "Action Next: " + phoneInput.text)
                 }
 
+                return@OnEditorActionListener false
             })
         }
 
-        private fun setupSmallPasswordView(pinEntryViewPassword: SPPinEntryView, context: Context) {
-            pinEntryViewPassword.setPinEnteredListener(object : OnPinEnteredListener {
-                override fun onPinEntered(pinCode: CharSequence) {
-                    // correct password is 1010
-                    if (pinCode.toString() == CORRECT_SMALL_PASSWORD) {
-                        pinEntryViewPassword.isError = false
-                        Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
-                    } else {
-                        pinEntryViewPassword.isError = true
-                        Toast.makeText(context, "incorrect password", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-            })
+        fun showToast(context: Context, text: String) {
+            Toast.makeText(
+                context,
+                text,
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

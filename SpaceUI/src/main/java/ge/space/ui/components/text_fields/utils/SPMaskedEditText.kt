@@ -1,6 +1,5 @@
 package ge.space.ui.components.text_fields.utils
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.SpannableStringBuilder
@@ -13,9 +12,16 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.widget.AppCompatEditText
 import ge.space.spaceui.R
 
-class SPMaskedEditText : AppCompatEditText, TextWatcher {
-    private val onEditorActionListener =
-        OnEditorActionListener { _: TextView?, _: Int, _: KeyEvent? -> return@OnEditorActionListener true }
+open class SPMaskedEditText : AppCompatEditText, TextWatcher {
+
+    var onActionListener =
+        OnEditorActionListener { _: TextView?, _: Int, _: KeyEvent? ->
+            return@OnEditorActionListener true
+        }
+        set(value) {
+            field = value
+            setOnEditorActionListener(onActionListener)
+        }
 
     var mask: String = ""
         set(value) {
@@ -25,21 +31,21 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
 
     private var charRepresentation = "#"
     private var keepHint = true
-    private lateinit var rawToMask: IntArray
     private var rawText: RawText = RawText()
     private var editingBefore = false
     private var editingOnChanged = false
     private var editingAfter = false
-    private lateinit var maskToRaw: IntArray
     private var select = 0
     private var initialized = false
     private var ignore = false
-    protected var maxRawLength = 0
+    private var maxRawLength = 0
     private var lastValidMaskPosition = 0
     private var selectionChanged = false
     private var focusChangeListener: OnFocusChangeListener? = null
-    var isKeepingText = false
-        private set
+    private var isKeepingText = false
+    private lateinit var rawToMask: IntArray
+    private lateinit var maskToRaw: IntArray
+
 
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) :
             super(context, attrs, defStyle) {
@@ -104,15 +110,12 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
     }
 
 
-    fun setShouldKeepText(shouldKeepText: Boolean) {
-        isKeepingText = shouldKeepText
-    }
-
-
     fun setImeActionEnabled(isEnabled: Boolean) {
-        if (isEnabled) setOnEditorActionListener(onEditorActionListener) else setOnEditorActionListener(
-            null
-        )
+        if (isEnabled) {
+            setOnEditorActionListener(onActionListener)
+        } else {
+            setOnEditorActionListener(null)
+        }
     }
 
     fun getRawText(): String {
@@ -161,13 +164,6 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
         ta.run {
 
             mask = getString(R.styleable.SPMaskedEditText_sp_mask) ?: ""
-            val enableImeAction =
-                getBoolean(R.styleable.SPMaskedEditText_sp_enable_ime_action, false)
-            if (!enableImeAction) {
-                setOnEditorActionListener(onEditorActionListener)
-            } else {
-                setOnEditorActionListener(null)
-            }
 
             recycle()
         }
