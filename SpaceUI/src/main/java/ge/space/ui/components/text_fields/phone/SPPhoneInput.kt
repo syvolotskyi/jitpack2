@@ -1,9 +1,7 @@
 package ge.space.ui.components.text_fields.phone
 
 import android.content.Context
-import android.text.InputType
 import android.util.AttributeSet
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
@@ -26,7 +24,7 @@ class SPPhoneInput @JvmOverloads constructor(
             getString(R.styleable.SPTextInputPassword_sp_mask).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
-                _binding.etInputField.mask = it
+                binding.etInputField.mask = it
             }
 
             getString(R.styleable.SPBaseTextView_sp_descText).orEmpty().handleAttributeAction(

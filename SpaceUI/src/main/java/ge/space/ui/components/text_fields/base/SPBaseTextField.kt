@@ -24,7 +24,7 @@ open class SPBaseTextField @JvmOverloads constructor(
         set(value) {
             field = value
 
-            _binding.etInputField.setText(value)
+            binding.etInputField.setText(value)
         }
 
     /**
@@ -34,7 +34,7 @@ open class SPBaseTextField @JvmOverloads constructor(
         set(value) {
             field = value
 
-            _binding.textLabel.text = value
+            binding.textLabel.text = value
         }
 
     /**
@@ -44,7 +44,7 @@ open class SPBaseTextField @JvmOverloads constructor(
         set(value) {
             field = value
 
-            _binding.textDesc.text = value
+            binding.textDesc.text = value
         }
 
 
@@ -62,7 +62,7 @@ open class SPBaseTextField @JvmOverloads constructor(
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
      */
-    protected val _binding by lazy {
+    protected val binding by lazy {
         SpTextFieldLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
@@ -94,12 +94,11 @@ open class SPBaseTextField @JvmOverloads constructor(
                  descText = it
              }
          }
-        _binding.textLabel.text = "Label"
     }
 
     fun setEditTextMaxLength(length: Int) {
         val filterArray = arrayOfNulls<InputFilter>(1)
         filterArray[0] = InputFilter.LengthFilter(length)
-        _binding.etInputField.filters = filterArray
+        binding.etInputField.filters = filterArray
     }
 }

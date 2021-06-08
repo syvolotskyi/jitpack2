@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ge.space.ui.components.text_fields.phone.SPPhoneInput
         android:id="@+id/phone_input"
@@ -13,8 +13,7 @@
         android:inputType="phone"
         android:textColorHint="@android:color/darker_gray"
         android:typeface="monospace"
-        app:sp_mask="+995 ### ## ##"
-        />
+        app:sp_titleText="Input phone number" />
 
 
     <ge.space.ui.components.text_fields.phone.SPPhoneInput
@@ -22,33 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_16"
+        android:hint="22.22"
         android:inputType="phone"
         android:textColorHint="@android:color/darker_gray"
         android:typeface="monospace"
         app:sp_mask="+995 ### ## ##"
-        android:hint="22.22"/>
-
-
-
-    <br.com.sapereaude.maskedEditText.MaskedEditText
-        android:id="@+id/phone_issnssput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_p_16"
-        android:inputType="phone"
-        android:textColorHint="@android:color/darker_gray"
-        android:typeface="monospace"
-        app:mask="+995 ### ## ##"
-        android:hint="123456789"/>
-
-    <ge.space.ui.components.text_fields.utils.SPMaskedEditText
-        android:id="@+id/phone_issnssssput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_p_16"
-        android:inputType="phone"
-        android:textColorHint="@android:color/darker_gray"
-        android:typeface="monospace"
-        app:sp_mask="+995 ### ## ##"
-        android:hint="123456789"/>
+        app:sp_titleText="Input phone number" />
 </LinearLayout>

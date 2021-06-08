@@ -1,5 +1,6 @@
 package ge.space.ui.components.text_fields.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.SpannableStringBuilder
@@ -40,32 +41,13 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
     var isKeepingText = false
         private set
 
-    constructor(context: Context?) : super(context!!) {
-        init()
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
-        context!!, attrs, defStyle
-    ) {
-        init()
+    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) :
+            super(context, attrs, defStyle) {
+        init(context, attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        init()
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.SPTextInputPassword)
-        mask = attributes.getString(R.styleable.SPTextInputPassword_sp_mask) ?: ""
-        val enableImeAction =
-            attributes.getBoolean(R.styleable.SPTextInputPassword_sp_enable_ime_action, false)
-
-        cleanUp()
-
-        // Ignoring enter key presses if needed
-        if (!enableImeAction) {
-            setOnEditorActionListener(onEditorActionListener)
-        } else {
-            setOnEditorActionListener(null)
-        }
-        attributes.recycle()
+        init(context, attrs)
     }
 
 
@@ -78,7 +60,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
 
     private fun cleanUp() {
         initialized = false
-        if (mask == null || mask!!.isEmpty()) {
+        if (mask.isEmpty()) {
             return
         }
         generatePositionArrays()
@@ -88,7 +70,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
         editingBefore = true
         editingOnChanged = true
         editingAfter = true
-        if (hasHint() && rawText!!.length() == 0) {
+        if (hasHint() && rawText.length() == 0) {
             this.setText(makeMaskedTextWithHint())
         } else {
             this.setText(makeMaskedText())
@@ -96,7 +78,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
         editingBefore = false
         editingOnChanged = false
         editingAfter = false
-        maxRawLength = maskToRaw[previousValidPosition(mask!!.length - 1)] + 1
+        maxRawLength = maskToRaw[previousValidPosition(mask.length - 1)] + 1
         lastValidMaskPosition = findLastValidMaskPosition()
         initialized = true
         super.setOnFocusChangeListener { v, hasFocus ->
@@ -134,7 +116,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
     }
 
     fun getRawText(): String {
-        return rawText!!.text
+        return rawText.text
     }
 
 
@@ -147,12 +129,12 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
      * charsInMask = "+7()- " (and space, yes)
      */
     private fun generatePositionArrays() {
-        val aux = IntArray(mask!!.length)
-        maskToRaw = IntArray(mask!!.length)
+        val aux = IntArray(mask.length)
+        maskToRaw = IntArray(mask.length)
         var charsInMaskAux = ""
         var charIndex = 0
-        for (i in mask!!.indices) {
-            val currentChar = mask!![i]
+        for (i in mask.indices) {
+            val currentChar = mask[i]
             if (currentChar.toString() == charRepresentation) {
                 aux[charIndex] = i
                 maskToRaw[i] = charIndex++
@@ -172,7 +154,25 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
         System.arraycopy(aux, 0, rawToMask, 0, charIndex)
     }
 
-    private fun init() {
+    private fun init(context: Context, attrs: AttributeSet?) {
+        val ta =
+            context.obtainStyledAttributes(attrs, R.styleable.SPMaskedEditText, 0, 0)
+
+        ta.run {
+
+            mask = getString(R.styleable.SPMaskedEditText_sp_mask) ?: ""
+            val enableImeAction =
+                getBoolean(R.styleable.SPMaskedEditText_sp_enable_ime_action, false)
+            if (!enableImeAction) {
+                setOnEditorActionListener(onEditorActionListener)
+            } else {
+                setOnEditorActionListener(null)
+            }
+
+            recycle()
+        }
+
+        cleanUp()
         addTextChangedListener(this)
     }
 
@@ -191,7 +191,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
             }
             val range = calculateRange(rangeStart, start + count)
             if (range.start != -1) {
-                rawText!!.subtractFromString(range)
+                rawText.subtractFromString(range)
             }
             if (count > 0) {
                 select = previousValidPosition(start)
@@ -217,10 +217,9 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
             if (count > 0) {
                 val startingPosition = maskToRaw[nextValidPosition(start)]
                 val addedString = s.subSequence(start, start + count).toString()
-                count = rawText!!.addToString(clear(addedString), startingPosition, maxRawLength)
+                count = rawText.addToString(clear(addedString), startingPosition, maxRawLength)
                 if (initialized) {
-                    val currentPosition: Int
-                    currentPosition =
+                    val currentPosition =
                         if (startingPosition + count < rawToMask.size) rawToMask[startingPosition + count] else lastValidMaskPosition + 1
                     select = nextValidPosition(currentPosition)
                 }
@@ -315,14 +314,14 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
         val maskedTextLength: Int = if (rawText.length() < rawToMask.size) {
             rawToMask[rawText.length()]
         } else {
-            mask!!.length
+            mask.length
         }
         val maskedText =
             CharArray(maskedTextLength) //mask.replace(charRepresentation, ' ').toCharArray();
         for (i in maskedText.indices) {
             val rawIndex = maskToRaw[i]
             if (rawIndex == -1) {
-                maskedText[i] = mask!![i]
+                maskedText[i] = mask[i]
             } else {
                 maskedText[i] = rawText.charAt(rawIndex)
             }
@@ -334,7 +333,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
         val ssb = SpannableStringBuilder()
         var mtrv: Int
         val maskFirstChunkEnd = rawToMask[0]
-        for (i in mask!!.indices) {
+        for (i in mask.indices) {
             mtrv = maskToRaw[i]
             if (mtrv != -1) {
                 if (mtrv < rawText.length()) {
@@ -343,9 +342,9 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
                     ssb.append(hint[maskToRaw[i]])
                 }
             } else {
-                ssb.append(mask!![i])
+                ssb.append(mask[i])
             }
-            if (keepHint && rawText.length() < rawToMask.size && i >= rawToMask[rawText!!.length()]
+            if (keepHint && rawText.length() < rawToMask.size && i >= rawToMask[rawText.length()]
                 || !keepHint && i >= maskFirstChunkEnd
             ) {
                 ssb.setSpan(ForegroundColorSpan(currentHintTextColor), i, i + 1, 0)
@@ -357,7 +356,7 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
     private fun calculateRange(start: Int, end: Int): Range {
         val range = Range()
         var i = start
-        while (i <= end && i < mask!!.length) {
+        while (i <= end && i < mask.length) {
             if (maskToRaw[i] != -1) {
                 if (range.start == -1) {
                     range.start = maskToRaw[i]
@@ -366,8 +365,8 @@ class SPMaskedEditText : AppCompatEditText, TextWatcher {
             }
             i++
         }
-        if (end == mask!!.length) {
-            range.end = rawText!!.length()
+        if (end == mask.length) {
+            range.end = rawText.length()
         }
         if (range.start == range.end && start < end) {
             val newStart = previousValidPosition(range.start - 1)
