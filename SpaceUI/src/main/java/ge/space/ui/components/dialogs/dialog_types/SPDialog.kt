@@ -74,6 +74,7 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
             ivDialogType.visibleOrGone(iconVisible)
             lytButtons.visibleOrGone(buttonsVisible)
             tvDialogLabel.visibleOrGone(labelVisible)
+            dividerDialogLabel.visibleOrGone(titleVisible)
             tvDialogTitle.visibleOrGone(titleVisible)
             vIconDivider.visibleOrGone(iconVisible)
             vIconSpace.visibleOrGone(iconVisible)

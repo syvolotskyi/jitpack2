@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -17,42 +17,42 @@
 
     <ge.space.ui.components.buttons.SPButton
         android:id="@+id/button"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_button_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:text="Button"
-        app:sp_viewStyle="@style/SPButtonAccentView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center_horizontal" />
+        app:sp_viewStyle="@style/SPButtonAccentView" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/disableCheck"
+            style="@style/CheckboxStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-            style="@style/CheckboxStyle"
             android:text="disable" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/wrapContentCheck"
+            style="@style/CheckboxStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-             android:text="wrap content" />
-
+            android:text="wrap content" />
 
     </LinearLayout>
 
-    <include layout="@layout/sp_layout_divider"/>
+    <include layout="@layout/sp_layout_divider" />
 
 </LinearLayout>

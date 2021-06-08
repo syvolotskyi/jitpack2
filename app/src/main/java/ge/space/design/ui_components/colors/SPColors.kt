@@ -9,7 +9,7 @@ typealias ColorRes = Pair<String, Int>
 
 object Colors {
 
-    val list: List<ColorRes> = R.color::class.members
+   val list: List<ColorRes> = R.color::class.members
         .filter { it is KProperty }
         .map { member ->
             val property = member as KProperty<Int>

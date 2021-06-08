@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
@@ -101,12 +102,32 @@ class SPButtonVertical @JvmOverloads constructor(
 
         styleAttrs.run {
             textColor = getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
+            updateTextColor(
+                getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
+            )
+
             text = getString(R.styleable.SPButton_android_text).orEmpty()
+            updateText(
+                getString(R.styleable.SPButton_android_text).orEmpty()
+            )
+
             fontFamilyId = getResourceId(
                 R.styleable.SPViewStyle_android_fontFamily,
                 R.font.myriad_geo_bold
             )
+            val fontFamilyId = getResourceId(
+                R.styleable.SPViewStyle_android_fontFamily,
+                R.font.myriad_geo_bold
+            )
+            if (!isInEditMode) {
+                val face = ResourcesCompat.getFont(context, fontFamilyId)
+                updateFontFace(face)
+            }
+
             textSize = getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
+            updateTextSize(
+                getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
+            )
 
             val iconPaddingInd = getInt(
                 R.styleable.SPViewStyle_sp_iconPadding, DEFAULT_ICON_PADDING

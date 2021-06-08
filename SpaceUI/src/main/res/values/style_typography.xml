@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <style name="Typography.Base.MyriadGEO.Regular" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/myriad_geo_regular</item>
     </style>
