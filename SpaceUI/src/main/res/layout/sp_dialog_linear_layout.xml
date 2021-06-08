@@ -15,9 +15,7 @@
         android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_alert_circle_24_regular"
-
-        tools:visibility="gone"/>
+        android:src="@drawable/ic_info_circle_24_regular" />
 
     <View
         android:id="@+id/vIconDivider"
@@ -75,8 +73,6 @@
     <ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
         android:id="@+id/lytButtons"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-
-        tools:visibility="gone"/>
+        android:layout_width="match_parent" />
 
 </LinearLayout>
