@@ -1,7 +1,6 @@
 package ge.space.ui.components.dialogs
 
 import androidx.fragment.app.FragmentActivity
-import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
 import ge.space.ui.components.dialogs.dialog_types.SPDialog
 import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
@@ -37,7 +36,8 @@ fun FragmentActivity.showMultipleButtonDialog(
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
 fun FragmentActivity.showEditTextDialog(
-    dialogInfo: SPEditTextDialogInfo, dismiss: () -> Unit = { }
+    dialogInfo: SPEditTextDialogInfo,
+    dismiss: () -> Unit = { }
 ) {
     buildEditTextDialog(dialogInfo.title, dialogInfo.buttonModels, dismiss)
         .show(supportFragmentManager, SPDialog::class.java.name)
@@ -50,7 +50,9 @@ fun FragmentActivity.showEditTextDialog(
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
 fun FragmentActivity.showQuestionnaireDialog(
-    dialogInfo: SPDialogInfo, dialogIcon: SPDialogIcon, dismiss: () -> Unit = { }
+    dialogInfo: SPDialogInfo,
+    dialogIcon: SPDialogIcon,
+    dismiss: () -> Unit = { }
 ) {
     buildInfoDialog(
         dialogInfo.title,
