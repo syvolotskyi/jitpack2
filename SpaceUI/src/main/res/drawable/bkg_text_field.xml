@@ -3,7 +3,7 @@
 
     <item android:state_enabled="false">
         <shape>
-            <stroke android:width="@dimen/dimen_p_1" android:color="#C0C0C0" />
+            <stroke android:width="@dimen/dimen_p_1" android:color="@color/light_separator_opaque" />
             <solid android:color="@color/white" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>
@@ -11,7 +11,7 @@
 
     <item android:state_focused="false">
         <shape>
-            <stroke android:width="@dimen/dimen_p_1" android:color="#C0C0C0" />
+            <stroke android:width="@dimen/dimen_p_1" android:color="@color/light_separator_opaque"  />
             <solid android:color="@color/white" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>

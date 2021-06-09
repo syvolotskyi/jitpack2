@@ -12,22 +12,7 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.widget.AppCompatEditText
 import ge.space.spaceui.R
 
-open class SPMaskedEditText : AppCompatEditText, TextWatcher {
-
-    var onActionListener =
-        OnEditorActionListener { _: TextView?, _: Int, _: KeyEvent? ->
-            return@OnEditorActionListener true
-        }
-        set(value) {
-            field = value
-            setOnEditorActionListener(onActionListener)
-        }
-
-    var mask: String = ""
-        set(value) {
-            field = value
-            cleanUp()
-        }
+open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     private var keepHint = true
     private var rawText: RawText = RawText()
@@ -45,6 +30,20 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
     private lateinit var rawToMask: IntArray
     private lateinit var maskToRaw: IntArray
 
+    var onActionListener =
+        OnEditorActionListener { _: TextView?, _: Int, _: KeyEvent? ->
+            return@OnEditorActionListener true
+        }
+        set(value) {
+            field = value
+            setOnEditorActionListener(onActionListener)
+        }
+
+    var mask: String = ""
+        set(value) {
+            field = value
+            cleanUp()
+        }
 
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) :
             super(context, attrs, defStyle) {
@@ -55,60 +54,6 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         init(context, attrs)
     }
 
-
-    /** @param listener - its onFocusChange() method will be called before performing MaskedEditText operations,
-     * related to this event.
-     */
-    override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
-        focusChangeListener = listener
-    }
-
-    private fun cleanUp() {
-        initialized = false
-        if (mask.isEmpty()) {
-            return
-        }
-        generatePositionArrays()
-        if (!isKeepingText) {
-            select = rawToMask[0]
-        }
-        editingBefore = true
-        editingOnChanged = true
-        editingAfter = true
-        if (hasHint() && rawText.length() == 0) {
-            this.setText(makeMaskedTextWithHint())
-        } else {
-            this.setText(makeMaskedText())
-        }
-        editingBefore = false
-        editingOnChanged = false
-        editingAfter = false
-        maxRawLength = maskToRaw[previousValidPosition(mask.length - 1)] + 1
-        lastValidMaskPosition = findLastValidMaskPosition()
-        initialized = true
-        super.setOnFocusChangeListener { v, hasFocus ->
-            if (focusChangeListener != null) {
-                focusChangeListener!!.onFocusChange(v, hasFocus)
-            }
-            if (hasFocus()) {
-                selectionChanged = false
-                this@SPMaskedEditText.setSelection(lastValidPosition())
-            }
-        }
-    }
-
-    private fun findLastValidMaskPosition(): Int {
-        for (i in maskToRaw.indices.reversed()) {
-            if (maskToRaw[i] != -1) return i
-        }
-        throw RuntimeException("Mask must contain at least one representation char")
-    }
-
-    private fun hasHint(): Boolean {
-        return hint != null
-    }
-
-
     fun setImeActionEnabled(isEnabled: Boolean) {
         if (isEnabled) {
             setOnEditorActionListener(onActionListener)
@@ -117,53 +62,11 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
         }
     }
 
-    /**
-     * Generates positions for values characters. For instance:
-     * Input data: mask = "+7(###)###-##-##
-     * After method execution:
-     * rawToMask = [3, 4, 5, 6, 8, 9, 11, 12, 14, 15]
-     * maskToRaw = [-1, -1, -1, 0, 1, 2, -1, 3, 4, 5, -1, 6, 7, -1, 8, 9]
-     * charsInMask = "+7()- " (and space, yes)
+    /** @param listener - its onFocusChange() method will be called before performing MaskedEditText operations,
+     * related to this event.
      */
-    private fun generatePositionArrays() {
-        val aux = IntArray(mask.length)
-        maskToRaw = IntArray(mask.length)
-        var charsInMaskAux = ""
-        var charIndex = 0
-        for (i in mask.indices) {
-            val currentChar = mask[i]
-            if (currentChar.toString() == CHAR_REPRESENTATION) {
-                aux[charIndex] = i
-                maskToRaw[i] = charIndex++
-            } else {
-                val charAsString = currentChar.toString()
-                if (!charsInMaskAux.contains(charAsString)) {
-                    charsInMaskAux += charAsString
-                }
-                maskToRaw[i] = -1
-            }
-        }
-        if (charsInMaskAux.indexOf(' ') < 0) {
-            charsInMaskAux += SPACE
-        }
-        charsInMaskAux.toCharArray()
-        rawToMask = IntArray(charIndex)
-        System.arraycopy(aux, 0, rawToMask, 0, charIndex)
-    }
-
-    private fun init(context: Context, attrs: AttributeSet?) {
-        val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.SPMaskedEditText, 0, 0)
-
-        ta.run {
-
-            mask = getString(R.styleable.SPMaskedEditText_sp_mask) ?: ""
-
-            recycle()
-        }
-
-        cleanUp()
-        addTextChangedListener(this)
+    override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
+        focusChangeListener = listener
     }
 
     override fun beforeTextChanged(
@@ -181,20 +84,12 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
             }
             val range = calculateRange(rangeStart, start + count)
             if (range.start != -1) {
-                rawText.subtractFromString(range)
+                rawText.replaceRange(range)
             }
             if (count > 0) {
                 select = previousValidPosition(start)
             }
         }
-    }
-
-    private fun erasingStart(position: Int): Int {
-        var start = position
-        while (start > 0 && maskToRaw[start] == -1) {
-            start--
-        }
-        return start
     }
 
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -265,6 +160,106 @@ open class SPMaskedEditText : AppCompatEditText, TextWatcher {
             }
         }
         super.onSelectionChanged(selStart, selEnd)
+    }
+
+    private fun cleanUp() {
+        initialized = false
+        if (mask.isEmpty()) {
+            return
+        }
+        generatePositionArrays()
+        if (!isKeepingText) {
+            select = rawToMask[0]
+        }
+        editingBefore = true
+        editingOnChanged = true
+        editingAfter = true
+        if (hasHint() && rawText.length() == 0) {
+            this.setText(makeMaskedTextWithHint())
+        } else {
+            this.setText(makeMaskedText())
+        }
+        editingBefore = false
+        editingOnChanged = false
+        editingAfter = false
+        maxRawLength = maskToRaw[previousValidPosition(mask.length - 1)] + 1
+        lastValidMaskPosition = findLastValidMaskPosition()
+        initialized = true
+        super.setOnFocusChangeListener { v, hasFocus ->
+            if (focusChangeListener != null) {
+                focusChangeListener!!.onFocusChange(v, hasFocus)
+            }
+            if (hasFocus()) {
+                selectionChanged = false
+                this@SPEditTextMasked.setSelection(lastValidPosition())
+            }
+        }
+    }
+
+    private fun findLastValidMaskPosition(): Int {
+        for (i in maskToRaw.indices.reversed()) {
+            if (maskToRaw[i] != -1) return i
+        }
+        throw RuntimeException("Mask must contain at least one representation char")
+    }
+
+    private fun hasHint(): Boolean = hint != null
+
+    /**
+     * Generates positions for values characters. For instance:
+     * Input data: mask = "+7(###)###-##-##
+     * After method execution:
+     * rawToMask = [3, 4, 5, 6, 8, 9, 11, 12, 14, 15]
+     * maskToRaw = [-1, -1, -1, 0, 1, 2, -1, 3, 4, 5, -1, 6, 7, -1, 8, 9]
+     * charsInMask = "+7()- " (and space, yes)
+     */
+    private fun generatePositionArrays() {
+        val aux = IntArray(mask.length)
+        maskToRaw = IntArray(mask.length)
+        var charsInMaskAux = ""
+        var charIndex = 0
+        for (i in mask.indices) {
+            val currentChar = mask[i]
+            if (currentChar.toString() == CHAR_REPRESENTATION) {
+                aux[charIndex] = i
+                maskToRaw[i] = charIndex++
+            } else {
+                val charAsString = currentChar.toString()
+                if (!charsInMaskAux.contains(charAsString)) {
+                    charsInMaskAux += charAsString
+                }
+                maskToRaw[i] = -1
+            }
+        }
+        if (charsInMaskAux.indexOf(' ') < 0) {
+            charsInMaskAux += SPACE
+        }
+        charsInMaskAux.toCharArray()
+        rawToMask = IntArray(charIndex)
+        System.arraycopy(aux, 0, rawToMask, 0, charIndex)
+    }
+
+    private fun init(context: Context, attrs: AttributeSet?) {
+        val ta =
+            context.obtainStyledAttributes(attrs, R.styleable.SPEditTextMasked, 0, 0)
+
+        ta.run {
+
+            mask = getString(R.styleable.SPEditTextMasked_sp_mask) ?: ""
+
+            recycle()
+        }
+
+        cleanUp()
+        addTextChangedListener(this)
+    }
+
+    private fun erasingStart(position: Int): Int {
+        var start = position
+        while (start > 0 && maskToRaw[start] == -1) {
+            start--
+        }
+        return start
     }
 
     private fun fixSelection(selection: Int): Int {

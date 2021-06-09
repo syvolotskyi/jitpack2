@@ -29,7 +29,6 @@ class SPPhoneComponent : SPShowCaseComponent {
             with(binding) {
                 setupPhoneInputTextWithDone(phoneInput, environmentSP.context)
                 setupPhoneInputTextWithDone(phoneInputSecond, environmentSP.context)
-
             }
 
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->

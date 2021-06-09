@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
@@ -20,7 +21,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property descText [String] value which sets a description text.
  * @property maxLength [Int] value which applies a max Length.
  */
-open class SPBaseTextField @JvmOverloads constructor(
+abstract class SPTextFieldBaseView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -81,18 +82,19 @@ open class SPBaseTextField @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseTextView,
+            R.styleable.SPTextViewBase,
             defStyleAttr
         ) {
-            getString(R.styleable.SPBaseTextView_sp_titleText).orEmpty().handleAttributeAction(
+            getString(R.styleable.SPTextViewBase_sp_titleText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 labelText = it
             }
 
-            binding.etInputField.imeOptions = getResourceId(R.styleable.SPBaseTextView_android_imeOptions,0)
-
-            getString(R.styleable.SPBaseTextView_sp_descText).orEmpty().handleAttributeAction(
+          val index =  getInt(R.styleable.SPTextViewBase_android_imeOptions,0)
+            Toast.makeText(context,index.toString(), Toast.LENGTH_SHORT ).show()
+            binding.etInputField.imeOptions = index
+                getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 descText = it

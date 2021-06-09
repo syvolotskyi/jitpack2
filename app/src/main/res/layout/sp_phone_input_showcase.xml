@@ -37,7 +37,7 @@
         android:fitsSystemWindows="false"
         android:hint="Input label title"
         android:inputType="textVisiblePassword"
-        android:padding="10dp"
+        android:padding="@dimen/dimen_p_10"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

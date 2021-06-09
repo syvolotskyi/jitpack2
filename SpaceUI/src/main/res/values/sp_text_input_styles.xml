@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPMaskedEditText" parent="@style/Typography.Base.MyriadGEO.Bold">
+    <style name="SPEditTextMasked" parent="@style/Typography.Base.MyriadGEO.Bold">
         <item name="android:textColorHint">@color/textInputHintColor</item>
         <item name="android:textColor">@color/appPrimaryColor</item>
         <item name="android:hint">XXXXXXXXX</item>

@@ -15,32 +15,32 @@
         android:layout_marginEnd="@dimen/dimen_p_8"
         android:ellipsize="end"
         android:maxLines="1"
+        android:layout_marginBottom="@dimen/dimen_p_8"
         android:textColor="@color/titleLabelTextColor"
         android:textSize="@dimen/dimen_sp_14"
         tools:text="First label" />
 
-    <ge.space.ui.components.text_fields.utils.SPMaskedEditText
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/dimen_p_8"
+    <ge.space.ui.components.text_fields.utils.SPEditTextMasked
         android:id="@+id/etInputField"
-        android:paddingStart="@dimen/dimen_p_16"
-        android:paddingEnd="@dimen/dimen_p_16"
-        android:paddingTop="@dimen/dimen_p_8"
-        android:textSize="@dimen/dimen_sp_16"
-        android:paddingBottom="@dimen/dimen_p_8"
-        android:inputType="number"
-        android:gravity="start|center_vertical"
-        style="@style/SPMaskedEditText"
+        style="@style/SPEditTextMasked"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_p_38"
         android:background="@drawable/bkg_text_field"
-        android:layout_height="@dimen/dimen_p_38"/>
+        android:gravity="start|center_vertical"
+        android:inputType="number"
+        android:paddingStart="@dimen/dimen_p_16"
+        android:paddingTop="@dimen/dimen_p_8"
+        android:paddingEnd="@dimen/dimen_p_16"
+        android:paddingBottom="@dimen/dimen_p_8"
+        android:textSize="@dimen/dimen_sp_16" />
 
     <TextView
         android:id="@+id/textDesc"
         style="@style/h800_medium"
         android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/dimen_p_8"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:layout_marginTop="@dimen/dimen_p_8"
         android:layout_marginEnd="@dimen/dimen_p_8"
         android:ellipsize="end"
         android:maxLines="1"
