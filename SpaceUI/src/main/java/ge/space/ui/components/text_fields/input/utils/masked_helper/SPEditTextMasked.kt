@@ -84,7 +84,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
             }
             val range = calculateRange(rangeStart, start + count)
             if (range.start != -1) {
-                rawText.text = rawText.text.replaceRange(range.start, range.end, "")
+                rawText.text = rawText.text.removeRange(range.start, range.end)
             }
             if (count > 0) {
                 select = previousValidPosition(start)
