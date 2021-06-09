@@ -2,6 +2,7 @@ package ge.space.design.ui_components.text_fields.phone
 
 import android.content.Context
 import android.view.KeyEvent
+import androidx.core.widget.doOnTextChanged
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
@@ -27,7 +28,7 @@ class SPPhoneComponent : SPShowCaseComponent {
                 setupPhoneInputTextWithDone(phoneInputSecond, environmentSP.context)
             }
 
-            binding.labelTextInput.doOnTextChanged { text, start, before, count ->
+            binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.phoneInput.labelText = text.toString()
                 binding.phoneInputSecond.labelText = text.toString()
             }
