@@ -91,9 +91,9 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
                 labelText = it
             }
 
-          val index =  getInt(R.styleable.SPTextViewBase_android_imeOptions,0)
+            val index = getInt(R.styleable.SPTextViewBase_android_imeOptions, 0)
             binding.etInputField.imeOptions = index
-                getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
+            getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 descText = it
