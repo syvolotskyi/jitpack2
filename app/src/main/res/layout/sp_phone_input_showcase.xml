@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ge.space.ui.components.text_fields.phone.SPPhoneInput
+    <ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
         android:id="@+id/phoneInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:sp_titleText="Input phone number" />
 
 
-    <ge.space.ui.components.text_fields.phone.SPPhoneInput
+    <ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
         android:id="@+id/phoneInputSecond"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

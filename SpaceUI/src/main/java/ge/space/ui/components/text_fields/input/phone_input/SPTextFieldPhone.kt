@@ -1,18 +1,18 @@
-package ge.space.ui.components.text_fields.phone
+package ge.space.ui.components.text_fields.input.phone_input
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
-import ge.space.ui.components.text_fields.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
 /**
  * Field view extended from [SPTextFieldBaseView] that allows
- * to change EditorAction and sets the masl.
+ * to change EditorAction and sets the mask.
  *
  */
-class SPPhoneInput @JvmOverloads constructor(
+class SPTextFieldPhone @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0

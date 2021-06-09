@@ -20,7 +20,7 @@
         android:textSize="@dimen/dimen_sp_14"
         tools:text="First label" />
 
-    <ge.space.ui.components.text_fields.utils.SPEditTextMasked
+    <ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked
         android:id="@+id/etInputField"
         style="@style/SPEditTextMasked"
         android:layout_width="match_parent"

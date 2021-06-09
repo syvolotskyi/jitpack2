@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.utils
+package ge.space.ui.components.text_fields.input.utils.masked_helper
 
 
 class RawText (var text: String = "")
@@ -42,7 +42,7 @@ fun RawText.addToString(newStr: String, start: Int, maxLength: Int): Int {
  * text = 012345678, range = 123 =&gt; text = 0456789
  * @param range given range
  */
-fun RawText.replaceRange(range: Range) {
+fun RawText.subtractFromString(range: Range) {
     var firstPart = ""
     var lastPart = ""
     if (range.start > 0 && range.start <= text.length) {

@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.utils
+package ge.space.ui.components.text_fields.input.utils.masked_helper
 
 import android.content.Context
 import android.text.Editable
@@ -84,7 +84,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
             }
             val range = calculateRange(rangeStart, start + count)
             if (range.start != -1) {
-                rawText.replaceRange(range)
+                rawText.subtractFromString(range)
             }
             if (count > 0) {
                 select = previousValidPosition(start)

@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.base
+package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.text.InputFilter

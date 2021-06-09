@@ -5,16 +5,12 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpPasswordShowCaseBinding
 import com.example.spacedesignsystem.databinding.SpPhoneInputShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.text_fields.phone.SPPhoneInput
-import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
-import ge.space.ui.components.text_fields.pin.SPPinEntryView
+import ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
 
 class SPPhoneComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.phone_input
@@ -38,7 +34,7 @@ class SPPhoneComponent : SPShowCaseComponent {
             return binding.root
         }
 
-        private fun setupPhoneInputTextWithDone(phoneInput: SPPhoneInput, context: Context) {
+        private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldPhone, context: Context) {
             phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
             { _: TextView?, actionId: Int, event: KeyEvent? ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH
