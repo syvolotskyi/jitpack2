@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPEditTextMasked">
+        <attr name="sp_mask" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="SPTextViewBase">
+        <attr name="android:text" format="string|reference" />
+        <attr name="android:maxLength" format="integer" />
+        <attr name="sp_titleText" format="string|reference" />
+        <attr name="sp_descText" format="string|reference" />
+        <attr name="android:imeOptions" format="reference" />
+    </declare-styleable>
+
+</resources>
