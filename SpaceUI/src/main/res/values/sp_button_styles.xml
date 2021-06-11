@@ -6,10 +6,6 @@
         <item name="sp_shadowOffsetY">@dimen/dimen_p_4</item>
         <item name="sp_shadowAlpha">10%</item>
         <item name="sp_shadowRadius">@dimen/dimen_p_10</item>
-        <item name="android:textColor">?attr/static_white</item>
-        <item name="android:textSize">@dimen/dimen_sp_14</item>
-        <item name="android:fontFamily">@font/myriad_geo_bold</item>
-        <item name="android:textAppearance">@style/h600_medium</item>
         <item name="sp_directionArrow">none</item>
     </style>
 
@@ -17,12 +13,13 @@
         <item name="sp_shadowOffsetX">0dp</item>
         <item name="sp_shadowOffsetY">@dimen/dimen_p_8</item>
         <item name="sp_shadowAlpha">15%</item>
+        <item name="android:textAppearance">@style/h400_medium</item>
         <item name="sp_backgroundColor">?attr/colorAccent</item>
         <item name="sp_isCircle">true</item>
     </style>
 
     <style name="SPButtonWhiteView" parent="SPButtonBaseView">
-        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>
     </style>
 
     <style name="SPButtonWhiteWithLeftArrow" parent="SPButtonWhiteView">
@@ -35,6 +32,7 @@
 
     <style name="SPButtonAccentView" parent="SPButtonBaseView">
         <item name="sp_backgroundColor">?attr/colorAccent</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_primary_white</item>
     </style>
 
     <style name="SPButtonAccentWithLeftArrow" parent="SPButtonAccentView">
@@ -47,6 +45,7 @@
 
     <style name="SPButtonDarkView" parent="SPButtonBaseView">
         <item name="sp_backgroundColor">?attr/static_black</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_primary_white</item>
     </style>
 
     <style name="SPButtonDarkWithLeftArrow" parent="SPButtonDarkView">
@@ -63,7 +62,7 @@
         <item name="sp_shadowAlpha">100%</item>
         <item name="sp_backgroundColor">@color/transparent</item>
         <item name="sp_shadowRadius">0dp</item>
-        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>
     </style>
 
     <style name="SPButtonTransparentWithLeftArrow" parent="SPButtonTransparentView">

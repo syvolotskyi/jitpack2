@@ -101,33 +101,7 @@ class SPButtonVertical @JvmOverloads constructor(
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
         styleAttrs.run {
-            textColor = getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
-            updateTextColor(
-                getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
-            )
 
-            text = getString(R.styleable.SPButton_android_text).orEmpty()
-            updateText(
-                getString(R.styleable.SPButton_android_text).orEmpty()
-            )
-
-            fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            val fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            if (!isInEditMode) {
-                val face = ResourcesCompat.getFont(context, fontFamilyId)
-                updateFontFace(face)
-            }
-
-            textSize = getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
-            updateTextSize(
-                getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
-            )
 
             val iconPaddingInd = getInt(
                 R.styleable.SPViewStyle_sp_iconPadding, DEFAULT_ICON_PADDING
@@ -138,21 +112,14 @@ class SPButtonVertical @JvmOverloads constructor(
         }
     }
 
-    override fun updateFontFace(face: Typeface?) {
-        binding.buttonLabel.typeface = face
-    }
+
 
     override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
-    override fun updateTextColor(color: Int) {
-        binding.buttonLabel.setTextColor(textColor)
-    }
 
-    override fun updateTextSize(textSize: Float) {
-        binding.buttonLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-    }
+
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
@@ -187,5 +154,9 @@ class SPButtonVertical @JvmOverloads constructor(
     companion object {
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ICON_PADDING = 0
+    }
+
+    override fun updateTextAppearance(textAppearance: Int) {
+        TODO("Not yet implemented")
     }
 }

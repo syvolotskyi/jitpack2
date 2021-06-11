@@ -62,23 +62,13 @@ class SPButtonHorizontal @JvmOverloads constructor(
     override fun getViewBinding(): SpButtonHorizontalLayoutBinding =
             SpButtonHorizontalLayoutBinding.inflate(LayoutInflater.from(context), this)
 
-    override fun updateTextColor(color: Int) {
-        binding.buttonLabel.setTextColor(color)
-    }
 
-    override fun updateFontFace(face: Typeface?) {
-        binding.buttonLabel.typeface = face
-    }
 
     override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
-    override fun updateTextSize(textSize: Float) {
-        binding.buttonLabel.setTextSize(
-            TypedValue.COMPLEX_UNIT_PX, textSize
-        )
-    }
+
 
     /**
      * Sets a style for the SPButton view.
@@ -94,11 +84,6 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
         styleAttrs.run {
             text = getString(R.styleable.SPButton_android_text).orEmpty()
-            fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            textSize = getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
 
             recycle()
         }
@@ -106,5 +91,9 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
     companion object {
         private const val FLOAT_ZERO = 0f
+    }
+
+    override fun updateTextAppearance(textAppearance: Int) {
+        TODO("Not yet implemented")
     }
 }

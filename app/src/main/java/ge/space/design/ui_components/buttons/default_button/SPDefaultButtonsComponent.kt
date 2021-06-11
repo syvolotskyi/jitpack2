@@ -15,17 +15,13 @@ import ge.space.spaceui.databinding.SpButtonLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 
-class SPDefaultButtonsComponentSP : SPShowCaseComponent {
+class SPDefaultButtonsComponent : SPShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.default_buttons
 
     override fun getDescriptionResId(): Int = R.string.default_button_description
 
     override fun getComponentClass(): Class<*>? = FactorySP::class.java
-
-    override fun getIconResId(): Int {
-        return R.drawable.ic_launcher_foreground
-    }
 
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
@@ -56,6 +52,7 @@ class SPDefaultButtonsComponentSP : SPShowCaseComponent {
                 buttons.add(itemBinding.button)
 
                 itemBinding.button.setOnClickListener {
+                    itemBinding.button.updateTextAppearance(R.style.label_primary)
                     Toast.makeText(environmentSP.context, "Clicked", Toast.LENGTH_SHORT).show()
                 }
 

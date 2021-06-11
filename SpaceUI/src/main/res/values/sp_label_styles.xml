@@ -21,4 +21,12 @@
         <item name="android:textColor">?attr/label_quaternary</item>
     </style>
 
+    <style name="h700_bold_caps_primary_white" parent="h700_bold_caps">
+        <item name="android:textColor">@color/static_primary_white</item>
+    </style>
+
+    <style name="h700_bold_caps_brand_primary" parent="h700_bold_caps">
+        <item name="android:textColor">@color/appPrimaryColor</item>
+    </style>
+
 </resources>

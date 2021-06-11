@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPButton">
+        <attr name="android:textAppearance"/>
         <attr name="android:text" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="SPButtonVertical">
+        <attr name="android:textAppearance"/>
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
         <attr name="android:enabled" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="SPButtonHorizontal">
+        <attr name="android:textAppearance"/>
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
     </declare-styleable>

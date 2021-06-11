@@ -3,5 +3,6 @@
     <style name="CheckboxStyle">
         <item name="buttonTint">?attr/themeCheckBoxButtonTint</item>
         <item name="android:textColor">?attr/themeTextColor</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
     </style>
 </resources>
