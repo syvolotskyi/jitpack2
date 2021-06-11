@@ -87,19 +87,17 @@ class SPButton @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val textAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPButton)
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
-        val directionArrowInd =
-            styleAttrs.getInt(R.styleable.SPViewStyle_sp_directionArrow, DEFAULT_OBTAIN_VAL)
-        val textAppearance =
-            textAttrs.getResourceId(R.styleable.SPButton_android_textAppearance, DEFAULT_OBTAIN_VAL)
+        styleAttrs.run {
+            val directionArrowInd = styleAttrs.getInt(R.styleable.SPViewStyle_sp_directionArrow, DEFAULT_OBTAIN_VAL)
+            val textAppearance = getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL)
 
-        directionArrow = ArrowDirection.values()[directionArrowInd]
-        updateTextAppearance(textAppearance)
+            directionArrow = ArrowDirection.values()[directionArrowInd]
+            updateTextAppearance(textAppearance)
 
-        textAttrs.recycle()
-        styleAttrs.recycle()
+            recycle()
+        }
     }
 
     override fun updateTextAppearance(textAppearance: Int) {

@@ -13,6 +13,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
@@ -97,33 +98,31 @@ class SPButtonVertical @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
      override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
         styleAttrs.run {
-
-
+            val textAppearance = getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL)
             val iconPaddingInd = getInt(
                 R.styleable.SPViewStyle_sp_iconPadding, DEFAULT_ICON_PADDING
             )
             iconPadding = IconPadding.values()[iconPaddingInd]
-
+            updateTextAppearance(textAppearance)
             recycle()
         }
+
     }
-
-
 
     override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
-
-
-
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
+    }
+
+    override fun updateTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
     }
 
     private fun handleDirectionArrow() {
@@ -154,9 +153,5 @@ class SPButtonVertical @JvmOverloads constructor(
     companion object {
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ICON_PADDING = 0
-    }
-
-    override fun updateTextAppearance(textAppearance: Int) {
-        TODO("Not yet implemented")
     }
 }

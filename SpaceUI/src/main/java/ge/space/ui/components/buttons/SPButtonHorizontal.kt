@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
@@ -23,6 +24,12 @@ class SPButtonHorizontal @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
+
+    /**
+     * Inflates and returns [SpButtonHorizontalLayoutBinding] value
+     */
+    override fun getViewBinding(): SpButtonHorizontalLayoutBinding =
+        SpButtonHorizontalLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     /**
      * Sets a image resource
@@ -57,20 +64,6 @@ class SPButtonHorizontal @JvmOverloads constructor(
     }
 
     /**
-     * Inflates and returns [SpButtonHorizontalLayoutBinding] value
-     */
-    override fun getViewBinding(): SpButtonHorizontalLayoutBinding =
-            SpButtonHorizontalLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-
-
-    override fun updateText(text: String) {
-        binding.buttonLabel.text = text
-    }
-
-
-
-    /**
      * Sets a style for the SPButton view.
      *
      * <p>
@@ -84,16 +77,17 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
         styleAttrs.run {
             text = getString(R.styleable.SPButton_android_text).orEmpty()
-
+            updateTextAppearance(getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL))
             recycle()
         }
     }
 
-    companion object {
-        private const val FLOAT_ZERO = 0f
+    override fun updateText(text: String) {
+        binding.buttonLabel.text = text
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
-        TODO("Not yet implemented")
+        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
     }
+
 }

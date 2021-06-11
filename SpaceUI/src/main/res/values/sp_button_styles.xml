@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="SPButtonBaseView" parent="SPBaseView">
         <item name="sp_roundedCorners">@dimen/dimen_p_10</item>
         <item name="sp_shadowOffsetX">0dp</item>
@@ -13,9 +14,9 @@
         <item name="sp_shadowOffsetX">0dp</item>
         <item name="sp_shadowOffsetY">@dimen/dimen_p_8</item>
         <item name="sp_shadowAlpha">15%</item>
-        <item name="android:textAppearance">@style/h400_medium</item>
         <item name="sp_backgroundColor">?attr/colorAccent</item>
         <item name="sp_isCircle">true</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
     </style>
 
     <style name="SPButtonWhiteView" parent="SPButtonBaseView">
@@ -73,7 +74,7 @@
         <item name="sp_directionArrow">right</item>
     </style>
 
-    <style name="SPButtonBaseVertical" parent="SPBaseView" >
+    <style name="SPButtonBaseVertical" parent="SPBaseView">
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_medium</item>
@@ -81,13 +82,14 @@
         <item name="sp_backgroundColor">@color/transparent</item>
         <item name="sp_shadowRadius">0dp</item>
         <item name="sp_iconPadding">normal</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
     </style>
 
-    <style name="SPButtonLargeVertical" parent="SPButtonBaseVertical" >
+    <style name="SPButtonLargeVertical" parent="SPButtonBaseVertical">
         <item name="sp_iconPadding">large</item>
     </style>
 
-    <style name="SPButtonBaseHorizontal" parent="SPBaseView" >
+    <style name="SPButtonBaseHorizontal" parent="SPBaseView">
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_bold</item>
@@ -96,6 +98,7 @@
         <item name="sp_backgroundColor">@color/white</item>
         <item name="sp_shadowRadius">@dimen/dimen_p_10</item>
         <item name="sp_roundedCorners">@dimen/dimen_p_10</item>
+        <item name="android:textAppearance">@style/h700_bold_secondary</item>
     </style>
 
     <style name="SPButtonView" parent="SPButtonBaseView">

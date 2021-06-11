@@ -29,4 +29,11 @@
         <item name="android:textColor">@color/appPrimaryColor</item>
     </style>
 
+    <style name="h700_bold_caps_secondary" parent="h700_medium">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
+    <style name="h700_bold_secondary" parent="h700_bold">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
 </resources>
