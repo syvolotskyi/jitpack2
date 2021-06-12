@@ -1,9 +1,7 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
@@ -45,21 +43,21 @@ class SPButtonHorizontal @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.sp_base_view,
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButtonHorizontal,
+            R.styleable.sp_button_horizontal,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
-            text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
+            src = getResourceId(R.styleable.sp_button_horizontal_android_src, 0)
+            text = getString(R.styleable.sp_button_horizontal_android_text).orEmpty()
         }
     }
 
@@ -73,11 +71,11 @@ class SPButtonHorizontal @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
-            text = getString(R.styleable.SPButton_android_text).orEmpty()
-            updateTextAppearance(getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL))
+            text = getString(R.styleable.sp_button_android_text).orEmpty()
+            updateTextAppearance(getResourceId(R.styleable.sp_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL))
             recycle()
         }
     }

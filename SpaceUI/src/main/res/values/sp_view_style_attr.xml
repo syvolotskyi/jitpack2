@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="sp_backgroundColor" format="color|reference" />
-    <attr name="sp_shadowAlpha" format="fraction" />
-    <attr name="sp_shadowColor" format="color|reference" />
-    <attr name="sp_shadowRadius" format="dimension|reference" />
-    <attr name="sp_topLeftCornerRadius" format="dimension|reference" />
-    <attr name="sp_topRightCornerRadius" format="dimension|reference" />
-    <attr name="sp_bottomRightCornerRadius" format="dimension|reference" />
-    <attr name="sp_bottomLeftCornerRadius" format="dimension|reference" />
-    <attr name="sp_roundedCorners" format="dimension|reference" />
-    <attr name="sp_shadowOffsetX" format="dimension|reference" />
-    <attr name="sp_shadowOffsetY" format="dimension|reference" />
-    <attr name="sp_isCircle" format="boolean" />
+    <attr name="backgroundColor" format="color|reference" />
+    <attr name="shadowAlpha" format="fraction" />
+    <attr name="shadowColor" format="color|reference" />
+    <attr name="shadowRadius" format="dimension|reference" />
+    <attr name="topLeftCornerRadius" format="dimension|reference" />
+    <attr name="topRightCornerRadius" format="dimension|reference" />
+    <attr name="bottomRightCornerRadius" format="dimension|reference" />
+    <attr name="bottomLeftCornerRadius" format="dimension|reference" />
+    <attr name="roundedCorners" format="dimension|reference" />
+    <attr name="shadowOffsetX" format="dimension|reference" />
+    <attr name="shadowOffsetY" format="dimension|reference" />
+    <attr name="isCircle" format="boolean" />
 
-    <attr name="sp_directionArrow" format="enum">
+    <attr name="directionArrow" format="enum">
         <enum name="none" value="0" />
         <enum name="left" value="1" />
         <enum name="right" value="2" />
     </attr>
 
-    <attr name="sp_iconPadding" format="enum">
+    <attr name="btnIconPadding" format="enum">
         <enum name="normal" value="0" />
         <enum name="large" value="1" />
     </attr>
 
-    <declare-styleable name="SPViewStyle">
-        <attr name="sp_backgroundColor" />
-        <attr name="sp_shadowAlpha" />
-        <attr name="sp_shadowColor" />
-        <attr name="sp_shadowRadius" />
-        <attr name="sp_topLeftCornerRadius" />
-        <attr name="sp_topRightCornerRadius" />
-        <attr name="sp_bottomRightCornerRadius" />
-        <attr name="sp_bottomLeftCornerRadius" />
-        <attr name="sp_roundedCorners" />
-        <attr name="sp_shadowOffsetX" />
-        <attr name="sp_shadowOffsetY" />
-        <attr name="sp_isCircle" />
+    <declare-styleable name="sp_view_style">
+        <attr name="backgroundColor" />
+        <attr name="shadowAlpha" />
+        <attr name="shadowColor" />
+        <attr name="shadowRadius" />
+        <attr name="topLeftCornerRadius" />
+        <attr name="topRightCornerRadius" />
+        <attr name="bottomRightCornerRadius" />
+        <attr name="bottomLeftCornerRadius" />
+        <attr name="roundedCorners" />
+        <attr name="shadowOffsetX" />
+        <attr name="shadowOffsetY" />
+        <attr name="isCircle" />
 
-        <attr name="sp_directionArrow" />
-        <attr name="sp_iconPadding" />
+        <attr name="directionArrow" />
+        <attr name="btnIconPadding" />
         <attr name="android:textAppearance"/>
     </declare-styleable>
 
-    <declare-styleable name="SPBaseView">
-        <attr name="sp_viewStyle" format="reference" />
+    <declare-styleable name="sp_base_view">
+        <attr name="style" format="reference" />
     </declare-styleable>
 
 </resources>

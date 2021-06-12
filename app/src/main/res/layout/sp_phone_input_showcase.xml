@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_titleText="Input phone number" />
+        app:titleText="Input phone number" />
 
 
     <ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneInput"
-        app:sp_titleText="Input phone number" />
+        app:titleText="Input phone number" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/labelTextInput"

@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:src="@drawable/ic_bell_24_regular"
-        app:sp_viewStyle="@style/SPButtonLargeVertical"
+        app:style="@style/SPButton.VerticalLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center_horizontal" />
@@ -38,7 +38,7 @@
         <CheckBox
             android:id="@+id/disableCheck"
             android:layout_width="wrap_content"
-            style="@style/CheckboxStyle"
+            style="@style/SPCheckbox.DefaultStyle"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="disable" />

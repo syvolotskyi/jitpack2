@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPDialogFrameLayout" parent="SPBaseView">
-        <item name="sp_roundedCorners">@dimen/sp_dialog_layout_corners_radius</item>
-        <item name="sp_backgroundColor">?attr/background_tertiary</item>
-        <item name="sp_shadowRadius">0dp</item>
+    <style name="SPDialog.FrameLayout" parent="SPBaseView">
+        <item name="roundedCorners">@dimen/sp_dialog_layout_corners_radius</item>
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="shadowRadius">0dp</item>
     </style>
 
-    <style name="SPDialogBaseView" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="SPDialog.BaseView" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">@color/loading_transparent_black_half</item>
-    </style>
-
-    <style name="SPDialogBaseInfoImage">
-        <item name="tint">?attr/colorAccent</item>
     </style>
 
 </resources>
