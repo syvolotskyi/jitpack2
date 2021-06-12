@@ -18,12 +18,4 @@
         <item name="tint">?attr/colorAccent</item>
     </style>
 
-    <style name="SPDialogTitle" parent="h600_medium_caps">
-        <item name="android:textColor">?attr/themeTextColor</item>
-    </style>
-
-    <style name="SPDialogLabel" parent="h700_medium">
-        <item name="android:textColor">?attr/label_secondary</item>
-    </style>
-
 </resources>
