@@ -52,7 +52,6 @@ class SPDefaultButtonsComponent : SPShowCaseComponent {
                 buttons.add(itemBinding.button)
 
                 itemBinding.button.setOnClickListener {
-                    itemBinding.button.updateTextAppearance(R.style.label_primary)
                     Toast.makeText(environmentSP.context, "Clicked", Toast.LENGTH_SHORT).show()
                 }
 
