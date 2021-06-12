@@ -43,11 +43,11 @@ class SPButtonHorizontal @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.sp_base_view,
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_BaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
             )
         }
 
@@ -71,11 +71,11 @@ class SPButtonHorizontal @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
             text = getString(R.styleable.sp_button_android_text).orEmpty()
-            updateTextAppearance(getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL))
+            updateTextAppearance(getResourceId(R.styleable.sp_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL))
             recycle()
         }
     }

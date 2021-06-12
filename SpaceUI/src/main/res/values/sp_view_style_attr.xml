@@ -24,7 +24,7 @@
         <enum name="large" value="1" />
     </attr>
 
-    <declare-styleable name="SPViewStyle">
+    <declare-styleable name="sp_view_style">
         <attr name="backgroundColor" />
         <attr name="shadowAlpha" />
         <attr name="shadowColor" />
@@ -43,7 +43,7 @@
         <attr name="android:textAppearance"/>
     </declare-styleable>
 
-    <declare-styleable name="SPBaseView">
+    <declare-styleable name="sp_base_view">
         <attr name="style" format="reference" />
     </declare-styleable>
 

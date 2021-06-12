@@ -15,7 +15,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="start"
-        app:style="@style/SPCircleShape"
+        app:style="@style/SPView.CircleShape"
         android:layout_margin="@dimen/dimen_p_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
