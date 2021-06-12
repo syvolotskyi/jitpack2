@@ -119,9 +119,9 @@ class SPPinEntryEditText : AppCompatEditText {
             isDisableCopyPaste =
                 getBoolean(R.styleable.sp_pin_entry_editText_disableCopyPaste, false)
             pinBackground = if (pinType == Password) {
-                ContextCompat.getDrawable(context, R.drawable.bkg_pin_circle)
+                ContextCompat.getDrawable(context, R.drawable.bg_pin_circle)
             } else {
-                ContextCompat.getDrawable(context, R.drawable.bkg_pin_number)
+                ContextCompat.getDrawable(context, R.drawable.bg_pin_number)
             }
 
             recycle()
@@ -161,9 +161,9 @@ class SPPinEntryEditText : AppCompatEditText {
                 )
             )
             pinBackground = if (pinType == Password) {
-                ContextCompat.getDrawable(context, R.drawable.bkg_pin_circle)
+                ContextCompat.getDrawable(context, R.drawable.bg_pin_circle)
             } else {
-                ContextCompat.getDrawable(context, R.drawable.bkg_pin_number)
+                ContextCompat.getDrawable(context, R.drawable.bg_pin_number)
             }
             recycle()
         }
@@ -235,7 +235,7 @@ class SPPinEntryEditText : AppCompatEditText {
     }
 
     private fun handleOTPInputState() {
-        setBackgroundResource(R.drawable.bkg_otp_code_shape)
+        setBackgroundResource(R.drawable.bg_otp_code_shape)
         setPadding(
             resources.getDimensionPixelSize(R.dimen.dimen_p_16),
             0,

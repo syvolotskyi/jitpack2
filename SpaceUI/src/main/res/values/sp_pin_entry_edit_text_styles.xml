@@ -14,7 +14,7 @@
     </style>
 
     <style name="SPPinEntryOTPCode" parent="SPPinEntryEditText">
-        <item name="android:background">@drawable/bkg_otp_code_shape</item>
+        <item name="android:background">@drawable/bg_otp_code_shape</item>
         <item name="paddingStart">@dimen/dimen_p_24</item>
         <item name="paddingEnd">@dimen/dimen_p_24</item>
         <item name="android:textColor">@color/appPrimaryColor</item>
