@@ -55,16 +55,16 @@ class SPButton @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
+                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_BaseView)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButton,
+            R.styleable.sp_button,
             defStyleAttr
         ) {
-            getString(R.styleable.SPButton_android_text).orEmpty()
+            getString(R.styleable.sp_button_android_text).orEmpty()
                 .handleAttributeAction(EMPTY_TEXT) {
                     text = it
                 }
@@ -90,7 +90,7 @@ class SPButton @JvmOverloads constructor(
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
         styleAttrs.run {
-            val directionArrowInd = styleAttrs.getInt(R.styleable.SPViewStyle_sp_directionArrow, DEFAULT_OBTAIN_VAL)
+            val directionArrowInd = styleAttrs.getInt(R.styleable.SPViewStyle_directionArrow, DEFAULT_OBTAIN_VAL)
             val textAppearance = getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL)
 
             directionArrow = ArrowDirection.values()[directionArrowInd]

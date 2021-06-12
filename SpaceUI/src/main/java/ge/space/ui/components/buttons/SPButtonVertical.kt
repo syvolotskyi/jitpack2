@@ -1,16 +1,12 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import androidx.core.widget.TextViewCompat
@@ -67,18 +63,18 @@ class SPButtonVertical @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseVertical)
+                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_VerticalBase)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButtonVertical,
+            R.styleable.sp_button_vertical,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPButtonVertical_android_src, 0)
-            text = getString(R.styleable.SPButtonVertical_android_text).orEmpty()
-            isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
+            src = getResourceId(R.styleable.sp_button_vertical_android_src, 0)
+            text = getString(R.styleable.sp_button_vertical_android_text).orEmpty()
+            isEnabled = getBoolean(R.styleable.sp_button_vertical_android_enabled, true)
         }
     }
 
@@ -103,7 +99,7 @@ class SPButtonVertical @JvmOverloads constructor(
         styleAttrs.run {
             val textAppearance = getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL)
             val iconPaddingInd = getInt(
-                R.styleable.SPViewStyle_sp_iconPadding, DEFAULT_ICON_PADDING
+                R.styleable.SPViewStyle_btnIconPadding, DEFAULT_ICON_PADDING
             )
             iconPadding = IconPadding.values()[iconPaddingInd]
             updateTextAppearance(textAppearance)

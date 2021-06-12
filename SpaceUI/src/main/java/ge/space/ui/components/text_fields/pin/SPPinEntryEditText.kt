@@ -107,17 +107,17 @@ class SPPinEntryEditText : AppCompatEditText {
 
     private fun init(context: Context, attrs: AttributeSet) {
         val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.SPPinEntryEditText, 0, 0)
+            context.obtainStyledAttributes(attrs, R.styleable.sp_pin_entry_editText, 0, 0)
 
         ta.run {
             val pinTypeId = getInt(
-                R.styleable.SPPinEntryEditText_sp_pinType, DEFAULT_PIN_TYPE
+                R.styleable.sp_pin_entry_editText_pinType, DEFAULT_PIN_TYPE
             )
 
             movementMethod = null
             pinType = PinType.values()[pinTypeId]
             isDisableCopyPaste =
-                getBoolean(R.styleable.SPPinEntryEditText_sp_disableCopyPaste, false)
+                getBoolean(R.styleable.sp_pin_entry_editText_disableCopyPaste, false)
             pinBackground = if (pinType == Password) {
                 ContextCompat.getDrawable(context, R.drawable.bkg_pin_circle)
             } else {
@@ -141,10 +141,10 @@ class SPPinEntryEditText : AppCompatEditText {
     fun setStyle(@StyleRes defStyleRes: Int) {
 
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEntryEditText)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_pin_entry_editText)
         styleAttrs.run {
             val pinTypeId = getInt(
-                R.styleable.SPPinEntryEditText_sp_pinType, DEFAULT_PIN_TYPE
+                R.styleable.sp_pin_entry_editText_pinType, DEFAULT_PIN_TYPE
             )
             isCursorVisible = false
             isClickable = false
@@ -153,10 +153,10 @@ class SPPinEntryEditText : AppCompatEditText {
 
             pinType = PinType.values()[pinTypeId]
             isDisableCopyPaste =
-                getBoolean(R.styleable.SPPinEntryEditText_sp_disableCopyPaste, false)
+                getBoolean(R.styleable.sp_pin_entry_editText_disableCopyPaste, false)
             setTextColor(
                 getColor(
-                    R.styleable.SPPinEntryEditText_android_textColor,
+                    R.styleable.sp_pin_entry_editText_android_textColor,
                     ContextCompat.getColor(context, R.color.appPrimaryColor)
                 )
             )

@@ -8,8 +8,8 @@
     </style>
 
     <style name="SPPinEntryPassword" parent="SPPinEntryEditText">
-        <item name="sp_pinType">password</item>
-        <item name="sp_disableCopyPaste">true</item>
+        <item name="pinType">password</item>
+        <item name="disableCopyPaste">true</item>
         <item name="android:textColor">@android:color/transparent</item>
     </style>
 
@@ -18,7 +18,7 @@
         <item name="paddingStart">@dimen/dimen_p_24</item>
         <item name="paddingEnd">@dimen/dimen_p_24</item>
         <item name="android:textColor">@color/appPrimaryColor</item>
-        <item name="sp_pinType">otp</item>
+        <item name="pinType">otp</item>
     </style>
 
 </resources>

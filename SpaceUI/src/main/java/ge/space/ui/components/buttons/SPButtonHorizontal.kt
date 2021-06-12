@@ -1,9 +1,7 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
@@ -49,17 +47,17 @@ class SPButtonHorizontal @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
+                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_BaseView)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButtonHorizontal,
+            R.styleable.sp_button_horizontal,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
-            text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
+            src = getResourceId(R.styleable.sp_button_horizontal_android_src, 0)
+            text = getString(R.styleable.sp_button_horizontal_android_text).orEmpty()
         }
     }
 
@@ -76,7 +74,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
 
         styleAttrs.run {
-            text = getString(R.styleable.SPButton_android_text).orEmpty()
+            text = getString(R.styleable.sp_button_android_text).orEmpty()
             updateTextAppearance(getResourceId(R.styleable.SPViewStyle_android_textAppearance, DEFAULT_OBTAIN_VAL))
             recycle()
         }

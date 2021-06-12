@@ -22,7 +22,7 @@
 
     <ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked
         android:id="@+id/etInputField"
-        style="@style/SPEditTextMasked"
+        style="@style/SPEditText.Masked"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_p_38"
         android:background="@drawable/bkg_text_field"
