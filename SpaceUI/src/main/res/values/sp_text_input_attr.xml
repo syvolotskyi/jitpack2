@@ -12,4 +12,8 @@
         <attr name="android:hint" format="string|reference" />
     </declare-styleable>
 
+    <declare-styleable name="SPTextFieldInput">
+        <attr name="sp_canRemove" format="boolean" />
+    </declare-styleable>
+
 </resources>

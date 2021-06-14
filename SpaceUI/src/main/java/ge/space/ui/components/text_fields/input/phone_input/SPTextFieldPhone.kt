@@ -35,6 +35,14 @@ class SPTextFieldPhone @JvmOverloads constructor(
             inputTextBinding.etInputField.setText(value)
         }
 
+    override var hint: String = SPBaseView.EMPTY_TEXT
+        get() = inputTextBinding.etInputField.hint.toString()
+        set(value) {
+            field = value
+
+            inputTextBinding.etInputField.hint = value
+        }
+
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
         with(inputTextBinding.etInputField) {
             setImeActionEnabled(true)
@@ -49,5 +57,4 @@ class SPTextFieldPhone @JvmOverloads constructor(
     override fun getViewBinding(): SpTextFieldPhoneLayoutBinding {
         return SpTextFieldPhoneLayoutBinding.inflate(LayoutInflater.from(context), this, false)
     }
-
 }

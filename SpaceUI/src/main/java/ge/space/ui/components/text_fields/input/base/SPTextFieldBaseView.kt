@@ -17,6 +17,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  *
  * @property text [String] value which sets a text.
  * @property labelText [String] value which sets a label text.
+ * @property labelText [String] value which sets a label text.
  * @property descText [String] value which sets a description text.
  */
 abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
@@ -29,6 +30,12 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * Sets a button title.
      */
     abstract var text: String
+
+
+    /**
+     * Sets a button hint.
+     */
+    abstract var hint: String
 
     /**
      * Sets a label text.
@@ -80,6 +87,12 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             /*  val index = getInt(R.styleable.SPTextViewBase_android_imeOptions, 0)
               binding.etInputField.imeOptions = index
             */
+            getString(R.styleable.SPTextViewBase_android_hint).orEmpty().handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                hint = it
+            }
+
             getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {

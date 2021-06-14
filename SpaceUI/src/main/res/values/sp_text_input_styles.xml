@@ -11,6 +11,10 @@
     </style>
 
     <style name="SPTextFieldInput" parent="SPTextFieldBased">
-        <item name="android:hint">@string/enter_you_details_here</item>
+        <item name="sp_canRemove">false</item>
+    </style>
+
+    <style name="SPTextFieldInput.Removable" parent="SPTextFieldInput">
+        <item name="sp_canRemove">true</item>
     </style>
 </resources>
