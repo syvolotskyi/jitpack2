@@ -18,7 +18,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property text [String] value which sets a text.
  * @property labelText [String] value which sets a label text.
  * @property labelText [String] value which sets a label text.
- * @property descText [String] value which sets a description text.
+ * @property descriptionText [String] value which sets a description text.
  */
 abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
@@ -50,7 +50,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Sets a description text.
      */
-    var descText: String = SPBaseView.EMPTY_TEXT
+    var descriptionText: String = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
 
@@ -96,7 +96,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
-                descText = it
+                descriptionText = it
             }
 
             includeInputText()
@@ -104,9 +104,9 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             setOnFocusChangeListener { _, focused ->
                 binding.flContent.setBackgroundResource(
                     if (focused) {
-                        R.drawable.bkg_text_field_focused
+                        R.drawable.bg_text_field_focused
                     } else {
-                        R.drawable.bkg_text_field
+                        R.drawable.bg_text_field
                     }
                 )
             }

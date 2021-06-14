@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/etInputField"
-    style="@style/SPEditTextMasked"
+    style="@style/SPEditText.Masked"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_p_38"
     android:background="@null"

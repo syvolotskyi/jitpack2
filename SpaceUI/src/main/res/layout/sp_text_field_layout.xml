@@ -24,7 +24,7 @@
         android:id="@+id/flContent"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_p_38"
-        android:background="@drawable/bkg_text_field"
+        android:background="@drawable/bg_text_field"
         android:gravity="start|center_vertical" />
 
     <TextView

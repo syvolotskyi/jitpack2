@@ -41,6 +41,7 @@
     <string name="otp_description">Correct passwords 888888 and 1010</string>
 
     <string name="disable">Disable</string>
+    <string name="description">Description</string>
 
     <string name="text_fields">Text fields</string>
     <string name="text_fields_desc">Text fields desc</string>

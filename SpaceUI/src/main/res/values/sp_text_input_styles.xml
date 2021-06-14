@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPEditText.Masked" parent="@style/Typography.Base.MyriadGEO.Bold">
-         <item name="hintTextAppearance">@style/label_tertiary</item>
-        <item name="android:textColor">@color/appPrimaryColor</item>
+    <style name="SPTextFieldBased" parent="@style/Typography.Base.MyriadGEO.Bold">
+        <item name="hintTextAppearance">@style/label_tertiary</item>
+        <item name="android:textColorHint">@color/text_field_hint_color</item>
+        <item name="android:textColor">@color/text_field_text_color</item>
     </style>
 
-    <style name="SPEditTextMasked" parent="SPTextFieldBased">
+    <style name="SPEditText.Masked" parent="SPTextFieldBased">
         <item name="android:hint">XXXXXXXXX</item>
     </style>
 
-    <style name="SPTextFieldInput" parent="SPTextFieldBased">
+    <style name="SPTextField.Input" parent="SPTextFieldBased">
         <item name="canRemove">false</item>
     </style>
 
-    <style name="SPTextFieldInput.Removable" parent="SPTextFieldInput">
+    <style name="SPTextField.InputRemovable" parent="SPTextField.Input">
         <item name="canRemove">true</item>
     </style>
 </resources>

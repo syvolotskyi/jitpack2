@@ -7,7 +7,7 @@
 
     <EditText
         android:id="@+id/etInputField"
-        style="@style/SPTextFieldInput"
+        style="@style/SPTextField.Input"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_p_38"
         android:background="@null"

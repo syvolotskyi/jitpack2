@@ -1,20 +1,17 @@
 package ge.space.ui.components.text_fields.input.text_input
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
 import androidx.annotation.AttrRes
+import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
-import ge.space.ui.components.text_fields.pin.SPPinEntryEditText
 
-@SuppressLint("Recycle")
 class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -38,21 +35,19 @@ class SPTextFieldInput @JvmOverloads constructor(
             inputTextBinding.etInputField.hint = value
         }
 
-    var canRemove: Boolean = false
+    private var canRemove: Boolean = false
         set(value) {
             field = value
             inputTextBinding.ivClear.isVisible = value
         }
 
     init {
-        val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.SPTextFieldInput, 0, 0)
-
-        ta.run {
-            canRemove = getBoolean(
-                R.styleable.SPTextFieldInput_sp_canRemove, false
-            )
-
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPTextFieldInput,
+            defStyleAttr
+        ) {
+            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
         }
 
         inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
@@ -70,4 +65,9 @@ class SPTextFieldInput @JvmOverloads constructor(
         return SpTextFieldTextLayoutBinding.inflate(LayoutInflater.from(context), this, false)
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        inputTextBinding.etInputField.isEnabled = enabled
+        inputTextBinding.ivClear.isEnabled = enabled
+    }
 }
