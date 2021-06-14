@@ -57,4 +57,8 @@ class SPTextFieldPhone @JvmOverloads constructor(
     override fun getViewBinding(): SpTextFieldPhoneLayoutBinding {
         return SpTextFieldPhoneLayoutBinding.inflate(LayoutInflater.from(context), this, false)
     }
+
+    override fun handleImeOption() {
+        inputTextBinding.etInputField.imeOptions = imeOption
+    }
 }

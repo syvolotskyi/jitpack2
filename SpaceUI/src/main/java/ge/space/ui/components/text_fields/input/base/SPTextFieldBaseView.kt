@@ -48,6 +48,16 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
 
     /**
+     * Sets a imeOption.
+     */
+    var imeOption: Int = 0
+        set(value) {
+            field = value
+
+            handleImeOption()
+        }
+
+    /**
      * Sets a description text.
      */
     var descriptionText: String = SPBaseView.EMPTY_TEXT
@@ -78,26 +88,28 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             R.styleable.sp_text_field_base_view,
             defStyleAttr
         ) {
-            getString(R.styleable.sp_text_field_base_view_titleText).orEmpty().handleAttributeAction(
-                SPBaseView.EMPTY_TEXT
-            ) {
-                labelText = it
-            }
+            getString(R.styleable.sp_text_field_base_view_titleText).orEmpty()
+                .handleAttributeAction(
+                    SPBaseView.EMPTY_TEXT
+                ) {
+                    labelText = it
+                }
 
-            /*  val index = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, 0)
-              binding.etInputField.imeOptions = index
-            */
-            getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty().handleAttributeAction(
-                SPBaseView.EMPTY_TEXT
-            ) {
-                hint = it
-            }
+            imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, 0)
 
-            getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty().handleAttributeAction(
-                SPBaseView.EMPTY_TEXT
-            ) {
-                descriptionText = it
-            }
+            getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
+                .handleAttributeAction(
+                    SPBaseView.EMPTY_TEXT
+                ) {
+                    hint = it
+                }
+
+            getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty()
+                .handleAttributeAction(
+                    SPBaseView.EMPTY_TEXT
+                ) {
+                    descriptionText = it
+                }
 
             includeInputText()
 
@@ -116,6 +128,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     private fun includeInputText() {
         binding.flContent.addView(inputTextBinding.root)
     }
+
+    abstract fun handleImeOption()
 
     /**
      * Allows to init ViewBinding

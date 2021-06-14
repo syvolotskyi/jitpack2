@@ -26,7 +26,6 @@ class SPTextFieldInput @JvmOverloads constructor(
             inputTextBinding.etInputField.setText(value)
         }
 
-
     override var hint: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
@@ -62,12 +61,20 @@ class SPTextFieldInput @JvmOverloads constructor(
     }
 
     override fun getViewBinding(): SpTextFieldTextLayoutBinding {
-        return SpTextFieldTextLayoutBinding.inflate(LayoutInflater.from(context), this, false)
+        return SpTextFieldTextLayoutBinding.inflate(
+            LayoutInflater.from(context),
+            this,
+            false
+        )
     }
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         inputTextBinding.etInputField.isEnabled = enabled
         inputTextBinding.ivClear.isEnabled = enabled
+    }
+
+    override fun handleImeOption() {
+        inputTextBinding.etInputField.imeOptions = imeOption
     }
 }
