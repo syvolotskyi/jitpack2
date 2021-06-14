@@ -27,13 +27,15 @@ class SPInputComponent : SPShowCaseComponent {
                 SpTextInputShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
 
             with(binding) {
-                setupInputTextWithDone(phoneSimpleInput, environmentSP.context)
+                setupInputTextWithDone(simpleInput, environmentSP.context)
+                setupInputTextWithDone(removableInput, environmentSP.context)
+
                 cbDisable.setOnCheckedChangeListener { _, isChecked ->
-                    phoneSimpleInput.isEnabled = !isChecked
+                    simpleInput.isEnabled = !isChecked
                 }
                 cbDescription.setOnCheckedChangeListener { _, isChecked ->
-                    phoneSimpleInput.descriptionText = if (isChecked) {
-                        phoneSimpleInput.resources.getString(R.string.description)
+                    simpleInput.descriptionText = if (isChecked) {
+                        simpleInput.resources.getString(R.string.description)
                     } else {
                         EMPTY_STRING
                     }
@@ -41,27 +43,26 @@ class SPInputComponent : SPShowCaseComponent {
             }
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
-                binding.phoneSimpleInput.labelText = text.toString()
-                binding.phoneRemovableInput.labelText = text.toString()
+                binding.simpleInput.labelText = text.toString()
+                binding.removableInput.labelText = text.toString()
             }
 
             return binding.root
         }
 
-        private fun setupInputTextWithDone(phoneInput: SPTextFieldInput, context: Context) {
-            phoneInput.setOnEditorActionListener(
+        private fun setupInputTextWithDone(textInput: SPTextFieldInput, context: Context) {
+            textInput.setOnEditorActionListener(
                 TextView.OnEditorActionListener
                 { _: TextView?, actionId: Int, event: KeyEvent? ->
                     if (actionId == EditorInfo.IME_ACTION_SEARCH
                         || actionId == EditorInfo.IME_ACTION_DONE
                         || event?.action == KeyEvent.ACTION_DOWN
                     ) {
-                        showToast(context, "Action Done: " + phoneInput.text)
+                        showToast(context, "Action Done: " + textInput.text)
                         return@OnEditorActionListener true
                     } else if (actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_FLAG_NAVIGATE_NEXT) {
-                        showToast(context, "Action Next: " + phoneInput.text)
+                        showToast(context, "Action Next: " + textInput.text)
                     }
-
                     return@OnEditorActionListener false
                 })
         }

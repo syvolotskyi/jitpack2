@@ -95,7 +95,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
                     labelText = it
                 }
 
-            imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, 0)
+            imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, ID_NEXT)
 
             getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
                 .handleAttributeAction(
@@ -135,4 +135,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
+
+    companion object {
+        const val ID_NEXT = 5
+    }
 }

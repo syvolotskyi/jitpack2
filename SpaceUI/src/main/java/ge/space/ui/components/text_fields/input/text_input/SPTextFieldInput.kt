@@ -3,6 +3,7 @@ package ge.space.ui.components.text_fields.input.text_input
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
