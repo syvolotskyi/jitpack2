@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/info_input"
-        app:sp_viewStyle="@style/SPButtonWhiteView"
+        app:style="@style/SPButton.WhiteView"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

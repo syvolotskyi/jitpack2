@@ -241,11 +241,11 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     private fun init(context: Context, attrs: AttributeSet?) {
         val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.SPEditTextMasked, 0, 0)
+            context.obtainStyledAttributes(attrs, R.styleable.sp_edittext_masked, 0, 0)
 
         ta.run {
 
-            mask = getString(R.styleable.SPEditTextMasked_sp_mask) ?: ""
+            mask = getString(R.styleable.sp_edittext_masked_mask) ?: ""
 
             recycle()
         }

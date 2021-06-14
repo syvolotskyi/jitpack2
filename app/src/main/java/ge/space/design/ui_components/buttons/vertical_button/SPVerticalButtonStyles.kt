@@ -11,7 +11,7 @@ data class SPButtonSupportsLoading(
 
 object SPVerticalButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPButtonBaseVertical, true),
-        SPButtonSupportsLoading(R.style.SPButtonLargeVertical, true),
+        SPButtonSupportsLoading(R.style.SPButton_VerticalBase, true),
+        SPButtonSupportsLoading(R.style.SPButton_VerticalLarge, true),
     )
 }

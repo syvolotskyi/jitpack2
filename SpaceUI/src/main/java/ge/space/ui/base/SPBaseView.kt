@@ -176,11 +176,11 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.sp_base_view,
             defStyleAttr
         ) {
             setStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPBaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPBaseView)
             )
         }
     }
@@ -259,47 +259,47 @@ abstract class SPBaseView @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     protected fun setStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
-            color = getColor(R.styleable.SPViewStyle_sp_backgroundColor, Color.WHITE)
-            shadowColor = getColor(R.styleable.SPViewStyle_sp_shadowColor, Color.BLACK)
+            color = getColor(R.styleable.sp_view_style_backgroundColor, Color.WHITE)
+            shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
             shadowAlpha = getFraction(
-                R.styleable.SPViewStyle_sp_shadowAlpha,
+                R.styleable.sp_view_style_shadowAlpha,
                 ALPHA_BASE,
                 ALPHA_BASE,
                 DEFAULT_ALPHA
             ).scaleTo(ALPHA_SCALE)
             shadowRadius = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_shadowRadius, DEFAULT_OBTAIN_VAL
+                R.styleable.sp_view_style_shadowRadius, DEFAULT_OBTAIN_VAL
             ).toFloat()
             shadowOffsetX = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_shadowOffsetX, DEFAULT_OBTAIN_VAL
+                R.styleable.sp_view_style_shadowOffsetX, DEFAULT_OBTAIN_VAL
             ).toFloat()
             shadowOffsetY = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_shadowOffsetY, DEFAULT_OBTAIN_VAL
+                R.styleable.sp_view_style_shadowOffsetY, DEFAULT_OBTAIN_VAL
             ).toFloat()
             topLeftCornerRadius = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_topLeftCornerRadius,
+                R.styleable.sp_view_style_topLeftCornerRadius,
                 DEFAULT_OBTAIN_VAL
             ).toFloat()
             topRightCornerRadius = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_topRightCornerRadius,
+                R.styleable.sp_view_style_topRightCornerRadius,
                 DEFAULT_OBTAIN_VAL
             ).toFloat()
             bottomRightCornerRadius = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_bottomRightCornerRadius,
+                R.styleable.sp_view_style_bottomRightCornerRadius,
                 DEFAULT_OBTAIN_VAL
             ).toFloat()
             bottomLeftCornerRadius = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_bottomLeftCornerRadius,
+                R.styleable.sp_view_style_bottomLeftCornerRadius,
                 DEFAULT_OBTAIN_VAL
             ).toFloat()
             roundedCorners = getDimensionPixelSize(
-                R.styleable.SPViewStyle_sp_roundedCorners, DEFAULT_OBTAIN_VAL
+                R.styleable.sp_view_style_roundedCorners, DEFAULT_OBTAIN_VAL
             ).toFloat()
             isCircle = getBoolean(
-                R.styleable.SPViewStyle_sp_isCircle, DEFAULT_IS_CIRCLE
+                R.styleable.sp_view_style_isCircle, DEFAULT_IS_CIRCLE
             )
 
             recycle()

@@ -16,8 +16,7 @@
         android:layout_marginEnd="@dimen/dimen_p_8"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/lightGray"
-        android:textSize="@dimen/dimen_sp_14"
+        android:textAppearance="@style/h700_medium_caps_label_secondary"
         tools:text="Title" />
 
     <ge.space.ui.components.text_fields.pin.SPPinEntryEditText
