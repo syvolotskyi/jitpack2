@@ -1,13 +1,12 @@
 package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
-import android.text.InputFilter
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
+import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -19,9 +18,8 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property text [String] value which sets a text.
  * @property labelText [String] value which sets a label text.
  * @property descText [String] value which sets a description text.
- * @property maxLength [Int] value which applies a max Length.
  */
-abstract class SPTextFieldBaseView @JvmOverloads constructor(
+abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -30,15 +28,7 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
     /**
      * Sets a button title.
      */
-    var text: String = SPBaseView.EMPTY_TEXT
-        set(value) {
-            field = value
-
-            binding.etInputField.setText(value)
-        }
-        get() {
-            return binding.etInputField.text.toString()
-        }
+    abstract var text: String
 
     /**
      * Sets a label text.
@@ -62,15 +52,11 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
 
 
     /**
-     * Sets a max length.
+     * Lazy property for initialize ViewBinding in constructor
      */
-    var maxLength: Int = 0
-        set(value) {
-            field = value
-
-            setEditTextMaxLength(value)
-        }
-
+    protected val inputTextBinding by lazy {
+        getViewBinding()
+    }
 
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
@@ -91,19 +77,35 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
                 labelText = it
             }
 
-            val index = getInt(R.styleable.SPTextViewBase_android_imeOptions, 0)
-            binding.etInputField.imeOptions = index
+            /*  val index = getInt(R.styleable.SPTextViewBase_android_imeOptions, 0)
+              binding.etInputField.imeOptions = index
+            */
             getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 descText = it
             }
+
+            includeInputText()
+
+            setOnFocusChangeListener { _, focused ->
+                binding.flContent.setBackgroundResource(
+                    if (focused) {
+                        R.drawable.bkg_text_field_focused
+                    } else {
+                        R.drawable.bkg_text_field
+                    }
+                )
+            }
         }
     }
 
-    private fun setEditTextMaxLength(length: Int) {
-        val filterArray = arrayOfNulls<InputFilter>(1)
-        filterArray[0] = InputFilter.LengthFilter(length)
-        binding.etInputField.filters = filterArray
+    private fun includeInputText() {
+        binding.flContent.addView(inputTextBinding.root)
     }
+
+    /**
+     * Allows to init ViewBinding
+     */
+    protected abstract fun getViewBinding(): VB
 }

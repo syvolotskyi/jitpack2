@@ -1,10 +1,14 @@
 package ge.space.ui.components.text_fields.input.phone_input
 
 import android.content.Context
+import android.text.InputType
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
+import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
 /**
@@ -16,25 +20,34 @@ class SPTextFieldPhone @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldBaseView(context, attrs, defStyleAttr) {
+) : SPTextFieldBaseView<SpTextFieldPhoneLayoutBinding>(context, attrs, defStyleAttr) {
 
     init {
-        binding.etInputField.mask = resources.getString(R.string.phone_mask)
+        inputTextBinding.etInputField.inputType = InputType.TYPE_CLASS_PHONE
+        inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
     }
 
-    /** @param listener - its onFocusChange() method will be called before performing MaskedEditText operations,
-     * related to this event.
-     */
-    override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
-        binding.etInputField.onFocusChangeListener = listener
-    }
+    override var text: String = SPBaseView.EMPTY_TEXT
+        get() = inputTextBinding.etInputField.text.toString()
+        set(value) {
+            field = value
+
+            inputTextBinding.etInputField.setText(value)
+        }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
-        with(binding.etInputField) {
+        with(inputTextBinding.etInputField) {
             setImeActionEnabled(true)
             onActionListener = listener
         }
     }
 
+    override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
+        inputTextBinding.etInputField.onFocusChangeListener = listener
+    }
+
+    override fun getViewBinding(): SpTextFieldPhoneLayoutBinding {
+        return SpTextFieldPhoneLayoutBinding.inflate(LayoutInflater.from(context), this, false)
+    }
 
 }

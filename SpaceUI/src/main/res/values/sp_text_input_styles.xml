@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPEditTextMasked" parent="@style/Typography.Base.MyriadGEO.Bold">
-        <item name="android:textColorHint">@color/textInputHintColor</item>
+
+    <style name="SPTextFieldBased" parent="@style/Typography.Base.MyriadGEO.Bold">
+        <item name="hintTextAppearance">@style/label_tertiary</item>
         <item name="android:textColor">@color/appPrimaryColor</item>
+    </style>
+
+    <style name="SPEditTextMasked" parent="SPTextFieldBased">
         <item name="android:hint">XXXXXXXXX</item>
+    </style>
+
+    <style name="SPTextFieldInput" parent="SPTextFieldBased">
+        <item name="android:hint">@string/enter_you_details_here</item>
     </style>
 </resources>

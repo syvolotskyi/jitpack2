@@ -87,7 +87,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
                 rawText.text = rawText.text.removeRange(range.start, range.end)
             }
             if (count > 0) {
-                select = previousValidPosition(start)
+//                select = previousValidPosition(start)
             }
         }
     }
@@ -110,6 +110,16 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
                 }
             }
         }
+    }
+
+    override fun onKeyLongPress(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_DEL)
+        {
+            cleanUp()
+            return true;
+        }
+
+        return super.onKeyLongPress(keyCode, event)
     }
 
     override fun afterTextChanged(s: Editable) {

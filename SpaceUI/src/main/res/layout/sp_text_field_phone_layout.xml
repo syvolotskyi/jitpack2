@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/etInputField"
+    style="@style/SPEditTextMasked"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_p_38"
+    android:background="@null"
+    android:gravity="start|center_vertical"
+    android:inputType="number"
+    android:paddingStart="@dimen/dimen_p_16"
+    android:paddingTop="@dimen/dimen_p_8"
+    android:paddingEnd="@dimen/dimen_p_16"
+    android:paddingBottom="@dimen/dimen_p_8"
+    android:textSize="@dimen/dimen_sp_16" />
