@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="SPTextFieldBased" parent="@style/Typography.Base.MyriadGEO.Bold">
-        <item name="hintTextAppearance">@style/label_tertiary</item>
+    <style name="SPEditText.Masked" parent="@style/Typography.Base.MyriadGEO.Bold">
+         <item name="hintTextAppearance">@style/label_tertiary</item>
         <item name="android:textColor">@color/appPrimaryColor</item>
     </style>
 
@@ -11,10 +10,10 @@
     </style>
 
     <style name="SPTextFieldInput" parent="SPTextFieldBased">
-        <item name="sp_canRemove">false</item>
+        <item name="canRemove">false</item>
     </style>
 
     <style name="SPTextFieldInput.Removable" parent="SPTextFieldInput">
-        <item name="sp_canRemove">true</item>
+        <item name="canRemove">true</item>
     </style>
 </resources>

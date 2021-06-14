@@ -75,25 +75,25 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPTextViewBase,
+            R.styleable.sp_text_field_base_view,
             defStyleAttr
         ) {
-            getString(R.styleable.SPTextViewBase_sp_titleText).orEmpty().handleAttributeAction(
+            getString(R.styleable.sp_text_field_base_view_titleText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 labelText = it
             }
 
-            /*  val index = getInt(R.styleable.SPTextViewBase_android_imeOptions, 0)
+            /*  val index = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, 0)
               binding.etInputField.imeOptions = index
             */
-            getString(R.styleable.SPTextViewBase_android_hint).orEmpty().handleAttributeAction(
+            getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 hint = it
             }
 
-            getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
+            getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty().handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 descText = it

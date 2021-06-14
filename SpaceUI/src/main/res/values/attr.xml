@@ -7,7 +7,6 @@
     <attr name="themeLoadingBackgroundColor" format="color|reference"/>
     <attr name="themeMistColorLight" format="reference"/>
     <attr name="themeMistColorDark" format="reference"/>
-    <attr name="shadowColor" format="color"/>
 
     <attr name="themeMySpaceBackgroundColor" format="color|reference"/>
     <attr name="themeMySpaceTitleColor" format="color|reference"/>

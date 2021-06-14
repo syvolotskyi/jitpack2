@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SPEditTextMasked">
-        <attr name="sp_mask" format="string" />
+    <declare-styleable name="sp_edittext_masked">
+        <attr name="mask" format="string" />
     </declare-styleable>
 
-    <declare-styleable name="SPTextViewBase">
+    <declare-styleable name="sp_text_field_base_view">
         <attr name="android:text" format="string|reference" />
-        <attr name="sp_titleText" format="string|reference" />
-        <attr name="sp_descText" format="string|reference" />
+        <attr name="titleText" format="string|reference" />
+        <attr name="descriptionText" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="SPTextFieldInput">
-        <attr name="sp_canRemove" format="boolean" />
+        <attr name="canRemove" format="boolean" />
     </declare-styleable>
 
 </resources>
