@@ -6,10 +6,11 @@
 
     <declare-styleable name="sp_text_field_base_view">
         <attr name="android:text" format="string|reference" />
-        <attr name="titleText" format="string|reference" />
-        <attr name="descriptionText" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
+        <attr name="titleText" format="string|reference" />
+        <attr name="descriptionText" format="string|reference" />
+        <attr name="android:textAppearance" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="SPTextFieldInput">

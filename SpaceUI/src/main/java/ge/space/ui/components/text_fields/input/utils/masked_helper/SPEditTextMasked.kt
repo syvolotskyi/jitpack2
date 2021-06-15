@@ -114,8 +114,8 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     fun getRawText():String{
         return text.toString()
-            .replace("\\s".toRegex(), "")
-            .replace("X".toRegex(), "")
+            .removeSpaces()
+            .removeAllSymbols(MASK_SYMBOL)
             .trim()
     }
 
@@ -319,6 +319,14 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         return ssb
     }
 
+    private fun String.removeSpaces():String{
+        return replace("\\s".toRegex(), "")
+    }
+
+    private fun String.removeAllSymbols(symbol: String):String{
+        return replace(symbol, "")
+    }
+
     private fun calculateRange(start: Int, end: Int): Range {
         val range = Range()
         var i = start
@@ -360,5 +368,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         const val SPACE = " "
         const val ALLOWED_CHARS = "1234567890 X"
         const val CHAR_REPRESENTATION = "#"
+        const val MASK_SYMBOL = "X"
     }
 }

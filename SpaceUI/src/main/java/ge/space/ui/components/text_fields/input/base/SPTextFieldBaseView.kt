@@ -17,7 +17,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  *
  * @property text [String] value which sets a text.
  * @property labelText [String] value which sets a label text.
- * @property labelText [String] value which sets a label text.
+ * @property imeOption [Int] value which sets a ime Option.
  * @property descriptionText [String] value which sets a description text.
  */
 abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(

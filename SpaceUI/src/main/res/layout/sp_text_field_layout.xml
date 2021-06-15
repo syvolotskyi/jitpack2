@@ -15,6 +15,7 @@
         android:layout_marginEnd="@dimen/dimen_p_8"
         android:layout_marginBottom="@dimen/dimen_p_8"
         android:ellipsize="end"
+        android:textAppearance="@style/h500_medium"
         android:maxLines="1"
         android:textColor="@color/light_label_secondary"
         android:textSize="@dimen/dimen_sp_14"
