@@ -112,6 +112,13 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         }
     }
 
+    fun getRawText():String{
+        return text.toString()
+            .replace("\\s".toRegex(), "")
+            .replace("X".toRegex(), "")
+            .trim()
+    }
+
     override fun afterTextChanged(s: Editable) {
         if (!editingAfter && editingBefore && editingOnChanged) {
             editingAfter = true

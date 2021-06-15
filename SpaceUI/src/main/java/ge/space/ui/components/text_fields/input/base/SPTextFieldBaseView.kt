@@ -111,10 +111,10 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
                     descriptionText = it
                 }
 
-            includeInputText()
+            includeInputFieldContainer()
 
             setOnFocusChangeListener { _, focused ->
-                binding.flContent.setBackgroundResource(
+                binding.flInputFieldContainer.setBackgroundResource(
                     if (focused) {
                         R.drawable.bg_text_field_focused
                     } else {
@@ -125,8 +125,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
     }
 
-    private fun includeInputText() {
-        binding.flContent.addView(inputTextBinding.root)
+    private fun includeInputFieldContainer() {
+        binding.flInputFieldContainer.addView(inputTextBinding.root)
     }
 
     protected abstract fun handleImeOption()

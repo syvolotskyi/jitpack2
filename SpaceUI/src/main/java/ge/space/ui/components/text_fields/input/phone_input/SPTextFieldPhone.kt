@@ -27,7 +27,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
     }
 
     override var text: String = SPBaseView.EMPTY_TEXT
-        get() = inputTextBinding.etInputField.text.toString()
+        get() = inputTextBinding.etInputField.getRawText()
         set(value) {
             field = value
 

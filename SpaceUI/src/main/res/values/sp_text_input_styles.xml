@@ -2,8 +2,8 @@
 <resources>
     <style name="SPTextFieldBased" parent="@style/Typography.Base.MyriadGEO.Bold">
         <item name="hintTextAppearance">@style/label_tertiary</item>
-        <item name="android:textColorHint">@color/text_field_hint_color</item>
-        <item name="android:textColor">@color/text_field_text_color</item>
+        <item name="android:textColorHint">@color/selector_text_field_hint_color</item>
+        <item name="android:textColor">@color/selector_text_field_text_color</item>
     </style>
 
     <style name="SPEditText.Masked" parent="SPTextFieldBased">
