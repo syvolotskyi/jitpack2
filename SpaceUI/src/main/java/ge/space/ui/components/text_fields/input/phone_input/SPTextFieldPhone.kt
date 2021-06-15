@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
+import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -24,6 +26,20 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
     init {
         inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.sp_text_field_base_view,
+            defStyleAttr
+        ) {
+
+            val textAppearance = getResourceId(
+                R.styleable.sp_text_field_base_view_android_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
+            updateTextAppearance(textAppearance)
+        }
+
     }
 
     override var text: String = SPBaseView.EMPTY_TEXT
@@ -67,5 +83,9 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
+    }
+
+    override fun updateTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
     }
 }

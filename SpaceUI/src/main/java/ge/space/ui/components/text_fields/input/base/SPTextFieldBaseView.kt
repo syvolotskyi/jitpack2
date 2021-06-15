@@ -5,7 +5,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
@@ -113,6 +115,26 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
             includeInputFieldContainer()
 
+            val textAppearance = getResourceId(
+                R.styleable.sp_text_field_base_view_android_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            updateTextAppearance(textAppearance)
+
+            val descTextAppearance = getResourceId(
+                R.styleable.sp_text_field_base_view_descriptionTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
+            updateDescriptionTextAppearance(descTextAppearance)
+
+            val labelTextAppearance = getResourceId(
+                R.styleable.sp_text_field_base_view_labelTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
+            updateLabelTextAppearance(labelTextAppearance)
+
             setOnFocusChangeListener { _, focused ->
                 binding.flInputFieldContainer.setBackgroundResource(
                     if (focused) {
@@ -127,6 +149,19 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     private fun includeInputFieldContainer() {
         binding.flInputFieldContainer.addView(inputTextBinding.root)
+    }
+
+    /**
+     * Allows to update a text appearance by styles
+     */
+    abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
+
+    private fun updateLabelTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.textLabel, textAppearance)
+    }
+
+    private fun updateDescriptionTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.textDesc, textAppearance)
     }
 
     protected abstract fun handleImeOption()

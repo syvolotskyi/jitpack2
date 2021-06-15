@@ -1,13 +1,16 @@
 package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
+import android.os.Build
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
+import androidx.annotation.RequiresApi
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -44,10 +47,11 @@ class SPTextFieldInput @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPTextFieldInput,
+            R.styleable.sp_text_field_input,
             defStyleAttr
         ) {
-            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+
         }
 
         inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
@@ -85,5 +89,11 @@ class SPTextFieldInput @JvmOverloads constructor(
 
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun updateTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
+        inputTextBinding.etInputField.setTextAppearance( textAppearance)
     }
 }
