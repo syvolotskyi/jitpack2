@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/sp_dialog_button_height"
             android:layout_weight="1"
-            app:sp_viewStyle="@style/SPButtonTransparent"
+            app:style="@style/SPButton.Dialog.Positive"
             tools:text="Label" />
 
         <View
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/sp_dialog_button_height"
             android:layout_weight="1"
-            app:sp_viewStyle="@style/SPButtonTransparent"
+            app:style="@style/SPButton.Dialog.Positive"
             tools:text="Label" />
 
     </LinearLayout>

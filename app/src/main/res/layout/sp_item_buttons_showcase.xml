@@ -24,7 +24,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_viewStyle="@style/SPButtonAccentView" />
+        app:style="@style/SPButton.AccentView" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/disableCheck"
-            style="@style/CheckboxStyle"
+            style="@style/SPCheckbox.DefaultStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
@@ -45,7 +45,7 @@
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/wrapContentCheck"
-            style="@style/CheckboxStyle"
+            style="@style/SPCheckbox.DefaultStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"

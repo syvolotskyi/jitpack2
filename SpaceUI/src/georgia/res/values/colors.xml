@@ -9,5 +9,6 @@
     <color name="nextButtonBackgroundColor">#0099FF</color>
     <color name="otpTimerResentLabelColor">#0099FF</color>
     <color name="editTextDisabledTextColor">#626262</color>
+    <color name="textInputHintColor">#8FD4FF</color>
 
 </resources>

@@ -26,7 +26,7 @@ class SPPasswordComponent : SPShowCaseComponent {
                 setupSmallPasswordView(pinEntryViewPasswordSmall, environmentSP.context)
             }
 
-            binding.labelTextInput.doOnTextChanged { text, start, before, count ->
+            binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.pinEntryViewPassword.labelText = text.toString()
                 binding.pinEntryViewPasswordSmall.labelText = text.toString()
             }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textLabel"
+        style="@style/h700_medium_caps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginBottom="@dimen/dimen_p_8"
+        android:textColor="@color/titleLabelTextColor"
+        android:textSize="@dimen/dimen_sp_14"
+        tools:text="First label" />
+
+    <ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked
+        android:id="@+id/etInputField"
+        style="@style/SPEditText.Masked"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_p_38"
+        android:background="@drawable/bg_text_field"
+        android:gravity="start|center_vertical"
+        android:inputType="number"
+        android:paddingStart="@dimen/dimen_p_16"
+        android:paddingTop="@dimen/dimen_p_8"
+        android:paddingEnd="@dimen/dimen_p_16"
+        android:paddingBottom="@dimen/dimen_p_8"
+        android:textSize="@dimen/dimen_sp_16" />
+
+    <TextView
+        android:id="@+id/textDesc"
+        style="@style/h800_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/dimen_p_8"
+        android:layout_marginEnd="@dimen/dimen_p_8"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/light_label_tertiary"
+        android:textSize="@dimen/dimen_sp_12"
+        tools:text="First label" />
+</LinearLayout>

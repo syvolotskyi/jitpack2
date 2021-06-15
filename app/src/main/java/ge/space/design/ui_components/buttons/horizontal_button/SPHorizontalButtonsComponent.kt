@@ -20,7 +20,6 @@ class SPHorizontalButtonsComponent : SPShowCaseComponent {
 
     override fun getComponentClass(): Class<*>? = FactorySP::class.java
 
-
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(

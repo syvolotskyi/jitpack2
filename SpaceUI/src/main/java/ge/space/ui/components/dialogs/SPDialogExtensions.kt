@@ -13,8 +13,19 @@ import ge.space.ui.components.dialogs.data.*
  * @param dialogInfo sets both a title and a label of the dialog with buttons
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
-fun FragmentActivity.showMultipleButtonDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
-    buildInfoDialog(dialogInfo.title, dialogInfo.label, true, dialogInfo.buttonModels, dismiss)
+fun FragmentActivity.showMultipleButtonDialog(
+    dialogInfo: SPDialogInfo,
+    dialogIcon: SPDialogIcon,
+    dismiss: () -> Unit = { }
+) {
+    buildInfoDialog(
+        dialogInfo.title,
+        dialogInfo.label,
+        true,
+        dialogInfo.buttonModels,
+        dialogIcon,
+        dismiss
+    )
         .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
@@ -25,7 +36,8 @@ fun FragmentActivity.showMultipleButtonDialog(dialogInfo: SPDialogInfo, dismiss:
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
 fun FragmentActivity.showEditTextDialog(
-    dialogInfo: SPEditTextDialogInfo, dismiss: () -> Unit = { }
+    dialogInfo: SPEditTextDialogInfo,
+    dismiss: () -> Unit = { }
 ) {
     buildEditTextDialog(dialogInfo.title, dialogInfo.buttonModels, dismiss)
         .show(supportFragmentManager, SPDialog::class.java.name)
@@ -37,8 +49,19 @@ fun FragmentActivity.showEditTextDialog(
  * @param dialogInfo sets both a title and a label of the dialog with buttons
  * @param dismiss sets a lambda action which the dialog dismissing handles
  */
-fun FragmentActivity.showQuestionnaireDialog(dialogInfo: SPDialogInfo, dismiss: () -> Unit = { }) {
-    buildInfoDialog(dialogInfo.title, dialogInfo.label, false, dialogInfo.buttonModels, dismiss)
+fun FragmentActivity.showQuestionnaireDialog(
+    dialogInfo: SPDialogInfo,
+    dialogIcon: SPDialogIcon,
+    dismiss: () -> Unit = { }
+) {
+    buildInfoDialog(
+        dialogInfo.title,
+        dialogInfo.label,
+        false,
+        dialogInfo.buttonModels,
+        dialogIcon,
+        dismiss
+    )
         .show(supportFragmentManager, SPDialog::class.java.name)
 }
 
@@ -92,6 +115,7 @@ private fun FragmentActivity.buildInfoDialog(
     label: String?,
     multiple: Boolean = true,
     buttonModels: ArrayList<SPDialogInfoHolder> = arrayListOf(),
+    icon: SPDialogIcon = SPDialogIcon.Info(),
     dismiss: () -> Unit = { }
 ) =
     SPInfoDialogBuilder(this)
@@ -103,6 +127,7 @@ private fun FragmentActivity.buildInfoDialog(
                 buttons = buttonModels
             )
         )
+        .setIcon(icon)
         .setDismissHandler {
             dismiss()
         }

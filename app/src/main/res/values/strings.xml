@@ -28,6 +28,9 @@
     <string name="password_pin">Password pin</string>
     <string name="password_pin_desc">Correct passwords 888888 and 1010</string>
 
+    <string name="phone_input">Phone input</string>
+    <string name="phone_input_desc">Phone input text inputs</string>
+
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>
 
