@@ -115,11 +115,8 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
     override fun afterTextChanged(s: Editable) {
         if (!editingAfter && editingBefore && editingOnChanged) {
             editingAfter = true
-            if (hasHint() && (keepHint || rawText.length() == 0)) {
-                setText(makeMaskedTextWithHint())
-            } else {
-                setText(makeMaskedText())
-            }
+            s.clear()
+            s.append(makeMaskedTextWithHint())
             selectionChanged = false
             setSelection(select)
             editingBefore = false
@@ -174,11 +171,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         editingBefore = true
         editingOnChanged = true
         editingAfter = true
-        if (hasHint() && rawText.length() == 0) {
-            this.setText(makeMaskedTextWithHint())
-        } else {
-            this.setText(makeMaskedText())
-        }
+        this.setText(makeMaskedTextWithHint())
         editingBefore = false
         editingOnChanged = false
         editingAfter = false
@@ -295,25 +288,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         } else nextValidPosition(rawToMask[rawText.length()])
     }
 
-    private fun makeMaskedText(): String {
-        val maskedTextLength: Int = if (rawText.length() < rawToMask.size) {
-            rawToMask[rawText.length()]
-        } else {
-            mask.length
-        }
-        val maskedText =
-            CharArray(maskedTextLength) //mask.replace(charRepresentation, ' ').toCharArray();
-        for (i in maskedText.indices) {
-            val rawIndex = maskToRaw[i]
-            if (rawIndex == -1) {
-                maskedText[i] = mask[i]
-            } else {
-                maskedText[i] = rawText.charAt(rawIndex)
-            }
-        }
-        return String(maskedText)
-    }
-
     private fun makeMaskedTextWithHint(): CharSequence {
         val ssb = SpannableStringBuilder()
         var mtrv: Int
@@ -377,7 +351,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     companion object {
         const val SPACE = " "
-        const val ALLOWED_CHARS = "1234567890"
+        const val ALLOWED_CHARS = "1234567890 X"
         const val CHAR_REPRESENTATION = "#"
     }
 }

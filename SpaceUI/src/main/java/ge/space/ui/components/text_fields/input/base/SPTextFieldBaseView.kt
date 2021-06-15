@@ -72,7 +72,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * Lazy property for initialize ViewBinding in constructor
      */
     protected val inputTextBinding by lazy {
-        getViewBinding()
+        getChildViewBinding()
     }
 
     /**
@@ -129,12 +129,12 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         binding.flContent.addView(inputTextBinding.root)
     }
 
-    abstract fun handleImeOption()
+    protected abstract fun handleImeOption()
 
     /**
      * Allows to init ViewBinding
      */
-    protected abstract fun getViewBinding(): VB
+    protected abstract fun getChildViewBinding(): VB
 
     companion object {
         const val ID_NEXT = 5

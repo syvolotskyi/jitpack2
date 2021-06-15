@@ -1,10 +1,9 @@
 package ge.space.ui.components.text_fields.input.phone_input
 
 import android.content.Context
-import android.text.InputType
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
@@ -24,7 +23,6 @@ class SPTextFieldPhone @JvmOverloads constructor(
 ) : SPTextFieldBaseView<SpTextFieldPhoneLayoutBinding>(context, attrs, defStyleAttr) {
 
     init {
-        inputTextBinding.etInputField.inputType = InputType.TYPE_CLASS_PHONE
         inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
     }
 
@@ -51,11 +49,19 @@ class SPTextFieldPhone @JvmOverloads constructor(
         }
     }
 
+    fun addTextChangedListener(watcher: TextWatcher){
+        inputTextBinding.etInputField.addTextChangedListener(watcher)
+    }
+
+    fun removeTextChangedListener(watcher: TextWatcher){
+        inputTextBinding.etInputField.addTextChangedListener(watcher)
+    }
+
     override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
         inputTextBinding.etInputField.onFocusChangeListener = listener
     }
 
-    override fun getViewBinding(): SpTextFieldPhoneLayoutBinding {
+    override fun getChildViewBinding(): SpTextFieldPhoneLayoutBinding {
         return SpTextFieldPhoneLayoutBinding.inflate(LayoutInflater.from(context), this, false)
     }
 
