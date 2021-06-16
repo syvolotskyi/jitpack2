@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="4">
+
+        <ge.space.ui.components.banners.SPBannerIllustration
+            android:id="@+id/BannerIllustration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=""
+            app:sp_bannerDescription="@string/banner_description"
+            app:sp_bannerImage="@drawable/ic_status_success"
+            app:sp_bannerSubTitle="@string/banner_subtitle"
+            app:sp_bannerTitle="მაგალითი" />
+
+        <ge.space.design.ui_components.banners.SPItemBannerShowCaseView
+            android:id="@+id/itemShowCase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:gravity="bottom" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -39,4 +39,24 @@
 
     <string name="correct_password">Correct password</string>
     <string name="incorrect_password">Incorrect password</string>
+
+    <string name="component_banners">Banners</string>
+    <string name="component_banners_description">Banners description</string>
+
+    <string name="component_banner_status">Status Banner</string>
+    <string name="component_banner_status_description">Status Banner description</string>
+
+    <string name="component_banner_illustration">Illustration Banner</string>
+    <string name="component_banner_illustration_description">Illustration Banner description</string>
+
+    <string name="banner_title">Banner title</string>
+    <string name="banner_subtitle">Banner Subtitle</string>
+    <string name="banner_description">Banner Description</string>
+
+    <string name="visible">Visible</string>
+    <string name="gone">Gone</string>
+    <string name="enter_banner_title">Enter Banner title</string>
+    <string name="enter_banner_subtitle">Enter Banner subtitle</string>
+    <string name="enter_banner_description">Enter Banner Description</string>
+
 </resources>
