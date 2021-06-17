@@ -4,30 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="4">
-
-        <ge.space.ui.components.banners.SPBannerIllustration
-            android:id="@+id/BannerIllustration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=""
-            app:sp_bannerDescription="@string/banner_description"
-            app:sp_bannerImage="@drawable/ic_status_success"
-            app:sp_bannerSubTitle="@string/banner_subtitle"
-            app:sp_bannerTitle="მაგალითი" />
+        android:layout_height="wrap_content">
 
         <ge.space.design.ui_components.banners.SPItemBannerShowCaseView
             android:id="@+id/itemShowCase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:gravity="bottom" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <ge.space.ui.components.banners.SPBannerIllustration
+            android:id="@+id/BannerIllustration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemShowCase"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:sp_bannerDescription="@string/banner_description"
+            app:sp_bannerImage="@drawable/ic_status_success"
+            app:sp_bannerSubTitle="@string/banner_subtitle"
+            app:sp_bannerTitle="მაგალითი" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.core.widget.NestedScrollView>

@@ -30,14 +30,15 @@ class SPBannerStatus @JvmOverloads constructor(
         binding.bannerImage.setImageResource(statusImage)
     }
 
-    override fun setBannerStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerStatus)
 
-        styleAttrs.run {
-            statusState = getResourceId(R.styleable.SPBannerStatus_sp_bannerStatusStyle, 0)
-            recycle()
-        }
-    }
+//    override fun setBannerStyle(@StyleRes defStyleRes: Int) {
+//        val styleAttrs =
+//            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerStatus)
+//
+//        styleAttrs.run {
+//            statusState = getResourceId(R.styleable.SPBannerStatus_sp_bannerStatusStyle, 0)
+//            recycle()
+//        }
+//    }
 }
 
