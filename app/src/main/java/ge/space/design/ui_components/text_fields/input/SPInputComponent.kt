@@ -7,12 +7,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpTextInputShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpItemListTextFieldBinding
+import com.example.spacedesignsystem.databinding.SpLayoutListFieldsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
-import kotlinx.android.synthetic.main.sp_item_component.view.*
+import ge.space.ui.components.text_fields.input.text_input.doOnTextChanged
 
 class SPInputComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.text_input
@@ -23,31 +26,58 @@ class SPInputComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val binding =
-                SpTextInputShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
+            val layoutBinding = SpLayoutListFieldsShowcaseBinding.inflate(
+                environmentSP.requireLayoutInflater()
+            )
+            val buttons = mutableListOf<SPTextFieldBaseView<SpTextFieldTextLayoutBinding>>()
 
-            with(binding) {
-                setupInputTextWithDone(simpleInput, environmentSP.context)
-                setupInputTextWithDone(removableInput, environmentSP.context)
+            SPTextFieldsInputButtonStyles.list.onEach { buttonSample ->
 
-                cbDisable.setOnCheckedChangeListener { _, isChecked ->
-                    simpleInput.isEnabled = !isChecked
+                val resId = buttonSample.resId
+
+                val itemBinding = SpItemListTextFieldBinding.inflate(
+                    environmentSP.requireThemedLayoutInflater(resId),
+                    layoutBinding.fieldsLayout,
+                    true
+                )
+
+                with(itemBinding.simpleInput){
+                    style(buttonSample.resId)
+                    setupInputTextWithDone(this, environmentSP.context)
+                    buttons.add(this)
+                    doOnTextChanged{ text, _, _, _ ->
+                        if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
+                            showToast(context, text.toString())
+                        }
+                    }
                 }
-                cbDescription.setOnCheckedChangeListener { _, isChecked ->
-                    simpleInput.descriptionText = if (isChecked) {
-                        simpleInput.resources.getString(R.string.description)
+
+                with(itemBinding.buttonName) {
+                    val resName = resources.getResourceEntryName(resId)
+                    text = resName.substringAfter(".", resName)
+                }
+
+                itemBinding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.simpleInput.isEnabled = !isChecked
+                }
+
+                itemBinding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.simpleInput.descriptionText = if (isChecked) {
+                        itemBinding.simpleInput.resources.getString(R.string.description)
                     } else {
                         EMPTY_STRING
                     }
                 }
-            }
+                layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
+                    with(itemBinding.simpleInput){
+                        labelText = text.toString()
+                        descriptionText = text.toString()
+                    }
+                }
 
-            binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
-                binding.simpleInput.labelText = text.toString()
-                binding.removableInput.labelText = text.toString()
             }
+            return layoutBinding.root
 
-            return binding.root
         }
 
         private fun setupInputTextWithDone(textInput: SPTextFieldInput, context: Context) {
@@ -78,6 +108,7 @@ class SPInputComponent : SPShowCaseComponent {
 
     companion object {
         const val EMPTY_STRING = ""
+        const val TEXT_WATCHER_CHECK_TEXT = "Space"
     }
 
 }

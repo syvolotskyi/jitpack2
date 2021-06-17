@@ -11,5 +11,4 @@
     android:inputType="numberSigned"
     android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
     android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
-    android:paddingStart="@dimen/sp_text_field_horizontal_text_padding"
-    android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding" />
+    android:paddingHorizontal="@dimen/sp_text_field_horizontal_text_padding" />

@@ -35,7 +35,7 @@
     <string name="number_input_desc">Number input text inputs</string>
 
     <string name="text_input">Text input</string>
-    <string name="text_input_desc">Text input with clear button</string>
+    <string name="text_input_desc">Enter \"Space\" to check TextWatcher</string>
 
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>

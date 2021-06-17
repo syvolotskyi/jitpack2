@@ -1,6 +1,7 @@
 package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
@@ -90,51 +91,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             R.styleable.sp_text_field_base_view,
             defStyleAttr
         ) {
-            getString(R.styleable.sp_text_field_base_view_titleText).orEmpty()
-                .handleAttributeAction(
-                    SPBaseView.EMPTY_TEXT
-                ) {
-                    labelText = it
-                }
-
-            imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, ID_NEXT)
-
-            getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
-                .handleAttributeAction(
-                    SPBaseView.EMPTY_TEXT
-                ) {
-                    hint = it
-                }
-
-            getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty()
-                .handleAttributeAction(
-                    SPBaseView.EMPTY_TEXT
-                ) {
-                    descriptionText = it
-                }
-
+            applyAttributes()
             includeInputFieldContainer()
-
-            val textAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_android_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-            updateTextAppearance(textAppearance)
-
-            val descTextAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_descriptionTextAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-
-            updateDescriptionTextAppearance(descTextAppearance)
-
-            val labelTextAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_labelTextAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-
-            updateLabelTextAppearance(labelTextAppearance)
-
             setOnFocusChangeListener { _, focused ->
                 binding.flInputFieldContainer.setBackgroundResource(
                     if (focused) {
@@ -149,6 +107,81 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     private fun includeInputFieldContainer() {
         binding.flInputFieldContainer.addView(inputTextBinding.root)
+    }
+
+    /**
+     * Sets a style for the view.
+     *
+     * <p>
+     * Default style theme is SBBaseView style. A style has to implement SPView styleable
+     * attributes. Separate SPBaseView styleable attributes have higher priority han styles.
+     * <p>
+     *
+     * @param defStyleRes [Int] style resource id
+     */
+    protected fun setStyle(@StyleRes defStyleRes: Int) {
+        with(context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)){
+            applyAttributes()
+            recycle()
+        }
+    }
+
+    abstract fun setTextFieldStyle(@StyleRes defStyleRes: Int)
+
+    private fun TypedArray.applyAttributes(){
+        getString(R.styleable.sp_text_field_base_view_titleText).orEmpty()
+            .handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                labelText = it
+            }
+
+        imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, ID_NEXT)
+
+        getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
+            .handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                hint = it
+            }
+
+        getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty()
+            .handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                descriptionText = it
+            }
+
+        val textAppearance = getResourceId(
+            R.styleable.sp_text_field_base_view_android_textAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        updateTextAppearance(textAppearance)
+
+        val descTextAppearance = getResourceId(
+            R.styleable.sp_text_field_base_view_descriptionTextAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+
+        updateDescriptionTextAppearance(descTextAppearance)
+
+        val labelTextAppearance = getResourceId(
+            R.styleable.sp_text_field_base_view_labelTextAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+
+        updateLabelTextAppearance(labelTextAppearance)
+
+    }
+
+    /**
+     * Allows to update text style and BaseViewStyle programmatically
+     */
+    fun style(@StyleRes newStyle: Int) {
+        with(newStyle) {
+            setStyle(this)
+            setTextFieldStyle(this)
+        }
     }
 
     /**

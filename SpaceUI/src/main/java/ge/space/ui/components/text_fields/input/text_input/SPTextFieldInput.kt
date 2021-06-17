@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
@@ -49,7 +50,6 @@ class SPTextFieldInput @JvmOverloads constructor(
             defStyleAttr
         ) {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-
         }
 
         inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
@@ -87,6 +87,24 @@ class SPTextFieldInput @JvmOverloads constructor(
 
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
+    }
+
+    /**
+     * Sets a style for the SPButton view.
+     *
+     * <p>
+     * Default style theme is SPBaseView.SPBaseButton style.
+     * <p>
+     *
+     * @param defStyleRes [Int] style resource id
+     */
+    override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+
+        styleAttrs.run {
+            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+            recycle()
+        }
     }
 
     override fun updateTextAppearance(textAppearance: Int) {

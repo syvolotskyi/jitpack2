@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
@@ -83,6 +84,30 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
+    }
+
+    /**
+     * Sets a style for the SPButton view.
+     *
+     * <p>
+     * Default style theme is SPBaseView.SPBaseButton style.
+     * <p>
+     *
+     * @param defStyleRes [Int] style resource id
+     */
+    override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+
+        styleAttrs.run {
+
+            val textAppearance = getResourceId(
+                R.styleable.sp_text_field_base_view_android_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            updateTextAppearance(textAppearance)
+            recycle()
+        }
+
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
