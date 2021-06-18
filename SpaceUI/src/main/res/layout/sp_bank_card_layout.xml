@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:id="@+id/lytRoot"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <ge.space.ui.components.bank_cards.SPGradientImageView
+            android:id="@+id/vGradient"
+            android:layout_height="@dimen/sp_gradient_image_view_height"
+            android:layout_width="@dimen/sp_gradient_image_view_width"
+            tools:background="@color/static_primary_black" />
+
+        <include
+            android:id="@+id/lytBankCardHeader"
+            layout="@layout/sp_bank_card_header" />
+
+        <include
+            android:id="@+id/lytBankCardBody"
+            layout="@layout/sp_bank_card_body" />
+
+        <include
+            android:id="@+id/lytNotAvailable"
+            layout="@layout/sp_bank_card_non_available" />
+
+    </FrameLayout>
+
+</merge>

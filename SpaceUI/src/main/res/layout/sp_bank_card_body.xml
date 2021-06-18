@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lytContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/sp_main_header_height"
+    android:background="@android:color/transparent">
+
+    <FrameLayout
+        android:id="@+id/lytCredit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/sp_bank_card_credit_layout_height"
+        android:background="?attr/static_slate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/tvCreditTitle"
+            style="@style/SPCardBankCreditTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="@string/bank_card_loan_title" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivChip"
+        android:layout_height="@dimen/sp_bank_card_chip_size"
+        android:layout_width="@dimen/sp_bank_card_chip_size"
+        android:layout_marginStart="@dimen/sp_bank_card_chip_margin_start"
+        android:layout_marginTop="@dimen/sp_bank_card_chip_margin_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_bank_card_chip" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPayWave"
+        android:layout_height="@dimen/sp_bank_pay_wave_height"
+        android:layout_width="@dimen/sp_bank_pay_wave_width"
+        android:layout_marginEnd="@dimen/sp_bank_pay_wave_margin_end"
+        android:layout_marginTop="@dimen/sp_bank_pay_wave_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_pay_wave"
+        tools:tint="@color/static_primary_black" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAccountNumber"
+        style="@style/SPBankCardAccountNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sp_bank_card_chip_margin_start"
+        android:layout_marginBottom="@dimen/sp_bank_card_account_number_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="**** 3212" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPaySystem"
+        android:layout_width="@dimen/sp_bank_card_payment_system_logo_width"
+        android:layout_height="@dimen/sp_bank_card_payment_system_logo_height"
+        android:layout_marginEnd="@dimen/sp_bank_pay_wave_margin_end"
+        android:layout_marginBottom="@dimen/sp_bank_card_account_number_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

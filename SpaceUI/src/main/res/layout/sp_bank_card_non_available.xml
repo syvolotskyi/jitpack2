@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lytNonAvailableStatus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:background="@color/transparent_black_65"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStatus"
+        android:layout_height="@dimen/sp_bank_card_status_image_size"
+        android:layout_width="@dimen/sp_bank_card_status_image_size"
+        android:layout_marginTop="@dimen/sp_bank_card_status_image_margin_top"
+        android:layout_gravity="center_horizontal"
+        tools:srcCompat="@drawable/ic_alert" />
+
+    <TextView
+        android:id="@+id/tvCardStatus"
+        style="@style/SPBankCardStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sp_bank_card_status_title_margin_top"
+        android:layout_gravity="center_horizontal"
+        tools:text="@string/bank_card_pending_title" />
+
+</FrameLayout>
