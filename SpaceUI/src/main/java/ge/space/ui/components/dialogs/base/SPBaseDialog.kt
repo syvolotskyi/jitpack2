@@ -95,7 +95,7 @@ abstract class SPBaseDialog<VB : ViewBinding, BT : SPButtonsDialogHolder> : Dial
         return buttons
     }
 
-    override fun getTheme(): Int = R.style.SPDialogBaseView
+    override fun getTheme(): Int = R.style.SPDialog_BaseView
 
     /**
      * Creates a specific button model

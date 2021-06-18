@@ -1,18 +1,15 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
@@ -62,22 +59,22 @@ class SPButtonVertical @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.sp_base_view,
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseVertical)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_VerticalBase)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButtonVertical,
+            R.styleable.sp_button_vertical,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPButtonVertical_android_src, 0)
-            text = getString(R.styleable.SPButtonVertical_android_text).orEmpty()
-            isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
+            src = getResourceId(R.styleable.sp_button_vertical_android_src, 0)
+            text = getString(R.styleable.sp_button_vertical_android_text).orEmpty()
+            isEnabled = getBoolean(R.styleable.sp_button_vertical_android_enabled, true)
         }
     }
 
@@ -97,66 +94,31 @@ class SPButtonVertical @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
      override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
-            textColor = getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
-            updateTextColor(
-                getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
-            )
-
-            text = getString(R.styleable.SPButton_android_text).orEmpty()
-            updateText(
-                getString(R.styleable.SPButton_android_text).orEmpty()
-            )
-
-            fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            val fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            if (!isInEditMode) {
-                val face = ResourcesCompat.getFont(context, fontFamilyId)
-                updateFontFace(face)
-            }
-
-            textSize = getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
-            updateTextSize(
-                getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
-            )
-
+            val textAppearance = getResourceId(R.styleable.sp_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
             val iconPaddingInd = getInt(
-                R.styleable.SPViewStyle_sp_iconPadding, DEFAULT_ICON_PADDING
+                R.styleable.sp_view_style_btnIconPadding, DEFAULT_ICON_PADDING
             )
             iconPadding = IconPadding.values()[iconPaddingInd]
-
+            updateTextAppearance(textAppearance)
             recycle()
         }
-    }
 
-    override fun updateFontFace(face: Typeface?) {
-        binding.buttonLabel.typeface = face
     }
 
     override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
-    override fun updateTextColor(color: Int) {
-        binding.buttonLabel.setTextColor(textColor)
-    }
-
-    override fun updateTextSize(textSize: Float) {
-        binding.buttonLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-    }
-
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
+    }
+
+    override fun updateTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
     }
 
     private fun handleDirectionArrow() {

@@ -21,4 +21,53 @@
         <item name="android:textColor">?attr/label_quaternary</item>
     </style>
 
+
+    // 800
+    <style name="h800_medium_label_tertiary" parent="h800_medium">
+        <item name="android:textColor">?attr/label_tertiary</item>
+    </style>
+
+    // 700
+
+    <style name="h700_bold_caps_primary_white" parent="h700_bold_caps">
+        <item name="android:textColor">@color/static_primary_white</item>
+    </style>
+
+    <style name="h700_bold_caps_brand_primary" parent="h700_bold_caps">
+        <item name="android:textColor">@color/appPrimaryColor</item>
+    </style>
+
+    <style name="h700_bold_secondary" parent="h700_bold">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
+    <style name="h700_bold_caps_secondary" parent="h700_medium">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
+    <style name="h700_medium_secondary" parent="h700_medium">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
+    <style name="h700_medium_accent_magenta" parent="h700_medium">
+        <item name="android:textColor">?attr/accent_magenta</item>
+    </style>
+
+    <style name="h700_medium_brand_primary" parent="h700_medium">
+        <item name="android:textColor">?attr/brand_primary</item>
+    </style>
+
+    <style name="h700_medium_label_primary" parent="h700_medium">
+        <item name="android:textColor">?attr/label_primary</item>
+    </style>
+
+    <style name="h700_medium_caps_label_secondary" parent="h700_medium_caps">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
+    //600
+    <style name="h600_medium_caps_label_primary" parent="h600_medium_caps">
+        <item name="android:textColor">?attr/label_primary</item>
+    </style>
+
 </resources>

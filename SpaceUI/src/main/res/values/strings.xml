@@ -8,4 +8,6 @@
     <string name="bank_card_physical_card">Physical Card</string>
     <string name="bank_card_digital_card_template">Digital Card %s</string>
     <string name="bank_card_loan_title">From this card you get a TBC loan</string>
+
+    <string name="enter_you_details_here">Enter your details here</string>
 </resources>

@@ -1,18 +1,19 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
+import ge.space.ui.components.buttons.SPButton.ArrowDirection
+import ge.space.ui.components.buttons.SPButton.ArrowDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 
 
@@ -40,7 +41,7 @@ class SPButton @JvmOverloads constructor(
     /**
      * Makes a button arrow direction.
      */
-    private var directionArrow = ArrowDirection.None
+    private var directionArrow = None
         set(value) {
             field = value
 
@@ -50,24 +51,23 @@ class SPButton @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.sp_base_view,
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButton,
+            R.styleable.sp_button,
             defStyleAttr
         ) {
-            getString(R.styleable.SPButton_android_text).orEmpty().handleAttributeAction(
-                EMPTY_TEXT
-            ) {
-                text = it
-            }
+            getString(R.styleable.sp_button_android_text).orEmpty()
+                .handleAttributeAction(EMPTY_TEXT) {
+                    text = it
+                }
         }
     }
 
@@ -87,54 +87,40 @@ class SPButton @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
-            textColor = getColor(R.styleable.SPViewStyle_android_textColor, Color.WHITE)
-            text = getString(R.styleable.SPButton_android_text).orEmpty()
-            fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            textSize = getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
+            val directionArrowInd = styleAttrs.getInt(R.styleable.sp_view_style_directionArrow, DEFAULT_OBTAIN_VAL)
+            val textAppearance = getResourceId(R.styleable.sp_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
 
-            val directionArrowInd = getInt(
-                R.styleable.SPViewStyle_sp_directionArrow, DEFAULT_OBTAIN_VAL
-            )
             directionArrow = ArrowDirection.values()[directionArrowInd]
+            updateTextAppearance(textAppearance)
 
             recycle()
         }
     }
 
-    override fun updateTextColor(color: Int) {
-        with(binding) {
-            buttonLabel.setTextColor(textColor)
-            buttonLabel.compoundDrawables.forEach {
-                it?.setTint(textColor)
-            }
-        }
+    override fun updateTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
+        updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
     }
 
-    override fun updateFontFace(face: Typeface?) {
-        binding.buttonLabel.typeface = face
+
+    private fun updateDrawableColor(color: Int) {
+        binding.buttonLabel.compoundDrawables.forEach {
+            it?.setTint(color)
+        }
     }
 
     override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
-    override fun updateTextSize(textSize: Float) {
-        binding.buttonLabel.setTextSize(
-            TypedValue.COMPLEX_UNIT_PX, textSize
-        )
-    }
-
     private fun handleDirectionArrow() {
         when (directionArrow) {
-            ArrowDirection.None -> directNone()
-            ArrowDirection.Left -> directLeft()
-            ArrowDirection.Right -> directRight()
+            None -> directNone()
+            Left -> directLeft()
+            Right -> directRight()
         }
     }
 
@@ -151,7 +137,6 @@ class SPButton @JvmOverloads constructor(
             null,
             null
         )
-        updateTextColor(color)
     }
 
     private fun directRight() {
@@ -160,9 +145,8 @@ class SPButton @JvmOverloads constructor(
             null,
             null,
             ContextCompat.getDrawable(context, R.drawable.ic_arrow_right_16_regular),
-           null
+            null
         )
-        updateTextColor(color)
     }
 
     /**
@@ -178,7 +162,4 @@ class SPButton @JvmOverloads constructor(
         Right
     }
 
-    companion object {
-        private const val FLOAT_ZERO = 0f
-    }
 }

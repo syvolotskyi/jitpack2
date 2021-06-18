@@ -50,36 +50,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
             updateText(value)
         }
 
-    /**
-     * Makes a colored text.
-     */
-    protected var textColor = Color.WHITE
-        set(value) {
-            field = value
-
-            updateTextColor(value)
-        }
-
-    /**
-     * Sets a button title font.
-     */
-    @FontRes
-    protected var fontFamilyId: Int = R.font.myriad_geo_bold
-        set(value) {
-            field = value
-
-            changeFontFace()
-        }
-
-    /**
-     * Sets a button title size.
-     */
-    protected var textSize: Float = FLOAT_ZERO
-        set(value) {
-            field = value
-
-            updateTextSize(value)
-        }
 
     init {
         binding = _binding
@@ -110,36 +80,19 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     protected abstract fun getViewBinding(): VB
 
     /**
-     * Allows to update text color using ViewBinding
-     */
-    protected abstract fun updateTextColor(@ColorInt color: Int)
-
-    /**
-     * Allows to update text size using ViewBinding
-     */
-    protected abstract fun updateTextSize(textSize: Float)
-
-    /**
-     * Allows to update font face using ViewBinding
-     */
-    protected abstract fun updateFontFace(face: Typeface?)
-
-    /**
      * Allows to update a text using ViewBinding
      */
     protected abstract fun updateText(text: String)
 
     /**
+     * Allows to update a text appearance by styles
+     */
+    abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
+
+    /**
      * Allows to update button style using ViewBinding
      */
     abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
-
-    private fun changeFontFace() {
-        if (!isInEditMode) {
-            val face = ResourcesCompat.getFont(context, fontFamilyId)
-            updateFontFace(face)
-        }
-    }
 
     companion object {
         private const val FLOAT_ZERO = 0f

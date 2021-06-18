@@ -1,13 +1,15 @@
 package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
-import android.text.InputFilter
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
+import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -18,10 +20,10 @@ import ge.space.ui.util.extension.handleAttributeAction
  *
  * @property text [String] value which sets a text.
  * @property labelText [String] value which sets a label text.
- * @property descText [String] value which sets a description text.
- * @property maxLength [Int] value which applies a max Length.
+ * @property imeOption [Int] value which sets a ime Option.
+ * @property descriptionText [String] value which sets a description text.
  */
-abstract class SPTextFieldBaseView @JvmOverloads constructor(
+abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -30,15 +32,13 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
     /**
      * Sets a button title.
      */
-    var text: String = SPBaseView.EMPTY_TEXT
-        set(value) {
-            field = value
+    abstract var text: String
 
-            binding.etInputField.setText(value)
-        }
-        get() {
-            return binding.etInputField.text.toString()
-        }
+
+    /**
+     * Sets a button hint.
+     */
+    abstract var hint: String
 
     /**
      * Sets a label text.
@@ -51,9 +51,19 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
         }
 
     /**
+     * Sets a imeOption.
+     */
+    var imeOption: Int = 0
+        set(value) {
+            field = value
+
+            handleImeOption()
+        }
+
+    /**
      * Sets a description text.
      */
-    var descText: String = SPBaseView.EMPTY_TEXT
+    var descriptionText: String = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
 
@@ -62,15 +72,11 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
 
 
     /**
-     * Sets a max length.
+     * Lazy property for initialize ViewBinding in constructor
      */
-    var maxLength: Int = 0
-        set(value) {
-            field = value
-
-            setEditTextMaxLength(value)
-        }
-
+    protected val inputTextBinding by lazy {
+        getChildViewBinding()
+    }
 
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
@@ -82,28 +88,123 @@ abstract class SPTextFieldBaseView @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPTextViewBase,
+            R.styleable.sp_text_field_base_view,
             defStyleAttr
         ) {
-            getString(R.styleable.SPTextViewBase_sp_titleText).orEmpty().handleAttributeAction(
+            applyAttributes()
+            includeInputFieldContainer()
+            setOnFocusChangeListener { _, focused ->
+                binding.flInputFieldContainer.setBackgroundResource(
+                    if (focused) {
+                        R.drawable.bg_text_field_focused
+                    } else {
+                        R.drawable.bg_text_field
+                    }
+                )
+            }
+        }
+    }
+
+    private fun includeInputFieldContainer() {
+        binding.flInputFieldContainer.addView(inputTextBinding.root)
+    }
+
+    /**
+     * Sets a style for the view.
+     *
+     * <p>
+     * Default style theme is SBBaseView style. A style has to implement SPView styleable
+     * attributes. Separate SPBaseView styleable attributes have higher priority han styles.
+     * <p>
+     *
+     * @param defStyleRes [Int] style resource id
+     */
+    protected fun setStyle(@StyleRes defStyleRes: Int) {
+        with(context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)){
+            applyAttributes()
+            recycle()
+        }
+    }
+
+    abstract fun setTextFieldStyle(@StyleRes defStyleRes: Int)
+
+    private fun TypedArray.applyAttributes(){
+        getString(R.styleable.sp_text_field_base_view_titleText).orEmpty()
+            .handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 labelText = it
             }
 
-            val index = getInt(R.styleable.SPTextViewBase_android_imeOptions, 0)
-            binding.etInputField.imeOptions = index
-            getString(R.styleable.SPTextViewBase_sp_descText).orEmpty().handleAttributeAction(
+        imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, ID_NEXT)
+
+        getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
+            .handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
-                descText = it
+                hint = it
             }
+
+        getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty()
+            .handleAttributeAction(
+                SPBaseView.EMPTY_TEXT
+            ) {
+                descriptionText = it
+            }
+
+        val textAppearance = getResourceId(
+            R.styleable.sp_text_field_base_view_android_textAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        updateTextAppearance(textAppearance)
+
+        val descTextAppearance = getResourceId(
+            R.styleable.sp_text_field_base_view_descriptionTextAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+
+        updateDescriptionTextAppearance(descTextAppearance)
+
+        val labelTextAppearance = getResourceId(
+            R.styleable.sp_text_field_base_view_labelTextAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+
+        updateLabelTextAppearance(labelTextAppearance)
+
+    }
+
+    /**
+     * Allows to update text style and BaseViewStyle programmatically
+     */
+    fun style(@StyleRes newStyle: Int) {
+        with(newStyle) {
+            setStyle(this)
+            setTextFieldStyle(this)
         }
     }
 
-    private fun setEditTextMaxLength(length: Int) {
-        val filterArray = arrayOfNulls<InputFilter>(1)
-        filterArray[0] = InputFilter.LengthFilter(length)
-        binding.etInputField.filters = filterArray
+    /**
+     * Allows to update a text appearance by styles
+     */
+    abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
+
+    private fun updateLabelTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.textLabel, textAppearance)
+    }
+
+    private fun updateDescriptionTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.textDesc, textAppearance)
+    }
+
+    protected abstract fun handleImeOption()
+
+    /**
+     * Allows to init ViewBinding
+     */
+    protected abstract fun getChildViewBinding(): VB
+
+    companion object {
+        const val ID_NEXT = 5
     }
 }
