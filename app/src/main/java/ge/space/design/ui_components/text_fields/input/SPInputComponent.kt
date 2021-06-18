@@ -15,7 +15,7 @@ import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
-import ge.space.ui.components.text_fields.input.text_input.doOnTextChanged
+import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 
 class SPInputComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.text_input

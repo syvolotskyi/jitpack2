@@ -1,7 +1,8 @@
-package ge.space.ui.components.text_fields.input.text_input
+package ge.space.ui.components.text_fields.input.utils.extension
 
 import android.text.Editable
 import android.text.TextWatcher
+import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 
 /**
  * Add an action which will be invoked before the text changed.
