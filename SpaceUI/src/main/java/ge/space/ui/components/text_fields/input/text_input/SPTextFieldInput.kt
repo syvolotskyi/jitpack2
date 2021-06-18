@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.input.phone_input
+package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
 import android.text.TextWatcher
@@ -8,43 +8,21 @@ import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
+import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
-/**
- * Field view extended from [SPTextFieldBaseView] that allows
- * to change EditorAction and sets the mask.
- *
- */
-class SPTextFieldPhone @JvmOverloads constructor(
+class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldBaseView<SpTextFieldPhoneLayoutBinding>(context, attrs, defStyleAttr) {
-
-    init {
-        inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.sp_text_field_base_view,
-            defStyleAttr
-        ) {
-
-            val textAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_android_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-
-            updateTextAppearance(textAppearance)
-        }
-
-    }
+) : SPTextFieldBaseView<SpTextFieldTextLayoutBinding>(context, attrs, defStyleAttr) {
 
     override var text: String = SPBaseView.EMPTY_TEXT
-        get() = inputTextBinding.etInputField.getRawText()
+        get() = inputTextBinding.etInputField.text.toString()
         set(value) {
             field = value
 
@@ -59,11 +37,30 @@ class SPTextFieldPhone @JvmOverloads constructor(
             inputTextBinding.etInputField.hint = value
         }
 
-    fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
-        with(inputTextBinding.etInputField) {
-            setImeActionEnabled(true)
-            onActionListener = listener
+    private var canRemove: Boolean = false
+        set(value) {
+            field = value
+            inputTextBinding.ivClear.isVisible = value
         }
+
+    init {
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.sp_text_field_input,
+            defStyleAttr
+        ) {
+            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+        }
+
+        inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
+    }
+
+    fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
+        inputTextBinding.etInputField.setOnEditorActionListener(listener)
+    }
+
+    override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
+        inputTextBinding.etInputField.onFocusChangeListener = listener
     }
 
     fun addTextChangedListener(watcher: TextWatcher){
@@ -74,12 +71,18 @@ class SPTextFieldPhone @JvmOverloads constructor(
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
-    override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
-        inputTextBinding.etInputField.onFocusChangeListener = listener
+    override fun getChildViewBinding(): SpTextFieldTextLayoutBinding {
+        return SpTextFieldTextLayoutBinding.inflate(
+            LayoutInflater.from(context),
+            this,
+            false
+        )
     }
 
-    override fun getChildViewBinding(): SpTextFieldPhoneLayoutBinding {
-        return SpTextFieldPhoneLayoutBinding.inflate(LayoutInflater.from(context), this, false)
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        inputTextBinding.etInputField.isEnabled = enabled
+        inputTextBinding.ivClear.isEnabled = enabled
     }
 
     override fun handleImeOption() {
@@ -99,15 +102,9 @@ class SPTextFieldPhone @JvmOverloads constructor(
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
 
         styleAttrs.run {
-
-            val textAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_android_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-            updateTextAppearance(textAppearance)
+            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
             recycle()
         }
-
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
