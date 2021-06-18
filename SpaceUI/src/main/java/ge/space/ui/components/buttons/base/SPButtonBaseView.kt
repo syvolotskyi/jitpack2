@@ -1,26 +1,17 @@
 package ge.space.ui.components.buttons.base
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
-import androidx.annotation.FontRes
 import androidx.annotation.StyleRes
-import androidx.core.content.res.ResourcesCompat
 import androidx.viewbinding.ViewBinding
-import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 
 /**
  * Abstract base Button view extended from [SPBaseView] that allows to change its configuration.
  * It has to be extended to apply styled properties.
  *
- * @property textColor [Int] value which applies a button label color
  * @property text [String] value which applies a button label text
- * @property fontFamilyId [Int] value which applies a button label font
- * @property textSize [Int] value which applies a button label size
  */
 abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
