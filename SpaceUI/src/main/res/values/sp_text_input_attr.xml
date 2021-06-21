@@ -6,10 +6,18 @@
 
     <declare-styleable name="sp_text_field_base_view">
         <attr name="android:text" format="string|reference" />
-        <attr name="android:maxLength" format="integer" />
+        <attr name="android:imeOptions" format="reference" />
+        <attr name="android:hint" format="string|reference" />
+        <attr name="android:textAppearance" format="reference" />
+        <attr name="descriptionTextAppearance" format="reference" />
+        <attr name="labelTextAppearance" format="reference" />
         <attr name="titleText" format="string|reference" />
         <attr name="descriptionText" format="string|reference" />
-        <attr name="android:imeOptions" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_text_field_input">
+        <attr name="canRemove" format="boolean" />
+        <attr name="android:textAppearance" format="reference" />
     </declare-styleable>
 
 </resources>

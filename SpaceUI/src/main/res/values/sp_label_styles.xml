@@ -32,6 +32,11 @@
     </style>
 
 
+    // 800
+    <style name="h800_medium_label_tertiary" parent="h800_medium">
+        <item name="android:textColor">?attr/label_tertiary</item>
+    </style>
+
     // 700
 
     <style name="h700_bold_caps_primary_white" parent="h700_bold_caps">

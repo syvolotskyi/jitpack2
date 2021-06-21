@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/buttonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+                android:id="@+id/simpleInput"
+                style="@style/SPTextField.Input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_p_16"
+                android:hint="@string/enter_you_details_here"
+                android:imeOptions="actionNext"
+                app:descriptionText="Description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneInput"
+                app:titleText="Input phone number" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbDisable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:enabled="true"
+                android:text="disable" />
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:checked="true"
+                android:text="@string/description" />
+
+            <include layout="@layout/sp_layout_divider" />
+
+            <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+                android:id="@+id/removableInput"
+                style="@style/SPTextField.InputRemovable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_p_16"
+                android:hint="@string/enter_you_details_here"
+                android:imeOptions="actionDone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneInput"
+                app:titleText="Input phone number" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/labelTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textVisiblePassword"
+        android:padding="@dimen/dimen_p_10"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</LinearLayout>
