@@ -26,23 +26,22 @@ class SPBankCardComponent : SPShowCaseComponent {
 
             SPButtonStyles.list.forEach { bankCardSample ->
                 val itemBinding = SpItemBankCardShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(R.style.SPBankCardView),
+                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_Base),
                     binding.bankCardsLayout,
                     true
                 )
 
                 with(itemBinding.bankCard) {
+                    model = bankCardSample.cardModel
                     accountNumber = bankCardSample.accountNumber
                     bankLogo = bankCardSample.bankLogo
                     amount = bankCardSample.amount
-                    bankName = bankCardSample.bankName
                     paySystemUrl = bankCardSample.paySystemUrl
                     cardBackground = bankCardSample.cardBackground
                     payWaveType = bankCardSample.payWaveType
                     status = bankCardSample.bankCardStatus
                     accountNumberStyle = bankCardSample.accountNumberStyle
                     balanceVisible = bankCardSample.balanceVisible
-                    cardType = bankCardSample.cardType
                     isCredit = bankCardSample.isCredit
                     hasChip = bankCardSample.hasChip
                     hasPayWave = bankCardSample.hasPayWave

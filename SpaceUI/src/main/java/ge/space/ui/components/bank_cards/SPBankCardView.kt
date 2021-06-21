@@ -33,7 +33,7 @@ import ge.space.ui.util.extension.visibleOrGone
  * @property amount sets an amount string
  * @property accountVisible applies an account visibility
  * @property balanceVisible applies a balance string visibility
- * @property cardType sets a card type
+ * @property model sets a card type
  * @property isCredit if it's true blue credit layout shows
  * @property paySystemUrl sets a pay system icon by its URL
  */
@@ -42,6 +42,26 @@ class SPBankCardView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr) {
+
+    /**
+     * Applies a type of the bank card
+     */
+    var model: SPBankCardModel = SPBankCardModel.SPPhysical("")
+        set(value) {
+            field = value
+
+            handleBankCardType()
+        }
+
+    /**
+     * Applies a title of a bank name
+     */
+    private var bankName: String = EMPTY_TEXT
+        set(value) {
+            field = value
+
+            binding.lytBankCardHeader.tvBankName.text = value
+        }
 
     /**
      * Applies a bank card view background
@@ -134,16 +154,6 @@ class SPBankCardView @JvmOverloads constructor(
         }
 
     /**
-     * Applies a title of a bank name
-     */
-    var bankName: String = EMPTY_TEXT
-        set(value) {
-            field = value
-
-            binding.lytBankCardHeader.tvBankName.text = value
-        }
-
-    /**
      * Applies an amount of the account
      */
     var amount: String = EMPTY_TEXT
@@ -171,16 +181,6 @@ class SPBankCardView @JvmOverloads constructor(
             field = value
 
             binding.lytBankCardHeader.lytBalance.visibleOrGone(value)
-        }
-
-    /**
-     * Applies a type of the bank card
-     */
-    var cardType: SPBankCardType = SPBankCardType.SPPhysical
-        set(value) {
-            field = value
-
-            handleBankCardType()
         }
 
     /**
@@ -216,19 +216,19 @@ class SPBankCardView @JvmOverloads constructor(
 
     private fun handleBankCardType() {
         with(binding.lytBankCardHeader) {
-            tvBankCardType.visibleOrGone(cardType !is SPBankCardType.SPNone)
-            val tempCardType = cardType
-            tvBankCardType.text = getCardTypeTitle(tempCardType)
+            tvBankCardType.visibleOrGone(model !is SPBankCardModel.SPDefault)
+            tvBankCardType.text = getCardTypeTitle(model)
+            bankName = model.name
         }
     }
 
-    private fun getCardTypeTitle(cardType: SPBankCardType): String =
+    private fun getCardTypeTitle(cardType: SPBankCardModel): String =
         when(cardType) {
-            is SPBankCardType.SPDigital -> String.format(
-                resources.getString(R.string.bank_card_digital_card_template),
+            is SPBankCardModel.SPDigital -> String.format(
+                HARDCODED_DIGITAL_CARD_TEMP,
                 cardType.currency
             )
-            else -> resources.getString(R.string.bank_card_physical_card)
+            else -> HARDCODED_PHYSICAL_CARD
         }
 
     private fun handleBankLogo() {
@@ -242,8 +242,8 @@ class SPBankCardView @JvmOverloads constructor(
         Glide.with(context)
             .load(bankLogo)
             .transform(CenterCrop(), RoundedCorners(cornerRadius))
-            .placeholder(R.drawable.bkg_bank_card_logo)
-            .error(R.drawable.bkg_bank_card_logo)
+            .placeholder(R.drawable.bg_bank_card_logo)
+            .error(R.drawable.bg_bank_card_logo)
             .diskCacheStrategy(DiskCacheStrategy.DATA)
             .into(binding.lytBankCardHeader.ivBankImage)
     }
@@ -293,11 +293,11 @@ class SPBankCardView @JvmOverloads constructor(
 
     private fun getStatusPair() = when (status) {
         SPBankCardStatus.Pending -> Pair(
-            resources.getString(R.string.bank_card_pending_title),
+            HARDCODED_PENDING_TITLE,
             R.drawable.ic_alert
         )
         else -> Pair(
-            resources.getString(R.string.bank_card_block_title),
+            HARDCODED_BLOCKED_TITLE,
             R.drawable.ic_blocked
         )
     }
@@ -313,5 +313,12 @@ class SPBankCardView @JvmOverloads constructor(
     private fun getPayWaveColor() = when (payWaveType) {
         SPPayWaveType.Light -> R.color.transparent_white_half
         SPPayWaveType.Dark -> R.color.transparent_black_half
+    }
+
+    companion object {
+        private const val HARDCODED_BLOCKED_TITLE = "Your card is blocked"
+        private const val HARDCODED_PENDING_TITLE = "Your card will be activated soon"
+        private const val HARDCODED_PHYSICAL_CARD = "Physical Card"
+        private const val HARDCODED_DIGITAL_CARD_TEMP = "Digital Card %s"
     }
 }

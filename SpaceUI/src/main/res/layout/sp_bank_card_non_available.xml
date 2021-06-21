@@ -19,11 +19,11 @@
 
     <TextView
         android:id="@+id/tvCardStatus"
-        style="@style/SPBankCardStatusLabel"
+        style="@style/SPBankCardViewCardStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_bank_card_status_title_margin_top"
         android:layout_gravity="center_horizontal"
-        tools:text="@string/bank_card_pending_title" />
+        tools:text="Your card will be activated soon" />
 
 </FrameLayout>

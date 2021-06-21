@@ -4,16 +4,15 @@ import android.graphics.Color
 import ge.space.ui.components.bank_cards.data.*
 
 data class SPBankCardSupport(
+    val cardModel: SPBankCardModel,
     val accountNumber: String,
     val bankLogo: String,
-    val bankName: String,
     val amount: String = "",
     val paySystemUrl: String = "",
     val cardBackground: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),
     val payWaveType: SPPayWaveType = SPPayWaveType.Light,
     val bankCardStatus: SPBankCardStatus = SPBankCardStatus.Available,
     val accountNumberStyle: SPAccountNumberStyle = SPAccountNumberStyle.White,
-    val cardType: SPBankCardType = SPBankCardType.SPPhysical,
     val isCredit: Boolean = false,
     val hasPayWave: Boolean = true,
     val hasChip: Boolean = true,
@@ -55,93 +54,94 @@ object SPButtonStyles {
 
     val list = listOf(
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("TBC"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BRAND_PRIMARY_COLOR),
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2 000 750 UZS",
             paySystemUrl = VARIANT_UNION_PAY_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("TBC"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BRAND_PRIMARY_COLOR),
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             balanceVisible = false,
             paySystemUrl = VARIANT_UNION_PAY_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("TBC"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BRAND_PRIMARY_COLOR),
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2 000 750 UZS",
             paySystemUrl = VARIANT_UNION_PAY_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("TBC"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BRAND_PRIMARY_COLOR),
             bankCardStatus = SPBankCardStatus.Blocked,
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2 000 750 UZS",
             paySystemUrl = VARIANT_UNION_PAY_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("TBC"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BRAND_PRIMARY_COLOR),
             bankCardStatus = SPBankCardStatus.Pending,
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2 000 750 UZS",
             accountVisible = false,
             paySystemUrl = VARIANT_UNION_PAY_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("Space"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BLACK_COLOR),
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("Space"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BLACK_COLOR),
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             balanceVisible = false,
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("Space"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BLACK_COLOR),
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("Space"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BLACK_COLOR),
             bankCardStatus = SPBankCardStatus.Blocked,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPPhysical("Space"),
             cardBackground = SPBankCardGradient.SPNoneGradient(BLACK_COLOR),
             bankCardStatus = SPBankCardStatus.Pending,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
@@ -152,12 +152,11 @@ object SPButtonStyles {
             accountNumberStyle = SPAccountNumberStyle.Dark,
             accountNumber = "**** 3232",
             bankLogo = LOGO_MIB,
-            bankName = "Madad Invest Bank",
             amount = "2 000 750 UZS",
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = HUMO_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
@@ -168,13 +167,12 @@ object SPButtonStyles {
             accountNumberStyle = SPAccountNumberStyle.Dark,
             accountNumber = "**** 3232",
             bankLogo = LOGO_MIB,
-            bankName = "Madad Invest Bank",
             amount = "2 000 750 UZS",
-            cardType = SPBankCardType.SPNone,
             isCredit = true,
             paySystemUrl = HUMO_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
@@ -185,12 +183,11 @@ object SPButtonStyles {
             accountNumberStyle = SPAccountNumberStyle.Dark,
             accountNumber = "**** 3232",
             bankLogo = LOGO_MIB,
-            bankName = "Madad Invest Bank",
             balanceVisible = false,
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = HUMO_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
@@ -202,12 +199,11 @@ object SPButtonStyles {
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_MIB,
-            bankName = "Madad Invest Bank",
             amount = "2 000 750 UZS",
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = HUMO_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
@@ -219,12 +215,11 @@ object SPButtonStyles {
             accountNumberStyle = SPAccountNumberStyle.Dark,
             accountNumber = "**** 3232",
             bankLogo = LOGO_MIB,
-            bankName = "Madad Invest Bank",
             amount = "2 000 750 UZS",
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = HUMO_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
@@ -236,12 +231,11 @@ object SPButtonStyles {
             accountNumberStyle = SPAccountNumberStyle.Dark,
             accountNumber = "**** 3232",
             bankLogo = LOGO_MIB,
-            bankName = "Madad Invest Bank",
             amount = "2 000 750 UZS",
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = HUMO_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Bank of Georgia"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_BLUE_1,
@@ -252,12 +246,11 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_GEORGIA_BANK,
-            bankName = "Bank of Georgia",
             balanceVisible = false,
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = MASTER_CARD_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Bank of Georgia"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_BLUE_1,
@@ -268,13 +261,12 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_GEORGIA_BANK,
-            bankName = "Bank of Georgia",
             balanceVisible = false,
-            cardType = SPBankCardType.SPNone,
             isCredit = true,
             paySystemUrl = MASTER_CARD_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Bank of Georgia"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_BLUE_1,
@@ -286,12 +278,11 @@ object SPButtonStyles {
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_GEORGIA_BANK,
-            bankName = "Bank of Georgia",
             balanceVisible = false,
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = MASTER_CARD_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Bank of Georgia"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_BLUE_1,
@@ -303,12 +294,11 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Blocked,
             accountNumber = "**** 3232",
             bankLogo = LOGO_GEORGIA_BANK,
-            bankName = "Bank of Georgia",
             balanceVisible = false,
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = MASTER_CARD_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDefault("Bank of Georgia"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_BLUE_1,
@@ -320,12 +310,11 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Pending,
             accountNumber = "**** 3232",
             bankLogo = LOGO_GEORGIA_BANK,
-            bankName = "Bank of Georgia",
             balanceVisible = false,
-            cardType = SPBankCardType.SPNone,
             paySystemUrl = MASTER_CARD_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "GEL"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_GREEN_1,
@@ -336,12 +325,11 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
-            cardType = SPBankCardType.SPDigital("GEL"),
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "GEL"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_GREEN_1,
@@ -352,12 +340,11 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             balanceVisible = false,
-            cardType = SPBankCardType.SPDigital("GEL"),
             paySystemUrl = VISA_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "GEL"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_GREEN_1,
@@ -369,12 +356,11 @@ object SPButtonStyles {
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
-            cardType = SPBankCardType.SPDigital("GEL"),
             paySystemUrl = UNION_PAY_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "GEL"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_GREEN_1,
@@ -386,12 +372,11 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Blocked,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
-            cardType = SPBankCardType.SPDigital("GEL"),
             paySystemUrl = UNION_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "GEL"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_GREEN_1,
@@ -403,11 +388,10 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Pending,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 ₾",
-            cardType = SPBankCardType.SPDigital("GEL")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "USD"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_VIOLET_1,
@@ -418,12 +402,11 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 $",
-            cardType = SPBankCardType.SPDigital("USD"),
             paySystemUrl = UNION_LOGO
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "USD"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_VIOLET_1,
@@ -434,11 +417,10 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             balanceVisible = false,
-            cardType = SPBankCardType.SPDigital("USD")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "USD"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_VIOLET_1,
@@ -450,11 +432,10 @@ object SPButtonStyles {
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 $",
-            cardType = SPBankCardType.SPDigital("USD")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "USD"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_VIOLET_1,
@@ -466,11 +447,10 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Blocked,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 $",
-            cardType = SPBankCardType.SPDigital("USD")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("Space", "USD"),
             cardBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     GRADIENT_VIOLET_1,
@@ -482,11 +462,10 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Pending,
             accountNumber = "**** 3232",
             bankLogo = LOGO_SPACE,
-            bankName = "Space",
             amount = "2,000 $",
-            cardType = SPBankCardType.SPDigital("USD")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("TBC", "EUR"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_LIGHT_GREEN_1,
@@ -497,11 +476,10 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2,000 €",
-            cardType = SPBankCardType.SPDigital("EUR")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("TBC", "EUR"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_LIGHT_GREEN_1,
@@ -512,11 +490,10 @@ object SPButtonStyles {
             hasPayWave = false,
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             balanceVisible = false,
-            cardType = SPBankCardType.SPDigital("EUR")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("TBC", "EUR"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_LIGHT_GREEN_1,
@@ -528,11 +505,10 @@ object SPButtonStyles {
             accountNumber = "**** 3232",
             isFavorite = true,
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2,000 €",
-            cardType = SPBankCardType.SPDigital("EUR")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("TBC", "EUR"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_LIGHT_GREEN_1,
@@ -544,11 +520,10 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Blocked,
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2,000 €",
-            cardType = SPBankCardType.SPDigital("EUR")
         ),
         SPBankCardSupport(
+            cardModel = SPBankCardModel.SPDigital("TBC", "EUR"),
             cardBackground = SPBankCardGradient.SPLinear(
                 colors = arrayListOf(
                     GRADIENT_LIGHT_GREEN_1,
@@ -560,9 +535,7 @@ object SPButtonStyles {
             bankCardStatus = SPBankCardStatus.Pending,
             accountNumber = "**** 3232",
             bankLogo = LOGO_TBC,
-            bankName = "TBC",
             amount = "2,000 €",
-            cardType = SPBankCardType.SPDigital("EUR")
         ),
     )
 }

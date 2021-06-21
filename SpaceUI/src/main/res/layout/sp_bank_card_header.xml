@@ -5,7 +5,8 @@
     android:id="@+id/lytMainHeader"
     android:layout_width="match_parent"
     android:layout_height="@dimen/sp_main_header_height"
-    android:background="?attr/static_white">
+    android:background="?attr/static_white"
+    tools:ignore="HardcodedText">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivFavorite"
@@ -30,11 +31,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:background="@drawable/bkg_bank_card_logo" />
+        tools:background="@drawable/bg_bank_card_logo" />
 
     <TextView
         android:id="@+id/tvBankName"
-        style="@style/SPCardBankName"
+        style="@style/SPBankCardViewName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/sp_bank_name_margin_horizontal"
@@ -42,18 +43,19 @@
         app:layout_constraintEnd_toStartOf="@id/lytBalance"
         app:layout_constraintTop_toTopOf="@id/ivBankImage"
         app:layout_constraintBottom_toTopOf="@id/tvBankCardType"
-        tools:text="Madad Invest Bank" />
+        tools:text="Madad Invest Bank asdf qwer asdf asdfwer sddf " />
 
     <TextView
         android:id="@+id/tvBankCardType"
-        style="@style/SPCardBankType"
+        style="@style/SPBankCardViewType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/sp_bank_name_margin_horizontal"
         android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
+        app:layout_constraintTop_toBottomOf="@id/tvBankName"
         app:layout_constraintBottom_toBottomOf="@id/ivBankImage"
         app:layout_constraintStart_toEndOf="@id/ivBankImage"
-        tools:text="@string/bank_card_physical_card" />
+        tools:text="Physical Card" />
 
     <LinearLayout
         android:id="@+id/lytBalance"
@@ -61,12 +63,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/sp_bank_balance_margin_end"
         app:layout_constraintTop_toTopOf="@id/ivBankImage"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBankImage"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAmount"
-            style="@style/SPBankCardAmount"
+            style="@style/SPBankCardViewAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -74,12 +77,12 @@
 
         <TextView
             android:id="@+id/tvBalanceTitle"
-            style="@style/SPBankCardBalance"
+            style="@style/SPBankCardViewBalanceTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sp_bank_card_small_margin"
             android:layout_gravity="end"
-            android:text="@string/bank_card_balance" />
+            android:text="Balance" />
 
     </LinearLayout>
 

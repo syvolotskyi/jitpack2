@@ -100,20 +100,27 @@ enum class SPAccountNumberStyle {
 /**
  * Applies a type of bank card
  */
-sealed class SPBankCardType {
+sealed class SPBankCardModel(open val name: String = "") {
 
     /**
      * Removes a title of a bank card type
      */
-    object SPNone : SPBankCardType()
+    data class SPDefault(
+        override val name: String
+    ) : SPBankCardModel()
 
     /**
      * Adds a static title of the physical type
      */
-    object SPPhysical : SPBankCardType()
+    data class SPPhysical(
+        override val name: String
+    ) : SPBankCardModel()
 
     /**
      * Adds a static title of the digital type with currency abbreviation
      */
-    data class SPDigital(val currency : String) : SPBankCardType()
+    data class SPDigital(
+        override val name: String,
+        val currency : String
+    ) : SPBankCardModel()
 }

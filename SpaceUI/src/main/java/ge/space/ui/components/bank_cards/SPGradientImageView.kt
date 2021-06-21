@@ -47,20 +47,17 @@ class SPGradientImageView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        makeGradient(canvas)
+        makeGradient(canvas, gradient)
     }
 
-    private fun makeGradient(canvas: Canvas) {
-        when (val cardViewGradient = gradient) {
-            is SPBankCardGradient.SPNoneGradient -> {
+    private fun makeGradient(canvas: Canvas, cardViewGradient: SPBankCardGradient) {
+        when (cardViewGradient) {
+            is SPBankCardGradient.SPNoneGradient ->
                 setBackgroundColor(cardViewGradient.color)
-            }
-            is SPBankCardGradient.SPLinear -> {
+            is SPBankCardGradient.SPLinear ->
                 makeLinearGradient(cardViewGradient, canvas)
-            }
-            is SPBankCardGradient.SPRadial -> {
+            is SPBankCardGradient.SPRadial ->
                 makeRadialGradient(cardViewGradient, canvas)
-            }
         }
     }
 
