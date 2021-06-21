@@ -5,15 +5,13 @@ import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
-import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import ge.space.extensions.getColorRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBankCardLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.*
+import ge.space.ui.util.extension.loadImageUrl
+import ge.space.ui.util.extension.loadRoundImageUrlWithPlaceholder
 import ge.space.ui.util.extension.visibleOrGone
 
 /**
@@ -206,11 +204,10 @@ class SPBankCardView @JvmOverloads constructor(
 
     private fun handlePaySystemImage() {
         if (paySystemUrl.isNotEmpty()) {
-            Glide.with(context)
-                .load(paySystemUrl)
-                .fitCenter()
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
-                .into(binding.lytBankCardBody.ivPaySystem)
+            context.loadImageUrl(
+                paySystemUrl,
+                binding.lytBankCardBody.ivPaySystem
+            )
         }
     }
 
@@ -239,13 +236,12 @@ class SPBankCardView @JvmOverloads constructor(
     }
 
     private fun loadBankLogo(cornerRadius: Int) {
-        Glide.with(context)
-            .load(bankLogo)
-            .transform(CenterCrop(), RoundedCorners(cornerRadius))
-            .placeholder(R.drawable.bg_bank_card_logo)
-            .error(R.drawable.bg_bank_card_logo)
-            .diskCacheStrategy(DiskCacheStrategy.DATA)
-            .into(binding.lytBankCardHeader.ivBankImage)
+        context.loadRoundImageUrlWithPlaceholder(
+            bankLogo,
+            binding.lytBankCardHeader.ivBankImage,
+            R.drawable.bg_bank_card_logo,
+            cornerRadius
+        )
     }
 
     private fun getBankLogoCornersRadius() =
@@ -255,7 +251,7 @@ class SPBankCardView @JvmOverloads constructor(
     private fun handleAccountNumberStyle() {
         val color = colorByAccountNumberStyle()
         binding.lytBankCardBody.tvAccountNumber.setTextColor(
-            ContextCompat.getColor(context, color)
+            context.getColorRes(color)
         )
     }
 
@@ -305,7 +301,7 @@ class SPBankCardView @JvmOverloads constructor(
     private fun handleBackGradientTypeWithPayWave() {
         val color =  getPayWaveColor()
         binding.lytBankCardBody.ivPayWave.setColorFilter(
-            ContextCompat.getColor(context, color),
+            context.getColorRes(color),
             PorterDuff.Mode.SRC_IN
         )
     }
