@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.ui.components.banners.base.SPBannerBaseView
 
@@ -30,15 +31,11 @@ class SPBannerStatus @JvmOverloads constructor(
         binding.bannerImage.setImageResource(statusImage)
     }
 
+    init{
+        getContext().withStyledAttributes(attrs, R.styleable.SPBannerStatus, defStyleAttr) {
+            statusState = getResourceId(R.styleable.SPBannerStatus_sp_bannerStatusStyle, 0)
+        }
 
-//    override fun setBannerStyle(@StyleRes defStyleRes: Int) {
-//        val styleAttrs =
-//            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerStatus)
-//
-//        styleAttrs.run {
-//            statusState = getResourceId(R.styleable.SPBannerStatus_sp_bannerStatusStyle, 0)
-//            recycle()
-//        }
-//    }
+    }
 }
 

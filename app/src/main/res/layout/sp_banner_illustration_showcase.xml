@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,26 +9,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ge.space.design.ui_components.banners.SPItemBannerShowCaseView
-            android:id="@+id/itemShowCase"
+        <include
+            android:id="@+id/bannerInputTextsView"
+            layout="@layout/sp_banner_attributes_showcase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_p_20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ge.space.ui.components.buttons.SPButton
+            android:id="@+id/changeImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_p_20"
+            android:gravity="center"
+            android:padding="@dimen/dimen_p_10"
+            android:text="change Image"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_sp_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bannerInputTextsView"
+            app:style="@style/SPButton.AccentView"
+            tools:ignore="HardcodedText" />
 
         <ge.space.ui.components.banners.SPBannerIllustration
             android:id="@+id/BannerIllustration"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/showFullScreenButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/itemShowCase"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/changeImageButton"
             app:sp_bannerDescription="@string/banner_description"
             app:sp_bannerImage="@drawable/ic_status_success"
             app:sp_bannerSubTitle="@string/banner_subtitle"
-            app:sp_bannerTitle="მაგალითი" />
+            app:sp_bannerTitle="@string/banner_title" />
+
+        <ge.space.ui.components.buttons.SPButton
+            android:id="@+id/showFullScreenButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sp_button_height"
+            android:gravity="center"
+            android:text="Show Full Screen"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_sp_18"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:style="@style/SPButton.AccentView"
+            tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</androidx.core.widget.NestedScrollView>
+</ScrollView>
