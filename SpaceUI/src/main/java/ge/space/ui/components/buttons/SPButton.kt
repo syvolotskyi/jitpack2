@@ -131,7 +131,7 @@ class SPButton @JvmOverloads constructor(
     private fun directLeft() {
         //sets left drawable only
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
-            ContextCompat.getDrawable(context, R.drawable.ic_arrow_left_16_regular),
+            ContextCompat.getDrawable(context, R.drawable.bg_arrow_left_inset),
             null,
             null,
             null
@@ -143,7 +143,7 @@ class SPButton @JvmOverloads constructor(
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
             null,
             null,
-            ContextCompat.getDrawable(context, R.drawable.ic_arrow_right_16_regular),
+            ContextCompat.getDrawable(context, R.drawable.bg_arrow_right_inset),
             null
         )
     }
