@@ -16,8 +16,9 @@
         android:paddingStart="@dimen/dimen_p_16"
         android:paddingEnd="@dimen/dimen_p_16"
         android:drawablePadding="@dimen/dimen_p_10"
+        android:includeFontPadding="false"
         app:drawableTint="@color/black"
         tools:fontFamily="@font/myriad_geo_bold"
-        tools:text="Title" />
+        tools:text="Title p" />
 
 </merge>
