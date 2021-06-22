@@ -14,5 +14,8 @@ dependencies {
     implementation SupportLibraries.palette
     implementation SupportLibraries.material
 
+    implementation Libraries.glide
+    kapt Libraries.glideCompiler
+
     implementation project(':SpaceExtensions')
 }

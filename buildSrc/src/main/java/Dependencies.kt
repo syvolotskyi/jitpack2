@@ -44,7 +44,7 @@ object Versions {
 
     val maskedEditText = "1.0.5"
 
-    val glide = "4.9.0"
+    val glide = "4.11.0"
 
     val exifInterface = "1.0.0"
     val palette = "1.0.0"
