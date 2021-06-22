@@ -2,12 +2,19 @@
 <resources>
 
     <declare-styleable name="SPBannerBaseView">
+
         <attr name="sp_bannerTitle" format="string|reference" />
+        <attr name="sp_bannerTitle_isVisible" format="boolean" />
+        <attr name="sp_bannerTitle_textAppearance" format="reference" />
+
         <attr name="sp_bannerSubTitle" format="string|reference" />
-        <attr name="sp_bannerDescription" format="string|reference"/>
-        <attr name="sp_bannerTitle_isVisible" format="boolean"/>
-        <attr name="sp_bannerSubTitle_isVisible" format="boolean"/>
-        <attr name="sp_bannerDescription_isVisible" format="boolean"/>
+        <attr name="sp_bannerSubTitle_isVisible" format="boolean" />
+        <attr name="sp_bannerSubtitle_textAppearance" format="reference" />
+
+        <attr name="sp_bannerDescription" format="string|reference" />
+        <attr name="sp_bannerDescription_isVisible" format="boolean" />
+        <attr name="sp_bannerDescription_textAppearance" format="reference" />
+
     </declare-styleable>
 
     <declare-styleable name="SPBannerIllustration" parent="SPBannerBaseView">
@@ -16,25 +23,12 @@
 
 
     <declare-styleable name="SPBannerStatus" parent="SPBannerBaseView">
-        <attr name="sp_bannerStatusStyle" format="reference">
+        <attr name="sp_bannerStatusState" format="enum">
+            <enum name="Success" value="0" />
+            <enum name="Error" value="1" />
+            <enum name="Pending" value="2" />
+            <enum name="Info" value="3" />
         </attr>
     </declare-styleable>
-
-
-    <style name="SPBannerStatusSuccess">
-        <item name="sp_bannerImage">@drawable/ic_status_success</item>
-    </style>
-
-    <style name="SPBannerStatusError">
-        <item name="sp_bannerImage">@drawable/ic_status_error</item>
-    </style>
-
-    <style name="SPBannerStatusPending">
-        <item name="sp_bannerImage">@drawable/ic_status_pending</item>
-    </style>
-
-    <style name="SPBannerStatusInfo">
-        <item name="sp_bannerImage">@drawable/ic_status_info</item>
-    </style>
 
 </resources>

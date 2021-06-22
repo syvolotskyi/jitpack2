@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPBannerTitleStyle">
+        <item name="android:textAppearance">@style/h600_bold_caps</item>
+    </style>
+
+    <style name="SPBannerSubTitleStyle">
+        <item name="android:textAppearance">@style/h600_medium</item>
+    </style>
+
+    <style name="SPBannerDescStyle">
+        <item name="android:textAppearance">@style/h700_medium</item>
+    </style>
+
+</resources>

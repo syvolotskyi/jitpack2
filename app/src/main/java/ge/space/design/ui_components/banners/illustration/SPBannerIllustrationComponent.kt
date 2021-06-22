@@ -1,13 +1,16 @@
 package ge.space.design.ui_components.banners.illustration
 
-import android.content.Context
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpBannerIllustrationShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.design.ui_components.banners.SPBannerFullScreenFragment
 import ge.space.extensions.onTextChanged
+import ge.space.ui.components.dialogs.showTitleDialog
+import java.util.*
 
 class SPBannerIllustrationComponent : SPShowCaseComponent {
 
@@ -19,10 +22,13 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
 
+        lateinit var layoutBinding: SpBannerIllustrationShowcaseBinding
+
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpBannerIllustrationShowcaseBinding.inflate(
+            layoutBinding = SpBannerIllustrationShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
+            val activity = environmentSP.requireFragmentActivity()
 
             layoutBinding.apply {
                 bannerInputTextsView.bannerTitleEditText.onTextChanged {
@@ -43,11 +49,51 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
                 bannerInputTextsView.bannerDescVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
                     BannerIllustration.descriptionVisibility = isChecked
                 }
+
+                showFullScreenButton.setOnClickListener {
+                    showFullScreen(
+                        activity,
+                        BannerIllustration.bannerTitle,
+                        BannerIllustration.bannerSubtitle,
+                        BannerIllustration.bannerDescription,
+                        BannerIllustration.bannerImage
+                    )
+                }
+
+                changeImageButton.setOnClickListener {
+                    BannerIllustration.bannerImage =
+                        if (BannerIllustration.bannerImage == R.drawable.sp_banner_illustration_example)
+                            R.drawable.sp_banner_illustration_example2
+                        else R.drawable.sp_banner_illustration_example
+                }
             }
+
+            setTextAppearances()
 
             return layoutBinding.root
         }
 
+        private fun setTextAppearances() {
+            layoutBinding.BannerIllustration.apply {
+                updateTitleTextAppearance(R.style.SPBannerTitleStyle)
+                updateSubtitleTextAppearance(R.style.SPBannerSubTitleStyle)
+                updateDescTextAppearance(R.style.SPBannerDescStyle)
+            }
+        }
+
+        private fun showFullScreen(
+            fragmentActivity: FragmentActivity,
+            bannerTitle: String,
+            bannerSubtitle: String,
+            bannerDescription: String,
+            bannerImage: Int,
+        ) {
+
+            val nextFrag = SPBannerFullScreenFragment()
+            fragmentActivity.supportFragmentManager.beginTransaction()
+                .replace(R.id.contentView, nextFrag, "findThisFragment")
+                .commit()
+        }
 
     }
 

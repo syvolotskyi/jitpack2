@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBannerLayoutBinding
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_TEXT
 
 abstract class SPBannerBaseView @JvmOverloads constructor(
@@ -70,6 +73,45 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
             subTitleVisibility = getBoolean(R.styleable.SPBannerBaseView_sp_bannerSubTitle_isVisible, true)
             descriptionVisibility = getBoolean(R.styleable.SPBannerBaseView_sp_bannerDescription_isVisible, true)
         }
+
+    }
+
+    protected open fun setBannerStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerBaseView)
+
+        styleAttrs.run {
+            val titleTextAppearance = getResourceId(
+                R.styleable.SPBannerBaseView_sp_bannerTitle_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            updateTitleTextAppearance(titleTextAppearance)
+
+            val subtitleTextAppearance = getResourceId(
+                R.styleable.SPBannerBaseView_sp_bannerSubtitle_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            updateSubtitleTextAppearance(subtitleTextAppearance)
+
+            val descTextAppearance = getResourceId(
+                R.styleable.SPBannerBaseView_sp_bannerDescription_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            updateDescTextAppearance(descTextAppearance)
+
+            recycle()
+        }
+    }
+
+    fun updateTitleTextAppearance(@StyleRes textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.bannerTitle, textAppearance)
+    }
+
+    fun updateSubtitleTextAppearance(@StyleRes textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.bannerSubtitle, textAppearance)
+    }
+
+    fun updateDescTextAppearance(@StyleRes textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.bannerDescription, textAppearance)
     }
 
 }

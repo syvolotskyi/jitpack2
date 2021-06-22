@@ -42,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/changeImageButton"
             app:sp_bannerDescription="@string/banner_description"
-            app:sp_bannerImage="@drawable/ic_status_success"
+            app:sp_bannerImage="@drawable/sp_banner_illustration_example"
             app:sp_bannerSubTitle="@string/banner_subtitle"
             app:sp_bannerTitle="@string/banner_title" />
 
