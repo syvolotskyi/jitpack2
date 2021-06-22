@@ -16,7 +16,6 @@ import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 
-
 /**
  * Button view extended from abstract [SPButtonBaseView] generic that allows to change its configuration.
  * There are 4 realized styles which can be applied to the view:
@@ -132,7 +131,7 @@ class SPButton @JvmOverloads constructor(
     private fun directLeft() {
         //sets left drawable only
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
-            ContextCompat.getDrawable(context, R.drawable.ic_arrow_left_16_regular),
+            ContextCompat.getDrawable(context, R.drawable.bg_arrow_left_inset),
             null,
             null,
             null
@@ -144,7 +143,7 @@ class SPButton @JvmOverloads constructor(
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
             null,
             null,
-            ContextCompat.getDrawable(context, R.drawable.ic_arrow_right_16_regular),
+            ContextCompat.getDrawable(context, R.drawable.bg_arrow_right_inset),
             null
         )
     }
@@ -161,5 +160,4 @@ class SPButton @JvmOverloads constructor(
         Left,
         Right
     }
-
 }
