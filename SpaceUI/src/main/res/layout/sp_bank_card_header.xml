@@ -35,7 +35,6 @@
 
     <TextView
         android:id="@+id/tvBankName"
-        style="@style/SPBankCardViewName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/sp_bank_name_margin_horizontal"
@@ -47,7 +46,6 @@
 
     <TextView
         android:id="@+id/tvBankCardType"
-        style="@style/SPBankCardViewType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/sp_bank_name_margin_horizontal"
@@ -69,7 +67,6 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAmount"
-            style="@style/SPBankCardViewAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -77,7 +74,6 @@
 
         <TextView
             android:id="@+id/tvBalanceTitle"
-            style="@style/SPBankCardViewBalanceTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sp_bank_card_small_margin"

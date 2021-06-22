@@ -7,33 +7,12 @@
         <item name="shadowAlpha">15%</item>
         <item name="shadowRadius">@dimen/dimen_p_25</item>
         <item name="backgroundColor">?attr/static_white</item>
-    </style>
-
-    <style name="SPBankCardViewCardStatus">
-        <item name="android:textAppearance">@style/h800_medium_bank_card_status</item>
-    </style>
-
-    <style name="SPBankCardViewAmount">
-        <item name="android:textAppearance">@style/h700_bold_caps_bank_card_amount</item>
-    </style>
-
-    <style name="SPBankCardViewName">
-        <item name="android:textAppearance">@style/h700_bold_card_bank_name</item>
-    </style>
-
-    <style name="SPBankCardViewType">
-        <item name="android:textAppearance">@style/h900_medium_card_bank_type</item>
-    </style>
-
-    <style name="SPBankCardViewCreditTitle">
-        <item name="android:textAppearance">@style/h900_medium_card_bank_credit_title</item>
-    </style>
-
-    <style name="SPBankCardViewBalanceTitle">
-        <item name="android:textAppearance">@style/h900_medium_bank_card_balance</item>
-    </style>
-
-    <style name="SPBankCardViewAccountNumber">
-        <item name="android:textAppearance">@style/h400_medium_bank_card_account_number</item>
+        <item name="cardStatusTextAppearance">@style/h800_medium_bank_card_status</item>
+        <item name="cardAmountTextAppearance">@style/h700_bold_caps_bank_card_amount</item>
+        <item name="cardBankNameTextAppearance">@style/h700_bold_card_bank_name</item>
+        <item name="cardTypeTextAppearance">@style/h900_medium_card_bank_type</item>
+        <item name="cardCreditTitleTextAppearance">@style/h900_medium_card_bank_credit_title</item>
+        <item name="cardBalanceTextAppearance">@style/h900_medium_bank_card_balance</item>
+        <item name="cardAccountNumberTextAppearance">@style/h400_medium_bank_card_account_number</item>
     </style>
 </resources>

@@ -1,18 +1,22 @@
 package ge.space.ui.components.bank_cards
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.core.content.withStyledAttributes
 import ge.space.extensions.getColorRes
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpBankCardLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.*
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.loadRoundImageUrlWithPlaceholder
 import ge.space.ui.util.extension.visibleOrGone
+import ge.space.spaceui.databinding.SpBankCardLayoutBinding
+import ge.space.spaceui.databinding.SpBankCardNonAvailableBinding
 
 /**
  * A bank card view which allows to show info of a bank card. A user can
@@ -38,7 +42,7 @@ import ge.space.ui.util.extension.visibleOrGone
 class SPBankCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
 ) : SPBaseView(context, attrs, defStyleAttr) {
 
     /**
@@ -201,6 +205,79 @@ class SPBankCardView @JvmOverloads constructor(
             handlePaySystemImage()
         }
 
+    /**
+     * Applies a binding of the child views
+     */
+    private val binding =
+        SpBankCardLayoutBinding.inflate(LayoutInflater.from(context), this)
+
+    private val nonAvailableBankCardBinding =
+        SpBankCardNonAvailableBinding.bind(binding.root)
+
+    init {
+        context.withStyledAttributes(
+            attrs,
+            R.styleable.sp_bank_card_view,
+            defStyleAttr
+        ) {
+            setBankCardTextAppearances()
+        }
+    }
+
+    private fun TypedArray.setBankCardTextAppearances() {
+        nonAvailableBankCardBinding.tvCardStatus.setTextStyle(
+            getResourceId(
+                R.styleable.sp_bank_card_view_cardStatusTextAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
+        )
+
+        with(binding.lytBankCardHeader) {
+            tvAmount.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_bank_card_view_cardAmountTextAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+            )
+
+            tvBankName.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_bank_card_view_cardBankNameTextAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+            )
+
+            tvBankCardType.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_bank_card_view_cardTypeTextAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+            )
+
+            tvBalanceTitle.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_bank_card_view_cardBalanceTextAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+            )
+        }
+
+        with(binding.lytBankCardBody) {
+            tvCreditTitle.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_bank_card_view_cardCreditTitleTextAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+            )
+
+            tvAccountNumber.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_bank_card_view_cardAccountNumberTextAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+            )
+        }
+    }
 
     private fun handlePaySystemImage() {
         if (paySystemUrl.isNotEmpty()) {
@@ -259,9 +336,6 @@ class SPBankCardView @JvmOverloads constructor(
         SPAccountNumberStyle.Dark -> R.color.static_primary_black
         else -> R.color.static_primary_white
     }
-
-    private val binding =
-        SpBankCardLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     private fun handleBlockingView() {
         val blockLayoutVisible = status != SPBankCardStatus.Available
