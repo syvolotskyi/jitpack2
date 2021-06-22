@@ -385,6 +385,7 @@ class SPBankCardView @JvmOverloads constructor(
         SPPayWaveType.Dark -> R.color.transparent_black_half
     }
 
+    // These strings are temporary and needed to wait for comments from Backend side.
     companion object {
         private const val HARDCODED_BLOCKED_TITLE = "Your card is blocked"
         private const val HARDCODED_PENDING_TITLE = "Your card will be activated soon"
