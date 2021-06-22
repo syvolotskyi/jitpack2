@@ -1,6 +1,5 @@
 package ge.space.design.ui_components.banners.illustration
 
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpBannerIllustrationShowcaseBinding
@@ -9,8 +8,6 @@ import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.banners.SPBannerFullScreenFragment
 import ge.space.extensions.onTextChanged
-import ge.space.ui.components.dialogs.showTitleDialog
-import java.util.*
 
 class SPBannerIllustrationComponent : SPShowCaseComponent {
 
@@ -74,11 +71,12 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
         }
 
         private fun setTextAppearances() {
-            layoutBinding.BannerIllustration.apply {
-                updateTitleTextAppearance(R.style.SPBannerTitleStyle)
-                updateSubtitleTextAppearance(R.style.SPBannerSubTitleStyle)
-                updateDescTextAppearance(R.style.SPBannerDescStyle)
-            }
+//            layoutBinding.BannerIllustration.apply {
+////                updateTitleTextAppearance(R.style.SPBannerTitleStyle)
+////                updateSubtitleTextAppearance(R.style.SPBannerSubTitleStyle)
+////                updateDescTextAppearance(R.style.SPBannerDescStyle)
+//            }
+            layoutBinding.BannerIllustration.setBannerStyle(R.style.SPBanner_Base)
         }
 
         private fun showFullScreen(

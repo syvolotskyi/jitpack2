@@ -76,7 +76,7 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
 
     }
 
-    protected open fun setBannerStyle(@StyleRes defStyleRes: Int) {
+    open fun setBannerStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerBaseView)
 
         styleAttrs.run {
@@ -102,15 +102,15 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
         }
     }
 
-    fun updateTitleTextAppearance(@StyleRes textAppearance: Int) {
+    private fun updateTitleTextAppearance(@StyleRes textAppearance: Int) {
         TextViewCompat.setTextAppearance(binding.bannerTitle, textAppearance)
     }
 
-    fun updateSubtitleTextAppearance(@StyleRes textAppearance: Int) {
+    private fun updateSubtitleTextAppearance(@StyleRes textAppearance: Int) {
         TextViewCompat.setTextAppearance(binding.bannerSubtitle, textAppearance)
     }
 
-    fun updateDescTextAppearance(@StyleRes textAppearance: Int) {
+    private fun updateDescTextAppearance(@StyleRes textAppearance: Int) {
         TextViewCompat.setTextAppearance(binding.bannerDescription, textAppearance)
     }
 

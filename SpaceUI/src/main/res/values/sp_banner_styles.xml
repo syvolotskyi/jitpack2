@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPBannerTitleStyle">
-        <item name="android:textAppearance">@style/h600_bold_caps</item>
-    </style>
-
-    <style name="SPBannerSubTitleStyle">
-        <item name="android:textAppearance">@style/h600_medium</item>
-    </style>
-
-    <style name="SPBannerDescStyle">
-        <item name="android:textAppearance">@style/h700_medium</item>
+    <style name="SPBanner.Base" parent="">
+        <item name="sp_bannerTitle_textAppearance">@style/h600_bold_caps_label_secondary</item>
+        <item name="sp_bannerSubtitle_textAppearance">@style/h600_medium_label_secondary</item>
+        <item name="sp_bannerDescription_textAppearance">@style/h700_medium_secondary</item>
     </style>
 
 </resources>
