@@ -1,12 +1,12 @@
 package ge.space.design.ui_components.banners.full_screen
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import ge.space.design.main.ui.SPBaseActivity
 import ge.space.ui.components.banners.SPBannerIllustration
 import ge.space.ui.components.banners.SPBannerStatus
 import ge.space.ui.components.banners.base.SPBannerBaseView
 
-class SPBannerFullScreenActivity : AppCompatActivity() {
+class SPBannerFullScreenActivity : SPBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
