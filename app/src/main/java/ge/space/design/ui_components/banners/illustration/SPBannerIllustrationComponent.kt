@@ -55,6 +55,9 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
                         BannerIllustration.bannerTitle,
                         BannerIllustration.bannerSubtitle,
                         BannerIllustration.bannerDescription,
+                        BannerIllustration.titleVisibility,
+                        BannerIllustration.subTitleVisibility,
+                        BannerIllustration.descriptionVisibility,
                         BannerIllustration.bannerImage
                     )
                     intent.putExtra("BannerAttributes", bannerData)

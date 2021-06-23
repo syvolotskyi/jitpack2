@@ -29,6 +29,9 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
         view.bannerTitle = data!!.title
         view.bannerSubtitle = data.subtitle
         view.bannerDescription = data.description
+        view.titleVisibility = data.titleVisibility
+        view.subTitleVisibility = data.subtitleVisibility
+        view.descriptionVisibility = data.descVisibility
     }
 
 }

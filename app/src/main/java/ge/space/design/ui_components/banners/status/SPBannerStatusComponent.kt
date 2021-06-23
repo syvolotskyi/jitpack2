@@ -71,6 +71,9 @@ class SPBannerStatusComponent : SPShowCaseComponent {
                         BannerStatus.bannerTitle,
                         BannerStatus.bannerSubtitle,
                         BannerStatus.bannerDescription,
+                        BannerStatus.titleVisibility,
+                        BannerStatus.subTitleVisibility,
+                        BannerStatus.descriptionVisibility,
                         style = statusStyle
                     )
                     intent.putExtra("BannerAttributes", bannerData)
