@@ -39,4 +39,6 @@
     <dimen name="sp_bank_card_payment_system_logo_width">@dimen/dimen_p_67</dimen>
     <dimen name="sp_bank_card_payment_system_logo_height">@dimen/dimen_p_27</dimen>
 
+    <dimen name="sp_bank_chip_width">@dimen/dimen_p_48</dimen>
+    <dimen name="sp_bank_chip_height">@dimen/dimen_p_34</dimen>
 </resources>
