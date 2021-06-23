@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="ge.space.design.ui_components.banners.full_screen.SPBannerFullScreenActivity"></activity>
         <activity android:name="ge.space.design.main.ui.SPShowCaseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

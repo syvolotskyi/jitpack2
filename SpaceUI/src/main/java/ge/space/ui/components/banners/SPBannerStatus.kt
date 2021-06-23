@@ -3,9 +3,8 @@ package ge.space.ui.components.banners
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
-import androidx.annotation.CallSuper
+import androidx.core.content.ContextCompat
 import ge.space.spaceui.R
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.banners.base.SPBannerBaseView
 
 class SPBannerStatus @JvmOverloads constructor(
@@ -20,18 +19,11 @@ class SPBannerStatus @JvmOverloads constructor(
             handleStates()
         }
 
-    @CallSuper
-    override fun setBannerStyle(defStyleRes: Int) {
-        super.setBannerStyle(defStyleRes)
-
+    fun setBannerStatusStyle(defStyleRes: Int) {
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerStatus)
-
         styleAttrs.run {
-            val statusStateInd = styleAttrs.getInt(R.styleable.SPBannerStatus_sp_bannerStatusState,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
+            val statusStateInd = styleAttrs.getInt(R.styleable.SPBannerStatus_sp_bannerStatusState, 0)
             statusState = StatusStates.values()[statusStateInd]
-
             recycle()
         }
     }
@@ -46,7 +38,7 @@ class SPBannerStatus @JvmOverloads constructor(
     }
 
     private fun setStatusImage(statusImage: Int) {
-        binding.bannerImage.setImageResource(statusImage)
+        binding.bannerImage.setImageDrawable(ContextCompat.getDrawable(context, statusImage))
     }
 
     enum class StatusStates {

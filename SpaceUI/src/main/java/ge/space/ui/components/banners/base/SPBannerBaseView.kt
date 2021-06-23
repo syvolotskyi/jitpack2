@@ -73,29 +73,21 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
             subTitleVisibility = getBoolean(R.styleable.SPBannerBaseView_sp_bannerSubTitle_isVisible, true)
             descriptionVisibility = getBoolean(R.styleable.SPBannerBaseView_sp_bannerDescription_isVisible, true)
         }
+        setBannerStyle(R.style.SPBanner_Base)
 
     }
 
-    open fun setBannerStyle(@StyleRes defStyleRes: Int) {
+    fun setBannerStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerBaseView)
 
         styleAttrs.run {
-            val titleTextAppearance = getResourceId(
-                R.styleable.SPBannerBaseView_sp_bannerTitle_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
+            val titleTextAppearance = getResourceId(R.styleable.SPBannerBaseView_sp_bannerTitle_textAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             updateTitleTextAppearance(titleTextAppearance)
 
-            val subtitleTextAppearance = getResourceId(
-                R.styleable.SPBannerBaseView_sp_bannerSubtitle_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
+            val subtitleTextAppearance = getResourceId(R.styleable.SPBannerBaseView_sp_bannerSubtitle_textAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             updateSubtitleTextAppearance(subtitleTextAppearance)
 
-            val descTextAppearance = getResourceId(
-                R.styleable.SPBannerBaseView_sp_bannerDescription_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
+            val descTextAppearance = getResourceId(R.styleable.SPBannerBaseView_sp_bannerDescription_textAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             updateDescTextAppearance(descTextAppearance)
 
             recycle()

@@ -7,4 +7,21 @@
         <item name="sp_bannerDescription_textAppearance">@style/h700_medium_secondary</item>
     </style>
 
+    <style name="SPBannerStatusSuccess" parent="SPBanner.Base">
+        <item name="sp_bannerStatusState">Success</item>
+    </style>
+
+    <style name="SPBannerStatusError" parent="SPBanner.Base">
+        <item name="sp_bannerStatusState">Error</item>
+    </style>
+
+    <style name="SPBannerStatusPending" parent="SPBanner.Base">
+        <item name="sp_bannerStatusState">Pending</item>
+    </style>
+
+    <style name="SPBannerStatusInfo" parent="SPBanner.Base">
+        <item name="sp_bannerStatusState">Info</item>
+    </style>
+
+
 </resources>
