@@ -3,11 +3,9 @@ package ge.space.ui.components.banners
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
-import androidx.annotation.CallSuper
 import androidx.annotation.IdRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.banners.base.SPBannerBaseView
 
 class SPBannerIllustration @JvmOverloads constructor(
@@ -25,7 +23,7 @@ class SPBannerIllustration @JvmOverloads constructor(
 
     init{
         context.withStyledAttributes(attrs,R.styleable.SPBannerIllustration, defStyleAttr) {
-            bannerImage = getResourceId(R.styleable.SPBannerIllustration_sp_bannerImage, 0)
+            bannerImage = getResourceId(R.styleable.SPBannerIllustration_sp_banner_image, 0)
         }
     }
 

@@ -24,15 +24,15 @@ class SPBannerStatusComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
 
-        private lateinit var layoutBinding: SpBannerStatusShowcaseBinding
+        private lateinit var binding: SpBannerStatusShowcaseBinding
 
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            layoutBinding = SpBannerStatusShowcaseBinding.inflate(
+            binding = SpBannerStatusShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
             setAttributes()
 
-            layoutBinding.apply {
+            with(binding) {
                 var statusStyle = R.style.SPBannerStatusSuccess
                 BannerStatus.setBannerStatusStyle(statusStyle)
 
@@ -42,20 +42,14 @@ class SPBannerStatusComponent : SPShowCaseComponent {
 
                     popup.setOnMenuItemClickListener { menuItem: MenuItem ->
 
-                        layoutBinding.chooseStateButton.text = menuItem.title.toString()
-                        when (menuItem.itemId) {
-                            R.id.option_success -> {
-                                statusStyle = R.style.SPBannerStatusSuccess
-                            }
-                            R.id.option_error -> {
-                                statusStyle = R.style.SPBannerStatusError
-                            }
-                            R.id.option_pending -> {
-                                statusStyle = R.style.SPBannerStatusPending
-                            }
-                            R.id.option_info -> {
-                                statusStyle = R.style.SPBannerStatusInfo
-                            }
+                        binding.chooseStateButton.text = menuItem.title.toString()
+
+                        statusStyle = when (menuItem.itemId) {
+                            R.id.option_success -> R.style.SPBannerStatusSuccess
+                            R.id.option_error -> R.style.SPBannerStatusError
+                            R.id.option_pending -> R.style.SPBannerStatusPending
+                            R.id.option_info -> R.style.SPBannerStatusInfo
+                            else -> R.style.SPBannerStatusSuccess
                         }
                         BannerStatus.setBannerStatusStyle(statusStyle)
                         true
@@ -76,17 +70,17 @@ class SPBannerStatusComponent : SPShowCaseComponent {
                         BannerStatus.descriptionVisibility,
                         style = statusStyle
                     )
-                    intent.putExtra("BannerAttributes", bannerData)
+                    intent.putExtra(SPBannerFullScreenActivity.KEY_DATA, bannerData)
                     environmentSP.context.startActivity(intent)
                 }
             }
 
 
-            return layoutBinding.root
+            return binding.root
         }
 
         private fun setAttributes() {
-            layoutBinding.apply {
+            with(binding) {
                 bannerInputTextsView.bannerTitleEditText.onTextChanged {
                     BannerStatus.bannerTitle = it
                 }

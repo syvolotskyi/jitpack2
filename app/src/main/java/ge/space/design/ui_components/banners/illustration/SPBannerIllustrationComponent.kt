@@ -21,14 +21,14 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
 
-        lateinit var layoutBinding: SpBannerIllustrationShowcaseBinding
+        lateinit var binding: SpBannerIllustrationShowcaseBinding
 
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            layoutBinding = SpBannerIllustrationShowcaseBinding.inflate(
+            binding = SpBannerIllustrationShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
 
-            layoutBinding.apply {
+            with(binding){
                 bannerInputTextsView.bannerTitleEditText.onTextChanged {
                     BannerIllustration.bannerTitle = it
                 }
@@ -60,7 +60,7 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
                         BannerIllustration.descriptionVisibility,
                         BannerIllustration.bannerImage
                     )
-                    intent.putExtra("BannerAttributes", bannerData)
+                    intent.putExtra(SPBannerFullScreenActivity.KEY_DATA, bannerData)
                     environmentSP.context.startActivity(intent)
 
                 }
@@ -73,7 +73,7 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
                 }
             }
 
-            return layoutBinding.root
+            return binding.root
         }
 
     }

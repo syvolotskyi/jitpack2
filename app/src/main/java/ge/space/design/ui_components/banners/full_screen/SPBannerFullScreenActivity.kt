@@ -11,7 +11,7 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val data = intent?.getParcelableExtra<SPBannerData>("BannerAttributes")
+        val data = intent?.getParcelableExtra<SPBannerData>(KEY_DATA)
 
         if(data!!.type == SPBannerType.Status){
             val view = SPBannerStatus(this)
@@ -24,14 +24,20 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
         }
     }
 
-    private fun setView(data: SPBannerData?, view: SPBannerBaseView){
+    private fun setView(data: SPBannerData?, view: SPBannerBaseView) {
         setContentView(view)
-        view.bannerTitle = data!!.title
-        view.bannerSubtitle = data.subtitle
-        view.bannerDescription = data.description
-        view.titleVisibility = data.titleVisibility
-        view.subTitleVisibility = data.subtitleVisibility
-        view.descriptionVisibility = data.descVisibility
+        view.apply {
+            bannerTitle = data!!.title
+            bannerSubtitle = data.subtitle
+            bannerDescription = data.description
+            titleVisibility = data.titleVisibility
+            subTitleVisibility = data.subtitleVisibility
+            descriptionVisibility = data.descVisibility
+        }
+    }
+
+    companion object {
+        val KEY_DATA = this::class.toString()
     }
 
 }

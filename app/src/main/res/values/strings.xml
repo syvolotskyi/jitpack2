@@ -62,9 +62,6 @@
     <string name="banner_subtitle">Banner Subtitle</string>
     <string name="banner_description">Banner Description</string>
 
-    <string name="visible">Visible</string>
-
-
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
 </resources>

@@ -2,25 +2,25 @@
 <resources>
 
     <style name="SPBanner.Base" parent="">
-        <item name="sp_bannerTitle_textAppearance">@style/h600_bold_caps_label_secondary</item>
-        <item name="sp_bannerSubtitle_textAppearance">@style/h600_medium_label_secondary</item>
-        <item name="sp_bannerDescription_textAppearance">@style/h700_medium_secondary</item>
+        <item name="sp_banner_title_text_appearance">@style/h600_bold_caps_label_secondary</item>
+        <item name="sp_banner_subtitle_text_appearance">@style/h600_medium_label_secondary</item>
+        <item name="sp_banner_description_text_appearance">@style/h700_medium_secondary</item>
     </style>
 
     <style name="SPBannerStatusSuccess" parent="SPBanner.Base">
-        <item name="sp_bannerStatusState">Success</item>
+        <item name="sp_banner_status_state">Success</item>
     </style>
 
     <style name="SPBannerStatusError" parent="SPBanner.Base">
-        <item name="sp_bannerStatusState">Error</item>
+        <item name="sp_banner_status_state">Error</item>
     </style>
 
     <style name="SPBannerStatusPending" parent="SPBanner.Base">
-        <item name="sp_bannerStatusState">Pending</item>
+        <item name="sp_banner_status_state">Pending</item>
     </style>
 
     <style name="SPBannerStatusInfo" parent="SPBanner.Base">
-        <item name="sp_bannerStatusState">Info</item>
+        <item name="sp_banner_status_state">Info</item>
     </style>
 
 
