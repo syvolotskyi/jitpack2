@@ -22,4 +22,16 @@
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowRadius">0dp</item>
     </style>
+
+    <style name="SPBankCardView.AddBankCardButton.Base" parent="SPBankCardView.EmptySmall.Base">
+        <item name="backgroundColor">?attr/greyscale_gray_5</item>
+    </style>
+
+    <style name="SPBankCardView.AddBankCardButton" parent="SPBankCardView.AddBankCardButton.Base">
+        <item name="roundedCorners">@dimen/dimen_p_6</item>
+    </style>
+
+    <style name="SPBankCardView.AddBankCardButton.Small" parent="SPBankCardView.AddBankCardButton.Base">
+        <item name="roundedCorners">@dimen/dimen_p_4</item>
+    </style>
 </resources>

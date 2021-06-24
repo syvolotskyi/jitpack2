@@ -15,3 +15,19 @@ enum class SPSmallEmptyStyle {
      */
     Dark,
 }
+
+/**
+ * Comment
+ */
+enum class SPChipBankCardSize {
+
+    /**
+     * For big chips
+     */
+    Big,
+
+    /**
+     * For small chips
+     */
+    Small,
+}

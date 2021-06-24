@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/lytRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPlus"
+            android:layout_width="@dimen/sp_add_bank_card_button_icon_size"
+            android:layout_height="@dimen/sp_add_bank_card_button_icon_size"
+            android:layout_gravity="center"
+            android:tint="?attr/colorAccent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_plus_24_regular" />
+
+    </FrameLayout>
+
+</merge>
