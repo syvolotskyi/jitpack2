@@ -3,40 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen_p_38">
+    android:layout_height="@dimen/sp_text_field_dropdown_height">
 
     <ImageView
         android:id="@+id/ivLeftImage"
-        android:layout_width="@dimen/dimen_p_26"
-        android:layout_height="@dimen/dimen_p_38"
-        android:layout_margin="@dimen/sp_text_field_delete_icon_margin"
-        android:src="@drawable/ic_country_georgia_24_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/sp_text_field_dropdown_icon_height"
+        android:layout_marginHorizontal="@dimen/sp_text_field_dropdown_icon_margin"
+        android:src="@drawable/ic_card_example"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
-    <EditText
+    <TextView
         android:id="@+id/etInputField"
-        style="@style/SPTextField.Input"
+        style="@style/SPTextField.Dropdown"
         android:layout_width="0dp"
         android:layout_height="@dimen/sp_text_field_height"
         android:background="@null"
         android:gravity="start|center_vertical"
         android:inputType="textVisiblePassword"
         android:paddingHorizontal="@dimen/sp_text_field_horizontal_text_padding"
-        android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
         android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
+        android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivChevronDown"
         app:layout_constraintStart_toEndOf="@id/ivLeftImage"
         app:layout_constraintTop_toTopOf="parent"
-        tools:hint="@string/enter_you_details_here" />
+        tools:text="@string/enter_you_details_here" />
 
     <ImageView
         android:id="@+id/ivChevronDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sp_text_field_delete_icon_margin"
+        android:layout_marginHorizontal="@dimen/sp_text_field_dropdown_icon_margin"
         android:src="@drawable/ic_chevron_down_24_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -13,11 +13,17 @@
         <attr name="labelTextAppearance" format="reference" />
         <attr name="titleText" format="string|reference" />
         <attr name="descriptionText" format="string|reference" />
+        <attr name="inputMandatory" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="sp_text_field_input">
         <attr name="canRemove" format="boolean" />
         <attr name="android:textAppearance" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_text_field_dropdown">
+        <attr name="android:textAppearance" format="reference" />
+        <attr name="spInputTextLength" format="integer"/>
     </declare-styleable>
 
 </resources>

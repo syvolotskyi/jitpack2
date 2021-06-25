@@ -4,6 +4,7 @@
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
         <item name="descriptionTextAppearance">@style/h800_medium_label_tertiary</item>
         <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="canRemove">false</item>
     </style>
 
     <style name="SPEditText.Masked" parent="SPTextField.Base">
@@ -13,6 +14,10 @@
 
     <style name="SPTextField.Input" parent="SPTextField.Base">
         <item name="canRemove">false</item>
+    </style>
+
+    <style name="SPTextField.Dropdown" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
     </style>
 
     <style name="SPTextField.InputRemovable" parent="SPTextField.Input">

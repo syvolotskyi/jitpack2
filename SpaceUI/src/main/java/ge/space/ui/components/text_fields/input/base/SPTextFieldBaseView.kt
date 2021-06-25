@@ -2,9 +2,15 @@ package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.text.style.SuperscriptSpan
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
@@ -47,7 +53,18 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.textLabel.text = value
+            if (inputMandatory) {
+                binding.textLabel.setText(value.appendAsterisk(), TextView.BufferType.SPANNABLE)
+            } else {
+                binding.textLabel.text = value
+            }
+        }
+
+    var inputMandatory = false
+        set(value) {
+            field = value
+
+            labelText = labelText
         }
 
     /**
@@ -120,7 +137,12 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     protected fun setStyle(@StyleRes defStyleRes: Int) {
-        with(context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)){
+        with(
+            context.theme.obtainStyledAttributes(
+                defStyleRes,
+                R.styleable.sp_text_field_base_view
+            )
+        ) {
             applyAttributes()
             recycle()
         }
@@ -128,7 +150,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     abstract fun setTextFieldStyle(@StyleRes defStyleRes: Int)
 
-    private fun TypedArray.applyAttributes(){
+    private fun TypedArray.applyAttributes() {
         getString(R.styleable.sp_text_field_base_view_titleText).orEmpty()
             .handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
@@ -137,6 +159,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             }
 
         imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, ID_NEXT)
+        inputMandatory = getBoolean(R.styleable.sp_text_field_base_view_inputMandatory, false)
 
         getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
             .handleAttributeAction(
@@ -207,4 +230,22 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     companion object {
         const val ID_NEXT = 5
     }
+
+    fun String.appendAsterisk(): Spannable =
+        SpannableStringBuilder("$this *").apply {
+            val spannedIndexStart = this@appendAsterisk.length + 1
+            val spannedIndexEnd = this@appendAsterisk.length + 2
+            setSpan(
+                SuperscriptSpan(),
+                spannedIndexStart,
+                spannedIndexEnd,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            setSpan(
+                ForegroundColorSpan(Color.parseColor("#EC008C")),
+                spannedIndexStart,
+                spannedIndexEnd,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
 }

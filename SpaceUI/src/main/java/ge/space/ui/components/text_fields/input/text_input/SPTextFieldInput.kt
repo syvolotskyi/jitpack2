@@ -63,11 +63,11 @@ class SPTextFieldInput @JvmOverloads constructor(
         inputTextBinding.etInputField.onFocusChangeListener = listener
     }
 
-    fun addTextChangedListener(watcher: TextWatcher){
+    fun addTextChangedListener(watcher: TextWatcher) {
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
-    fun removeTextChangedListener(watcher: TextWatcher){
+    fun removeTextChangedListener(watcher: TextWatcher) {
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
@@ -99,7 +99,8 @@ class SPTextFieldInput @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
 
         styleAttrs.run {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)

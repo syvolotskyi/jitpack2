@@ -2,6 +2,7 @@ package ge.space.design.ui_components.text_fields
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.ui_components.text_fields.dropdown.SPDropdownComponent
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
 import ge.space.design.ui_components.text_fields.otp.SPOtpComponent
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
@@ -18,7 +19,8 @@ class SPTextFieldsComponent : SPShowCaseComponent {
             SPPasswordComponent(),
             SPOtpComponent(),
             SPPhoneComponent(),
-            SPInputComponent()
+            SPInputComponent(),
+            SPDropdownComponent()
         )
     }
 }

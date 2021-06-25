@@ -31,6 +31,9 @@
     <string name="phone_input">Phone input</string>
     <string name="phone_input_desc">Phone input text inputs</string>
 
+    <string name="dropdown">Dropdown</string>
+    <string name="dropdown_desc">Dropdown desc</string>
+
     <string name="number_input">Number input</string>
     <string name="number_input_desc">Number input text inputs</string>
 
