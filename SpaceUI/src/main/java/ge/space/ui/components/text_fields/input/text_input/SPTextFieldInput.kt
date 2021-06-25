@@ -1,6 +1,8 @@
 package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
+import android.text.InputFilter
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -20,6 +22,15 @@ class SPTextFieldInput @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : SPTextFieldBaseView<SpTextFieldTextLayoutBinding>(context, attrs, defStyleAttr) {
+
+    var textLength: Int = -1
+        set(value) {
+            field = value
+            if (value == -1) return
+            inputTextBinding.etInputField.filters =
+                arrayOf<InputFilter>(InputFilter.LengthFilter(value))
+        }
+
 
     override var text: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
@@ -104,8 +115,15 @@ class SPTextFieldInput @JvmOverloads constructor(
 
         styleAttrs.run {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+            textLength =
+                getInt(R.styleable.sp_text_field_input_inputTextLength, -1)
+
             recycle()
         }
+    }
+
+    fun focus() {
+        inputTextBinding.etInputField.requestFocus()
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
