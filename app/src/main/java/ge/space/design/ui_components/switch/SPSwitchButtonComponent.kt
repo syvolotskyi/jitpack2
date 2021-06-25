@@ -11,9 +11,9 @@ class SPSwitchButtonComponent : SPShowCaseComponent {
 
     override fun getNameResId() = R.string.switch_button
 
-    override fun getComponentClass(): Class<*>? = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
+    class SPFactory : SPComponentFactory {
 
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
             return SpLayoutSwitchButtonShowcaseBinding.inflate(environmentSP.requireLayoutInflater()).let {
