@@ -2,6 +2,7 @@ package ge.space.design
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.ui_components.bank_cards.SPBankCardComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponentSP
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
@@ -22,7 +23,8 @@ object DesignSystemComponents : SPShowCaseComponent {
                 new { SPButtonComponent() },
                 new { SPSwitchButtonComponent() },
                 new { SPDialogComponent() },
-                new { SPTextFieldsComponent() }
+                new { SPTextFieldsComponent() },
+                new { SPBankCardComponent() }
         )
     }
 }

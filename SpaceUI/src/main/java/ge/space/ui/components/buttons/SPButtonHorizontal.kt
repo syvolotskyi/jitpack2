@@ -1,14 +1,13 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
@@ -25,6 +24,12 @@ class SPButtonHorizontal @JvmOverloads constructor(
 ) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
+     * Inflates and returns [SpButtonHorizontalLayoutBinding] value
+     */
+    override fun getViewBinding(): SpButtonHorizontalLayoutBinding =
+        SpButtonHorizontalLayoutBinding.inflate(LayoutInflater.from(context), this)
+
+    /**
      * Sets a image resource
      */
     @IdRes
@@ -38,46 +43,22 @@ class SPButtonHorizontal @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.sp_base_view,
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_sp_viewStyle, R.style.SPButtonBaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
             )
         }
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButtonHorizontal,
+            R.styleable.sp_button_horizontal,
             defStyleAttr
         ) {
-            src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
-            text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
+            src = getResourceId(R.styleable.sp_button_horizontal_android_src, 0)
+            text = getString(R.styleable.sp_button_horizontal_android_text).orEmpty()
         }
-    }
-
-    /**
-     * Inflates and returns [SpButtonHorizontalLayoutBinding] value
-     */
-    override fun getViewBinding(): SpButtonHorizontalLayoutBinding =
-            SpButtonHorizontalLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-    override fun updateTextColor(color: Int) {
-        binding.buttonLabel.setTextColor(color)
-    }
-
-    override fun updateFontFace(face: Typeface?) {
-        binding.buttonLabel.typeface = face
-    }
-
-    override fun updateText(text: String) {
-        binding.buttonLabel.text = text
-    }
-
-    override fun updateTextSize(textSize: Float) {
-        binding.buttonLabel.setTextSize(
-            TypedValue.COMPLEX_UNIT_PX, textSize
-        )
     }
 
     /**
@@ -90,21 +71,21 @@ class SPButtonHorizontal @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPViewStyle)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
-            text = getString(R.styleable.SPButton_android_text).orEmpty()
-            fontFamilyId = getResourceId(
-                R.styleable.SPViewStyle_android_fontFamily,
-                R.font.myriad_geo_bold
-            )
-            textSize = getDimension(R.styleable.SPViewStyle_android_textSize, FLOAT_ZERO)
-
+            text = getString(R.styleable.sp_button_android_text).orEmpty()
+            updateTextAppearance(getResourceId(R.styleable.sp_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL))
             recycle()
         }
     }
 
-    companion object {
-        private const val FLOAT_ZERO = 0f
+    override fun updateText(text: String) {
+        binding.buttonLabel.text = text
     }
+
+    override fun updateTextAppearance(textAppearance: Int) {
+        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
+    }
+
 }

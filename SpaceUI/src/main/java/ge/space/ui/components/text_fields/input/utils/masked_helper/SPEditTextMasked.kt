@@ -112,14 +112,18 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         }
     }
 
+    fun getRawText(): String {
+        return text.toString()
+            .removeSpaces()
+            .removeAllSymbols(MASK_SYMBOL)
+            .trim()
+    }
+
     override fun afterTextChanged(s: Editable) {
         if (!editingAfter && editingBefore && editingOnChanged) {
             editingAfter = true
-            if (hasHint() && (keepHint || rawText.length() == 0)) {
-                setText(makeMaskedTextWithHint())
-            } else {
-                setText(makeMaskedText())
-            }
+            s.clear()
+            s.append(makeMaskedTextWithHint())
             selectionChanged = false
             setSelection(select)
             editingBefore = false
@@ -174,11 +178,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         editingBefore = true
         editingOnChanged = true
         editingAfter = true
-        if (hasHint() && rawText.length() == 0) {
-            this.setText(makeMaskedTextWithHint())
-        } else {
-            this.setText(makeMaskedText())
-        }
+        this.setText(makeMaskedTextWithHint())
         editingBefore = false
         editingOnChanged = false
         editingAfter = false
@@ -241,11 +241,11 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     private fun init(context: Context, attrs: AttributeSet?) {
         val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.SPEditTextMasked, 0, 0)
+            context.obtainStyledAttributes(attrs, R.styleable.sp_edittext_masked, 0, 0)
 
         ta.run {
 
-            mask = getString(R.styleable.SPEditTextMasked_sp_mask) ?: ""
+            mask = getString(R.styleable.sp_edittext_masked_mask) ?: ""
 
             recycle()
         }
@@ -295,25 +295,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         } else nextValidPosition(rawToMask[rawText.length()])
     }
 
-    private fun makeMaskedText(): String {
-        val maskedTextLength: Int = if (rawText.length() < rawToMask.size) {
-            rawToMask[rawText.length()]
-        } else {
-            mask.length
-        }
-        val maskedText =
-            CharArray(maskedTextLength) //mask.replace(charRepresentation, ' ').toCharArray();
-        for (i in maskedText.indices) {
-            val rawIndex = maskToRaw[i]
-            if (rawIndex == -1) {
-                maskedText[i] = mask[i]
-            } else {
-                maskedText[i] = rawText.charAt(rawIndex)
-            }
-        }
-        return String(maskedText)
-    }
-
     private fun makeMaskedTextWithHint(): CharSequence {
         val ssb = SpannableStringBuilder()
         var mtrv: Int
@@ -337,6 +318,11 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         }
         return ssb
     }
+
+    private fun String.removeSpaces() = replace("\\s".toRegex(), "")
+
+    private fun String.removeAllSymbols(symbol: String) = replace(symbol, "")
+
 
     private fun calculateRange(start: Int, end: Int): Range {
         val range = Range()
@@ -377,7 +363,8 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     companion object {
         const val SPACE = " "
-        const val ALLOWED_CHARS = "1234567890"
+        const val ALLOWED_CHARS = "1234567890 X"
         const val CHAR_REPRESENTATION = "#"
+        const val MASK_SYMBOL = "X"
     }
 }

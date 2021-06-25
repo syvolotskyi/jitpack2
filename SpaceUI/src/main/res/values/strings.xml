@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="phone_hint">XXXXXXXXX</string>
+
+    <string name="enter_you_details_here">Enter your details here</string>
 </resources>

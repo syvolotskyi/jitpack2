@@ -11,6 +11,6 @@ data class SPButtonSupportsLoading(
 
 object SPHorizontalButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPButtonBaseHorizontal, true),
+        SPButtonSupportsLoading(R.style.SPButton_BaseHorizontal, true),
     )
 }

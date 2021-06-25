@@ -8,17 +8,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingEnd="@dimen/dimen_p_16"
-        android:paddingStart="@dimen/dimen_p_16"
         android:layout_marginStart="@dimen/dimen_p_8"
         android:layout_marginEnd="@dimen/dimen_p_8"
-        android:drawablePadding="@dimen/dimen_p_8"
         android:ellipsize="end"
+        android:gravity="center"
         android:lines="1"
-        app:drawableEndCompat="@drawable/ic_arrow_right_16_regular"
-        app:drawableStartCompat="@drawable/ic_arrow_left_16_regular"
+        android:paddingStart="@dimen/dimen_p_16"
+        android:paddingEnd="@dimen/dimen_p_16"
+        android:drawablePadding="@dimen/dimen_p_10"
+        android:includeFontPadding="false"
         app:drawableTint="@color/black"
         tools:fontFamily="@font/myriad_geo_bold"
-        tools:text="Title" />
+        tools:text="Title p" />
 
 </merge>

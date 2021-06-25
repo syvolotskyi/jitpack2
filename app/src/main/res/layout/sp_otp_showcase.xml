@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:sp_labelText="Label"
+        app:pinLabelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
     <ge.space.ui.components.text_fields.pin.SPPinEntryView
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTP"
-        app:sp_labelText="Label"
+        app:pinLabelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
     <ge.space.ui.components.text_fields.pin.SPPinEntryView
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTPSmall"
-        app:sp_labelText="Label"
+        app:pinLabelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -52,5 +52,5 @@
         android:padding="10dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:sp_labelText="Input label title" />
+        android:hint="Input label title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

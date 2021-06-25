@@ -48,9 +48,9 @@ class SPDialogBottomVerticalButton @JvmOverloads constructor(
     /**
      * Applies a button type. [BottomButtonType.Default] by default.
      *
-     * [BottomButtonType.Default] applies default style [R.style.SPButtonTransparent]
-     * [BottomButtonType.Cancel] applies cancel button style [R.style.SPButtonCancelTransparentView]
-     * [BottomButtonType.Remove] applies remove button style [R.style.SPButtonRemoveTransparentView]
+     * [BottomButtonType.Default] applies default style [R.style.SPButton.Dialog.Transparent]
+     * [BottomButtonType.Cancel] applies cancel button style [R.style.SPButton.Dialog.Default]
+     * [BottomButtonType.Remove] applies remove button style [R.style.SPButton.Dialog.Deny]
      */
     var buttonType = BottomButtonType.Default
         set(value) {
@@ -64,17 +64,17 @@ class SPDialogBottomVerticalButton @JvmOverloads constructor(
      */
     enum class BottomButtonType {
         /**
-         * Applies default style [R.style.SPButtonTransparent]
+         * Applies default style [R.style.SPButton.Dialog.Transparent]
          */
         Default,
 
         /**
-         * Applies remove button style [R.style.SPButtonRemoveTransparentView]
+         * Applies remove button style [R.style.SPButton.Dialog.Deny]
          */
         Remove,
 
         /**
-         * Applies cancel button style [R.style.SPButtonCancelTransparentView]
+         * Applies cancel button style [R.style.SPButton.Dialog.Default]
          */
         Cancel
     }

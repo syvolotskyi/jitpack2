@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lytWrapper"
     android:layout_width="wrap_content"
@@ -9,13 +10,13 @@
 
     <ImageView
         android:id="@+id/ivDialogType"
-        style="@style/SPDialogBaseInfoImage"
         android:layout_width="@dimen/sp_dialog_icon_size"
         android:layout_height="@dimen/sp_dialog_icon_size"
-        android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_info_circle_24_regular" />
+        android:src="@drawable/ic_info_circle_24_regular"
+        app:tint="?attr/colorAccent" />
 
     <View
         android:id="@+id/vIconDivider"
@@ -32,13 +33,13 @@
 
     <TextView
         android:id="@+id/tvDialogTitle"
-        style="@style/SPDialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/sp_dialog_title_padding_default"
-        android:paddingEnd="@dimen/sp_dialog_title_padding_default"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
+        android:paddingStart="@dimen/sp_dialog_title_padding_default"
+        android:paddingEnd="@dimen/sp_dialog_title_padding_default"
+        android:textAppearance="@style/h600_medium_caps_label_primary"
         tools:text="Title" />
 
     <View
@@ -49,12 +50,12 @@
 
     <TextView
         android:id="@+id/tvDialogLabel"
-        style="@style/SPDialogLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:paddingStart="@dimen/sp_dialog_title_padding_default"
         android:paddingEnd="@dimen/sp_dialog_title_padding_default"
-        android:gravity="center_horizontal"
+        android:textAppearance="@style/h700_medium_secondary"
         tools:text="Label" />
 
     <View
@@ -72,7 +73,7 @@
 
     <ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
         android:id="@+id/lytButtons"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

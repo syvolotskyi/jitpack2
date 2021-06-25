@@ -16,7 +16,7 @@
         android:id="@+id/btnDialog"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_dialog_button_height"
-        app:sp_viewStyle="@style/SPButtonTransparent"
+        app:style="@style/SPButton.Dialog.Positive"
         tools:text="Label" />
 
 </merge>
