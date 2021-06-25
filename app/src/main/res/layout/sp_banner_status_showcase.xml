@@ -41,9 +41,9 @@
             app:layout_constraintBottom_toTopOf="@id/showFullScreenButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chooseStateButton"
-            app:sp_banner_description="@string/banner_description"
-            app:sp_banner_subtitle="@string/banner_subtitle"
-            app:sp_banner_title="@string/banner_title" />
+            app:banner_description="@string/banner_description"
+            app:banner_subtitle="@string/banner_subtitle"
+            app:banner_title="@string/banner_title" />
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/showFullScreenButton"

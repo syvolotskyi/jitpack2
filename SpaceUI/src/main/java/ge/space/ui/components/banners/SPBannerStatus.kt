@@ -22,7 +22,7 @@ class SPBannerStatus @JvmOverloads constructor(
     fun setBannerStatusStyle(defStyleRes: Int) {
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerStatus)
         styleAttrs.run {
-            val statusStateInd = styleAttrs.getInt(R.styleable.SPBannerStatus_sp_banner_status_state, 0)
+            val statusStateInd = styleAttrs.getInt(R.styleable.SPBannerStatus_banner_status_state, 0)
             statusState = StatusStates.values()[statusStateInd]
             recycle()
         }

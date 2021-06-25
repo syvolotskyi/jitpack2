@@ -3,27 +3,27 @@
 
     <declare-styleable name="SPBannerBaseView">
 
-        <attr name="sp_banner_title" format="string|reference" />
-        <attr name="sp_banner_title_is_visible" format="boolean" />
-        <attr name="sp_banner_title_text_appearance" format="reference" />
+        <attr name="banner_title" format="string|reference" />
+        <attr name="banner_title_is_visible" format="boolean" />
+        <attr name="banner_title_text_appearance" format="reference" />
 
-        <attr name="sp_banner_subtitle" format="string|reference" />
-        <attr name="sp_banner_subtitle_is_visible" format="boolean" />
-        <attr name="sp_banner_subtitle_text_appearance" format="reference" />
+        <attr name="banner_subtitle" format="string|reference" />
+        <attr name="banner_subtitle_is_visible" format="boolean" />
+        <attr name="banner_subtitle_text_appearance" format="reference" />
 
-        <attr name="sp_banner_description" format="string|reference" />
-        <attr name="sp_banner_description_is_visible" format="boolean" />
-        <attr name="sp_banner_description_text_appearance" format="reference" />
+        <attr name="banner_description" format="string|reference" />
+        <attr name="banner_description_is_visible" format="boolean" />
+        <attr name="banner_description_text_appearance" format="reference" />
 
     </declare-styleable>
 
     <declare-styleable name="SPBannerIllustration" parent="SPBannerBaseView">
-        <attr name="sp_banner_image" format="reference" />
+        <attr name="banner_image" format="reference" />
     </declare-styleable>
 
 
     <declare-styleable name="SPBannerStatus" parent="SPBannerBaseView">
-        <attr name="sp_banner_status_state" format="enum">
+        <attr name="banner_status_state" format="enum">
             <enum name="Success" value="0" />
             <enum name="Error" value="1" />
             <enum name="Pending" value="2" />
