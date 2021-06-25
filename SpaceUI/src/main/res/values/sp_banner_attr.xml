@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SPBannerBaseView">
+    <declare-styleable name="sp_banner_base">
 
         <attr name="banner_title" format="string|reference" />
         <attr name="banner_title_is_visible" format="boolean" />
@@ -17,12 +17,12 @@
 
     </declare-styleable>
 
-    <declare-styleable name="SPBannerIllustration" parent="SPBannerBaseView">
+    <declare-styleable name="sp_banner_illustration" parent="sp_banner_base">
         <attr name="banner_image" format="reference" />
     </declare-styleable>
 
 
-    <declare-styleable name="SPBannerStatus" parent="SPBannerBaseView">
+    <declare-styleable name="sp_banner_status" parent="sp_banner_base">
         <attr name="banner_status_state" format="enum">
             <enum name="Success" value="0" />
             <enum name="Error" value="1" />

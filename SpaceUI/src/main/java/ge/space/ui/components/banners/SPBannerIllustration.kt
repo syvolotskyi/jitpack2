@@ -22,8 +22,8 @@ class SPBannerIllustration @JvmOverloads constructor(
         }
 
     init{
-        context.withStyledAttributes(attrs,R.styleable.SPBannerIllustration, defStyleAttr) {
-            bannerImage = getResourceId(R.styleable.SPBannerIllustration_banner_image, 0)
+        context.withStyledAttributes(attrs,R.styleable.sp_banner_illustration, defStyleAttr) {
+            bannerImage = getResourceId(R.styleable.sp_banner_illustration_banner_image, 0)
         }
     }
 

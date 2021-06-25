@@ -65,29 +65,29 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
         }
 
     init{
-        getContext().withStyledAttributes(attrs, R.styleable.SPBannerBaseView, defStyleAttr) {
-            bannerTitle = getString(R.styleable.SPBannerBaseView_banner_title).toString()
-            bannerSubtitle = getString(R.styleable.SPBannerBaseView_banner_subtitle).orEmpty()
-            bannerDescription = getString(R.styleable.SPBannerBaseView_banner_description).orEmpty()
-            titleVisibility = getBoolean(R.styleable.SPBannerBaseView_banner_title_is_visible, true)
-            subTitleVisibility = getBoolean(R.styleable.SPBannerBaseView_banner_subtitle_is_visible, true)
-            descriptionVisibility = getBoolean(R.styleable.SPBannerBaseView_banner_description_is_visible, true)
+        getContext().withStyledAttributes(attrs, R.styleable.sp_banner_base, defStyleAttr) {
+            bannerTitle = getString(R.styleable.sp_banner_base_banner_title).toString()
+            bannerSubtitle = getString(R.styleable.sp_banner_base_banner_subtitle).orEmpty()
+            bannerDescription = getString(R.styleable.sp_banner_base_banner_description).orEmpty()
+            titleVisibility = getBoolean(R.styleable.sp_banner_base_banner_title_is_visible, true)
+            subTitleVisibility = getBoolean(R.styleable.sp_banner_base_banner_subtitle_is_visible, true)
+            descriptionVisibility = getBoolean(R.styleable.sp_banner_base_banner_description_is_visible, true)
         }
         setBannerStyle(R.style.SPBanner_Base)
 
     }
 
     fun setBannerStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBannerBaseView)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_banner_base)
 
         styleAttrs.run {
-            val titleTextAppearance = getResourceId(R.styleable.SPBannerBaseView_banner_title_text_appearance, SPBaseView.DEFAULT_OBTAIN_VAL)
+            val titleTextAppearance = getResourceId(R.styleable.sp_banner_base_banner_title_text_appearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             updateTitleTextAppearance(titleTextAppearance)
 
-            val subtitleTextAppearance = getResourceId(R.styleable.SPBannerBaseView_banner_subtitle_text_appearance, SPBaseView.DEFAULT_OBTAIN_VAL)
+            val subtitleTextAppearance = getResourceId(R.styleable.sp_banner_base_banner_subtitle_text_appearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             updateSubtitleTextAppearance(subtitleTextAppearance)
 
-            val descTextAppearance = getResourceId(R.styleable.SPBannerBaseView_banner_description_text_appearance, SPBaseView.DEFAULT_OBTAIN_VAL)
+            val descTextAppearance = getResourceId(R.styleable.sp_banner_base_banner_description_text_appearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             updateDescTextAppearance(descTextAppearance)
 
             recycle()
