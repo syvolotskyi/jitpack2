@@ -12,7 +12,7 @@ import ge.space.ui.components.bank_cards.data.SPSmallEmptyStyle
 /**
  * Comment
  */
-class SPSmallEmptyBankCardView @JvmOverloads constructor(
+class SPSmallEmptyChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,

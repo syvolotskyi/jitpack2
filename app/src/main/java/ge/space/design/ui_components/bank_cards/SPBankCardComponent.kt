@@ -3,7 +3,8 @@ package ge.space.design.ui_components.bank_cards
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.ui_components.bank_cards.card.SPBankCardViewComponent
-import ge.space.design.ui_components.bank_cards.chip.SPChipBankCardViewComponent
+import ge.space.design.ui_components.bank_cards.chip.chip_icon.SPChipIconViewComponent
+import ge.space.design.ui_components.bank_cards.chip.small_empty.SPEmptyChipViewComponent
 
 class SPBankCardComponent : SPShowCaseComponent {
 
@@ -16,6 +17,7 @@ class SPBankCardComponent : SPShowCaseComponent {
     override fun getSubComponents(): List<SPShowCaseComponent> =
         listOf(
             SPBankCardViewComponent(),
-            SPChipBankCardViewComponent()
+            SPEmptyChipViewComponent(),
+            SPChipIconViewComponent()
         )
 }

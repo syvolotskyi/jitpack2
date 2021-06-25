@@ -1,15 +1,15 @@
-package ge.space.design.ui_components.bank_cards.chip
+package ge.space.design.ui_components.bank_cards.chip.small_empty
 
 import ge.space.ui.components.bank_cards.data.SPSmallEmptyStyle
 
-data class SPChipBankCardSupport(
+data class SPEmptyChipBankCardSupport(
     val style: SPSmallEmptyStyle = SPSmallEmptyStyle.White
 )
 
-object SPChipStyles {
+object SPEmptyChipStyles {
     val list = listOf(
-        SPChipBankCardSupport(),
-        SPChipBankCardSupport(
+        SPEmptyChipBankCardSupport(),
+        SPEmptyChipBankCardSupport(
             style = SPSmallEmptyStyle.Dark
         ),
     )

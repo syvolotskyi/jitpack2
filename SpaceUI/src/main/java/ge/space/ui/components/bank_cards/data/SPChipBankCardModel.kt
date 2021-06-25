@@ -31,3 +31,19 @@ enum class SPChipBankCardSize {
      */
     Small,
 }
+
+/**
+ * Comment
+ */
+enum class SPChipIconAppearance {
+
+    /**
+     * For accent chips color
+     */
+    Accent,
+
+    /**
+     * For dark chips colors
+     */
+    Dark,
+}

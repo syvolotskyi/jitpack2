@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import ge.space.extensions.onClick
+import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
@@ -114,15 +115,8 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
         }
     }
 
-    private fun resolveColor(): Int {
-        TypedValue().apply {
-            requireContext().theme.resolveAttribute(
-                dialogIcon.colorAttr, this, true
-            )
-
-            return data
-        }
-    }
+    private fun resolveColor(): Int =
+        requireContext().resolveColorByAttr(dialogIcon.colorAttr)
 
     override fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
         SPDialogBottomButtonLayout.SPDialogBottomButtonModel(

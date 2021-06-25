@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip
+package ge.space.design.ui_components.bank_cards.chip.small_empty
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemChipBankCardShowcaseBinding
@@ -6,9 +6,9 @@ import com.example.spacedesignsystem.databinding.SpLayoutBankCardShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.SPSmallEmptyBankCardView
+import ge.space.ui.components.bank_cards.chip.SPSmallEmptyChip
 
-class SPChipBankCardViewComponent : SPShowCaseComponent {
+class SPEmptyChipViewComponent : SPShowCaseComponent {
     override fun getNameResId(): Int =
         R.string.component_bank_card_views
 
@@ -22,9 +22,9 @@ class SPChipBankCardViewComponent : SPShowCaseComponent {
             val binding = SpLayoutBankCardShowCaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val cards = mutableListOf<SPSmallEmptyBankCardView>()
+            val cards = mutableListOf<SPSmallEmptyChip>()
 
-            SPChipStyles.list.forEach { bankCardSample ->
+            SPEmptyChipStyles.list.forEach { bankCardSample ->
                 val itemBinding = SpItemChipBankCardShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
                     binding.bankCardsLayout,
