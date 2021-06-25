@@ -51,4 +51,7 @@
 
     <string name="correct_password">Correct password</string>
     <string name="incorrect_password">Incorrect password</string>
+
+    <string name="component_bank_card">Bank cards</string>
+    <string name="component_bank_card_description">Bank cards description</string>
 </resources>

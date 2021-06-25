@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sp_bank_card_view_margin_top">@dimen/dimen_p_8</dimen>
+    <dimen name="sp_bank_card_small_margin">@dimen/dimen_p_4</dimen>
+
+    <dimen name="sp_main_header_height">@dimen/dimen_p_56</dimen>
+    <dimen name="sp_gradient_image_view_height">@dimen/dimen_p_197</dimen>
+    <dimen name="sp_gradient_image_view_width">@dimen/dimen_p_297</dimen>
+
+    <dimen name="sp_bank_card_chip_size">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_bank_card_chip_margin_start">@dimen/dimen_p_28</dimen>
+    <dimen name="sp_bank_card_chip_margin_top">@dimen/dimen_p_24</dimen>
+
+    <dimen name="sp_bank_pay_wave_height">@dimen/dimen_p_20</dimen>
+    <dimen name="sp_bank_pay_wave_width">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_bank_pay_wave_margin_end">@dimen/dimen_p_32</dimen>
+    <dimen name="sp_bank_pay_wave_margin_top">@dimen/dimen_p_26</dimen>
+
+    <dimen name="sp_bank_card_status_image_size">@dimen/dimen_p_64</dimen>
+    <dimen name="sp_bank_card_status_image_margin_top">@dimen/dimen_p_56</dimen>
+    <dimen name="sp_bank_card_status_title_margin_top">@dimen/dimen_p_132</dimen>
+
+    <dimen name="sp_bank_card_account_number_margin_bottom">@dimen/dimen_p_23</dimen>
+
+    <dimen name="sp_bank_card_favorite_size">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_bank_card_favorite_margin_start">@dimen/dimen_p_11</dimen>
+    <dimen name="sp_bank_card_favorite_margin_top">@dimen/dimen_p_8</dimen>
+
+    <dimen name="sp_bank_logo_round_radius">@dimen/dimen_p_6</dimen>
+    <dimen name="sp_bank_logo_size">@dimen/dimen_p_32</dimen>
+    <dimen name="sp_bank_logo_margin_start">@dimen/dimen_p_28</dimen>
+    
+    <dimen name="sp_bank_balance_margin_end">@dimen/dimen_p_28</dimen>
+
+    <dimen name="sp_bank_name_margin_horizontal">@dimen/dimen_p_8</dimen>
+
+    <dimen name="sp_bank_card_credit_layout_height">@dimen/dimen_p_17</dimen>
+
+    <dimen name="sp_bank_card_payment_system_logo_width">@dimen/dimen_p_67</dimen>
+    <dimen name="sp_bank_card_payment_system_logo_height">@dimen/dimen_p_27</dimen>
+
+</resources>
