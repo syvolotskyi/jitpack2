@@ -1,6 +1,5 @@
 package ge.space.design.ui_components.bank_cards.chip.chip_icon
 
-import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemChipIconShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutChipIconShowCaseBinding
@@ -35,9 +34,7 @@ class SPChipIconViewComponent : SPShowCaseComponent {
                     cardSize = bankCardSample.size
                     iconAppearance = bankCardSample.iconAppearance
                     icon = bankCardSample.icon
-                    setOnClickListener {
-                        Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
-                    }
+                    bigPhotoUrl = bankCardSample.photoUrl
                 }
 
                 cards.add(itemBinding.addBankCardButton)

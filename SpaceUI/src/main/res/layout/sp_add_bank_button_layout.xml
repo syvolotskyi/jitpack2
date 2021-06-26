@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_icon"
@@ -10,5 +11,13 @@
         android:tint="?attr/colorAccent"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_plus_24_regular" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_big_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
 </merge>

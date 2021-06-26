@@ -9,6 +9,8 @@ import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseChipIcon
 import ge.space.ui.components.bank_cards.data.SPChipIconAppearance
+import ge.space.ui.util.extension.loadRoundImageUrl
+import ge.space.ui.util.extension.visibleOrGone
 
 /**
  * Comment
@@ -28,6 +30,16 @@ class SPChipIcon @JvmOverloads constructor(
             field = value
 
             changeIcon()
+        }
+
+    /**
+     * Comment
+     */
+    var bigPhotoUrl: String? = null
+        set(value) {
+            field = value
+
+            handlePhotoUrl()
         }
 
     /**
@@ -59,8 +71,31 @@ class SPChipIcon @JvmOverloads constructor(
         )
     }
 
+    private fun handlePhotoUrl() {
+        val hasPhotoUrl = bigPhotoUrl != null
+
+        with(binding) {
+            ivIcon.visibleOrGone(!hasPhotoUrl)
+            ivBigPhoto.visibleOrGone(hasPhotoUrl)
+
+            bigPhotoUrl?.let { url ->
+                context.loadRoundImageUrl(
+                    url,
+                    ivBigPhoto,
+                    getRoundRadius()
+                )
+            }
+        }
+    }
+
     private fun getColorAttr() = when (iconAppearance) {
         SPChipIconAppearance.Accent -> R.attr.colorAccent
         else -> R.attr.static_black
     }
+
+    private fun getRoundRadius() =
+        resources.getDimension(
+            if (isBig) R.dimen.sp_bank_round_radius_big
+            else R.dimen.sp_bank_round_radius_small
+        ).toInt()
 }

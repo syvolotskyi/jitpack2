@@ -18,15 +18,13 @@ class SPAddBankCardButton @JvmOverloads constructor(
     /**
      * Comment
      */
-    override fun setImageSize(isBig: Boolean) {
+    override fun setImageSize() {
         with(binding.ivIcon) {
             width(
-                isBig,
                 R.dimen.sp_add_bank_card_button_icon_size,
                 R.dimen.sp_add_bank_card_button_icon_size_small
             )
             height(
-                isBig,
                 R.dimen.sp_add_bank_card_button_icon_size,
                 R.dimen.sp_add_bank_card_button_icon_size_small
             )
