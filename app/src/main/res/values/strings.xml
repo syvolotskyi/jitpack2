@@ -52,8 +52,11 @@
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
 
-    <string name="component_bank_card_views">Empty bank card chips</string>
-    <string name="component_bank_card_views_description">Small chip bank card views</string>
+    <string name="component_bank_card_views">Bank card views</string>
+    <string name="component_bank_card_views_description">Samples of Bank card using</string>
+
+    <string name="component_small_empty_chip">Small empty chips</string>
+    <string name="component_small_empty_chip_description">Samples of small empty chips using</string>
 
     <string name="bank_card_buttons">Add bank card buttons</string>
     <string name="bank_card_description">A sample with add bank card buttons</string>

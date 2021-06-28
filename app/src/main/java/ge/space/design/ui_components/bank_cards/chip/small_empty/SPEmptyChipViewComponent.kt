@@ -10,10 +10,10 @@ import ge.space.ui.components.bank_cards.chip.SPSmallEmptyChip
 
 class SPEmptyChipViewComponent : SPShowCaseComponent {
     override fun getNameResId(): Int =
-        R.string.component_bank_card_views
+        R.string.component_small_empty_chip
 
     override fun getDescriptionResId(): Int =
-        R.string.component_bank_card_views_description
+        R.string.component_small_empty_chip_description
 
     override fun getComponentClass(): Class<*>? = Factory::class.java
 
