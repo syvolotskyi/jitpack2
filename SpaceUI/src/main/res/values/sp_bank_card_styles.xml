@@ -6,7 +6,7 @@
         <item name="shadowOffsetY">@dimen/dimen_p_10</item>
         <item name="shadowAlpha">15%</item>
         <item name="shadowRadius">@dimen/dimen_p_25</item>
-        <item name="backgroundColor">?attr/static_white</item>
+        <item name="backgroundColor">@android:color/transparent</item>
         <item name="cardStatusTextAppearance">@style/h800_medium_bank_card_status</item>
         <item name="cardAmountTextAppearance">@style/h700_bold_caps_bank_card_amount</item>
         <item name="cardBankNameTextAppearance">@style/h700_bold_card_bank_name</item>
