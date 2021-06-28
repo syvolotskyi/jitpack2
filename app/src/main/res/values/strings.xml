@@ -51,4 +51,13 @@
 
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
+
+    <string name="component_tab_navigation">Tab Navigation</string>
+    <string name="component_tab_navigation_description">Tab Navigation Description</string>
+    <string name="component_one_tab_navigation">One Tab Navigation</string>
+    <string name="component_one_tab_navigation_description">One Tab Navigation Description</string>
+    <string name="component_two_tab_navigation">Two Tab Navigation</string>
+    <string name="component_two_tab_navigation_description">Two Tab Navigation Description</string>
+    <string name="component_three_tab_navigation">Three Tab Navigation</string>
+    <string name="component_three_tab_navigation_description">Three Tab Navigation Description</string>
 </resources>
