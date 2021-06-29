@@ -16,6 +16,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
 import androidx.viewbinding.ViewBinding
+import ge.space.extensions.appendAsterisk
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -27,6 +28,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property text [String] value which sets a text.
  * @property labelText [String] value which sets a label text.
  * @property imeOption [Int] value which sets a ime Option.
+ * @property inputMandatory [Boolean] value which sets a input mandatory.
  * @property descriptionText [String] value which sets a description text.
  */
 abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
@@ -230,22 +232,4 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     companion object {
         const val ID_NEXT = 5
     }
-
-    fun String.appendAsterisk(): Spannable =
-        SpannableStringBuilder("$this *").apply {
-            val spannedIndexStart = this@appendAsterisk.length + 1
-            val spannedIndexEnd = this@appendAsterisk.length + 2
-            setSpan(
-                SuperscriptSpan(),
-                spannedIndexStart,
-                spannedIndexEnd,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            setSpan(
-                ForegroundColorSpan(Color.parseColor("#EC008C")),
-                spannedIndexStart,
-                spannedIndexEnd,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-        }
 }
