@@ -50,6 +50,7 @@ class SPPrimaryChip @JvmOverloads constructor(
         setStyle(
             getStyle()
         )
+        handleImageBackground()
         setSize()
     }
 
@@ -57,6 +58,15 @@ class SPPrimaryChip @JvmOverloads constructor(
         widthByIsBig(isBig, R.dimen.sp_bank_chip_width, R.dimen.sp_bank_chip_width_small)
         heightByIsBig(isBig, R.dimen.sp_bank_chip_height, R.dimen.sp_bank_chip_height_small)
     }
+
+    private fun handleImageBackground() {
+        binding.ivBackground.setImageResource(
+            getImage()
+        )
+    }
+
+    private fun getImage() = if (isBig) R.drawable.img_primary_chip
+        else R.drawable.img_primary_chip_small
 
     private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
         else R.style.SPBankCardView_Chip_Small

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import ge.space.extensions.layoutParams
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -61,20 +62,73 @@ class SPDigitalChip @JvmOverloads constructor(
         setStyle(
             getStyle()
         )
-        setSize()
+        handleComponentsSizes()
     }
 
-    private fun setSize() {
-        with(binding) {
-            vGradient.widthByIsBig(isBig, R.dimen.sp_bank_chip_width, R.dimen.sp_bank_chip_width_small)
-            vGradient.heightByIsBig(isBig, R.dimen.sp_bank_chip_height, R.dimen.sp_bank_chip_height_small)
+    private fun handleComponentsSizes() {
+        changeBackgroundSize()
+        changeBrandLogoSize()
+        changePaymentSystemSize()
+        changePaymentSystemMargins()
+    }
 
-//            ivBankLogo.widthByIsBig(isBig, R.dimen.sp_digital_chip_bank_logo_width, R.dimen.sp_digital_chip_bank_logo_width_small)
-//            ivBankLogo.heightByIsBig(isBig, R.dimen.sp_digital_chip_bank_logo_height, R.dimen.sp_digital_chip_bank_logo_height_small)
-//            ivPaymentSystem.widthByIsBig(isBig, R.dimen.sp_digital_chip_payment_system_width, R.dimen.sp_digital_chip_payment_system_width_small)
-//            ivPaymentSystem.heightByIsBig(isBig, R.dimen.sp_digital_chip_payment_system_height, R.dimen.sp_digital_chip_payment_system_width_small)
+    private fun changeBackgroundSize() {
+        with(binding) {
+            vGradient.widthByIsBig(
+                isBig,
+                R.dimen.sp_bank_chip_width,
+                R.dimen.sp_bank_chip_width_small
+            )
+            vGradient.heightByIsBig(
+                isBig,
+                R.dimen.sp_bank_chip_height,
+                R.dimen.sp_bank_chip_height_small
+            )
         }
     }
+
+    private fun changeBrandLogoSize() {
+        with(binding) {
+            ivBankLogo.widthByIsBig(
+                isBig,
+                R.dimen.sp_digital_chip_bank_logo_width,
+                R.dimen.sp_digital_chip_bank_logo_width_small
+            )
+            ivBankLogo.heightByIsBig(
+                isBig,
+                R.dimen.sp_digital_chip_bank_logo_height,
+                R.dimen.sp_digital_chip_bank_logo_height_small
+            )
+        }
+    }
+
+    private fun changePaymentSystemSize() {
+        with(binding) {
+            ivPaymentSystem.widthByIsBig(
+                isBig,
+                R.dimen.sp_digital_chip_payment_system_width,
+                R.dimen.sp_digital_chip_payment_system_width_small
+            )
+            ivPaymentSystem.heightByIsBig(
+                isBig,
+                R.dimen.sp_digital_chip_payment_system_height,
+                R.dimen.sp_digital_chip_payment_system_height_small
+            )
+        }
+    }
+
+    private fun changePaymentSystemMargins() {
+        with(binding) {
+            ivPaymentSystem.layoutParams<MarginLayoutParams> {
+                marginEnd = resources.getDimensionPixelSize(getPaymentSystemLogoMargin())
+                bottomMargin = resources.getDimensionPixelSize(getPaymentSystemLogoMargin())
+            }
+        }
+    }
+
+    private fun getPaymentSystemLogoMargin() =
+        if (isBig) R.dimen.sp_digital_chip_payment_system_margin
+        else R.dimen.sp_digital_chip_payment_system_margin_small
 
     private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
         else R.style.SPBankCardView_Chip_Small
