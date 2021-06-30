@@ -28,29 +28,29 @@ object SPButtonStyles {
     private val GRADIENT_WHITE_1 = Color.parseColor("#E3E9F0")
     private val GRADIENT_WHITE_2 = Color.parseColor("#FFFFFF")
 
-    private val GRADIENT_BLUE_1 = Color.parseColor("#2998FF")
-    private val GRADIENT_BLUE_2 = Color.parseColor("#31C1FF")
+    val GRADIENT_BLUE_1 = Color.parseColor("#2998FF")
+    val GRADIENT_BLUE_2 = Color.parseColor("#31C1FF")
 
-    private val GRADIENT_GREEN_1 = Color.parseColor("#00C2CE")
-    private val GRADIENT_GREEN_2 = Color.parseColor("#36EFAC")
+    val GRADIENT_GREEN_1 = Color.parseColor("#00C2CE")
+    val GRADIENT_GREEN_2 = Color.parseColor("#36EFAC")
 
-    private val GRADIENT_VIOLET_1 = Color.parseColor("#7987FF")
-    private val GRADIENT_VIOLET_2 = Color.parseColor("#BB87F8")
+    val GRADIENT_VIOLET_1 = Color.parseColor("#7987FF")
+    val GRADIENT_VIOLET_2 = Color.parseColor("#BB87F8")
 
-    private val GRADIENT_LIGHT_GREEN_1 = Color.parseColor("#31C396")
-    private val GRADIENT_LIGHT_GREEN_2 = Color.parseColor("#4AF693")
+    val GRADIENT_LIGHT_GREEN_1 = Color.parseColor("#31C396")
+    val GRADIENT_LIGHT_GREEN_2 = Color.parseColor("#4AF693")
 
-    private val LOGO_TBC = "https://hh.ru/employer-logo/3190953.png"
-    private val LOGO_SPACE = "https://media-exp1.licdn.com/dms/image/C560BAQFRDYOjrYnlMA/company-logo_200_200/0/1525704139391?e=2159024400&v=beta&t=oiF05kfz6n6F0BWRb1jSMLbPpLmfkgo7VNZ3aDJtflA"
-    private val LOGO_MIB = "https://i1.wp.com/zanimaem.uz/wp-content/uploads/2019/04/Madadinvestbank.jpg?fit=235%2C150&ssl=1"
-    private val LOGO_GEORGIA_BANK = "https://media.glassdoor.com/sqll/727708/bank-of-georgia-squarelogo-1504165558877.png"
+    val LOGO_TBC = "https://hh.ru/employer-logo/3190953.png"
+    val LOGO_SPACE = "https://media-exp1.licdn.com/dms/image/C560BAQFRDYOjrYnlMA/company-logo_200_200/0/1525704139391?e=2159024400&v=beta&t=oiF05kfz6n6F0BWRb1jSMLbPpLmfkgo7VNZ3aDJtflA"
+    val LOGO_MIB = "https://i1.wp.com/zanimaem.uz/wp-content/uploads/2019/04/Madadinvestbank.jpg?fit=235%2C150&ssl=1"
+    val LOGO_GEORGIA_BANK = "https://media.glassdoor.com/sqll/727708/bank-of-georgia-squarelogo-1504165558877.png"
 
-    private val VARIANT_UNION_PAY_LOGO = "https://tinyurl.com/ygqxkhnm"
-    private val MASTER_CARD_LOGO = "https://tinyurl.com/yfejlew9"
-    private val UNION_LOGO = "https://tinyurl.com/ygpkj57w"
-    private val UNION_PAY_LOGO = "https://tinyurl.com/ygla7fk3"
-    private val HUMO_LOGO = "https://tinyurl.com/yj7pprsp"
-    private val VISA_LOGO = "https://tinyurl.com/ygtc4qmf"
+    val VARIANT_UNION_PAY_LOGO = "https://tinyurl.com/ygqxkhnm"
+    val MASTER_CARD_LOGO = "https://tinyurl.com/yfejlew9"
+    val UNION_LOGO = "https://tinyurl.com/ygpkj57w"
+    val UNION_PAY_LOGO = "https://tinyurl.com/ygla7fk3"
+    val HUMO_LOGO = "https://tinyurl.com/yj7pprsp"
+    val VISA_LOGO = "https://tinyurl.com/ygtc4qmf"
 
     val list = listOf(
         SPBankCardSupport(

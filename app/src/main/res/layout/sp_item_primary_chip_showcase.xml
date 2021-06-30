@@ -7,8 +7,8 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ge.space.ui.components.bank_cards.chip.SPChipIcon
-        android:id="@+id/addBankCardButton"
+    <ge.space.ui.components.bank_cards.chip.SPPrimaryChip
+        android:id="@+id/primaryChip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"

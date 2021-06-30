@@ -58,9 +58,15 @@
     <string name="component_small_empty_chip">Small empty chips</string>
     <string name="component_small_empty_chip_description">Samples of small empty chips using</string>
 
-    <string name="bank_card_buttons">Add bank card buttons</string>
-    <string name="bank_card_description">A sample with add bank card buttons</string>
+    <string name="component_bank_card_buttons">Add bank card buttons</string>
+    <string name="component_bank_card_button_description">A sample with add bank card buttons</string>
 
-    <string name="chip_icons">Chip icons</string>
-    <string name="chip_icons_description">Chip icons description</string>
+    <string name="component_chip_icons">Chip icons</string>
+    <string name="component_chip_icons_description">Chip icons description</string>
+
+    <string name="component_primary_chip">Primary chip</string>
+    <string name="component_primary_chip_description">Samples of primary chips using according to the selected flavor</string>
+
+    <string name="component_digital_chip">Digital chip</string>
+    <string name="component_digital_chip_description">Samples of digital chips using according to the selected flavor</string>
 </resources>

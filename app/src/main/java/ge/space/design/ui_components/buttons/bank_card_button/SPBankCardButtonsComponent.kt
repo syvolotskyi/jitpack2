@@ -11,9 +11,9 @@ import ge.space.ui.components.buttons.SPAddBankCardButton
 
 class SPBankCardButtonsComponent : SPShowCaseComponent {
 
-    override fun getNameResId(): Int = R.string.bank_card_buttons
+    override fun getNameResId(): Int = R.string.component_bank_card_buttons
 
-    override fun getDescriptionResId(): Int = R.string.bank_card_description
+    override fun getDescriptionResId(): Int = R.string.component_bank_card_button_description
 
     override fun getComponentClass(): Class<*>? = Factory::class.java
 

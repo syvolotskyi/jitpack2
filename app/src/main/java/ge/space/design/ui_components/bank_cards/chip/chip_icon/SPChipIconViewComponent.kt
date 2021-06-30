@@ -10,9 +10,9 @@ import ge.space.ui.components.bank_cards.chip.SPChipIcon
 
 class SPChipIconViewComponent : SPShowCaseComponent {
 
-    override fun getNameResId(): Int = R.string.chip_icons
+    override fun getNameResId(): Int = R.string.component_chip_icons
 
-    override fun getDescriptionResId(): Int = R.string.chip_icons_description
+    override fun getDescriptionResId(): Int = R.string.component_chip_icons_description
 
     override fun getComponentClass(): Class<*>? = Factory::class.java
 

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
         android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-        app:style="@style/SPBankCardView.AddBankCardButton"
+        app:style="@style/SPBankCardView.Chip"
         tools:layout_width="@dimen/sp_bank_chip_width"
         tools:layout_height="@dimen/sp_bank_chip_height" />
 

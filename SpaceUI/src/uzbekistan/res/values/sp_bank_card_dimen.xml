@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sp_digital_chip_bank_logo_width">@dimen/dimen_p_26</dimen>
+    <dimen name="sp_digital_chip_bank_logo_height">@dimen/dimen_p_23</dimen>
+    <dimen name="sp_digital_chip_bank_logo_width_small">@dimen/dimen_sp_18</dimen>
+    <dimen name="sp_digital_chip_bank_logo_height_small">@dimen/dimen_sp_16</dimen>
+    <dimen name="sp_digital_chip_payment_system_width">@dimen/dimen_p_10</dimen>
+    <dimen name="sp_digital_chip_payment_system_height">@dimen/dimen_p_7</dimen>
+    <dimen name="sp_digital_chip_payment_system_width_small">@dimen/dimen_sp_8</dimen>
+    <dimen name="sp_digital_chip_payment_system_height_small">@dimen/dimen_sp_6</dimen>
+</resources>

@@ -1,11 +1,12 @@
-package ge.space.ui.base
+package ge.space.ui.components.bank_cards.chip
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpAddBankButtonLayoutBinding
+import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPChipBankCardSize
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
@@ -13,16 +14,16 @@ import ge.space.ui.util.extension.widthByIsBig
 /**
  * Comment
  */
-abstract class SPBaseChipIcon @JvmOverloads constructor(
+class SPPrimaryChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
 ) : SPBaseView(context, attrs, defStyleAttr) {
 
     /**
      * Comment
      */
-    var cardSize : SPChipBankCardSize = SPChipBankCardSize.Big
+    var size : SPChipBankCardSize = SPChipBankCardSize.Big
         set(value) {
             field = value
 
@@ -32,33 +33,31 @@ abstract class SPBaseChipIcon @JvmOverloads constructor(
     /**
      * Comment
      */
-    protected val isBig
-        get() = cardSize == SPChipBankCardSize.Big
+    private val isBig
+        get() = size == SPChipBankCardSize.Big
 
     /**
      * Comment
      */
-    protected val binding by lazy {
-        getAddBankButtonLayoutBinding()
+    private val binding =
+        SpPrimaryChipLayoutBinding.inflate(LayoutInflater.from(context), this)
+
+    init {
+        handleCardAppearance()
     }
 
     private fun handleCardAppearance() {
-        setImageSize()
-        val style = getStyle()
-        setStyle(style)
+        setStyle(
+            getStyle()
+        )
         setSize()
     }
-
-    private fun getAddBankButtonLayoutBinding() =
-        SpAddBankButtonLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
-        else R.style.SPBankCardView_Chip_Small
-
-    protected open fun setImageSize() { }
 
     private fun setSize() {
         widthByIsBig(isBig, R.dimen.sp_bank_chip_width, R.dimen.sp_bank_chip_width_small)
         heightByIsBig(isBig, R.dimen.sp_bank_chip_height, R.dimen.sp_bank_chip_height_small)
     }
+
+    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
+        else R.style.SPBankCardView_Chip_Small
 }

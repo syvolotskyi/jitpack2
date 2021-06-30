@@ -23,15 +23,15 @@
         <item name="shadowRadius">0dp</item>
     </style>
 
-    <style name="SPBankCardView.AddBankCardButton.Base" parent="SPBankCardView.EmptySmall.Base">
+    <style name="SPBankCardView.Chip.Base" parent="SPBankCardView.EmptySmall.Base">
         <item name="backgroundColor">?attr/greyscale_gray_5</item>
     </style>
 
-    <style name="SPBankCardView.AddBankCardButton" parent="SPBankCardView.AddBankCardButton.Base">
+    <style name="SPBankCardView.Chip" parent="SPBankCardView.Chip.Base">
         <item name="roundedCorners">@dimen/sp_bank_round_radius_big</item>
     </style>
 
-    <style name="SPBankCardView.AddBankCardButton.Small" parent="SPBankCardView.AddBankCardButton.Base">
+    <style name="SPBankCardView.Chip.Small" parent="SPBankCardView.Chip.Base">
         <item name="roundedCorners">@dimen/sp_bank_round_radius_small</item>
     </style>
 </resources>
