@@ -24,6 +24,9 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 ) : SPTextFieldBaseView<SpTextFieldDropdownBinding>(context, attrs, defStyleAttr),
     View.OnClickListener {
 
+    /**
+     * Binding a item view after selecting
+     */
     var bindViewValue: (item: T) -> Unit = { _ -> }
 
     /**

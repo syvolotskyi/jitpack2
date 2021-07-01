@@ -96,16 +96,7 @@ class SPTextFieldCurrency @JvmOverloads constructor(
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
     }
-
-    /**
-     * Sets a style for the SPButton view.
-     *
-     * <p>
-     * Default style theme is SPBaseView.SPBaseButton style.
-     * <p>
-     *
-     * @param defStyleRes [Int] style resource id
-     */
+    
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
