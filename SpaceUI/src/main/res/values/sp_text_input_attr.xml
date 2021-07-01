@@ -22,10 +22,15 @@
         <attr name="inputTextLength" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="sp_text_field_currency">
+        <attr name="currency" format="reference" />
+        <attr name="android:textAppearance" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="sp_text_field_dropdown">
         <attr name="android:textAppearance" format="reference" />
         <attr name="isIconVisible" format="boolean" />
-        <attr name="defaultText" format="boolean" />
+        <attr name="defaultText" format="string|reference" />
         <attr name="defaultIcon" format="reference" />
     </declare-styleable>
 

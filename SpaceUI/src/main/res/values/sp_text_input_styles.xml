@@ -18,6 +18,11 @@
 
     <style name="SPTextField.Dropdown" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
+        <item name="isIconVisible">false</item>
+    </style>
+
+    <style name="SPTextField.DropdownWithIcon" parent="SPTextField.Dropdown">
+        <item name="isIconVisible">true</item>
     </style>
 
     <style name="SPTextField.InputRemovable" parent="SPTextField.Input">

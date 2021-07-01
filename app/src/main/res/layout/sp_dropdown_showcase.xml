@@ -1,90 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
-    <ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
-        android:id="@+id/tfDropdown"
-        style="@style/SPTextField.Dropdown"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_20"
-        android:layout_marginTop="@dimen/dimen_p_64"
-        android:hint="@string/enter_you_details_here"
-        android:maxLength="6"
-        android:text="@string/enter_you_details_here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleText="Field label" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbMandatory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_32"
-        android:enabled="true"
-        android:text="Mandatory"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfDropdown" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_32"
-        android:checked="false"
-        android:text="@string/description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbMandatory" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbDisable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_32"
-        android:text="disable"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbDescription" />
-
-
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbDisable">
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/fieldsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select icon mode"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cbDisable" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical" />
 
-        <RadioButton
-            android:id="@+id/withIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:text="With Icon"
-            android:textColor="?attr/themeTextColor"
-            tools:ignore="HardcodedText" />
-
-        <RadioButton
-            android:id="@+id/noIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:text="No Icon"
-            android:textColor="?attr/themeTextColor"
-            tools:ignore="HardcodedText" />
-
-    </RadioGroup>
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/labelTextInput"
@@ -99,4 +33,4 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

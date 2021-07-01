@@ -2,11 +2,14 @@ package ge.space.design.ui_components.text_fields.dropdown
 
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpDropdownShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpItemTextFieldsDropdownShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutListFieldsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
 class SPDropdownComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.dropdown
@@ -17,41 +20,59 @@ class SPDropdownComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val binding = SpDropdownShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
+            val layoutBinding = SpLayoutListFieldsShowcaseBinding.inflate(
+                environmentSP.requireLayoutInflater()
+            )
 
-            binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
-                when (checkedId) {
-                    R.id.withIcon -> {
-                        binding.tfDropdown.isIconVisible = true
-                        binding.tfDropdown.src = R.drawable.ic_card_example
+            val dropdowns = mutableListOf<SPTextFieldBaseView<SpTextFieldDropdownBinding>>()
+
+            SPTextFieldsDropdownStyles.list.onEach { fieldSample ->
+
+                val resId = fieldSample.resId
+
+                val itemBinding = SpItemTextFieldsDropdownShowcaseBinding.inflate(
+                    environmentSP.requireThemedLayoutInflater(resId),
+                    layoutBinding.fieldsLayout,
+                    true
+                )
+
+                with(itemBinding.tfDropdown) {
+                    style(fieldSample.resId)
+                    dropdowns.add(this)
+                    defaultIcon = R.drawable.ic_card_example
+                    defaultText = resources.getString(R.string.enter_you_details_here)
+
+                    buildWithItemModel()
+                }
+
+                with(itemBinding.buttonName) {
+                    val resName = resources.getResourceEntryName(resId)
+                    text = resName.substringAfter(".", resName)
+                }
+
+                itemBinding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.tfDropdown.inputMandatory = isChecked
+                }
+
+                itemBinding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.tfDropdown.isEnabled = !isChecked
+                }
+
+                itemBinding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.tfDropdown.descriptionText = if (isChecked) {
+                        itemBinding.tfDropdown.resources.getString(R.string.description)
+                    } else {
+                        SPInputComponent.EMPTY_STRING
                     }
-                    R.id.noIcon ->
-                        binding.tfDropdown.isIconVisible = false
+                }
+
+                layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
+                    itemBinding.tfDropdown.labelText = text.toString()
+                    itemBinding.tfDropdown.text = text.toString()
                 }
             }
 
-            binding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
-                binding.tfDropdown.inputMandatory = isChecked
-            }
-
-            binding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
-                binding.tfDropdown.isEnabled = !isChecked
-            }
-
-            binding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
-                binding.tfDropdown.descriptionText = if (isChecked) {
-                    binding.tfDropdown.resources.getString(R.string.description)
-                } else {
-                    SPInputComponent.EMPTY_STRING
-                }
-            }
-
-            binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
-                binding.tfDropdown.labelText = text.toString()
-                binding.tfDropdown.text = text.toString()
-
-            }
-            return binding.root
+            return layoutBinding.root
         }
 
     }
