@@ -26,8 +26,6 @@
         android:layout_marginTop="@dimen/dimen_p_64"
         android:maxLength="6"
         android:text="@string/enter_you_details_here"
-        app:defaultIcon="@drawable/ic_card_example"
-        app:defaultText="@string/enter_you_details_here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonName"

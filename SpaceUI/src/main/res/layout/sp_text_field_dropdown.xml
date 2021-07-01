@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/sp_text_field_dropdown_icon_height"
         android:layout_marginHorizontal="@dimen/sp_text_field_dropdown_icon_margin"
-        android:src="@drawable/ic_card_example"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
