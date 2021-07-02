@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards.support
+package ge.space.ui.components.support
 
 import android.content.Context
 import android.graphics.*

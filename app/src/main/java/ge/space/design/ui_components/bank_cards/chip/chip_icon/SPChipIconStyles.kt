@@ -1,11 +1,11 @@
 package ge.space.design.ui_components.bank_cards.chip.chip_icon
 
 import ge.space.spaceui.R
-import ge.space.ui.components.bank_cards.data.SPChipBankCardSize
+import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPChipIconAppearance
 
 data class SPChipIconSupport(
-    val size: SPChipBankCardSize = SPChipBankCardSize.Big,
+    val size: SPChipSize = SPChipSize.Big,
     val iconAppearance: SPChipIconAppearance = SPChipIconAppearance.Accent,
     val icon: Int = R.drawable.ic_bank_24_regular,
     val photoUrl: String? = null
@@ -18,20 +18,20 @@ object SPChipIconStyles {
     val list = listOf(
         SPChipIconSupport(),
         SPChipIconSupport(
-            size = SPChipBankCardSize.Small
+            size = SPChipSize.Small
         ),
         SPChipIconSupport(
             iconAppearance = SPChipIconAppearance.Dark
         ),
         SPChipIconSupport(
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
             iconAppearance = SPChipIconAppearance.Dark
         ),
         SPChipIconSupport(
             icon = R.drawable.ic_info_24_regular
         ),
         SPChipIconSupport(
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
             icon = R.drawable.ic_info_24_regular
         ),
         SPChipIconSupport(
@@ -39,7 +39,7 @@ object SPChipIconStyles {
             icon = R.drawable.ic_info_24_regular
         ),
         SPChipIconSupport(
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
             iconAppearance = SPChipIconAppearance.Dark,
             icon = R.drawable.ic_info_24_regular
         ),
@@ -47,7 +47,7 @@ object SPChipIconStyles {
             photoUrl = PHOTO_URL
         ),
         SPChipIconSupport(
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
             photoUrl = PHOTO_URL
         ),
     )

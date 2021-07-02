@@ -6,38 +6,22 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
-import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.bank_cards.data.SPChipBankCardSize
+import ge.space.ui.base.SPBaseChip
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 
 /**
- * Comment
+ * A chip extended by [SPBaseChip] allows to show a primary info of bank.
+ * The info depends on the flavor (TBC or Space)
  */
 class SPPrimaryChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
-     * Comment
-     */
-    var size : SPChipBankCardSize = SPChipBankCardSize.Big
-        set(value) {
-            field = value
-
-            handleCardAppearance()
-        }
-
-    /**
-     * Comment
-     */
-    private val isBig
-        get() = size == SPChipBankCardSize.Big
-
-    /**
-     * Comment
+     * Binds a view
      */
     private val binding =
         SpPrimaryChipLayoutBinding.inflate(LayoutInflater.from(context), this)
@@ -46,10 +30,7 @@ class SPPrimaryChip @JvmOverloads constructor(
         handleCardAppearance()
     }
 
-    private fun handleCardAppearance() {
-        setStyle(
-            getStyle()
-        )
+    override fun onHandleCardAppearance() {
         handleImageBackground()
         setSize()
     }
@@ -67,7 +48,4 @@ class SPPrimaryChip @JvmOverloads constructor(
 
     private fun getImage() = if (isBig) R.drawable.img_primary_chip
         else R.drawable.img_primary_chip_small
-
-    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
-        else R.style.SPBankCardView_Chip_Small
 }

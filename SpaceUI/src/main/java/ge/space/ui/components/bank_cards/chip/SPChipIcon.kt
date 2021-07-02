@@ -13,7 +13,14 @@ import ge.space.ui.util.extension.loadRoundImageUrl
 import ge.space.ui.util.extension.visibleOrGone
 
 /**
- * Comment
+ * An instance of [SPBaseChipIcon] which is for change an icon and size of the view.
+ * Also the view allows to change big image by its URL. In the last case the small icon
+ * is hidden
+ *
+ * @property icon allows to load an image by its URL
+ * @property bigPhotoUrl allows to load a big image and hides the icon
+ * @property iconAppearance changes the icon appearance
+ *
  */
 class SPChipIcon @JvmOverloads constructor(
     context: Context,
@@ -22,7 +29,7 @@ class SPChipIcon @JvmOverloads constructor(
 ) : SPBaseChipIcon(context, attrs, defStyleAttr) {
 
     /**
-     * Comment
+     * Small icon
      */
     @DrawableRes
     var icon: Int = R.drawable.ic_bank_24_regular
@@ -33,7 +40,8 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
-     * Comment
+     * Big icon. If it's not null the big image is loaded by URL and the small
+     * icon is hidden
      */
     var bigPhotoUrl: String? = null
         set(value) {
@@ -43,7 +51,7 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
-     * Comment
+     * Changes the small icon appearance
      */
     var iconAppearance: SPChipIconAppearance = SPChipIconAppearance.Accent
         set(value) {

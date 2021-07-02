@@ -7,36 +7,23 @@ import androidx.annotation.AttrRes
 import ge.space.extensions.layoutParams
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipLayoutBinding
-import ge.space.ui.base.SPBaseView
+import ge.space.ui.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
-import ge.space.ui.components.bank_cards.data.SPChipBankCardSize
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 
 /**
- * Comment
+ * A chip which allows to show a bank logo with its payment system icon. Also the view
+ * can change its background
+ *
+ * @property cardBackground [SPBankCardGradient] instance which applies a background
+ * by a type of it and colors
  */
 class SPDigitalChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-) : SPBaseView(context, attrs, defStyleAttr) {
-
-    /**
-     * Comment
-     */
-    var size : SPChipBankCardSize = SPChipBankCardSize.Big
-        set(value) {
-            field = value
-
-            handleCardAppearance()
-        }
-
-    /**
-     * Comment
-     */
-    private val isBig
-        get() = size == SPChipBankCardSize.Big
+) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
      * Applies a bank card view background
@@ -49,7 +36,7 @@ class SPDigitalChip @JvmOverloads constructor(
         }
 
     /**
-     * Comment
+     * Binds a view
      */
     private val binding =
         SpDigitalChipLayoutBinding.inflate(LayoutInflater.from(context), this)
@@ -58,10 +45,7 @@ class SPDigitalChip @JvmOverloads constructor(
         handleCardAppearance()
     }
 
-    private fun handleCardAppearance() {
-        setStyle(
-            getStyle()
-        )
+    override fun onHandleCardAppearance() {
         handleComponentsSizes()
     }
 
@@ -129,7 +113,4 @@ class SPDigitalChip @JvmOverloads constructor(
     private fun getPaymentSystemLogoMargin() =
         if (isBig) R.dimen.sp_digital_chip_payment_system_margin
         else R.dimen.sp_digital_chip_payment_system_margin_small
-
-    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
-        else R.style.SPBankCardView_Chip_Small
 }

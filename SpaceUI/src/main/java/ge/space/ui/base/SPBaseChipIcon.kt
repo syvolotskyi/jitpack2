@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpAddBankButtonLayoutBinding
-import ge.space.ui.components.bank_cards.data.SPChipBankCardSize
+import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 
 /**
- * Comment
+ * Base view for small chips that allows to abstract some specific properties.
+ * The view apply appearances the same as size of the view, size of the image, and
+ * a style of the view
+ *
+ * @property cardSize allows to change the size of the view
+ * @property isBig allows to get a state if the view is big
  */
 abstract class SPBaseChipIcon @JvmOverloads constructor(
     context: Context,
@@ -20,9 +25,9 @@ abstract class SPBaseChipIcon @JvmOverloads constructor(
 ) : SPBaseView(context, attrs, defStyleAttr) {
 
     /**
-     * Comment
+     * Applies a size of the view
      */
-    var cardSize : SPChipBankCardSize = SPChipBankCardSize.Big
+    var cardSize : SPChipSize = SPChipSize.Big
         set(value) {
             field = value
 
@@ -30,13 +35,13 @@ abstract class SPBaseChipIcon @JvmOverloads constructor(
         }
 
     /**
-     * Comment
+     * Checks if [cardSize] == [SPChipSize.Big]
      */
     protected val isBig
-        get() = cardSize == SPChipBankCardSize.Big
+        get() = cardSize == SPChipSize.Big
 
     /**
-     * Comment
+     * Binds a view
      */
     protected val binding by lazy {
         getAddBankButtonLayoutBinding()

@@ -2,11 +2,11 @@ package ge.space.design.ui_components.bank_cards.chip.digital_chip
 
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
-import ge.space.ui.components.bank_cards.data.SPChipBankCardSize
+import ge.space.ui.components.bank_cards.data.SPChipSize
 
 data class SPDigitalChipSupport(
     val background: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),
-    val size: SPChipBankCardSize = SPChipBankCardSize.Big
+    val size: SPChipSize = SPChipSize.Big
 )
 
 object SPDigitalChipStyles {
@@ -26,7 +26,7 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_BLUE_2
                 )
             ),
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
         ),
         SPDigitalChipSupport(
             background = SPBankCardGradient.SPRadial(
@@ -43,7 +43,7 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_GREEN_2
                 )
             ),
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
         ),
         SPDigitalChipSupport(
             background = SPBankCardGradient.SPRadial(
@@ -60,7 +60,7 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_VIOLET_2
                 )
             ),
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
         ),
 
         SPDigitalChipSupport(
@@ -78,7 +78,7 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_LIGHT_GREEN_2
                 )
             ),
-            size = SPChipBankCardSize.Small,
+            size = SPChipSize.Small,
         ),
     )
 }

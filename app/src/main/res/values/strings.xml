@@ -69,4 +69,7 @@
 
     <string name="component_digital_chip">Digital chip</string>
     <string name="component_digital_chip_description">Samples of digital chips using according to the selected flavor</string>
+
+    <string name="component_secondary_chip">Secondary chip</string>
+    <string name="component_secondary_chip_description">Samples of secondary chips</string>
 </resources>

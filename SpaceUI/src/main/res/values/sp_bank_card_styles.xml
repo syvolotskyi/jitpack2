@@ -34,4 +34,40 @@
     <style name="SPBankCardView.Chip.Small" parent="SPBankCardView.Chip.Base">
         <item name="roundedCorners">@dimen/sp_bank_round_radius_small</item>
     </style>
+
+    <style name="SecondaryChip" parent="SPBankCardView.Chip.Small" />
+
+    <style name="Placeholder" parent="SPBankCardView.EmptySmall.Base">
+        <item name="backgroundColor">?attr/static_white</item>
+    </style>
+
+    <style name="Placeholder.Small" parent="Placeholder">
+        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_small</item>
+    </style>
+
+    <style name="Placeholder.XSmall" parent="Placeholder">
+        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_xsmall</item>
+    </style>
+
+    <style name="Placeholder.Medium" parent="Placeholder">
+        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_medium</item>
+    </style>
+
+    <style name="Placeholder.XMedium" parent="Placeholder">
+        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_xmedium</item>
+    </style>
+
+    <style name="Placeholder.Big" parent="Placeholder">
+        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_big</item>
+    </style>
+
+    <style name="Favorite" parent="SPBankCardView.EmptySmall.Base">
+        <item name="backgroundColor">?attr/static_white</item>
+        <item name="isCircle">true</item>
+        <item name="shadowOffsetX">@dimen/sp_favorite_shadow</item>
+        <item name="shadowOffsetY">@dimen/sp_favorite_shadow</item>
+        <item name="shadowRadius">@dimen/sp_favorite_shadow</item>
+        <item name="shadowAlpha">8%</item>
+        <item name="shadowColor">?attr/static_black</item>
+    </style>
 </resources>

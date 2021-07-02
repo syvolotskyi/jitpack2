@@ -7,21 +7,24 @@ import androidx.annotation.AttrRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.bank_cards.data.SPSmallEmptyStyle
+import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 
 /**
- * Comment
+ * A simple empty chip just for show an empty state
+ *
+ * @property style allows to change the appearance which allows to change
+ * between light and dark styles
  */
-class SPSmallEmptyChip @JvmOverloads constructor(
+class SPEmptyChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
 ) : SPBaseView(context, attrs, defStyleAttr) {
 
     /**
-     * Comment
+     * Changes the style of the view
      */
-    var style: SPSmallEmptyStyle = SPSmallEmptyStyle.White
+    var style: SPEmptyChipStyle = SPEmptyChipStyle.White
         set(value) {
             field = value
 
@@ -29,7 +32,7 @@ class SPSmallEmptyChip @JvmOverloads constructor(
         }
 
     /**
-     * Comment
+     * Binds a view
      */
     private val binding =
         SpSmallEmptyChipLayoutBinding.inflate(LayoutInflater.from(context), this)
@@ -43,7 +46,7 @@ class SPSmallEmptyChip @JvmOverloads constructor(
 
     private fun getBackgroundImage() =
         when(style) {
-            SPSmallEmptyStyle.White -> R.drawable.ic_small_empty_chip_light
+            SPEmptyChipStyle.White -> R.drawable.ic_small_empty_chip_light
             else -> R.drawable.ic_small_empty_chip_dark
         }
 }

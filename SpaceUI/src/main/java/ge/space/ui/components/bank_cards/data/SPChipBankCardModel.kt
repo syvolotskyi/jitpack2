@@ -1,9 +1,13 @@
 package ge.space.ui.components.bank_cards.data
 
+import ge.space.ui.components.bank_cards.chip.SPChipIcon
+import ge.space.ui.components.bank_cards.chip.SPEmptyChip
+import ge.space.ui.components.support.SPPlaceholder
+
 /**
- * Comment
+ * Changes [SPEmptyChip] appearance
  */
-enum class SPSmallEmptyStyle {
+enum class SPEmptyChipStyle {
 
     /**
      * For dark background
@@ -17,9 +21,9 @@ enum class SPSmallEmptyStyle {
 }
 
 /**
- * Comment
+ * Info about a chip size
  */
-enum class SPChipBankCardSize {
+enum class SPChipSize {
 
     /**
      * For big chips
@@ -33,7 +37,7 @@ enum class SPChipBankCardSize {
 }
 
 /**
- * Comment
+ * Info about [SPChipIcon] appearance
  */
 enum class SPChipIconAppearance {
 
@@ -46,4 +50,35 @@ enum class SPChipIconAppearance {
      * For dark chips colors
      */
     Dark,
+}
+
+/**
+ * Info about [SPPlaceholder] size
+ */
+enum class SPPlaceholderSize {
+
+    /**
+     * For big size 40x40dp
+     */
+    Big,
+
+    /**
+     * For x_medium size 32x32dp
+     */
+    XMedium,
+
+    /**
+     * For medium size 24x24dp
+     */
+    Medium,
+
+    /**
+     * For x_small size 20x20dp
+     */
+    XSmall,
+
+    /**
+     * For small size 16x16dp
+     */
+    Small
 }

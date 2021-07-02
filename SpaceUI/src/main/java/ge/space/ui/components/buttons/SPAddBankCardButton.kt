@@ -9,7 +9,7 @@ import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 
 /**
- * Comment
+ * A button which is used for adding new bank cards
  */
 class SPAddBankCardButton @JvmOverloads constructor(
     context: Context,
@@ -18,7 +18,7 @@ class SPAddBankCardButton @JvmOverloads constructor(
 ) : SPBaseChipIcon(context, attrs, defStyleAttr) {
 
     /**
-     * Comment
+     * Sets a size of the image
      */
     override fun setImageSize() {
         with(binding.ivIcon) {

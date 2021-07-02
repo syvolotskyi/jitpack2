@@ -142,7 +142,8 @@ object SPButtonStyles {
         ),
         SPBankCardSupport(
             cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
-            cardBackground = SPBankCardGradient.SPLinear(
+            cardBackground = SPBankCardGradient
+                .SPLinear(
                 colors = arrayListOf(
                     GRADIENT_WHITE_1,
                     GRADIENT_WHITE_2
@@ -153,7 +154,7 @@ object SPButtonStyles {
             accountNumber = "**** 3232",
             bankLogo = LOGO_MIB,
             amount = "2 000 750 UZS",
-            paySystemUrl = HUMO_LOGO
+            paySystemUrl = HUMO_LOGO,
         ),
         SPBankCardSupport(
             cardModel = SPBankCardModel.SPDefault("Madad Invest Bank"),
