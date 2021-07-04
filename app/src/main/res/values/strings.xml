@@ -51,4 +51,6 @@
 
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
+
+    <string name="switch_button">Switch Button</string>
 </resources>

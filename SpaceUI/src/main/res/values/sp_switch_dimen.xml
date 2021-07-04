@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sp_switch_thumb_width">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_switch_track_height">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_switch_radius">@dimen/dimen_p_40</dimen>
+    <dimen name="sp_switch_thumb_stroke_width">@dimen/dimen_p_6</dimen>
+    <dimen name="sp_switch_track_stroke_width">@dimen/dimen_p_2</dimen>
+</resources>
