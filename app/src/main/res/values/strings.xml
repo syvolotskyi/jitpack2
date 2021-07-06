@@ -58,8 +58,8 @@
     <string name="component_small_empty_chip">Small empty chips</string>
     <string name="component_small_empty_chip_description">Samples of small empty chips using</string>
 
-    <string name="component_bank_card_buttons">Add bank card buttons</string>
-    <string name="component_bank_card_button_description">A sample with add bank card buttons</string>
+    <string name="component_chip_add">Chip add icons</string>
+    <string name="component_chip_add_description">A sample with add chip icons</string>
 
     <string name="component_chip_icons">Chip icons</string>
     <string name="component_chip_icons_description">Chip icons description</string>

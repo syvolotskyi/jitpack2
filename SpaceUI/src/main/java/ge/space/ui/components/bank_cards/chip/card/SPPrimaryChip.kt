@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards.chip
+package ge.space.ui.components.bank_cards.chip.card
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
-import ge.space.ui.base.SPBaseChip
+import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 

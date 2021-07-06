@@ -6,7 +6,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutPrimaryChipShowCaseBind
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.SPPrimaryChip
+import ge.space.ui.components.bank_cards.chip.card.SPPrimaryChip
 
 class SPPrimaryChipViewComponent : SPShowCaseComponent {
 

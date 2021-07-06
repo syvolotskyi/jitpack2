@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards.chip
+package ge.space.ui.components.bank_cards.chip.empty
 
 import android.content.Context
 import android.util.AttributeSet

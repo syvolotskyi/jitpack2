@@ -35,33 +35,55 @@
         <item name="roundedCorners">@dimen/sp_bank_round_radius_small</item>
     </style>
 
+    <style name="SPBankCardView.Chip.Icon.Small" parent="">
+        <item name="chipSize">small</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.Icon.Dark" parent="">
+        <item name="chipIconAppearance">dark</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon" parent="">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon.Dark" parent="">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="chipIconAppearance">dark</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon.Small" parent="">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="chipSize">small</item>
+    </style>
+
     <style name="SecondaryChip" parent="SPBankCardView.Chip.Small" />
 
-    <style name="Placeholder" parent="SPBankCardView.EmptySmall.Base">
+    <style name="SPChip.PlaceHolder" parent="SPBankCardView.EmptySmall.Base">
         <item name="backgroundColor">?attr/static_white</item>
     </style>
 
-    <style name="Placeholder.Small" parent="Placeholder">
+    <style name="SPChip.PlaceHolder.Small" parent="SPChip.PlaceHolder">
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_small</item>
     </style>
 
-    <style name="Placeholder.XSmall" parent="Placeholder">
+    <style name="SPChip.PlaceHolder.XSmall" parent="SPChip.PlaceHolder">
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_xsmall</item>
     </style>
 
-    <style name="Placeholder.Medium" parent="Placeholder">
+    <style name="SPChip.PlaceHolder.Medium" parent="SPChip.PlaceHolder">
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_medium</item>
     </style>
 
-    <style name="Placeholder.XMedium" parent="Placeholder">
+    <style name="SPChip.PlaceHolder.XMedium" parent="SPChip.PlaceHolder">
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_xmedium</item>
     </style>
 
-    <style name="Placeholder.Big" parent="Placeholder">
+    <style name="SPChip.PlaceHolder.Big" parent="SPChip.PlaceHolder">
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_big</item>
     </style>
 
-    <style name="Favorite" parent="SPBankCardView.EmptySmall.Base">
+    <style name="SPBankCardView.Favorite" parent="SPBankCardView.EmptySmall.Base">
         <item name="backgroundColor">?attr/static_white</item>
         <item name="isCircle">true</item>
         <item name="shadowOffsetX">@dimen/sp_favorite_shadow</item>

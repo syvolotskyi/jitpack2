@@ -6,7 +6,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutChipIconShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.SPChipIcon
 
 class SPChipIconViewComponent : SPShowCaseComponent {
 
@@ -21,7 +20,6 @@ class SPChipIconViewComponent : SPShowCaseComponent {
             val binding = SpLayoutChipIconShowCaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val cards = mutableListOf<SPChipIcon>()
 
             SPChipIconStyles.list.forEach { bankCardSample ->
                 val itemBinding = SpItemChipIconShowcaseBinding.inflate(
@@ -32,12 +30,10 @@ class SPChipIconViewComponent : SPShowCaseComponent {
 
                 with(itemBinding.addBankCardButton) {
                     cardSize = bankCardSample.size
-                    iconAppearance = bankCardSample.iconAppearance
+                    iconStyle = bankCardSample.iconStyle
                     icon = bankCardSample.icon
                     bigPhotoUrl = bankCardSample.photoUrl
                 }
-
-                cards.add(itemBinding.addBankCardButton)
             }
 
             return binding.root

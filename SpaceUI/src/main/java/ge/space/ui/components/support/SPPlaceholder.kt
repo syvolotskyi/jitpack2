@@ -106,11 +106,11 @@ class SPPlaceholder @JvmOverloads constructor(
 
     private fun getStyleBySize() =
         when(placeholderSize) {
-            SPPlaceholderSize.Big -> R.style.Placeholder_Big
-            SPPlaceholderSize.XMedium -> R.style.Placeholder_XMedium
-            SPPlaceholderSize.Medium -> R.style.Placeholder_Medium
-            SPPlaceholderSize.XSmall -> R.style.Placeholder_XSmall
-            SPPlaceholderSize.Small -> R.style.Placeholder_Small
+            SPPlaceholderSize.Big -> R.style.SPChip_PlaceHolder_Big
+            SPPlaceholderSize.XMedium -> R.style.SPChip_PlaceHolder_XMedium
+            SPPlaceholderSize.Medium -> R.style.SPChip_PlaceHolder_Medium
+            SPPlaceholderSize.XSmall -> R.style.SPChip_PlaceHolder_XSmall
+            SPPlaceholderSize.Small -> R.style.SPChip_PlaceHolder_Small
         }
 
     private fun loadLogo() {

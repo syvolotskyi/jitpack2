@@ -6,7 +6,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutSecondaryChipShowCaseBi
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.SPSecondaryChip
+import ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
 
 class SPSecondaryChipViewComponent : SPShowCaseComponent {
 

@@ -1,9 +1,10 @@
-package ge.space.ui.base
+package ge.space.ui.components.bank_cards.chip.base
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPChipSize
 
 /**

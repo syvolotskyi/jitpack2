@@ -6,7 +6,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutBankCardShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.SPEmptyChip
+import ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
 
 class SPEmptyChipViewComponent : SPShowCaseComponent {
     override fun getNameResId(): Int =

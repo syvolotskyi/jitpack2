@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ge.space.ui.components.bank_cards.chip.SPSecondaryChip
+    <ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
         android:id="@+id/secondaryChip"
         android:layout_width="@dimen/sp_bank_chip_width_small"
         android:layout_height="@dimen/sp_bank_chip_height_small"

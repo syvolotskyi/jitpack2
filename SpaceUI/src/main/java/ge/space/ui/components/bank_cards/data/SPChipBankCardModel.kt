@@ -1,7 +1,6 @@
 package ge.space.ui.components.bank_cards.data
 
-import ge.space.ui.components.bank_cards.chip.SPChipIcon
-import ge.space.ui.components.bank_cards.chip.SPEmptyChip
+import ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
 import ge.space.ui.components.support.SPPlaceholder
 
 /**
@@ -39,7 +38,7 @@ enum class SPChipSize {
 /**
  * Info about [SPChipIcon] appearance
  */
-enum class SPChipIconAppearance {
+enum class SPChipIconStyle {
 
     /**
      * For accent chips color
