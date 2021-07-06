@@ -48,7 +48,7 @@ class SPTextFieldCurrency @JvmOverloads constructor(
             inputTextBinding.etInputField.hint = value
         }
 
-    var currency: String = ""
+    var currency: String = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
             inputTextBinding.tvCurrency.text = value
@@ -60,7 +60,7 @@ class SPTextFieldCurrency @JvmOverloads constructor(
             R.styleable.sp_text_field_input,
             defStyleAttr
         ) {
-            currency = getString(R.styleable.sp_text_field_currency_currency) ?: ""
+            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
         }
 
     }
@@ -96,13 +96,13 @@ class SPTextFieldCurrency @JvmOverloads constructor(
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
     }
-    
+
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
 
         styleAttrs.run {
-            currency = getString(R.styleable.sp_text_field_currency_currency) ?: ""
+            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
             textLength =
                 getInt(R.styleable.sp_text_field_input_inputTextLength, -1)
 

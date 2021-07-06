@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/sp_text_field_height">
 
+    <ImageView
+        android:id="@+id/ivLeftImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/sp_text_field_delete_icon_margin"
+        android:src="@drawable/ic_search_24_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/etInputField"
         style="@style/SPTextField.Input"
@@ -14,13 +24,12 @@
         android:gravity="start|center_vertical"
         android:inputType="textVisiblePassword"
         android:paddingHorizontal="@dimen/sp_text_field_horizontal_text_padding"
-        android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
         android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
+        android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivClear"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:hint="@string/enter_you_details_here" />
+        app:layout_constraintStart_toEndOf="@id/ivLeftImage"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivClear"

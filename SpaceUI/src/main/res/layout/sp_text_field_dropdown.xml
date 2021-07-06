@@ -29,8 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivChevronDown"
         app:layout_constraintStart_toEndOf="@id/ivLeftImage"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/enter_you_details_here" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivChevronDown"

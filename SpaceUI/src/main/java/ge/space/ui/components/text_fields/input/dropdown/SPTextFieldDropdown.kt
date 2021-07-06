@@ -21,8 +21,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldBaseView<SpTextFieldDropdownBinding>(context, attrs, defStyleAttr),
-    View.OnClickListener {
+) : SPTextFieldBaseView<SpTextFieldDropdownBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Binding a item view after selecting
@@ -43,7 +42,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a image url
      */
-    var imageUrl = ""
+    var imageUrl = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
 
@@ -66,7 +65,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a default text
      */
-    var defaultText = ""
+    var defaultText = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
 
@@ -124,13 +123,13 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             recycle()
         }
 
-        setOnClickListener(this)
+        setOnClickListener { onDropDownClick() }
     }
 
     /**
      * While bottom sheets not implemented yet just show toast
      */
-    override fun onClick(p0: View?) =
+    private fun onDropDownClick() =
         Toast.makeText(inputTextBinding.root.context, "Dropdown click", Toast.LENGTH_SHORT).show()
 
     override fun handleImeOption() {

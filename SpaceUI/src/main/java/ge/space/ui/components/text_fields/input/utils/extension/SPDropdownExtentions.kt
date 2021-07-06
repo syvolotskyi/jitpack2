@@ -19,19 +19,7 @@ data class SPDropdownItemModel(
     val id: Int,
     val value: String,
     val imageUrl: String? = null
-) : Parcelable {
-
-    override fun equals(other: Any?): Boolean {
-        return (other as? SPDropdownItemModel)?.id == this.id
-    }
-
-    override fun hashCode(): Int {
-        var result = id
-        result = 31 * result + value.hashCode()
-        result = 31 * result + (imageUrl?.hashCode() ?: 0)
-        return result
-    }
-}
+) : Parcelable
 
 /**
  * item bind extension. using jenerics we can add different bindings for dropdowns

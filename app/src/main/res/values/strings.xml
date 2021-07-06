@@ -54,4 +54,6 @@
 
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
+
+    <string name="enter_you_details_here">Enter your details here</string>
 </resources>

@@ -2,11 +2,6 @@ package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Color
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
-import android.text.style.SuperscriptSpan
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
@@ -55,11 +50,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            if (inputMandatory) {
-                binding.textLabel.setText(value.appendAsterisk(), TextView.BufferType.SPANNABLE)
-            } else {
-                binding.textLabel.text = value
-            }
+            handleShowingLabelText()
         }
 
     var inputMandatory = false
@@ -139,12 +130,11 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     protected fun setStyle(@StyleRes defStyleRes: Int) {
-        with(
-            context.theme.obtainStyledAttributes(
-                defStyleRes,
-                R.styleable.sp_text_field_base_view
-            )
-        ) {
+        context.withStyledAttributes(
+            defStyleRes,
+            R.styleable.sp_text_field_base_view
+        )
+        {
             applyAttributes()
             recycle()
         }
@@ -212,7 +202,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Allows to update a text appearance by styles
      */
-    abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
+    protected abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
 
     private fun updateLabelTextAppearance(textAppearance: Int) {
         TextViewCompat.setTextAppearance(binding.textLabel, textAppearance)
@@ -220,6 +210,14 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     private fun updateDescriptionTextAppearance(textAppearance: Int) {
         TextViewCompat.setTextAppearance(binding.textDesc, textAppearance)
+    }
+
+    private fun handleShowingLabelText() {
+        if (inputMandatory) {
+            binding.textLabel.setText(text.appendAsterisk(), TextView.BufferType.SPANNABLE)
+        } else {
+            binding.textLabel.text = text
+        }
     }
 
     protected abstract fun handleImeOption()
