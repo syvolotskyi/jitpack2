@@ -12,10 +12,12 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 
 class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
@@ -26,11 +28,9 @@ class SPTextFieldInput @JvmOverloads constructor(
     var textLength: Int = -1
         set(value) {
             field = value
-            if (value == -1) return
-            inputTextBinding.etInputField.filters =
-                arrayOf<InputFilter>(InputFilter.LengthFilter(value))
-        }
 
+            handleTextLength()
+        }
 
     override var text: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
@@ -58,7 +58,7 @@ class SPTextFieldInput @JvmOverloads constructor(
     var drawableStart: Int = 0
         set(value) {
             field = value
-            inputTextBinding.ivLeftImage.setImageResource(value)
+            handleDrawableStart()
         }
 
     init {
@@ -134,7 +134,19 @@ class SPTextFieldInput @JvmOverloads constructor(
         inputTextBinding.etInputField.requestFocus()
     }
 
+    private fun handleDrawableStart() {
+        inputTextBinding.ivLeftImage.isVisible = drawableStart != SPBaseView.DEFAULT_OBTAIN_VAL
+        inputTextBinding.ivLeftImage.setImageResource(drawableStart)
+    }
+
+    private fun handleTextLength() {
+        if (textLength != DEFAULT_TEXT_LENGTH) {
+            inputTextBinding.etInputField.setTextLength(textLength)
+        }
+    }
+
     override fun updateTextAppearance(textAppearance: Int) {
         TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
     }
+
 }

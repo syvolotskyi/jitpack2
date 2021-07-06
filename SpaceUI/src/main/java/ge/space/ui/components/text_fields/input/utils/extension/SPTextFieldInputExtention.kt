@@ -1,7 +1,10 @@
 package ge.space.ui.components.text_fields.input.utils.extension
 
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
+import android.widget.EditText
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 
 /**
@@ -17,6 +20,11 @@ inline fun SPTextFieldInput.doBeforeTextChanged(
         after: Int
     ) -> Unit
 ): TextWatcher = addTextChangedListener(beforeTextChanged = action)
+
+fun EditText.setTextLength(length: Int) {
+    this.filters =
+        arrayOf<InputFilter>(InputFilter.LengthFilter(SPTextFieldBaseView.DEFAULT_TEXT_LENGTH))
+}
 
 /**
  * Add an action which will be invoked when the text is changing.

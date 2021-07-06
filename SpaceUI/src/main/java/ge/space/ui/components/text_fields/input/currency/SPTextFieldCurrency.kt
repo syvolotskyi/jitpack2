@@ -16,6 +16,7 @@ import ge.space.spaceui.databinding.SpTextFieldTextCurrencyBinding
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 
 class SPTextFieldCurrency @JvmOverloads constructor(
     context: Context,
@@ -23,12 +24,10 @@ class SPTextFieldCurrency @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPTextFieldBaseView<SpTextFieldTextCurrencyBinding>(context, attrs, defStyleAttr) {
 
-    var textLength: Int = -1
+    var textLength: Int = DEFAULT_TEXT_LENGTH
         set(value) {
             field = value
-            if (value == -1) return
-            inputTextBinding.etInputField.filters =
-                arrayOf<InputFilter>(InputFilter.LengthFilter(value))
+            handleTextLength()
         }
 
 
@@ -104,7 +103,7 @@ class SPTextFieldCurrency @JvmOverloads constructor(
         styleAttrs.run {
             currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
             textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, -1)
+                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
 
             recycle()
         }
@@ -112,6 +111,12 @@ class SPTextFieldCurrency @JvmOverloads constructor(
 
     fun focus() =
         inputTextBinding.etInputField.requestFocus()
+
+    private fun handleTextLength() {
+        if (textLength != DEFAULT_TEXT_LENGTH) {
+            inputTextBinding.etInputField.setTextLength(textLength)
+        }
+    }
 
     override fun updateTextAppearance(textAppearance: Int) =
         TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)

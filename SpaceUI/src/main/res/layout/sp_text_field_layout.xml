@@ -12,8 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingBottom="@dimen/sp_text_field_vertical_text_padding"
         tools:text="First label" />

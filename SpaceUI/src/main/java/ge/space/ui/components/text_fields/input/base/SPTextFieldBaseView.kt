@@ -130,7 +130,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     protected fun setStyle(@StyleRes defStyleRes: Int) {
-      with(context.theme.obtainStyledAttributes(
+        with(
+            context.theme.obtainStyledAttributes(
                 defStyleRes,
                 R.styleable.sp_text_field_base_view
             )
@@ -212,11 +213,11 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         TextViewCompat.setTextAppearance(binding.textDesc, textAppearance)
     }
 
-    private fun handleShowingLabelText(){
+    private fun handleShowingLabelText() {
         if (inputMandatory) {
-            binding.textLabel.setText(text.appendAsterisk(), TextView.BufferType.SPANNABLE)
+            binding.textLabel.setText(labelText.appendAsterisk(), TextView.BufferType.SPANNABLE)
         } else {
-            binding.textLabel.text = text
+            binding.textLabel.text = labelText
         }
     }
 
@@ -229,5 +230,6 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     companion object {
         const val ID_NEXT = 5
+        const val DEFAULT_TEXT_LENGTH = -1 //no borders
     }
 }

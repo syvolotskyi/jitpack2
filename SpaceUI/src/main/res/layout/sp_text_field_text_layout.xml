@@ -9,11 +9,13 @@
         android:id="@+id/ivLeftImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sp_text_field_delete_icon_margin"
+        android:paddingStart="@dimen/sp_text_field_horizontal_text_padding"
         android:src="@drawable/ic_search_24_regular"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
 
     <EditText
         android:id="@+id/etInputField"
