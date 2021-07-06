@@ -2,9 +2,7 @@ package ge.space.design.ui_components.tab_navigation
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.ui_components.tab_navigation.one.SPOneTabNavigationComponent
-import ge.space.design.ui_components.tab_navigation.three.SPThreeTabNavigationComponent
-import ge.space.design.ui_components.tab_navigation.two.SPTwoTabNavigationComponent
+import ge.space.design.ui_components.tab_navigation.child.SPTabNavigationViewComponent
 
 class SPTabNavigationComponent : SPShowCaseComponent {
 
@@ -14,9 +12,7 @@ class SPTabNavigationComponent : SPShowCaseComponent {
 
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(
-            SPOneTabNavigationComponent(),
-            SPTwoTabNavigationComponent(),
-            SPThreeTabNavigationComponent()
+            SPTabNavigationViewComponent()
         )
     }
 }

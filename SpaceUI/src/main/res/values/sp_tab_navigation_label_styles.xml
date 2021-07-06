@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="h700_medium_caps_navigation_tab_field" parent="@style/h700_medium_caps">
+        <item name="android:textColor">@color/selector_navigation_field_text_color</item>
+    </style>
+
+</resources>

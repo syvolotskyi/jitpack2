@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/childViewContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ge.space.ui.components.layout.SPFrameLayout
+            android:id="@+id/tabImageContainer"
+            app:style="@style/SPTabNavigation.RoundedView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/tabImage"
+                android:layout_width="@dimen/sp_tab_navigation_child_image_width"
+                android:layout_height="@dimen/sp_tab_navigation_child_image_height"
+                android:padding="@dimen/sp_tab_navigation_child_image_padding"
+                android:scaleType="fitXY"
+                app:tint="@color/white"/>
+
+        </ge.space.ui.components.layout.SPFrameLayout>
+
+        <TextView
+            android:id="@+id/tabTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="@dimen/sp_tab_navigation_child_text_margin" />
+    </LinearLayout>
+
+</merge>

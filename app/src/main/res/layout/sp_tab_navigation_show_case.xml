@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_p_30"
+        android:text="Tab With Two Elements"
+        android:textColor="@color/appPrimaryColor" />
+
+    <ge.space.ui.components.tab_navigation.SPTabNavigationView
+        android:id="@+id/twoTabNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_30"
+        android:layout_marginEnd="@dimen/dimen_p_30" >
+
+        <ge.space.ui.components.tab_navigation.view.SPTabNavigationChildView
+            app:style="@style/SPTabNavigation.ChildView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ge.space.ui.components.tab_navigation.SPTabNavigationView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_p_30"
+        android:text="Tab With Three Elements"
+        android:textColor="@color/appPrimaryColor" />
+
+    <ge.space.ui.components.tab_navigation.SPTabNavigationView
+        android:id="@+id/threeTabNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_30"
+        android:layout_marginEnd="@dimen/dimen_p_30" />
+
+</LinearLayout>

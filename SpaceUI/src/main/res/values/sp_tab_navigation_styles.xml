@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPTabNavigation.ChildView" parent="">
+        <item name="android:textAppearance">@style/h700_medium_caps_navigation_tab_field</item>
+
+    </style>
+
+</resources>

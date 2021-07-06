@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="sp_tab_navigation_child_view">
+        <attr name="isActive" format="boolean"/>
+        <attr name="android:textAppearance"/>
+    </declare-styleable>
+
+    <style name="SPTabNavigation.RoundedView" parent="SPBaseView">
+        <item name="roundedCorners">@dimen/dimen_p_10</item>
+        <item name="shadowColor">@android:color/transparent</item>
+
+    </style>
+
+</resources>
