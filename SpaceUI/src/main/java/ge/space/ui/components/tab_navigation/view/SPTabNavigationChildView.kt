@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
+import androidx.annotation.StyleRes
 import androidx.core.graphics.ColorUtils
 import androidx.core.widget.TextViewCompat
 import ge.space.extensions.getColorRes
@@ -55,7 +56,7 @@ open class SPTabNavigationChildView @JvmOverloads constructor(context: Context, 
             val typedArray = context.obtainStyledAttributes(it, R.styleable.sp_tab_navigation_child_view, 0, 0)
 
             val textAppearance = typedArray.getResourceId(
-                R.styleable.sp_tab_navigation_child_view_android_textAppearance,
+                R.styleable.sp_tab_navigation_child_view_childTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             updateTextAppearance(textAppearance = textAppearance)
@@ -77,7 +78,7 @@ open class SPTabNavigationChildView @JvmOverloads constructor(context: Context, 
         }
     }
 
-    private fun updateTextAppearance(textAppearance: Int) {
+    private fun updateTextAppearance(@StyleRes textAppearance: Int) {
         with(binding){
             TextViewCompat.setTextAppearance(tabTitle, textAppearance)
 
