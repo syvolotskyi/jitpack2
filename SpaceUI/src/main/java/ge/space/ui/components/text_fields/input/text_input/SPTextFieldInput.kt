@@ -2,12 +2,12 @@ package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
 import android.text.InputFilter
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
+import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
@@ -52,6 +52,13 @@ class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
             inputTextBinding.ivClear.isVisible = value
+        }
+
+    @IdRes
+    var drawableStart: Int = 0
+        set(value) {
+            field = value
+            inputTextBinding.ivLeftImage.setImageResource(value)
         }
 
     init {
@@ -115,6 +122,7 @@ class SPTextFieldInput @JvmOverloads constructor(
 
         styleAttrs.run {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, 0)
             textLength =
                 getInt(R.styleable.sp_text_field_input_inputTextLength, -1)
 

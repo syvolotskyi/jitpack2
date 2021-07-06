@@ -10,5 +10,6 @@ object SPTextFieldsInputButtonStyles {
     val list = listOf(
         SPTextFieldsInputSupportsLoading(R.style.SPTextField_Input),
         SPTextFieldsInputSupportsLoading(R.style.SPTextField_InputRemovable),
+        SPTextFieldsInputSupportsLoading(R.style.SPTextField_Search),
     )
 }

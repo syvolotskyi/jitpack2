@@ -19,6 +19,8 @@
     <declare-styleable name="sp_text_field_input">
         <attr name="canRemove" format="boolean" />
         <attr name="android:textAppearance" format="reference" />
+        <attr name="drawableLeft" format="reference" />
+        <attr name="android:drawableEnd" format="reference" />
         <attr name="inputTextLength" format="integer" />
     </declare-styleable>
 
