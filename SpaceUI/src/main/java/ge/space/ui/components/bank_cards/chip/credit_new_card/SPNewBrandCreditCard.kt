@@ -5,17 +5,17 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
-import ge.space.spaceui.databinding.SpCreditCardLayoutBinding
+import ge.space.spaceui.databinding.SpNewBrandCreditCardLayoutBinding
 
 /**
- * A simple empty chip just for show an empty state
+ * A simple card view which is for creating a new brand credit card
  */
-class SPCreditCard @JvmOverloads constructor(
+class SPNewBrandCreditCard @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val binding =
-        SpCreditCardLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpNewBrandCreditCardLayoutBinding.inflate(LayoutInflater.from(context), this)
 }
