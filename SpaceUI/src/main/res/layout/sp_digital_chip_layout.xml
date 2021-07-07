@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ge.space.ui.components.support.SPGradientImageView
+        android:id="@+id/vGradient"
+        android:layout_height="@dimen/sp_bank_chip_height"
+        android:layout_width="@dimen/sp_bank_chip_width" />
+
+   <androidx.appcompat.widget.AppCompatImageView
+       android:id="@+id/ivBankLogo"
+       android:layout_width="@dimen/sp_digital_chip_bank_logo_width"
+       android:layout_height="@dimen/sp_digital_chip_bank_logo_height"
+       android:layout_gravity="center"
+       android:scaleType="fitCenter"
+       app:srcCompat="@drawable/img_brand_logo" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPaymentSystem"
+        android:layout_width="@dimen/sp_digital_chip_payment_system_width"
+        android:layout_height="@dimen/sp_digital_chip_payment_system_height"
+        android:layout_marginBottom="@dimen/sp_digital_chip_payment_system_margin"
+        android:layout_marginEnd="@dimen/sp_digital_chip_payment_system_margin"
+        android:layout_gravity="end|bottom"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_digital_chip_payment_system" />
+
+</merge>

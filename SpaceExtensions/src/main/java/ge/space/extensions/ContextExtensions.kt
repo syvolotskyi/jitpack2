@@ -12,6 +12,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -131,11 +132,13 @@ fun Context.openAppSettings(){
  */
 inline val Context.displayWidth: Int
     get() = resources.displayMetrics.widthPixels
+
 /**
  * Extension method to find a device height in pixels
  */
 inline val Context.displayHeight: Int
     get() = resources.displayMetrics.heightPixels
+
 /**
  * Extension method to get displayMetrics in Context.displayMetricks
  */
@@ -150,4 +153,13 @@ fun Context.dpToPx(dp: Float): Int =
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+fun Context.resolveColorByAttr(@AttrRes attr: Int) : Int {
+    val typedValue = TypedValue()
+    theme.resolveAttribute(
+        attr, typedValue, true
+    )
+
+    return typedValue.data
 }
