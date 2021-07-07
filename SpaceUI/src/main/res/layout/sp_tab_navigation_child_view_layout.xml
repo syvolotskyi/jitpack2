@@ -32,6 +32,10 @@
             android:id="@+id/tabTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/selector_navigation_field_text_color"
+            style="@style/SPTabChildNavigation"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginTop="@dimen/sp_tab_navigation_child_text_margin" />
     </LinearLayout>

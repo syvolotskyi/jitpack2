@@ -14,20 +14,36 @@ class SPTabNavigationView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
+    /**
+     * Set a preview Navigation model to check tab position
+     */
     private var previewNavigationModel: SPTabNavigationModel? = null
 
+    /**
+     * change tab position per navigation model
+     */
     private fun changeNavigationTab(navigationModel: SPTabNavigationModel){
-        showCurrentTabButton(navigationModel)
+        showCurrentTabNavigation(navigationModel)
         previewNavigationModel = navigationModel
     }
 
-    private fun showCurrentTabButton(tab: SPTabNavigationModel) {
+    /**
+     * show current Tab navigation
+     */
+    private fun showCurrentTabNavigation(tab: SPTabNavigationModel) {
         forEach {
             (it as SPTabNavigationChildView).isActive = (it.tag == tab)
         }
     }
 
-    fun initNavigationData(items: MutableList<SPTabNavigationModel>, clickListener: (SPTabNavigationModel) -> Unit) {
+    /**
+     * set up tab navigation
+     * add child view per items list
+     * we should add id and tag each childView to check position in list
+     * we should add layoutParams each childView to be compatible full screen width
+     */
+
+    fun setUp(items: MutableList<SPTabNavigationModel>, clickListener: (SPTabNavigationModel) -> Unit) {
         items.forEachIndexed { index, navigationItem ->
             val childView = SPTabNavigationChildView(context)
             childView.id = generateViewId()
@@ -50,7 +66,6 @@ class SPTabNavigationView @JvmOverloads constructor(
 
                 }
             }
-
             changeNavigationTab(items.first())
             addView(childView)
         }

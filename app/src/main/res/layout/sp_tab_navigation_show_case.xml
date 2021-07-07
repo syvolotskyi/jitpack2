@@ -17,14 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_p_30"
-        android:layout_marginEnd="@dimen/dimen_p_30" >
-
-        <ge.space.ui.components.tab_navigation.view.SPTabNavigationChildView
-            style="@style/SPTabChildNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </ge.space.ui.components.tab_navigation.SPTabNavigationView>
+        android:layout_marginEnd="@dimen/dimen_p_30" />
 
     <TextView
         android:layout_width="match_parent"
