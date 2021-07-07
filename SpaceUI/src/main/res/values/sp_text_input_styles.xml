@@ -34,4 +34,9 @@
         <item name="canRemove">true</item>
     </style>
 
+    <style name="SPTextField.Number" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
+        <item name="distractiveTextAppearance">@style/h700_bold_caps_text_field_distractive</item>
+    </style>
+
 </resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/fieldsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
+                android:id="@+id/tfNumber"
+                style="@style/SPTextField.Number"
+                android:layout_width="@dimen/dimen_p_100"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_p_64"
+                android:enabled="false"
+                android:maxLength="6" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbDisable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:text="disable"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbDescription" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:layout_marginTop="@dimen/dimen_p_32"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/eur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:checked="true"
+                    android:text="EUR"
+                    android:textColor="?attr/themeTextColor"
+                    tools:ignore="HardcodedText" />
+
+                <RadioButton
+                    android:id="@+id/gel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:text="GEL"
+                    android:textColor="?attr/themeTextColor"
+                    tools:ignore="HardcodedText" />
+
+                <RadioButton
+                    android:id="@+id/uzs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:text="UZS"
+                    android:textColor="?attr/themeTextColor"
+                    tools:ignore="HardcodedText" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

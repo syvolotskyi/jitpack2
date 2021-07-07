@@ -18,7 +18,7 @@ import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 
-class SPTextFieldCurrency @JvmOverloads constructor(
+class SPTextFieldNumber @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -29,7 +29,6 @@ class SPTextFieldCurrency @JvmOverloads constructor(
             field = value
             handleTextLength()
         }
-
 
     override var text: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
@@ -53,6 +52,15 @@ class SPTextFieldCurrency @JvmOverloads constructor(
             inputTextBinding.tvCurrency.text = value
         }
 
+    private var distractiveTextAppearance: Int = 0
+
+    var isDistractive: Boolean = false
+        set(value) {
+            field = value
+            handleDistractive()
+        }
+
+
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -60,13 +68,16 @@ class SPTextFieldCurrency @JvmOverloads constructor(
             defStyleAttr
         ) {
             currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
         }
 
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) =
         inputTextBinding.etInputField.setOnEditorActionListener(listener)
-
 
     override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
         inputTextBinding.etInputField.onFocusChangeListener = listener
@@ -102,8 +113,10 @@ class SPTextFieldCurrency @JvmOverloads constructor(
 
         styleAttrs.run {
             currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
-            textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
 
             recycle()
         }
@@ -116,6 +129,11 @@ class SPTextFieldCurrency @JvmOverloads constructor(
         if (textLength != DEFAULT_TEXT_LENGTH) {
             inputTextBinding.etInputField.setTextLength(textLength)
         }
+    }
+
+    private fun handleDistractive() {
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+
     }
 
     override fun updateTextAppearance(textAppearance: Int) =

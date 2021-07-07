@@ -3,7 +3,7 @@ package ge.space.design.ui_components.text_fields.dropdown
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemTextFieldsDropdownShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpLayoutListFieldsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
@@ -20,11 +20,11 @@ class SPDropdownComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpLayoutListFieldsShowcaseBinding.inflate(
+            val layoutBinding = SpLayoutTextFieldsListShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
 
-            val dropdowns = mutableListOf<SPTextFieldBaseView<SpTextFieldDropdownBinding>>()
+            val dropdowns = mutableListOf<SPTextFieldBaseView<ge.space.spaceui.databinding.SpTextFieldDropdownBinding>>()
 
             SPTextFieldsDropdownStyles.list.onEach { fieldSample ->
 

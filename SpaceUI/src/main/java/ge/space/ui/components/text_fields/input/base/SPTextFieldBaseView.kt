@@ -71,6 +71,16 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
 
     /**
+     * Sets a text appearance.
+     */
+    var textAppearance: Int = 0
+        set(value) {
+            field = value
+
+            updateTextAppearance(value)
+        }
+
+    /**
      * Sets a description text.
      */
     var descriptionText: String = SPBaseView.EMPTY_TEXT
@@ -168,11 +178,10 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
                 descriptionText = it
             }
 
-        val textAppearance = getResourceId(
+        textAppearance = getResourceId(
             R.styleable.sp_text_field_base_view_android_textAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
-        updateTextAppearance(textAppearance)
 
         val descTextAppearance = getResourceId(
             R.styleable.sp_text_field_base_view_descriptionTextAppearance,

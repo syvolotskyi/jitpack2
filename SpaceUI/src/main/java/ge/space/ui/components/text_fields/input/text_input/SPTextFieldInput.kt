@@ -25,7 +25,7 @@ class SPTextFieldInput @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPTextFieldBaseView<SpTextFieldTextLayoutBinding>(context, attrs, defStyleAttr) {
 
-    var textLength: Int = -1
+    var textLength: Int = DEFAULT_TEXT_LENGTH
         set(value) {
             field = value
 

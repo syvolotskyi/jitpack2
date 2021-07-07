@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.widget.EditText
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 
 /**
@@ -41,6 +42,20 @@ inline fun SPTextFieldInput.doOnTextChanged(
 ): TextWatcher = addTextChangedListener(onTextChanged = action)
 
 /**
+ * Add an action which will be invoked when the text is changing.
+ *
+ * @return the [TextWatcher] added to the SPTextFieldInput
+ */
+inline fun SPTextFieldNumber.doOnTextChanged(
+    crossinline action: (
+        text: CharSequence?,
+        start: Int,
+        before: Int,
+        count: Int
+    ) -> Unit
+): TextWatcher = addTextChangedListener(onTextChanged = action)
+
+/**
  * Add an action which will be invoked after the text changed.
  *
  * @return the [TextWatcher] added to the SPTextFieldInput
@@ -55,6 +70,44 @@ inline fun SPTextFieldInput.doAfterTextChanged(
  * @return the [TextWatcher] added to the TextView
  */
 inline fun SPTextFieldInput.addTextChangedListener(
+    crossinline beforeTextChanged: (
+        text: CharSequence?,
+        start: Int,
+        count: Int,
+        after: Int
+    ) -> Unit = { _, _, _, _ -> },
+    crossinline onTextChanged: (
+        text: CharSequence?,
+        start: Int,
+        before: Int,
+        count: Int
+    ) -> Unit = { _, _, _, _ -> },
+    crossinline afterTextChanged: (text: Editable?) -> Unit = {}
+): TextWatcher {
+    val textWatcher = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            afterTextChanged.invoke(s)
+        }
+
+        override fun beforeTextChanged(text: CharSequence?, start: Int, count: Int, after: Int) {
+            beforeTextChanged.invoke(text, start, count, after)
+        }
+
+        override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
+            onTextChanged.invoke(text, start, before, count)
+        }
+    }
+    this.addTextChangedListener(textWatcher)
+
+    return textWatcher
+}
+
+/**
+ * Add a text changed listener to this SPTextFieldInput using the provided actions
+ *
+ * @return the [TextWatcher] added to the TextView
+ */
+inline fun SPTextFieldNumber.addTextChangedListener(
     crossinline beforeTextChanged: (
         text: CharSequence?,
         start: Int,
