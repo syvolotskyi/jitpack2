@@ -12,7 +12,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-
         <ge.space.ui.components.layout.SPFrameLayout
             android:id="@+id/tabImageContainer"
             app:style="@style/SPTabNavigation.RoundedView"

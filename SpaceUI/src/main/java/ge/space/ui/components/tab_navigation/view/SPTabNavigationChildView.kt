@@ -16,7 +16,9 @@ import ge.space.spaceui.databinding.SpTabNavigationChildViewLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.tab_navigation.data.SPTabNavigationModel
 
-
+/**
+ * Child view extended from [FrameLayout] that allows to set view each Tab navigation item.
+ */
 open class SPTabNavigationChildView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -39,7 +41,7 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
     private var defaultBackgroundColor: Int = context.getColorRes(R.color.white)
 
     /**
-     * Set a default (static) navigation item
+     * Set a default (static) navigation item. This item is necessary to show visually in xml file
      */
     private var staticNavigationItem = SPTabNavigationModel(
         title = R.string.component_tab_navigation_by_number,
@@ -59,7 +61,7 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
         }
 
     /**
-     * Set a active navigation item
+     * Set a active status
      */
     var isActive = false
         set(value) {
@@ -82,7 +84,7 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
     }
 
     /**
-     * change active status per isActive status
+     * change active status with isActive status
      */
     private fun onActiveStatusChange() {
         with(binding) {

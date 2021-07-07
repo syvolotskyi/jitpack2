@@ -4,13 +4,10 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 /**
- * Applies a type of a Tab navigation. It can be next states:
+ * Tab navigation item model with several parameters:
  *
- * <p>
- *     1. Title resource
- *     2. Image resource
- *     3. Active status to check specific background
- * <p>
+ * @property title [Int] value which sets a title.
+ * @property image [Int] value which sets a image.
  */
 
 data class SPTabNavigationModel(
