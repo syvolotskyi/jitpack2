@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/frame_big"
+        android:layout_width="@dimen/sp_bank_chip_width"
+        android:layout_height="@dimen/sp_bank_chip_height"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/sp_add_bank_card_button_icon_size"
+            android:layout_height="@dimen/sp_add_bank_card_button_icon_size"
+            android:layout_gravity="center"
+            android:tint="?attr/colorAccent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_bank_24_regular" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_big_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_small"
+        android:layout_width="@dimen/sp_bank_chip_width_small"
+        android:layout_height="@dimen/sp_bank_chip_height_small"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon_small"
+            android:layout_width="@dimen/sp_add_bank_card_button_icon_size_small"
+            android:layout_height="@dimen/sp_add_bank_card_button_icon_size_small"
+            android:layout_gravity="center"
+            android:tint="?attr/colorAccent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_bank_24_regular" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_big_image_small"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</merge>

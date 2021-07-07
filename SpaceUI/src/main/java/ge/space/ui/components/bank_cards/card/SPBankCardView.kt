@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards
+package ge.space.ui.components.bank_cards.card
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -142,7 +142,7 @@ class SPBankCardView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.lytBankCardHeader.ivFavorite.visibleOrGone(value)
+            checkFavoriteVisible()
         }
 
     /**
@@ -304,6 +304,12 @@ class SPBankCardView @JvmOverloads constructor(
             )
             else -> HARDCODED_PHYSICAL_CARD
         }
+
+    private fun checkFavoriteVisible() {
+        with(binding.lytBankCardHeader.favorite) {
+            lytRoot.visibleOrGone(isFavorite)
+        }
+    }
 
     private fun handleBankLogo() {
         if (bankLogo.isNotEmpty()) {

@@ -82,8 +82,6 @@ fun View.focusableHidden(isEnabled: Boolean) {
     this.isFocusableInTouchMode = !isEnabled
 }
 
-
-
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
 fun ViewGroup.inflate(layoutRes: Int): View {
