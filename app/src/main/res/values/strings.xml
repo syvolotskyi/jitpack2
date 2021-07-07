@@ -54,5 +54,5 @@
 
     <string name="component_tab_navigation">Tab Navigation</string>
     <string name="component_tab_navigation_description">Tab Navigation Description</string>
-
+    <string name="switch_button">Switch Button</string>
 </resources>

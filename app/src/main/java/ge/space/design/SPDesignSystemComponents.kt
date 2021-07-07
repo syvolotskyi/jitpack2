@@ -6,6 +6,7 @@ import ge.space.design.ui_components.bank_cards.SPBankCardComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponentSP
 import ge.space.design.ui_components.dialogs.SPDialogComponent
+import ge.space.design.ui_components.switch.SPSwitchButtonComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 
@@ -19,8 +20,10 @@ object DesignSystemComponents : SPShowCaseComponent {
 
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(
+
             new { SPColorsComponentSP() },
             new { SPButtonComponent() },
+            new { SPSwitchButtonComponent() },
             new { SPDialogComponent() },
             new { SPTextFieldsComponent() },
             new { SPBankCardComponent() },

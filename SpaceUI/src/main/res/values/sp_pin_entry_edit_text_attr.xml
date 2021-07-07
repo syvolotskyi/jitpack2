@@ -17,5 +17,4 @@
         <attr name="android:maxLength" format="integer" />
         <attr name="sp_pinStyle" format="reference" />
     </declare-styleable>
-
 </resources>
