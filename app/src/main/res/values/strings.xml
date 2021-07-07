@@ -71,4 +71,7 @@
     <string name="component_secondary_chip_description">Samples of secondary chips</string>
 
     <string name="switch_button">Switch Button</string>
+
+    <string name="component_new_credit_card">New credit card</string>
+    <string name="component_new_credit_card_description">Samples of new credit cards</string>
 </resources>
