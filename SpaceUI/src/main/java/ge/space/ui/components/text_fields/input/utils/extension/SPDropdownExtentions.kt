@@ -32,5 +32,16 @@ fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithDropdownItemModel() {
     }
 }
 
+/**
+ * item bind extension. using jenerics we can add different bindings for dropdowns
+ *
+ */
+fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithChipsDropdownItemModel() {
+    this.bindViewValue = { item ->
+        text = item.value
+        imageUrl = item.imageUrl.orEmpty()
+    }
+}
+
 
 

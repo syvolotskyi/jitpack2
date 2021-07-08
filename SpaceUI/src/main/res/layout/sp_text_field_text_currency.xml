@@ -13,6 +13,7 @@
         android:background="@null"
         android:gravity="start|center_vertical"
         android:inputType="numberDecimal"
+        android:maxLines="1"
         android:paddingStart="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
         android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"

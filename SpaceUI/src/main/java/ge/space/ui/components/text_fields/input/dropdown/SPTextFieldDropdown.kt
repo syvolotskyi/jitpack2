@@ -1,6 +1,7 @@
 package ge.space.ui.components.text_fields.input.dropdown
 
 import android.content.Context
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -141,4 +142,11 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
     fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithItemModel() =
         buildWithDropdownItemModel()
+
+    override fun addTextChangedListener(watcher: TextWatcher) =
+        inputTextBinding.etInputField.addTextChangedListener(watcher)
+
+    override fun removeTextChangedListener(watcher: TextWatcher)  =
+        inputTextBinding.etInputField.addTextChangedListener(watcher)
+
 }

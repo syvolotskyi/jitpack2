@@ -1,7 +1,6 @@
 package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
-import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -81,11 +80,11 @@ class SPTextFieldInput @JvmOverloads constructor(
         inputTextBinding.etInputField.onFocusChangeListener = listener
     }
 
-    fun addTextChangedListener(watcher: TextWatcher) {
+    override fun addTextChangedListener(watcher: TextWatcher) {
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
-    fun removeTextChangedListener(watcher: TextWatcher) {
+    override fun removeTextChangedListener(watcher: TextWatcher) {
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 

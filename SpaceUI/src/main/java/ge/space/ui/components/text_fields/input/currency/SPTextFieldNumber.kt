@@ -60,11 +60,17 @@ class SPTextFieldNumber @JvmOverloads constructor(
             handleDistractive()
         }
 
+    var isActive: Boolean = true
+        set(value) {
+            field = value
+            handleActive()
+        }
+
 
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_input,
+            R.styleable.sp_text_field_currency,
             defStyleAttr
         ) {
             currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
@@ -83,10 +89,10 @@ class SPTextFieldNumber @JvmOverloads constructor(
         inputTextBinding.etInputField.onFocusChangeListener = listener
     }
 
-    fun addTextChangedListener(watcher: TextWatcher) =
+    override fun addTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
 
-    fun removeTextChangedListener(watcher: TextWatcher) =
+    override fun removeTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
 
     override fun getChildViewBinding(): SpTextFieldTextCurrencyBinding {
@@ -109,7 +115,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
 
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_currency)
 
         styleAttrs.run {
             currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
@@ -122,8 +128,10 @@ class SPTextFieldNumber @JvmOverloads constructor(
         }
     }
 
-    fun focus() =
+    fun focus() {
+        isActive = true
         inputTextBinding.etInputField.requestFocus()
+    }
 
     private fun handleTextLength() {
         if (textLength != DEFAULT_TEXT_LENGTH) {
@@ -131,9 +139,11 @@ class SPTextFieldNumber @JvmOverloads constructor(
         }
     }
 
-    private fun handleDistractive() {
+    private fun handleDistractive() =
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
 
+    private fun handleActive() {
+        alpha = if (isActive) 1.0f else 0.5f
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
