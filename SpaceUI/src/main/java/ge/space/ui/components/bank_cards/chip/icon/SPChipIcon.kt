@@ -90,7 +90,7 @@ class SPChipIcon @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip,
+            R.styleable.sp_credit_card_style,
             defStyleAttr
         ) {
             withStyledResource()
@@ -121,7 +121,7 @@ class SPChipIcon @JvmOverloads constructor(
             ]
 
             cardSize = SPChipSize.values()[
-                getInt(R.styleable.sp_chip_icon_chipSize, DEFAULT_OBTAIN_VAL)
+                getInt(R.styleable.sp_chip_icon_cardSize, DEFAULT_OBTAIN_VAL)
             ]
         }
     }
