@@ -21,7 +21,7 @@ inline fun SPTextFieldNumber.doOnTextChanged(
         count: Int
     ) -> Unit
 ): TextWatcher {
-    val watcher = createTextChangedListener(action)
+    val watcher = createTextChangedListener(onTextChanged = action)
     addTextChangedListener(watcher)
     return watcher
 }
@@ -39,8 +39,8 @@ inline fun SPTextFieldInput.doOnTextChanged(
         count: Int
     ) -> Unit
 ): TextWatcher {
-    val watcher = createTextChangedListener(action)
-    addTextChangedListener(watcher)
+    val watcher = createTextChangedListener(onTextChanged = action)
+    addTextChangedListener( watcher)
     return watcher
 }
 
