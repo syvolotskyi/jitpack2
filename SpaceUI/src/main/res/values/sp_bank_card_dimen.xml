@@ -92,4 +92,16 @@
     <dimen name="sp_favorite_margin_default">@dimen/dimen_p_22</dimen>
 
     <dimen name="sp_favorite_shadow">0.5dp</dimen>
+
+    <dimen name="sp_selectable_chip_width">@dimen/dimen_p_295</dimen>
+    <dimen name="sp_selectable_chip_height">@dimen/dimen_p_90</dimen>
+    <dimen name="sp_selectable_chip_radio_button_margin_start">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_selectable_chip_margin_start">@dimen/dimen_p_4</dimen>
+    <dimen name="sp_selectable_chip_margin_bottom_offset">@dimen/dimen_p_2</dimen>
+    <dimen name="sp_selectable_chip_title_margin_start">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_selectable_chip_title_margin_end">@dimen/dimen_p_12</dimen>
+    <dimen name="sp_selectable_chip_currency_size">@dimen/dimen_p_20</dimen>
+    <dimen name="sp_selectable_chip_currency_margin_end">@dimen/dimen_p_30</dimen>
+    <dimen name="sp_selectable_check_size">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_selectable_check_margin_start">@dimen/dimen_p_22</dimen>
 </resources>

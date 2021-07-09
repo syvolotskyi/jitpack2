@@ -71,4 +71,11 @@
     <string name="component_secondary_chip_description">Samples of secondary chips</string>
 
     <string name="switch_button">Switch Button</string>
+
+    <string name="component_list_digital_chip">Digital cards list</string>
+    <string name="component_list_digital_chip_description">Samples of digital cards list</string>
+
+    <string name="title_usd">Showcases with USD</string>
+    <string name="title_ge">Showcases with GE</string>
+    <string name="title_eur">Showcases with EUR</string>
 </resources>
