@@ -30,10 +30,10 @@ class SPBannerStatus @JvmOverloads constructor(
 
     private fun handleStates() {
         when (statusState) {
-            StatusStates.Success -> setStatusImage(R.drawable.ic_status_success)
-            StatusStates.Error -> setStatusImage(R.drawable.ic_status_error)
-            StatusStates.Pending -> setStatusImage(R.drawable.ic_status_pending)
-            StatusStates.Info -> setStatusImage(R.drawable.ic_status_info)
+            StatusStates.Success -> setStatusImage(R.drawable.img_status_success)
+            StatusStates.Error -> setStatusImage(R.drawable.img_status_error)
+            StatusStates.Pending -> setStatusImage(R.drawable.img_status_pending)
+            StatusStates.Info -> setStatusImage(R.drawable.img_status_info)
         }
     }
 
