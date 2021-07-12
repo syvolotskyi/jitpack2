@@ -1,9 +1,17 @@
-<ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/secondaryChip"
-    android:layout_width="@dimen/sp_bank_chip_width_small"
-    android:layout_height="@dimen/sp_bank_chip_height_small"
-    android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-    android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-    app:style="@style/SecondaryChip" />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
+        android:id="@+id/emptyChipBankCard"
+        android:layout_width="@dimen/sp_text_field_dropdown_icon_width"
+        android:layout_height="@dimen/sp_text_field_dropdown_icon_height"
+        app:style="@style/SPBankCardView.EmptySmall.Base" />
+
+    <FrameLayout
+        android:id="@+id/chipBankCard"
+        android:layout_width="@dimen/sp_text_field_dropdown_icon_width"
+        android:layout_height="@dimen/sp_text_field_dropdown_icon_height" />
+
+</LinearLayout>

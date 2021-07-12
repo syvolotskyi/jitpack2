@@ -39,10 +39,10 @@ class SPDropdownComponent : SPShowCaseComponent {
                 with(itemBinding.tfDropdown) {
                     style(fieldSample.resId)
                     dropdowns.add(this)
-                    defaultIcon = R.drawable.ic_country_georgia_24_regular
-                    defaultText = resources.getString(R.string.enter_you_details_here)
+                    setDefault(resources.getString(R.string.enter_you_details_here), R.drawable.ic_country_georgia_24_regular)
 
                     buildWithItemModel()
+                    items = SPTextFieldsDropdownItems.list
                 }
 
                 with(itemBinding.buttonName) {
@@ -70,6 +70,7 @@ class SPDropdownComponent : SPShowCaseComponent {
                     itemBinding.tfDropdown.labelText = text.toString()
                     itemBinding.tfDropdown.text = text.toString()
                 }
+
             }
 
             return layoutBinding.root

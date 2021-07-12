@@ -15,9 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible">
 
-        <Space
-            android:layout_width="@dimen/dimen_p_16"
-            android:layout_height="wrap_content" />
     </FrameLayout>
 
     <TextView

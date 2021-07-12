@@ -1,6 +1,8 @@
 package ge.space.ui.components.text_fields.input.utils.extension
 
+import android.content.Context
 import android.os.Parcelable
+import ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import kotlinx.android.parcel.Parcelize
 
@@ -28,18 +30,14 @@ data class SPDropdownItemModel(
 fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithDropdownItemModel() {
     this.bindViewValue = { item ->
         text = item.value
-        imageUrl = item.imageUrl.orEmpty()
+        setImage(item.imageUrl.orEmpty())
     }
 }
 
-/**
- * item bind extension. using jenerics we can add different bindings for dropdowns
- *
- */
-fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithChipsDropdownItemModel() {
+fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithSecondaryChips(context: Context) {
     this.bindViewValue = { item ->
         text = item.value
-        imageUrl = item.imageUrl.orEmpty()
+        setSelectedBankChip(SPSecondaryChip(context))
     }
 }
 

@@ -4,14 +4,19 @@ import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
+import ge.space.spaceui.databinding.SpTextFieldDropdownBankChipBinding
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.spaceui.databinding.SpTextFieldDropdownIconBinding
+import ge.space.spaceui.databinding.SpTextFieldDropdownSpaceBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.utils.extension.buildWithDropdownItemModel
@@ -30,30 +35,31 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
     var items: List<T> = emptyList()
 
-    private var imageBinding: SpTextFieldDropdownIconBinding? = null
+    private var leftImage: ImageView? = null
+    private var bankChipBinding: SpTextFieldDropdownBankChipBinding? = null
 
     /**
      * Sets a image resource
      */
     @IdRes
-    var src = 0
+    private var src = 0
         set(value) {
             field = value
 
-            imageBinding?.ivLeftImage?.setImageResource(src)
+            leftImage?.setImageResource(src)
         }
 
     /**
      * Sets a image url
      */
-    var imageUrl = SPBaseView.EMPTY_TEXT
+    private var imageUrl = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
 
-            imageBinding?.let {
+            leftImage?.let {
                 context.loadImageUrl(
                     value,
-                    it.ivLeftImage
+                    it
                 )
             }
         }
@@ -61,7 +67,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a default text
      */
-    var defaultText = SPBaseView.EMPTY_TEXT
+    private var defaultText = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
 
@@ -72,7 +78,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a default image
      */
-    var inflateType: InflateTypeDirection = InflateTypeDirection.None
+    var inflateType: InflateType = InflateType.None
         set(value) {
             field = value
             handleInflateType()
@@ -82,11 +88,11 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      * Sets a default image
      */
     @IdRes
-    var defaultIcon = 0
+    private var defaultIcon = 0
         set(value) {
             field = value
 
-            imageBinding?.ivLeftImage?.setImageResource(defaultIcon)
+            leftImage?.setImageResource(defaultIcon)
         }
 
 
@@ -123,7 +129,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
                 R.styleable.sp_text_field_dropdown_inflateType,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
-            inflateType = InflateTypeDirection.values()[inflateId]
+            inflateType = InflateType.values()[inflateId]
 
             defaultText =
                 getString(R.styleable.sp_text_field_dropdown_defaultText).orEmpty()
@@ -137,11 +143,35 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         setOnClickListener { onDropDownClick() }
     }
 
+    fun setImage(@IdRes resource: Int) {
+        src = resource
+    }
+
+    fun setImage(url: String) {
+        imageUrl = url
+    }
+
+    fun setDefault(text: String, @IdRes resource: Int = 0) {
+        defaultText = text
+        defaultIcon = resource
+    }
+
+    fun setSelectedBankChip(chip: FrameLayout) {
+        bankChipBinding?.chipBankCard?.addView(chip)
+    }
+
     /**
      * While bottom sheets not implemented yet just show toast
      */
-    private fun onDropDownClick() =
+    private fun onDropDownClick() {
         Toast.makeText(inputTextBinding.root.context, "Dropdown click", Toast.LENGTH_SHORT).show()
+
+        onSelectedItem(items.first())
+    }
+
+    private fun onSelectedItem(item: T) {
+        bindViewValue(item)
+    }
 
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
@@ -161,37 +191,40 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
     private fun handleInflateType() {
         when (inflateType) {
-            InflateTypeDirection.WithIcon -> inflateIcon()
-            InflateTypeDirection.WithBankChip -> inflateIcon()
+            InflateType.None -> inflateSpace()
+            InflateType.WithIcon -> inflateIcon()
+            InflateType.WithBankChip -> inflateBackChip()
         }
     }
 
     private fun inflateIcon() {
-        imageBinding = SpTextFieldDropdownIconBinding.inflate(
+        val imageBinding = SpTextFieldDropdownIconBinding.inflate(
             LayoutInflater.from(context),
             this,
             false
         )
-        inputTextBinding.ivLeftContainer.addView(imageBinding?.root)
+        leftImage = imageBinding.ivLeftImage
+        inputTextBinding.ivLeftContainer.addView(imageBinding.root)
+    }
+
+    private fun inflateSpace() {
+        SpTextFieldDropdownSpaceBinding.inflate(
+            LayoutInflater.from(context),
+            this,
+            false
+        )
     }
 
     private fun inflateBackChip() {
-        imageBinding = SpTextFieldDropdownIconBinding.inflate(
+        bankChipBinding = SpTextFieldDropdownBankChipBinding.inflate(
             LayoutInflater.from(context),
             this,
             false
         )
-        inputTextBinding.ivLeftContainer.addView(imageBinding?.root)
+        inputTextBinding.ivLeftContainer.addView(bankChipBinding?.root)
     }
 
-    /**
-     * Enum class which is for Button arrow direction.
-     *
-     * @property None removes all arrows. Just to show only text.
-     * @property WithIcon applies an arrow left from the text.
-     * @property WithBankChip applies an arrow right from the text.
-     */
-    enum class InflateTypeDirection {
+    enum class InflateType {
         None,
         WithIcon,
         WithBankChip
