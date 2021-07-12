@@ -104,4 +104,7 @@
     <dimen name="sp_selectable_chip_currency_margin_end">@dimen/dimen_p_30</dimen>
     <dimen name="sp_selectable_check_size">@dimen/dimen_p_24</dimen>
     <dimen name="sp_selectable_check_margin_start">@dimen/dimen_p_22</dimen>
+
+    <dimen name="sp_new_credit_card_title_margin_start">@dimen/dimen_p_15</dimen>
+    <dimen name="sp_new_credit_card_title_margin_bottom">@dimen/dimen_p_11</dimen>
 </resources>
