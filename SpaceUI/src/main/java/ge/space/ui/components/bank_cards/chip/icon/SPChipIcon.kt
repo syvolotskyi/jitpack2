@@ -13,6 +13,7 @@ import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.loadRoundImageUrl
@@ -31,7 +32,7 @@ class SPChipIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
      * Small icon
@@ -66,22 +67,6 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
-     * Applies a size of the view
-     */
-    var cardSize : SPChipSize = SPChipSize.Big
-        set(value) {
-            field = value
-
-            handleCardAppearance()
-        }
-
-    /**
-     * Checks if [cardSize] == [SPChipSize.Big]
-     */
-    private val isBig
-        get() = cardSize == SPChipSize.Big
-
-    /**
      * Binds a view
      */
     private val binding =
@@ -90,7 +75,7 @@ class SPChipIcon @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_credit_card_style,
+            R.styleable.sp_chip,
             defStyleAttr
         ) {
             withStyledResource()
@@ -115,28 +100,20 @@ class SPChipIcon @JvmOverloads constructor(
                 R.styleable.sp_chip_icon_chipIcon,
                 R.drawable.ic_bank_24_regular
             )
-
             iconStyle = SPChipIconStyle.values()[
                 getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
             ]
-
-            cardSize = SPChipSize.values()[
+            size = SPChipSize.values()[
                 getInt(R.styleable.sp_chip_icon_cardSize, DEFAULT_OBTAIN_VAL)
             ]
         }
     }
 
-    private fun handleCardAppearance() {
-        setStyle(
-            getStyle()
-        )
+    override fun onHandleChipAppearance() {
         handleVisibility()
         changeIcon()
         handleIconAppearance()
     }
-
-    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
-        else R.style.SPBankCardView_Chip_Small
 
     private fun handleVisibility() {
         with(binding) {
@@ -155,9 +132,14 @@ class SPChipIcon @JvmOverloads constructor(
     private fun handleIconAppearance() {
         val colorAttr = getColorAttr()
         val color = context.resolveColorByAttr(colorAttr)
-        binding.ivIcon.setColorFilter(
-            color, PorterDuff.Mode.SRC_IN
-        )
+        with(binding) {
+            ivIcon.setColorFilter(
+                color, PorterDuff.Mode.SRC_IN
+            )
+            ivIconSmall.setColorFilter(
+                color, PorterDuff.Mode.SRC_IN
+            )
+        }
     }
 
     private fun handlePhotoUrl() {

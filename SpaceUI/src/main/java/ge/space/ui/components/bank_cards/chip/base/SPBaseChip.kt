@@ -40,10 +40,13 @@ abstract class SPBaseChip @JvmOverloads constructor(
         setStyle(
             getStyle()
         )
-        onHandleCardAppearance()
+        onHandleChipAppearance()
     }
 
-    protected abstract fun onHandleCardAppearance()
+    /**
+     * The method is triggered after [size] change
+     */
+    protected abstract fun onHandleChipAppearance()
 
     private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
         else R.style.SPBankCardView_Chip_Small
