@@ -5,32 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/sp_text_field_dropdown_height">
 
-    <ImageView
-        android:id="@+id/ivLeftImage"
+    <FrameLayout
+        android:id="@+id/ivLeftContainer"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/sp_text_field_dropdown_icon_height"
-        android:layout_marginHorizontal="@dimen/sp_text_field_dropdown_icon_margin"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible">
+
+        <Space
+            android:layout_width="@dimen/dimen_p_16"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/etInputField"
         style="@style/SPTextField.Dropdown"
         android:layout_width="0dp"
         android:layout_height="@dimen/sp_text_field_height"
-        android:background="@null"
         android:ellipsize="end"
         android:gravity="start|center_vertical"
         android:maxLines="1"
-        android:paddingHorizontal="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
+        android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivChevronDown"
-        app:layout_constraintStart_toEndOf="@id/ivLeftImage"
+        app:layout_constraintStart_toEndOf="@id/ivLeftContainer"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

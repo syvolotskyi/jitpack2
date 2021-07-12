@@ -4,14 +4,13 @@ import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
-import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
+import ge.space.spaceui.databinding.SpTextFieldDropdownIconBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.SPDropdownItemModel
@@ -29,6 +28,10 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     var bindViewValue: (item: T) -> Unit = { _ -> }
 
+    var items: List<T> = emptyList()
+
+    private var imageBinding: SpTextFieldDropdownIconBinding? = null
+
     /**
      * Sets a image resource
      */
@@ -37,7 +40,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            inputTextBinding.ivLeftImage.setImageResource(src)
+            imageBinding?.ivLeftImage?.setImageResource(src)
         }
 
     /**
@@ -47,20 +50,12 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            context.loadImageUrl(
-                value,
-                inputTextBinding.ivLeftImage
-            )
-        }
-
-    /**
-     * Sets a image visible state
-     */
-    var isIconVisible = true
-        set(value) {
-            field = value
-
-            inputTextBinding.ivLeftImage.isVisible = field
+            imageBinding?.let {
+                context.loadImageUrl(
+                    value,
+                    it.ivLeftImage
+                )
+            }
         }
 
     /**
@@ -77,12 +72,21 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a default image
      */
+    var inflateType: InflateTypeDirection = InflateTypeDirection.None
+        set(value) {
+            field = value
+            handleInflateType()
+        }
+
+    /**
+     * Sets a default image
+     */
     @IdRes
     var defaultIcon = 0
         set(value) {
             field = value
 
-            inputTextBinding.ivLeftImage.setImageResource(defaultIcon)
+            imageBinding?.ivLeftImage?.setImageResource(defaultIcon)
         }
 
 
@@ -115,11 +119,17 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_dropdown)
 
         styleAttrs.run {
-            isIconVisible = getBoolean(R.styleable.sp_text_field_dropdown_isIconVisible, false)
+            val inflateId = getInt(
+                R.styleable.sp_text_field_dropdown_inflateType,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            inflateType = InflateTypeDirection.values()[inflateId]
+
             defaultText =
                 getString(R.styleable.sp_text_field_dropdown_defaultText).orEmpty()
             defaultIcon =
                 getResourceId(R.styleable.sp_text_field_dropdown_defaultIcon, 0)
+
 
             recycle()
         }
@@ -146,7 +156,46 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     override fun addTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
 
-    override fun removeTextChangedListener(watcher: TextWatcher)  =
+    override fun removeTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
 
+    private fun handleInflateType() {
+        when (inflateType) {
+            InflateTypeDirection.WithIcon -> inflateIcon()
+            InflateTypeDirection.WithBankChip -> inflateIcon()
+        }
+    }
+
+    private fun inflateIcon() {
+        imageBinding = SpTextFieldDropdownIconBinding.inflate(
+            LayoutInflater.from(context),
+            this,
+            false
+        )
+        inputTextBinding.ivLeftContainer.addView(imageBinding?.root)
+    }
+
+    private fun inflateBackChip() {
+        imageBinding = SpTextFieldDropdownIconBinding.inflate(
+            LayoutInflater.from(context),
+            this,
+            false
+        )
+        inputTextBinding.ivLeftContainer.addView(imageBinding?.root)
+    }
+
+    /**
+     * Enum class which is for Button arrow direction.
+     *
+     * @property None removes all arrows. Just to show only text.
+     * @property WithIcon applies an arrow left from the text.
+     * @property WithBankChip applies an arrow right from the text.
+     */
+    enum class InflateTypeDirection {
+        None,
+        WithIcon,
+        WithBankChip
+    }
 }
+
+

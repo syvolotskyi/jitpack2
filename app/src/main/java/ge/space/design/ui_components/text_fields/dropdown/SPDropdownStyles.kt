@@ -10,5 +10,6 @@ object SPTextFieldsDropdownStyles {
     val list = listOf(
         SPTextFieldsDropDownsSupportsLoading(R.style.SPTextField_Dropdown),
         SPTextFieldsDropDownsSupportsLoading(R.style.SPTextField_DropdownWithIcon),
+        SPTextFieldsDropDownsSupportsLoading(R.style.SPTextField_DropdownWithChip),
     )
 }

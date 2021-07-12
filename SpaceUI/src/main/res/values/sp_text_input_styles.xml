@@ -23,11 +23,16 @@
 
     <style name="SPTextField.Dropdown" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
-        <item name="isIconVisible">false</item>
+        <item name="inflateType">none</item>
+        <item name="android:background">@null</item>
     </style>
 
     <style name="SPTextField.DropdownWithIcon" parent="SPTextField.Dropdown">
-        <item name="isIconVisible">true</item>
+        <item name="inflateType">withIcon</item>
+    </style>
+
+    <style name="SPTextField.DropdownWithChip" parent="SPTextField.Dropdown">
+        <item name="inflateType">withChip</item>
     </style>
 
     <style name="SPTextField.InputRemovable" parent="SPTextField.Input">
@@ -36,7 +41,12 @@
 
     <style name="SPTextField.Number" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
+        <item name="android:background">@null</item>
         <item name="distractiveTextAppearance">@style/h700_bold_caps_text_field_distractive</item>
+    </style>
+    <style name="SPTextField.TextCurrency" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
+
     </style>
 
 </resources>

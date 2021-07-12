@@ -24,7 +24,7 @@ class SPDropdownComponent : SPShowCaseComponent {
                 environmentSP.requireLayoutInflater()
             )
 
-            val dropdowns = mutableListOf<SPTextFieldBaseView<ge.space.spaceui.databinding.SpTextFieldDropdownBinding>>()
+            val dropdowns = mutableListOf<SPTextFieldBaseView<SpTextFieldDropdownBinding>>()
 
             SPTextFieldsDropdownStyles.list.onEach { fieldSample ->
 
