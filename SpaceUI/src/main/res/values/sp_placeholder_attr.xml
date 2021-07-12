@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="placeholder_size" format="enum">
+        <enum name="Big" value="0" />
+        <enum name="XMedium" value="1" />
+        <enum name="Medium" value="2" />
+        <enum name="XSmall" value="3" />
+        <enum name="Small" value="4" />
+    </attr>
+
+    <declare-styleable name="ps_placeholder">
+        <attr name="placeholder_size" />
+    </declare-styleable>
+</resources>

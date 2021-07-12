@@ -16,6 +16,18 @@ fun Context.loadImageUrl(url: String, imageView: ImageView) {
         .into(imageView)
 }
 
+fun Context.loadRoundImageUrl(
+    url: String,
+    imageView: ImageView,
+    cornerRadius: Int
+) {
+    Glide.with(this)
+        .load(url)
+        .transform(CenterCrop(), RoundedCorners(cornerRadius))
+        .diskCacheStrategy(DiskCacheStrategy.DATA)
+        .into(imageView)
+}
+
 fun Context.loadRoundImageUrlWithPlaceholder(
     url: String,
     imageView: ImageView,

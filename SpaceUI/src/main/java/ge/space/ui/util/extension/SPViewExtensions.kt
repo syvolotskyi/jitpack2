@@ -3,9 +3,12 @@ package ge.space.ui.util.extension
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DimenRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
 import ge.space.ui.base.SPBaseView.Companion.SQUARE_RATIO
 import java.math.BigDecimal
@@ -86,4 +89,30 @@ fun View.visibleOrGone(visible: Boolean) {
     } else {
         isGone = !visible
     }
+}
+
+fun View.widthByIsBig(
+    isBig: Boolean,
+    @DimenRes widthId: Int,
+    @DimenRes smallWidthId: Int
+) {
+    setWidth(
+        resources.getDimension(
+            if (isBig) widthId
+            else smallWidthId
+        ).toInt()
+    )
+}
+
+fun View.heightByIsBig(
+    isBig: Boolean,
+    @DimenRes heightId: Int,
+    @DimenRes smallHeightId: Int
+) {
+    setHeight(
+        resources.getDimension(
+            if (isBig) heightId
+            else smallHeightId
+        ).toInt()
+    )
 }

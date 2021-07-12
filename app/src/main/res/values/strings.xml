@@ -64,4 +64,24 @@
 
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
+
+    <string name="component_bank_card_views">Bank card views</string>
+    <string name="component_bank_card_views_description">Samples of Bank card using</string>
+
+    <string name="component_small_empty_chip">Small empty chips</string>
+    <string name="component_small_empty_chip_description">Samples of small empty chips using</string>
+
+    <string name="component_chip_icons">Chip icons</string>
+    <string name="component_chip_icons_description">Chip icons description</string>
+
+    <string name="component_primary_chip">Primary chip</string>
+    <string name="component_primary_chip_description">Samples of primary chips using according to the selected flavor</string>
+
+    <string name="component_digital_chip">Digital chip</string>
+    <string name="component_digital_chip_description">Samples of digital chips using according to the selected flavor</string>
+
+    <string name="component_secondary_chip">Secondary chip</string>
+    <string name="component_secondary_chip_description">Samples of secondary chips</string>
+
+    <string name="switch_button">Switch Button</string>
 </resources>

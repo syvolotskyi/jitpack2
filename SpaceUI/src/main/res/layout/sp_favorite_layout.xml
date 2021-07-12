@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ge.space.ui.components.layout.SPFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lytRoot"
+    android:layout_width="@dimen/sp_favorite_size"
+    android:layout_height="@dimen/sp_favorite_size"
+    app:style="@style/SPBankCardView.Favorite"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivFavorite"
+        android:layout_width="@dimen/sp_bank_card_favorite_size"
+        android:layout_height="@dimen/sp_bank_card_favorite_size"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_star_16_filled"
+        android:tint="?attr/accent_orange" />
+
+</ge.space.ui.components.layout.SPFrameLayout>
