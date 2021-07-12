@@ -92,4 +92,7 @@
     <dimen name="sp_favorite_margin_default">@dimen/dimen_p_22</dimen>
 
     <dimen name="sp_favorite_shadow">0.5dp</dimen>
+
+    <dimen name="sp_new_credit_card_title_margin_start">@dimen/dimen_p_15</dimen>
+    <dimen name="sp_new_credit_card_title_margin_bottom">@dimen/dimen_p_11</dimen>
 </resources>

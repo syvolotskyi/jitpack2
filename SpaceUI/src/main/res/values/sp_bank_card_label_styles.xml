@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="h700_new_credit_card_title" parent="h700_bold_caps_primary_white">
+        <item name="android:lines">3</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>
