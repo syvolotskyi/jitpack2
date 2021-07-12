@@ -77,8 +77,13 @@ class SPNewCreditCard @JvmOverloads constructor(
 
     private fun handleVisibility() {
         with(binding) {
-            frameBig.visibleOrGone(isBig)
-            frameSmall.visibleOrGone(!isBig)
+            tvTitle.visibleOrGone(isBig)
+            ivBackground.setImageResource(
+                getCreditCardImage()
+            )
         }
     }
+
+    private fun getCreditCardImage() = if (isBig) R.drawable.img_new_credit_card
+        else R.drawable.img_new_credit_card_small
 }
