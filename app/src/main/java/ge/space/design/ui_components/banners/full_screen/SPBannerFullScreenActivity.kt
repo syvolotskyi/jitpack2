@@ -13,14 +13,16 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
 
         val data = intent?.getParcelableExtra<SPBannerData>(KEY_DATA)
 
-        if(data!!.type == SPBannerType.Status){
-            val view = SPBannerStatus(this)
-            view.setBannerStatusStyle(data.style)
-            setView(data, view)
-        }else if( data.type ==SPBannerType.Illustration){
-            val view = SPBannerIllustration(this)
-            view.bannerImage = data.image
-            setView(data, view)
+        data?.let {
+            if(data.type == SPBannerType.Status){
+                val view = SPBannerStatus(this)
+                view.setBannerStatusStyle(data.style)
+                setView(data, view)
+            }else if( data.type ==SPBannerType.Illustration){
+                val view = SPBannerIllustration(this)
+                view.bannerImage = data.image
+                setView(data, view)
+            }
         }
     }
 

@@ -34,7 +34,7 @@ class SPBannerStatusComponent : SPShowCaseComponent {
 
             with(binding) {
                 var statusStyle = R.style.SPBannerStatusSuccess
-                BannerStatus.setBannerStatusStyle(statusStyle)
+                bannerStatus.setBannerStatusStyle(statusStyle)
 
                 chooseStateButton.setOnClickListener { v: View ->
                     val popup = PopupMenu(environmentSP.context, v)
@@ -51,7 +51,7 @@ class SPBannerStatusComponent : SPShowCaseComponent {
                             R.id.option_info -> R.style.SPBannerStatusInfo
                             else -> R.style.SPBannerStatusSuccess
                         }
-                        BannerStatus.setBannerStatusStyle(statusStyle)
+                        bannerStatus.setBannerStatusStyle(statusStyle)
                         true
                     }
                     popup.show()
@@ -62,12 +62,12 @@ class SPBannerStatusComponent : SPShowCaseComponent {
                         Intent(environmentSP.context, SPBannerFullScreenActivity::class.java)
                     val bannerData = SPBannerData(
                         SPBannerType.Status,
-                        BannerStatus.bannerTitle,
-                        BannerStatus.bannerSubtitle,
-                        BannerStatus.bannerDescription,
-                        BannerStatus.titleVisibility,
-                        BannerStatus.subTitleVisibility,
-                        BannerStatus.descriptionVisibility,
+                        bannerStatus.bannerTitle,
+                        bannerStatus.bannerSubtitle,
+                        bannerStatus.bannerDescription,
+                        bannerStatus.titleVisibility,
+                        bannerStatus.subTitleVisibility,
+                        bannerStatus.descriptionVisibility,
                         style = statusStyle
                     )
                     intent.putExtra(SPBannerFullScreenActivity.KEY_DATA, bannerData)
@@ -82,22 +82,22 @@ class SPBannerStatusComponent : SPShowCaseComponent {
         private fun setAttributes() {
             with(binding) {
                 bannerInputTextsView.bannerTitleEditText.onTextChanged {
-                    BannerStatus.bannerTitle = it
+                    bannerStatus.bannerTitle = it
                 }
                 bannerInputTextsView.bannerSubTitleEditText.onTextChanged {
-                    BannerStatus.bannerSubtitle = it
+                    bannerStatus.bannerSubtitle = it
                 }
                 bannerInputTextsView.bannerDescEditText.onTextChanged {
-                    BannerStatus.bannerDescription = it
+                    bannerStatus.bannerDescription = it
                 }
                 bannerInputTextsView.bannerTitleVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
-                    BannerStatus.titleVisibility = isChecked
+                    bannerStatus.titleVisibility = isChecked
                 }
                 bannerInputTextsView.bannerSubTitleVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
-                    BannerStatus.subTitleVisibility = isChecked
+                    bannerStatus.subTitleVisibility = isChecked
                 }
                 bannerInputTextsView.bannerDescVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
-                    BannerStatus.descriptionVisibility = isChecked
+                    bannerStatus.descriptionVisibility = isChecked
                 }
             }
         }

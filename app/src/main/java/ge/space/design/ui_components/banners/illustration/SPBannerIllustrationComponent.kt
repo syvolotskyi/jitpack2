@@ -30,35 +30,35 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
 
             with(binding){
                 bannerInputTextsView.bannerTitleEditText.onTextChanged {
-                    BannerIllustration.bannerTitle = it
+                    bannerIllustration.bannerTitle = it
                 }
                 bannerInputTextsView.bannerSubTitleEditText.onTextChanged {
-                    BannerIllustration.bannerSubtitle = it
+                    bannerIllustration.bannerSubtitle = it
                 }
                 bannerInputTextsView.bannerDescEditText.onTextChanged {
-                    BannerIllustration.bannerDescription = it
+                    bannerIllustration.bannerDescription = it
                 }
                 bannerInputTextsView.bannerTitleVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
-                    BannerIllustration.titleVisibility = isChecked
+                    bannerIllustration.titleVisibility = isChecked
                 }
                 bannerInputTextsView.bannerSubTitleVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
-                    BannerIllustration.subTitleVisibility = isChecked
+                    bannerIllustration.subTitleVisibility = isChecked
                 }
                 bannerInputTextsView.bannerDescVisibleCheck.setOnCheckedChangeListener { _, isChecked ->
-                    BannerIllustration.descriptionVisibility = isChecked
+                    bannerIllustration.descriptionVisibility = isChecked
                 }
 
                 showFullScreenButton.setOnClickListener {
                     val intent = Intent(environmentSP.context, SPBannerFullScreenActivity::class.java)
                     val bannerData = SPBannerData(
                         SPBannerType.Illustration,
-                        BannerIllustration.bannerTitle,
-                        BannerIllustration.bannerSubtitle,
-                        BannerIllustration.bannerDescription,
-                        BannerIllustration.titleVisibility,
-                        BannerIllustration.subTitleVisibility,
-                        BannerIllustration.descriptionVisibility,
-                        BannerIllustration.bannerImage
+                        bannerIllustration.bannerTitle,
+                        bannerIllustration.bannerSubtitle,
+                        bannerIllustration.bannerDescription,
+                        bannerIllustration.titleVisibility,
+                        bannerIllustration.subTitleVisibility,
+                        bannerIllustration.descriptionVisibility,
+                        bannerIllustration.bannerImage
                     )
                     intent.putExtra(SPBannerFullScreenActivity.KEY_DATA, bannerData)
                     environmentSP.context.startActivity(intent)
@@ -66,8 +66,8 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
                 }
 
                 changeImageButton.setOnClickListener {
-                    BannerIllustration.bannerImage =
-                        if (BannerIllustration.bannerImage == R.drawable.sp_banner_illustration_example)
+                    bannerIllustration.bannerImage =
+                        if (bannerIllustration.bannerImage == R.drawable.sp_banner_illustration_example)
                             R.drawable.sp_banner_illustration_example2
                         else R.drawable.sp_banner_illustration_example
                 }
