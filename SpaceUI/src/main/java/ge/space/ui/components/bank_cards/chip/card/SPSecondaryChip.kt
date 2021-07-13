@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatImageView
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
-import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.visibleOrGone
 
@@ -22,7 +22,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
      * Allows to hide or show a border for the view
