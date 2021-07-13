@@ -66,11 +66,11 @@ class SPTextFieldPhone @JvmOverloads constructor(
         }
     }
 
-    fun addTextChangedListener(watcher: TextWatcher){
+    override fun addTextChangedListener(watcher: TextWatcher){
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
-    fun removeTextChangedListener(watcher: TextWatcher){
+    override fun removeTextChangedListener(watcher: TextWatcher){
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 

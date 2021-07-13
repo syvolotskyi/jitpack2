@@ -57,6 +57,10 @@ class SPInputComponent : SPShowCaseComponent {
                     text = resName.substringAfter(".", resName)
                 }
 
+                itemBinding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.simpleInput.inputMandatory = isChecked
+                }
+
                 itemBinding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.simpleInput.isEnabled = !isChecked
                 }
