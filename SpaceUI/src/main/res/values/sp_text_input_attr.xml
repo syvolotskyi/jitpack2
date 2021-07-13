@@ -27,6 +27,7 @@
     <declare-styleable name="sp_text_field_currency">
         <attr name="currency" format="reference" />
         <attr name="distractiveTextAppearance" format="reference" />
+        <attr name="currencyTextAppearance" format="reference" />
         <attr name="android:textAppearance" format="reference" />
     </declare-styleable>
 

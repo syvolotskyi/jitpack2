@@ -11,7 +11,6 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextCurrencyBinding
-import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
@@ -52,6 +51,8 @@ class SPTextFieldNumber @JvmOverloads constructor(
 
     private var distractiveTextAppearance: Int = DEFAULT_INT
 
+    private var currencyTextAppearance: Int = DEFAULT_INT
+
     var isDistractive: Boolean = false
         set(value) {
             field = value
@@ -75,8 +76,11 @@ class SPTextFieldNumber @JvmOverloads constructor(
                 R.styleable.sp_text_field_currency_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
+            currencyTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
         }
-
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) =
@@ -120,7 +124,10 @@ class SPTextFieldNumber @JvmOverloads constructor(
                 R.styleable.sp_text_field_currency_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
-
+            currencyTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
             recycle()
         }
     }
@@ -140,14 +147,14 @@ class SPTextFieldNumber @JvmOverloads constructor(
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
 
     private fun handleActive() {
-        alpha = if (isActive) ALPHA_ACTIVE else ALPHA_DISACTIVE
+        alpha = if (isActive) ALPHA_ACTIVE else ALPHA_INACTIVE
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
         TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
 
     companion object {
-        const val ALPHA_ACTIVE: Float = 1.0f
-        const val ALPHA_DISACTIVE: Float = 0.5f
+        private const val ALPHA_ACTIVE: Float = 1.0f
+        private const val ALPHA_INACTIVE: Float = 0.5f
     }
 }

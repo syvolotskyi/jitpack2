@@ -7,9 +7,10 @@
 
     <EditText
         android:id="@+id/etInputField"
-        style="@style/SPTextField.Number"
         android:layout_width="0dp"
         android:layout_height="@dimen/sp_text_field_height"
+        android:layout_marginEnd="@dimen/sp_text_field_number_text_margin_end"
+        android:background="@null"
         android:gravity="start|center_vertical"
         android:inputType="numberDecimal"
         android:maxLines="1"
@@ -23,11 +24,12 @@
 
     <TextView
         android:id="@+id/tvCurrency"
-        style="@style/SPTextField.TextCurrency"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/sp_text_field_height"
         android:layout_marginHorizontal="@dimen/sp_text_field_currency_margin"
         android:layout_marginVertical="@dimen/sp_text_field_currency_margin"
+        android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
+        android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

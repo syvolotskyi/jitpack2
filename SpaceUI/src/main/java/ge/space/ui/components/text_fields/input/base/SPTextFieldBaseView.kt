@@ -61,7 +61,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         set(value) {
             field = value
 
-            labelText = labelText
+            handleShowingLabelText()
         }
 
     /**
@@ -77,6 +77,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Sets a text appearance.
      */
+    @StyleRes
     var textAppearance: Int = 0
         set(value) {
             field = value

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="SPTextField.Base" parent="">
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
         <item name="descriptionTextAppearance">@style/h800_medium_label_tertiary</item>
@@ -27,12 +28,12 @@
 
     <style name="SPTextField.Number" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
-        <item name="android:background">@null</item>
         <item name="distractiveTextAppearance">@style/h700_bold_caps_text_field_distractive</item>
+        <item name="currencyTextAppearance">@style/SPTextField.TextCurrency</item>
     </style>
-    <style name="SPTextField.TextCurrency" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
 
+    <style name="SPTextField.TextCurrency" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
     </style>
 
 </resources>

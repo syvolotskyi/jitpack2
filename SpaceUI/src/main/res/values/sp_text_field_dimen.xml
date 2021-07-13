@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="sp_text_field_horizontal_text_padding">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_text_field_number_text_margin_end">@dimen/dimen_p_2</dimen>
     <dimen name="sp_text_field_vertical_text_padding">@dimen/dimen_p_8</dimen>
     <dimen name="sp_text_field_bottom_text_padding">@dimen/dimen_p_10</dimen>
     <dimen name="sp_text_field_delete_icon_margin">@dimen/dimen_p_14</dimen>
