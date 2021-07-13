@@ -49,7 +49,11 @@ class SPTextFieldNumber @JvmOverloads constructor(
             inputTextBinding.tvCurrency.text = value
         }
 
-    private var distractiveTextAppearance: Int = 0
+    @StyleRes
+    private var distractiveTextAppearance: Int = DEFAULT_INT
+
+    @StyleRes
+    private var currencyTextAppearance: Int = DEFAULT_INT
 
     var isDistractive: Boolean = false
         set(value) {
@@ -63,7 +67,6 @@ class SPTextFieldNumber @JvmOverloads constructor(
             handleActive()
         }
 
-
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -75,8 +78,11 @@ class SPTextFieldNumber @JvmOverloads constructor(
                 R.styleable.sp_text_field_currency_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
+            currencyTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
         }
-
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) =
@@ -120,7 +126,10 @@ class SPTextFieldNumber @JvmOverloads constructor(
                 R.styleable.sp_text_field_currency_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
-
+            currencyTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
             recycle()
         }
     }
@@ -140,10 +149,14 @@ class SPTextFieldNumber @JvmOverloads constructor(
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
 
     private fun handleActive() {
-        alpha = if (isActive) 1.0f else 0.5f
+        alpha = if (isActive) ALPHA_ACTIVE else ALPHA_INACTIVE
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
         TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
 
+    companion object {
+        private const val ALPHA_ACTIVE: Float = 1.0f
+        private const val ALPHA_INACTIVE: Float = 0.5f
+    }
 }

@@ -47,6 +47,7 @@
     <string name="chooseSettings">Choose settings</string>
     <string name="description">Description</string>
     <string name="active">Active</string>
+    <string name="pleaseEnterTheRightValue">Please, enter the right value</string>
 
     <string name="text_fields">Text fields</string>
     <string name="text_fields_desc">Text fields desc</string>

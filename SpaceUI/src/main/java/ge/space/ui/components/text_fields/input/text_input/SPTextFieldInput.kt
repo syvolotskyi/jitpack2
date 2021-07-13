@@ -1,6 +1,7 @@
 package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -54,7 +55,7 @@ class SPTextFieldInput @JvmOverloads constructor(
         }
 
     @IdRes
-    var drawableStart: Int = 0
+    var drawableStart: Int = DEFAULT_INT
         set(value) {
             field = value
             handleDrawableStart()
@@ -67,6 +68,10 @@ class SPTextFieldInput @JvmOverloads constructor(
             defStyleAttr
         ) {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
+            textLength =
+                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+
         }
 
         inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
@@ -121,9 +126,9 @@ class SPTextFieldInput @JvmOverloads constructor(
 
         styleAttrs.run {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, 0)
+            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
             textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, -1)
+                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
 
             recycle()
         }

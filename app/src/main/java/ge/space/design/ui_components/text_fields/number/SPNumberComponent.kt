@@ -1,6 +1,7 @@
 package ge.space.design.ui_components.text_fields.number
 
 import android.widget.RadioButton
+import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldNumberShowcaseBinding
 import ge.space.design.main.SPComponentFactory
@@ -40,8 +41,17 @@ class SPNumberComponent : SPShowCaseComponent {
 
                 tfNumber.doOnTextChanged { text, _, _, _ ->
                     with(text.toString()) {
-                        tfNumber.isDistractive =
-                            isNotEmpty() && toBigDecimal() >= distractiveSum
+                        try {
+                            tfNumber.isDistractive =
+                                isNotEmpty() && toBigDecimal() >= distractiveSum
+
+                        } catch (e: NumberFormatException) {
+                            Toast.makeText(
+                                tfNumber.context,
+                                R.string.pleaseEnterTheRightValue,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
 
