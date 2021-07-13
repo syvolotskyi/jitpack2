@@ -29,15 +29,7 @@
         <attr name="distractiveTextAppearance" format="reference" />
         <attr name="currencyTextAppearance" format="reference" />
         <attr name="android:textAppearance" format="reference" />
-        <attr name="drawableLeft" format="reference" />
         <attr name="android:drawableEnd" format="reference" />
-        <attr name="inputTextLength" format="integer" />
-    </declare-styleable>
-
-    <declare-styleable name="sp_text_field_currency">
-        <attr name="currency" format="reference" />
-        <attr name="distractiveTextAppearance" format="reference" />
-        <attr name="android:textAppearance" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="sp_text_field_dropdown">
