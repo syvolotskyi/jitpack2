@@ -4,6 +4,7 @@
         <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
         <item name="descriptionTextAppearance">@style/h800_medium_label_tertiary</item>
         <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="canRemove">false</item>
     </style>
 
     <style name="SPEditText.Masked" parent="SPTextField.Base">
@@ -15,17 +16,23 @@
         <item name="canRemove">false</item>
     </style>
 
+    <style name="SPTextField.Search" parent="SPTextField.Base">
+        <item name="canRemove">true</item>
+        <item name="drawableLeft">@drawable/ic_search_24_regular</item>
+    </style>
+
     <style name="SPTextField.InputRemovable" parent="SPTextField.Input">
         <item name="canRemove">true</item>
     </style>
 
-    <style name="h700_bold_caps_text_field" parent="@style/h700_bold_caps">
-        <item name="android:textColor">@color/selector_text_field_text_color</item>
-        <item name="android:textColorHint">@color/selector_text_field_hint_color</item>
+    <style name="SPTextField.Number" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
+        <item name="android:background">@null</item>
+        <item name="distractiveTextAppearance">@style/h700_bold_caps_text_field_distractive</item>
+    </style>
+    <style name="SPTextField.TextCurrency" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
+
     </style>
 
-    <style name="h600_bold_text_field_phone" parent="h600_bold">
-        <item name="android:textColorHint">@color/selector_text_field_hint_color</item>
-        <item name="android:textColor">@color/selector_text_field_text_color</item>
-    </style>
 </resources>

@@ -13,10 +13,20 @@
         <attr name="labelTextAppearance" format="reference" />
         <attr name="titleText" format="string|reference" />
         <attr name="descriptionText" format="string|reference" />
+        <attr name="inputMandatory" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="sp_text_field_input">
         <attr name="canRemove" format="boolean" />
+        <attr name="android:textAppearance" format="reference" />
+        <attr name="drawableLeft" format="reference" />
+        <attr name="android:drawableEnd" format="reference" />
+        <attr name="inputTextLength" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_text_field_currency">
+        <attr name="currency" format="reference" />
+        <attr name="distractiveTextAppearance" format="reference" />
         <attr name="android:textAppearance" format="reference" />
     </declare-styleable>
 

@@ -1,34 +1,30 @@
-package ge.space.ui.components.text_fields.input.text_input
+package ge.space.ui.components.text_fields.input.currency
 
 import android.content.Context
-import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
-import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
-import ge.space.extensions.isVisible
 import ge.space.spaceui.R
+import ge.space.spaceui.databinding.SpTextFieldTextCurrencyBinding
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 
-class SPTextFieldInput @JvmOverloads constructor(
+class SPTextFieldNumber @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldBaseView<SpTextFieldTextLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPTextFieldBaseView<SpTextFieldTextCurrencyBinding>(context, attrs, defStyleAttr) {
 
     var textLength: Int = DEFAULT_TEXT_LENGTH
         set(value) {
             field = value
-
             handleTextLength()
         }
 
@@ -48,53 +44,57 @@ class SPTextFieldInput @JvmOverloads constructor(
             inputTextBinding.etInputField.hint = value
         }
 
-    private var canRemove: Boolean = false
+    var currency: String = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
-            inputTextBinding.ivClear.isVisible = value
+            inputTextBinding.tvCurrency.text = value
         }
 
-    @IdRes
-    var drawableStart: Int = DEFAULT_INT
+    private var distractiveTextAppearance: Int = 0
+
+    var isDistractive: Boolean = false
         set(value) {
             field = value
-            handleDrawableStart()
+            handleDistractive()
         }
+
+    var isActive: Boolean = true
+        set(value) {
+            field = value
+            handleActive()
+        }
+
 
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_input,
+            R.styleable.sp_text_field_currency,
             defStyleAttr
         ) {
-            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
-            textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
-
+            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
         }
 
-        inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
     }
 
-    fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
+    fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) =
         inputTextBinding.etInputField.setOnEditorActionListener(listener)
-    }
 
     override fun setOnFocusChangeListener(listener: OnFocusChangeListener) {
         inputTextBinding.etInputField.onFocusChangeListener = listener
     }
 
-    override fun addTextChangedListener(watcher: TextWatcher) {
+    override fun addTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
-    }
 
-    override fun removeTextChangedListener(watcher: TextWatcher) {
+    override fun removeTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
-    }
 
-    override fun getChildViewBinding(): SpTextFieldTextLayoutBinding {
-        return SpTextFieldTextLayoutBinding.inflate(
+    override fun getChildViewBinding(): SpTextFieldTextCurrencyBinding {
+        return SpTextFieldTextCurrencyBinding.inflate(
             LayoutInflater.from(context),
             this,
             false
@@ -104,43 +104,31 @@ class SPTextFieldInput @JvmOverloads constructor(
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         inputTextBinding.etInputField.isEnabled = enabled
-        inputTextBinding.ivClear.isEnabled = enabled
+        inputTextBinding.tvCurrency.isEnabled = enabled
     }
 
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
     }
 
-    /**
-     * Sets a style for the SPButton view.
-     *
-     * <p>
-     * Default style theme is SPBaseView.SPBaseButton style.
-     * <p>
-     *
-     * @param defStyleRes [Int] style resource id
-     */
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_currency)
 
         styleAttrs.run {
-            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
-            textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
 
             recycle()
         }
     }
 
     fun focus() {
+        isActive = true
         inputTextBinding.etInputField.requestFocus()
-    }
-
-    private fun handleDrawableStart() {
-        inputTextBinding.ivLeftImage.isVisible = drawableStart != SPBaseView.DEFAULT_OBTAIN_VAL
-        inputTextBinding.ivLeftImage.setImageResource(drawableStart)
     }
 
     private fun handleTextLength() {
@@ -149,8 +137,14 @@ class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
-    override fun updateTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
+    private fun handleDistractive() =
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+
+    private fun handleActive() {
+        alpha = if (isActive) 1.0f else 0.5f
     }
+
+    override fun updateTextAppearance(textAppearance: Int) =
+        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
 
 }
