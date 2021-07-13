@@ -1,36 +1,36 @@
-package ge.space.design.ui_components.bank_cards.chip.primary_chip
+package ge.space.design.ui_components.bank_cards.chip.new_credit_card
 
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemPrimaryChipShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpLayoutPrimaryChipShowCaseBinding
+import com.example.spacedesignsystem.databinding.SpItemNewCreditCardShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutNewCreditCardShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 
-class SPPrimaryChipViewComponent : SPShowCaseComponent {
+class SPNewCreditCardComponent: SPShowCaseComponent {
 
     override fun getNameResId(): Int =
-        R.string.component_primary_chip
+        R.string.component_new_credit_card
 
     override fun getDescriptionResId(): Int =
-        R.string.component_primary_chip_description
+        R.string.component_new_credit_card_description
 
     override fun getComponentClass(): Class<*>? = Factory::class.java
 
     class Factory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val binding = SpLayoutPrimaryChipShowCaseBinding.inflate(
+            val binding = SpLayoutNewCreditCardShowCaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
 
-            SPPrimaryChipStyles.list.forEach { chip ->
-                val itemBinding = SpItemPrimaryChipShowcaseBinding.inflate(
+            SPNewCreditCardStyles.list.forEach { chip ->
+                val itemBinding = SpItemNewCreditCardShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
                     binding.primaryChipLayout,
                     true
                 )
 
-                with(itemBinding.primaryChip) {
+                with(itemBinding.newCreditCard) {
                     size = chip.size
                 }
             }

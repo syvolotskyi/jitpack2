@@ -45,7 +45,7 @@ class SPDigitalChip @JvmOverloads constructor(
         handleCardAppearance()
     }
 
-    override fun onHandleCardAppearance() {
+    override fun onHandleChipAppearance() {
         handleComponentsSizes()
     }
 

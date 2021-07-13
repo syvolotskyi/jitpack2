@@ -36,7 +36,7 @@
     </style>
 
     <style name="SPBankCardView.Chip.Icon.Small" parent="">
-        <item name="chipSize">small</item>
+        <item name="cardSize">small</item>
     </style>
 
     <style name="SPBankCardView.Chip.Icon.Dark" parent="">
@@ -54,7 +54,7 @@
 
     <style name="SPBankCardView.Chip.AddIcon.Small" parent="">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-        <item name="chipSize">small</item>
+        <item name="cardSize">small</item>
     </style>
 
     <style name="SecondaryChip" parent="SPBankCardView.Chip.Small" />
@@ -91,5 +91,13 @@
         <item name="shadowRadius">@dimen/sp_favorite_shadow</item>
         <item name="shadowAlpha">8%</item>
         <item name="shadowColor">?attr/static_black</item>
+    </style>
+
+    <style name="SPBankCardView.CreditCard.Small" parent="">
+        <item name="cardSize">small</item>
+    </style>
+
+    <style name="SPNewCreditCard.Title" parent="">
+        <item name="android:textAppearance">@style/h700_new_credit_card_title</item>
     </style>
 </resources>
