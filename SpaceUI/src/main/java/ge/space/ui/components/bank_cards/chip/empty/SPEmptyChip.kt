@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
-import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 
 /**
@@ -19,7 +19,7 @@ class SPEmptyChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
      * Changes the style of the view
@@ -38,9 +38,8 @@ class SPEmptyChip @JvmOverloads constructor(
         SpSmallEmptyChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     private fun handleSmallEmptyChipBackground() {
-        val backImage = getBackgroundImage()
         binding.ivBackground.setImageResource(
-            backImage
+            getBackgroundImage()
         )
     }
 
