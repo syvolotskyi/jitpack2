@@ -39,4 +39,13 @@
     <declare-styleable name="sp_credit_card_style">
         <attr name="creditCardStyle" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="sp_selectable_chip_item">
+        <attr name="selectableChipItemTitleStyle" format="reference" />
+        <attr name="selectableChipItemCurrencyStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_selectable_chip_item_currency">
+        <attr name="android:background" />
+    </declare-styleable>
 </resources>

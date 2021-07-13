@@ -3,10 +3,10 @@
     android:shape="rectangle" >
 
     <corners
-        android:radius="5dp" />
+        android:radius="@dimen/dimen_p_5" />
 
     <stroke
-        android:width="0.5dp"
+        android:width="@dimen/dimen_p_0_5"
         android:color="?attr/separator_non_opaque" />
 
 </shape>

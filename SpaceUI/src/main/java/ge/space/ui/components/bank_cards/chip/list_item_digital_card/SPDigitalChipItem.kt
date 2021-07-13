@@ -4,7 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.core.content.ContextCompat
+import androidx.core.content.withStyledAttributes
 import ge.space.extensions.onClick
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipItemLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -78,7 +81,39 @@ class SPDigitalChipItem @JvmOverloads constructor(
     private var onSelect: ((Boolean) -> Unit)? = null
 
     init {
-        setStyle(R.style.SPListChip_View)
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.sp_base_view,
+            defStyleAttr
+        ) {
+            with(binding) {
+                tvTitle.setTextStyle(
+                    getResourceId(
+                        R.styleable.sp_selectable_chip_item_selectableChipItemTitleStyle,
+                        R.style.h700_medium_caps_title
+                    )
+                )
+
+                val currencyStyleRes = getResourceId(
+                    R.styleable.sp_selectable_chip_item_selectableChipItemCurrencyStyle,
+                    R.style.h600_medium_currency
+                )
+                tvCurrency.setTextStyle(currencyStyleRes)
+
+                context.theme.obtainStyledAttributes(
+                    currencyStyleRes,
+                    R.styleable.sp_selectable_chip_item_currency
+                ).run {
+                    val drawableResId = getResourceId(
+                        R.styleable.sp_selectable_chip_item_currency_android_background,
+                        R.drawable.bg_currency
+                    )
+
+                    tvCurrency.background = ContextCompat.getDrawable(context, drawableResId)
+                }
+            }
+        }
+
         setCheckCallback()
     }
 

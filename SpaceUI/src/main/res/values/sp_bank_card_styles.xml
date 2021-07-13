@@ -101,18 +101,8 @@
         <item name="shadowRadius">@dimen/dimen_p_20</item>
         <item name="shadowColor">?attr/static_black</item>
         <item name="backgroundColor">?attr/static_white</item>
-    </style>
-
-    <style name="SPView.SPSelectableChipItem.Currency" parent="">
-        <item name="android:maxLines">2</item>
-        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
-    </style>
-
-    <style name="SPView.SPSelectableChipItem.Title" parent="">
-        <item name="android:textAppearance">@style/h600_medium_currency</item>
-        <item name="android:background">@drawable/bg_currency</item>
-        <item name="android:maxLength">1</item>
-        <item name="android:maxLines">1</item>
+        <item name="selectableChipItemTitleStyle">@style/h700_medium_caps_title</item>
+        <item name="selectableChipItemCurrencyStyle">@style/h600_medium_currency</item>
     </style>
 
     <style name="SPBankCardView.CreditCard.Small" parent="">

@@ -10,6 +10,7 @@
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_button"
+            style="@android:style/Widget.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/sp_selectable_chip_margin_bottom_offset"
@@ -31,7 +32,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:srcCompat="@drawable/ic_checkmark_24_regular"
             android:scaleType="fitCenter"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
         <ge.space.ui.components.bank_cards.chip.card.SPDigitalChip
             android:id="@+id/chip"
@@ -45,7 +47,6 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_title"
-            style="@style/SPView.SPSelectableChipItem.Currency"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/sp_selectable_chip_margin_bottom_offset"
@@ -59,7 +60,6 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_currency"
-            style="@style/SPView.SPSelectableChipItem.Title"
             android:layout_width="@dimen/sp_selectable_chip_currency_size"
             android:layout_height="@dimen/sp_selectable_chip_currency_size"
             android:layout_marginBottom="@dimen/sp_selectable_chip_margin_bottom_offset"
