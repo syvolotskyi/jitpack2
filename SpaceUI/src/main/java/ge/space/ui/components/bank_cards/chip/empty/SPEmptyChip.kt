@@ -37,9 +37,6 @@ class SPEmptyChip @JvmOverloads constructor(
     private val binding =
         SpSmallEmptyChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
-    override fun onHandleChipAppearance() {
-    }
-
     private fun handleSmallEmptyChipBackground() {
         binding.ivBackground.setImageResource(
             getBackgroundImage()

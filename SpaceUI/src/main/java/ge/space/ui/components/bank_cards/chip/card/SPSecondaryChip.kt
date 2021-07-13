@@ -60,9 +60,6 @@ class SPSecondaryChip @JvmOverloads constructor(
     private val binding =
         SpSecondaryChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
-    override fun onHandleChipAppearance() {
-    }
-
     private fun handleLogo() {
         loadPaymentSystemLogo(
             binding.ivPaymentSystem
