@@ -50,7 +50,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
             inputTextBinding.tvCurrency.text = value
         }
 
-    private var distractiveTextAppearance: Int = 0
+    private var distractiveTextAppearance: Int = DEFAULT_INT
 
     var isDistractive: Boolean = false
         set(value) {
@@ -63,7 +63,6 @@ class SPTextFieldNumber @JvmOverloads constructor(
             field = value
             handleActive()
         }
-
 
     init {
         getContext().withStyledAttributes(
@@ -141,10 +140,14 @@ class SPTextFieldNumber @JvmOverloads constructor(
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
 
     private fun handleActive() {
-        alpha = if (isActive) 1.0f else 0.5f
+        alpha = if (isActive) ALPHA_ACTIVE else ALPHA_DISACTIVE
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
         TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
 
+    companion object {
+        const val ALPHA_ACTIVE: Float = 1.0f
+        const val ALPHA_DISACTIVE: Float = 0.5f
+    }
 }
