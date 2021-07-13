@@ -49,8 +49,10 @@ class SPTextFieldNumber @JvmOverloads constructor(
             inputTextBinding.tvCurrency.text = value
         }
 
+    @StyleRes
     private var distractiveTextAppearance: Int = DEFAULT_INT
 
+    @StyleRes
     private var currencyTextAppearance: Int = DEFAULT_INT
 
     var isDistractive: Boolean = false
