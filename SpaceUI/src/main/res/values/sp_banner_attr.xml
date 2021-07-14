@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="sp_banner_base">
+
+        <attr name="banner_title" format="string|reference" />
+        <attr name="banner_title_is_visible" format="boolean" />
+        <attr name="banner_title_text_appearance" format="reference" />
+
+        <attr name="banner_subtitle" format="string|reference" />
+        <attr name="banner_subtitle_is_visible" format="boolean" />
+        <attr name="banner_subtitle_text_appearance" format="reference" />
+
+        <attr name="banner_description" format="string|reference" />
+        <attr name="banner_description_is_visible" format="boolean" />
+        <attr name="banner_description_text_appearance" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="sp_banner_illustration" parent="sp_banner_base">
+        <attr name="banner_image" format="reference" />
+    </declare-styleable>
+
+
+    <declare-styleable name="sp_banner_status" parent="sp_banner_base">
+        <attr name="banner_status_state" format="enum">
+            <enum name="Success" value="0" />
+            <enum name="Error" value="1" />
+            <enum name="Pending" value="2" />
+            <enum name="Info" value="3" />
+        </attr>
+    </declare-styleable>
+
+</resources>
