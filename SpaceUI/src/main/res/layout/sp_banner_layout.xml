@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bannerRootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="@dimen/dimen_p_30">
+
+    <ImageView
+        android:id="@+id/bannerImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bannerTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/bannerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_30"
+        android:gravity="center"
+        android:maxLines="2"
+        android:paddingHorizontal="@dimen/dimen_p_20"
+        app:layout_constraintBottom_toTopOf="@+id/bannerSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerImage"
+        tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
+
+    <TextView
+        android:id="@+id/bannerSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:gravity="center"
+        android:maxLines="3"
+        android:paddingHorizontal="@dimen/dimen_p_20"
+        app:layout_constraintBottom_toTopOf="@+id/bannerDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerTitle"
+        tools:text="შენ წარმატებით გადარიცხე ფული" />
+
+    <TextView
+        android:id="@+id/bannerDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:gravity="center"
+        android:maxLines="4"
+        android:paddingHorizontal="@dimen/dimen_p_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bannerSubtitle"
+        tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
