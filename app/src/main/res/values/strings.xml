@@ -75,12 +75,13 @@
 
     <string name="switch_button">Switch Button</string>
 
-    <string name="component_list_digital_chip">Digital cards list</string>
-    <string name="component_list_digital_chip_description">Samples of digital cards list</string>
+    <string name="component_chip_list">Chip cards list</string>
+    <string name="component_chip_list_description">Samples of chip cards list</string>
 
     <string name="title_usd">Showcases with USD</string>
     <string name="title_ge">Showcases with GE</string>
     <string name="title_eur">Showcases with EUR</string>
+    <string name="title_default_items">Showcases for default items</string>
 
     <string name="component_new_credit_card">New credit card</string>
     <string name="component_new_credit_card_description">Samples of new credit cards</string>

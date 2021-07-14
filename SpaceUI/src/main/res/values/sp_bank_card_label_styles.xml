@@ -4,4 +4,9 @@
         <item name="android:lines">3</item>
         <item name="android:textAllCaps">true</item>
     </style>
+
+    <style name="h700_default_title" parent="h700_medium_caps_label_secondary">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:lines">2</item>
+    </style>
 </resources>

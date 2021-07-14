@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ge.space.ui.components.bank_cards.chip.selectable_chip_item.SPDigitalChipItem
-        android:id="@+id/digitalChipItem"
-        app:style="@style/SPChip.SPSelectableChipItem.Digital"
+    <ge.space.ui.components.bank_cards.chip.selectable_chip_item.SPDefaultChipItem
+        android:id="@+id/chipItem"
+        app:style="@style/SPChip.SPSelectableChipItem.Default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />

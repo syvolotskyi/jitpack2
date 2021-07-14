@@ -1,18 +1,16 @@
-package ge.space.ui.components.bank_cards.chip.list_item_digital_card
+package ge.space.ui.components.bank_cards.chip.selectable_chip_item
 
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
-import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
-import androidx.core.content.withStyledAttributes
 import ge.space.extensions.onClick
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipItemLayoutBinding
-import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.bank_cards.chip.base.SPBaseChipItem
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.util.extension.visibleOrInvisible
@@ -27,9 +25,9 @@ import ge.space.ui.util.extension.visibleOrInvisible
  */
 class SPDigitalChipItem @JvmOverloads constructor(
     context: Context,
-    val attrs: AttributeSet? = null,
-    @AttrRes val defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr) {
+    attrs: AttributeSet? = null,
+    @AttrRes defStyleAttr: Int = 0
+) : SPBaseChipItem<SpDigitalChipItemLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Sets a title for the item
@@ -72,24 +70,11 @@ class SPDigitalChipItem @JvmOverloads constructor(
         }
 
     /**
-     * Binds a view
-     */
-    private val binding =
-        SpDigitalChipItemLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-    /**
      * Action for selection
      */
     private var onSelect: ((Boolean) -> Unit)? = null
 
     init {
-        context.withStyledAttributes(
-            attrs,
-            R.styleable.sp_base_view,
-            defStyleAttr
-        ) {
-            setTitlesAppearances()
-        }
         setCheckCallback()
     }
 
@@ -107,30 +92,16 @@ class SPDigitalChipItem @JvmOverloads constructor(
         binding.checkButton.toggle()
     }
 
-    /**
-     * Sets a specific style for the view
-     */
-    fun setDigitalChipItemStyle(@StyleRes style: Int) {
-        setStyle(style)
-
-        context.theme.obtainStyledAttributes(
-            style,
-            R.styleable.sp_base_view
-        ).run {
-            setTitlesAppearances()
-        }
-    }
-
-    private fun TypedArray.setTitlesAppearances() {
+    override fun setTitlesAppearances(styledAttrs: TypedArray) {
         with(binding) {
             tvTitle.setTextStyle(
-                getResourceId(
+                styledAttrs.getResourceId(
                     R.styleable.sp_selectable_chip_item_selectableChipItemTitleStyle,
                     R.style.h700_medium_caps_title
                 )
             )
 
-            val currencyStyleRes = getResourceId(
+            val currencyStyleRes = styledAttrs.getResourceId(
                 R.styleable.sp_selectable_chip_item_selectableChipItemCurrencyStyle,
                 R.style.h600_medium_currency
             )
@@ -149,6 +120,9 @@ class SPDigitalChipItem @JvmOverloads constructor(
             }
         }
     }
+
+    override fun getViewBinding(): SpDigitalChipItemLayoutBinding =
+        SpDigitalChipItemLayoutBinding.inflate(LayoutInflater.from(context), this)
     
     private fun setCheckCallback() {
         with(binding) {
