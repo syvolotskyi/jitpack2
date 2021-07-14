@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBannerLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -88,36 +88,22 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
     }
 
     private fun TypedArray.setTextAppearances() {
+        with(binding) {
+            bannerTitle.setTextStyle(getResourceId(
+                R.styleable.sp_banner_base_banner_title_text_appearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            ))
 
-        val titleTextAppearance = getResourceId(
-            R.styleable.sp_banner_base_banner_title_text_appearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-        updateTitleTextAppearance(titleTextAppearance)
+            bannerSubtitle.setTextStyle(getResourceId(
+                R.styleable.sp_banner_base_banner_subtitle_text_appearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            ))
 
-        val subtitleTextAppearance = getResourceId(
-            R.styleable.sp_banner_base_banner_subtitle_text_appearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-        updateSubtitleTextAppearance(subtitleTextAppearance)
-
-        val descTextAppearance = getResourceId(
-            R.styleable.sp_banner_base_banner_description_text_appearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-        updateDescTextAppearance(descTextAppearance)
-    }
-
-    private fun updateTitleTextAppearance(@StyleRes textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.bannerTitle, textAppearance)
-    }
-
-    private fun updateSubtitleTextAppearance(@StyleRes textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.bannerSubtitle, textAppearance)
-    }
-
-    private fun updateDescTextAppearance(@StyleRes textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.bannerDescription, textAppearance)
+            bannerDescription.setTextStyle(getResourceId(
+                R.styleable.sp_banner_base_banner_description_text_appearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            ))
+        }
     }
 
 }
