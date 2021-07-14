@@ -29,6 +29,8 @@ class SPBannerIllustrationComponent : SPShowCaseComponent {
             )
 
             with(binding){
+                bannerIllustration.setBannerStyle(R.style.SPBanner_Base)
+
                 bannerInputTextsView.bannerTitleEditText.onTextChanged {
                     bannerIllustration.bannerTitle = it
                 }

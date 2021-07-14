@@ -1,6 +1,7 @@
 package ge.space.design.ui_components.banners.full_screen
 
 import android.os.Parcelable
+import ge.space.ui.components.banners.SPBannerStatus
 import kotlinx.android.parcel.Parcelize
 
 
@@ -20,7 +21,7 @@ data class SPBannerData(
     val subtitleVisibility: Boolean,
     val descVisibility: Boolean,
     val image: Int = 0,
-    val style: Int = 0
+    val state: SPBannerStatus.StatusStates = SPBannerStatus.StatusStates.Success
 ) : Parcelable
 
 /**

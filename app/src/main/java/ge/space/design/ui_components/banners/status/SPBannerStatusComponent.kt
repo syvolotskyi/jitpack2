@@ -13,6 +13,7 @@ import ge.space.design.ui_components.banners.full_screen.SPBannerData
 import ge.space.design.ui_components.banners.full_screen.SPBannerFullScreenActivity
 import ge.space.design.ui_components.banners.full_screen.SPBannerType
 import ge.space.extensions.onTextChanged
+import ge.space.ui.components.banners.SPBannerStatus
 
 class SPBannerStatusComponent : SPShowCaseComponent {
 
@@ -33,8 +34,8 @@ class SPBannerStatusComponent : SPShowCaseComponent {
             setAttributes()
 
             with(binding) {
-                var statusStyle = R.style.SPBannerStatusSuccess
-                bannerStatus.setBannerStatusStyle(statusStyle)
+                bannerStatus.setBannerStyle(R.style.SPBanner_Base)
+                bannerStatus.statusState = SPBannerStatus.StatusStates.Success
 
                 chooseStateButton.setOnClickListener { v: View ->
                     val popup = PopupMenu(environmentSP.context, v)
@@ -44,14 +45,13 @@ class SPBannerStatusComponent : SPShowCaseComponent {
 
                         binding.chooseStateButton.text = menuItem.title.toString()
 
-                        statusStyle = when (menuItem.itemId) {
-                            R.id.option_success -> R.style.SPBannerStatusSuccess
-                            R.id.option_error -> R.style.SPBannerStatusError
-                            R.id.option_pending -> R.style.SPBannerStatusPending
-                            R.id.option_info -> R.style.SPBannerStatusInfo
-                            else -> R.style.SPBannerStatusSuccess
+                        bannerStatus.statusState = when (menuItem.itemId) {
+                            R.id.option_success -> SPBannerStatus.StatusStates.Success
+                            R.id.option_error -> SPBannerStatus.StatusStates.Error
+                            R.id.option_pending -> SPBannerStatus.StatusStates.Pending
+                            R.id.option_info -> SPBannerStatus.StatusStates.Info
+                            else -> SPBannerStatus.StatusStates.Success
                         }
-                        bannerStatus.setBannerStatusStyle(statusStyle)
                         true
                     }
                     popup.show()
@@ -68,7 +68,7 @@ class SPBannerStatusComponent : SPShowCaseComponent {
                         bannerStatus.titleVisibility,
                         bannerStatus.subTitleVisibility,
                         bannerStatus.descriptionVisibility,
-                        style = statusStyle
+                        state = bannerStatus.statusState
                     )
                     intent.putExtra(SPBannerFullScreenActivity.KEY_DATA, bannerData)
                     environmentSP.context.startActivity(intent)

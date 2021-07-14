@@ -13,20 +13,11 @@ class SPBannerStatus @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPBannerBaseView(context, attrs, defStyleAttr) {
 
-    private var statusState = StatusStates.Success
+    var statusState = StatusStates.Success
         set(value) {
             field = value
             handleStates()
         }
-
-    fun setBannerStatusStyle(defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_banner_status)
-        styleAttrs.run {
-            val statusStateInd = styleAttrs.getInt(R.styleable.sp_banner_status_banner_status_state, 0)
-            statusState = StatusStates.values()[statusStateInd]
-            recycle()
-        }
-    }
 
     private fun handleStates() {
         when (statusState) {

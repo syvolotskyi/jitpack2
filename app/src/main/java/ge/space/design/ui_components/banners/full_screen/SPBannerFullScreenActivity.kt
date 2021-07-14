@@ -1,6 +1,7 @@
 package ge.space.design.ui_components.banners.full_screen
 
 import android.os.Bundle
+import com.example.spacedesignsystem.R
 import ge.space.design.main.ui.SPBaseActivity
 import ge.space.ui.components.banners.SPBannerIllustration
 import ge.space.ui.components.banners.SPBannerStatus
@@ -16,7 +17,7 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
         data?.let {
             if(data.type == SPBannerType.Status){
                 val view = SPBannerStatus(this)
-                view.setBannerStatusStyle(data.style)
+                view.statusState = data.state
                 setView(data, view)
             }else if( data.type ==SPBannerType.Illustration){
                 val view = SPBannerIllustration(this)
@@ -29,6 +30,7 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
     private fun setView(data: SPBannerData?, view: SPBannerBaseView) {
         setContentView(view)
         view.apply {
+            setBannerStyle(R.style.SPBanner_Base)
             bannerTitle = data!!.title
             bannerSubtitle = data.subtitle
             bannerDescription = data.description
