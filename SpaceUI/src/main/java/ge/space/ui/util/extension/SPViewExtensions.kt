@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DimenRes
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ge.space.extensions.setHeight
@@ -88,6 +89,20 @@ fun View.visibleOrGone(visible: Boolean) {
         isVisible = visible
     } else {
         isGone = !visible
+    }
+}
+
+/**
+ * Sets a visibility of a view
+ *
+ * @param visible allows to set a view visibility. if true the view is visible
+ * if false - view is invisible
+ */
+fun View.visibleOrInvisible(visible: Boolean) {
+    if (visible) {
+        isVisible = visible
+    } else {
+        isInvisible = !visible
     }
 }
 

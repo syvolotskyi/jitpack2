@@ -32,7 +32,7 @@
     <string name="phone_input_desc">Phone input text inputs</string>
 
     <string name="number_input">Number input</string>
-    <string name="number_input_desc">Number input text inputs</string>
+    <string name="number_input_desc">Enter sum more than 120.0 to show distractive attr</string>
 
     <string name="text_input">Text input</string>
     <string name="text_input_desc">Enter \"Space\" to check TextWatcher</string>
@@ -41,7 +41,10 @@
     <string name="otp_description">Correct passwords 888888 and 1010</string>
 
     <string name="disable">Disable</string>
+    <string name="chooseSettings">Choose settings</string>
     <string name="description">Description</string>
+    <string name="active">Active</string>
+    <string name="pleaseEnterTheRightValue">Please, enter the right value</string>
 
     <string name="text_fields">Text fields</string>
     <string name="text_fields_desc">Text fields desc</string>
@@ -84,4 +87,14 @@
     <string name="component_secondary_chip_description">Samples of secondary chips</string>
 
     <string name="switch_button">Switch Button</string>
+
+    <string name="component_list_digital_chip">Digital cards list</string>
+    <string name="component_list_digital_chip_description">Samples of digital cards list</string>
+
+    <string name="title_usd">Showcases with USD</string>
+    <string name="title_ge">Showcases with GE</string>
+    <string name="title_eur">Showcases with EUR</string>
+
+    <string name="component_new_credit_card">New credit card</string>
+    <string name="component_new_credit_card_description">Samples of new credit cards</string>
 </resources>

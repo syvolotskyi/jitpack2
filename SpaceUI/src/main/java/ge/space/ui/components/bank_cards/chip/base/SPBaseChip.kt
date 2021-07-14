@@ -14,7 +14,7 @@ import ge.space.ui.components.bank_cards.data.SPChipSize
  * @property size [SPChipSize] instance that allows to change the size of the view
  * @property isBig checks if [size] == [SPChipSize.Big]
  */
-abstract class SPBaseChip @JvmOverloads constructor(
+open class SPBaseChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -40,10 +40,14 @@ abstract class SPBaseChip @JvmOverloads constructor(
         setStyle(
             getStyle()
         )
-        onHandleCardAppearance()
+        onHandleChipAppearance()
     }
 
-    protected abstract fun onHandleCardAppearance()
+    /**
+     * The method is triggered after [size] change
+     */
+    protected open fun onHandleChipAppearance() {
+    }
 
     private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
         else R.style.SPBankCardView_Chip_Small

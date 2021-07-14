@@ -6,7 +6,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutPrimaryChipShowCaseBind
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.card.SPPrimaryChip
 
 class SPPrimaryChipViewComponent : SPShowCaseComponent {
 
@@ -23,7 +22,6 @@ class SPPrimaryChipViewComponent : SPShowCaseComponent {
             val binding = SpLayoutPrimaryChipShowCaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val chips = mutableListOf<SPPrimaryChip>()
 
             SPPrimaryChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemPrimaryChipShowcaseBinding.inflate(
@@ -35,8 +33,6 @@ class SPPrimaryChipViewComponent : SPShowCaseComponent {
                 with(itemBinding.primaryChip) {
                     size = chip.size
                 }
-
-                chips.add(itemBinding.primaryChip)
             }
 
             return binding.root

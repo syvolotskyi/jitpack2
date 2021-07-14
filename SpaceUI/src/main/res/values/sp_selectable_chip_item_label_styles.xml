@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="h700_medium_caps_title" parent="h700_medium_caps_label_secondary">
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="h600_medium_currency" parent="h600_medium">
+        <item name="android:textColor">?attr/label_quaternary</item>
+        <item name="android:background">@drawable/bg_currency</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:maxLines">1</item>
+    </style>
+</resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="chipSize" format="enum">
+    <attr name="cardSize" format="enum">
         <enum name="big" value="0" />
         <enum name="small" value="1" />
     </attr>
@@ -23,12 +23,29 @@
     </declare-styleable>
 
     <declare-styleable name="sp_chip_icon">
-        <attr name="chipSize" />
+        <attr name="cardSize" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>
 
+    <declare-styleable name="sp_credit_card">
+        <attr name="cardSize" />
+    </declare-styleable>
+
     <declare-styleable name="sp_chip">
         <attr name="chipStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_credit_card_style">
+        <attr name="creditCardStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_selectable_chip_item">
+        <attr name="selectableChipItemTitleStyle" format="reference" />
+        <attr name="selectableChipItemCurrencyStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_selectable_chip_item_currency">
+        <attr name="android:background" />
     </declare-styleable>
 </resources>

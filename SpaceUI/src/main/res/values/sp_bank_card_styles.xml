@@ -36,7 +36,7 @@
     </style>
 
     <style name="SPBankCardView.Chip.Icon.Small" parent="">
-        <item name="chipSize">small</item>
+        <item name="cardSize">small</item>
     </style>
 
     <style name="SPBankCardView.Chip.Icon.Dark" parent="">
@@ -54,7 +54,7 @@
 
     <style name="SPBankCardView.Chip.AddIcon.Small" parent="">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-        <item name="chipSize">small</item>
+        <item name="cardSize">small</item>
     </style>
 
     <style name="SecondaryChip" parent="SPBankCardView.Chip.Small" />
@@ -91,5 +91,25 @@
         <item name="shadowRadius">@dimen/sp_favorite_shadow</item>
         <item name="shadowAlpha">8%</item>
         <item name="shadowColor">?attr/static_black</item>
+    </style>
+
+    <style name="SPListChip.View" parent="SPBaseView">
+        <item name="roundedCorners">@dimen/dimen_p_15</item>
+        <item name="shadowOffsetX">0dp</item>
+        <item name="shadowOffsetY">@dimen/dimen_p_5</item>
+        <item name="shadowAlpha">10%</item>
+        <item name="shadowRadius">@dimen/dimen_p_20</item>
+        <item name="shadowColor">?attr/static_black</item>
+        <item name="backgroundColor">?attr/static_white</item>
+        <item name="selectableChipItemTitleStyle">@style/h700_medium_caps_title</item>
+        <item name="selectableChipItemCurrencyStyle">@style/h600_medium_currency</item>
+    </style>
+
+    <style name="SPBankCardView.CreditCard.Small" parent="">
+        <item name="cardSize">small</item>
+    </style>
+
+    <style name="SPNewCreditCard.Title" parent="">
+        <item name="android:textAppearance">@style/h700_new_credit_card_title</item>
     </style>
 </resources>

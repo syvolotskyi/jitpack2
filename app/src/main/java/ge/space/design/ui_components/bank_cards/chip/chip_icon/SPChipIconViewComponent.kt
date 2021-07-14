@@ -29,7 +29,7 @@ class SPChipIconViewComponent : SPShowCaseComponent {
                 )
 
                 with(itemBinding.addBankCardButton) {
-                    cardSize = bankCardSample.size
+                    size = bankCardSample.size
                     iconStyle = bankCardSample.iconStyle
                     icon = bankCardSample.icon
                     bigPhotoUrl = bankCardSample.photoUrl
