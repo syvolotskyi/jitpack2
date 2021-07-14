@@ -1,9 +1,11 @@
 package ge.space.ui.components.bank_cards.chip.list_item_digital_card
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.onClick
@@ -25,8 +27,8 @@ import ge.space.ui.util.extension.visibleOrInvisible
  */
 class SPDigitalChipItem @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    val attrs: AttributeSet? = null,
+    @AttrRes val defStyleAttr: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr) {
 
     /**
@@ -81,39 +83,13 @@ class SPDigitalChipItem @JvmOverloads constructor(
     private var onSelect: ((Boolean) -> Unit)? = null
 
     init {
-        getContext().withStyledAttributes(
+        context.withStyledAttributes(
             attrs,
             R.styleable.sp_base_view,
             defStyleAttr
         ) {
-            with(binding) {
-                tvTitle.setTextStyle(
-                    getResourceId(
-                        R.styleable.sp_selectable_chip_item_selectableChipItemTitleStyle,
-                        R.style.h700_medium_caps_title
-                    )
-                )
-
-                val currencyStyleRes = getResourceId(
-                    R.styleable.sp_selectable_chip_item_selectableChipItemCurrencyStyle,
-                    R.style.h600_medium_currency
-                )
-                tvCurrency.setTextStyle(currencyStyleRes)
-
-                context.theme.obtainStyledAttributes(
-                    currencyStyleRes,
-                    R.styleable.sp_selectable_chip_item_currency
-                ).run {
-                    val drawableResId = getResourceId(
-                        R.styleable.sp_selectable_chip_item_currency_android_background,
-                        R.drawable.bg_currency
-                    )
-
-                    tvCurrency.background = ContextCompat.getDrawable(context, drawableResId)
-                }
-            }
+            setTitlesAppearances()
         }
-
         setCheckCallback()
     }
 
@@ -131,6 +107,49 @@ class SPDigitalChipItem @JvmOverloads constructor(
         binding.checkButton.toggle()
     }
 
+    /**
+     * Sets a specific style for the view
+     */
+    fun setDigitalChipItemStyle(@StyleRes style: Int) {
+        setStyle(style)
+
+        context.theme.obtainStyledAttributes(
+            style,
+            R.styleable.sp_base_view
+        ).run {
+            setTitlesAppearances()
+        }
+    }
+
+    private fun TypedArray.setTitlesAppearances() {
+        with(binding) {
+            tvTitle.setTextStyle(
+                getResourceId(
+                    R.styleable.sp_selectable_chip_item_selectableChipItemTitleStyle,
+                    R.style.h700_medium_caps_title
+                )
+            )
+
+            val currencyStyleRes = getResourceId(
+                R.styleable.sp_selectable_chip_item_selectableChipItemCurrencyStyle,
+                R.style.h600_medium_currency
+            )
+            tvCurrency.setTextStyle(currencyStyleRes)
+
+            context.theme.obtainStyledAttributes(
+                currencyStyleRes,
+                R.styleable.sp_selectable_chip_item_currency
+            ).run {
+                val drawableResId = getResourceId(
+                    R.styleable.sp_selectable_chip_item_currency_android_background,
+                    R.drawable.bg_currency
+                )
+
+                tvCurrency.background = ContextCompat.getDrawable(context, drawableResId)
+            }
+        }
+    }
+    
     private fun setCheckCallback() {
         with(binding) {
             onClick {
