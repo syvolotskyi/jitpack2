@@ -55,6 +55,19 @@
     <string name="correct_password">Correct password</string>
     <string name="incorrect_password">Incorrect password</string>
 
+    <string name="component_banners">Banners</string>
+    <string name="component_banners_description">Banners description</string>
+
+    <string name="component_banner_status">Status Banner</string>
+    <string name="component_banner_status_description">Status Banner\'s usage is limited with four states: success, error, pending and info. therefore, it is not allowed to change Banner Image outside these states</string>
+
+    <string name="component_banner_illustration">Illustration Banner</string>
+    <string name="component_banner_illustration_description">Illustration Banner doesn\'t have limitations to change banner image alongside with other Base attributes: banner title, subtitle, description text and each of their visibility</string>
+
+    <string name="banner_title">Banner Title</string>
+    <string name="banner_subtitle">Banner Subtitle</string>
+    <string name="banner_description">Banner Description</string>
+
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
 
@@ -77,6 +90,13 @@
     <string name="component_secondary_chip_description">Samples of secondary chips</string>
 
     <string name="switch_button">Switch Button</string>
+
+    <string name="component_list_digital_chip">Digital cards list</string>
+    <string name="component_list_digital_chip_description">Samples of digital cards list</string>
+
+    <string name="title_usd">Showcases with USD</string>
+    <string name="title_ge">Showcases with GE</string>
+    <string name="title_eur">Showcases with EUR</string>
 
     <string name="enter_you_details_here">Enter your details here</string>
 

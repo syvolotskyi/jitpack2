@@ -1,7 +1,7 @@
 package ge.space.ui.components.bank_cards.data
 
 import ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
-import ge.space.ui.components.support.SPPlaceholder
+import ge.space.ui.util.support.SPPlaceholder
 
 /**
  * Changes [SPEmptyChip] appearance

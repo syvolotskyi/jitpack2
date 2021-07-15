@@ -5,6 +5,7 @@ import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.ui_components.bank_cards.card.SPBankCardViewComponent
 import ge.space.design.ui_components.bank_cards.chip.chip_icon.SPChipIconViewComponent
 import ge.space.design.ui_components.bank_cards.chip.digital_chip.SPDigitalChipViewComponent
+import ge.space.design.ui_components.bank_cards.chip.list_digital_chip.SPListDigitalChipViewComponent
 import ge.space.design.ui_components.bank_cards.chip.new_credit_card.SPNewCreditCardComponent
 import ge.space.design.ui_components.bank_cards.chip.primary_chip.SPPrimaryChipViewComponent
 import ge.space.design.ui_components.bank_cards.chip.secondary_chip.SPSecondaryChipViewComponent
@@ -26,6 +27,7 @@ class SPBankCardComponent : SPShowCaseComponent {
             SPPrimaryChipViewComponent(),
             SPDigitalChipViewComponent(),
             SPSecondaryChipViewComponent(),
+            SPListDigitalChipViewComponent(),
             SPNewCreditCardComponent()
         )
 }
