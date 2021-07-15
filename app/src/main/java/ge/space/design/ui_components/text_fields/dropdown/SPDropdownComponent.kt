@@ -9,7 +9,9 @@ import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
+import ge.space.ui.components.image.SPIconFactory
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.utils.extension.buildWithDropdownItemModel
 
 class SPDropdownComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.dropdown
@@ -39,9 +41,12 @@ class SPDropdownComponent : SPShowCaseComponent {
                 with(itemBinding.tfDropdown) {
                     style(fieldSample.resId)
                     dropdowns.add(this)
-                    setDefault(resources.getString(R.string.enter_you_details_here), R.drawable.ic_country_georgia_24_regular)
+                    setDefault(
+                        resources.getString(R.string.enter_you_details_here),
+                        SPIconFactory.SPIconData.SPImageDefaultResourcesData(R.drawable.ic_country_georgia_24_regular)
+                    )
 
-                    buildWithItemModel()
+                    buildWithDropdownItemModel()
                     items = SPTextFieldsDropdownItems.list
                 }
 

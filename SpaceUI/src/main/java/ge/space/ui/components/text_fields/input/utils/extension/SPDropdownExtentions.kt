@@ -1,43 +1,38 @@
 package ge.space.ui.components.text_fields.input.utils.extension
 
-import android.content.Context
-import android.os.Parcelable
-import ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
+import ge.space.ui.components.image.SPIconFactory
+import ge.space.ui.components.image.SPCompanionIconFactory
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
-import kotlinx.android.parcel.Parcelize
 
 
 /**
  * Simple item model for dropdown. After merging project into Space project can be
- * replaced with real model or created extention to map into this model
+ * replaced with real model or created extension to map into this model
  *
  * @param id
  * @param value
- * @param imageUrl
+ * @param iconData
  */
 
-@Parcelize
 data class SPDropdownItemModel(
     val id: Int,
     val value: String,
-    val imageUrl: String? = null
-) : Parcelable
+    val iconData: SPIconFactory.SPIconData,
+)
 
 /**
- * item bind extension. using jenerics we can add different bindings for dropdowns
+ * item bind extension. using generic's we can add different bindings for dropdowns
  *
  */
-fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithDropdownItemModel() {
+fun SPTextFieldDropdown.buildWithDropdownItemModel() {
+    val context = this.context
     this.bindViewValue = { item ->
         text = item.value
-        setImage(item.imageUrl.orEmpty())
-    }
-}
 
-fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithSecondaryChips(context: Context) {
-    this.bindViewValue = { item ->
-        text = item.value
-        setSelectedBankChip(SPSecondaryChip(context))
+        val factory = SPCompanionIconFactory(context)
+        val image = factory.create(item.iconData)
+
+        setImage(image)
     }
 }
 

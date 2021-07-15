@@ -4,25 +4,19 @@ import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.FrameLayout
-import android.widget.ImageView
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.AttrRes
-import androidx.annotation.IdRes
 import androidx.core.widget.TextViewCompat
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpTextFieldDropdownBankChipBinding
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
-import ge.space.spaceui.databinding.SpTextFieldDropdownIconBinding
 import ge.space.spaceui.databinding.SpTextFieldDropdownSpaceBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
+import ge.space.ui.components.image.SPIconFactory
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.SPDropdownItemModel
-import ge.space.ui.components.text_fields.input.utils.extension.buildWithDropdownItemModel
-import ge.space.ui.util.extension.loadImageUrl
 
-class SPTextFieldDropdown<T> @JvmOverloads constructor(
+class SPTextFieldDropdown @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -31,38 +25,11 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Binding a item view after selecting
      */
-    var bindViewValue: (item: T) -> Unit = { _ -> }
+    var bindViewValue: (item: SPDropdownItemModel) -> Unit = { _ -> }
 
-    var items: List<T> = emptyList()
+    var items: List<SPDropdownItemModel> = emptyList()
 
-    private var leftImage: ImageView? = null
-    private var bankChipBinding: SpTextFieldDropdownBankChipBinding? = null
-
-    /**
-     * Sets a image resource
-     */
-    @IdRes
-    private var src = 0
-        set(value) {
-            field = value
-
-            leftImage?.setImageResource(src)
-        }
-
-    /**
-     * Sets a image url
-     */
-    private var imageUrl = SPBaseView.EMPTY_TEXT
-        set(value) {
-            field = value
-
-            leftImage?.let {
-                context.loadImageUrl(
-                    value,
-                    it
-                )
-            }
-        }
+    lateinit var iconData: SPIconFactory.SPIconData
 
     /**
      * Sets a default text
@@ -84,17 +51,6 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             handleInflateType()
         }
 
-    /**
-     * Sets a default image
-     */
-    @IdRes
-    private var defaultIcon = 0
-        set(value) {
-            field = value
-
-            leftImage?.setImageResource(defaultIcon)
-        }
-
 
     override var text: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
@@ -103,6 +59,13 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
             inputTextBinding.etInputField.text = value
         }
+
+    fun setImage(view: View) {
+        if (inflateType == InflateType.WithIcon) {
+            inputTextBinding.ivLeftContainer.removeAllViews()
+            inputTextBinding.ivLeftContainer.addView(view)
+        }
+    }
 
     override var hint: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
@@ -133,9 +96,6 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
             defaultText =
                 getString(R.styleable.sp_text_field_dropdown_defaultText).orEmpty()
-            defaultIcon =
-                getResourceId(R.styleable.sp_text_field_dropdown_defaultIcon, 0)
-
 
             recycle()
         }
@@ -143,21 +103,9 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         setOnClickListener { onDropDownClick() }
     }
 
-    fun setImage(@IdRes resource: Int) {
-        src = resource
-    }
-
-    fun setImage(url: String) {
-        imageUrl = url
-    }
-
-    fun setDefault(text: String, @IdRes resource: Int = 0) {
+    fun setDefault(text: String, iconType: SPIconFactory.SPIconData) {
         defaultText = text
-        defaultIcon = resource
-    }
-
-    fun setSelectedBankChip(chip: FrameLayout) {
-        bankChipBinding?.chipBankCard?.addView(chip)
+        iconData = iconType
     }
 
     /**
@@ -169,7 +117,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         onSelectedItem(items.first())
     }
 
-    private fun onSelectedItem(item: T) {
+    private fun onSelectedItem(item: SPDropdownItemModel) {
         bindViewValue(item)
     }
 
@@ -180,9 +128,6 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     override fun updateTextAppearance(textAppearance: Int) =
         TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
 
-    fun SPTextFieldDropdown<SPDropdownItemModel>.buildWithItemModel() =
-        buildWithDropdownItemModel()
-
     override fun addTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
 
@@ -190,45 +135,19 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         inputTextBinding.etInputField.addTextChangedListener(watcher)
 
     private fun handleInflateType() {
-        when (inflateType) {
-            InflateType.None -> inflateSpace()
-            InflateType.WithIcon -> inflateIcon()
-            InflateType.WithBankChip -> inflateBackChip()
+        if (inflateType == InflateType.None) {
+            val view = SpTextFieldDropdownSpaceBinding.inflate(
+                LayoutInflater.from(context),
+                this,
+                false
+            )
+            inputTextBinding.ivLeftContainer.addView(view.root)
         }
-    }
-
-    private fun inflateIcon() {
-        val imageBinding = SpTextFieldDropdownIconBinding.inflate(
-            LayoutInflater.from(context),
-            this,
-            false
-        )
-        leftImage = imageBinding.ivLeftImage
-        inputTextBinding.ivLeftContainer.addView(imageBinding.root)
-    }
-
-    private fun inflateSpace() {
-        SpTextFieldDropdownSpaceBinding.inflate(
-            LayoutInflater.from(context),
-            this,
-            false
-        )
-    }
-
-    private fun inflateBackChip() {
-        bankChipBinding = SpTextFieldDropdownBankChipBinding.inflate(
-            LayoutInflater.from(context),
-            this,
-            false
-        )
-        inputTextBinding.ivLeftContainer.addView(bankChipBinding?.root)
     }
 
     enum class InflateType {
         None,
-        WithIcon,
-        WithBankChip
+        WithIcon
     }
 }
-
 

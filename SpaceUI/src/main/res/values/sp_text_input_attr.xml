@@ -37,10 +37,8 @@
         <attr name="inflateType" format="enum">
             <enum name="none" value="0" />
             <enum name="withIcon" value="1" />
-            <enum name="withChip" value="2" />
         </attr>
         <attr name="defaultText" format="string|reference" />
-        <attr name="defaultIcon" format="reference" />
     </declare-styleable>
 
 </resources>

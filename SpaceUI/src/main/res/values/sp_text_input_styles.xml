@@ -32,10 +32,6 @@
         <item name="inflateType">withIcon</item>
     </style>
 
-    <style name="SPTextField.DropdownWithChip" parent="SPTextField.Dropdown">
-        <item name="inflateType">withChip</item>
-    </style>
-
     <style name="SPTextField.InputRemovable" parent="SPTextField.Input">
         <item name="canRemove">true</item>
     </style>
