@@ -1,4 +1,4 @@
-package ge.space.ui.components.support
+package ge.space.ui.util.support
 
 import android.content.Context
 import android.util.AttributeSet
