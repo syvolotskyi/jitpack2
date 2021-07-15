@@ -6,9 +6,8 @@ import ge.space.design.ui_components.bank_cards.SPBankCardComponent
 import ge.space.design.ui_components.banners.SPBannerComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponentSP
-import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
-import ge.space.design.ui_components.switch.SPSwitchButtonComponent
+import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 
 object DesignSystemComponents : SPShowCaseComponent {
 
@@ -22,7 +21,6 @@ object DesignSystemComponents : SPShowCaseComponent {
         return listOf(
                 new { SPColorsComponentSP() },
                 new { SPButtonComponent() },
-                new { SPSwitchButtonComponent() },
                 new { SPDialogComponent() },
                 new { SPTextFieldsComponent() },
                 new { SPBannerComponent() },

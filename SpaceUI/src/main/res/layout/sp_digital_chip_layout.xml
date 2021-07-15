@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ge.space.ui.components.support.SPGradientImageView
+    <ge.space.ui.util.support.SPGradientImageView
         android:id="@+id/vGradient"
         android:layout_height="@dimen/sp_bank_chip_height"
         android:layout_width="@dimen/sp_bank_chip_width" />
