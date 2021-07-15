@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPBanner.Base" parent="">
+        <item name="banner_title_text_appearance">@style/h600_bold_caps_label_secondary</item>
+        <item name="banner_subtitle_text_appearance">@style/h600_medium_label_secondary</item>
+        <item name="banner_description_text_appearance">@style/h700_medium_secondary</item>
+    </style>
+
+</resources>

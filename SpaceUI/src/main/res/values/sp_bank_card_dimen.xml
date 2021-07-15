@@ -3,8 +3,10 @@
     <dimen name="sp_bank_card_view_margin_top">@dimen/dimen_p_8</dimen>
     <dimen name="sp_bank_card_small_margin">@dimen/dimen_p_4</dimen>
 
-    <dimen name="sp_main_header_height">@dimen/dimen_p_56</dimen>
-    <dimen name="sp_gradient_image_view_height">@dimen/dimen_p_197</dimen>
+    <dimen name="sp_header_height">@dimen/dimen_p_64</dimen>
+    <dimen name="sp_body_margin_top">@dimen/sp_header_height</dimen>
+
+    <dimen name="sp_gradient_image_view_height">@dimen/dimen_p_202</dimen>
     <dimen name="sp_gradient_image_view_width">@dimen/dimen_p_297</dimen>
 
     <dimen name="sp_bank_card_chip_size">@dimen/dimen_p_24</dimen>
@@ -24,12 +26,16 @@
 
     <dimen name="sp_bank_card_favorite_size">@dimen/dimen_p_16</dimen>
     <dimen name="sp_bank_card_favorite_margin_start">@dimen/dimen_p_11</dimen>
-    <dimen name="sp_bank_card_favorite_margin_top">@dimen/dimen_p_8</dimen>
+    <dimen name="sp_bank_card_favorite_margin_top">@dimen/dimen_p_20</dimen>
+    <dimen name="sp_bank_card_favorite_margin_bottom">@dimen/dimen_p_12</dimen>
 
-    <dimen name="sp_bank_logo_round_radius">@dimen/dimen_p_6</dimen>
+    <dimen name="sp_bank_round_radius_big">@dimen/dimen_p_6</dimen>
+    <dimen name="sp_bank_round_radius_small">@dimen/dimen_p_4</dimen>
+
+    <dimen name="sp_bank_logo_round_radius">@dimen/sp_bank_round_radius_big</dimen>
     <dimen name="sp_bank_logo_size">@dimen/dimen_p_32</dimen>
     <dimen name="sp_bank_logo_margin_start">@dimen/dimen_p_28</dimen>
-    
+
     <dimen name="sp_bank_balance_margin_end">@dimen/dimen_p_28</dimen>
 
     <dimen name="sp_bank_name_margin_horizontal">@dimen/dimen_p_8</dimen>
@@ -39,4 +45,66 @@
     <dimen name="sp_bank_card_payment_system_logo_width">@dimen/dimen_p_67</dimen>
     <dimen name="sp_bank_card_payment_system_logo_height">@dimen/dimen_p_27</dimen>
 
+    <dimen name="sp_bank_chip_width_small">@dimen/dimen_p_48</dimen>
+    <dimen name="sp_bank_chip_height_small">@dimen/dimen_p_34</dimen>
+    <dimen name="sp_bank_chip_width">@dimen/dimen_p_68</dimen>
+    <dimen name="sp_bank_chip_height">@dimen/dimen_p_48</dimen>
+
+    <dimen name="sp_add_bank_card_button_icon_size">@dimen/dimen_p_18</dimen>
+    <dimen name="sp_add_bank_card_button_icon_size_small">@dimen/dimen_p_11</dimen>
+
+    <dimen name="sp_digital_chip_bank_logo_width">@dimen/dimen_p_20</dimen>
+    <dimen name="sp_digital_chip_bank_logo_height">@dimen/dimen_p_30</dimen>
+    <dimen name="sp_digital_chip_bank_logo_width_small">@dimen/dimen_sp_14</dimen>
+    <dimen name="sp_digital_chip_bank_logo_height_small">@dimen/dimen_sp_21</dimen>
+    <dimen name="sp_digital_chip_payment_system_width">@dimen/dimen_p_11</dimen>
+    <dimen name="sp_digital_chip_payment_system_height">@dimen/dimen_p_3</dimen>
+    <dimen name="sp_digital_chip_payment_system_width_small">@dimen/dimen_sp_7</dimen>
+    <dimen name="sp_digital_chip_payment_system_height_small">@dimen/dimen_sp_2</dimen>
+    <dimen name="sp_digital_chip_payment_system_margin">@dimen/dimen_sp_5</dimen>
+    <dimen name="sp_digital_chip_payment_system_margin_small">@dimen/dimen_sp_3</dimen>
+
+    <dimen name="sp_secondary_chip_logo_size">@dimen/dimen_sp_20</dimen>
+    <dimen name="sp_secondary_chip_payment_margin">@dimen/dimen_sp_2</dimen>
+
+    <dimen name="sp_bank_logo_placeholder_radius_big">@dimen/dimen_sp_8</dimen>
+    <dimen name="sp_bank_logo_placeholder_radius_xmedium">@dimen/dimen_sp_6</dimen>
+    <dimen name="sp_bank_logo_placeholder_radius_medium">@dimen/dimen_sp_5</dimen>
+    <dimen name="sp_bank_logo_placeholder_radius_xsmall">@dimen/dimen_sp_5</dimen>
+    <dimen name="sp_bank_logo_placeholder_radius_small">@dimen/dimen_sp_4</dimen>
+
+    <dimen name="sp_bank_logo_placeholder_size_big">@dimen/dimen_sp_40</dimen>
+    <dimen name="sp_bank_logo_placeholder_size_xmedium">@dimen/dimen_sp_32</dimen>
+    <dimen name="sp_bank_logo_placeholder_size_medium">@dimen/dimen_sp_24</dimen>
+    <dimen name="sp_bank_logo_placeholder_size_xsmall">@dimen/dimen_sp_20</dimen>
+    <dimen name="sp_bank_logo_placeholder_size_small">@dimen/dimen_sp_16</dimen>
+
+    <dimen name="sp_placeholder_logo_size_big">@dimen/dimen_sp_32</dimen>
+    <dimen name="sp_placeholder_logo_size_xmedium">@dimen/dimen_sp_24</dimen>
+    <dimen name="sp_placeholder_logo_size_medium">@dimen/dimen_sp_16</dimen>
+    <dimen name="sp_placeholder_logo_size_xsmall">@dimen/dimen_sp_14</dimen>
+    <dimen name="sp_placeholder_logo_size_small">@dimen/dimen_sp_13</dimen>
+
+    <dimen name="sp_secondary_payment_system_width">@dimen/dimen_sp_16</dimen>
+    <dimen name="sp_secondary_payment_system_height">@dimen/dimen_sp_8</dimen>
+
+    <dimen name="sp_favorite_size">@dimen/dimen_p_21</dimen>
+    <dimen name="sp_favorite_margin_default">@dimen/dimen_p_22</dimen>
+
+    <dimen name="sp_favorite_shadow">0.5dp</dimen>
+
+    <dimen name="sp_selectable_chip_width">@dimen/dimen_p_295</dimen>
+    <dimen name="sp_selectable_chip_height">@dimen/dimen_p_90</dimen>
+    <dimen name="sp_selectable_chip_radio_button_margin_start">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_selectable_chip_margin_start">@dimen/dimen_p_4</dimen>
+    <dimen name="sp_selectable_chip_margin_bottom_offset">@dimen/dimen_p_2</dimen>
+    <dimen name="sp_selectable_chip_title_margin_start">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_selectable_chip_title_margin_end">@dimen/dimen_p_12</dimen>
+    <dimen name="sp_selectable_chip_currency_size">@dimen/dimen_p_20</dimen>
+    <dimen name="sp_selectable_chip_currency_margin_end">@dimen/dimen_p_30</dimen>
+    <dimen name="sp_selectable_check_size">@dimen/dimen_p_24</dimen>
+    <dimen name="sp_selectable_check_margin_start">@dimen/dimen_p_28</dimen>
+
+    <dimen name="sp_new_credit_card_title_margin_start">@dimen/dimen_p_15</dimen>
+    <dimen name="sp_new_credit_card_title_margin_bottom">@dimen/dimen_p_11</dimen>
 </resources>

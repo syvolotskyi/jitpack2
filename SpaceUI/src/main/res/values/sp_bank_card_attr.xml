@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="cardSize" format="enum">
+        <enum name="big" value="0" />
+        <enum name="small" value="1" />
+    </attr>
+
+    <attr name="chipIconAppearance" format="enum">
+        <enum name="accent" value="0" />
+        <enum name="dark" value="1" />
+    </attr>
+
+    <attr name="chipIcon" format="reference" />
+
+    <declare-styleable name="sp_bank_card_view">
+        <attr name="cardStatusTextAppearance" format="reference" />
+        <attr name="cardAmountTextAppearance" format="reference" />
+        <attr name="cardBankNameTextAppearance" format="reference" />
+        <attr name="cardTypeTextAppearance" format="reference" />
+        <attr name="cardCreditTitleTextAppearance" format="reference" />
+        <attr name="cardBalanceTextAppearance" format="reference" />
+        <attr name="cardAccountNumberTextAppearance" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_chip_icon">
+        <attr name="cardSize" />
+        <attr name="chipIcon" />
+        <attr name="chipIconAppearance" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_credit_card">
+        <attr name="cardSize" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_chip">
+        <attr name="chipStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_credit_card_style">
+        <attr name="creditCardStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_selectable_chip_item">
+        <attr name="selectableChipItemTitleStyle" format="reference" />
+        <attr name="selectableChipItemCurrencyStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_selectable_chip_item_currency">
+        <attr name="android:background" />
+    </declare-styleable>
+</resources>

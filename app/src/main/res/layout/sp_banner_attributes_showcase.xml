@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_p_20">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/bannerTitleEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_p_10"
+        android:background="@color/light_greyscale_gray_5"
+        android:hint="@string/banner_title"
+        android:maxLines="2"
+        android:padding="@dimen/dimen_p_7"
+        android:text="@string/banner_title"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/bannerTitleVisibleCheck"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/bannerTitleVisibleCheck"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_p_12"
+        android:checked="true"
+        android:text="Visible"
+        app:layout_constraintBottom_toBottomOf="@id/bannerTitleEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bannerTitleEditText"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/bannerSubTitleEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:layout_marginEnd="@dimen/dimen_p_10"
+        android:background="@color/light_greyscale_gray_5"
+        android:hint="@string/banner_subtitle"
+        android:maxLines="3"
+        android:padding="@dimen/dimen_p_7"
+        android:text="@string/banner_subtitle"
+        android:textSize="@dimen/dimen_sp_16"
+        app:layout_constraintEnd_toStartOf="@id/bannerSubTitleVisibleCheck"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bannerTitleEditText" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/bannerSubTitleVisibleCheck"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_p_12"
+        android:checked="true"
+        android:text="Visible"
+        app:layout_constraintBottom_toBottomOf="@id/bannerSubTitleEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bannerSubTitleEditText"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/bannerDescEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_15"
+        android:layout_marginEnd="@dimen/dimen_p_10"
+        android:background="@color/light_greyscale_gray_5"
+        android:hint="@string/banner_subtitle"
+        android:maxLines="4"
+        android:padding="@dimen/dimen_p_7"
+        android:text="@string/banner_description"
+        android:textSize="@dimen/dimen_sp_16"
+        app:layout_constraintEnd_toStartOf="@id/bannerDescVisibleCheck"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bannerSubTitleEditText" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/bannerDescVisibleCheck"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_p_12"
+        android:checked="true"
+        android:text="Visible"
+        app:layout_constraintBottom_toBottomOf="@id/bannerDescEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bannerDescEditText"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
