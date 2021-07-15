@@ -1,6 +1,5 @@
 package ge.space.design.ui_components.tab_navigation.child
 
-
 import android.content.Context
 import android.widget.Toast
 import com.example.spacedesignsystem.R
@@ -26,8 +25,8 @@ class SPTabNavigationViewComponent : SPShowCaseComponent {
             val binding = SpTabNavigationShowCaseBinding.inflate(environmentSP.requireLayoutInflater())
 
             with(binding) {
-                setUpTabNavigationView(twoTabNavigationView, environmentSP.context,SPTabNavigationMode.TWO)
-                setUpTabNavigationView(threeTabNavigationView, environmentSP.context,SPTabNavigationMode.THREE)
+                setUpTabNavigationView(twoTabNavigationView, environmentSP.context,SPTabNavigationMode.DOUBLE)
+                setUpTabNavigationView(threeTabNavigationView, environmentSP.context,SPTabNavigationMode.TRIPLE)
 
             }
             return binding.root
@@ -35,12 +34,15 @@ class SPTabNavigationViewComponent : SPShowCaseComponent {
 
         private fun setUpTabNavigationView(tabNavigationView: SPTabNavigationView, context: Context, tabMode: SPTabNavigationMode) {
             when(tabMode){
-                SPTabNavigationMode.TWO ->{
-                    tabNavigationView.setUp(createNavigationWithTwoTabs(), clickListener = { selectedModel -> Toast.makeText(context, selectedModel.title, Toast.LENGTH_SHORT).show() })
-
+                SPTabNavigationMode.DOUBLE ->{
+                    tabNavigationView.items = createNavigationWithTwoTabs()
+                    tabNavigationView.setUp(clickListener = { selectedModel ->
+                        Toast.makeText(context, selectedModel.text, Toast.LENGTH_SHORT).show() })
                 }
-                SPTabNavigationMode.THREE ->{
-                    tabNavigationView.setUp(createNavigationWithThreeTabs(), clickListener = { selectedModel -> Toast.makeText(context, selectedModel.title, Toast.LENGTH_SHORT).show() })
+                SPTabNavigationMode.TRIPLE ->{
+                    tabNavigationView.items = createNavigationWithThreeTabs()
+                    tabNavigationView.setUp(clickListener = { selectedModel ->
+                        Toast.makeText(context, selectedModel.text, Toast.LENGTH_SHORT).show() })
 
                 }
             }

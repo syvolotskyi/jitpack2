@@ -23,38 +23,39 @@ class SPTabNavigationView @JvmOverloads constructor(
      * change tab position per navigation model
      */
     private fun changeNavigationTab(navigationModel: SPTabNavigationModel){
-        showCurrentTabNavigation(navigationModel)
+        showCurrentTabButton(navigationModel)
         previewNavigationModel = navigationModel
     }
 
     /**
-     * show current Tab navigation
-     */
-    private fun showCurrentTabNavigation(tab: SPTabNavigationModel) {
+    * show current Tab navigation
+    */
+    private fun showCurrentTabButton(tab: SPTabNavigationModel) {
         forEach {
             (it as SPTabNavigationChildView).isActive = (it.tag == tab)
         }
     }
 
     /**
-     * set up tab navigation
-     * add child view per items list
-     * we should add id and tag each childView to check position in list
-     * we should add layoutParams each childView to be compatible full screen width
+     * set child view items
      */
+    var items: MutableList<SPTabNavigationModel> ? = null
 
-    fun setUp(items: MutableList<SPTabNavigationModel>, clickListener: (SPTabNavigationModel) -> Unit) {
-        items.forEachIndexed { index, navigationItem ->
+
+    /**
+     * add child views into container
+     */
+    fun setUp(clickListener: (SPTabNavigationModel) -> Unit) {
+        items?.forEachIndexed { index, navigationItem ->
             val childView = SPTabNavigationChildView(context)
-            childView.id = generateViewId()
-            childView.tag = navigationItem
-            childView.navigationItem = navigationItem
+            childView.setParametersToChildView(navigationItem)
+            childView.setStyle(navigationItem.style)
             childView.layoutParams = LayoutParams(
                 LayoutParams.WRAP_CONTENT,
                 LayoutParams.MATCH_PARENT
             ).apply {
-                if (index != 0 && index != items.size - 1 || items.size == 2)
-                    weight = 1f
+                if (index != ZERO && index != items!!.size - ONE || items!!.size == TWO)
+                    weight = ONE_WEIGHT
             }
 
             childView.setOnClickListener { view ->
@@ -66,10 +67,30 @@ class SPTabNavigationView @JvmOverloads constructor(
 
                 }
             }
-            changeNavigationTab(items.first())
+
+            changeNavigationTab(items!!.first())
             addView(childView)
         }
 
+    }
+
+    /**
+     * sets parameters to child View
+     * @property id [Int]  generated ID value.
+     * @property tag [SPTabNavigationModel] view tag.
+     * @property navigationItem [SPTabNavigationModel] set SPTabNavigationModel model to ChildView.
+     */
+    private fun SPTabNavigationChildView.setParametersToChildView(navigationItem: SPTabNavigationModel) {
+        this.id = generateViewId()
+        this.tag = navigationItem
+        this.navigationItem = navigationItem
+    }
+
+    companion object {
+        const val ZERO = 0
+        const val ONE = 1
+        const val TWO = 2
+        const val ONE_WEIGHT = 1f
     }
 
 }

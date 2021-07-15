@@ -20,7 +20,6 @@ object DesignSystemComponents : SPShowCaseComponent {
 
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(
-
             new { SPColorsComponentSP() },
             new { SPButtonComponent() },
             new { SPSwitchButtonComponent() },

@@ -8,7 +8,6 @@ import android.widget.FrameLayout
 import androidx.annotation.ColorInt
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.ColorUtils
-import ge.space.extensions.getColorRes
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.tintColor
 import ge.space.spaceui.R
@@ -19,7 +18,7 @@ import ge.space.ui.components.tab_navigation.data.SPTabNavigationModel
 /**
  * Child view extended from [FrameLayout] that allows to set view each Tab navigation item.
  */
-open class SPTabNavigationChildView @JvmOverloads constructor(
+class SPTabNavigationChildView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -27,26 +26,59 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
     private val binding by lazy {
         SpTabNavigationChildViewLayoutBinding.inflate(LayoutInflater.from(context), this)
     }
+
+    /**
+     * Set a new style
+     */
+    fun setStyle(newStyle: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(newStyle, R.styleable.sp_tab_navigation_child_view)
+        styleAttrs.run {
+            binding.tabTitle.setTextStyle(newStyle)
+            setStyleResources()
+        }
+    }
+
+    /**
+     * Allows to update style resources
+     */
+    private fun TypedArray.setStyleResources() {
+        activeColor = getColor(
+            R.styleable.sp_tab_navigation_child_view_activeColor,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        inActiveColor = getColor(
+            R.styleable.sp_tab_navigation_child_view_inActiveColor,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        defaultBackgroundColor = getColor(
+            R.styleable.sp_tab_navigation_child_view_defaultBackgroundColor,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        text =
+            getColor(R.styleable.sp_tab_navigation_child_view_text, SPBaseView.DEFAULT_OBTAIN_VAL)
+        image =
+            getColor(R.styleable.sp_tab_navigation_child_view_image, SPBaseView.DEFAULT_OBTAIN_VAL)
+
+    }
+
     /**
      * Set a active color
      */
-    private var activeColor: Int = context.getColorRes(R.color.appPrimaryColor)
+    var activeColor: Int = 0
+        set(value) {
+            field = value
+            onActiveStatusChange()
+        }
+
     /**
      * Set a inActive color
      */
-    private var inActiveColor: Int = context.getColorRes(R.color.light_label_secondary)
-    /**
-     * Set a default navigation background Color
-     */
-    private var defaultBackgroundColor: Int = context.getColorRes(R.color.white)
-
-    /**
-     * Set a default (static) navigation item. This item is necessary to show visually in xml file
-     */
-    private var staticNavigationItem = SPTabNavigationModel(
-        title = R.string.component_tab_navigation_by_number,
-        image = R.drawable.ic_bank_24_regular
-    )
+    var inActiveColor: Int = 0
+        set(value) {
+            field = value
+            onActiveStatusChange()
+        }
 
     /**
      * Set a navigation item resource
@@ -55,7 +87,7 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
         set(value) {
             value?.let {
                 binding.tabImage.setImageResource(value.image)
-                binding.tabTitle.text = resources.getString(value.title)
+                binding.tabTitle.text = resources.getString(value.text)
             }
             field = value
         }
@@ -69,14 +101,40 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
             onActiveStatusChange()
         }
 
-    init {
+    /**
+     * Sets a background color.
+     */
+    var defaultBackgroundColor: Int = 0
+        set(value) {
+            field = value
+            onActiveStatusChange()
+        }
 
+    /**
+     * Sets a navigation title.
+     */
+    var text: Int = 0
+        set(value) {
+            field = value
+            onActiveStatusChange()
+        }
+
+    /**
+     * Sets a navigation image.
+     */
+    var image: Int = 0
+        set(value) {
+            field = value
+            onActiveStatusChange()
+        }
+
+    init {
         context.withStyledAttributes(
             attrs,
             R.styleable.sp_tab_navigation_child_view,
             defStyleAttr
         ) {
-            isActive = getBoolean(R.styleable.sp_tab_navigation_child_view_isActive, false)
+            setStyleResources()
             setTextAppearance()
             navigationItem = staticNavigationItem
             onActiveStatusChange()
@@ -84,14 +142,30 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
     }
 
     /**
-     * change active status with isActive status
+     * Set a default (static) navigation item. This item is necessary to show visually in xml file
+     */
+    private var staticNavigationItem = SPTabNavigationModel(
+        text = text,
+        image = image
+    )
+
+    /**
+     * change focus per status.
+     * <p>
+     * tintColor changing image background color per status.
+     * tabImageContainer.isSelected changing background per status
+     * tabImageContainer.color changing background per status
+     * tabTitle.isEnabled sets texts color per status
+     * <p>
      */
     private fun onActiveStatusChange() {
         with(binding) {
             tabImage.tintColor = if (isActive) activeColor else inActiveColor
             @ColorInt val alphaColor = ColorUtils.setAlphaComponent(activeColor, CARD_DEFAULT_ALPHA)
             tabImageContainer.color = if (isActive) alphaColor else defaultBackgroundColor
-            tabTitle.isSelected = isActive
+            tabImageContainer.isSelected = isActive
+            tabTitle.isEnabled = isActive
+
         }
     }
 
@@ -112,6 +186,5 @@ open class SPTabNavigationChildView @JvmOverloads constructor(
      */
     companion object {
         const val CARD_DEFAULT_ALPHA = 25
-
     }
 }
