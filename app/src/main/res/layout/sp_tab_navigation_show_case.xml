@@ -16,8 +16,7 @@
         android:id="@+id/twoTabNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_30"
-        android:layout_marginEnd="@dimen/dimen_p_30" />
+        android:layout_marginHorizontal="@dimen/dimen_p_30"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -30,7 +29,6 @@
         android:id="@+id/threeTabNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_30"
-        android:layout_marginEnd="@dimen/dimen_p_30" />
+        android:layout_marginHorizontal="@dimen/dimen_p_30"/>
 
 </LinearLayout>

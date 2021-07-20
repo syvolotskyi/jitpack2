@@ -2,10 +2,11 @@
 <resources>
 
     <style name="SPTabChildNavigation" parent="SPBaseView">
-        <item name="childTextAppearance">@style/h700_medium_caps_navigation_tab_field</item>
-        <item name="defaultBackgroundColor">@color/light_background_secondary</item>
-        <item name="activeColor"> @color/appPrimaryColor</item>
-        <item name="inActiveColor"> @color/light_label_secondary</item>
+        <item name="defaultBackgroundColor">?attr/background_secondary</item>
+        <item name="activeColor">?attr/brand_primary</item>
+        <item name="inActiveColor">?attr/label_secondary</item>
+        <item name="activeTextAppearance">@style/h700_medium_caps_navigation_active_tab_field</item>
+        <item name="inActiveTextAppearance">@style/h700_medium_caps_navigation_inActive_tab_field</item>
     </style>
 
     <style name="SPTabNavigation.RoundedView" parent="SPBaseView">

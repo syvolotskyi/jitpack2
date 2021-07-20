@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:layout_marginVertical="@dimen/dimen_p_16"
+        android:layout_marginHorizontal="@dimen/dimen_p_8"
         android:orientation="vertical">
 
         <ge.space.ui.components.layout.SPFrameLayout
@@ -32,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
+            android:ellipsize="end"
             android:layout_marginTop="@dimen/sp_tab_navigation_child_text_margin"
             android:maxLines="1"/>
     </LinearLayout>

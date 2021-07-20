@@ -6,8 +6,10 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.ColorUtils
+import androidx.core.widget.TextViewCompat
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.tintColor
 import ge.space.spaceui.R
@@ -27,40 +29,11 @@ class SPTabNavigationChildView @JvmOverloads constructor(
         SpTabNavigationChildViewLayoutBinding.inflate(LayoutInflater.from(context), this)
     }
 
-    /**
-     * Set a new style
-     */
-    fun setStyle(newStyle: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(newStyle, R.styleable.sp_tab_navigation_child_view)
-        styleAttrs.run {
-            binding.tabTitle.setTextStyle(newStyle)
-            setStyleResources()
-        }
-    }
+    @StyleRes
+    private var activeTextAppearance: Int = DEFAULT_INT
 
-    /**
-     * Allows to update style resources
-     */
-    private fun TypedArray.setStyleResources() {
-        activeColor = getColor(
-            R.styleable.sp_tab_navigation_child_view_activeColor,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-        inActiveColor = getColor(
-            R.styleable.sp_tab_navigation_child_view_inActiveColor,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-        defaultBackgroundColor = getColor(
-            R.styleable.sp_tab_navigation_child_view_defaultBackgroundColor,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-        text =
-            getColor(R.styleable.sp_tab_navigation_child_view_text, SPBaseView.DEFAULT_OBTAIN_VAL)
-        image =
-            getColor(R.styleable.sp_tab_navigation_child_view_image, SPBaseView.DEFAULT_OBTAIN_VAL)
-
-    }
+    @StyleRes
+    private var inActiveTextAppearance: Int = DEFAULT_INT
 
     /**
      * Set a active color
@@ -87,7 +60,7 @@ class SPTabNavigationChildView @JvmOverloads constructor(
         set(value) {
             value?.let {
                 binding.tabImage.setImageResource(value.image)
-                binding.tabTitle.text = resources.getString(value.text)
+                binding.tabTitle.text = value.text
             }
             field = value
         }
@@ -113,7 +86,7 @@ class SPTabNavigationChildView @JvmOverloads constructor(
     /**
      * Sets a navigation title.
      */
-    var text: Int = 0
+    var text: String = SPBaseView.EMPTY_TEXT
         set(value) {
             field = value
             onActiveStatusChange()
@@ -135,10 +108,67 @@ class SPTabNavigationChildView @JvmOverloads constructor(
             defStyleAttr
         ) {
             setStyleResources()
-            setTextAppearance()
+            inActiveTextAppearance = getResourceId(
+                R.styleable.sp_tab_navigation_child_view_inActiveTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
+            activeTextAppearance = getResourceId(
+                R.styleable.sp_tab_navigation_child_view_activeTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
             navigationItem = staticNavigationItem
             onActiveStatusChange()
         }
+    }
+
+    /**
+     * Set a new style
+     */
+    fun setStyle(newStyle: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(newStyle, R.styleable.sp_tab_navigation_child_view)
+        styleAttrs.run {
+
+            inActiveTextAppearance = getResourceId(
+                R.styleable.sp_tab_navigation_child_view_inActiveTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
+            activeTextAppearance = getResourceId(
+                R.styleable.sp_tab_navigation_child_view_activeTextAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+
+            binding.tabTitle.setTextStyle(newStyle)
+            setStyleResources()
+            onActiveStatusChange()
+        }
+    }
+
+    /**
+     * Allows to update style resources
+     */
+    private fun TypedArray.setStyleResources() {
+        activeColor = getColor(
+            R.styleable.sp_tab_navigation_child_view_activeColor,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        inActiveColor = getColor(
+            R.styleable.sp_tab_navigation_child_view_inActiveColor,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        defaultBackgroundColor = getColor(
+            R.styleable.sp_tab_navigation_child_view_defaultBackgroundColor,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        text = getString(R.styleable.sp_tab_navigation_child_view_text).toString()
+        image = getResourceId(
+            R.styleable.sp_tab_navigation_child_view_image,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+
     }
 
     /**
@@ -166,25 +196,18 @@ class SPTabNavigationChildView @JvmOverloads constructor(
             tabImageContainer.isSelected = isActive
             tabTitle.isEnabled = isActive
 
+            updateTextAppearance(if (isActive) activeTextAppearance else inActiveTextAppearance)
+
         }
     }
 
     /**
-     * set textAppearance title View
+     * update text appearance
      */
-    private fun TypedArray.setTextAppearance() {
-        binding.tabTitle.setTextStyle(
-            getResourceId(
-                R.styleable.sp_tab_navigation_child_view_childTextAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-        )
-    }
+    private fun updateTextAppearance(textAppearance: Int) = TextViewCompat.setTextAppearance(binding.tabTitle, textAppearance)
 
-    /**
-     * Set a alpha navigation view
-     */
     companion object {
         const val CARD_DEFAULT_ALPHA = 25
+        const val DEFAULT_INT = 0
     }
 }

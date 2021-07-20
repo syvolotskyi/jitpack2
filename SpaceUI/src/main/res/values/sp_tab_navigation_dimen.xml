@@ -3,7 +3,7 @@
 
     <dimen name="sp_tab_navigation_child_image_width">@dimen/dimen_p_24</dimen>
     <dimen name="sp_tab_navigation_child_image_height">@dimen/dimen_p_24</dimen>
-    <dimen name="sp_tab_navigation_child_text_margin">@dimen/dimen_p_7</dimen>
+    <dimen name="sp_tab_navigation_child_text_margin">@dimen/dimen_p_8</dimen>
     <dimen name="sp_tab_navigation_child_image_container_width">@dimen/dimen_p_50</dimen>
     <dimen name="sp_tab_navigation_child_image_container_height">@dimen/dimen_p_50</dimen>
 

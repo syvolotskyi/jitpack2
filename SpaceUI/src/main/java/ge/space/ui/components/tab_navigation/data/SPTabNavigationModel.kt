@@ -12,7 +12,7 @@ import ge.space.spaceui.R
  * @property style [StyleRes] value which sets a style.
  */
 data class SPTabNavigationModel(
-    @StringRes var text: Int,
+    var text: String,
     @DrawableRes var image: Int,
-    @StyleRes val style: Int  = R.style.h700_medium_caps_navigation_tab_field
+    @StyleRes val style: Int  = R.style.SPTabChildNavigation
 )

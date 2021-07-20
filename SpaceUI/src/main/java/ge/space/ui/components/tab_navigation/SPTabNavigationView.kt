@@ -2,6 +2,7 @@ package ge.space.ui.components.tab_navigation
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.Gravity
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.view.forEach
@@ -39,39 +40,33 @@ class SPTabNavigationView @JvmOverloads constructor(
     /**
      * set child view items
      */
-    var items: MutableList<SPTabNavigationModel> ? = null
-
+    var items: MutableList<SPTabNavigationModel>  = mutableListOf()
 
     /**
      * add child views into container
+     * Each child view should have static width.The main idea is that we should divide container width 3 total size
      */
     fun setUp(clickListener: (SPTabNavigationModel) -> Unit) {
-        items?.forEachIndexed { index, navigationItem ->
-            val childView = SPTabNavigationChildView(context)
-            childView.setParametersToChildView(navigationItem)
-            childView.setStyle(navigationItem.style)
-            childView.layoutParams = LayoutParams(
-                LayoutParams.WRAP_CONTENT,
-                LayoutParams.MATCH_PARENT
-            ).apply {
-                if (index != ZERO && index != items!!.size - ONE || items!!.size == TWO)
-                    weight = ONE_WEIGHT
-            }
-
-            childView.setOnClickListener { view ->
-                (view.tag as? SPTabNavigationModel)?.let { tab ->
-                    if (previewNavigationModel != null && previewNavigationModel != tab){
-                        clickListener.invoke(navigationItem)
-                        changeNavigationTab(tab)
+        post {
+            val childWidth = this.measuredWidth / CHILD_VIEW_SCREEN_DIVIDER
+            items.forEach {navigationItem ->
+                val childView = SPTabNavigationChildView(context)
+                childView.setParametersToChildView(navigationItem)
+                childView.setStyle(navigationItem.style)
+                childView.layoutParams = LayoutParams(childWidth, LayoutParams.MATCH_PARENT)
+                childView.setOnClickListener { view ->
+                    (view.tag as? SPTabNavigationModel)?.let { tab ->
+                        if (previewNavigationModel != null && previewNavigationModel != tab){
+                            clickListener.invoke(navigationItem)
+                            changeNavigationTab(tab)
+                        }
                     }
-
                 }
+                changeNavigationTab(items.first())
+                gravity = Gravity.CENTER
+                addView(childView)
             }
-
-            changeNavigationTab(items!!.first())
-            addView(childView)
         }
-
     }
 
     /**
@@ -87,11 +82,6 @@ class SPTabNavigationView @JvmOverloads constructor(
     }
 
     companion object {
-        const val ZERO = 0
-        const val ONE = 1
-        const val TWO = 2
-        const val ONE_WEIGHT = 1f
+        const val CHILD_VIEW_SCREEN_DIVIDER = 3
     }
-
 }
-
