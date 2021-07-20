@@ -38,7 +38,6 @@
             <enum name="none" value="0" />
             <enum name="withIcon" value="1" />
         </attr>
-        <attr name="defaultText" format="string|reference" />
     </declare-styleable>
 
 </resources>

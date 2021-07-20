@@ -10,26 +10,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/dimen_p_64"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Button" />
 
-    <ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
+    <FrameLayout
         android:id="@+id/tfDropdown"
-        style="@style/SPTextField.Dropdown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_20"
-        android:layout_marginTop="@dimen/dimen_p_64"
-        android:maxLength="6"
         android:text="@string/enter_you_details_here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonName"
-        app:titleText="Field label" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonName" />
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cbMandatory"

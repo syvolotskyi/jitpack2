@@ -15,12 +15,11 @@ import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.util.extension.loadImageUrl
 
 interface SPIconFactory {
+
     /**
      * Returns a view object.
      *
      */
-    fun create(data: SPIconData): View
-
     sealed class SPIconData {
         data class SPImageResourcesData(@DrawableRes val res: Int) : SPIconData()
         data class SPImageDefaultResourcesData(@DrawableRes val res: Int) : SPIconData()
@@ -28,40 +27,33 @@ interface SPIconFactory {
 
         data class SPEmptyChip(val chipStyle: SPEmptyChipStyle) : SPIconData()
         data class SPrimaryChip(val chipSize: SPChipSize) : SPIconData()
-        data class SPSecondaryChip(val bankLogoUrl: String, val styleRes: StyleRes) : SPIconData()
-        data class SPDigitalChip(val gradient: SPBankCardGradient, val styleRes: StyleRes) :
+        data class SPSecondaryChip(val bankLogoUrl: String, @StyleRes val styleRes: Int) :
             SPIconData()
 
+        data class SPDigitalChip(val gradient: SPBankCardGradient, @StyleRes val styleRes: Int) :
+            SPIconData()
     }
-}
 
-
-class SPCompanionIconFactory(val context: Context) : SPIconFactory {
-
-
-    override fun create(data: SPIconFactory.SPIconData): View {
-        return when (data) {
-            is SPIconFactory.SPIconData.SPImageResourcesData -> createImageView(data.res)
-            is SPIconFactory.SPIconData.SPImageDefaultResourcesData -> createImageView(data.res)
-            is SPIconFactory.SPIconData.SPImageUrlData -> ImageView(context).apply {
-                context.loadImageUrl(
-                    data.url,
-                    this
-                )
+    companion object {
+        fun SPIconData.createView(context: Context): View {
+            return when (this) {
+                is SPIconData.SPImageResourcesData -> createView(context, res)
+                is SPIconData.SPImageDefaultResourcesData -> createView(context, res)
+                is SPIconData.SPImageUrlData -> ImageView(context).apply {
+                    context.loadImageUrl(url, this)
+                }
+                is SPIconData.SPrimaryChip -> SPPrimaryChipIconImpl(context).create(this)
+                is SPIconData.SPSecondaryChip -> SPSecondaryChipIconImpl(context).create(this)
+                is SPIconData.SPDigitalChip -> SPDigitalChipIconImpl(context).create(this)
+                is SPIconData.SPEmptyChip -> SPEmptyChipIconImpl(context).create(this)
             }
-            is SPIconFactory.SPIconData.SPrimaryChip -> SPPrimaryChipIconImpl(context).create(data)
-            is SPIconFactory.SPIconData.SPSecondaryChip -> SPSecondaryChipIconImpl(context).create(
-                data
-            )
-            is SPIconFactory.SPIconData.SPDigitalChip -> SPDigitalChipIconImpl(context).create(data)
-            is SPIconFactory.SPIconData.SPEmptyChip -> SPEmptyChipIconImpl(context).create(data)
         }
+
+        private fun createView(context: Context, @DrawableRes res: Int): ImageView =
+            ImageView(context)
+                .apply {
+                    setImageResource(res)
+                }
     }
-
-    private fun createImageView(@DrawableRes res: Int): ImageView = ImageView(context)
-        .apply {
-            setImageResource(res)
-        }
-
 }
 

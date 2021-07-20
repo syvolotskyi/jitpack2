@@ -9,9 +9,17 @@ import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
+import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
+import ge.space.ui.components.dialogs.data.SPDialogIcon
+import ge.space.ui.components.dialogs.data.SPDialogInfo
+import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
+import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.dialogs.showMultipleButtonDialog
 import ge.space.ui.components.image.SPIconFactory
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
-import ge.space.ui.components.text_fields.input.utils.extension.buildWithDropdownItemModel
+import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
+import ge.space.ui.components.text_fields.input.dropdown.data.OnBindDropdownItemModel
+import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 
 class SPDropdownComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.dropdown
@@ -38,17 +46,39 @@ class SPDropdownComponent : SPShowCaseComponent {
                     true
                 )
 
-                with(itemBinding.tfDropdown) {
-                    style(fieldSample.resId)
-                    dropdowns.add(this)
-                    setDefault(
-                        resources.getString(R.string.enter_you_details_here),
-                        SPIconFactory.SPIconData.SPImageDefaultResourcesData(R.drawable.ic_country_georgia_24_regular)
-                    )
+                val context = itemBinding.tfDropdown.context
 
-                    buildWithDropdownItemModel()
-                    items = SPTextFieldsDropdownItems.list
-                }
+                val dropdown =
+                    SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
+                        .setStyle(fieldSample.resId)
+                        .setDefault(
+                            SPDropdownItemModel(
+                                0,
+                                context.getString(R.string.enter_you_details_here),
+                                SPIconFactory.SPIconData.SPEmptyChip(SPEmptyChipStyle.White)
+                            )
+                        )
+                        .setTitle(context.getString(R.string.enter_you_details_here))
+                        .setOnBindItem(OnBindDropdownItemModel())
+                        .setItems(SPTextFieldsDropdownItems.list)
+                        .setOnClickListener {
+                            environmentSP.requireFragmentActivity().showMultipleButtonDialog(
+                                SPDialogInfo(
+                                    layoutBinding.textInput.text.toString(),
+                                    "Select icon",
+                                    createMultipleButtonsConfigs(
+                                        SPTextFieldsDropdownItems.list,
+                                        it
+                                    )
+                                ),
+                                SPDialogIcon.Alert(R.attr.accent_magenta)
+                            )
+                        }
+                        .build(environmentSP.requireFragmentActivity())
+
+                dropdowns.add(dropdown)
+                itemBinding.tfDropdown.addView(dropdown)
+
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
@@ -56,15 +86,15 @@ class SPDropdownComponent : SPShowCaseComponent {
                 }
 
                 itemBinding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.tfDropdown.inputMandatory = isChecked
+                    dropdown.inputMandatory = isChecked
                 }
 
                 itemBinding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.tfDropdown.isEnabled = !isChecked
+                    dropdown.isEnabled = !isChecked
                 }
 
                 itemBinding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.tfDropdown.descriptionText = if (isChecked) {
+                    dropdown.descriptionText = if (isChecked) {
                         itemBinding.tfDropdown.resources.getString(R.string.description)
                     } else {
                         SPInputComponent.EMPTY_STRING
@@ -72,8 +102,8 @@ class SPDropdownComponent : SPShowCaseComponent {
                 }
 
                 layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
-                    itemBinding.tfDropdown.labelText = text.toString()
-                    itemBinding.tfDropdown.text = text.toString()
+                    dropdown.labelText = text.toString()
+                    dropdown.text = text.toString()
                 }
 
             }
@@ -81,6 +111,18 @@ class SPDropdownComponent : SPShowCaseComponent {
             return layoutBinding.root
         }
 
+        private fun createMultipleButtonsConfigs(
+            items: List<SPDropdownItemModel>,
+            view: SPTextFieldDropdown<SPDropdownItemModel>
+        ) =
+            items.map {
+                SPDialogInfoHolder(
+                    it.value,
+                    SPDialogBottomVerticalButton.BottomButtonType.Default
+                ) {
+                    view.onSelectedItem(it)
+                }
+            } as ArrayList<SPDialogInfoHolder>
     }
 
 }

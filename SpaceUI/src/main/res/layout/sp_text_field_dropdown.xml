@@ -9,6 +9,7 @@
         android:id="@+id/ivLeftContainer"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/sp_text_field_dropdown_icon_height"
+        android:paddingHorizontal="@dimen/sp_text_field_dropdown_icon_margin"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
