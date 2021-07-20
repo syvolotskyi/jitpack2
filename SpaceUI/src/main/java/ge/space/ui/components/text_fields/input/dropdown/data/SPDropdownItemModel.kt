@@ -1,6 +1,6 @@
 package ge.space.ui.components.text_fields.input.dropdown.data
 
-import ge.space.ui.components.image.SPIconFactory
+import ge.space.ui.components.view.SPViewData
 
 
 /**
@@ -15,7 +15,7 @@ import ge.space.ui.components.image.SPIconFactory
 data class SPDropdownItemModel(
     val id: Int,
     val value: String,
-    val iconData: SPIconFactory.SPIconData? = null,
+    val iconData: SPViewData? = null,
 )
 
 

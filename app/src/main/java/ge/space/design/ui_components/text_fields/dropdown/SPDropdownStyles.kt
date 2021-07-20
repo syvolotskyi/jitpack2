@@ -2,8 +2,8 @@ package ge.space.design.ui_components.text_fields.dropdown
 
 import com.example.spacedesignsystem.R
 import ge.space.ui.components.bank_cards.data.SPChipSize
-import ge.space.ui.components.image.SPIconFactory
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
+import ge.space.ui.components.view.SPViewData
 
 data class SPTextFieldsDropDownsSupportsLoading(
     val resId: Int
@@ -25,17 +25,17 @@ object SPTextFieldsDropdownItems {
         SPDropdownItemModel(
             1,
             "Image from resources",
-            SPIconFactory.SPIconData.SPImageResourcesData(R.drawable.ic_small_empty_chip_dark)
+            SPViewData.SPImageResourcesData(R.drawable.ic_small_empty_chip_dark)
         ),
         SPDropdownItemModel(
             2,
             "Image from url",
-            SPIconFactory.SPIconData.SPImageUrlData(MASTER_CARD)
+            SPViewData.SPImageUrlData(MASTER_CARD)
         ),
         SPDropdownItemModel(
             3,
             "Primary chip",
-            SPIconFactory.SPIconData.SPrimaryChip(SPChipSize.Small)
+            SPViewData.SPrimaryChip(SPChipSize.Small)
         ),
     )
 

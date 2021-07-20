@@ -7,19 +7,19 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseB
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
+import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfo
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
-import ge.space.ui.components.image.SPIconFactory
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.OnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
+import ge.space.ui.components.view.SPViewData
 
 class SPDropdownComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.dropdown
@@ -55,7 +55,7 @@ class SPDropdownComponent : SPShowCaseComponent {
                             SPDropdownItemModel(
                                 0,
                                 context.getString(R.string.enter_you_details_here),
-                                SPIconFactory.SPIconData.SPEmptyChip(SPEmptyChipStyle.White)
+                                SPViewData.SPEmptyChip(SPEmptyChipStyle.White)
                             )
                         )
                         .setTitle(context.getString(R.string.enter_you_details_here))
