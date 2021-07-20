@@ -17,7 +17,7 @@ import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButto
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
-import ge.space.ui.components.text_fields.input.dropdown.data.OnBindDropdownItemModel
+import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.view.SPViewData
 
@@ -59,7 +59,7 @@ class SPDropdownComponent : SPShowCaseComponent {
                             )
                         )
                         .setTitle(context.getString(R.string.enter_you_details_here))
-                        .setOnBindItem(OnBindDropdownItemModel())
+                        .setOnBindItem(SPOnBindDropdownItemModel())
                         .setItems(SPTextFieldsDropdownItems.list)
                         .setOnClickListener {
                             environmentSP.requireFragmentActivity().showMultipleButtonDialog(

@@ -13,7 +13,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
-import ge.space.ui.components.text_fields.input.dropdown.data.OnBindInterface
+import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 /**
  * Dropdown view which allows to manipulate next parameters:
  *
@@ -141,7 +141,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         private var default: T? = null
         private var items: List<T> = emptyList()
         private var style: Int = R.style.SPTextField_Dropdown
-        private var onBind: OnBindInterface<T>? = null
+        private var onBind: SPOnBindInterface<T>? = null
 
         fun setStyle(@StyleRes newStyle: Int = R.style.SPTextField_Dropdown): SPTextFieldDropdownBuilder<T> {
             style = newStyle
@@ -176,7 +176,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             return this
         }
 
-        fun setOnBindItem(onBindInterface: OnBindInterface<T>): SPTextFieldDropdownBuilder<T> {
+        fun setOnBindItem(onBindInterface: SPOnBindInterface<T>): SPTextFieldDropdownBuilder<T> {
             onBind = onBindInterface
 
             return this

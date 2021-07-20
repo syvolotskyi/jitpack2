@@ -3,7 +3,7 @@ package ge.space.ui.components.text_fields.input.dropdown.data
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.view.SPViewFactory.Companion.createView
 
-class OnBindDropdownItemModel : OnBindInterface<SPDropdownItemModel> {
+class SPOnBindDropdownItemModel : SPOnBindInterface<SPDropdownItemModel> {
     override fun getBindItemModel(): (view: SPTextFieldDropdown<SPDropdownItemModel>, item: SPDropdownItemModel) -> Unit =
         { view, item ->
             item.iconData?.let {
