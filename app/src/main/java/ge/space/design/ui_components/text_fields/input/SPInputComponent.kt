@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemListTextFieldBinding
-import com.example.spacedesignsystem.databinding.SpLayoutListFieldsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
@@ -26,7 +26,7 @@ class SPInputComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpLayoutListFieldsShowcaseBinding.inflate(
+            val layoutBinding = SpLayoutTextFieldsListShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPTextFieldBaseView<SpTextFieldTextLayoutBinding>>()

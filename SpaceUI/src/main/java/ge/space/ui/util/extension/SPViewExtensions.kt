@@ -1,9 +1,12 @@
 package ge.space.ui.util.extension
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -47,6 +50,16 @@ fun <T> T.handleAttributeAction(defVal: T, action: (T) -> Unit) {
         action(this)
     }
 }
+/**
+ * Create a simple ImageView with icon from resource
+ *
+ * @param res resource
+ */
+fun ImageView.fromResource( @DrawableRes res: Int): ImageView =
+    ImageView(context)
+        .apply {
+            setImageResource(res)
+        }
 
 /**
  * A helper method which allows to return a result divided
