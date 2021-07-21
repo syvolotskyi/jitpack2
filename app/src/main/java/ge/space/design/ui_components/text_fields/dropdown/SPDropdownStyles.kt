@@ -3,7 +3,7 @@ package ge.space.design.ui_components.text_fields.dropdown
 import com.example.spacedesignsystem.R
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
-import ge.space.ui.components.view.SPViewData
+import ge.space.ui.util.view_factory.SPViewData
 
 data class SPTextFieldsDropDownsSupportsLoading(
     val resId: Int

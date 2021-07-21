@@ -19,7 +19,7 @@ import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
-import ge.space.ui.components.view.SPViewData
+import ge.space.ui.util.view_factory.SPViewData
 
 class SPDropdownComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.dropdown

@@ -1,6 +1,6 @@
 package ge.space.ui.components.text_fields.input.dropdown.data
 
-import ge.space.ui.components.view.SPViewData
+import ge.space.ui.util.view_factory.SPViewData
 
 
 /**

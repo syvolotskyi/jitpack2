@@ -1,8 +1,8 @@
-package ge.space.ui.components.view.component_type.chip
+package ge.space.ui.util.view_factory.component_type.chip
 
 import android.content.Context
 import ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
-import ge.space.ui.components.view.SPViewData
+import ge.space.ui.util.view_factory.SPViewData
 
 class SPSecondaryChipIconImpl(context: Context) :
     SPChipIcon<SPViewData.SPSecondaryChip>(context) {
