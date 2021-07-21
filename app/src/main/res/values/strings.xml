@@ -31,6 +31,9 @@
     <string name="phone_input">Phone input</string>
     <string name="phone_input_desc">Phone input text inputs</string>
 
+    <string name="dropdown">Dropdown</string>
+    <string name="dropdown_desc">Dropdown desc</string>
+
     <string name="number_input">Number input</string>
     <string name="number_input_desc">Enter sum more than 120.0 to show distractive attr</string>
 
@@ -97,6 +100,8 @@
     <string name="title_usd">Showcases with USD</string>
     <string name="title_ge">Showcases with GE</string>
     <string name="title_eur">Showcases with EUR</string>
+
+    <string name="enter_you_details_here">Enter your details here</string>
 
     <string name="component_new_credit_card">New credit card</string>
     <string name="component_new_credit_card_description">Samples of new credit cards</string>

@@ -9,6 +9,7 @@ import ge.space.design.ui_components.colors.SPColorsComponentSP
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.switch.SPSwitchButtonComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
+
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 
 object DesignSystemComponents : SPShowCaseComponent {
@@ -29,6 +30,7 @@ object DesignSystemComponents : SPShowCaseComponent {
             new { SPBannerComponent() },
             new { SPBankCardComponent() },
             new { SPTabNavigationComponent() }
+
         )
     }
 }
