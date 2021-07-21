@@ -202,8 +202,8 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
          * build dropdown view
          *
          */
-        fun build(activity: FragmentActivity): SPTextFieldDropdown<*> =
-            (view ?: SPTextFieldDropdown(activity)).apply {
+        fun build(context: Context): SPTextFieldDropdown<*> =
+            (view ?: SPTextFieldDropdown(context)).apply {
                 style(style)
 
                 labelText = title
