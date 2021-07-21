@@ -13,7 +13,9 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+
 /**
  * Dropdown view which allows to manipulate next parameters:
  *
@@ -139,12 +141,20 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         private var description: String = EMPTY_STRING
         private var listener: (SPTextFieldDropdown<T>) -> Unit = { }
         private var default: T? = null
+        private var view: SPTextFieldDropdown<T>? = null
         private var items: List<T> = emptyList()
         private var style: Int = R.style.SPTextField_Dropdown
         private var onBind: SPOnBindInterface<T>? = null
 
         fun setStyle(@StyleRes newStyle: Int = R.style.SPTextField_Dropdown): SPTextFieldDropdownBuilder<T> {
             style = newStyle
+
+            return this
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        fun withView(view: SPTextFieldDropdown<*>): SPTextFieldDropdownBuilder<T> {
+            this.view = view as SPTextFieldDropdown<T>
 
             return this
         }
@@ -193,7 +203,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
          *
          */
         fun build(activity: FragmentActivity): SPTextFieldDropdown<*> =
-            SPTextFieldDropdown<T>(activity).apply {
+            (view ?: SPTextFieldDropdown(activity)).apply {
                 style(style)
 
                 labelText = title

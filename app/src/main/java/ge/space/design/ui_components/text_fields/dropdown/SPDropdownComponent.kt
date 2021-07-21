@@ -47,7 +47,6 @@ class SPDropdownComponent : SPShowCaseComponent {
                 )
 
                 val context = itemBinding.tfDropdown.context
-
                 val dropdown =
                     SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
                         .setStyle(fieldSample.resId)
@@ -77,7 +76,6 @@ class SPDropdownComponent : SPShowCaseComponent {
                         .build(environmentSP.requireFragmentActivity())
 
                 dropdowns.add(dropdown)
-                itemBinding.tfDropdown.addView(dropdown)
 
 
                 with(itemBinding.buttonName) {

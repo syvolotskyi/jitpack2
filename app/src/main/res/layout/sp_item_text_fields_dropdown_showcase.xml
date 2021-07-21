@@ -17,12 +17,11 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Button" />
 
-    <FrameLayout
+    <ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
         android:id="@+id/tfDropdown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_20"
-        android:text="@string/enter_you_details_here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonName" />
