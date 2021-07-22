@@ -1,8 +1,9 @@
 package ge.space.design.ui_components.banners.full_screen
 
 import android.os.Parcelable
-import ge.space.ui.components.banners.SPBannerStatus
+import ge.space.ui.util.view_factory.SPViewData
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 
 /**
@@ -13,24 +14,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class SPBannerData(
-    val type: SPBannerType,
     val title: String,
     val subtitle: String,
     val description: String,
     val titleVisibility: Boolean,
     val subtitleVisibility: Boolean,
     val descVisibility: Boolean,
-    val image: Int = 0,
-    val state: SPBannerStatus.StatusStates = SPBannerStatus.StatusStates.Success
+    val resource: @RawValue SPViewData
 ) : Parcelable
-
-/**
- * [SPBannerType] specifies which banner
- * view should be added in [SPBannerFullScreenActivity]
- * it is needed for [SPBannerData]'s parameter
- */
-
-enum class SPBannerType {
-    Status,
-    Illustration
-}
