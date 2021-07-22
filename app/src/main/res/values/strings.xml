@@ -98,8 +98,8 @@
     <string name="title_usd">Showcases with USD</string>
     <string name="title_ge">Showcases with GE</string>
     <string name="title_eur">Showcases with EUR</string>
-    <string name="withXml">With xml</string>
-    <string name="withoutXml">Without xml</string>
+    <string name="withXml">from xml</string>
+    <string name="created_programmatically">created by programmatically\n(without icon)</string>
 
     <string name="enter_you_details_here">Enter your details here</string>
 

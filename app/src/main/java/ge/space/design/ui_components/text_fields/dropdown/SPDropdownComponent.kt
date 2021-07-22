@@ -4,9 +4,7 @@ import android.widget.FrameLayout
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemTextFieldsDropdownShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
@@ -24,7 +22,6 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownIt
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.view_factory.SPViewData
-import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import java.util.*
 
 class SPDropdownComponent : SPShowCaseComponent {
