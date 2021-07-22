@@ -25,6 +25,7 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemMode
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
+import java.util.*
 
 class SPDropdownComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.dropdown
@@ -104,8 +105,8 @@ class SPDropdownComponent : SPShowCaseComponent {
                 .setOnClickListener {
                     fragmentActivity.showMultipleButtonDialog(
                         SPDialogInfo(
-                            "Select icon",
-                            "",
+                            view.resources.getString(R.string.selectIcon),
+                            EMPTY_STRING,
                             createMultipleButtonsConfigs(
                                 SPTextFieldsDropdownItems.list,
                                 it
@@ -175,6 +176,10 @@ class SPDropdownComponent : SPShowCaseComponent {
                     view.onSelectedItem(it)
                 }
             } as ArrayList<SPDialogInfoHolder>
+    }
+
+    companion object{
+        private const val EMPTY_STRING= ""
     }
 
 }
