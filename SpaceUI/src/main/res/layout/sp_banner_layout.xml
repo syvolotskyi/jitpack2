@@ -8,10 +8,11 @@
     android:layout_gravity="center"
     android:padding="@dimen/dimen_p_30">
 
-    <ImageView
-        android:id="@+id/bannerImage"
+    <LinearLayout
+        android:id="@+id/bannerResourceContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bannerTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bannerSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bannerImage"
+        app:layout_constraintTop_toBottomOf="@+id/bannerResourceContainer"
         tools:text="დაიწყე ფულის დაგროვება შენი მიზნებისთვის" />
 
     <TextView

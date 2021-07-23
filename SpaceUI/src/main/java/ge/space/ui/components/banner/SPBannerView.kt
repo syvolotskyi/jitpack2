@@ -1,4 +1,4 @@
-package ge.space.ui.components.banners.base
+package ge.space.ui.components.banner
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -14,14 +14,16 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBannerLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_TEXT
+import ge.space.ui.util.view_factory.SPViewData
+import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
-abstract class SPBannerBaseView @JvmOverloads constructor(
+class SPBannerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    protected val binding = SpBannerLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = SpBannerLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
     var bannerTitle: String = EMPTY_TEXT
         set(value) {
@@ -85,6 +87,20 @@ abstract class SPBannerBaseView @JvmOverloads constructor(
         context.theme.obtainStyledAttributes(style, R.styleable.sp_banner_base).run {
             setTextAppearances()
         }
+    }
+
+    fun setBannerResource(resourceData: SPViewData) {
+        binding.bannerResourceContainer.removeAllViews()
+        when (resourceData) {
+            is SPViewData.SPImageResourcesData, is SPViewData.SPNewCreditCards ->
+                resourceData.let {
+                    val resource = it.createView(context)
+                    binding.bannerResourceContainer.addView(resource)
+                }
+            else ->
+                throw IllegalStateException("banner resource container can not accept $resourceData type")
+        }
+
     }
 
     private fun TypedArray.setTextAppearances() {
