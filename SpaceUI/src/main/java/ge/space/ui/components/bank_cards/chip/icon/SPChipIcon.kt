@@ -18,6 +18,7 @@ import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.loadRoundImageUrl
 import ge.space.ui.util.extension.visibleOrGone
+import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * An extended view of [SPBaseView] which is for change an icon and size of the view.
@@ -114,6 +115,9 @@ class SPChipIcon @JvmOverloads constructor(
         changeIcon()
         handleIconAppearance()
     }
+
+    override fun getViewData(): SPViewData =
+         SPViewData.SPChipData(size, icon)
 
     private fun handleVisibility() {
         with(binding) {

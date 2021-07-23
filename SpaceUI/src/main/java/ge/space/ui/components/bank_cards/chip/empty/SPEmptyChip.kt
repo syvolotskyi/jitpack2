@@ -8,6 +8,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
+import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * A simple empty chip just for show an empty state
@@ -48,4 +49,7 @@ class SPEmptyChip @JvmOverloads constructor(
             SPEmptyChipStyle.White -> R.drawable.ic_small_empty_chip_light
             else -> R.drawable.ic_small_empty_chip_dark
         }
+
+    override fun getViewData(): SPViewData =
+         SPViewData.SPEmptyChipData(size, style)
 }

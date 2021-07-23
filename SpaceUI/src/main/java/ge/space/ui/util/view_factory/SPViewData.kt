@@ -11,9 +11,30 @@ sealed class SPViewData {
     data class SPImageDefaultResourcesData(@DrawableRes val res: Int) : SPViewData()
     data class SPImageUrlData(val url: String) : SPViewData()
 
-    data class SPEmptyChip(val chipStyle: SPEmptyChipStyle) : SPViewData()
-    data class SPrimaryChip(val chipSize: SPChipSize) : SPViewData()
-    data class SPSecondaryChip(val bankLogoUrl: String, @StyleRes val styleRes: Int) : SPViewData()
+    data class SPEmptyChipData(
+        val chipSize: SPChipSize,
+        val chipStyle: SPEmptyChipStyle
+    ) : SPViewData()
 
-    data class SPDigitalChip(val gradient: SPBankCardGradient, @StyleRes val styleRes: Int) : SPViewData()
+    data class SPChipData(
+        val chipSize: SPChipSize,
+        @DrawableRes val drawableRes: Int
+    ) : SPViewData()
+
+    data class SPrimaryChipData(val chipSize: SPChipSize) : SPViewData()
+    data class SPSecondaryChipData(
+        val chipSize: SPChipSize,
+        val bankLogoUrl: String,
+        val paymentSystemUrl: String,
+        val hasBorder: Boolean,
+        @StyleRes val styleRes: Int
+    ) :
+        SPViewData()
+
+    data class SPDigitalChipData(
+        val chipSize: SPChipSize,
+        val gradient: SPBankCardGradient,
+        @StyleRes val styleRes: Int
+    ) :
+        SPViewData()
 }

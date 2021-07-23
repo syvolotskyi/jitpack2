@@ -10,6 +10,7 @@ import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
+import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfo
@@ -94,7 +95,7 @@ class SPDropdownComponent : SPShowCaseComponent {
                     SPDropdownItemModel(
                         0,
                         view.context.getString(R.string.enter_you_details_here),
-                        SPViewData.SPEmptyChip(SPEmptyChipStyle.White)
+                        SPViewData.SPEmptyChipData(SPChipSize.Small, SPEmptyChipStyle.White)
                     )
                 )
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
