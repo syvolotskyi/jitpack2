@@ -11,7 +11,7 @@
 
         <include
             android:id="@+id/bannerInputTextsView"
-            layout="@layout/sp_banner_attributes_showcase"
+            layout="@layout/sp_banner_input_fields_showcase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_p_20"
@@ -19,13 +19,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/chooseStateButton"
+            android:id="@+id/changeResourceButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_p_20"
             android:gravity="center"
             android:padding="@dimen/dimen_p_10"
-            android:text="choose status"
+            android:text="change resource"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/dimen_sp_18"
@@ -34,13 +34,13 @@
             app:style="@style/SPButton.AccentView"
             tools:ignore="HardcodedText" />
 
-        <ge.space.ui.components.banners.SPBannerStatus
-            android:id="@+id/bannerStatus"
+        <ge.space.ui.components.banner.SPBannerView
+            android:id="@+id/bannerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toTopOf="@id/showFullScreenButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chooseStateButton"
+            app:layout_constraintTop_toBottomOf="@id/changeResourceButton"
             app:banner_description="@string/banner_description"
             app:banner_subtitle="@string/banner_subtitle"
             app:banner_title="@string/banner_title" />

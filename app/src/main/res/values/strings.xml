@@ -65,6 +65,9 @@
     <string name="component_banner_illustration">Illustration Banner</string>
     <string name="component_banner_illustration_description">Illustration Banner doesn\'t have limitations to change banner image alongside with other Base attributes: banner title, subtitle, description text and each of their visibility</string>
 
+    <string name="component_banner_card">Card Banner</string>
+    <string name="component_banner_card_description">Card Banner is represented as a banner with new credit card image resource</string>
+
     <string name="banner_title">Banner Title</string>
     <string name="banner_subtitle">Banner Subtitle</string>
     <string name="banner_description">Banner Description</string>

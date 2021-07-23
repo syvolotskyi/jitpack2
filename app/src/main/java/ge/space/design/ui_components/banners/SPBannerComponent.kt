@@ -2,8 +2,9 @@ package ge.space.design.ui_components.banners
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.SPShowCaseComponent
-import ge.space.design.ui_components.banners.illustration.SPBannerIllustrationComponent
-import ge.space.design.ui_components.banners.status.SPBannerStatusComponent
+import ge.space.design.ui_components.banners.sub_components.card.SPBannerCardComponent
+import ge.space.design.ui_components.banners.sub_components.illustration.SPBannerIllustrationComponent
+import ge.space.design.ui_components.banners.sub_components.status.SPBannerStatusComponent
 
 class SPBannerComponent : SPShowCaseComponent {
 
@@ -14,7 +15,8 @@ class SPBannerComponent : SPShowCaseComponent {
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(
             SPBannerStatusComponent(),
-            SPBannerIllustrationComponent()
+            SPBannerIllustrationComponent(),
+            SPBannerCardComponent()
         )
     }
 
