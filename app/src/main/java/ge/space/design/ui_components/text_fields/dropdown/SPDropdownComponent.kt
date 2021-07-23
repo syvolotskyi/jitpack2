@@ -21,6 +21,7 @@ import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.view_factory.SPViewData
 import java.util.*
 
@@ -46,7 +47,7 @@ class SPDropdownComponent : SPShowCaseComponent {
 
             dropdowns.add(
                 createDropdownFromXml(
-                    layoutBinding.tfDropdown,
+                    layoutBinding.textFieldDropdown,
                     environmentSP.requireFragmentActivity()
                 )
             )
@@ -61,12 +62,12 @@ class SPDropdownComponent : SPShowCaseComponent {
                 dropdowns.forEach { it.isEnabled = !isChecked }
             }
 
-            layoutBinding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
+            layoutBinding.cbEnableDescription.setOnCheckedChangeListener { _, isChecked ->
                 dropdowns.forEach {
                     it.descriptionText = if (isChecked) {
-                        layoutBinding.tfDropdown.resources.getString(R.string.description)
+                        layoutBinding.textFieldDropdown.resources.getString(R.string.description)
                     } else {
-                        SPInputComponent.EMPTY_STRING
+                        EMPTY_STRING
                     }
                 }
             }
@@ -174,9 +175,4 @@ class SPDropdownComponent : SPShowCaseComponent {
                 }
             } as ArrayList<SPDialogInfoHolder>
     }
-
-    companion object{
-        private const val EMPTY_STRING= ""
-    }
-
 }

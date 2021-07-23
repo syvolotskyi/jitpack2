@@ -16,6 +16,7 @@ import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
+import ge.space.ui.util.extension.EMPTY_STRING
 
 class SPInputComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.text_input
@@ -65,7 +66,7 @@ class SPInputComponent : SPShowCaseComponent {
                     itemBinding.simpleInput.isEnabled = !isChecked
                 }
 
-                itemBinding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
+                itemBinding.cbEnableDescription.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.simpleInput.descriptionText = if (isChecked) {
                         itemBinding.simpleInput.resources.getString(R.string.description)
                     } else {
@@ -111,7 +112,6 @@ class SPInputComponent : SPShowCaseComponent {
     }
 
     companion object {
-        const val EMPTY_STRING = ""
         const val TEXT_WATCHER_CHECK_TEXT = "Space"
     }
 
