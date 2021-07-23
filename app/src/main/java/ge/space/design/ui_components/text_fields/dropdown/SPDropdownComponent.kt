@@ -137,8 +137,8 @@ class SPDropdownComponent : SPShowCaseComponent {
                 .setOnClickListener {
                     fragmentActivity.showMultipleButtonDialog(
                         SPDialogInfo(
-                            "Select icon",
-                            "",
+                            view.resources.getString(R.string.selectIcon),
+                            EMPTY_STRING,
                             createMultipleStringsButtonsConfigs(
                                 items,
                                 it
