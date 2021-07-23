@@ -89,7 +89,7 @@ class SPBannerView @JvmOverloads constructor(
         }
     }
 
-    fun setBannerResource(resourceData: SPViewData?) {
+    fun setBannerResource(resourceData: SPViewData) {
         binding.bannerResourceContainer.removeAllViews()
         when (resourceData) {
             is SPViewData.SPImageResourcesData, is SPViewData.SPNewCreditCards ->
