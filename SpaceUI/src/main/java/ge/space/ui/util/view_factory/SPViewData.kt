@@ -13,8 +13,6 @@ sealed class SPViewData : Parcelable{
     @Parcelize
     data class SPImageResourcesData(@DrawableRes val res: Int) : SPViewData()
     @Parcelize
-    data class SPImageDefaultResourcesData(@DrawableRes val res: Int) : SPViewData()
-    @Parcelize
     data class SPImageUrlData(val url: String) : SPViewData()
 
     @Parcelize

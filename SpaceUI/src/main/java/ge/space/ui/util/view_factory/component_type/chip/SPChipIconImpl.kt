@@ -8,10 +8,9 @@ import ge.space.ui.util.view_factory.component_type.SPViewComponentType
 class SPChipIconImpl(context: Context) :
     SPViewComponentType<SPViewData.SPChipData>(context) {
 
-    override fun create(type: SPViewData.SPChipData): SPChipIcon {
-        return SPChipIcon(context).apply {
+    override fun create(type: SPViewData.SPChipData): SPChipIcon =
+        SPChipIcon(context).apply {
             size = type.chipSize
             icon = type.drawableRes
         }
-    }
 }
