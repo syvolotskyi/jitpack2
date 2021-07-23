@@ -10,6 +10,8 @@ class SPNewCreditCardImpl(context: Context) : SPViewImpl<SPViewData.SPNewCreditC
     override fun create(type: SPViewData.SPNewCreditCards): SPNewCreditCard {
         return SPNewCreditCard(context).apply {
             size = type.chipSize
+
+            // TODO: 23-Jul-21 add text
         }
     }
 
