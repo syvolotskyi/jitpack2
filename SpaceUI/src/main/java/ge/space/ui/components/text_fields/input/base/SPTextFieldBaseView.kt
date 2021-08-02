@@ -57,6 +57,9 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             handleShowingLabelText()
         }
 
+    /**
+     * Sets a input mandatory red star at the and of label text
+     */
     var inputMandatory = false
         set(value) {
             field = value
@@ -95,7 +98,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             handleShowingDescriptionText()
         }
 
-    var onFocusChangeListener: (Boolean) -> Unit =  {  }
+    var onFocusChangeListener: (Boolean) -> Unit = { }
 
     /**
      * Lazy property for initialize ViewBinding in constructor

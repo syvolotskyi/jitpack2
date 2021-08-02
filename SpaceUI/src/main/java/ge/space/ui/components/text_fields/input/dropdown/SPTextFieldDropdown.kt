@@ -13,7 +13,10 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+import ge.space.ui.util.extension.EMPTY_STRING
+
 /**
  * Dropdown view which allows to manipulate next parameters:
  *
@@ -54,6 +57,9 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     private var inflateType: InflateType = InflateType.None
 
+    /**
+     * Sets a dropdown text
+     */
     override var text: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
         set(value) {
@@ -62,6 +68,9 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             inputTextBinding.etInputField.text = value
         }
 
+    /**
+     * Sets a left image, if inflate type is withImage
+     */
     fun setImage(view: View) {
         if (inflateType == InflateType.WithIcon) {
             inputTextBinding.ivLeftContainer.removeAllViews()
@@ -69,6 +78,24 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Sets a default Item and bind it
+     */
+    fun setDefault(type: T) {
+        defaultItem = type
+
+        defaultItem?.let { bindViewValue(this, it) }
+    }
+
+    /**
+     * Bind selected Item
+     */
+    fun onSelectedItem(item: T) =
+        bindViewValue(this, item)
+
+    /**
+     * Sets a text hint
+     */
     override var hint: String = SPBaseView.EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
@@ -102,16 +129,6 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         setOnClickListener { onClickListener(this) }
     }
 
-    private fun setDefault(type: T) {
-        defaultItem = type
-
-        defaultItem?.let { bindViewValue(this, it) }
-    }
-
-    fun onSelectedItem(item: T) {
-        bindViewValue(this, item)
-    }
-
     override fun handleImeOption() {
         inputTextBinding.etInputField.imeOptions = imeOption
     }
@@ -139,28 +156,51 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         private var description: String = EMPTY_STRING
         private var listener: (SPTextFieldDropdown<T>) -> Unit = { }
         private var default: T? = null
+        private var view: SPTextFieldDropdown<T>? = null
         private var items: List<T> = emptyList()
         private var style: Int = R.style.SPTextField_Dropdown
         private var onBind: SPOnBindInterface<T>? = null
 
+        /**
+         * Sets a style resource
+         */
         fun setStyle(@StyleRes newStyle: Int = R.style.SPTextField_Dropdown): SPTextFieldDropdownBuilder<T> {
             style = newStyle
 
             return this
         }
 
+        /**
+         * Sets a view from xml
+         */
+        @Suppress("UNCHECKED_CAST")
+        fun withView(view: SPTextFieldDropdown<*>): SPTextFieldDropdownBuilder<T> {
+            this.view = view as SPTextFieldDropdown<T>
+
+            return this
+        }
+
+        /**
+         * Sets a label text.
+         */
         fun setTitle(string: String): SPTextFieldDropdownBuilder<T> {
             this.title = string
 
             return this
         }
 
+        /**
+         * Sets a description text.
+         */
         fun setDescription(string: String): SPTextFieldDropdownBuilder<T> {
             this.description = string
 
             return this
         }
 
+        /**
+         * Sets a list of item with witch will work dropdown
+         */
         fun setItems(items: List<T>): SPTextFieldDropdownBuilder<T> {
             this.items = items
 
@@ -168,7 +208,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         }
 
         /**
-         * Binding a item view after selecting
+         * Sets a on click listener for dropdown
          */
         fun setOnClickListener(function: (SPTextFieldDropdown<T>) -> Unit): SPTextFieldDropdownBuilder<T> {
             listener = function
@@ -176,12 +216,18 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             return this
         }
 
+        /**
+         * Binding a item view after selecting
+         */
         fun setOnBindItem(onBindInterface: SPOnBindInterface<T>): SPTextFieldDropdownBuilder<T> {
             onBind = onBindInterface
 
             return this
         }
 
+        /**
+         * Sets a default item
+         */
         fun setDefault(default: T): SPTextFieldDropdownBuilder<T> {
             this.default = default
 
@@ -189,11 +235,12 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         }
 
         /**
-         * build dropdown view
+         * Build a new dropdown view or update already created
          *
+         * @return an instance of SPTextFieldDropdown<*>
          */
-        fun build(activity: FragmentActivity): SPTextFieldDropdown<*> =
-            SPTextFieldDropdown<T>(activity).apply {
+        fun build(context: Context): SPTextFieldDropdown<*> =
+            (view ?: SPTextFieldDropdown(context)).apply {
                 style(style)
 
                 labelText = title
@@ -205,10 +252,6 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
                 default?.let { setDefault(it) }
             }
-
-        companion object {
-            const val EMPTY_STRING = ""
-        }
     }
 }
 

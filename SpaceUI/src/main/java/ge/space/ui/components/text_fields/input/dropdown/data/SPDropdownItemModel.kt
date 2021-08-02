@@ -4,8 +4,7 @@ import ge.space.ui.util.view_factory.SPViewData
 
 
 /**
- * Simple item model for dropdown. After merging project into Space project can be
- * replaced with real model or created extension to map into this model
+ * Simple item model for dropdown.
  *
  * @param id
  * @param value

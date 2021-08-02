@@ -17,12 +17,11 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Button" />
 
-    <FrameLayout
-        android:id="@+id/tfDropdown"
+    <ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
+        android:id="@+id/textFieldDropdown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_20"
-        android:text="@string/enter_you_details_here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonName" />
@@ -35,10 +34,10 @@
         android:enabled="true"
         android:text="Mandatory"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tfDropdown" />
+        app:layout_constraintTop_toBottomOf="@+id/textFieldDropdown" />
 
     <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbDescription"
+        android:id="@+id/cb_enable_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_p_32"
@@ -54,6 +53,6 @@
         android:layout_marginStart="@dimen/dimen_p_32"
         android:text="disable"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_enable_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
