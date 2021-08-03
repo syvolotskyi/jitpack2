@@ -13,19 +13,44 @@ sealed class SPViewData : Parcelable{
     @Parcelize
     data class SPImageResourcesData(@DrawableRes val res: Int) : SPViewData()
     @Parcelize
-    data class SPImageDefaultResourcesData(@DrawableRes val res: Int) : SPViewData()
-    @Parcelize
     data class SPImageUrlData(val url: String) : SPViewData()
 
     @Parcelize
-    data class SPEmptyChip(val chipStyle: SPEmptyChipStyle) : SPViewData()
-    @Parcelize
-    data class SPrimaryChip(val chipSize: SPChipSize) : SPViewData()
-    @Parcelize
-    data class SPSecondaryChip(val bankLogoUrl: String, @StyleRes val styleRes: Int) : SPViewData()
+    data class SPEmptyChipData(
+        val chipSize: SPChipSize,
+        val chipStyle: SPEmptyChipStyle,
+        @StyleRes val styleRes: Int
+    ) : SPViewData()
 
     @Parcelize
-    data class SPDigitalChip(val gradient: @RawValue SPBankCardGradient, @StyleRes val styleRes: Int) : SPViewData()
+    data class SPChipData(
+        val chipSize: SPChipSize,
+        @DrawableRes val drawableRes: Int,
+        @StyleRes val styleRes: Int
+    ) : SPViewData()
+
+    @Parcelize
+    data class SPrimaryChipData(val chipSize: SPChipSize,
+                                @StyleRes val styleRes: Int) : SPViewData()
+
+    @Parcelize
+    data class SPSecondaryChipData(
+        val chipSize: SPChipSize,
+        val bankLogoUrl: String,
+        val paymentSystemUrl: String,
+        val hasBorder: Boolean,
+        @StyleRes val styleRes: Int
+    ) :
+        SPViewData()
+
+    @Parcelize
+    data class SPDigitalChipData(
+        val chipSize: SPChipSize,
+        val gradient: @RawValue SPBankCardGradient,
+        @StyleRes val styleRes: Int
+    ) :
+        SPViewData()
+
     @Parcelize
     data class SPNewCreditCards(val chipSize: SPChipSize): SPViewData()
 }

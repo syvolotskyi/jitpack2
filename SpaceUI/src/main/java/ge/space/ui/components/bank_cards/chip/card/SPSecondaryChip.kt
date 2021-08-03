@@ -10,6 +10,7 @@ import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.visibleOrGone
+import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * Allows to show chips with both a bank logo and a payment system icon on
@@ -75,4 +76,8 @@ class SPSecondaryChip @JvmOverloads constructor(
             )
         }
     }
+
+    override fun getViewData(): SPViewData =
+        SPViewData.SPSecondaryChipData(size, bankLogoUrl, paymentSystemUrl, hasBorder, getStyle())
+
 }

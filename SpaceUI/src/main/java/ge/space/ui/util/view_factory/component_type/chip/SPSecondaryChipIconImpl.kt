@@ -2,15 +2,18 @@ package ge.space.ui.util.view_factory.component_type.chip
 
 import android.content.Context
 import ge.space.ui.components.bank_cards.chip.card.SPSecondaryChip
+import ge.space.ui.util.view_factory.component_type.SPViewComponentType
 import ge.space.ui.util.view_factory.SPViewData
-import ge.space.ui.util.view_factory.view.SPViewImpl
 
 class SPSecondaryChipIconImpl(context: Context) :
-    SPViewImpl<SPViewData.SPSecondaryChip>(context) {
+    SPViewComponentType<SPViewData.SPSecondaryChipData>(context) {
 
-    override fun create(type: SPViewData.SPSecondaryChip): SPSecondaryChip {
+    override fun create(type: SPViewData.SPSecondaryChipData): SPSecondaryChip {
         return SPSecondaryChip(context).apply {
+            size = type.chipSize
             bankLogoUrl = type.bankLogoUrl
+            paymentSystemUrl = type.paymentSystemUrl
+            hasBorder = type.hasBorder
         }
     }
 }
