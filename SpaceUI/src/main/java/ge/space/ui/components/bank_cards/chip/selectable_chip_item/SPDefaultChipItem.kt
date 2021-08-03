@@ -64,7 +64,7 @@ class SPDefaultChipItem @JvmOverloads constructor(
     }
 
     /**
-     * Sets a item title
+     * Sets an item title
      */
     private fun setTitle() {
         binding.tvTitle.text = resources.getString(
