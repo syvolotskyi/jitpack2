@@ -29,6 +29,15 @@
         <attr name="distractiveTextAppearance" format="reference" />
         <attr name="currencyTextAppearance" format="reference" />
         <attr name="android:textAppearance" format="reference" />
+        <attr name="android:drawableEnd" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_text_field_dropdown">
+        <attr name="android:textAppearance" format="reference" />
+        <attr name="inflateType" format="enum">
+            <enum name="none" value="0" />
+            <enum name="withIcon" value="1" />
+        </attr>
     </declare-styleable>
 
 </resources>

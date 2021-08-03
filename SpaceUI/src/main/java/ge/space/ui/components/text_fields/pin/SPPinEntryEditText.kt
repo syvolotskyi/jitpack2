@@ -72,9 +72,9 @@ class SPPinEntryEditText : AppCompatEditText {
     private var pinBackground: Drawable? = null
     private var textHeight = Rect()
 
-    private val space: Float by lazy { resources.getDimension(R.dimen.dimen_p_16) }
-    private val pinWidth: Float by lazy { resources.getDimension(R.dimen.dimen_p_16) }
-    private val lineStroke: Float by lazy { resources.getDimension(R.dimen.dimen_p_1) }
+    private val space: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_space) }
+    private val pinWidth: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_width) }
+    private val lineStroke: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_line_stroke) }
 
     private var hasError = false
     private lateinit var originalTextColors: ColorStateList
@@ -227,20 +227,20 @@ class SPPinEntryEditText : AppCompatEditText {
     private fun handlePassportInputState() {
         setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
         setPadding(
-            resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-            resources.getDimensionPixelSize(R.dimen.dimen_p_10),
-            resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-            resources.getDimensionPixelSize(R.dimen.dimen_p_10)
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_passport_padding),
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_passport_padding)
         )
     }
 
     private fun handleOTPInputState() {
         setBackgroundResource(R.drawable.bg_otp_code_shape)
         setPadding(
-            resources.getDimensionPixelSize(R.dimen.dimen_p_16),
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
             0,
-            resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-            resources.getDimensionPixelSize(R.dimen.dimen_p_8)
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_otp_padding)
         )
     }
 

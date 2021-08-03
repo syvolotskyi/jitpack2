@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="phone_hint">XXXXXXXXX</string>
-
-    <string name="enter_you_details_here">Enter your details here</string>
     <string name="new_credit_card">Order \na tbc physical \nand digital card</string>
 
     <string name="title_default_chip_item_physical_title">Order Physical Card</string>

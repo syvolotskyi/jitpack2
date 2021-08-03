@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemListTextFieldBinding
-import com.example.spacedesignsystem.databinding.SpLayoutListFieldsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
@@ -16,6 +16,7 @@ import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
+import ge.space.ui.util.extension.EMPTY_STRING
 
 class SPInputComponent : SPShowCaseComponent {
     override fun getNameResId(): Int = R.string.text_input
@@ -26,7 +27,7 @@ class SPInputComponent : SPShowCaseComponent {
 
     class FactorySP : SPComponentFactory {
         override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpLayoutListFieldsShowcaseBinding.inflate(
+            val layoutBinding = SpLayoutTextFieldsListShowcaseBinding.inflate(
                 environmentSP.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPTextFieldBaseView<SpTextFieldTextLayoutBinding>>()
@@ -65,7 +66,7 @@ class SPInputComponent : SPShowCaseComponent {
                     itemBinding.simpleInput.isEnabled = !isChecked
                 }
 
-                itemBinding.cbDescription.setOnCheckedChangeListener { _, isChecked ->
+                itemBinding.cbEnableDescription.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.simpleInput.descriptionText = if (isChecked) {
                         itemBinding.simpleInput.resources.getString(R.string.description)
                     } else {
@@ -111,7 +112,6 @@ class SPInputComponent : SPShowCaseComponent {
     }
 
     companion object {
-        const val EMPTY_STRING = ""
         const val TEXT_WATCHER_CHECK_TEXT = "Space"
     }
 
