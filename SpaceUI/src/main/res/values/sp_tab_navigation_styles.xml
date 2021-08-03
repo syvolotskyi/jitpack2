@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPTabChildNavigation" parent="SPBaseView">
+        <item name="defaultBackgroundColor">?attr/background_secondary</item>
+        <item name="activeColor">?attr/brand_primary</item>
+        <item name="inActiveColor">?attr/label_secondary</item>
+        <item name="activeTextAppearance">@style/h700_medium_caps_navigation_active_tab_field</item>
+        <item name="inActiveTextAppearance">@style/h700_medium_caps_navigation_inActive_tab_field</item>
+    </style>
+
+    <style name="SPTabNavigation.RoundedView" parent="SPBaseView">
+        <item name="roundedCorners">@dimen/dimen_p_10</item>
+        <item name="shadowRadius">0dp</item>
+    </style>
+
+</resources>

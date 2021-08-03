@@ -7,6 +7,7 @@ import ge.space.design.ui_components.banners.SPBannerComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponentSP
 import ge.space.design.ui_components.dialogs.SPDialogComponent
+import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 
 object DesignSystemComponents : SPShowCaseComponent {
@@ -19,12 +20,14 @@ object DesignSystemComponents : SPShowCaseComponent {
 
     override fun getSubComponents(): List<SPShowCaseComponent> {
         return listOf(
-                new { SPColorsComponentSP() },
-                new { SPButtonComponent() },
-                new { SPDialogComponent() },
-                new { SPTextFieldsComponent() },
-                new { SPBannerComponent() },
-                new { SPBankCardComponent() }
+            new { SPColorsComponentSP() },
+            new { SPButtonComponent() },
+            new { SPDialogComponent() },
+            new { SPTextFieldsComponent() },
+            new { SPBannerComponent() },
+            new { SPBankCardComponent() },
+            new { SPTabNavigationComponent() }
+
         )
     }
 }
@@ -33,6 +36,6 @@ object DesignSystemComponents : SPShowCaseComponent {
  * If you want component with "new" badge use [new].
  */
 inline fun <reified T : SPShowCaseComponent> SPShowCaseComponent.new(block: () -> T): T =
-        block().also { NEW_COMPONENTS.add(T::class.java) }
+    block().also { NEW_COMPONENTS.add(T::class.java) }
 
 val NEW_COMPONENTS = mutableSetOf<Class<out SPShowCaseComponent>>()

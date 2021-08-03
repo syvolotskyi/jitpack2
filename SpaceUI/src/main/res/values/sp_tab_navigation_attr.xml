@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="sp_tab_navigation_child_view">
+        <attr name="isActive" format="boolean"/>
+        <attr name="activeColor" format="color"/>
+        <attr name="inActiveColor" format="color"/>
+        <attr name="defaultBackgroundColor" format="color"/>
+        <attr name="text" format="string|reference"/>
+        <attr name="image" format="reference"/>
+        <attr name="activeTextAppearance" format="reference"/>
+        <attr name="inActiveTextAppearance" format="reference"/>
+    </declare-styleable>
+</resources>

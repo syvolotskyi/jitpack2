@@ -75,6 +75,9 @@
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
 
+    <string name="component_tab_navigation">Tab Navigation</string>
+    <string name="component_tab_navigation_description">Tab Navigation Description</string>
+
     <string name="component_bank_card_views">Bank card views</string>
     <string name="component_bank_card_views_description">Samples of Bank card using</string>
 
