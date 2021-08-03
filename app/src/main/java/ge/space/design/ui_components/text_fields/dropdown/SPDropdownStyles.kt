@@ -24,7 +24,7 @@ object SPTextFieldsDropdownItems {
         SPDropdownItemModel(
             3,
             "Primary chip",
-            SPViewData.SPrimaryChip(SPChipSize.Small)
+            SPViewData.SPrimaryChipData(SPChipSize.Small, R.style.SPBankCardView_Chip)
         ),
     )
 }

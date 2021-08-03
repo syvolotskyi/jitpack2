@@ -6,6 +6,7 @@ import androidx.annotation.AttrRes
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPChipSize
+import ge.space.ui.util.view_factory.SPViewFactoryData
 
 /**
  * Abstract base chip which allows to abstract specific info by
@@ -14,11 +15,11 @@ import ge.space.ui.components.bank_cards.data.SPChipSize
  * @property size [SPChipSize] instance that allows to change the size of the view
  * @property isBig checks if [size] == [SPChipSize.Big]
  */
-open class SPBaseChip @JvmOverloads constructor(
+abstract class SPBaseChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewFactoryData {
 
     /**
      * Changes the size of the view
@@ -49,6 +50,6 @@ open class SPBaseChip @JvmOverloads constructor(
     protected open fun onHandleChipAppearance() {
     }
 
-    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
+    fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
         else R.style.SPBankCardView_Chip_Small
 }

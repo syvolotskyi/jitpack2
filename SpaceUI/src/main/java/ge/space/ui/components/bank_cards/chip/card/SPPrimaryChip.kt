@@ -9,6 +9,7 @@ import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
+import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * A chip extended by [SPBaseChip] allows to show a primary info of bank.
@@ -33,6 +34,10 @@ class SPPrimaryChip @JvmOverloads constructor(
     override fun onHandleChipAppearance() {
         handleImageBackground()
         setSize()
+    }
+
+    override fun getViewData(): SPViewData {
+        return SPViewData.SPrimaryChipData(size, getStyle())
     }
 
     private fun setSize() {
