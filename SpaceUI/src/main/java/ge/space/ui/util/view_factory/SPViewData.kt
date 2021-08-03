@@ -30,7 +30,8 @@ sealed class SPViewData : Parcelable{
     ) : SPViewData()
 
     @Parcelize
-    data class SPrimaryChipData(val chipSize: SPChipSize) : SPViewData()
+    data class SPrimaryChipData(val chipSize: SPChipSize,
+                                @StyleRes val styleRes: Int) : SPViewData()
 
     @Parcelize
     data class SPSecondaryChipData(

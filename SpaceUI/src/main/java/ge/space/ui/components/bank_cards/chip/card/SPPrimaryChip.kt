@@ -37,7 +37,7 @@ class SPPrimaryChip @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData {
-        return SPViewData.SPrimaryChipData(size)
+        return SPViewData.SPrimaryChipData(size, getStyle())
     }
 
     private fun setSize() {
