@@ -6,14 +6,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import ge.space.extensions.onClick
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipItemLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChipItem
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
-import ge.space.ui.util.extension.visibleOrGone
-import ge.space.ui.util.extension.visibleOrInvisible
 
 /**
  * A chip item view which is used inside a list and can be selectable
@@ -123,7 +123,7 @@ class SPDigitalChipItem @JvmOverloads constructor(
 
     override fun getViewBinding(): SpDigitalChipItemLayoutBinding =
         SpDigitalChipItemLayoutBinding.inflate(LayoutInflater.from(context), this)
-    
+
     private fun setCheckCallback() {
         with(binding) {
             onClick {
@@ -140,8 +140,8 @@ class SPDigitalChipItem @JvmOverloads constructor(
     private fun handleItemEnabled() {
         with(binding) {
             root.isEnabled = itemEnabled
-            checkButton.visibleOrInvisible(itemEnabled)
-            ivCheck.visibleOrGone(!itemEnabled)
+            checkButton.isInvisible = !itemEnabled
+            ivCheck.isVisible = !itemEnabled
             root.alpha = getEnabledAlpha()
         }
     }

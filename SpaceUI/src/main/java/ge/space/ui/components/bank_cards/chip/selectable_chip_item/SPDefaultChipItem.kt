@@ -5,12 +5,12 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.core.view.isInvisible
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDefaultChipItemLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChipItem
 import ge.space.ui.components.bank_cards.data.SPDefaultChipData
-import ge.space.ui.util.extension.visibleOrInvisible
 
 /**
  * A default chip item view which is used inside a list
@@ -31,13 +31,16 @@ class SPDefaultChipItem @JvmOverloads constructor(
         set(value) {
             field = value
 
-            handleData()
+            handleChipData()
         }
 
     init {
-        handleData()
+        handleChipData()
     }
 
+    /**
+     * Sets text appearances for all titles
+     */
     override fun setTitlesAppearances(styledAttrs: TypedArray) {
         binding.tvTitle.setTextStyle(
             styledAttrs.getResourceId(
@@ -50,12 +53,19 @@ class SPDefaultChipItem @JvmOverloads constructor(
     override fun getViewBinding(): SpDefaultChipItemLayoutBinding =
         SpDefaultChipItemLayoutBinding.inflate(LayoutInflater.from(context), this)
 
-    private fun handleData() {
+    /**
+     * Handle  a chip chip data depends on chipData
+     * setting title, visibility and digital background
+     */
+    private fun handleChipData() {
         setTitle()
         setChipVisibility()
-        trySetDigitalBackground()
+        (chipData as? SPDefaultChipData.SPDigitalChip)?.setDigitalBackground()
     }
 
+    /**
+     * Sets a item title
+     */
     private fun setTitle() {
         binding.tvTitle.text = resources.getString(
             getTitleRes()
@@ -64,22 +74,16 @@ class SPDefaultChipItem @JvmOverloads constructor(
 
     private fun setChipVisibility() {
         with(binding) {
-            primaryChip.visibleOrInvisible(
-                visiblePhysical()
-            )
-            digitalChip.visibleOrInvisible(
-                visibleDigital()
-            )
-            chipAddIcon.visibleOrInvisible(
-                visibleAddIcon()
-            )
+            primaryChip.isInvisible = !visiblePhysical()
+
+            digitalChip.isInvisible = !visibleDigital()
+
+            chipAddIcon.isInvisible = !visibleAddIcon()
         }
     }
 
-    private fun trySetDigitalBackground() {
-        (chipData as? SPDefaultChipData.SPDigitalChip)?.let { data ->
-            binding.digitalChip.cardBackground = data.background
-        }
+    private fun SPDefaultChipData.SPDigitalChip.setDigitalBackground() {
+            binding.digitalChip.cardBackground = background
     }
 
     private fun visiblePhysical() =

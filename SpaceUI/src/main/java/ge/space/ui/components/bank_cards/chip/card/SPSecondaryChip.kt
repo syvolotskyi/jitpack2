@@ -7,6 +7,7 @@ import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatImageView
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
+import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.visibleOrGone
 
@@ -47,7 +48,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     /**
      * Allows to to load a bank logo icon by URL
      */
-    var bankLogoUrl: String = ""
+    var bankLogoUrl: String = EMPTY_STRING
         set(value) {
             field = value
 
