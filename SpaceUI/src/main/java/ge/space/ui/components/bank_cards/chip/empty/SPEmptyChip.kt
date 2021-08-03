@@ -51,5 +51,5 @@ class SPEmptyChip @JvmOverloads constructor(
         }
 
     override fun getViewData(): SPViewData =
-         SPViewData.SPEmptyChipData(size, style)
+         SPViewData.SPEmptyChipData(size, style, getStyle())
 }

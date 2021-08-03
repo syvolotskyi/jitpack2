@@ -117,7 +117,7 @@ class SPChipIcon @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData =
-         SPViewData.SPChipData(size, icon)
+         SPViewData.SPChipData(size, icon, getStyle())
 
     private fun handleVisibility() {
         with(binding) {

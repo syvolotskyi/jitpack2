@@ -51,6 +51,6 @@ abstract class SPBaseChip @JvmOverloads constructor(
     protected open fun onHandleChipAppearance() {
     }
 
-    private fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
+    fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
         else R.style.SPBankCardView_Chip_Small
 }

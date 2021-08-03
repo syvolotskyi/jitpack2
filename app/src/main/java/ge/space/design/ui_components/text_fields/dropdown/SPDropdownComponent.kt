@@ -95,7 +95,9 @@ class SPDropdownComponent : SPShowCaseComponent {
                     SPDropdownItemModel(
                         0,
                         view.context.getString(R.string.enter_you_details_here),
-                        SPViewData.SPEmptyChipData(SPChipSize.Small, SPEmptyChipStyle.White)
+                        SPViewData.SPEmptyChipData(SPChipSize.Small,
+                            SPEmptyChipStyle.White,
+                            R.style.SPBankCardView_EmptySmall_Base)
                     )
                 )
                 .setTitle(view.context.getString(R.string.enter_you_details_here))

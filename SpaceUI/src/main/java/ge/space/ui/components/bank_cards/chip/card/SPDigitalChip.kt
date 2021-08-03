@@ -52,7 +52,7 @@ class SPDigitalChip @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData =
-        SPViewData.SPDigitalChipData(size, cardBackground, 0)
+        SPViewData.SPDigitalChipData(size, cardBackground, getStyle())
 
 
     private fun handleComponentsSizes() {
