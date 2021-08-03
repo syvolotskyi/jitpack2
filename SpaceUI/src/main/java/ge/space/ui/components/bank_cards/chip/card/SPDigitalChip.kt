@@ -12,7 +12,6 @@ import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 import ge.space.ui.util.view_factory.SPViewData
-import ge.space.ui.util.view_factory.SPViewFactoryGetData
 
 /**
  * A chip which allows to show a bank logo with its payment system icon. Also the view
