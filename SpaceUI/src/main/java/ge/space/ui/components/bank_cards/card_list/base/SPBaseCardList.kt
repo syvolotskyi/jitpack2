@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards.chip.base
+package ge.space.ui.components.bank_cards.card_list.base
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -13,7 +13,7 @@ import ge.space.ui.base.SPBaseView
 /**
  * An abstract base chip item which is for extending it in other chip items
  */
-abstract class SPBaseChipItem<VB : ViewBinding> @JvmOverloads constructor(
+abstract class SPBaseCardList<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0

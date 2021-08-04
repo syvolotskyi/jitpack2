@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards.chip.selectable_chip_item
+package ge.space.ui.components.bank_cards.card_list
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -9,7 +9,7 @@ import androidx.core.view.isInvisible
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDefaultChipItemLayoutBinding
-import ge.space.ui.components.bank_cards.chip.base.SPBaseChipItem
+import ge.space.ui.components.bank_cards.card_list.base.SPBaseCardList
 import ge.space.ui.components.bank_cards.data.SPDefaultChipData
 
 /**
@@ -21,7 +21,7 @@ class SPDefaultChipItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseChipItem<SpDefaultChipItemLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPBaseCardList<SpDefaultChipItemLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Sets a chip data which is related to a type of the chip and

@@ -8,7 +8,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutListDigitalChipShowCase
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.selectable_chip_item.SPDigitalChipItem
+import ge.space.ui.components.bank_cards.card_list.SPDigitalChipItem
 
 class SPChipListViewComponent : SPShowCaseComponent {
 

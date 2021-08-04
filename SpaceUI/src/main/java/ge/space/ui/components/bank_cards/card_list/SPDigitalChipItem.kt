@@ -1,4 +1,4 @@
-package ge.space.ui.components.bank_cards.chip.selectable_chip_item
+package ge.space.ui.components.bank_cards.card_list
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -12,7 +12,7 @@ import ge.space.extensions.onClick
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipItemLayoutBinding
-import ge.space.ui.components.bank_cards.chip.base.SPBaseChipItem
+import ge.space.ui.components.bank_cards.card_list.base.SPBaseCardList
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 
 /**
@@ -27,7 +27,7 @@ class SPDigitalChipItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseChipItem<SpDigitalChipItemLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPBaseCardList<SpDigitalChipItemLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Sets a title for the item
