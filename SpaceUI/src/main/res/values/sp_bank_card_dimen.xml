@@ -97,8 +97,9 @@
     <dimen name="sp_selectable_chip_height">@dimen/dimen_p_90</dimen>
     <dimen name="sp_selectable_chip_radio_button_margin_start">@dimen/dimen_p_24</dimen>
     <dimen name="sp_selectable_chip_margin_start">@dimen/dimen_p_4</dimen>
+    <dimen name="sp_selectable_default_chip_margin_start">@dimen/dimen_p_26</dimen>
     <dimen name="sp_selectable_chip_margin_bottom_offset">@dimen/dimen_p_2</dimen>
-    <dimen name="sp_selectable_chip_title_margin_start">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_selectable_chip_title_margin">@dimen/dimen_p_16</dimen>
     <dimen name="sp_selectable_chip_title_margin_end">@dimen/dimen_p_12</dimen>
     <dimen name="sp_selectable_chip_currency_size">@dimen/dimen_p_20</dimen>
     <dimen name="sp_selectable_chip_currency_margin_end">@dimen/dimen_p_30</dimen>

@@ -6,4 +6,8 @@
     <string name="component_tab_navigation_by_number">By Number</string>
     <string name="component_tab_navigation_by_link">With Link</string>
     <string name="new_credit_card">Order \na tbc physical \nand digital card</string>
+
+    <string name="title_default_chip_item_physical_title">Order Physical Card</string>
+    <string name="title_default_chip_item_digital_title">Create Digital Card</string>
+    <string name="title_default_chip_item_add_title">Add another card</string>
 </resources>

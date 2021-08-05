@@ -1,21 +1,22 @@
 package ge.space.design.ui_components.bank_cards.chip.list_digital_chip
 
 import com.example.spacedesignsystem.R
+import com.example.spacedesignsystem.databinding.SpItemDefaultChipItemShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpItemDigitalChipItemShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpItemSelectableChipItemTitleShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutListDigitalChipShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.SPShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.bank_cards.chip.list_item_digital_card.SPDigitalChipItem
+import ge.space.ui.components.bank_cards.card_list.SPDigitalChipItem
 
-class SPListDigitalChipViewComponent : SPShowCaseComponent {
+class SPChipListViewComponent : SPShowCaseComponent {
 
     override fun getNameResId(): Int =
-        R.string.component_list_digital_chip
+        R.string.component_chip_list
 
     override fun getDescriptionResId(): Int =
-        R.string.component_list_digital_chip_description
+        R.string.component_chip_list_description
 
     override fun getComponentClass(): Class<*>? = Factory::class.java
 
@@ -38,7 +39,7 @@ class SPListDigitalChipViewComponent : SPShowCaseComponent {
                 R.string.title_ge
             )
 
-            SPListDigitalChipStyles.geList.forEach { chip ->
+            SPChipListStyles.geList.forEach { chip ->
                 val itemBinding = SpItemDigitalChipItemShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
                     binding.digitalChipLayout,
@@ -71,7 +72,7 @@ class SPListDigitalChipViewComponent : SPShowCaseComponent {
                 R.string.title_usd
             )
 
-            SPListDigitalChipStyles.usdList.forEach { chip ->
+            SPChipListStyles.usdList.forEach { chip ->
                 val itemBinding = SpItemDigitalChipItemShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
                     binding.digitalChipLayout,
@@ -104,7 +105,7 @@ class SPListDigitalChipViewComponent : SPShowCaseComponent {
                 R.string.title_eur
             )
 
-            SPListDigitalChipStyles.eurList.forEach { chip ->
+            SPChipListStyles.eurList.forEach { chip ->
                 val itemBinding = SpItemDigitalChipItemShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
                     binding.digitalChipLayout,
@@ -125,6 +126,27 @@ class SPListDigitalChipViewComponent : SPShowCaseComponent {
                             null
                         }
                     }
+                }
+            }
+
+            val titleDefaultBinding = SpItemSelectableChipItemTitleShowcaseBinding.inflate(
+                environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
+                binding.digitalChipLayout,
+                true
+            )
+            titleDefaultBinding.itemTitle.text = environment.context.getString(
+                R.string.title_default_items
+            )
+
+            SPChipListStyles.defaultList.forEach { chip ->
+                val itemBinding = SpItemDefaultChipItemShowcaseBinding.inflate(
+                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
+                    binding.digitalChipLayout,
+                    true
+                )
+
+                with(itemBinding.chipItem) {
+                    chipData = chip.defaultChipData
                 }
             }
 

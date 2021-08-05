@@ -1,6 +1,7 @@
 package ge.space.ui.components.bank_cards.data
 
 import ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
+import ge.space.ui.components.bank_cards.card_list.SPDefaultChipItem
 import ge.space.ui.util.support.SPPlaceholder
 
 /**
@@ -80,4 +81,27 @@ enum class SPPlaceholderSize {
      * For small size 16x16dp
      */
     Small
+}
+
+/**
+ * Info about [SPDefaultChipItem] chip
+ */
+sealed class SPDefaultChipData {
+
+    /**
+     * Sets a physical chip card
+     */
+    object SPPhysicalChip : SPDefaultChipData()
+
+    /**
+     * Sets a digital chip card with background
+     */
+    data class SPDigitalChip(
+        val background: SPBankCardGradient
+    ) : SPDefaultChipData()
+
+    /**
+     * Sets a chip icon with a plus image
+     */
+    object SPAddIconChip : SPDefaultChipData()
 }
