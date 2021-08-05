@@ -13,7 +13,6 @@ import ge.space.ui.util.view_factory.SPViewFactoryData
  * next properties
  *
  * @property size [SPChipSize] instance that allows to change the size of the view
- * @property isBig checks if [size] == [SPChipSize.Big]
  */
 abstract class SPBaseChip @JvmOverloads constructor(
     context: Context,
@@ -24,18 +23,12 @@ abstract class SPBaseChip @JvmOverloads constructor(
     /**
      * Changes the size of the view
      */
-    var size : SPChipSize = SPChipSize.Big
+    var size: SPChipSize = SPChipSize.Big
         set(value) {
             field = value
 
             handleCardAppearance()
         }
-
-    /**
-     * Checks if [size] == [SPChipSize.Big]
-     */
-    protected val isBig
-        get() = size == SPChipSize.Big
 
     protected fun handleCardAppearance() {
         setStyle(
@@ -50,6 +43,9 @@ abstract class SPBaseChip @JvmOverloads constructor(
     protected open fun onHandleChipAppearance() {
     }
 
-    fun getStyle() = if (isBig) R.style.SPBankCardView_Chip
-        else R.style.SPBankCardView_Chip_Small
+    fun getStyle() = when (size) {
+        SPChipSize.Big -> R.style.SPBankCardView_Chip
+        SPChipSize.Medium -> R.style.SPBankCardView_Chip_Medium
+        SPChipSize.Small -> R.style.SPBankCardView_Chip_Small
+    }
 }

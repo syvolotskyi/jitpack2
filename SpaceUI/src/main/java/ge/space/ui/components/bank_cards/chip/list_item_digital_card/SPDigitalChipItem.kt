@@ -15,7 +15,6 @@ import ge.space.spaceui.databinding.SpDigitalChipItemLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.util.extension.visibleOrGone
-import ge.space.ui.util.extension.visibleOrInvisible
 
 /**
  * A chip item view which is used inside a list and can be selectable

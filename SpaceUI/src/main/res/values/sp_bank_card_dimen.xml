@@ -30,6 +30,7 @@
     <dimen name="sp_bank_card_favorite_margin_bottom">@dimen/dimen_p_12</dimen>
 
     <dimen name="sp_bank_round_radius_big">@dimen/dimen_p_6</dimen>
+    <dimen name="sp_bank_round_radius_medium">@dimen/dimen_p_4</dimen>
     <dimen name="sp_bank_round_radius_small">@dimen/dimen_p_4</dimen>
 
     <dimen name="sp_bank_logo_round_radius">@dimen/sp_bank_round_radius_big</dimen>

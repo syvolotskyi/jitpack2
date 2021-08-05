@@ -31,6 +31,10 @@
         <item name="roundedCorners">@dimen/sp_bank_round_radius_big</item>
     </style>
 
+    <style name="SPBankCardView.Chip.Medium" parent="SPBankCardView.Chip.Base">
+        <item name="roundedCorners">@dimen/sp_bank_round_radius_medium</item>
+    </style>
+
     <style name="SPBankCardView.Chip.Small" parent="SPBankCardView.Chip.Base">
         <item name="roundedCorners">@dimen/sp_bank_round_radius_small</item>
     </style>
