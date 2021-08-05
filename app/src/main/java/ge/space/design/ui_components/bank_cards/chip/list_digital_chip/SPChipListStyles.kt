@@ -2,17 +2,23 @@ package ge.space.design.ui_components.bank_cards.chip.list_digital_chip
 
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
+import ge.space.ui.components.bank_cards.data.SPDefaultChipData
+import ge.space.ui.util.extension.EMPTY_STRING
 
-data class SPListDigitalChipSupport(
+data class SPDigitalChipItemSupport(
     val enabled: Boolean = true,
     val chipBackground: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),
-    val text: String = "",
-    val currency: String = ""
+    val text: String = EMPTY_STRING,
+    val currency: String = EMPTY_STRING
 )
 
-object SPListDigitalChipStyles {
+data class SPDefaultChipItemSupport(
+    val defaultChipData: SPDefaultChipData = SPDefaultChipData.SPPhysicalChip
+)
+
+object SPChipListStyles {
     val geList = listOf(
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_BLUE_1,
@@ -22,7 +28,7 @@ object SPListDigitalChipStyles {
             text = "ბარათი დოლარში",
             currency = "₾",
         ),
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_BLUE_1,
@@ -32,7 +38,7 @@ object SPListDigitalChipStyles {
             text = "ბარათი დოლარში",
             currency = "₾",
         ),
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_BLUE_1,
@@ -46,7 +52,7 @@ object SPListDigitalChipStyles {
     )
 
     val usdList = listOf(
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_GREEN_1,
@@ -56,7 +62,7 @@ object SPListDigitalChipStyles {
             text = "ბარათი დოლარში",
             currency = "$",
         ),
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_GREEN_1,
@@ -66,7 +72,7 @@ object SPListDigitalChipStyles {
             text = "ბარათი დოლარში",
             currency = "$",
         ),
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_GREEN_1,
@@ -80,7 +86,7 @@ object SPListDigitalChipStyles {
     )
 
     val eurList = listOf(
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_VIOLET_1,
@@ -90,7 +96,7 @@ object SPListDigitalChipStyles {
             text = "ბარათი დოლარში",
             currency = "€",
         ),
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_VIOLET_1,
@@ -100,7 +106,7 @@ object SPListDigitalChipStyles {
             text = "ბარათი დოლარში",
             currency = "€",
         ),
-        SPListDigitalChipSupport(
+        SPDigitalChipItemSupport(
             chipBackground = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_VIOLET_1,
@@ -111,5 +117,32 @@ object SPListDigitalChipStyles {
             currency = "€",
             enabled = false
         )
+    )
+
+    val defaultList = listOf(
+        SPDefaultChipItemSupport(),
+        SPDefaultChipItemSupport(
+            defaultChipData = SPDefaultChipData.SPDigitalChip(
+                background = SPBankCardGradient.SPRadial(
+                    colors = arrayListOf(
+                        SPButtonStyles.GRADIENT_BLUE_1,
+                        SPButtonStyles.GRADIENT_BLUE_2
+                    )
+                ),
+            )
+        ),
+        SPDefaultChipItemSupport(
+            defaultChipData = SPDefaultChipData.SPDigitalChip(
+                background = SPBankCardGradient.SPLinear(
+                    colors = arrayListOf(
+                        SPButtonStyles.GRADIENT_LIGHT_GREEN_1,
+                        SPButtonStyles.GRADIENT_LIGHT_GREEN_2
+                    )
+                ),
+            )
+        ),
+        SPDefaultChipItemSupport(
+            defaultChipData = SPDefaultChipData.SPAddIconChip
+        ),
     )
 }

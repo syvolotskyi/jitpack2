@@ -97,7 +97,7 @@
         <item name="shadowColor">?attr/static_black</item>
     </style>
 
-    <style name="SPListChip.View" parent="SPBaseView">
+    <style name="SPChip.SPSelectableChipItem.Base" parent="SPBaseView">
         <item name="roundedCorners">@dimen/dimen_p_15</item>
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_5</item>
@@ -105,8 +105,15 @@
         <item name="shadowRadius">@dimen/dimen_p_20</item>
         <item name="shadowColor">?attr/static_black</item>
         <item name="backgroundColor">?attr/static_white</item>
+    </style>
+
+    <style name="SPChip.SPSelectableChipItem.Digital" parent="SPChip.SPSelectableChipItem.Base">
         <item name="selectableChipItemTitleStyle">@style/h700_medium_caps_title</item>
         <item name="selectableChipItemCurrencyStyle">@style/h600_medium_currency</item>
+    </style>
+
+    <style name="SPChip.SPSelectableChipItem.Default" parent="SPChip.SPSelectableChipItem.Base">
+        <item name="selectableChipItemTitleStyle">@style/h700_default_title</item>
     </style>
 
     <style name="SPBankCardView.CreditCard.Small" parent="">

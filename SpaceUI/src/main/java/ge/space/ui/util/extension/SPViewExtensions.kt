@@ -112,19 +112,6 @@ fun View.visibleOrGone(visible: Boolean) {
     }
 }
 
-/**
- * Sets a visibility of a view
- *
- * @param visible allows to set a view visibility. if true the view is visible
- * if false - view is invisible
- */
-fun View.visibleOrInvisible(visible: Boolean) {
-    if (visible) {
-        isVisible = visible
-    } else {
-        isInvisible = !visible
-    }
-}
 
 fun View.widthByIsBig(
     isBig: Boolean,

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lytRoot"
+        android:id="@+id/lyt_root"
         android:layout_width="@dimen/sp_selectable_chip_width"
         android:layout_height="@dimen/sp_selectable_chip_height">
 
@@ -50,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/sp_selectable_chip_margin_bottom_offset"
-            android:layout_marginStart="@dimen/sp_selectable_chip_title_margin_start"
+            android:layout_marginStart="@dimen/sp_selectable_chip_title_margin"
             android:layout_marginEnd="@dimen/sp_selectable_chip_title_margin_end"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
