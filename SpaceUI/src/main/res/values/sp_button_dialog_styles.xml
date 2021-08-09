@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPButton.Dialog.Default" parent="SPButton.BaseView">
+        <item name="shadowOffsetX">0dp</item>
+        <item name="shadowOffsetY">0dp</item>
+        <item name="shadowAlpha">100%</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="shadowRadius">0dp</item>
+        <item name="android:textAppearance">@style/h700_medium_secondary</item>
+    </style>
+
+    <style name="SPButton.Dialog.Positive" parent="SPButton.Dialog.Default">
+        <item name="android:textAppearance">@style/h700_medium_brand_primary</item>
+    </style>
+
+    <style name="SPButton.Dialog.Negative" parent="SPButton.Dialog.Default">
+        <item name="android:textAppearance">@style/h700_medium_accent_magenta</item>
+    </style>
+
+</resources>
