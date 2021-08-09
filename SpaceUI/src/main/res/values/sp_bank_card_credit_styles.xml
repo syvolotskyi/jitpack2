@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPBankCardView.CreditCard.Small" parent="">
+        <item name="cardSize">small</item>
+    </style>
+
+    <style name="SPNewCreditCard.Title" parent="">
+        <item name="android:textAppearance">@style/h700_new_credit_card_title</item>
+    </style>
+</resources>
