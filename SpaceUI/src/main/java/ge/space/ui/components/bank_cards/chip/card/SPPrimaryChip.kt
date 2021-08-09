@@ -4,11 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
-import ge.space.ui.util.extension.heightByIsBig
-import ge.space.ui.util.extension.widthByIsBig
+import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -41,16 +42,31 @@ class SPPrimaryChip @JvmOverloads constructor(
     }
 
     private fun setSize() {
-        widthByIsBig(isBig, R.dimen.sp_bank_chip_width, R.dimen.sp_bank_chip_width_small)
-        heightByIsBig(isBig, R.dimen.sp_bank_chip_height, R.dimen.sp_bank_chip_height_small)
+        setWidth(getWidthSize())
+        setHeight(getHeightSize())
     }
 
     private fun handleImageBackground() {
-        binding.ivBackground.setImageResource(
-            getImage()
-        )
+        binding.ivBackground.setImageResource(getPrimaryChipImage())
     }
 
-    private fun getImage() = if (isBig) R.drawable.img_primary_chip
-        else R.drawable.img_primary_chip_small
+    private fun getWidthSize(): Int =
+        when (size) {
+            SPChipSize.Big -> R.dimen.sp_bank_chip_width
+            SPChipSize.Medium -> R.dimen.sp_bank_chip_width_small
+            SPChipSize.Small -> R.dimen.sp_bank_chip_width_small
+        }
+
+    private fun getHeightSize(): Int =
+        when (size) {
+            SPChipSize.Big -> R.dimen.sp_bank_chip_height
+            SPChipSize.Medium -> R.dimen.sp_bank_chip_height_small
+            SPChipSize.Small -> R.dimen.sp_bank_chip_height_small
+        }
+
+    private fun getPrimaryChipImage() = when (size) {
+        SPChipSize.Big -> R.drawable.img_primary_chip
+        SPChipSize.Medium -> R.drawable.img_primary_chip_medium
+        SPChipSize.Small -> R.drawable.img_primary_chip_medium
+    }
 }

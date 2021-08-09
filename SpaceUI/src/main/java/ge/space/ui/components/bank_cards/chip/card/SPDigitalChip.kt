@@ -5,10 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import ge.space.extensions.layoutParams
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
+import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.heightByIsBig
 import ge.space.ui.util.extension.widthByIsBig
 import ge.space.ui.util.view_factory.SPViewData
@@ -63,48 +66,66 @@ class SPDigitalChip @JvmOverloads constructor(
 
     private fun changeBackgroundSize() {
         with(binding) {
-            vGradient.widthByIsBig(
-                isBig,
-                R.dimen.sp_bank_chip_width,
-                R.dimen.sp_bank_chip_width_small
-            )
-            vGradient.heightByIsBig(
-                isBig,
-                R.dimen.sp_bank_chip_height,
-                R.dimen.sp_bank_chip_height_small
-            )
+            vGradient.setWidth(size.getBackgroundSizeWidthSize())
+            vGradient.setHeight(size.getBackgroundHeightSize())
         }
     }
+
+    private fun SPChipSize.getBackgroundSizeWidthSize(): Int =
+        when (this) {
+            SPChipSize.Big -> R.dimen.sp_bank_chip_width
+            SPChipSize.Medium -> R.dimen.sp_bank_chip_width_small
+            SPChipSize.Small -> R.dimen.sp_bank_chip_width_small
+        }
+
+    private fun SPChipSize.getBackgroundHeightSize(): Int =
+        when (this) {
+            SPChipSize.Big -> R.dimen.sp_bank_chip_height
+            SPChipSize.Medium -> R.dimen.sp_bank_chip_height_small
+            SPChipSize.Small -> R.dimen.sp_bank_chip_height_small
+        }
 
     private fun changeBrandLogoSize() {
         with(binding) {
-            ivBankLogo.widthByIsBig(
-                isBig,
-                R.dimen.sp_digital_chip_bank_logo_width,
-                R.dimen.sp_digital_chip_bank_logo_width_small
-            )
-            ivBankLogo.heightByIsBig(
-                isBig,
-                R.dimen.sp_digital_chip_bank_logo_height,
-                R.dimen.sp_digital_chip_bank_logo_height_small
-            )
+            ivBankLogo.setWidth(getBrandLogoSizeWidthSize())
+            ivBankLogo.setHeight(getBrandLogoSizeHeightSize())
         }
     }
 
+    private fun getBrandLogoSizeWidthSize(): Int =
+        when (size) {
+            SPChipSize.Big -> R.dimen.sp_digital_chip_bank_logo_width
+            SPChipSize.Medium -> R.dimen.sp_digital_chip_bank_logo_width_small
+            SPChipSize.Small -> R.dimen.sp_digital_chip_bank_logo_width_small
+        }
+
+    private fun getBrandLogoSizeHeightSize(): Int =
+        when (size) {
+            SPChipSize.Big -> R.dimen.sp_digital_chip_bank_logo_height
+            SPChipSize.Medium -> R.dimen.sp_digital_chip_bank_logo_height_small
+            SPChipSize.Small -> R.dimen.sp_digital_chip_bank_logo_height_small
+        }
+
     private fun changePaymentSystemSize() {
         with(binding) {
-            ivPaymentSystem.widthByIsBig(
-                isBig,
-                R.dimen.sp_digital_chip_payment_system_width,
-                R.dimen.sp_digital_chip_payment_system_width_small
-            )
-            ivPaymentSystem.heightByIsBig(
-                isBig,
-                R.dimen.sp_digital_chip_payment_system_height,
-                R.dimen.sp_digital_chip_payment_system_height_small
-            )
+            ivPaymentSystem.setWidth(size.getPaymentSystemWidthSize())
+            ivPaymentSystem.setHeight(size.getPaymentSystemHeightSize())
         }
     }
+
+    private fun SPChipSize.getPaymentSystemWidthSize(): Int =
+        when (this) {
+            SPChipSize.Big -> R.dimen.sp_digital_chip_payment_system_width
+            SPChipSize.Medium -> R.dimen.sp_digital_chip_payment_system_width
+            SPChipSize.Small -> R.dimen.sp_digital_chip_payment_system_width_small
+        }
+
+    private fun SPChipSize.getPaymentSystemHeightSize(): Int =
+        when (this) {
+            SPChipSize.Big -> R.dimen.sp_digital_chip_payment_system_height
+            SPChipSize.Medium -> R.dimen.sp_digital_chip_payment_system_height
+            SPChipSize.Small -> R.dimen.sp_digital_chip_payment_system_height_small
+        }
 
     private fun changePaymentSystemMargins() {
         with(binding) {
@@ -116,6 +137,9 @@ class SPDigitalChip @JvmOverloads constructor(
     }
 
     private fun getPaymentSystemLogoMargin() =
-        if (isBig) R.dimen.sp_digital_chip_payment_system_margin
-        else R.dimen.sp_digital_chip_payment_system_margin_small
+        when (size) {
+            SPChipSize.Big -> R.dimen.sp_digital_chip_payment_system_margin
+            SPChipSize.Medium -> R.dimen.sp_digital_chip_payment_system_margin
+            SPChipSize.Small -> R.dimen.sp_digital_chip_payment_system_margin_small
+        }
 }

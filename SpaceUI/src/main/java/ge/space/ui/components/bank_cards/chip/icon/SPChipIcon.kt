@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
@@ -17,7 +18,6 @@ import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.loadRoundImageUrl
-import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -71,7 +71,7 @@ class SPChipIcon @JvmOverloads constructor(
      * Binds a view
      */
     private val binding =
-        SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         context.withStyledAttributes(
@@ -111,7 +111,6 @@ class SPChipIcon @JvmOverloads constructor(
     }
 
     override fun onHandleChipAppearance() {
-        handleVisibility()
         changeIcon()
         handleIconAppearance()
     }
@@ -119,17 +118,9 @@ class SPChipIcon @JvmOverloads constructor(
     override fun getViewData(): SPViewData =
          SPViewData.SPChipData(size, icon, getStyle())
 
-    private fun handleVisibility() {
-        with(binding) {
-            frameBig.visibleOrGone(isBig)
-            frameSmall.visibleOrGone(!isBig)
-        }
-    }
-
     private fun changeIcon() {
         with(binding) {
             ivIcon.setImageResource(icon)
-            ivIconSmall.setImageResource(icon)
         }
     }
 
@@ -140,20 +131,16 @@ class SPChipIcon @JvmOverloads constructor(
             ivIcon.setColorFilter(
                 color, PorterDuff.Mode.SRC_IN
             )
-            ivIconSmall.setColorFilter(
-                color, PorterDuff.Mode.SRC_IN
-            )
         }
     }
 
     private fun handlePhotoUrl() {
-        handleVisibility()
 
         val hasPhotoUrl = getHasPhotoUrl()
         handleImageViewsVisibility(hasPhotoUrl)
 
-        val bigPhoto = handleBigPhotoVisibility(hasPhotoUrl)
-        loadPhotoUrl(bigPhoto)
+        binding.ivBigImage.isVisible = hasPhotoUrl
+        loadPhotoUrl(binding.ivBigImage)
     }
 
     private fun loadPhotoUrl(bigPhoto: AppCompatImageView) {
@@ -166,25 +153,13 @@ class SPChipIcon @JvmOverloads constructor(
         }
     }
 
-    private fun handleBigPhotoVisibility(hasPhotoUrl: Boolean): AppCompatImageView {
-        val bigPhoto = getBigPhoto()
-        bigPhoto.visibleOrGone(hasPhotoUrl)
-
-        return bigPhoto
-    }
-
     private fun getHasPhotoUrl() =
         bigPhotoUrl != null
 
-    private fun getBigPhoto() = with(binding) {
-        if (isBig) ivBigImage
-        else ivBigImageSmall
-    }
 
     private fun handleImageViewsVisibility(hasPhotoUrl: Boolean) {
         with(binding) {
-            ivIcon.visibleOrGone(!hasPhotoUrl)
-            ivIconSmall.visibleOrGone(!hasPhotoUrl)
+            ivIcon.isVisible =!hasPhotoUrl
         }
     }
 
@@ -195,7 +170,10 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun getRoundRadius() =
         resources.getDimension(
-            if (isBig) R.dimen.sp_bank_round_radius_big
-            else R.dimen.sp_bank_round_radius_small
+            when (size){
+                SPChipSize.Big ->  R.dimen.sp_bank_round_radius_big
+                SPChipSize.Medium ->   R.dimen.sp_bank_round_radius_small
+                SPChipSize.Small ->   R.dimen.sp_bank_round_radius_small
+            }
         ).toInt()
 }
