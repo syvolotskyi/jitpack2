@@ -41,33 +41,33 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
      *  Android Studio launch flag: -e "component_name" "yourComponent"
      */
     private fun initBundle() {
-        componentSP = (if (intent.hasExtra(EXTRA_COMPONENT_NAME)) {
+        showCaseComponent = (if (intent.hasExtra(EXTRA_COMPONENT_NAME)) {
             try {
                 val componentName = requireNotNull(intent.getStringExtra(EXTRA_COMPONENT_NAME))
-                Class.forName(componentName).newInstance() as? SPShowCaseComponent
+                Class.forName(componentName).newInstance() as? ShowCaseComponent
             } catch (e: Exception) {
                 e.printStackTrace()
                 null
             }
         } else {
-            intent?.getSerializableExtra(EXTRA_SHOWCASE_COMPONENT) as? SPShowCaseComponent
+            intent?.getSerializableExtra(EXTRA_SHOWCASE_COMPONENT) as? ShowCaseComponent
         }) ?: DesignSystemComponents
     }
 
     private fun checkComponent() {
-        if (componentSP.hasSubComponents) {
-            bindComponentsList(componentSP.flattenSubComponentSPS)
+        if (showCaseComponent.hasSubComponents) {
+            bindComponentsList(showCaseComponent.flattenSubComponentSPS)
         } else {
-            val componentClass = componentSP.getComponentClass()
+            val componentClass = showCaseComponent.getComponentClass()
             if (componentClass == null) {
-                finishWithError("Component not found")
+                finishWithError(COMPONENT_NOT_FOUND)
                 return
             }
             try {
                 SPComponentLauncher.launch(componentClass, this, SPShowCaseEnvironment(this))
             } catch (e: Exception) {
                 e.printStackTrace()
-                finishWithError("Can't show component: ${e.message}")
+                finishWithError("$COMPONENT_CAN_NOT_SHOW ${e.message}")
             }
         }
     }
@@ -75,7 +75,7 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbarView)
 
-        supportActionBar?.setTitle(componentSP.getNameResId())
+        supportActionBar?.setTitle(showCaseComponent.getNameResId())
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbarView.navigationIcon?.setColorFilter(
@@ -84,21 +84,21 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
         );
 
 
-        if (componentSP.getDescriptionResId() != NO_RES_ID) {
+        if (showCaseComponent.getDescriptionResId() != NO_RES_ID) {
             binding.descriptionText.text = getString(
-                componentSP.getDescriptionResId(), *componentSP.getDescriptionFormatArgs()
+                showCaseComponent.getDescriptionResId(), *showCaseComponent.getDescriptionFormatArgs()
             )
         } else {
             binding.descriptionText.visibility = View.GONE
         }
     }
 
-    private fun bindComponentsList(componentSPS: List<SPShowCaseComponent>) {
+    private fun bindComponentsList(componentSPS: List<ShowCaseComponent>) {
         val listBinding = SpLayoutSimpleShowcaseListBinding.inflate(
             layoutInflater, binding.contentView, true
         )
 
-        this.componentSPS = componentSPS
+        this.showCaseComponentList = componentSPS
         this.componentsListBinding = listBinding
 
         listBinding.recyclerView.layoutManager = LinearLayoutManager(this)
@@ -106,7 +106,7 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
 
-        val adapter = SimpleListAdapter<SpItemComponentBinding, SPShowCaseComponent>(
+        val adapter = SimpleListAdapter<SpItemComponentBinding, ShowCaseComponent>(
             componentSPS
         ).setup {
             onCreate { parent ->
@@ -124,7 +124,7 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
                         )
                         setTypeface(null, Typeface.NORMAL)
                     } else {
-                        text = "getString(R.string.no_description)"
+                        text = NO_DESCRIPTIONS
                         setTypeface(null, Typeface.ITALIC)
                     }
                 }
@@ -170,10 +170,16 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
     }
 
 
-    override fun show(SPLaunchAction: SPLaunchAction) {
+    override fun show(launchAction: SPLaunchAction) {
         val actionBinding = SpLayoutSimpleShowcaseActionBinding.inflate(
             layoutInflater, binding.contentView, true
         )
-        actionBinding.showButton.setOnClickListener { SPLaunchAction.launch() }
+        actionBinding.showButton.setOnClickListener { launchAction.launch() }
+    }
+
+    companion object {
+        const val COMPONENT_NOT_FOUND    = "Component not found"
+        const val COMPONENT_CAN_NOT_SHOW = "Can't show component:"
+        const val NO_DESCRIPTIONS        = "No Descriptions"
     }
 }

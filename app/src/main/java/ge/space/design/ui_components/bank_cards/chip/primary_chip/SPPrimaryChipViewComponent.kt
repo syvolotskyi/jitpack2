@@ -4,20 +4,18 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemPrimaryChipShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutPrimaryChipShowCaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 
-class SPPrimaryChipViewComponent : SPShowCaseComponent {
+class SPPrimaryChipViewComponent : ShowCaseComponent {
 
-    override fun getNameResId(): Int =
-        R.string.component_primary_chip
+    override fun getNameResId(): Int = R.string.component_primary_chip
 
-    override fun getDescriptionResId(): Int =
-        R.string.component_primary_chip_description
+    override fun getDescriptionResId(): Int = R.string.component_primary_chip_description
 
-    override fun getComponentClass(): Class<*>? = Factory::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class Factory : SPComponentFactory {
+    class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutPrimaryChipShowCaseBinding.inflate(
                 environment.requireLayoutInflater()

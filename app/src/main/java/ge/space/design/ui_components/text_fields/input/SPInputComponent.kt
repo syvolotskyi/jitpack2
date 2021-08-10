@@ -10,7 +10,7 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemListTextFieldBinding
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
@@ -18,33 +18,33 @@ import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.extension.EMPTY_STRING
 
-class SPInputComponent : SPShowCaseComponent {
+class SPInputComponent : ShowCaseComponent {
+
     override fun getNameResId(): Int = R.string.text_input
 
     override fun getDescriptionResId(): Int = R.string.text_input_desc
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutTextFieldsListShowcaseBinding.inflate(
-                environmentSP.requireLayoutInflater()
+                environment.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPTextFieldBaseView<SpTextFieldTextLayoutBinding>>()
 
             SPTextFieldsInputButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
-
                 val itemBinding = SpItemListTextFieldBinding.inflate(
-                    environmentSP.requireThemedLayoutInflater(resId),
+                    environment.requireThemedLayoutInflater(resId),
                     layoutBinding.fieldsLayout,
                     true
                 )
 
                 with(itemBinding.simpleInput){
                     style(buttonSample.resId)
-                    setupInputTextWithDone(this, environmentSP.context)
+                    setupInputTextWithDone(this, environment.context)
                     buttons.add(this)
                     doOnTextChanged{ text, _, _, _ ->
                         if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
@@ -55,7 +55,7 @@ class SPInputComponent : SPShowCaseComponent {
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
-                    text = resName.substringAfter(".", resName)
+                    text = resName.substringAfter(DOT, resName)
                 }
 
                 itemBinding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
@@ -93,10 +93,11 @@ class SPInputComponent : SPShowCaseComponent {
                         || actionId == EditorInfo.IME_ACTION_DONE
                         || event?.action == KeyEvent.ACTION_DOWN
                     ) {
-                        showToast(context, "Action Done: " + textInput.text)
+                        showToast(context,"$ACTION_DONE ${textInput.text}")
                         return@OnEditorActionListener true
                     } else if (actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_FLAG_NAVIGATE_NEXT) {
-                        showToast(context, "Action Next: " + textInput.text)
+                        showToast(context,"$ACTION_NEXT ${textInput.text}")
+
                     }
                     return@OnEditorActionListener false
                 })
@@ -113,6 +114,8 @@ class SPInputComponent : SPShowCaseComponent {
 
     companion object {
         const val TEXT_WATCHER_CHECK_TEXT = "Space"
+        private const val ACTION_NEXT = "Action Next:"
+        private const val ACTION_DONE = "Action Done:"
+        private const val DOT         = "."
     }
-
 }

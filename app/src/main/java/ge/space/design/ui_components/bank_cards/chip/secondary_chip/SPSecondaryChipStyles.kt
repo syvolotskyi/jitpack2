@@ -1,9 +1,11 @@
 package ge.space.design.ui_components.bank_cards.chip.secondary_chip
 
+import ge.space.ui.util.extension.EMPTY_STRING
+
 data class SPSecondaryChipSupport(
     val hasBorder: Boolean = false,
-    val bankLogoUrl: String = "",
-    val paymentSystemUrl: String = ""
+    val bankLogoUrl: String = EMPTY_STRING,
+    val paymentSystemUrl: String = EMPTY_STRING
 )
 
 object SPSecondaryChipStyles {

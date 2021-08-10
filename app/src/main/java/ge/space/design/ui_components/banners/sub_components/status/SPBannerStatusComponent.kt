@@ -4,19 +4,19 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import com.example.spacedesignsystem.R
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.ui_components.banners.SPBannerBaseFactory
 import ge.space.ui.util.view_factory.SPViewData
 
-class SPBannerStatusComponent : SPShowCaseComponent {
+class SPBannerStatusComponent : ShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.component_banner_status
 
     override fun getDescriptionResId(): Int = R.string.component_banner_status_description
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPBannerBaseFactory() {
+    class SPFactory : SPBannerBaseFactory() {
 
         override var bannerResource: SPViewData = SPViewData.SPImageResourcesData(R.drawable.img_status_success)
 
