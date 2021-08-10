@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPBankCardView.Chip.Base" parent="SPBankCardView.EmptySmall.Base">
+        <item name="backgroundColor">?attr/greyscale_gray_5</item>
+    </style>
+
+    <style name="SPBankCardView.Chip" parent="SPBankCardView.Chip.Base">
+        <item name="roundedCorners">@dimen/sp_bank_round_radius_big</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.Small" parent="SPBankCardView.Chip.Base">
+        <item name="roundedCorners">@dimen/sp_bank_round_radius_small</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.Icon.Small" parent="">
+        <item name="cardSize">small</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.Icon.Dark" parent="">
+        <item name="chipIconAppearance">dark</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon" parent="">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon.Dark" parent="">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="chipIconAppearance">dark</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon.Small" parent="">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="cardSize">small</item>
+    </style>
+
+    <style name="SecondaryChip" parent="SPBankCardView.Chip.Small" />
+
+</resources>
