@@ -122,8 +122,8 @@ abstract class SPBaseActivity : AppCompatActivity() {
         const val EXTRA_COMPONENT_NAME = "component_name"
         const val EXTRA_SHOWCASE_COMPONENT = "showcase_component"
         const val PREFERENCES_THEME = "PREFERENCES_THEME"
-        const val DARK_THEMES_INDEX = 0
-        const val WHITE_THEMES_INDEX = 0
+        private const val DARK_THEMES_INDEX = 0
+        private const val WHITE_THEMES_INDEX = 1
 
         fun start(
             context: Context,
