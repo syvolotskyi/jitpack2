@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPTextField.Dropdown" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
+        <item name="inflateType">none</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="SPTextField.DropdownWithIcon" parent="SPTextField.Dropdown">
+        <item name="inflateType">withIcon</item>
+    </style>
+
+</resources>
