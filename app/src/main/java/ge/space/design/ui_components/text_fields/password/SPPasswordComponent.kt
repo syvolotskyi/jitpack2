@@ -68,8 +68,8 @@ class SPPasswordComponent : ShowCaseComponent {
     }
 
     companion object {
-        private const val CORRECT_BIG_PASSWORD = "888888"
-        private const val CORRECT_SMALL_PASSWORD = "1010"
+        const val CORRECT_BIG_PASSWORD = "888888"
+        const val CORRECT_SMALL_PASSWORD = "1010"
         private const val CORRECT_PASSWORD = "correct password"
         private const val INCORRECT_PASSWORD = "incorrect password"
     }

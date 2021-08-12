@@ -9,9 +9,9 @@ fun SPBaseActivity.showThemeDialog() {
         .setTitle("Choose theme")
         .setSingleChoiceItems(
             arrayOf("Space Dark","Space Light"),
-            preferesManager.getInt(SPBaseActivity.PREFERENCES_THEME, 0)
+            preferencesManager.getInt(SPBaseActivity.PREFERENCES_THEME, 0)
         ) { dialog, which ->
-            preferesManager.edit()?.apply {
+            preferencesManager.edit()?.apply {
                 putInt(SPBaseActivity.PREFERENCES_THEME, which)
                 apply()
             }

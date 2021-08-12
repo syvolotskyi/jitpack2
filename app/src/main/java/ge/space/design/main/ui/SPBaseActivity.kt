@@ -114,7 +114,7 @@ abstract class SPBaseActivity : AppCompatActivity() {
         finish()
     }
 
-    private val preferencesManager: SharedPreferences by lazy {
+     val preferencesManager: SharedPreferences by lazy {
         getSharedPreferences(packageName,Context.MODE_PRIVATE)
     }
 
