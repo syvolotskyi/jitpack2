@@ -1,8 +1,7 @@
-package ge.space.design
+package ge.space.design.main.util
 
 import androidx.appcompat.app.AlertDialog
 import ge.space.design.main.ui.SPBaseActivity
-
 
 fun SPBaseActivity.showThemeDialog() {
     AlertDialog.Builder(this)

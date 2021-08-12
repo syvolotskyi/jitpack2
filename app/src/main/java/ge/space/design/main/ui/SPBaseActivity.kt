@@ -15,7 +15,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.flattenSubComponentSPS
 import ge.space.design.main.util.hasSubComponents
-import ge.space.design.showThemeDialog
+import ge.space.design.main.util.showThemeDialog
 
 abstract class SPBaseActivity : AppCompatActivity() {
 
