@@ -13,5 +13,5 @@ interface SPComponentFactory {
      * View,
      * LaunchAction
      */
-    fun create(environmentSP: SPShowCaseEnvironment): Any
+    fun create(environment: SPShowCaseEnvironment): Any
 }

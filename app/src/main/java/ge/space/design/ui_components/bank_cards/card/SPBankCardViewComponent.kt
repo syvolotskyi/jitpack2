@@ -4,20 +4,18 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemBankCardShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutBankCardShowCaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.bank_cards.card.SPBankCardView
 
-class SPBankCardViewComponent : SPShowCaseComponent {
-    override fun getNameResId(): Int =
-        R.string.component_bank_card_views
+class SPBankCardViewComponent : ShowCaseComponent {
+    override fun getNameResId(): Int = R.string.component_bank_card_views
 
-    override fun getDescriptionResId(): Int =
-        R.string.component_bank_card_views_description
+    override fun getDescriptionResId(): Int = R.string.component_bank_card_views_description
 
-    override fun getComponentClass(): Class<*>? = Factory::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class Factory : SPComponentFactory {
+    class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutBankCardShowCaseBinding.inflate(
                 environment.requireLayoutInflater()

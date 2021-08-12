@@ -8,22 +8,22 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemVerticalButtonsShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 
-class SPVerticalButtonsComponent : SPShowCaseComponent {
+class SPVerticalButtonsComponent : ShowCaseComponent {
     override fun getNameResId(): Int = R.string.vertical_buttons
 
     override fun getDescriptionResId(): Int = R.string.vertical_button_description
 
-    override fun getComponentClass(): Class<*>? = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
-                environmentSP.requireLayoutInflater()
+                environment.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPButtonBaseView<SpButtonVerticalLayoutBinding>>()
             
@@ -32,9 +32,8 @@ class SPVerticalButtonsComponent : SPShowCaseComponent {
                 val resId = buttonSample.resId
                 val supportsDisable = buttonSample.supportsDisabled
 
-
                 val itemBinding = SpItemVerticalButtonsShowcaseBinding.inflate(
-                    environmentSP.requireThemedLayoutInflater(resId),
+                    environment.requireThemedLayoutInflater(resId),
                     layoutBinding.buttonsLayout,
                     true
                 )
@@ -50,7 +49,7 @@ class SPVerticalButtonsComponent : SPShowCaseComponent {
                 buttons.add(itemBinding.button)
 
                 itemBinding.button.setOnClickListener {
-                    Toast.makeText(environmentSP.context, "Clicked", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
                 }
 
                 itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->
