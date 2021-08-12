@@ -14,7 +14,7 @@ import ge.space.design.main.util.SPShowCaseEnvironment
 import kotlin.math.roundToInt
 
 
-class SPColorsComponentSP : ShowCaseComponent {
+class SPColorsComponent : ShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.component_colors
 
