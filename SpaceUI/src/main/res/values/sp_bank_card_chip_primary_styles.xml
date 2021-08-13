@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPBankCardView_ChipPrimary" parent="SPBankCardView.Chip">
+        <item name="chipIcon">@drawable/img_primary_chip</item>
+    </style>
+
+    <style name="SPBankCardView_ChipPrimary.Small" parent="SPBankCardView.Chip.Small">
+        <item name="chipIcon">@drawable/img_primary_chip_small</item>
+    </style>
+
+    <style name="SPBankCardView_ChipPrimary.Medium" parent="SPBankCardView.Chip.Medium">
+        <item name="chipIcon">@drawable/img_primary_chip_small</item>
+    </style>
+</resources>

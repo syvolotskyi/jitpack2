@@ -18,12 +18,6 @@
         </item>
     </style>
 
-    <style name="SPBankCardView.EmptySmall.Base" parent="SPBaseView">
-        <item name="roundedCorners">@dimen/dimen_p_4</item>
-        <item name="shadowOffsetX">0dp</item>
-        <item name="shadowOffsetY">0dp</item>
-        <item name="shadowRadius">0dp</item>
-    </style>
 
     <style name="SPBankCardView.Favorite" parent="SPBankCardView.EmptySmall.Base">
         <item name="backgroundColor">?attr/static_white</item>

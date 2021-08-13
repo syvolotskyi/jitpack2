@@ -21,10 +21,10 @@ object SPTextFieldsDropdownItems {
             "Image from url",
             SPViewData.SPImageUrlData(MASTER_CARD)
         ),
-        SPDropdownItemModel(
+        /*SPDropdownItemModel(
             3,
             "Primary chip",
             SPViewData.SPrimaryChipData(SPChipSize.Small, R.style.SPBankCardView_Chip)
-        ),
+        ),*/
     )
 }

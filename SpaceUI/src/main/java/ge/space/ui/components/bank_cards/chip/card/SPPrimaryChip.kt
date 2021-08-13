@@ -4,12 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
+import androidx.annotation.DrawableRes
+import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
-import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -28,45 +27,44 @@ class SPPrimaryChip @JvmOverloads constructor(
     private val binding =
         SpPrimaryChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
+    @DrawableRes
+    private var primaryChipImage = R.drawable.img_primary_chip
+        set(value) {
+            field = value
+            handleImageBackground()
+        }
+
     init {
-        handleCardAppearance()
+        context.withStyledAttributes(
+            attrs,
+            R.styleable.sp_chip_primary,
+            defStyleAttr
+        ) {
+            primaryChipImage = getResourceId(
+                R.styleable.sp_chip_primary_chipIcon,
+                R.drawable.img_primary_chip
+            )
+        }
     }
 
-    override fun onHandleChipAppearance() {
-        handleImageBackground()
-        setSize()
+    override fun setChipStyle(styleRes: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_primary)
+
+        styleAttrs.run {
+            primaryChipImage = getResourceId(
+                R.styleable.sp_chip_primary_chipIcon,
+                R.drawable.img_primary_chip
+            )
+        }
     }
 
     override fun getViewData(): SPViewData {
-        return SPViewData.SPrimaryChipData(size, getStyle())
-    }
-
-    private fun setSize() {
-        setWidth(getWidthSize())
-        setHeight(getHeightSize())
+        return SPViewData.SPrimaryChipData(chipHeight, chipWidth, 0)
     }
 
     private fun handleImageBackground() {
-        binding.ivBackground.setImageResource(getPrimaryChipImage())
+        binding.ivBackground.setImageResource(primaryChipImage)
     }
 
-    private fun getWidthSize(): Int =
-        when (size) {
-            SPChipSize.Big -> R.dimen.sp_bank_chip_width
-            SPChipSize.Medium -> R.dimen.sp_bank_chip_width_small
-            SPChipSize.Small -> R.dimen.sp_bank_chip_width_small
-        }
-
-    private fun getHeightSize(): Int =
-        when (size) {
-            SPChipSize.Big -> R.dimen.sp_bank_chip_height
-            SPChipSize.Medium -> R.dimen.sp_bank_chip_height_small
-            SPChipSize.Small -> R.dimen.sp_bank_chip_height_small
-        }
-
-    private fun getPrimaryChipImage() = when (size) {
-        SPChipSize.Big -> R.drawable.img_primary_chip
-        SPChipSize.Medium -> R.drawable.img_primary_chip_medium
-        SPChipSize.Small -> R.drawable.img_primary_chip_medium
-    }
 }

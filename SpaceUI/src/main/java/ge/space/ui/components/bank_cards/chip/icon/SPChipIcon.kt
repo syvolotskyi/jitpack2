@@ -68,6 +68,16 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
+     * Changes the iconRadius appearance
+     */
+    var iconRadius: Int = 0
+        set(value) {
+            field = value
+
+            handleCardAppearance()
+        }
+
+    /**
      * Binds a view
      */
     private val binding =
@@ -86,13 +96,13 @@ class SPChipIcon @JvmOverloads constructor(
     private fun TypedArray.withStyledResource() {
         val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
         if (styleRes > DEFAULT_OBTAIN_VAL) {
-            handleAttributesByStyleRes(styleRes)
+            setChipStyle(styleRes)
         } else {
             handleCardAppearance()
         }
     }
 
-    private fun handleAttributesByStyleRes(styleRes: Int) {
+    override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_icon)
 
@@ -107,16 +117,20 @@ class SPChipIcon @JvmOverloads constructor(
             size = SPChipSize.values()[
                 getInt(R.styleable.sp_chip_icon_cardSize, DEFAULT_OBTAIN_VAL)
             ]
+
+            iconRadius = getDimensionPixelSize(
+                R.styleable.sp_chip_icon_iconRadius, DEFAULT_OBTAIN_VAL
+            )
         }
     }
 
-    override fun onHandleChipAppearance() {
+    fun handleCardAppearance() {
         changeIcon()
         handleIconAppearance()
     }
 
     override fun getViewData(): SPViewData =
-         SPViewData.SPChipData(size, icon, getStyle())
+         SPViewData.SPChipData(size, icon, 0)
 
     private fun changeIcon() {
         with(binding) {
@@ -148,7 +162,7 @@ class SPChipIcon @JvmOverloads constructor(
             context.loadRoundImageUrl(
                 url,
                 bigPhoto,
-                getRoundRadius()
+                iconRadius
             )
         }
     }
@@ -167,13 +181,4 @@ class SPChipIcon @JvmOverloads constructor(
         SPChipIconStyle.Accent -> R.attr.colorAccent
         else -> R.attr.static_black
     }
-
-    private fun getRoundRadius() =
-        resources.getDimension(
-            when (size){
-                SPChipSize.Big ->  R.dimen.sp_bank_round_radius_big
-                SPChipSize.Medium ->   R.dimen.sp_bank_round_radius_small
-                SPChipSize.Small ->   R.dimen.sp_bank_round_radius_small
-            }
-        ).toInt()
 }

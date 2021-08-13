@@ -23,7 +23,7 @@ import ge.space.ui.util.view_factory.SPViewData
  * @property cardBackground [SPBankCardGradient] instance which applies a background
  * by a type of it and colors
  */
-class SPDigitalChip @JvmOverloads constructor(
+ class SPDigitalChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
@@ -46,15 +46,16 @@ class SPDigitalChip @JvmOverloads constructor(
         SpDigitalChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
-        handleCardAppearance()
-    }
-
-    override fun onHandleChipAppearance() {
         handleComponentsSizes()
     }
 
+    override fun setChipStyle(styleRes: Int) {
+        TODO("Not yet implemented")
+    }
+
+
     override fun getViewData(): SPViewData =
-        SPViewData.SPDigitalChipData(size, cardBackground, getStyle())
+        SPViewData.SPDigitalChipData(size, cardBackground, 0)
 
 
     private fun handleComponentsSizes() {
@@ -66,24 +67,10 @@ class SPDigitalChip @JvmOverloads constructor(
 
     private fun changeBackgroundSize() {
         with(binding) {
-            vGradient.setWidth(size.getBackgroundSizeWidthSize())
-            vGradient.setHeight(size.getBackgroundHeightSize())
+            vGradient.setWidth(chipWidth)
+            vGradient.setHeight(chipHeight)
         }
     }
-
-    private fun SPChipSize.getBackgroundSizeWidthSize(): Int =
-        when (this) {
-            SPChipSize.Big -> R.dimen.sp_bank_chip_width
-            SPChipSize.Medium -> R.dimen.sp_bank_chip_width_small
-            SPChipSize.Small -> R.dimen.sp_bank_chip_width_small
-        }
-
-    private fun SPChipSize.getBackgroundHeightSize(): Int =
-        when (this) {
-            SPChipSize.Big -> R.dimen.sp_bank_chip_height
-            SPChipSize.Medium -> R.dimen.sp_bank_chip_height_small
-            SPChipSize.Small -> R.dimen.sp_bank_chip_height_small
-        }
 
     private fun changeBrandLogoSize() {
         with(binding) {

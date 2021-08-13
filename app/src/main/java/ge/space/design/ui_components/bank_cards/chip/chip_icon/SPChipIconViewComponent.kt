@@ -32,6 +32,7 @@ class SPChipIconViewComponent : SPShowCaseComponent {
                     size = bankCardSample.size
                     iconStyle = bankCardSample.iconStyle
                     icon = bankCardSample.icon
+                    iconRadius = bankCardSample.icon
                     bigPhotoUrl = bankCardSample.photoUrl
                 }
             }

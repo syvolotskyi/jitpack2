@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import ge.space.extensions.onClick
 import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
@@ -83,7 +82,7 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
 
     private fun handleVisibility() {
         with(binding.lytDialogLinear) {
-            ivDialogType.isVisible = iconVisible
+            ivDialogType.visibleOrGone(iconVisible)
             lytButtons.visibleOrGone(buttonsVisible)
             tvDialogLabel.visibleOrGone(labelVisible)
             dividerDialogLabel.visibleOrGone(titleVisible)

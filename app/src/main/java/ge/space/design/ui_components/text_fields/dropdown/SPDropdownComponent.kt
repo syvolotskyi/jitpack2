@@ -91,7 +91,7 @@ class SPDropdownComponent : SPShowCaseComponent {
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
-                .setDefault(
+             /*   .setDefault(
                     SPDropdownItemModel(
                         0,
                         view.context.getString(R.string.enter_you_details_here),
@@ -99,7 +99,7 @@ class SPDropdownComponent : SPShowCaseComponent {
                             SPEmptyChipStyle.White,
                             R.style.SPBankCardView_EmptySmall_Base)
                     )
-                )
+                )*/
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindItem(SPOnBindDropdownItemModel())
                 .setItems(SPTextFieldsDropdownItems.list)

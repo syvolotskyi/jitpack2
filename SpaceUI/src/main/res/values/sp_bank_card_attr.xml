@@ -24,6 +24,7 @@
 
     <declare-styleable name="sp_chip_icon">
         <attr name="cardSize" />
+        <attr name="iconRadius" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>
@@ -34,6 +35,19 @@
 
     <declare-styleable name="sp_chip">
         <attr name="chipStyle" format="reference" />
+        <attr name="chipWidth" />
+        <attr name="chipHeight" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_chip_primary">
+        <attr name="chipIcon" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_chip_empty">
+        <attr name="emptyChipAppearance" format="enum">
+            <enum name="white" value="0" />
+            <enum name="dark" value="1" />
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="sp_credit_card_style">

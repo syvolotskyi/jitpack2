@@ -10,8 +10,9 @@ class SPEmptyChipIconImpl(context: Context) :
 
     override fun create(type: SPViewData.SPEmptyChipData): SPEmptyChip {
         return SPEmptyChip(context).apply {
-            size = type.chipSize
-            style = type.chipStyle
+            chipHeight = type.chipHeight
+            chipWidth = type.chipWidth
+            emptyViewStyle = type.chipStyle
         }
     }
 }

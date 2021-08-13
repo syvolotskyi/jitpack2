@@ -46,8 +46,10 @@
     <dimen name="sp_bank_card_payment_system_logo_width">@dimen/dimen_p_67</dimen>
     <dimen name="sp_bank_card_payment_system_logo_height">@dimen/dimen_p_27</dimen>
 
-    <dimen name="sp_bank_chip_width_small">@dimen/dimen_p_48</dimen>
-    <dimen name="sp_bank_chip_height_small">@dimen/dimen_p_34</dimen>
+    <dimen name="sp_bank_chip_width_small">@dimen/dimen_p_40</dimen>
+    <dimen name="sp_bank_chip_height_small">@dimen/dimen_p_28</dimen>
+    <dimen name="sp_bank_chip_width_medium">@dimen/dimen_p_48</dimen>
+    <dimen name="sp_bank_chip_height_medium">@dimen/dimen_p_34</dimen>
     <dimen name="sp_bank_chip_width">@dimen/dimen_p_68</dimen>
     <dimen name="sp_bank_chip_height">@dimen/dimen_p_48</dimen>
 

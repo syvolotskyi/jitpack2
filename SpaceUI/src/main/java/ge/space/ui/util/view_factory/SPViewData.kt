@@ -9,17 +9,18 @@ import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
-sealed class SPViewData : Parcelable{
+sealed class SPViewData : Parcelable {
     @Parcelize
     data class SPImageResourcesData(@DrawableRes val res: Int) : SPViewData()
+
     @Parcelize
     data class SPImageUrlData(val url: String) : SPViewData()
 
     @Parcelize
     data class SPEmptyChipData(
-        val chipSize: SPChipSize,
-        val chipStyle: SPEmptyChipStyle,
-        @StyleRes val styleRes: Int
+        val chipHeight: Int,
+        val chipWidth: Int,
+        val chipStyle: SPEmptyChipStyle
     ) : SPViewData()
 
     @Parcelize
@@ -30,8 +31,11 @@ sealed class SPViewData : Parcelable{
     ) : SPViewData()
 
     @Parcelize
-    data class SPrimaryChipData(val chipSize: SPChipSize,
-                                @StyleRes val styleRes: Int) : SPViewData()
+    data class SPrimaryChipData(
+        val chipHeight: Int,
+        val chipWidth: Int,
+        @StyleRes val styleRes: Int
+    ) : SPViewData()
 
     @Parcelize
     data class SPSecondaryChipData(
@@ -52,5 +56,5 @@ sealed class SPViewData : Parcelable{
         SPViewData()
 
     @Parcelize
-    data class SPNewCreditCards(val chipSize: SPChipSize): SPViewData()
+    data class SPNewCreditCards(val chipSize: SPChipSize) : SPViewData()
 }

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:style="@style/SPBankCardView.EmptySmall.Base">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivBackground"
-        android:layout_height="@dimen/sp_bank_chip_height_small"
-        android:layout_width="@dimen/sp_bank_chip_width_small"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_small_empty_chip_light" />
-
 </merge>

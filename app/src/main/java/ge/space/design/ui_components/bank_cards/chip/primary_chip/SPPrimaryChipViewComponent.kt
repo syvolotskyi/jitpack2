@@ -31,7 +31,7 @@ class SPPrimaryChipViewComponent : SPShowCaseComponent {
                 )
 
                 with(itemBinding.primaryChip) {
-                    size = chip.size
+                   style(chip.resId)
                 }
             }
 
