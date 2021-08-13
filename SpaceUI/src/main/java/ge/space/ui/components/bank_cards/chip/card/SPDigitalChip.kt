@@ -55,7 +55,7 @@ import ge.space.ui.util.view_factory.SPViewData
 
 
     override fun getViewData(): SPViewData =
-        SPViewData.SPDigitalChipData(size, cardBackground, 0)
+        SPViewData.SPDigitalChipData(chipHeight, chipWidth, cardBackground, 0)
 
 
     private fun handleComponentsSizes() {

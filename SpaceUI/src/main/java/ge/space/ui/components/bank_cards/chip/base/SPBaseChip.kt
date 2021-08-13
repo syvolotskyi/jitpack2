@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
@@ -70,17 +71,14 @@ abstract class SPBaseChip @JvmOverloads constructor(
         super.setStyle(defStyleRes)
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_chip)
 
-        styleAttrs.run {
-            withStyledResource() }
+        styleAttrs.run { withStyledResource() }
     }
 
     private fun TypedArray.withStyledResource() {
-    /*    val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
-        if (styleRes > DEFAULT_OBTAIN_VAL) {
-            setChipStyle(styleRes)
-        } else {
-            handleCardAppearance()
-        }*/
+            val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
+            if (styleRes > DEFAULT_OBTAIN_VAL) {
+                setChipStyle(styleRes)
+            }
 
         chipHeight = getDimensionPixelSize(
             R.styleable.sp_chip_chipHeight, DEFAULT_OBTAIN_VAL
@@ -91,9 +89,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
     }
 
 
-
     abstract fun setChipStyle(styleRes: Int)
-
 
     /**
      * Allows to update text style and BaseViewStyle programmatically

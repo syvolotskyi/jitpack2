@@ -81,6 +81,6 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData =
-        SPViewData.SPSecondaryChipData(size, bankLogoUrl, paymentSystemUrl, hasBorder, 0)
+        SPViewData.SPSecondaryChipData(chipHeight, chipWidth, bankLogoUrl, paymentSystemUrl, hasBorder, 0)
 
 }

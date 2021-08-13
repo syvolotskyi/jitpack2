@@ -25,7 +25,7 @@ class SPPrimaryChipViewComponent : SPShowCaseComponent {
 
             SPPrimaryChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemPrimaryChipShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
+                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_ChipPrimary),
                     binding.primaryChipLayout,
                     true
                 )

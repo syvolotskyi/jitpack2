@@ -49,7 +49,7 @@ class SPButtonVertical @JvmOverloads constructor(
     /**
      * Sets a drawable padding.
      */
-    private var iconPadding = IconPadding.Normal
+    private var iconPadding = Normal
         set(value) {
             field = value
 
@@ -123,8 +123,8 @@ class SPButtonVertical @JvmOverloads constructor(
 
     private fun handleDirectionArrow() {
         val padding = when (iconPadding) {
-            IconPadding.Normal -> resources.getDimension(R.dimen.dimen_p_8).toInt()
-            IconPadding.Large -> resources.getDimension(R.dimen.dimen_p_16).toInt()
+            Normal -> resources.getDimension(R.dimen.dimen_p_8).toInt()
+            Large -> resources.getDimension(R.dimen.dimen_p_16).toInt()
         }
 
         bubbleLayoutBinding.btnContainer.setPadding(

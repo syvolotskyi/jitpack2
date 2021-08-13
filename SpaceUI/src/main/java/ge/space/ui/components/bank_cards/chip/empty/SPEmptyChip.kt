@@ -5,15 +5,13 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
-import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -69,6 +67,8 @@ class SPEmptyChip @JvmOverloads constructor(
             DEFAULT_OBTAIN_VAL
         )
         emptyViewStyle = SPEmptyChipStyle.values()[styleId]
+
+        color = ContextCompat.getColor(context, android.R.color.transparent)
     }
 
     override fun getViewData(): SPViewData =
