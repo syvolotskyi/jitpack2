@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    app:style="@style/SPBankCardView.EmptySmall.Base"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -8,5 +9,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         app:srcCompat="@drawable/ic_small_empty_chip_light" />
 </merge>

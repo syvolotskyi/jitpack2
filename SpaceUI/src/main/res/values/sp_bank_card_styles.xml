@@ -18,7 +18,6 @@
         </item>
     </style>
 
-
     <style name="SPBankCardView.Favorite" parent="SPBankCardView.EmptySmall.Base">
         <item name="backgroundColor">?attr/static_white</item>
         <item name="isCircle">true</item>
