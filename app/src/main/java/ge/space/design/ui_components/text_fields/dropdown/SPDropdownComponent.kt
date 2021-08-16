@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowcaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.text_fields.input.SPInputComponent
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
@@ -26,30 +25,31 @@ import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.view_factory.SPViewData
 import java.util.*
 
-class SPDropdownComponent : SPShowCaseComponent {
+class SPDropdownComponent : ShowCaseComponent {
+
     override fun getNameResId(): Int = R.string.dropdown
 
     override fun getDescriptionResId(): Int = R.string.dropdown_desc
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutTextFieldsDropdownShowcaseBinding.inflate(
-                environmentSP.requireLayoutInflater()
+                environment.requireLayoutInflater()
             )
 
             val dropdowns = mutableListOf<SPTextFieldBaseView<SpTextFieldDropdownBinding>>()
             val simpleDropdown = createDropdownProgrammatically(
                 layoutBinding.tfDropdownFrame,
-                environmentSP.requireFragmentActivity()
+                environment.requireFragmentActivity()
             )
             layoutBinding.tfDropdownFrame.addView(simpleDropdown)
 
             dropdowns.add(
                 createDropdownFromXml(
                     layoutBinding.textFieldDropdown,
-                    environmentSP.requireFragmentActivity()
+                    environment.requireFragmentActivity()
                 )
             )
 
@@ -167,8 +167,7 @@ class SPDropdownComponent : SPShowCaseComponent {
 
         private fun createMultipleStringsButtonsConfigs(
             items: List<String>,
-            view: SPTextFieldDropdown<String>
-        ) =
+            view: SPTextFieldDropdown<String>) =
             items.map {
                 SPDialogInfoHolder(
                     it,

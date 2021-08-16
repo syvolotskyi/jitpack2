@@ -4,20 +4,18 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemNewCreditCardShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutNewCreditCardShowCaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 
-class SPNewCreditCardComponent: SPShowCaseComponent {
+class SPNewCreditCardComponent: ShowCaseComponent {
 
-    override fun getNameResId(): Int =
-        R.string.component_new_credit_card
+    override fun getNameResId(): Int = R.string.component_new_credit_card
 
-    override fun getDescriptionResId(): Int =
-        R.string.component_new_credit_card_description
+    override fun getDescriptionResId(): Int = R.string.component_new_credit_card_description
 
-    override fun getComponentClass(): Class<*>? = Factory::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class Factory : SPComponentFactory {
+    class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutNewCreditCardShowCaseBinding.inflate(
                 environment.requireLayoutInflater()

@@ -8,24 +8,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.ItemColorBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.ui.SimpleListAdapter
 import ge.space.design.main.util.SPShowCaseEnvironment
 import kotlin.math.roundToInt
 
 
-class SPColorsComponentSP : SPShowCaseComponent {
+class SPColorsComponent : ShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.component_colors
 
     override fun getDescriptionResId(): Int = R.string.component_colors_description
 
-    override fun getComponentClass(): Class<*>? = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val recyclerView = RecyclerView(environmentSP.context)
-            recyclerView.layoutManager = LinearLayoutManager(environmentSP.context)
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
+            val recyclerView = RecyclerView(environment.context)
+            recyclerView.layoutManager = LinearLayoutManager(environment.context)
             recyclerView.addItemDecoration(
                 DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
             )
@@ -35,13 +35,13 @@ class SPColorsComponentSP : SPShowCaseComponent {
             ).setup {
                 onCreate { parent ->
                     ItemColorBinding.inflate(
-                        environmentSP.requireLayoutInflater(),
+                        environment.requireLayoutInflater(),
                         parent,
                         false
                     )
                 }
                 onBind { binding, (name, resId), position ->
-                    val colorInt = ContextCompat.getColor(environmentSP.context, resId)
+                    val colorInt = ContextCompat.getColor(environment.context, resId)
                     binding.colorView.color = colorInt
                     binding.colorDetails.text = buildString {
                         appendln("${position + 1}. $name")

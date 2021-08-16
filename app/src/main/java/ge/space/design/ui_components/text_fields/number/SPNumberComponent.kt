@@ -5,32 +5,33 @@ import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldNumberShowcaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import java.math.BigDecimal
 
-class SPNumberComponent : SPShowCaseComponent {
+class SPNumberComponent : ShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.number_input
 
     override fun getDescriptionResId(): Int = R.string.number_input_desc
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
-    class FactorySP : SPComponentFactory {
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-        private val distractiveSum: BigDecimal = BigDecimal("120.0")
+    class SPFactory : SPComponentFactory {
 
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
+        private val distractiveSum: BigDecimal = BigDecimal(BIG_DECIMAL_VALUE)
+
+        override fun create(environment: SPShowCaseEnvironment): Any {
             val binding =
-                SpLayoutTextFieldNumberShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
+                SpLayoutTextFieldNumberShowcaseBinding.inflate(environment.requireLayoutInflater())
             with(binding) {
                 radioGroup.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
-                        R.id.eur -> selectCurrency("€")
-                        R.id.gel -> selectCurrency("₾")
-                        R.id.uzs -> selectCurrency("UZS")
+                        R.id.eur -> selectCurrency(EURO)
+                        R.id.gel -> selectCurrency(GEL)
+                        R.id.uzs -> selectCurrency(UZS)
                     }
                 }
 
@@ -107,5 +108,12 @@ class SPNumberComponent : SPShowCaseComponent {
             tfNumber.currency = currency
             tfNumberSecond.currency = currency
         }
+    }
+
+    companion object {
+        private const val EURO = "€"
+        private const val GEL  = "₾"
+        private const val UZS  = "UZS"
+        private const val BIG_DECIMAL_VALUE  = "120.0"
     }
 }

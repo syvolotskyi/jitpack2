@@ -9,21 +9,21 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import ge.space.design.NEW_COMPONENTS
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 
 /**
     helper extensions/methods
  */
-val SPShowCaseComponent.hasSubComponents
+val ShowCaseComponent.hasSubComponents
     get() = getSubComponents().isNotEmpty()
 
-val SPShowCaseComponent.isNew: Boolean
+val ShowCaseComponent.isNew: Boolean
     get() = (when (this) {
-        is SingleSPShowCaseComponent -> componentSP
+        is SingleSPShowCaseComponent -> component
         else -> this
     }).javaClass in NEW_COMPONENTS || getSubComponents().any { it.isNew }
 
-val SPShowCaseComponent.flattenSubComponentSPS: List<SPShowCaseComponent>
+val ShowCaseComponent.flattenSubComponentSPS: List<ShowCaseComponent>
     get() {
         return if (getComponentClass() != null) {
             listOf(SingleSPShowCaseComponent(this)) + getSubComponents()
@@ -32,9 +32,9 @@ val SPShowCaseComponent.flattenSubComponentSPS: List<SPShowCaseComponent>
         }
     }
 
-internal class SingleSPShowCaseComponent(val componentSP: SPShowCaseComponent) :
-    SPShowCaseComponent by componentSP {
-    override fun getSubComponents(): List<SPShowCaseComponent> = emptyList()
+internal class SingleSPShowCaseComponent(val component: ShowCaseComponent) :
+    ShowCaseComponent by component {
+    override fun getSubComponents(): List<ShowCaseComponent> = emptyList()
 }
 
 fun getNewBadge(): Spanned {

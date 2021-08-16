@@ -4,7 +4,6 @@ import com.example.spacedesignsystem.R
 import kotlin.reflect.KProperty
 import kotlin.reflect.jvm.isAccessible
 
-
 typealias ColorRes = Pair<String, Int>
 
 object Colors {

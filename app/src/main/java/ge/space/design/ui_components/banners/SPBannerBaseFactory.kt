@@ -11,17 +11,16 @@ import ge.space.design.ui_components.banners.full_screen.SPBannerFullScreenActiv
 import ge.space.extensions.onTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 
-
 abstract class SPBannerBaseFactory : SPComponentFactory {
 
     protected lateinit var binding: SpBannerShowcaseBinding
     protected lateinit var showCaseEnvironment: SPShowCaseEnvironment
     protected abstract var bannerResource : SPViewData
 
-    override fun create(environmentSP: SPShowCaseEnvironment): Any {
+    override fun create(environment: SPShowCaseEnvironment): Any {
 
-        binding = SpBannerShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
-        showCaseEnvironment = environmentSP
+        binding = SpBannerShowcaseBinding.inflate(environment.requireLayoutInflater())
+        showCaseEnvironment = environment
 
         setAttributes()
 

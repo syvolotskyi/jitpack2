@@ -4,20 +4,19 @@ import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemChipBankCardShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutBankCardShowCaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
 
-class SPEmptyChipViewComponent : SPShowCaseComponent {
-    override fun getNameResId(): Int =
-        R.string.component_small_empty_chip
+class SPEmptyChipViewComponent : ShowCaseComponent {
 
-    override fun getDescriptionResId(): Int =
-        R.string.component_small_empty_chip_description
+    override fun getNameResId(): Int = R.string.component_small_empty_chip
 
-    override fun getComponentClass(): Class<*>? = Factory::class.java
+    override fun getDescriptionResId(): Int = R.string.component_small_empty_chip_description
 
-    class Factory : SPComponentFactory {
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
+
+    class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutBankCardShowCaseBinding.inflate(
                 environment.requireLayoutInflater()
