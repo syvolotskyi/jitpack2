@@ -83,7 +83,7 @@
     <dimen name="sp_bank_logo_placeholder_size_small">@dimen/dimen_sp_16</dimen>
 
     <dimen name="sp_placeholder_logo_size_big">@dimen/dimen_sp_32</dimen>
-    <dimen name="sp_placeholder_logo_size_xmedium">@dimen/dimen_sp_24</dimen>
+    <dimen name="sp_placeholder_logo_size_xmedium">@dimen/dimen_sp_20</dimen>
     <dimen name="sp_placeholder_logo_size_medium">@dimen/dimen_sp_16</dimen>
     <dimen name="sp_placeholder_logo_size_xsmall">@dimen/dimen_sp_14</dimen>
     <dimen name="sp_placeholder_logo_size_small">@dimen/dimen_sp_13</dimen>

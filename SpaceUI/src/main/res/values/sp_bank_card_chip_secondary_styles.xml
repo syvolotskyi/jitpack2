@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPBankCardView_ChipSecondary.Small.WithBorder" parent="SPBankCardView.Chip.Small">
+        <item name="hasBorder">true</item>
+        <item name="placeholder_size">Small</item>
+    </style>
+
+    <style name="SPBankCardView_ChipSecondary.Small" parent="SPBankCardView.Chip.Small">
+        <item name="hasBorder">false</item>
+        <item name="placeholder_size">Small</item>
+    </style>
+
+    <style name="SPBankCardView_ChipSecondary.Medium.WithBorder" parent="SPBankCardView.Chip.Medium">
+        <item name="hasBorder">true</item>
+        <item name="placeholder_size">XSmall</item>
+    </style>
+
+    <style name="SPBankCardView_ChipSecondary.Medium" parent="SPBankCardView.Chip.Medium">
+        <item name="hasBorder">false</item>
+        <item name="placeholder_size">XSmall</item>
+    </style>
+
+    <style name="SPBankCardView_ChipSecondary.WithBorder" parent="SPBankCardView.Chip">
+        <item name="hasBorder">true</item>
+        <item name="placeholder_size">XMedium</item>
+    </style>
+
+    <style name="SPBankCardView_ChipSecondary" parent="SPBankCardView.Chip">
+        <item name="hasBorder">false</item>
+        <item name="placeholder_size">XMedium</item>
+    </style>
+
+</resources>

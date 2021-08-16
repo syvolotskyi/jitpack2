@@ -6,7 +6,7 @@
     </style>
 
     <style name="SPBankCardView.Chip" parent="SPBankCardView.Chip.Base">
-        <item name="roundedCorners">@dimen/sp_bank_round_radius_big</item>
+        <item name="roundedCorners">@dimen/sp_bank_round_radius_small</item>
         <item name="chipHeight">@dimen/sp_bank_chip_height</item>
         <item name="chipWidth">@dimen/sp_bank_chip_width</item>
     </style>
@@ -44,7 +44,5 @@
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
         <item name="cardSize">small</item>
     </style>
-
-    <style name="SecondaryChip" parent="SPBankCardView.Chip.Small" />
 
 </resources>

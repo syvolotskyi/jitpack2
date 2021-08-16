@@ -22,13 +22,6 @@
         <attr name="cardAccountNumberTextAppearance" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="sp_chip_icon">
-        <attr name="cardSize" />
-        <attr name="iconRadius" />
-        <attr name="chipIcon" />
-        <attr name="chipIconAppearance" />
-    </declare-styleable>
-
     <declare-styleable name="sp_credit_card">
         <attr name="cardSize" />
     </declare-styleable>
@@ -51,11 +44,24 @@
     </declare-styleable>
 
     <declare-styleable name="sp_chip_digital">
-
+        <attr name="brandLogoWidth" format="dimension|reference"/>
+        <attr name="brandLogoHeight" format="dimension|reference"/>
+        <attr name="paymentSystemWidth" format="dimension|reference"/>
+        <attr name="paymentSystemHeight" format="dimension|reference"/>
+        <attr name="paymentLogoMargin" format="dimension|reference"/>
+        <attr name="chipHeight" />
     </declare-styleable>
 
     <declare-styleable name="sp_chip_secondary">
+        <attr name="hasBorder" format="boolean" />
+        <attr name="placeholder_size" />
+    </declare-styleable>
 
+    <declare-styleable name="sp_chip_icon">
+        <attr name="cardSize" />
+        <attr name="iconRadius" />
+        <attr name="chipIcon" />
+        <attr name="chipIconAppearance" />
     </declare-styleable>
 
     <declare-styleable name="sp_credit_card_style">

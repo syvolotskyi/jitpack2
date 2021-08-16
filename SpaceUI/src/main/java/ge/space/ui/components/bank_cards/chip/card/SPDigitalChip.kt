@@ -1,9 +1,11 @@
 package ge.space.ui.components.bank_cards.chip.card
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.core.content.withStyledAttributes
 import ge.space.extensions.layoutParams
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
@@ -12,9 +14,8 @@ import ge.space.spaceui.databinding.SpDigitalChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
-import ge.space.ui.util.extension.heightByIsBig
-import ge.space.ui.util.extension.widthByIsBig
 import ge.space.ui.util.view_factory.SPViewData
+import kotlinx.android.synthetic.main.sp_digital_chip_layout.view.*
 
 /**
  * A chip which allows to show a bank logo with its payment system icon. Also the view
@@ -23,7 +24,7 @@ import ge.space.ui.util.view_factory.SPViewData
  * @property cardBackground [SPBankCardGradient] instance which applies a background
  * by a type of it and colors
  */
- class SPDigitalChip @JvmOverloads constructor(
+class SPDigitalChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
@@ -40,19 +41,97 @@ import ge.space.ui.util.view_factory.SPViewData
         }
 
     /**
+     * Applies a payment logo Margin
+     */
+    private var paymentLogoMargin = 0
+        set(value) {
+            field = value
+
+            changePaymentSystemMargins()
+        }
+
+    /**
+     * Changes the height size of the view
+     */
+    var brandLogoSizeWidth: Int = 0
+        set(value) {
+            field = value
+
+            ivBankLogo.setWidth(brandLogoSizeWidth)
+        }
+
+    /**
+     * Changes the width size of the view
+     */
+    var brandLogoSizeHeight: Int = 0
+        set(value) {
+            field = value
+
+            ivBankLogo.setHeight(brandLogoSizeHeight)
+        }
+
+    /**
+     * Changes the height size of the payment system
+     */
+    var paymentSystemWidthSize: Int = 0
+        set(value) {
+            field = value
+
+            ivPaymentSystem.setWidth(paymentSystemWidthSize)
+        }
+
+    /**
+     * Changes the width size of the payment system
+     */
+    var paymentSystemHeightSize: Int = 0
+        set(value) {
+            field = value
+
+            ivPaymentSystem.setHeight(paymentSystemHeightSize)
+        }
+
+
+    /**
      * Binds a view
      */
     private val binding =
         SpDigitalChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
+        context.withStyledAttributes(
+            attrs,
+            R.styleable.sp_chip_digital,
+            defStyleAttr
+        ) { withDigitalChipStyledResource() }
         handleComponentsSizes()
     }
 
     override fun setChipStyle(styleRes: Int) {
-        TODO("Not yet implemented")
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_digital)
+
+        styleAttrs.run {
+            withDigitalChipStyledResource()
+        }
     }
 
+    private fun TypedArray.withDigitalChipStyledResource() {
+        paymentLogoMargin = getDimensionPixelSize(
+            R.styleable.sp_chip_digital_paymentLogoMargin, DEFAULT_OBTAIN_VAL
+        )
+        brandLogoSizeWidth = getDimensionPixelSize(
+            R.styleable.sp_chip_digital_brandLogoWidth, DEFAULT_OBTAIN_VAL
+        )
+        brandLogoSizeHeight = getDimensionPixelSize(
+            R.styleable.sp_chip_digital_brandLogoHeight, DEFAULT_OBTAIN_VAL
+        )
+        paymentSystemWidthSize = getDimensionPixelSize(
+            R.styleable.sp_chip_digital_paymentSystemWidth, DEFAULT_OBTAIN_VAL
+        )
+        paymentSystemHeightSize = getDimensionPixelSize(
+            R.styleable.sp_chip_digital_paymentSystemHeight, DEFAULT_OBTAIN_VAL
+        )
+    }
 
     override fun getViewData(): SPViewData =
         SPViewData.SPDigitalChipData(chipHeight, chipWidth, cardBackground, 0)
@@ -60,9 +139,6 @@ import ge.space.ui.util.view_factory.SPViewData
 
     private fun handleComponentsSizes() {
         changeBackgroundSize()
-        changeBrandLogoSize()
-        changePaymentSystemSize()
-        changePaymentSystemMargins()
     }
 
     private fun changeBackgroundSize() {
@@ -71,48 +147,6 @@ import ge.space.ui.util.view_factory.SPViewData
             vGradient.setHeight(chipHeight)
         }
     }
-
-    private fun changeBrandLogoSize() {
-        with(binding) {
-            ivBankLogo.setWidth(getBrandLogoSizeWidthSize())
-            ivBankLogo.setHeight(getBrandLogoSizeHeightSize())
-        }
-    }
-
-    private fun getBrandLogoSizeWidthSize(): Int =
-        when (size) {
-            SPChipSize.Big -> R.dimen.sp_digital_chip_bank_logo_width
-            SPChipSize.Medium -> R.dimen.sp_digital_chip_bank_logo_width_small
-            SPChipSize.Small -> R.dimen.sp_digital_chip_bank_logo_width_small
-        }
-
-    private fun getBrandLogoSizeHeightSize(): Int =
-        when (size) {
-            SPChipSize.Big -> R.dimen.sp_digital_chip_bank_logo_height
-            SPChipSize.Medium -> R.dimen.sp_digital_chip_bank_logo_height_small
-            SPChipSize.Small -> R.dimen.sp_digital_chip_bank_logo_height_small
-        }
-
-    private fun changePaymentSystemSize() {
-        with(binding) {
-            ivPaymentSystem.setWidth(size.getPaymentSystemWidthSize())
-            ivPaymentSystem.setHeight(size.getPaymentSystemHeightSize())
-        }
-    }
-
-    private fun SPChipSize.getPaymentSystemWidthSize(): Int =
-        when (this) {
-            SPChipSize.Big -> R.dimen.sp_digital_chip_payment_system_width
-            SPChipSize.Medium -> R.dimen.sp_digital_chip_payment_system_width
-            SPChipSize.Small -> R.dimen.sp_digital_chip_payment_system_width_small
-        }
-
-    private fun SPChipSize.getPaymentSystemHeightSize(): Int =
-        when (this) {
-            SPChipSize.Big -> R.dimen.sp_digital_chip_payment_system_height
-            SPChipSize.Medium -> R.dimen.sp_digital_chip_payment_system_height
-            SPChipSize.Small -> R.dimen.sp_digital_chip_payment_system_height_small
-        }
 
     private fun changePaymentSystemMargins() {
         with(binding) {
