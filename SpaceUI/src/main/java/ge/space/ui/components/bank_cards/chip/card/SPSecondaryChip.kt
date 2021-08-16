@@ -43,11 +43,14 @@ class SPSecondaryChip @JvmOverloads constructor(
     /**
      * Allows to hide or show a border for the view
      */
-    var hasBorder: Boolean = false
+    var border: Int = 0
         set(value) {
             field = value
 
-            binding.border.isVisible = value
+            if (border != 0) {
+                binding.border.background = ContextCompat.getDrawable(context, border)
+            }
+            binding.border.isVisible = value != 0
         }
 
     /**
@@ -114,10 +117,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withSecondaryChipStyledResource() {
-        hasBorder = getBoolean(
-            R.styleable.sp_chip_secondary_hasBorder,
-            false
-        )
+        border = getResourceId(R.styleable.sp_chip_secondary_border, 0)
         placeholderSize =
             SPPlaceholderSize.values()[getInt(
                 R.styleable.sp_chip_secondary_placeholder_size,
@@ -133,7 +133,7 @@ class SPSecondaryChip @JvmOverloads constructor(
             chipWidth,
             bankLogoUrl,
             paymentSystemUrl,
-            hasBorder,
+            border,
             0
         )
 

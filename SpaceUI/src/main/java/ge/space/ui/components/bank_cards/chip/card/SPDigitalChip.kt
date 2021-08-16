@@ -15,7 +15,6 @@ import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.view_factory.SPViewData
-import kotlinx.android.synthetic.main.sp_digital_chip_layout.view.*
 
 /**
  * A chip which allows to show a bank logo with its payment system icon. Also the view
@@ -51,23 +50,13 @@ class SPDigitalChip @JvmOverloads constructor(
         }
 
     /**
-     * Changes the height size of the view
-     */
-    var brandLogoSizeWidth: Int = 0
-        set(value) {
-            field = value
-
-            ivBankLogo.setWidth(brandLogoSizeWidth)
-        }
-
-    /**
      * Changes the width size of the view
      */
     var brandLogoSizeHeight: Int = 0
         set(value) {
             field = value
 
-            ivBankLogo.setHeight(brandLogoSizeHeight)
+            binding.ivBankLogo.setHeight(brandLogoSizeHeight)
         }
 
     /**
@@ -77,7 +66,7 @@ class SPDigitalChip @JvmOverloads constructor(
         set(value) {
             field = value
 
-            ivPaymentSystem.setWidth(paymentSystemWidthSize)
+            binding.ivPaymentSystem.setWidth(paymentSystemWidthSize)
         }
 
     /**
@@ -87,7 +76,7 @@ class SPDigitalChip @JvmOverloads constructor(
         set(value) {
             field = value
 
-            ivPaymentSystem.setHeight(paymentSystemHeightSize)
+            binding.ivPaymentSystem.setHeight(paymentSystemHeightSize)
         }
 
 
@@ -118,9 +107,6 @@ class SPDigitalChip @JvmOverloads constructor(
     private fun TypedArray.withDigitalChipStyledResource() {
         paymentLogoMargin = getDimensionPixelSize(
             R.styleable.sp_chip_digital_paymentLogoMargin, DEFAULT_OBTAIN_VAL
-        )
-        brandLogoSizeWidth = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_brandLogoWidth, DEFAULT_OBTAIN_VAL
         )
         brandLogoSizeHeight = getDimensionPixelSize(
             R.styleable.sp_chip_digital_brandLogoHeight, DEFAULT_OBTAIN_VAL

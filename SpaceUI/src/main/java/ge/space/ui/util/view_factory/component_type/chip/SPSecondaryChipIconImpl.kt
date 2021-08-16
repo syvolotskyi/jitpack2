@@ -14,7 +14,7 @@ class SPSecondaryChipIconImpl(context: Context) :
             chipWidth = type.chipWidth
             bankLogoUrl = type.bankLogoUrl
             paymentSystemUrl = type.paymentSystemUrl
-            hasBorder = type.hasBorder
+            border = type.hasBorder
         }
     }
 }
