@@ -3,6 +3,7 @@ package ge.space.ui.util.view_factory
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
+import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
@@ -21,7 +22,7 @@ sealed class SPViewData : Parcelable {
         val chipHeight: Int,
         val chipWidth: Int,
         val chipStyle: SPEmptyChipStyle,
-        @StyleRes val styleRes: Int
+        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base
     ) : SPViewData()
 
     @Parcelize
