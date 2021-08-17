@@ -72,7 +72,7 @@ class SPEmptyChip @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData =
-        SPViewData.SPEmptyChipData(chipHeight, chipWidth, emptyViewStyle)
+        SPViewData.SPEmptyChipData(chipHeight, chipWidth, emptyViewStyle, R.style.SPBankCardView_EmptySmall_Base)
 
     private fun getBackgroundImage() =
         when (emptyViewStyle) {

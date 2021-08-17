@@ -23,6 +23,7 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemMode
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.view_factory.SPViewData
+import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
 
 class SPDropdownComponent : ShowCaseComponent {
@@ -91,15 +92,13 @@ class SPDropdownComponent : ShowCaseComponent {
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
-             /*   .setDefault(
+                .setDefault(
                     SPDropdownItemModel(
                         0,
                         view.context.getString(R.string.enter_you_details_here),
-                        SPViewData.SPEmptyChipData(SPChipSize.Small,
-                            SPEmptyChipStyle.White,
-                            R.style.SPBankCardView_EmptySmall_Base)
+                        SPDefaultEmptyChipData.getSmallEmptyChipData(view.context)
                     )
-                )*/
+                )
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindItem(SPOnBindDropdownItemModel())
                 .setItems(SPTextFieldsDropdownItems.list)
@@ -167,7 +166,8 @@ class SPDropdownComponent : ShowCaseComponent {
 
         private fun createMultipleStringsButtonsConfigs(
             items: List<String>,
-            view: SPTextFieldDropdown<String>) =
+            view: SPTextFieldDropdown<String>
+        ) =
             items.map {
                 SPDialogInfoHolder(
                     it,

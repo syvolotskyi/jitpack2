@@ -1,4 +1,4 @@
-package ge.space.ui.util.view_factory.component_type.chip
+package ge.space.ui.util.view_factory.component_type.chip.primary
 
 import android.content.Context
 import ge.space.ui.components.bank_cards.chip.card.SPPrimaryChip
