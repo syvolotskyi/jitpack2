@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
@@ -17,7 +18,6 @@ import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.loadRoundImageUrl
-import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -68,10 +68,20 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
+     * Changes the iconRadius appearance
+     */
+    var iconRadius: Int = 0
+        set(value) {
+            field = value
+
+            handleCardAppearance()
+        }
+
+    /**
      * Binds a view
      */
     private val binding =
-        SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         context.withStyledAttributes(
@@ -86,13 +96,13 @@ class SPChipIcon @JvmOverloads constructor(
     private fun TypedArray.withStyledResource() {
         val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
         if (styleRes > DEFAULT_OBTAIN_VAL) {
-            handleAttributesByStyleRes(styleRes)
+            setChipStyle(styleRes)
         } else {
             handleCardAppearance()
         }
     }
 
-    private fun handleAttributesByStyleRes(styleRes: Int) {
+    override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_icon)
 
@@ -107,29 +117,24 @@ class SPChipIcon @JvmOverloads constructor(
             size = SPChipSize.values()[
                 getInt(R.styleable.sp_chip_icon_cardSize, DEFAULT_OBTAIN_VAL)
             ]
+
+            iconRadius = getDimensionPixelSize(
+                R.styleable.sp_chip_icon_iconRadius, DEFAULT_OBTAIN_VAL
+            )
         }
     }
 
-    override fun onHandleChipAppearance() {
-        handleVisibility()
+    fun handleCardAppearance() {
         changeIcon()
         handleIconAppearance()
     }
 
     override fun getViewData(): SPViewData =
-         SPViewData.SPChipData(size, icon, getStyle())
-
-    private fun handleVisibility() {
-        with(binding) {
-            frameBig.visibleOrGone(isBig)
-            frameSmall.visibleOrGone(!isBig)
-        }
-    }
+         SPViewData.SPChipData(size, icon, 0)
 
     private fun changeIcon() {
         with(binding) {
             ivIcon.setImageResource(icon)
-            ivIconSmall.setImageResource(icon)
         }
     }
 
@@ -140,20 +145,16 @@ class SPChipIcon @JvmOverloads constructor(
             ivIcon.setColorFilter(
                 color, PorterDuff.Mode.SRC_IN
             )
-            ivIconSmall.setColorFilter(
-                color, PorterDuff.Mode.SRC_IN
-            )
         }
     }
 
     private fun handlePhotoUrl() {
-        handleVisibility()
 
         val hasPhotoUrl = getHasPhotoUrl()
         handleImageViewsVisibility(hasPhotoUrl)
 
-        val bigPhoto = handleBigPhotoVisibility(hasPhotoUrl)
-        loadPhotoUrl(bigPhoto)
+        binding.ivBigImage.isVisible = hasPhotoUrl
+        loadPhotoUrl(binding.ivBigImage)
     }
 
     private fun loadPhotoUrl(bigPhoto: AppCompatImageView) {
@@ -161,30 +162,18 @@ class SPChipIcon @JvmOverloads constructor(
             context.loadRoundImageUrl(
                 url,
                 bigPhoto,
-                getRoundRadius()
+                iconRadius
             )
         }
-    }
-
-    private fun handleBigPhotoVisibility(hasPhotoUrl: Boolean): AppCompatImageView {
-        val bigPhoto = getBigPhoto()
-        bigPhoto.visibleOrGone(hasPhotoUrl)
-
-        return bigPhoto
     }
 
     private fun getHasPhotoUrl() =
         bigPhotoUrl != null
 
-    private fun getBigPhoto() = with(binding) {
-        if (isBig) ivBigImage
-        else ivBigImageSmall
-    }
 
     private fun handleImageViewsVisibility(hasPhotoUrl: Boolean) {
         with(binding) {
-            ivIcon.visibleOrGone(!hasPhotoUrl)
-            ivIconSmall.visibleOrGone(!hasPhotoUrl)
+            ivIcon.isVisible =!hasPhotoUrl
         }
     }
 
@@ -192,10 +181,4 @@ class SPChipIcon @JvmOverloads constructor(
         SPChipIconStyle.Accent -> R.attr.colorAccent
         else -> R.attr.static_black
     }
-
-    private fun getRoundRadius() =
-        resources.getDimension(
-            if (isBig) R.dimen.sp_bank_round_radius_big
-            else R.dimen.sp_bank_round_radius_small
-        ).toInt()
 }

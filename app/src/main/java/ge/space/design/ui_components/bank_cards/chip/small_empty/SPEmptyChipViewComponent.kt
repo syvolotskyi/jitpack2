@@ -30,9 +30,7 @@ class SPEmptyChipViewComponent : ShowCaseComponent {
                     true
                 )
 
-                with(itemBinding.emptyChipBankCard) {
-                    style = bankCardSample.style
-                }
+                with(itemBinding.emptyChipBankCard) { style(bankCardSample.resId) }
 
                 cards.add(itemBinding.emptyChipBankCard)
             }

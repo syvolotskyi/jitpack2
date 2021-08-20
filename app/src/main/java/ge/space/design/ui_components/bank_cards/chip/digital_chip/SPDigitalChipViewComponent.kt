@@ -25,13 +25,13 @@ class SPDigitalChipViewComponent : ShowCaseComponent {
 
             SPDigitalChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemDigitalChipShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
+                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_ChipDigital),
                     binding.digitalChipLayout,
                     true
                 )
 
                 with(itemBinding.digitalChip) {
-                    size = chip.size
+                    style(chip.resId)
                     cardBackground = chip.background
                 }
 

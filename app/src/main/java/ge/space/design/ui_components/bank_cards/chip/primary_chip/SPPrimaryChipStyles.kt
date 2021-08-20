@@ -1,16 +1,17 @@
 package ge.space.design.ui_components.bank_cards.chip.primary_chip
 
-import ge.space.ui.components.bank_cards.data.SPChipSize
+import com.example.spacedesignsystem.R
 
-data class SPPrimaryChipSupport(
-    val size: SPChipSize = SPChipSize.Big,
-)
+data class SPPrimaryChipSupport(val resId: Int = R.style.SPBankCardView_ChipPrimary)
 
 object SPPrimaryChipStyles {
     val list = listOf(
         SPPrimaryChipSupport(),
         SPPrimaryChipSupport(
-            size = SPChipSize.Small
+            R.style.SPBankCardView_ChipPrimary_Medium
+        ),
+        SPPrimaryChipSupport(
+            R.style.SPBankCardView_ChipPrimary_Small
         ),
     )
 }

@@ -31,13 +31,17 @@ enum class SPChipSize {
     Big,
 
     /**
-     * For small chips
+     * For medium chips
+     */
+    Medium,
+    /**
+     * For small chips for dropdowns
      */
     Small,
 }
 
 /**
- * Info about [SPChipIcon] appearance
+ * Info about [SPChipIconStyle] appearance
  */
 enum class SPChipIconStyle {
 

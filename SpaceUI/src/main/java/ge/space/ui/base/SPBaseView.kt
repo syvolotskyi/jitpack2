@@ -258,7 +258,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      *
      * @param defStyleRes [Int] style resource id
      */
-    protected fun setStyle(@StyleRes defStyleRes: Int) {
+    open fun setStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {

@@ -25,13 +25,13 @@ class SPSecondaryChipViewComponent : ShowCaseComponent {
 
             SPSecondaryChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemSecondaryChipShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(R.style.SecondaryChip),
+                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_ChipSecondary),
                     binding.digitalChipLayout,
                     true
                 )
 
                 with(itemBinding.secondaryChip) {
-                    hasBorder = chip.hasBorder
+                    style(chip.resId)
                     bankLogoUrl = chip.bankLogoUrl
                     paymentSystemUrl = chip.paymentSystemUrl
                 }

@@ -1,9 +1,11 @@
 package ge.space.design.ui_components.bank_cards.chip.secondary_chip
 
+import com.example.spacedesignsystem.R
+
 import ge.space.ui.util.extension.EMPTY_STRING
 
 data class SPSecondaryChipSupport(
-    val hasBorder: Boolean = false,
+    val resId: Int = R.style.SPBankCardView_ChipSecondary,
     val bankLogoUrl: String = EMPTY_STRING,
     val paymentSystemUrl: String = EMPTY_STRING
 )
@@ -27,25 +29,27 @@ object SPSecondaryChipStyles {
             paymentSystemUrl = MASTER_CARD
         ),
         SPSecondaryChipSupport(
-            hasBorder = true,
+            R.style.SPBankCardView_ChipSecondary_WithBorder,
             bankLogoUrl = GEO_BANK,
             paymentSystemUrl = MASTER_CARD
         ),
         SPSecondaryChipSupport(
+            R.style.SPBankCardView_ChipSecondary_Medium,
             bankLogoUrl = VTB_BANK,
             paymentSystemUrl = VISA
         ),
         SPSecondaryChipSupport(
-            hasBorder = true,
+            R.style.SPBankCardView_ChipSecondary_Medium_WithBorder,
             bankLogoUrl = VTB_BANK,
             paymentSystemUrl = VISA
         ),
         SPSecondaryChipSupport(
+            R.style.SPBankCardView_ChipSecondary_Small,
             bankLogoUrl = HALYK_BANK,
             paymentSystemUrl = MASTER_CARD
         ),
         SPSecondaryChipSupport(
-            hasBorder = true,
+            R.style.SPBankCardView_ChipSecondary_Small_WithBorder,
             bankLogoUrl = HALYK_BANK,
             paymentSystemUrl = MASTER_CARD
         ),
@@ -54,25 +58,27 @@ object SPSecondaryChipStyles {
             paymentSystemUrl = UNION_PAY
         ),
         SPSecondaryChipSupport(
-            hasBorder = true,
+            R.style.SPBankCardView_ChipSecondary_WithBorder,
             bankLogoUrl = MADAD_BANK,
             paymentSystemUrl = UNION_PAY
         ),
         SPSecondaryChipSupport(
+            R.style.SPBankCardView_ChipSecondary_Medium,
             bankLogoUrl = QQB_BANK,
             paymentSystemUrl = HUMO
         ),
         SPSecondaryChipSupport(
-            hasBorder = true,
-            bankLogoUrl = QQB_BANK,
-            paymentSystemUrl = HUMO
-        ),
-        SPSecondaryChipSupport(
+            R.style.SPBankCardView_ChipSecondary_Medium_WithBorder,
             bankLogoUrl = QQB_BANK,
             paymentSystemUrl = UZ_PAY
         ),
         SPSecondaryChipSupport(
-            hasBorder = true,
+            R.style.SPBankCardView_ChipSecondary_Small,
+            bankLogoUrl = QQB_BANK,
+            paymentSystemUrl = HUMO
+        ),
+        SPSecondaryChipSupport(
+            R.style.SPBankCardView_ChipSecondary_Small_WithBorder,
             bankLogoUrl = QQB_BANK,
             paymentSystemUrl = UZ_PAY
         )

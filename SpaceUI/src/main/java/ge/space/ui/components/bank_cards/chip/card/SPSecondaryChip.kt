@@ -1,13 +1,19 @@
 package ge.space.ui.components.bank_cards.chip.card
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
+import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
+import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
-import ge.space.ui.util.extension.EMPTY_STRING
+import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
+import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.util.view_factory.SPViewData
@@ -25,15 +31,26 @@ class SPSecondaryChip @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
 ) : SPBaseChip(context, attrs, defStyleAttr) {
+    /**
+     * Binds a view
+     */
+    private val binding =
+        SpSecondaryChipLayoutBinding.inflate(
+            LayoutInflater.from(context),
+            this
+        )
 
     /**
      * Allows to hide or show a border for the view
      */
-    var hasBorder: Boolean = false
+    var border: Int = 0
         set(value) {
             field = value
 
-            binding.border.visibleOrGone(value)
+            if (border != 0) {
+                binding.border.background = ContextCompat.getDrawable(context, border)
+            }
+            binding.border.isVisible = value != 0
         }
 
     /**
@@ -49,7 +66,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     /**
      * Allows to to load a bank logo icon by URL
      */
-    var bankLogoUrl: String = EMPTY_STRING
+    var bankLogoUrl: String = ""
         set(value) {
             field = value
 
@@ -57,10 +74,23 @@ class SPSecondaryChip @JvmOverloads constructor(
         }
 
     /**
-     * Binds a view
+     * Changes a size of the view
      */
-    private val binding =
-        SpSecondaryChipLayoutBinding.inflate(LayoutInflater.from(context), this)
+    private var placeholderSize: SPPlaceholderSize = SPPlaceholderSize.XSmall
+        set(value) {
+            field = value
+
+            binding.placeholder.placeholderSize = value
+        }
+
+    init {
+        context.withStyledAttributes(
+            attrs,
+            R.styleable.sp_chip_secondary,
+            defStyleAttr
+        ) { withSecondaryChipStyledResource() }
+    }
+
 
     private fun handleLogo() {
         loadPaymentSystemLogo(
@@ -77,7 +107,34 @@ class SPSecondaryChip @JvmOverloads constructor(
         }
     }
 
+    override fun setChipStyle(styleRes: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_secondary)
+
+        styleAttrs.run {
+            withSecondaryChipStyledResource()
+        }
+    }
+
+    private fun TypedArray.withSecondaryChipStyledResource() {
+        border = getResourceId(R.styleable.sp_chip_secondary_border, 0)
+        placeholderSize =
+            SPPlaceholderSize.values()[getInt(
+                R.styleable.sp_chip_secondary_placeholder_size,
+                DEFAULT_OBTAIN_VAL
+            )]
+
+    }
+
+
     override fun getViewData(): SPViewData =
-        SPViewData.SPSecondaryChipData(size, bankLogoUrl, paymentSystemUrl, hasBorder, getStyle())
+        SPViewData.SPSecondaryChipData(
+            chipHeight,
+            chipWidth,
+            bankLogoUrl,
+            paymentSystemUrl,
+            border,
+            0
+        )
 
 }

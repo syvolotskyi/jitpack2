@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPBankCardView_ChipDigital.Small" parent="SPBankCardView.Chip.Small">
+        <item name="paymentLogoMargin">@dimen/sp_digital_chip_payment_system_margin_small</item>
+        <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height_small</item>
+        <item name="paymentSystemHeight">@dimen/sp_digital_chip_payment_system_height_small</item>
+        <item name="paymentSystemWidth">@dimen/sp_digital_chip_payment_system_width</item>
+    </style>
+
+    <style name="SPBankCardView_ChipDigital.Medium" parent="SPBankCardView.Chip.Medium">
+        <item name="paymentLogoMargin">@dimen/sp_digital_chip_payment_system_margin_small</item>
+        <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height_medium</item>
+        <item name="paymentSystemHeight">@dimen/sp_digital_chip_payment_system_height_medium</item>
+        <item name="paymentSystemWidth">@dimen/sp_digital_chip_payment_system_width_medium</item>
+    </style>
+
+    <style name="SPBankCardView_ChipDigital" parent="SPBankCardView.Chip">
+        <item name="paymentLogoMargin">@dimen/sp_digital_chip_payment_system_margin</item>
+        <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height</item>
+        <item name="paymentSystemHeight">@dimen/sp_digital_chip_payment_system_height</item>
+        <item name="paymentSystemWidth">@dimen/sp_digital_chip_payment_system_width_small</item>
+    </style>
+
+</resources>

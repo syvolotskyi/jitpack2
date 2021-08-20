@@ -11,6 +11,9 @@
     <attr name="roundedCorners" format="dimension|reference" />
     <attr name="shadowOffsetX" format="dimension|reference" />
     <attr name="shadowOffsetY" format="dimension|reference" />
+    <attr name="chipWidth" format="dimension|reference"/>
+    <attr name="chipHeight" format="dimension|reference"/>
+    <attr name="iconRadius" format="dimension|reference"/>
     <attr name="isCircle" format="boolean" />
 
     <attr name="directionArrow" format="enum">

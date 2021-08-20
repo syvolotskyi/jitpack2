@@ -23,13 +23,13 @@ class SPPrimaryChipViewComponent : ShowCaseComponent {
 
             SPPrimaryChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemPrimaryChipShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_EmptySmall_Base),
+                    environment.requireThemedLayoutInflater(R.style.SPBankCardView_ChipPrimary),
                     binding.primaryChipLayout,
                     true
                 )
 
                 with(itemBinding.primaryChip) {
-                    size = chip.size
+                   style(chip.resId)
                 }
             }
 
