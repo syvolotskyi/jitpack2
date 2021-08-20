@@ -44,7 +44,7 @@
     </declare-styleable>
 
     <declare-styleable name="sp_chip_digital">
-        <attr name="brandLogoHeight" format="dimension|reference"/>
+        <attr name="brandLogoHeight" />
         <attr name="paymentSystemWidth" format="dimension|reference"/>
         <attr name="paymentSystemHeight" format="dimension|reference"/>
         <attr name="paymentLogoMargin" format="dimension|reference"/>
@@ -59,6 +59,7 @@
     <declare-styleable name="sp_chip_icon">
         <attr name="cardSize" />
         <attr name="iconRadius" />
+        <attr name="brandLogoHeight" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>

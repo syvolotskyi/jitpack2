@@ -75,11 +75,6 @@ abstract class SPBaseChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledResource() {
-        val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
-        if (styleRes > DEFAULT_OBTAIN_VAL) {
-            setChipStyle(styleRes)
-        }
-
         chipHeight = getDimensionPixelSize(
             R.styleable.sp_chip_chipHeight, DEFAULT_OBTAIN_VAL
         )

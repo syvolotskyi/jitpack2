@@ -14,6 +14,7 @@
     <attr name="chipWidth" format="dimension|reference"/>
     <attr name="chipHeight" format="dimension|reference"/>
     <attr name="iconRadius" format="dimension|reference"/>
+    <attr name="brandLogoHeight" format="dimension|reference"/>
     <attr name="isCircle" format="boolean" />
 
     <attr name="directionArrow" format="enum">

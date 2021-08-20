@@ -10,7 +10,8 @@ class SPChipIconImpl(context: Context) :
 
     override fun create(type: SPViewData.SPChipData): SPChipIcon =
         SPChipIcon(context).apply {
-            size = type.chipSize
+            chipHeight = type.chipHeight
+            chipWidth = type.chipWidth
             icon = type.drawableRes
         }
 }

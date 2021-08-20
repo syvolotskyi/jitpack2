@@ -11,12 +11,13 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.resolveColorByAttr
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
-import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.util.extension.loadRoundImageUrl
 import ge.space.ui.util.view_factory.SPViewData
 
@@ -43,7 +44,7 @@ class SPChipIcon @JvmOverloads constructor(
         set(value) {
             field = value
 
-            changeIcon()
+            binding.ivIcon.setImageResource(icon)
         }
 
     /**
@@ -73,15 +74,24 @@ class SPChipIcon @JvmOverloads constructor(
     var iconRadius: Int = 0
         set(value) {
             field = value
+            handlePhotoUrl()
+        }
 
-            handleCardAppearance()
+    /**
+     * Changes the width size of the view
+     */
+    var brandLogoSizeHeight: Int = 0
+        set(value) {
+            field = value
+
+            binding.ivBigImage.setHeight(brandLogoSizeHeight)
         }
 
     /**
      * Binds a view
      */
     private val binding =
-        SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+        SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
         context.withStyledAttributes(
@@ -94,49 +104,41 @@ class SPChipIcon @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledResource() {
-        val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
-        if (styleRes > DEFAULT_OBTAIN_VAL) {
-            setChipStyle(styleRes)
-        } else {
-            handleCardAppearance()
-        }
+        icon = getResourceId(
+            R.styleable.sp_chip_icon_chipIcon,
+            R.drawable.ic_bank_24_regular
+        )
+        iconStyle = SPChipIconStyle.values()[
+                getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
+        ]
+
+        iconRadius = getDimensionPixelSize(
+            R.styleable.sp_chip_icon_iconRadius, DEFAULT_OBTAIN_VAL
+        )
     }
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_icon)
 
-        styleAttrs.run {
-            icon = getResourceId(
-                R.styleable.sp_chip_icon_chipIcon,
-                R.drawable.ic_bank_24_regular
-            )
-            iconStyle = SPChipIconStyle.values()[
-                getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
-            ]
-            size = SPChipSize.values()[
-                getInt(R.styleable.sp_chip_icon_cardSize, DEFAULT_OBTAIN_VAL)
-            ]
-
-            iconRadius = getDimensionPixelSize(
-                R.styleable.sp_chip_icon_iconRadius, DEFAULT_OBTAIN_VAL
-            )
-        }
+        styleAttrs.run { withStyledResource() }
+        handleCardAppearance()
     }
 
     fun handleCardAppearance() {
-        changeIcon()
         handleIconAppearance()
+        changeBackgroundSize()
+    }
+
+    private fun changeBackgroundSize() {
+        with(binding) {
+            binding.frame.setWidth(chipWidth)
+            binding.frame.setHeight(chipHeight)
+        }
     }
 
     override fun getViewData(): SPViewData =
-         SPViewData.SPChipData(size, icon, 0)
-
-    private fun changeIcon() {
-        with(binding) {
-            ivIcon.setImageResource(icon)
-        }
-    }
+        SPViewData.SPChipData(chipHeight, chipWidth, icon, 0)
 
     private fun handleIconAppearance() {
         val colorAttr = getColorAttr()
@@ -173,7 +175,7 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun handleImageViewsVisibility(hasPhotoUrl: Boolean) {
         with(binding) {
-            ivIcon.isVisible =!hasPhotoUrl
+            ivIcon.isVisible = !hasPhotoUrl
         }
     }
 

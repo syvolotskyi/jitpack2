@@ -27,7 +27,8 @@ sealed class SPViewData : Parcelable {
 
     @Parcelize
     data class SPChipData(
-        val chipSize: SPChipSize,
+        val chipHeight: Int,
+        val chipWidth: Int,
         @DrawableRes val drawableRes: Int,
         @StyleRes val styleRes: Int
     ) : SPViewData()
