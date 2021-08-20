@@ -77,8 +77,6 @@ class SPDefaultChipItem @JvmOverloads constructor(
             primaryChip.isInvisible = !visiblePhysical()
 
             digitalChip.isInvisible = !visibleDigital()
-
-            chipAddIcon.isInvisible = !visibleAddIcon()
         }
     }
 

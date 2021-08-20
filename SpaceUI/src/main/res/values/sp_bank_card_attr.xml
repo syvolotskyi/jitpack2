@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="brandLogoHeight" format="dimension|reference"/>
+
     <attr name="cardSize" format="enum">
         <enum name="big" value="0" />
         <enum name="small" value="1" />
@@ -59,7 +61,6 @@
     <declare-styleable name="sp_chip_icon">
         <attr name="cardSize" />
         <attr name="iconRadius" />
-        <attr name="brandLogoHeight" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>

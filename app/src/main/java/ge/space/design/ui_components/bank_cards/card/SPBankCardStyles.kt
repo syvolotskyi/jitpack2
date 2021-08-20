@@ -26,8 +26,8 @@ object SPButtonStyles {
     private val BRAND_PRIMARY_COLOR =  Color.parseColor("#00A2B7")
     private val BLACK_COLOR =  Color.parseColor("#000000")
 
-    private val GRADIENT_WHITE_1 = Color.parseColor("#E3E9F0")
-    private val GRADIENT_WHITE_2 = Color.parseColor("#FFFFFF")
+    val GRADIENT_WHITE_1 = Color.parseColor("#E3E9F0")
+    val GRADIENT_WHITE_2 = Color.parseColor("#FFFFFF")
 
     val GRADIENT_BLUE_1 = Color.parseColor("#2998FF")
     val GRADIENT_BLUE_2 = Color.parseColor("#31C1FF")

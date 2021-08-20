@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1">
 
     <LinearLayout
-        android:id="@+id/digitalChipLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical" />
+        android:orientation="vertical">
+
+        <ge.space.ui.components.bank_cards.chip.card.SPDigitalChip
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
+            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
+            app:style="@style/SPBankCardView_ChipDigital" />
+
+        <LinearLayout
+            android:id="@+id/digitalChipLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" />
+    </LinearLayout>
 
 </ScrollView>

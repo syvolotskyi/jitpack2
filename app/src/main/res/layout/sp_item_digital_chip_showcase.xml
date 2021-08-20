@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
         android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-        app:style="@style/SPBankCardView.Chip" />
+        app:style="@style/SPBankCardView_ChipDigital" />
 
     <include layout="@layout/sp_layout_divider" />
 
