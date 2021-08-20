@@ -3,6 +3,11 @@
     <declare-styleable name="sp_button">
         <attr name="android:text" format="string|reference" />
     </declare-styleable>
+    <declare-styleable name="sp_button_view_style">
+        <attr name="directionArrow" />
+        <attr name="android:textAppearance"/>
+        <attr name="btnIconPadding" />
+    </declare-styleable>
 
     <declare-styleable name="sp_button_vertical">
         <attr name="android:text" format="string|reference" />
