@@ -40,10 +40,6 @@
         <attr name="shadowOffsetX" />
         <attr name="shadowOffsetY" />
         <attr name="isCircle" />
-
-        <attr name="directionArrow" />
-        <attr name="btnIconPadding" />
-        <attr name="android:textAppearance"/>
     </declare-styleable>
 
     <declare-styleable name="sp_base_view">
