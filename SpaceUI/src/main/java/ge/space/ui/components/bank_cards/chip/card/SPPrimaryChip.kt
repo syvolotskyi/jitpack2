@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPrimaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
@@ -57,6 +59,12 @@ class SPPrimaryChip @JvmOverloads constructor(
                 R.drawable.img_primary_chip
             )
         }
+        handleChipSize()
+    }
+
+    override fun handleChipSize() {
+        binding.ivBackground.setHeight(chipHeight)
+        binding.ivBackground.setWidth(chipWidth)
     }
 
     override fun getViewData(): SPViewData {

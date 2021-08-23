@@ -37,7 +37,7 @@ sealed class SPViewData : Parcelable {
     data class SPrimaryChipData(
         val chipHeight: Int,
         val chipWidth: Int,
-        @StyleRes val styleRes: Int
+        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base
     ) : SPViewData()
 
     @Parcelize

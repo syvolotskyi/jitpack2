@@ -15,6 +15,7 @@ class SPDefaultEmptyChipData {
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
                 chipStyle,
+                R.style.SPBankCardView_ChipEmpty_Small_White
             )
         }
 
@@ -25,7 +26,8 @@ class SPDefaultEmptyChipData {
             return SPViewData.SPEmptyChipData(
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_medium),
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_medium),
-                chipStyle
+                chipStyle,
+                R.style.SPBankCardView_ChipEmpty_Medium_White
             )
         }
 
@@ -36,7 +38,8 @@ class SPDefaultEmptyChipData {
             return SPViewData.SPEmptyChipData(
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height),
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width),
-                chipStyle
+                chipStyle,
+                R.style.SPBankCardView_ChipEmpty_White
             )
         }
     }

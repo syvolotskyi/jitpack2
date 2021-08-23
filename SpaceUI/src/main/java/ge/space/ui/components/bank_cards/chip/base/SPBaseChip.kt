@@ -83,6 +83,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
         )
     }
 
+    abstract fun handleChipSize()
 
     protected abstract fun setChipStyle(styleRes: Int)
 

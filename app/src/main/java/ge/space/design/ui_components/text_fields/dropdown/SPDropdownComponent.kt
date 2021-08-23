@@ -96,19 +96,22 @@ class SPDropdownComponent : ShowCaseComponent {
                     SPDropdownItemModel(
                         0,
                         view.context.getString(R.string.enter_you_details_here),
-                        SPDefaultEmptyChipData.getSmallEmptyChipData(view.context)
+                        SPDefaultEmptyChipData.getSmallEmptyChipData(
+                            view.context,
+                            SPEmptyChipStyle.Dark
+                        )
                     )
                 )
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindItem(SPOnBindDropdownItemModel())
-                .setItems(SPTextFieldsDropdownItems.list)
+                .setItems(SPTextFieldsDropdownItems.getList(view.context))
                 .setOnClickListener {
                     fragmentActivity.showMultipleButtonDialog(
                         SPDialogInfo(
                             view.resources.getString(R.string.selectIcon),
                             EMPTY_STRING,
                             createMultipleButtonsConfigs(
-                                SPTextFieldsDropdownItems.list,
+                                SPTextFieldsDropdownItems.getList(view.context),
                                 it
                             )
                         ),
@@ -123,16 +126,14 @@ class SPDropdownComponent : ShowCaseComponent {
             view: FrameLayout,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
-            val items = SPTextFieldsDropdownItems.list.map { it.value }
+            val items = SPTextFieldsDropdownItems.getList(view.context).map { it.value }
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<String>()
                 .setStyle(R.style.SPTextField_Dropdown)
                 .setDefault(view.context.getString(R.string.enter_you_details_here))
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindItem(object : SPOnBindInterface<String> {
                     override fun getBindItemModel(): (SPTextFieldDropdown<String>, String) -> Unit =
-                        { dropdown, item ->
-                            dropdown.text = item
-                        }
+                        { dropdown, item -> dropdown.text = item }
                 })
                 .setItems(items)
                 .setOnClickListener {

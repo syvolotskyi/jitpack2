@@ -127,10 +127,10 @@ class SPChipIcon @JvmOverloads constructor(
 
     fun handleCardAppearance() {
         handleIconAppearance()
-        changeBackgroundSize()
+        handleChipSize()
     }
 
-    private fun changeBackgroundSize() {
+    override fun handleChipSize() {
         with(binding) {
             binding.frame.setWidth(chipWidth)
             binding.frame.setHeight(chipHeight)

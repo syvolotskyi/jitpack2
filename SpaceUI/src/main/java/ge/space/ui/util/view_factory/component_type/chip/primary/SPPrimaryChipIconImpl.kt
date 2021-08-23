@@ -10,6 +10,7 @@ class SPPrimaryChipIconImpl(context: Context) :
 
     override fun create(type: SPViewData.SPrimaryChipData): SPPrimaryChip {
         return SPPrimaryChip(context).apply {
+            style(type.styleRes)
             chipHeight = type.chipHeight
             chipWidth = type.chipWidth
         }

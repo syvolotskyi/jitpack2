@@ -72,8 +72,8 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      * Sets a left image, if inflate type is withImage
      */
     fun setImage(view: View) {
+        inputTextBinding.ivLeftContainer.removeAllViews()
         if (inflateType == InflateType.WithIcon) {
-            inputTextBinding.ivLeftContainer.removeAllViews()
             inputTextBinding.ivLeftContainer.addView(view)
         }
     }

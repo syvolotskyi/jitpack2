@@ -92,7 +92,8 @@ class SPDigitalChip @JvmOverloads constructor(
             R.styleable.sp_chip_digital,
             defStyleAttr
         ) { withDigitalChipStyledResource() }
-        handleComponentsSizes()
+
+        handleChipSize()
     }
 
     override fun setChipStyle(styleRes: Int) {
@@ -123,11 +124,7 @@ class SPDigitalChip @JvmOverloads constructor(
         SPViewData.SPDigitalChipData(chipHeight, chipWidth, cardBackground, 0)
 
 
-    private fun handleComponentsSizes() {
-        changeBackgroundSize()
-    }
-
-    private fun changeBackgroundSize() {
+    override fun handleChipSize() {
         with(binding) {
             vGradient.setWidth(chipWidth)
             vGradient.setHeight(chipHeight)
