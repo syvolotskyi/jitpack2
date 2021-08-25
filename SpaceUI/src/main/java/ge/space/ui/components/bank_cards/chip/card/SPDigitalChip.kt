@@ -60,16 +60,6 @@ class SPDigitalChip @JvmOverloads constructor(
         }
 
     /**
-     * Changes the height size of the payment system
-     */
-    var paymentSystemWidthSize: Int = 0
-        set(value) {
-            field = value
-
-            binding.ivPaymentSystem.setWidth(paymentSystemWidthSize)
-        }
-
-    /**
      * Changes the width size of the payment system
      */
     var paymentSystemHeightSize: Int = 0
@@ -111,9 +101,6 @@ class SPDigitalChip @JvmOverloads constructor(
         )
         brandLogoSizeHeight = getDimensionPixelSize(
             R.styleable.sp_chip_digital_brandLogoHeight, DEFAULT_OBTAIN_VAL
-        )
-        paymentSystemWidthSize = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_paymentSystemWidth, DEFAULT_OBTAIN_VAL
         )
         paymentSystemHeightSize = getDimensionPixelSize(
             R.styleable.sp_chip_digital_paymentSystemHeight, DEFAULT_OBTAIN_VAL
