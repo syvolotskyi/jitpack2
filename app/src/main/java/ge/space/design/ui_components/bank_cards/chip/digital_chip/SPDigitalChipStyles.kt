@@ -36,21 +36,13 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_GREEN_2
                 )
             ),
+            R.style.SPBankCardView_ChipDigital_Small,
         ),
         SPDigitalChipSupport(
             background = SPBankCardGradient.SPRadial(
                 colors = arrayListOf(
                     SPButtonStyles.GRADIENT_GREEN_1,
                     SPButtonStyles.GRADIENT_GREEN_2
-                )
-            ),
-            R.style.SPBankCardView_ChipDigital_Small,
-        ),
-        SPDigitalChipSupport(
-            background = SPBankCardGradient.SPRadial(
-                colors = arrayListOf(
-                    SPButtonStyles.GRADIENT_VIOLET_1,
-                    SPButtonStyles.GRADIENT_VIOLET_2
                 )
             ),
         ),
@@ -63,6 +55,15 @@ object SPDigitalChipStyles {
             ),
             R.style.SPBankCardView_ChipDigital_Medium,
         ),
+        SPDigitalChipSupport(
+            background = SPBankCardGradient.SPRadial(
+                colors = arrayListOf(
+                    SPButtonStyles.GRADIENT_VIOLET_1,
+                    SPButtonStyles.GRADIENT_VIOLET_2
+                )
+            ),
+            R.style.SPBankCardView_ChipDigital_Small,
+        ),
 
         SPDigitalChipSupport(
             background = SPBankCardGradient.SPLinear(
@@ -71,6 +72,7 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_LIGHT_GREEN_2
                 ), 33f
             ),
+
         ),
         SPDigitalChipSupport(
             background = SPBankCardGradient.SPLinear(
@@ -79,7 +81,7 @@ object SPDigitalChipStyles {
                     SPButtonStyles.GRADIENT_LIGHT_GREEN_2
                 )
             ),
-            R.style.SPBankCardView_ChipDigital_Small,
+            R.style.SPBankCardView_ChipDigital_Medium,
         ),
     )
 }

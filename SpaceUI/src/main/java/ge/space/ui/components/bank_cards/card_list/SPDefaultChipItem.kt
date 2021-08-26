@@ -3,6 +3,7 @@ package ge.space.ui.components.bank_cards.card_list
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.core.view.isInvisible
@@ -51,7 +52,11 @@ class SPDefaultChipItem @JvmOverloads constructor(
     }
 
     override fun getViewBinding(): SpDefaultChipItemLayoutBinding =
-        SpDefaultChipItemLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpDefaultChipItemLayoutBinding.inflate(
+            LayoutInflater.from(context).cloneInContext(
+                ContextThemeWrapper(context, R.style.SPBankCardView_ChipDigital)
+            ), this
+        )
 
     /**
      * Handle  a chip chip data depends on chipData

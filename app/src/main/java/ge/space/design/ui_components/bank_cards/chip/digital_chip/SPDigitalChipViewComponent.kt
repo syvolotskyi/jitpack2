@@ -21,18 +21,20 @@ class SPDigitalChipViewComponent : ShowCaseComponent {
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutDigitalChipShowCaseBinding.inflate(
-                environment.requireLayoutInflater()
+                environment.requireThemedLayoutInflater(R.style.SPBankCardView_ChipDigital)
             )
-
+            val chips = mutableListOf<SPDigitalChip>()
             with(binding.testChip) {
                 style(R.style.SPBankCardView_ChipDigital_Medium)
-                cardBackground = SPBankCardGradient.SPLinear(
+                cardBackground = SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_BLUE_1,
                         SPButtonStyles.GRADIENT_BLUE_2
                     )
                 )
             }
+
+            chips.add(binding.testChip)
 
             SPDigitalChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemDigitalChipShowcaseBinding.inflate(
@@ -46,6 +48,7 @@ class SPDigitalChipViewComponent : ShowCaseComponent {
                     cardBackground = chip.background
                 }
 
+                chips.add(itemBinding.digitalChip)
             }
 
             return binding.root
