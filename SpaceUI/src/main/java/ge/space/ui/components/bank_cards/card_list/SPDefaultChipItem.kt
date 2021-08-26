@@ -27,7 +27,7 @@ class SPDefaultChipItem @JvmOverloads constructor(
      * Sets a chip data which is related to a type of the chip and
      * a background if it's needed
      */
-    var chipData : SPDefaultChipData = SPDefaultChipData.SPPhysicalChip
+    var chipData: SPDefaultChipData = SPDefaultChipData.SPPhysicalChip
         set(value) {
             field = value
 
@@ -60,13 +60,18 @@ class SPDefaultChipItem @JvmOverloads constructor(
     private fun handleChipData() {
         setTitle()
         setChipVisibility()
-        (chipData as? SPDefaultChipData.SPDigitalChip)?.setDigitalBackground()
+        (chipData as? SPDefaultChipData.SPDigitalChip)?.let {
+
+            binding.digitalChip.style(R.style.SPBankCardView_ChipDigital)
+            it.setDigitalBackground()
+        }
     }
 
     /**
      * Sets an item title
      */
     private fun setTitle() {
+
         binding.tvTitle.text = resources.getString(
             getTitleRes()
         )
@@ -81,7 +86,8 @@ class SPDefaultChipItem @JvmOverloads constructor(
     }
 
     private fun SPDefaultChipData.SPDigitalChip.setDigitalBackground() {
-            binding.digitalChip.cardBackground = background
+        binding.digitalChip.style(R.style.SPBankCardView_ChipDigital)
+        binding.digitalChip.cardBackground = background
     }
 
     private fun visiblePhysical() =
@@ -93,7 +99,7 @@ class SPDefaultChipItem @JvmOverloads constructor(
     private fun visibleAddIcon() =
         chipData is SPDefaultChipData.SPAddIconChip
 
-    private fun getTitleRes() = when(chipData) {
+    private fun getTitleRes() = when (chipData) {
         is SPDefaultChipData.SPPhysicalChip ->
             R.string.title_default_chip_item_physical_title
         is SPDefaultChipData.SPDigitalChip ->

@@ -11,8 +11,9 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+
         <ge.space.ui.components.bank_cards.chip.card.SPDigitalChip
-            android:id="@+id/test"
+            android:id="@+id/testChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
