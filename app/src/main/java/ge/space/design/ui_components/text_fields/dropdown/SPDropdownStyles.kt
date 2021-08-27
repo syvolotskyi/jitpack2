@@ -20,7 +20,7 @@ object SPTextFieldsDropdownItems {
         SPDropdownItemModel(
             2,
             "Image from url",
-            SPViewData.SPImageUrlData(MASTER_CARD)
+            SPViewData.SPImageUrlData("https://w7.pngwing.com/pngs/911/456/png-transparent-computer-icons-business-others-blue-angle-leaf-thumbnail.png")
         ),
         SPDropdownItemModel(
             3,
