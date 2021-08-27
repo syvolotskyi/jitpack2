@@ -8,8 +8,9 @@
     <FrameLayout
         android:id="@+id/ivLeftContainer"
         android:layout_width="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_p_8"
+        android:layout_marginVertical="@dimen/dimen_p_8"
         android:layout_height="@dimen/sp_text_field_dropdown_icon_height"
-        android:paddingHorizontal="@dimen/sp_text_field_dropdown_icon_margin"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
         android:ellipsize="end"
         android:gravity="start|center_vertical"
         android:maxLines="1"
+        android:paddingStart="@dimen/dimen_p_8"
         android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
         android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"

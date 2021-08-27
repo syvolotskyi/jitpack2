@@ -3,6 +3,7 @@ package ge.space.ui.components.bank_cards.card_list
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
@@ -118,11 +119,15 @@ class SPDigitalChipItem @JvmOverloads constructor(
 
                 tvCurrency.background = ContextCompat.getDrawable(context, drawableResId)
             }
+            binding.chip.style(R.style.SPBankCardView_ChipDigital)
         }
     }
 
     override fun getViewBinding(): SpDigitalChipItemLayoutBinding =
-        SpDigitalChipItemLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpDigitalChipItemLayoutBinding.inflate( LayoutInflater.from(context).cloneInContext(
+            ContextThemeWrapper(context, R.style.SPBankCardView_ChipDigital)
+        ), this
+        )
 
     private fun setCheckCallback() {
         with(binding) {

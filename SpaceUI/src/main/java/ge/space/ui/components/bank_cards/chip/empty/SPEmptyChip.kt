@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -54,6 +56,11 @@ class SPEmptyChip @JvmOverloads constructor(
         ) { withEmptyChipStyledResource() }
     }
 
+    override fun handleChipSize() {
+        binding.ivBackground.setHeight(chipHeight)
+        binding.ivBackground.setWidth(chipWidth)
+    }
+
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_empty)
@@ -69,6 +76,8 @@ class SPEmptyChip @JvmOverloads constructor(
         emptyViewStyle = SPEmptyChipStyle.values()[styleId]
 
         color = ContextCompat.getColor(context, android.R.color.transparent)
+
+        handleChipSize()
     }
 
     override fun getViewData(): SPViewData =

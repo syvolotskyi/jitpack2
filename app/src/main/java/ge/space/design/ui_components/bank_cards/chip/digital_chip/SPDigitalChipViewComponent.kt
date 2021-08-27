@@ -6,7 +6,9 @@ import com.example.spacedesignsystem.databinding.SpLayoutDigitalChipShowCaseBind
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bank_cards.chip.card.SPDigitalChip
+import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 
 class SPDigitalChipViewComponent : ShowCaseComponent {
 
@@ -19,9 +21,20 @@ class SPDigitalChipViewComponent : ShowCaseComponent {
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutDigitalChipShowCaseBinding.inflate(
-                environment.requireLayoutInflater()
+                environment.requireThemedLayoutInflater(R.style.SPBankCardView_ChipDigital)
             )
             val chips = mutableListOf<SPDigitalChip>()
+            with(binding.testChip) {
+                style(R.style.SPBankCardView_ChipDigital_Medium)
+                cardBackground = SPBankCardGradient.SPRadial(
+                    colors = arrayListOf(
+                        SPButtonStyles.GRADIENT_BLUE_1,
+                        SPButtonStyles.GRADIENT_BLUE_2
+                    )
+                )
+            }
+
+            chips.add(binding.testChip)
 
             SPDigitalChipStyles.list.forEach { chip ->
                 val itemBinding = SpItemDigitalChipShowcaseBinding.inflate(

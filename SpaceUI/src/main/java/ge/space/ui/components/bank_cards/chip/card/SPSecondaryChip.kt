@@ -9,6 +9,8 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
@@ -105,6 +107,11 @@ class SPSecondaryChip @JvmOverloads constructor(
                 ivPaymentSystem
             )
         }
+    }
+
+    override fun handleChipSize() {
+        binding.placeholder.setHeight(chipHeight)
+        binding.placeholder.setWidth(chipWidth)
     }
 
     override fun setChipStyle(styleRes: Int) {

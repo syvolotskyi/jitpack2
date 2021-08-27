@@ -9,6 +9,8 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
@@ -72,8 +74,10 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      * Sets a left image, if inflate type is withImage
      */
     fun setImage(view: View) {
+        inputTextBinding.ivLeftContainer.removeAllViews()
         if (inflateType == InflateType.WithIcon) {
-            inputTextBinding.ivLeftContainer.removeAllViews()
+            view.setHeight(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
+            view.setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
             inputTextBinding.ivLeftContainer.addView(view)
         }
     }

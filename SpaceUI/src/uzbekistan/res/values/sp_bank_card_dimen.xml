@@ -2,8 +2,8 @@
 <resources>
     <dimen name="sp_digital_chip_bank_logo_width">@dimen/dimen_p_20</dimen>
     <dimen name="sp_digital_chip_bank_logo_width_small">@dimen/dimen_sp_12</dimen>
-    <dimen name="sp_digital_chip_bank_logo_width_medium">@dimen/dimen_sp_14</dimen>
     <dimen name="sp_digital_chip_bank_logo_height">@dimen/dimen_p_30</dimen>
+    <dimen name="sp_digital_chip_bank_logo_width_medium">@dimen/dimen_sp_14</dimen>
     <dimen name="sp_digital_chip_bank_logo_height_medium">@dimen/dimen_sp_21</dimen>
     <dimen name="sp_digital_chip_bank_logo_height_small">@dimen/dimen_sp_18</dimen>
     <dimen name="sp_digital_chip_payment_system_width">@dimen/dimen_p_11</dimen>

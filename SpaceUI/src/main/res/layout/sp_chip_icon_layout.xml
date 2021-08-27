@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/frame_big"
-    android:layout_width="@dimen/sp_bank_chip_width"
-    android:layout_height="@dimen/sp_bank_chip_height"
-    android:visibility="visible">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="@dimen/sp_add_bank_card_button_icon_size"
-        android:layout_height="@dimen/sp_add_bank_card_button_icon_size"
-        android:layout_gravity="center"
-        android:scaleType="fitCenter"
-        android:tint="?attr/colorAccent"
-        app:srcCompat="@drawable/ic_bank_24_regular" />
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="@dimen/sp_bank_chip_width"
+        android:layout_height="@dimen/sp_bank_chip_height"
+        android:visibility="visible">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_big_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="fill"
-        android:visibility="gone" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="@dimen/sp_add_bank_card_button_icon_size"
+            android:layout_height="@dimen/sp_add_bank_card_button_icon_size"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:tint="?attr/colorAccent" />
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBigImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_gravity="fill"
+            android:visibility="gone" />
+
+    </FrameLayout>
+</merge>

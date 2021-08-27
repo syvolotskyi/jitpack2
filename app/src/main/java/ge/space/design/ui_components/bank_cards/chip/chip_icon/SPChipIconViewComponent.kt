@@ -29,11 +29,19 @@ class SPChipIconViewComponent : ShowCaseComponent {
                 )
 
                 with(itemBinding.addBankCardButton) {
-                    size = bankCardSample.size
-                    iconStyle = bankCardSample.iconStyle
-                    icon = bankCardSample.icon
-                    iconRadius = bankCardSample.icon
-                    bigPhotoUrl = bankCardSample.photoUrl
+                    when (bankCardSample) {
+                        is SPChipIconSupport.SPChipIconSupportFromCode -> {
+                            style(bankCardSample.resId)
+
+                            iconStyle = bankCardSample.iconStyle
+                            icon = bankCardSample.icon
+                            bigPhotoUrl = bankCardSample.photoUrl
+                        }
+                        is SPChipIconSupport.SPChipIconSupportFromStyle -> {
+                            style(bankCardSample.resId)
+                        }
+                    }
+
                 }
             }
 

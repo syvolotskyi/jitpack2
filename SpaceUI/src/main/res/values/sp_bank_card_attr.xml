@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="brandLogoHeight" format="dimension|reference"/>
+
     <attr name="cardSize" format="enum">
         <enum name="big" value="0" />
         <enum name="small" value="1" />
@@ -27,7 +29,6 @@
     </declare-styleable>
 
     <declare-styleable name="sp_chip">
-        <attr name="chipStyle" format="reference" />
         <attr name="chipWidth" />
         <attr name="chipHeight" />
     </declare-styleable>
@@ -44,8 +45,7 @@
     </declare-styleable>
 
     <declare-styleable name="sp_chip_digital">
-        <attr name="brandLogoHeight" format="dimension|reference"/>
-        <attr name="paymentSystemWidth" format="dimension|reference"/>
+        <attr name="brandLogoHeight" />
         <attr name="paymentSystemHeight" format="dimension|reference"/>
         <attr name="paymentLogoMargin" format="dimension|reference"/>
         <attr name="chipHeight" />
@@ -58,7 +58,6 @@
 
     <declare-styleable name="sp_chip_icon">
         <attr name="cardSize" />
-        <attr name="iconRadius" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>

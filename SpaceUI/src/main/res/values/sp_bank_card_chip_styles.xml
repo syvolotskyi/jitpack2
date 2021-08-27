@@ -23,26 +23,31 @@
         <item name="chipWidth">@dimen/sp_bank_chip_width_medium</item>
     </style>
 
-    <style name="SPBankCardView.Chip.Icon.Small" parent="">
-        <item name="cardSize">small</item>
-    </style>
-
     <style name="SPBankCardView.Chip.Icon.Dark" parent="">
         <item name="chipIconAppearance">dark</item>
     </style>
 
-    <style name="SPBankCardView.Chip.AddIcon" parent="">
-        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-    </style>
-
-    <style name="SPBankCardView.Chip.AddIcon.Dark" parent="">
-        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+    <style name="SPBankCardView.Chip.AddIcon.Dark" parent="SPBankCardView.Chip.AddIcon">
         <item name="chipIconAppearance">dark</item>
     </style>
 
-    <style name="SPBankCardView.Chip.AddIcon.Small" parent="">
+    <style name="SPBankCardView.Chip.AddIcon.Dark.Medium" parent="SPBankCardView.Chip.AddIcon.Medium">
+        <item name="chipIconAppearance">dark</item>
+    </style>
+    <style name="SPBankCardView.Chip.AddIcon.Dark.Small" parent="SPBankCardView.Chip.AddIcon.Small">
+        <item name="chipIconAppearance">dark</item>>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon" parent="SPBankCardView.Chip">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-        <item name="cardSize">small</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon.Medium" parent="SPBankCardView.Chip.Medium">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.AddIcon.Small" parent="SPBankCardView.Chip.Small">
+        <item name="chipIcon">@drawable/ic_plus_24_regular</item>
     </style>
 
 </resources>
