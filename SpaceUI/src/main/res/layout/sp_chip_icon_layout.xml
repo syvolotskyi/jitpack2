@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <FrameLayout
         android:id="@+id/frame"
@@ -15,13 +13,13 @@
             android:layout_height="@dimen/sp_add_bank_card_button_icon_size"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
-            android:tint="?attr/colorAccent"
-            app:srcCompat="@drawable/ic_bank_24_regular" />
+            android:tint="?attr/colorAccent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivBigImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:layout_gravity="fill"
             android:visibility="gone" />
 

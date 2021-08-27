@@ -27,7 +27,6 @@
         <item name="chipIconAppearance">dark</item>
     </style>
 
-
     <style name="SPBankCardView.Chip.AddIcon.Dark" parent="SPBankCardView.Chip.AddIcon">
         <item name="chipIconAppearance">dark</item>
     </style>
@@ -41,17 +40,14 @@
 
     <style name="SPBankCardView.Chip.AddIcon" parent="SPBankCardView.Chip">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-        <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon.Medium" parent="SPBankCardView.Chip.Medium">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-        <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height_medium</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon.Small" parent="SPBankCardView.Chip.Small">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
-        <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height_small</item>
     </style>
 
 </resources>

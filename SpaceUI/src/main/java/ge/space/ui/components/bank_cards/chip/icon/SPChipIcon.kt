@@ -18,6 +18,7 @@ import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
+import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.loadRoundImageUrl
 import ge.space.ui.util.view_factory.SPViewData
 
@@ -69,15 +70,6 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
-     * Changes the iconRadius appearance
-     */
-    var iconRadius: Int = 0
-        set(value) {
-            field = value
-            handlePhotoUrl()
-        }
-
-    /**
      * Changes the width size of the view
      */
     var brandLogoSizeHeight: Int = 0
@@ -96,7 +88,7 @@ class SPChipIcon @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip,
+            R.styleable.sp_view_style,
             defStyleAttr
         ) {
             withStyledResource()
@@ -111,10 +103,6 @@ class SPChipIcon @JvmOverloads constructor(
         iconStyle = SPChipIconStyle.values()[
                 getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
         ]
-
-        iconRadius = getDimensionPixelSize(
-            R.styleable.sp_chip_icon_iconRadius, DEFAULT_OBTAIN_VAL
-        )
     }
 
     override fun setChipStyle(styleRes: Int) {
@@ -132,8 +120,10 @@ class SPChipIcon @JvmOverloads constructor(
 
     override fun handleChipSize() {
         with(binding) {
-            binding.frame.setWidth(chipWidth)
-            binding.frame.setHeight(chipHeight)
+            frame.setWidth(chipWidth)
+            frame.setHeight(chipHeight)
+            ivBigImage.setWidth(chipWidth)
+            ivBigImage.setHeight(chipHeight)
         }
     }
 
@@ -161,10 +151,9 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun loadPhotoUrl(bigPhoto: AppCompatImageView) {
         bigPhotoUrl?.let { url ->
-            context.loadRoundImageUrl(
+            context.loadImageUrl(
                 url,
-                bigPhoto,
-                iconRadius
+                bigPhoto
             )
         }
     }

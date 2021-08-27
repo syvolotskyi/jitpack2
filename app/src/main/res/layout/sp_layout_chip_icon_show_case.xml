@@ -3,105 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/lytStyledChipsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-       <!-- <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginEnd="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip.Small"
-            app:chipStyle="@style/SPBankCardView.Chip.Icon.Dark" />
-
-        <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipIconDark"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginStart="@dimen/dimen_p_14"
-            android:layout_marginEnd="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip.Small"
-            app:chipStyle="@style/SPBankCardView.Chip.Icon.Dark" />
-
-        <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipIconSmall"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginStart="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip.Medium"
-            app:chipStyle="@style/SPBankCardView.Chip.Icon.Small" />-->
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lytStyledAddChipsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lytStyledChipsContainer"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipAddIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginEnd="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip" />
-
-        <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipAddIconDark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginStart="@dimen/dimen_p_14"
-            android:layout_marginEnd="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip.Medium" />
-
-        <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipAddIconMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginStart="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip.AddIcon.Medium" />
-
-        <ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
-            android:id="@+id/chipAddIconSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-            android:layout_marginStart="@dimen/dimen_p_14"
-            app:style="@style/SPBankCardView.Chip.AddIcon.Small" />
-
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/lytScroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lytStyledAddChipsContainer"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0">
 

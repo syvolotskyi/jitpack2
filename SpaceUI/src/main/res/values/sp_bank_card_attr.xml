@@ -29,7 +29,6 @@
     </declare-styleable>
 
     <declare-styleable name="sp_chip">
-        <attr name="chipStyle" format="reference" />
         <attr name="chipWidth" />
         <attr name="chipHeight" />
     </declare-styleable>
@@ -59,7 +58,6 @@
 
     <declare-styleable name="sp_chip_icon">
         <attr name="cardSize" />
-        <attr name="iconRadius" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>
