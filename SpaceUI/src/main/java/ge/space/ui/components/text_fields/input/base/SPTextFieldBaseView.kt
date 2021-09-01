@@ -18,6 +18,7 @@ import ge.space.extensions.appendAsterisk
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.extension.handleAttributeAction
 import kotlinx.android.synthetic.main.sp_text_field_layout.view.*
 
@@ -34,7 +35,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
+) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     /**
      * Sets a button title.
@@ -199,10 +200,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     }
 
-    /**
-     * Allows to update text style and BaseViewStyle programmatically
-     */
-    fun style(@StyleRes newStyle: Int) {
+    override fun setViewStyle(newStyle: Int) {
         with(newStyle) {
             setStyle(this)
             setTextFieldStyle(this)
