@@ -9,23 +9,24 @@ import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpPhoneInputShowcaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
 
-class SPPhoneComponent : SPShowCaseComponent {
+class SPPhoneComponent : ShowCaseComponent {
+
     override fun getNameResId(): Int = R.string.phone_input
 
     override fun getDescriptionResId(): Int = R.string.phone_input_desc
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val binding = SpPhoneInputShowcaseBinding.inflate(environmentSP.requireLayoutInflater())
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
+            val binding = SpPhoneInputShowcaseBinding.inflate(environment.requireLayoutInflater())
             with(binding) {
-                setupPhoneInputTextWithDone(phoneInput, environmentSP.context)
-                setupPhoneInputTextWithDone(phoneInputSecond, environmentSP.context)
+                setupPhoneInputTextWithDone(phoneInput, environment.context)
+                setupPhoneInputTextWithDone(phoneInputSecond, environment.context)
             }
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
@@ -42,10 +43,10 @@ class SPPhoneComponent : SPShowCaseComponent {
                     || actionId == EditorInfo.IME_ACTION_DONE
                     || event?.action == KeyEvent.ACTION_DOWN
                 ) {
-                    showToast(context, "Action Done: " + phoneInput.text)
+                    showToast(context,"$ACTION_DONE ${phoneInput.text}")
                     return@OnEditorActionListener true
                 } else if (actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_FLAG_NAVIGATE_NEXT) {
-                    showToast(context, "Action Next: " + phoneInput.text)
+                    showToast(context,"$ACTION_NEXT ${phoneInput.text}")
                 }
 
                 return@OnEditorActionListener false
@@ -62,8 +63,11 @@ class SPPhoneComponent : SPShowCaseComponent {
     }
 
     companion object {
-        const val CORRECT_BIG_PASSWORD = "888888"
-        const val CORRECT_SMALL_PASSWORD = "1010"
+        private const val CORRECT_BIG_PASSWORD = "888888"
+        private const val CORRECT_SMALL_PASSWORD = "1010"
+        private const val ACTION_DONE = "Action Done: "
+        private const val ACTION_NEXT = "1010"
+
     }
 
 }

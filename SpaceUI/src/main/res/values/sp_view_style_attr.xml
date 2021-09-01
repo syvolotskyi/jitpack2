@@ -11,6 +11,9 @@
     <attr name="roundedCorners" format="dimension|reference" />
     <attr name="shadowOffsetX" format="dimension|reference" />
     <attr name="shadowOffsetY" format="dimension|reference" />
+    <attr name="chipWidth" format="dimension|reference"/>
+    <attr name="chipHeight" format="dimension|reference"/>
+    <attr name="iconRadius" format="dimension|reference"/>
     <attr name="isCircle" format="boolean" />
 
     <attr name="directionArrow" format="enum">
@@ -37,10 +40,6 @@
         <attr name="shadowOffsetX" />
         <attr name="shadowOffsetY" />
         <attr name="isCircle" />
-
-        <attr name="directionArrow" />
-        <attr name="btnIconPadding" />
-        <attr name="android:textAppearance"/>
     </declare-styleable>
 
     <declare-styleable name="sp_base_view">

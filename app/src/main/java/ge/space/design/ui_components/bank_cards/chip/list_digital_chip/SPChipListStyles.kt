@@ -123,7 +123,7 @@ object SPChipListStyles {
         SPDefaultChipItemSupport(),
         SPDefaultChipItemSupport(
             defaultChipData = SPDefaultChipData.SPDigitalChip(
-                background = SPBankCardGradient.SPRadial(
+                background = SPBankCardGradient.SPLinear(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_BLUE_1,
                         SPButtonStyles.GRADIENT_BLUE_2
@@ -140,9 +140,6 @@ object SPChipListStyles {
                     )
                 ),
             )
-        ),
-        SPDefaultChipItemSupport(
-            defaultChipData = SPDefaultChipData.SPAddIconChip
-        ),
+        )
     )
 }

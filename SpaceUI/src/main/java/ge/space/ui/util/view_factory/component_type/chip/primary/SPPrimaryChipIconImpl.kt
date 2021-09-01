@@ -1,4 +1,4 @@
-package ge.space.ui.util.view_factory.component_type.chip
+package ge.space.ui.util.view_factory.component_type.chip.primary
 
 import android.content.Context
 import ge.space.ui.components.bank_cards.chip.card.SPPrimaryChip
@@ -10,7 +10,9 @@ class SPPrimaryChipIconImpl(context: Context) :
 
     override fun create(type: SPViewData.SPrimaryChipData): SPPrimaryChip {
         return SPPrimaryChip(context).apply {
-            size = type.chipSize
+            style(type.styleRes)
+            chipHeight = type.chipHeight
+            chipWidth = type.chipWidth
         }
     }
 }

@@ -5,9 +5,7 @@ import androidx.annotation.StringRes
 import ge.space.design.main.util.NO_RES_ID
 import java.io.Serializable
 
-
-
-interface SPShowCaseComponent : Serializable {
+interface ShowCaseComponent : Serializable {
 
     @StringRes
     fun getNameResId(): Int
@@ -30,5 +28,5 @@ interface SPShowCaseComponent : Serializable {
      */
     fun getComponentClass(): Class<*>? = null
 
-    fun getSubComponents(): List<SPShowCaseComponent> = listOf()
+    fun getSubComponents(): List<ShowCaseComponent> = listOf()
 }

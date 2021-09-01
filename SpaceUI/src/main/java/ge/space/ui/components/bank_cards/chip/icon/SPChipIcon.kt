@@ -9,15 +9,17 @@ import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import ge.space.extensions.resolveColorByAttr
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
-import ge.space.ui.components.bank_cards.data.SPChipSize
+import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.extension.loadRoundImageUrl
-import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -43,7 +45,7 @@ class SPChipIcon @JvmOverloads constructor(
         set(value) {
             field = value
 
-            changeIcon()
+            binding.ivIcon.setImageResource(icon)
         }
 
     /**
@@ -68,6 +70,16 @@ class SPChipIcon @JvmOverloads constructor(
         }
 
     /**
+     * Changes the width size of the view
+     */
+    var brandLogoSizeHeight: Int = 0
+        set(value) {
+            field = value
+
+            binding.ivBigImage.setHeight(brandLogoSizeHeight)
+        }
+
+    /**
      * Binds a view
      */
     private val binding =
@@ -76,7 +88,7 @@ class SPChipIcon @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip,
+            R.styleable.sp_view_style,
             defStyleAttr
         ) {
             withStyledResource()
@@ -84,54 +96,39 @@ class SPChipIcon @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledResource() {
-        val styleRes = getResourceId(R.styleable.sp_chip_chipStyle, DEFAULT_OBTAIN_VAL)
-        if (styleRes > DEFAULT_OBTAIN_VAL) {
-            handleAttributesByStyleRes(styleRes)
-        } else {
-            handleCardAppearance()
-        }
+        icon = getResourceId(
+            R.styleable.sp_chip_icon_chipIcon,
+            R.drawable.ic_bank_24_regular
+        )
+        iconStyle = SPChipIconStyle.values()[
+                getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
+        ]
     }
 
-    private fun handleAttributesByStyleRes(styleRes: Int) {
+    override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_icon)
 
-        styleAttrs.run {
-            icon = getResourceId(
-                R.styleable.sp_chip_icon_chipIcon,
-                R.drawable.ic_bank_24_regular
-            )
-            iconStyle = SPChipIconStyle.values()[
-                getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
-            ]
-            size = SPChipSize.values()[
-                getInt(R.styleable.sp_chip_icon_cardSize, DEFAULT_OBTAIN_VAL)
-            ]
-        }
+        styleAttrs.run { withStyledResource() }
+        handleCardAppearance()
     }
 
-    override fun onHandleChipAppearance() {
-        handleVisibility()
-        changeIcon()
+    fun handleCardAppearance() {
         handleIconAppearance()
+        handleChipSize()
+    }
+
+    override fun handleChipSize() {
+        with(binding) {
+            frame.setWidth(chipWidth)
+            frame.setHeight(chipHeight)
+            ivBigImage.setWidth(chipWidth)
+            ivBigImage.setHeight(chipHeight)
+        }
     }
 
     override fun getViewData(): SPViewData =
-         SPViewData.SPChipData(size, icon, getStyle())
-
-    private fun handleVisibility() {
-        with(binding) {
-            frameBig.visibleOrGone(isBig)
-            frameSmall.visibleOrGone(!isBig)
-        }
-    }
-
-    private fun changeIcon() {
-        with(binding) {
-            ivIcon.setImageResource(icon)
-            ivIconSmall.setImageResource(icon)
-        }
-    }
+        SPViewData.SPChipData(chipHeight, chipWidth, icon, 0)
 
     private fun handleIconAppearance() {
         val colorAttr = getColorAttr()
@@ -140,51 +137,34 @@ class SPChipIcon @JvmOverloads constructor(
             ivIcon.setColorFilter(
                 color, PorterDuff.Mode.SRC_IN
             )
-            ivIconSmall.setColorFilter(
-                color, PorterDuff.Mode.SRC_IN
-            )
         }
     }
 
     private fun handlePhotoUrl() {
-        handleVisibility()
 
         val hasPhotoUrl = getHasPhotoUrl()
         handleImageViewsVisibility(hasPhotoUrl)
 
-        val bigPhoto = handleBigPhotoVisibility(hasPhotoUrl)
-        loadPhotoUrl(bigPhoto)
+        binding.ivBigImage.isVisible = hasPhotoUrl
+        loadPhotoUrl(binding.ivBigImage)
     }
 
     private fun loadPhotoUrl(bigPhoto: AppCompatImageView) {
         bigPhotoUrl?.let { url ->
-            context.loadRoundImageUrl(
+            context.loadImageUrl(
                 url,
-                bigPhoto,
-                getRoundRadius()
+                bigPhoto
             )
         }
-    }
-
-    private fun handleBigPhotoVisibility(hasPhotoUrl: Boolean): AppCompatImageView {
-        val bigPhoto = getBigPhoto()
-        bigPhoto.visibleOrGone(hasPhotoUrl)
-
-        return bigPhoto
     }
 
     private fun getHasPhotoUrl() =
         bigPhotoUrl != null
 
-    private fun getBigPhoto() = with(binding) {
-        if (isBig) ivBigImage
-        else ivBigImageSmall
-    }
 
     private fun handleImageViewsVisibility(hasPhotoUrl: Boolean) {
         with(binding) {
-            ivIcon.visibleOrGone(!hasPhotoUrl)
-            ivIconSmall.visibleOrGone(!hasPhotoUrl)
+            ivIcon.isVisible = !hasPhotoUrl
         }
     }
 
@@ -192,10 +172,4 @@ class SPChipIcon @JvmOverloads constructor(
         SPChipIconStyle.Accent -> R.attr.colorAccent
         else -> R.attr.static_black
     }
-
-    private fun getRoundRadius() =
-        resources.getDimension(
-            if (isBig) R.dimen.sp_bank_round_radius_big
-            else R.dimen.sp_bank_round_radius_small
-        ).toInt()
 }

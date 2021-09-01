@@ -41,7 +41,8 @@ class SPGradientImageView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            invalidate()
+            postInvalidate()
+            requestLayout()
         }
 
     override fun onDraw(canvas: Canvas) {

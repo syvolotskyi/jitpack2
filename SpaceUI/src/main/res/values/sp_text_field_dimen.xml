@@ -12,6 +12,6 @@
     <dimen name="sp_text_field_dropdown_icon_margin">@dimen/dimen_p_8</dimen>
     <dimen name="sp_text_field_dropdown_icon_height">@dimen/dimen_p_28</dimen>
     <dimen name="sp_text_field_dropdown_icon_width">@dimen/dimen_p_40</dimen>
-    <dimen name="sp_text_field_dropdown_height">@dimen/dimen_p_42</dimen>
+    <dimen name="sp_text_field_dropdown_height">@dimen/dimen_p_44</dimen>
     <dimen name="sp_text_field_dropdown_vertical_margin">@dimen/dimen_p_4</dimen>
 </resources>

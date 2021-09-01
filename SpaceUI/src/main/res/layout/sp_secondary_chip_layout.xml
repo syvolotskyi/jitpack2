@@ -5,8 +5,7 @@
     <View
         android:id="@+id/border"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_border_shape" />
+        android:layout_height="match_parent"/>
 
     <ge.space.ui.util.support.SPPlaceholder
         android:id="@+id/placeholder"
@@ -17,7 +16,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivPaymentSystem"
-        android:layout_width="@dimen/sp_secondary_payment_system_width"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/sp_secondary_payment_system_height"
         android:layout_marginBottom="@dimen/sp_secondary_chip_payment_margin"
         android:layout_marginEnd="@dimen/sp_secondary_chip_payment_margin"

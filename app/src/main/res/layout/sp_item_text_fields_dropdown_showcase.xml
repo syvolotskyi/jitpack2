@@ -31,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_p_32"
+        android:layout_marginTop="@dimen/dimen_p_64"
         android:enabled="true"
         android:text="Mandatory"
         app:layout_constraintStart_toStartOf="parent"

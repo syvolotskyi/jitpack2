@@ -49,7 +49,7 @@ class SPButtonVertical @JvmOverloads constructor(
     /**
      * Sets a drawable padding.
      */
-    private var iconPadding = IconPadding.Normal
+    private var iconPadding = Normal
         set(value) {
             field = value
 
@@ -94,12 +94,12 @@ class SPButtonVertical @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
      override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
-            val textAppearance = getResourceId(R.styleable.sp_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
+            val textAppearance = getResourceId(R.styleable.sp_button_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
             val iconPaddingInd = getInt(
-                R.styleable.sp_view_style_btnIconPadding, DEFAULT_ICON_PADDING
+                R.styleable.sp_button_view_style_btnIconPadding, DEFAULT_ICON_PADDING
             )
             iconPadding = IconPadding.values()[iconPaddingInd]
             updateTextAppearance(textAppearance)
@@ -123,8 +123,8 @@ class SPButtonVertical @JvmOverloads constructor(
 
     private fun handleDirectionArrow() {
         val padding = when (iconPadding) {
-            IconPadding.Normal -> resources.getDimension(R.dimen.dimen_p_8).toInt()
-            IconPadding.Large -> resources.getDimension(R.dimen.dimen_p_16).toInt()
+            Normal -> resources.getDimension(R.dimen.dimen_p_8).toInt()
+            Large -> resources.getDimension(R.dimen.dimen_p_16).toInt()
         }
 
         bubbleLayoutBinding.btnContainer.setPadding(

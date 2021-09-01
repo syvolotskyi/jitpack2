@@ -2,13 +2,14 @@ package ge.space.design.ui_components.bank_cards.card
 
 import android.graphics.Color
 import ge.space.ui.components.bank_cards.data.*
+import ge.space.ui.util.extension.EMPTY_STRING
 
 data class SPBankCardSupport(
     val cardModel: SPBankCardModel,
     val accountNumber: String,
     val bankLogo: String,
-    val amount: String = "",
-    val paySystemUrl: String = "",
+    val amount: String = EMPTY_STRING,
+    val paySystemUrl: String = EMPTY_STRING,
     val cardBackground: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),
     val payWaveType: SPPayWaveType = SPPayWaveType.Light,
     val bankCardStatus: SPBankCardStatus = SPBankCardStatus.Available,
@@ -25,8 +26,8 @@ object SPButtonStyles {
     private val BRAND_PRIMARY_COLOR =  Color.parseColor("#00A2B7")
     private val BLACK_COLOR =  Color.parseColor("#000000")
 
-    private val GRADIENT_WHITE_1 = Color.parseColor("#E3E9F0")
-    private val GRADIENT_WHITE_2 = Color.parseColor("#FFFFFF")
+    val GRADIENT_WHITE_1 = Color.parseColor("#E3E9F0")
+    val GRADIENT_WHITE_2 = Color.parseColor("#FFFFFF")
 
     val GRADIENT_BLUE_1 = Color.parseColor("#2998FF")
     val GRADIENT_BLUE_2 = Color.parseColor("#31C1FF")

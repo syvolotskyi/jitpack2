@@ -6,24 +6,25 @@ import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpPasswordShowCaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
 import ge.space.ui.components.text_fields.pin.SPPinEntryView
 
-class SPPasswordComponent : SPShowCaseComponent {
+class SPPasswordComponent : ShowCaseComponent {
+
     override fun getNameResId(): Int = R.string.password_pin
 
     override fun getDescriptionResId(): Int = R.string.password_pin_desc
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
-            val binding = SpPasswordShowCaseBinding.inflate(environmentSP.requireLayoutInflater())
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
+            val binding = SpPasswordShowCaseBinding.inflate(environment.requireLayoutInflater())
             with(binding) {
-                setupBigPasswordView(pinEntryViewPassword, environmentSP.context)
-                setupSmallPasswordView(pinEntryViewPasswordSmall, environmentSP.context)
+                setupBigPasswordView(pinEntryViewPassword, environment.context)
+                setupSmallPasswordView(pinEntryViewPasswordSmall, environment.context)
             }
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
@@ -39,10 +40,10 @@ class SPPasswordComponent : SPShowCaseComponent {
                     // correct password is 888888
                     if (pinCode.toString() == CORRECT_BIG_PASSWORD) {
                         pinEntryViewPassword.isError = false
-                        Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, CORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     } else {
                         pinEntryViewPassword.isError = true
-                        Toast.makeText(context, "incorrect password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, INCORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -55,10 +56,10 @@ class SPPasswordComponent : SPShowCaseComponent {
                     // correct password is 1010
                     if (pinCode.toString() == CORRECT_SMALL_PASSWORD) {
                         pinEntryViewPassword.isError = false
-                        Toast.makeText(context, "correct password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, CORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     } else {
                         pinEntryViewPassword.isError = true
-                        Toast.makeText(context, "incorrect password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, INCORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -69,6 +70,7 @@ class SPPasswordComponent : SPShowCaseComponent {
     companion object {
         const val CORRECT_BIG_PASSWORD = "888888"
         const val CORRECT_SMALL_PASSWORD = "1010"
+        private const val CORRECT_PASSWORD = "correct password"
+        private const val INCORRECT_PASSWORD = "incorrect password"
     }
-
 }

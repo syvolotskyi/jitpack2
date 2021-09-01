@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowcaseBinding
 import ge.space.design.main.SPComponentFactory
-import ge.space.design.main.SPShowCaseComponent
+import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.text_fields.input.SPInputComponent
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
@@ -24,32 +23,34 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemMode
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.view_factory.SPViewData
+import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
 
-class SPDropdownComponent : SPShowCaseComponent {
+class SPDropdownComponent : ShowCaseComponent {
+
     override fun getNameResId(): Int = R.string.dropdown
 
     override fun getDescriptionResId(): Int = R.string.dropdown_desc
 
-    override fun getComponentClass(): Class<*> = FactorySP::class.java
+    override fun getComponentClass(): Class<*> = SPFactory::class.java
 
-    class FactorySP : SPComponentFactory {
-        override fun create(environmentSP: SPShowCaseEnvironment): Any {
+    class SPFactory : SPComponentFactory {
+        override fun create(environment: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutTextFieldsDropdownShowcaseBinding.inflate(
-                environmentSP.requireLayoutInflater()
+                environment.requireLayoutInflater()
             )
 
             val dropdowns = mutableListOf<SPTextFieldBaseView<SpTextFieldDropdownBinding>>()
             val simpleDropdown = createDropdownProgrammatically(
                 layoutBinding.tfDropdownFrame,
-                environmentSP.requireFragmentActivity()
+                environment.requireFragmentActivity()
             )
             layoutBinding.tfDropdownFrame.addView(simpleDropdown)
 
             dropdowns.add(
                 createDropdownFromXml(
                     layoutBinding.textFieldDropdown,
-                    environmentSP.requireFragmentActivity()
+                    environment.requireFragmentActivity()
                 )
             )
 
@@ -95,21 +96,22 @@ class SPDropdownComponent : SPShowCaseComponent {
                     SPDropdownItemModel(
                         0,
                         view.context.getString(R.string.enter_you_details_here),
-                        SPViewData.SPEmptyChipData(SPChipSize.Small,
-                            SPEmptyChipStyle.White,
-                            R.style.SPBankCardView_EmptySmall_Base)
+                        SPDefaultEmptyChipData.getSmallEmptyChipData(
+                            view.context,
+                            SPEmptyChipStyle.Dark
+                        )
                     )
                 )
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindItem(SPOnBindDropdownItemModel())
-                .setItems(SPTextFieldsDropdownItems.list)
+                .setItems(SPTextFieldsDropdownItems.getList(view.context))
                 .setOnClickListener {
                     fragmentActivity.showMultipleButtonDialog(
                         SPDialogInfo(
                             view.resources.getString(R.string.selectIcon),
                             EMPTY_STRING,
                             createMultipleButtonsConfigs(
-                                SPTextFieldsDropdownItems.list,
+                                SPTextFieldsDropdownItems.getList(view.context),
                                 it
                             )
                         ),
@@ -124,16 +126,14 @@ class SPDropdownComponent : SPShowCaseComponent {
             view: FrameLayout,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
-            val items = SPTextFieldsDropdownItems.list.map { it.value }
+            val items = SPTextFieldsDropdownItems.getList(view.context).map { it.value }
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<String>()
                 .setStyle(R.style.SPTextField_Dropdown)
                 .setDefault(view.context.getString(R.string.enter_you_details_here))
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindItem(object : SPOnBindInterface<String> {
                     override fun getBindItemModel(): (SPTextFieldDropdown<String>, String) -> Unit =
-                        { dropdown, item ->
-                            dropdown.text = item
-                        }
+                        { dropdown, item -> dropdown.text = item }
                 })
                 .setItems(items)
                 .setOnClickListener {
