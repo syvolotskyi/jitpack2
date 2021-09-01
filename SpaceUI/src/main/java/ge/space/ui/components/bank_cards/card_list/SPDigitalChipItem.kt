@@ -119,7 +119,7 @@ class SPDigitalChipItem @JvmOverloads constructor(
 
                 tvCurrency.background = ContextCompat.getDrawable(context, drawableResId)
             }
-            binding.chip.style(R.style.SPBankCardView_ChipDigital)
+            binding.chip.setViewStyle(R.style.SPBankCardView_ChipDigital)
         }
     }
 

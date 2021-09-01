@@ -31,7 +31,7 @@ class SPSecondaryChipViewComponent : ShowCaseComponent {
                 )
 
                 with(itemBinding.secondaryChip) {
-                    style(chip.resId)
+                    setViewStyle(chip.resId)
                     bankLogoUrl = chip.bankLogoUrl
                     paymentSystemUrl = chip.paymentSystemUrl
                 }

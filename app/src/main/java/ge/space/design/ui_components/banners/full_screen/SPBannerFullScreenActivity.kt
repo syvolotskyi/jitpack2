@@ -21,7 +21,7 @@ class SPBannerFullScreenActivity : SPBaseActivity() {
             subTitleVisibility = data.subtitleVisibility
             descriptionVisibility = data.descVisibility
             setBannerResource(data.resource)
-            setBannerStyle(R.style.SPBanner_Base)
+            setViewStyle(R.style.SPBanner_Base)
         }
 
         setContentView(view)
