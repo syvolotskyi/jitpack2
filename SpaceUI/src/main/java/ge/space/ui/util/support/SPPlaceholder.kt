@@ -79,8 +79,8 @@ class SPPlaceholder @JvmOverloads constructor(
 
     private fun reSizeLogo() {
         with(binding.ivLogo) {
-            setHeight(getLogoDimenBySize())
-            setWidth(getLogoDimenBySize())
+            setHeight(getRootDimenBySize())
+            setWidth(getRootDimenBySize())
         }
     }
 

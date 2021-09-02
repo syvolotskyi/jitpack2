@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.setHeight
@@ -43,14 +42,11 @@ class SPSecondaryChip @JvmOverloads constructor(
     /**
      * Allows to hide or show a border for the view
      */
-    var border: Int = 0
+    var hasBorder: Boolean = false
         set(value) {
             field = value
 
-            if (border != 0) {
-                binding.border.background = ContextCompat.getDrawable(context, border)
-            }
-            binding.border.isVisible = value != 0
+            binding.border.isVisible = value
         }
 
     /**
@@ -122,7 +118,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withSecondaryChipStyledResource() {
-        border = getResourceId(R.styleable.sp_chip_secondary_border, 0)
+        hasBorder = getBoolean(R.styleable.sp_chip_secondary_hasBorder, false)
         placeholderSize =
             SPPlaceholderSize.values()[getInt(
                 R.styleable.sp_chip_secondary_placeholder_size,
@@ -138,7 +134,7 @@ class SPSecondaryChip @JvmOverloads constructor(
             chipWidth,
             bankLogoUrl,
             paymentSystemUrl,
-            border,
+            hasBorder,
             0
         )
 

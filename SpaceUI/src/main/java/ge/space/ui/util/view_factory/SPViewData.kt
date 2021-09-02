@@ -46,7 +46,7 @@ sealed class SPViewData : Parcelable {
         val chipWidth: Int,
         val bankLogoUrl: String,
         val paymentSystemUrl: String,
-        val hasBorder: Int,
+        val hasBorder: Boolean,
         @StyleRes val styleRes: Int
     ) :
         SPViewData()

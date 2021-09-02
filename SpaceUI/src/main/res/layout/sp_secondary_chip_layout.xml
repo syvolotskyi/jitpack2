@@ -5,7 +5,8 @@
     <View
         android:id="@+id/border"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_border_shape"/>
 
     <ge.space.ui.util.support.SPPlaceholder
         android:id="@+id/placeholder"
