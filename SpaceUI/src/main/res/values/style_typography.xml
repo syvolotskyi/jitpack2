@@ -32,25 +32,21 @@
     <style name="h900_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_10</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
-        <item name="android:translationY">-1.5sp</item>
     </style>
 
     <style name="h900_bold" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_10</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
-        <item name="android:translationY">-1.5sp</item>
     </style>
 
     <style name="h900_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
         <item name="android:textSize">@dimen/dimen_sp_10</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
-        <item name="android:translationY">-1.5sp</item>
     </style>
 
     <style name="h900_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
         <item name="android:textSize">@dimen/dimen_sp_10</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
-        <item name="android:translationY">-1.5sp</item>
     </style>
 
 
@@ -58,25 +54,21 @@
     <style name="h800_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_12</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h800_bold" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_12</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h800_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
         <item name="android:textSize">@dimen/dimen_sp_12</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_1</item>
-        <item name="android:translationY">-0.5sp</item>
     </style>
 
     <style name="h800_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
         <item name="android:textSize">@dimen/dimen_sp_12</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_1</item>
-        <item name="android:translationY">-0.5sp</item>
     </style>
 
 
@@ -84,63 +76,53 @@
     <style name="h700_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h700_bold" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h700_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h700_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h700_bold_underline" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     // 600
     <style name="h600_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_16</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h600_bold" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_16</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h600_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
         <item name="android:textSize">@dimen/dimen_sp_16</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     <style name="h600_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
         <item name="android:textSize">@dimen/dimen_sp_16</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
-        <item name="android:translationY">-3sp</item>
     </style>
 
     //500
     <style name="h500_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_18</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_8</item>
-        <item name="android:translationY">-4sp</item>
     </style>
 
 
@@ -148,38 +130,32 @@
     <style name="h400_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_20</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
-        <item name="android:translationY">-3.5sp</item>
     </style>
 
     <style name="h400_bold" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_20</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
-        <item name="android:translationY">-3.5sp</item>
     </style>
 
     <style name="h400_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
         <item name="android:textSize">@dimen/dimen_sp_20</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
-        <item name="android:translationY">-3.5sp</item>
     </style>
 
     <style name="h400_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
         <item name="android:textSize">@dimen/dimen_sp_20</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
-        <item name="android:translationY">-3.5sp</item>
     </style>
 
     // 300
     <style name="h300_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_24</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_8</item>
-        <item name="android:translationY">-4sp</item>
     </style>
 
     <style name="h300_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
         <item name="android:textSize">@dimen/dimen_sp_24</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_8</item>
-        <item name="android:translationY">-4sp</item>
     </style>
 
 
@@ -187,7 +163,6 @@
     <style name="h200_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_32</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_12</item>
-        <item name="android:translationY">-6sp</item>
     </style>
 
 
@@ -195,13 +170,11 @@
     <style name="h100_medium" parent="Typography.Base.MyriadGEO.Medium">
         <item name="android:textSize">@dimen/dimen_sp_36</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_12</item>
-        <item name="android:translationY">-6sp</item>
     </style>
 
     <style name="h100_bold" parent="Typography.Base.MyriadGEO.Bold">
         <item name="android:textSize">@dimen/dimen_sp_36</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_sp_12</item>
-        <item name="android:translationY">-6sp</item>
     </style>
 
 </resources>

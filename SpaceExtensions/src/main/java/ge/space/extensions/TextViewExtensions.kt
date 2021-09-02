@@ -55,16 +55,16 @@ fun TextView.setAutoSizeWithWrapContent(
     }
 }
 
-fun TextView.setTextStyle(styleRes: Int, useTranslationAttr: Boolean = true) {
+fun TextView.setTextStyle(styleRes: Int) {
     if (Build.VERSION.SDK_INT < 23) {
         TextViewCompat.setTextAppearance(this, styleRes)
     } else {
         this.setTextAppearance(styleRes)
     }
-    setAdditionalTextStyleAttr(styleRes, useTranslationAttr)
+    setAdditionalTextStyleAttr(styleRes)
 }
 
-private fun TextView.setAdditionalTextStyleAttr(styleRes: Int, useTranslationAttr: Boolean = true) {
+private fun TextView.setAdditionalTextStyleAttr(styleRes: Int) {
     val styleAttrs =
         context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_typography_view_style)
 
@@ -73,10 +73,5 @@ private fun TextView.setAdditionalTextStyleAttr(styleRes: Int, useTranslationAtt
             R.styleable.sp_typography_view_style_android_lineSpacingExtra, 0
         )
         setLineSpacing(lineSpacingExtra.toFloat(), 1.0f)
-        if (useTranslationAttr) {
-            translationY = getDimensionPixelSize(
-                R.styleable.sp_typography_view_style_android_translationY, 0
-            ).toFloat()
-        }
     }
 }

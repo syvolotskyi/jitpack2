@@ -216,11 +216,11 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     protected abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
-        binding.textLabel.setTextStyle(textAppearance, false)
+        binding.textLabel.setTextStyle(textAppearance)
 
 
     private fun updateDescriptionTextAppearance(textAppearance: Int) =
-        binding.textDesc.setTextStyle(textAppearance, false)
+        binding.textDesc.setTextStyle(textAppearance)
 
 
     private fun handleShowingLabelText() {

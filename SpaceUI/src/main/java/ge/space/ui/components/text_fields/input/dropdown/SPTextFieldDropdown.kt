@@ -139,7 +139,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
-       inputTextBinding.etInputField.setTextStyle(textAppearance, false)
+        inputTextBinding.etInputField.setTextStyle(textAppearance)
 
     override fun addTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)

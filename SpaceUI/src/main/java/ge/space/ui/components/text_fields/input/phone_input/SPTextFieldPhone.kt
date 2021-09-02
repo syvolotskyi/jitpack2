@@ -67,11 +67,11 @@ class SPTextFieldPhone @JvmOverloads constructor(
         }
     }
 
-    override fun addTextChangedListener(watcher: TextWatcher){
+    override fun addTextChangedListener(watcher: TextWatcher) {
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
-    override fun removeTextChangedListener(watcher: TextWatcher){
+    override fun removeTextChangedListener(watcher: TextWatcher) {
         inputTextBinding.etInputField.addTextChangedListener(watcher)
     }
 
@@ -97,7 +97,8 @@ class SPTextFieldPhone @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
 
         styleAttrs.run {
 
@@ -111,7 +112,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
     }
 
-    override fun updateTextAppearance(textAppearance: Int) {
-        inputTextBinding.etInputField.setTextStyle(textAppearance, false)
-    }
+    override fun updateTextAppearance(textAppearance: Int) =
+        inputTextBinding.etInputField.setTextStyle(textAppearance)
+
 }

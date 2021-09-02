@@ -108,7 +108,7 @@ class SPButton @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
-        binding.buttonLabel.setTextStyle(textAppearance, false)
+        binding.buttonLabel.setTextStyle(textAppearance)
         updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
     }
 

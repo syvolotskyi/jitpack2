@@ -2,6 +2,5 @@
 <resources>
     <declare-styleable name="sp_typography_view_style">
         <attr name="android:lineSpacingExtra"/>
-        <attr name="android:translationY" />
     </declare-styleable>
 </resources>

@@ -123,7 +123,7 @@ class SPButtonVertical @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
-        binding.buttonLabel.setTextStyle(textAppearance, false)
+        binding.buttonLabel.setTextStyle(textAppearance)
 
 
     private fun handleDirectionArrow() {

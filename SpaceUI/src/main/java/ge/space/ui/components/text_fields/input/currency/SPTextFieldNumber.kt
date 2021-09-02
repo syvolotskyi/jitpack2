@@ -154,7 +154,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
-        inputTextBinding.etInputField.setTextStyle(textAppearance, false)
+        inputTextBinding.etInputField.setTextStyle(textAppearance)
 
     companion object {
         private const val ALPHA_ACTIVE: Float = 1.0f
