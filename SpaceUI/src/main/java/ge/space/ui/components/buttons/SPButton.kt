@@ -8,6 +8,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
 import ge.space.ui.components.buttons.SPButton.ArrowDirection
@@ -86,11 +87,18 @@ class SPButton @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
-            val directionArrowInd = styleAttrs.getInt(R.styleable.sp_button_view_style_directionArrow, DEFAULT_OBTAIN_VAL)
-            val textAppearance = getResourceId(R.styleable.sp_button_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
+            val directionArrowInd = styleAttrs.getInt(
+                R.styleable.sp_button_view_style_directionArrow,
+                DEFAULT_OBTAIN_VAL
+            )
+            val textAppearance = getResourceId(
+                R.styleable.sp_button_view_style_android_textAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
 
             directionArrow = ArrowDirection.values()[directionArrowInd]
             updateTextAppearance(textAppearance)
@@ -100,7 +108,7 @@ class SPButton @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
+        binding.buttonLabel.setTextStyle(textAppearance, false)
         updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
     }
 

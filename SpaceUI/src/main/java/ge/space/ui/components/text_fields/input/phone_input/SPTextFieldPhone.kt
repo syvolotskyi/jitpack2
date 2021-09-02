@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -111,6 +112,6 @@ class SPTextFieldPhone @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
+        inputTextBinding.etInputField.setTextStyle(textAppearance, false)
     }
 }

@@ -204,7 +204,8 @@ class SPTabNavigationChildView @JvmOverloads constructor(
     /**
      * update text appearance
      */
-    private fun updateTextAppearance(textAppearance: Int) = TextViewCompat.setTextAppearance(binding.tabTitle, textAppearance)
+    private fun updateTextAppearance(textAppearance: Int) =
+        binding.tabTitle.setTextStyle(textAppearance)
 
     companion object {
         const val CARD_DEFAULT_ALPHA = 25
