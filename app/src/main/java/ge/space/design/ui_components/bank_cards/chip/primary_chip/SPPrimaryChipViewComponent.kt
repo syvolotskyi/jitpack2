@@ -29,7 +29,7 @@ class SPPrimaryChipViewComponent : ShowCaseComponent {
                 )
 
                 with(itemBinding.primaryChip) {
-                   style(chip.resId)
+                   setViewStyle(chip.resId)
                 }
             }
 

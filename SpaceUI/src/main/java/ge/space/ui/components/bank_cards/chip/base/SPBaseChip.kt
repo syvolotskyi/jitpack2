@@ -2,18 +2,16 @@ package ge.space.ui.components.bank_cards.chip.base
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Color
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPChipSize
-import ge.space.ui.util.extension.SPStyleInterface
+import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.view_factory.SPViewFactoryData
 
 /**
@@ -26,7 +24,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPViewFactoryData, SPStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewFactoryData, SPSetViewStyleInterface {
 
     /**
      * Changes the size of the view
@@ -88,9 +86,9 @@ abstract class SPBaseChip @JvmOverloads constructor(
     protected abstract fun setChipStyle(styleRes: Int)
 
     /**
-     * Allows to update text style and BaseViewStyle programmatically
+     * Allows to update chip style and BaseViewStyle programmatically
      */
-    override fun style(@StyleRes newStyle: Int) {
+    override fun setViewStyle(@StyleRes newStyle: Int) {
         with(newStyle) {
             setStyle(this)
             setChipStyle(this)

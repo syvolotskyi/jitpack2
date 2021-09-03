@@ -43,7 +43,7 @@ class SPInputComponent : ShowCaseComponent {
                 )
 
                 with(itemBinding.simpleInput){
-                    style(buttonSample.resId)
+                    setViewStyle(buttonSample.resId)
                     setupInputTextWithDone(this, environment.context)
                     buttons.add(this)
                     doOnTextChanged{ text, _, _, _ ->

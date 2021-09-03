@@ -6,6 +6,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.util.extension.SPSetViewStyleInterface
 
 /**
  * Abstract base Button view extended from [SPBaseView] that allows to change its configuration.
@@ -17,7 +18,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
@@ -46,10 +47,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
         binding = _binding
     }
 
-    /**
-     * Allows to update button style and BaseViewStyle programmatically
-     */
-    fun style(@StyleRes newStyle: Int) {
+    override fun setViewStyle(newStyle: Int) {
         with(newStyle) {
             setStyle(this)
             setButtonStyle(this)

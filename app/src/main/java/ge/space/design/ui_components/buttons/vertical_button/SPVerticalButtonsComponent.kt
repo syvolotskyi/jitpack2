@@ -79,7 +79,7 @@ class SPVerticalButtonsComponent : ShowCaseComponent {
                         buttons.onEach { it.text = s.toString() }
                     }
                 })
-                itemBinding.button.style(buttonSample.resId)
+                itemBinding.button.setViewStyle(buttonSample.resId)
                 itemBinding.button.text = "Button"
             }
             return layoutBinding.root

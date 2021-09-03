@@ -53,7 +53,7 @@
 
     <declare-styleable name="sp_chip_secondary">
         <attr name="placeholder_size" />
-        <attr name="border" format="reference"/>
+        <attr name="hasBorder" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="sp_chip_icon">

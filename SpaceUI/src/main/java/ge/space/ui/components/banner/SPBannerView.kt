@@ -14,6 +14,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBannerLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_TEXT
+import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
@@ -21,7 +22,7 @@ class SPBannerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
+) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     private val binding = SpBannerLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -83,8 +84,8 @@ class SPBannerView @JvmOverloads constructor(
 
     }
 
-    fun setBannerStyle(@StyleRes style: Int) {
-        context.theme.obtainStyledAttributes(style, R.styleable.sp_banner_base).run {
+    override fun setViewStyle(@StyleRes newStyle: Int) {
+        context.theme.obtainStyledAttributes(newStyle, R.styleable.sp_banner_base).run {
             setTextAppearances()
         }
     }

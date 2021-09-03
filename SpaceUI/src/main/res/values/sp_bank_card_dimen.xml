@@ -29,11 +29,9 @@
     <dimen name="sp_bank_card_favorite_margin_top">@dimen/dimen_p_20</dimen>
     <dimen name="sp_bank_card_favorite_margin_bottom">@dimen/dimen_p_12</dimen>
 
-    <dimen name="sp_bank_round_radius_big">@dimen/dimen_p_6</dimen>
-    <dimen name="sp_bank_round_radius_medium">@dimen/dimen_p_4</dimen>
-    <dimen name="sp_bank_round_radius_small">@dimen/dimen_p_4</dimen>
+    <dimen name="sp_bank_round_radius">@dimen/dimen_p_4</dimen>
 
-    <dimen name="sp_bank_logo_round_radius">@dimen/sp_bank_round_radius_big</dimen>
+    <dimen name="sp_bank_logo_round_radius">@dimen/dimen_p_6</dimen>
     <dimen name="sp_bank_logo_size">@dimen/dimen_p_32</dimen>
     <dimen name="sp_bank_logo_margin_start">@dimen/dimen_p_28</dimen>
 
@@ -88,7 +86,7 @@
     <dimen name="sp_placeholder_logo_size_xsmall">@dimen/dimen_p_14</dimen>
     <dimen name="sp_placeholder_logo_size_small">@dimen/dimen_p_13</dimen>
 
-    <dimen name="sp_secondary_payment_system_height">@dimen/dimen_p_3</dimen>
+    <dimen name="sp_secondary_payment_system_height">@dimen/dimen_p_8</dimen>
 
     <dimen name="sp_favorite_size">@dimen/dimen_p_21</dimen>
     <dimen name="sp_favorite_margin_default">@dimen/dimen_p_22</dimen>

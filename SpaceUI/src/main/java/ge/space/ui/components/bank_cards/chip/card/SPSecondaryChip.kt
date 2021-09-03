@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.setHeight
@@ -14,17 +13,15 @@ import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
-import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
 import ge.space.ui.util.extension.loadImageUrl
-import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * Allows to show chips with both a bank logo and a payment system icon on
  * light background. Also the view allows to hide or show a border
  *
- * @property hasBorder hides or shows a border of the view
+ * @property border hides or shows a border of the view
  * @property paymentSystemUrl loads a payment system icon
  * @property bankLogoUrl loads a bank icon
  */
@@ -45,14 +42,11 @@ class SPSecondaryChip @JvmOverloads constructor(
     /**
      * Allows to hide or show a border for the view
      */
-    var border: Int = 0
+    var hasBorder: Boolean = false
         set(value) {
             field = value
 
-            if (border != 0) {
-                binding.border.background = ContextCompat.getDrawable(context, border)
-            }
-            binding.border.isVisible = value != 0
+            binding.border.isVisible = value
         }
 
     /**
@@ -124,7 +118,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withSecondaryChipStyledResource() {
-        border = getResourceId(R.styleable.sp_chip_secondary_border, 0)
+        hasBorder = getBoolean(R.styleable.sp_chip_secondary_hasBorder, false)
         placeholderSize =
             SPPlaceholderSize.values()[getInt(
                 R.styleable.sp_chip_secondary_placeholder_size,
@@ -140,7 +134,7 @@ class SPSecondaryChip @JvmOverloads constructor(
             chipWidth,
             bankLogoUrl,
             paymentSystemUrl,
-            border,
+            hasBorder,
             0
         )
 

@@ -245,7 +245,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
          */
         fun build(context: Context): SPTextFieldDropdown<*> =
             (view ?: SPTextFieldDropdown(context)).apply {
-                style(style)
+                setViewStyle(style)
 
                 labelText = title
                 descriptionText = description

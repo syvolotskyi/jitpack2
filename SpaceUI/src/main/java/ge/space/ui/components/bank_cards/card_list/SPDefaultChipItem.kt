@@ -67,7 +67,7 @@ class SPDefaultChipItem @JvmOverloads constructor(
         setChipVisibility()
         (chipData as? SPDefaultChipData.SPDigitalChip)?.let {
 
-            binding.digitalChip.style(R.style.SPBankCardView_ChipDigital)
+            binding.digitalChip.setViewStyle(R.style.SPBankCardView_ChipDigital)
             it.setDigitalBackground()
         }
     }
@@ -91,7 +91,7 @@ class SPDefaultChipItem @JvmOverloads constructor(
     }
 
     private fun SPDefaultChipData.SPDigitalChip.setDigitalBackground() {
-        binding.digitalChip.style(R.style.SPBankCardView_ChipDigital)
+        binding.digitalChip.setViewStyle(R.style.SPBankCardView_ChipDigital)
         binding.digitalChip.cardBackground = background
     }
 
