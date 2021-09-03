@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextCurrencyBinding
 import ge.space.ui.base.SPBaseView
@@ -153,7 +154,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
-        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
+        inputTextBinding.etInputField.setTextStyle(textAppearance)
 
     companion object {
         private const val ALPHA_ACTIVE: Float = 1.0f

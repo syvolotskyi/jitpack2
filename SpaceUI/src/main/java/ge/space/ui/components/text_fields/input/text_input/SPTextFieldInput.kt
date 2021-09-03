@@ -13,6 +13,7 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import ge.space.extensions.isVisible
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -149,8 +150,8 @@ class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
-    override fun updateTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
-    }
+    override fun updateTextAppearance(textAppearance: Int) =
+        inputTextBinding.etInputField.setTextStyle(textAppearance)
+
 
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="sp_typography_view_style">
+        <attr name="android:lineSpacingExtra"/>
+    </declare-styleable>
+</resources>

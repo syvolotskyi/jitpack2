@@ -10,6 +10,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
@@ -82,7 +83,7 @@ class SPButtonVertical @JvmOverloads constructor(
      * Inflates and returns [SpButtonVerticalLayoutBinding] value
      */
     override fun getViewBinding(): SpButtonVerticalLayoutBinding =
-            SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context),this)
+        SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     /**
      * Sets a style for the SPButton view.
@@ -93,11 +94,15 @@ class SPButtonVertical @JvmOverloads constructor(
      *
      * @param defStyleRes [Int] style resource id
      */
-     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
+    override fun setButtonStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
-            val textAppearance = getResourceId(R.styleable.sp_button_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
+            val textAppearance = getResourceId(
+                R.styleable.sp_button_view_style_android_textAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
             val iconPaddingInd = getInt(
                 R.styleable.sp_button_view_style_btnIconPadding, DEFAULT_ICON_PADDING
             )
@@ -117,9 +122,9 @@ class SPButtonVertical @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
     }
 
-    override fun updateTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
-    }
+    override fun updateTextAppearance(textAppearance: Int) =
+        binding.buttonLabel.setTextStyle(textAppearance)
+
 
     private fun handleDirectionArrow() {
         val padding = when (iconPadding) {

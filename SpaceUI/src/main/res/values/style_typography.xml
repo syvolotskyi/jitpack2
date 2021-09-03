@@ -30,124 +30,151 @@
 
     // 900
     <style name="h900_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_10</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
     </style>
 
     <style name="h900_bold" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_10</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
     </style>
 
     <style name="h900_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_10</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
     </style>
 
     <style name="h900_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_10</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_3</item>
     </style>
 
 
     // 800
     <style name="h800_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_12</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h800_bold" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_12</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h800_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_12</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_1</item>
     </style>
 
     <style name="h800_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_12</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_1</item>
     </style>
 
 
     // 700
     <style name="h700_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h700_bold" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h700_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h700_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h700_bold_underline" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_14</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     // 600
     <style name="h600_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_16</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h600_bold" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_16</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h600_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_16</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     <style name="h600_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_16</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_6</item>
     </style>
 
     //500
     <style name="h500_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_18</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_8</item>
     </style>
 
 
     // 400
     <style name="h400_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_20</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
     </style>
 
     <style name="h400_bold" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_20</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
     </style>
 
     <style name="h400_medium_caps" parent="Typography.Base.MyriadGEOMtavruli.Medium">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_20</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
     </style>
 
     <style name="h400_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_20</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_7</item>
     </style>
 
     // 300
     <style name="h300_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_24</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_8</item>
     </style>
 
     <style name="h300_bold_caps" parent="Typography.Base.MyriadGEOMtavruli.Bold">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_24</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_8</item>
     </style>
 
 
     // 200
     <style name="h200_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_32</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_12</item>
     </style>
 
 
     // 100
     <style name="h100_medium" parent="Typography.Base.MyriadGEO.Medium">
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_36</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_12</item>
     </style>
 
     <style name="h100_bold" parent="Typography.Base.MyriadGEO.Bold">
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">@dimen/dimen_sp_36</item>
+        <item name="android:lineSpacingExtra">@dimen/dimen_sp_12</item>
     </style>
 
 </resources>

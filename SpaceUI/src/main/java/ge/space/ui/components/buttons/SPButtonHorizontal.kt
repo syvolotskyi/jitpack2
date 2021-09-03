@@ -8,6 +8,7 @@ import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
@@ -84,8 +85,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         binding.buttonLabel.text = text
     }
 
-    override fun updateTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.buttonLabel, textAppearance)
-    }
+    override fun updateTextAppearance(textAppearance: Int) =
+        binding.buttonLabel.setTextStyle(textAppearance)
 
 }

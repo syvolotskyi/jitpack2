@@ -15,6 +15,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import androidx.viewbinding.ViewBinding
 import ge.space.extensions.appendAsterisk
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -212,13 +213,13 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
      */
     protected abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
 
-    private fun updateLabelTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.textLabel, textAppearance)
-    }
+    private fun updateLabelTextAppearance(textAppearance: Int) =
+        binding.textLabel.setTextStyle(textAppearance)
 
-    private fun updateDescriptionTextAppearance(textAppearance: Int) {
-        TextViewCompat.setTextAppearance(binding.textDesc, textAppearance)
-    }
+
+    private fun updateDescriptionTextAppearance(textAppearance: Int) =
+        binding.textDesc.setTextStyle(textAppearance)
+
 
     private fun handleShowingLabelText() {
         binding.textLabel.isVisible = labelText.isNotEmpty()

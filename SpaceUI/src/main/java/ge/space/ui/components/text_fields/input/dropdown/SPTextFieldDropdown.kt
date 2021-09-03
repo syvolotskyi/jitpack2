@@ -10,6 +10,7 @@ import androidx.annotation.StyleRes
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.FragmentActivity
 import ge.space.extensions.setHeight
+import ge.space.extensions.setTextStyle
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
@@ -138,7 +139,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     }
 
     override fun updateTextAppearance(textAppearance: Int) =
-        TextViewCompat.setTextAppearance(inputTextBinding.etInputField, textAppearance)
+        inputTextBinding.etInputField.setTextStyle(textAppearance)
 
     override fun addTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
