@@ -61,7 +61,7 @@ fun TextView.setTextStyle(styleRes: Int) {
     } else {
         this.setTextAppearance(styleRes)
     }
-    (styleRes)
+    setLineSpacingExtra(styleRes)
 }
 
 /**
