@@ -61,10 +61,14 @@ fun TextView.setTextStyle(styleRes: Int) {
     } else {
         this.setTextAppearance(styleRes)
     }
-    setAdditionalTextStyleAttr(styleRes)
+    (styleRes)
 }
 
-private fun TextView.setAdditionalTextStyleAttr(styleRes: Int) {
+/**
+ * TextAppearance doesn't support lineSpacingExtra
+ * So we have to manually set it from attribute
+ */
+private fun TextView.setLineSpacingExtra(styleRes: Int) {
     val styleAttrs =
         context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_typography_view_style)
 
