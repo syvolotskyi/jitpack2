@@ -10,12 +10,12 @@ data class SPButtonSupportsLoading(
 
 object SPButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPButton_WhiteView, true),
-        SPButtonSupportsLoading(R.style.SPButton_WhiteWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_WhiteWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_AccentView, true),
-        SPButtonSupportsLoading(R.style.SPButton_AccentWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_AccentWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPButton_Secondary, true),
+        SPButtonSupportsLoading(R.style.SPButton_SecondaryWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPButton_SecondaryWithRightArrow, true),
+        SPButtonSupportsLoading(R.style.SPButton_Primary, true),
+        SPButtonSupportsLoading(R.style.SPButton_PrimaryWithLeftArrow, true),
+        SPButtonSupportsLoading(R.style.SPButton_PrimaryWithRightArrow, true),
         SPButtonSupportsLoading(R.style.SPButton_DarkView, true),
         SPButtonSupportsLoading(R.style.SPButton_DarkWithLeftArrow, true),
         SPButtonSupportsLoading(R.style.SPButton_DarkWithRightArrow, true),

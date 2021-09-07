@@ -2,6 +2,7 @@ package ge.space.ui.components.buttons.base
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MotionEvent
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
@@ -63,6 +64,14 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
     }
 
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> alpha = CLICKED_ALPHA
+            MotionEvent.ACTION_UP -> alpha = DEFAULT_ALPHA
+        }
+        return true
+    }
+
     /**
      * Allows to init ViewBinding
      */
@@ -86,6 +95,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     companion object {
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ALPHA = 1f
+        private const val CLICKED_ALPHA = 0.8f
         private const val DISABLED_ALPHA = 0.25f
     }
 }

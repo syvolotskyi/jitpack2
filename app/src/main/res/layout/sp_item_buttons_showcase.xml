@@ -24,7 +24,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:style="@style/SPButton.AccentView" />
+        app:style="@style/SPButton.Primary" />
 
     <LinearLayout
         android:layout_width="wrap_content"
