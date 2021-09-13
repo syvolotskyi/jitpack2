@@ -5,22 +5,11 @@
         <item name="directionArrow">none</item>
     </style>
 
-    <style name="SPButton.Secondary" parent="SPButton.BaseView">
-        <item name="backgroundColor">?attr/background_tertiary</item>
-        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
-    </style>
-
-    <style name="SPButton.SecondaryWithLeftArrow" parent="SPButton.Secondary">
-        <item name="directionArrow">left</item>
-    </style>
-
-    <style name="SPButton.SecondaryWithRightArrow" parent="SPButton.Secondary">
-        <item name="directionArrow">right</item>
-    </style>
-
     <style name="SPButton.Primary" parent="SPButton.BaseView">
         <item name="backgroundColor">?attr/brand_primary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveBackground">?attr/accent_magenta</item>
     </style>
 
     <style name="SPButton.PrimaryWithLeftArrow" parent="SPButton.Primary">
@@ -31,18 +20,18 @@
         <item name="directionArrow">right</item>
     </style>
 
-
-
-    <style name="SPButton.DarkView" parent="SPButton.BaseView">
-        <item name="backgroundColor">?attr/static_black</item>
-        <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+    <style name="SPButton.Secondary" parent="SPButton.BaseView">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
-    <style name="SPButton.DarkWithLeftArrow" parent="SPButton.DarkView">
+    <style name="SPButton.SecondaryWithLeftArrow" parent="SPButton.Secondary">
         <item name="directionArrow">left</item>
     </style>
 
-    <style name="SPButton.DarkWithRightArrow" parent="SPButton.DarkView">
+    <style name="SPButton.SecondaryWithRightArrow" parent="SPButton.Secondary">
         <item name="directionArrow">right</item>
     </style>
 
@@ -52,6 +41,7 @@
         <item name="shadowAlpha">100%</item>
         <item name="backgroundColor">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
     </style>
 

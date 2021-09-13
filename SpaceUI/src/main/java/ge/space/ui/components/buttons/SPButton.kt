@@ -1,6 +1,7 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
@@ -14,6 +15,7 @@ import ge.space.spaceui.databinding.SpButtonLayoutBinding
 import ge.space.ui.components.buttons.SPButton.ArrowDirection
 import ge.space.ui.components.buttons.SPButton.ArrowDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 
@@ -36,7 +38,7 @@ class SPButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr), OnDistractiveInterface {
 
     /**
      * Makes a button arrow direction.
@@ -47,6 +49,17 @@ class SPButton @JvmOverloads constructor(
 
             handleDirectionArrow()
         }
+    private var isDistractive: Boolean = false
+
+    @StyleRes
+    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    @StyleRes
+    private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    private var distractiveBackground: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    private var background: Int = SPTextFieldBaseView.DEFAULT_INT
 
     init {
         getContext().withStyledAttributes(
@@ -95,14 +108,25 @@ class SPButton @JvmOverloads constructor(
                 R.styleable.sp_button_view_style_directionArrow,
                 DEFAULT_OBTAIN_VAL
             )
-            val textAppearance = getResourceId(
+
+            textAppearance = getResourceId(
                 R.styleable.sp_button_view_style_android_textAppearance,
                 DEFAULT_OBTAIN_VAL
             )
 
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_button_view_style_distractiveTextAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
+
+            distractiveBackground = getColor(
+                R.styleable.sp_button_view_style_distractiveBackground,
+                Color.WHITE
+            )
+
             directionArrow = ArrowDirection.values()[directionArrowInd]
             updateTextAppearance(textAppearance)
-
+            background = color
             recycle()
         }
     }
@@ -168,4 +192,13 @@ class SPButton @JvmOverloads constructor(
         Left,
         Right
     }
+
+    override fun setDistractive(distractive: Boolean) {
+        isDistractive = distractive
+
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+        color = if (isDistractive) distractiveBackground else background
+    }
+
+    override fun isDistractive(): Boolean = isDistractive
 }

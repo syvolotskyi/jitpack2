@@ -85,4 +85,8 @@
         <item name="android:textColor">@color/appPrimaryColor</item>
     </style>
 
+    <style name="h600_bold_caps_accent_magenta" parent="h600_bold_caps">
+        <item name="android:textColor">?attr/accent_magenta</item>
+    </style>
+
 </resources>

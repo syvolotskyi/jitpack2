@@ -6,6 +6,8 @@
     <declare-styleable name="sp_button_view_style">
         <attr name="directionArrow" />
         <attr name="android:textAppearance"/>
+        <attr name="distractiveTextAppearance"/>
+        <attr name="distractiveBackground"/>
         <attr name="btnIconPadding" />
     </declare-styleable>
 

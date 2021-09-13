@@ -16,9 +16,6 @@ object SPButtonStyles {
         SPButtonSupportsLoading(R.style.SPButton_Primary, true),
         SPButtonSupportsLoading(R.style.SPButton_PrimaryWithLeftArrow, true),
         SPButtonSupportsLoading(R.style.SPButton_PrimaryWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_DarkView, true),
-        SPButtonSupportsLoading(R.style.SPButton_DarkWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_DarkWithRightArrow, true),
         SPButtonSupportsLoading(R.style.SPButton_TransparentView, true),
         SPButtonSupportsLoading(R.style.SPButton_TransparentWithLeftArrow, true),
         SPButtonSupportsLoading(R.style.SPButton_TransparentWithRightArrow, true)
