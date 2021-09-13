@@ -4,10 +4,12 @@
         <attr name="android:text" format="string|reference" />
     </declare-styleable>
     <declare-styleable name="sp_button_view_style">
-        <attr name="directionArrow" />
+        <attr name="directionIcon" />
         <attr name="android:textAppearance"/>
         <attr name="distractiveTextAppearance"/>
         <attr name="distractiveBackground"/>
+        <attr name="android:src" format="reference" />
+        <attr name="buttonsHeight" format="reference" />
         <attr name="btnIconPadding" />
     </declare-styleable>
 

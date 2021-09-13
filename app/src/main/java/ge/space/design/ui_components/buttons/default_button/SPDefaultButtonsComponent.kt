@@ -31,16 +31,15 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
             SPButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
-                val supportsDisable = buttonSample.supportsDisabled
 
                 val itemBinding = SpItemButtonsShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(resId),
                     layoutBinding.buttonsLayout,
                     true
                 )
-
-                if (!supportsDisable)
-                    itemBinding.disableCheck.visibility = View.GONE
+                itemBinding.button.directionIcon = buttonSample.iconDirection
+                itemBinding.button.src = buttonSample.src
+                itemBinding.disableCheck.visibility = View.GONE
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
@@ -58,7 +57,7 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                 }
 
                 itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.button.setDistractive(isChecked)
+                    itemBinding.button.isDistractive = isChecked
                 }
 
                 itemBinding.wrapContentCheck.setOnCheckedChangeListener { _, isChecked ->

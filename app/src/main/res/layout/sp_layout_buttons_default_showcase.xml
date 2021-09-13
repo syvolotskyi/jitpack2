@@ -17,7 +17,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:text="Button"
-            app:style="@style/SPButton.Primary" />
+            app:style="@style/SPButton.Primary_Size48" />
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/button2"
@@ -26,7 +26,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:text="Button"
-            app:style="@style/SPButton.Primary" />
+            app:style="@style/SPButton.Primary_Size48" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,7 +41,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:text="Button"
-            app:style="@style/SPButton.Primary" />
+            app:style="@style/SPButton.Primary_Size48" />
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/button4"
@@ -50,7 +50,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:text="Button"
-            app:style="@style/SPButton.Primary" />
+            app:style="@style/SPButton.Primary_Size48" />
     </LinearLayout>
 
     <ScrollView

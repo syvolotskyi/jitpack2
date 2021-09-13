@@ -21,7 +21,7 @@
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/changeResourceButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/sp_button_height_48"
             android:layout_margin="@dimen/dimen_p_20"
             android:gravity="center"
             android:padding="@dimen/dimen_p_10"
@@ -31,7 +31,7 @@
             android:textSize="@dimen/dimen_sp_18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bannerInputTextsView"
-            app:style="@style/SPButton.Primary"
+            app:style="@style/SPButton.Primary_Size48"
             tools:ignore="HardcodedText" />
 
         <ge.space.ui.components.banner.SPBannerView
@@ -55,7 +55,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/dimen_sp_18"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:style="@style/SPButton.Primary"
+            app:style="@style/SPButton.Primary_Size48"
             tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

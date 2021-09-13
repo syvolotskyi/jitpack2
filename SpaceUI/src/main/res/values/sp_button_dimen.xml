@@ -2,4 +2,7 @@
 <resources>
     <dimen name="sp_button_width">@dimen/dimen_p_108</dimen>
     <dimen name="sp_button_height">@dimen/dimen_p_48</dimen>
+    <dimen name="sp_button_height_40">@dimen/dimen_p_40</dimen>
+    <dimen name="sp_button_height_48">@dimen/dimen_p_48</dimen>
+    <dimen name="sp_button_height_56">@dimen/dimen_p_56</dimen>
 </resources>
