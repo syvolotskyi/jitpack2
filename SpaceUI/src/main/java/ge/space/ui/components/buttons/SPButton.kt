@@ -26,13 +26,12 @@ import ge.space.ui.util.extension.handleAttributeAction
  * There are 4 realized styles which can be applied to the view:
  *
  * <p>
- *     1. SPBaseView.SPBaseButton.White
- *     2. SPBaseView.SPBaseButton.Accent
- *     3. SPBaseView.SPBaseButton.Dark
- *     4. SPBaseView.SPBaseButton.Transparent
+ *     1. SPBaseView.SPBaseButton.Primary
+ *     2. SPBaseView.SPBaseButton.Secondary
+ *     3. SPBaseView.SPBaseButton.Hollow
  * <p>
  *
- * @property directionIcon [IconDirection] value which applies a button arrow direction.
+ * @property directionIcon [IconDirection] value which applies a button icon direction.
  *  This property can have a value from [IconDirection.Right], [IconDirection.Left],
  *  [IconDirection.None].
  */
@@ -43,7 +42,7 @@ class SPButton @JvmOverloads constructor(
 ) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr), OnDistractiveInterface {
 
     /**
-     * Makes a button arrow direction.
+     * Makes a button icon direction.
      */
     var directionIcon = None
         set(value) {
@@ -61,36 +60,6 @@ class SPButton @JvmOverloads constructor(
             field = value
 
             handleDirectionArrow()
-        }
-
-    /**
-     * Sets a text appearance
-     */
-    @StyleRes
-    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
-
-    /**
-     * Sets a distractive text appearance
-     */
-    @StyleRes
-    private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
-
-    /**
-     * Sets a distractive Background
-     */
-    private var distractiveBackground: Int = SPTextFieldBaseView.DEFAULT_INT
-
-    /**
-     * Saved origin background to have a possibility to switch back from distractive mode
-     */
-    private var background: Int = color
-
-    override var isDistractive: Boolean = false
-        set(value) {
-            field = value
-
-            updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
-            color = if (isDistractive) distractiveBackground else background
         }
 
     init {
@@ -147,7 +116,7 @@ class SPButton @JvmOverloads constructor(
             )
 
             val buttonHeight = getResourceId(
-                R.styleable.sp_button_view_style_buttonsHeight,
+                R.styleable.sp_button_view_style_buttonHeight,
                 DEFAULT_OBTAIN_VAL
             )
 
@@ -164,7 +133,6 @@ class SPButton @JvmOverloads constructor(
             src = getResourceId(R.styleable.sp_button_view_style_android_src, 0)
 
             directionIcon = IconDirection.values()[directionIconInd]
-
 
             background = color
             updateTextAppearance(textAppearance)
@@ -198,12 +166,16 @@ class SPButton @JvmOverloads constructor(
             }
     }
 
-    //remove all drawables
+    /**
+     * remove all drawables
+     */
     private fun directNone() {
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
     }
 
-    //sets left drawable only
+    /**
+     * sets left drawable only
+     */
     private fun directLeft() {
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
             ContextCompat.getDrawable(context, src),
@@ -213,7 +185,9 @@ class SPButton @JvmOverloads constructor(
         )
     }
 
-    //sets right drawable only
+    /**
+     * sets right drawable only
+     */
     private fun directRight() {
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
             null,

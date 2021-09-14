@@ -22,11 +22,11 @@
         android:id="@+id/textInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/dimen_p_10"
         android:background="@color/light_greyscale_gray_5"
         android:hint="Input button text"
         android:inputType="textVisiblePassword"
-        android:padding="10dp"
-        android:textSize="16sp" />
+        android:padding="@dimen/dimen_p_10"
+        android:textSize="@dimen/dimen_sp_16" />
 
 </LinearLayout>
