@@ -31,6 +31,7 @@
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveBackground">?attr/accent_magenta</item>
     </style>
+
     <style name="SPButton.Primary_Size56" parent="SPButton.BaseView.Size56">
         <item name="backgroundColor">?attr/brand_primary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>

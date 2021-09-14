@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPButton.BaseHorizontal" parent="SPBaseView">
+
+    <style name="SPButton.BaseHorizontal" parent="shadow_400_primary">
         <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_bold</item>
@@ -10,6 +11,14 @@
         <item name="shadowRadius">@dimen/dimen_p_10</item>
         <item name="roundedCorners">@dimen/dimen_p_10</item>
         <item name="android:textAppearance">@style/h700_bold_secondary</item>
+    </style>
+
+    <style name="SPButton.Horizontal_Size48" parent="SPButton.BaseView">
+        <item name="buttonsHeight">@dimen/dimen_p_48</item>
+    </style>
+
+    <style name="SPButton.Horizontal_Size56" parent="SPButton.BaseView">
+        <item name="buttonsHeight">@dimen/dimen_p_56</item>
     </style>
 
 </resources>

@@ -12,6 +12,7 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
 /**
  * Button view extended from [SPButtonBaseView] that allows to change its configuration.
@@ -40,6 +41,22 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
             binding.ivRight.setImageResource(src)
         }
+
+    /**
+     * Sets a text appearance
+     */
+    @StyleRes
+    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    /**
+     *  it is a specific state for buttons.
+     *
+     *  For example, we have two buttons - "Accept" and "Decline",
+     *  and in our case "decline" buttons is with distractive = true attribute
+     */
+    @StyleRes
+    private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
 
     init {
         getContext().withStyledAttributes(
@@ -76,9 +93,13 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
         styleAttrs.run {
             text = getString(R.styleable.sp_button_android_text).orEmpty()
-            updateTextAppearance(getResourceId(R.styleable.sp_button_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL))
+            textAppearance = getResourceId(R.styleable.sp_button_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
             recycle()
         }
+    }
+
+    override fun handleDistractiveState() {
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
     }
 
     override fun updateText(text: String) {

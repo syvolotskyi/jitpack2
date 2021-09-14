@@ -45,42 +45,12 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
             updateText(value)
         }
 
-    /**
-     * Sets a text appearance
-     */
-    @StyleRes
-    var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
-
-    /**
-     *  it is a specific state for buttons.
-     *
-     *  For example, we have two buttons - "Accept" and "Decline",
-     *  and in our case "decline" buttons is with distractive = true attribute
-     */
-
-
-    /**
-     * Sets a distractive text appearance
-     */
-    @StyleRes
-    protected var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
-
     override var isDistractive: Boolean = false
         set(value) {
             field = value
 
             handleDistractiveState()
         }
-
-    /**
-     * Sets a distractive Background
-     */
-    var distractiveBackground: Int = color
-
-    /**
-     * Saved origin background to have a possibility to switch back from distractive mode
-     */
-    protected var background: Int = color
 
     init {
         binding = _binding
@@ -129,10 +99,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Update view depends on isDistractive attr
      */
-    protected open fun handleDistractiveState() {
-        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
-        color = if (isDistractive) distractiveBackground else background
-    }
+   abstract fun handleDistractiveState()
 
     /**
      * Allows to update button style using ViewBinding

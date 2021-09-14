@@ -209,4 +209,9 @@ class SPButton @JvmOverloads constructor(
         Left,
         Right
     }
+
+    override fun handleDistractiveState() {
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+        color = if (isDistractive) distractiveBackground else background
+    }
 }

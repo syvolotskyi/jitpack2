@@ -17,6 +17,7 @@
     <attr name="isCircle" format="boolean" />
     <attr name="distractiveTextAppearance" format="reference" />
     <attr name="distractiveBackground" format="reference|color" />
+    <attr name="buttonHeight" format="reference" />
 
     <attr name="directionIcon" format="enum">
         <enum name="none" value="0" />

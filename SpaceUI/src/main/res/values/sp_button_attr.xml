@@ -5,11 +5,11 @@
     </declare-styleable>
     <declare-styleable name="sp_button_view_style">
         <attr name="directionIcon" />
-        <attr name="android:textAppearance"/>
-        <attr name="distractiveTextAppearance"/>
-        <attr name="distractiveBackground"/>
+        <attr name="android:textAppearance" />
+        <attr name="distractiveTextAppearance" />
+        <attr name="distractiveBackground" />
         <attr name="android:src" format="reference" />
-        <attr name="buttonHeight" format="reference" />
+        <attr name="buttonHeight" />
         <attr name="btnIconPadding" />
     </declare-styleable>
 
@@ -21,6 +21,7 @@
 
     <declare-styleable name="sp_button_horizontal">
         <attr name="android:text" format="string|reference" />
+        <attr name="buttonHeight" />
         <attr name="android:src" format="reference" />
     </declare-styleable>
 
