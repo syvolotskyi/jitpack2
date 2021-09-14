@@ -1,19 +1,23 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
-import ge.space.ui.components.buttons.SPButton.ArrowDirection
-import ge.space.ui.components.buttons.SPButton.ArrowDirection.*
+import ge.space.ui.base.OnDistractiveInterface
+import ge.space.ui.components.buttons.SPButton.IconDirection
+import ge.space.ui.components.buttons.SPButton.IconDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 
@@ -22,26 +26,36 @@ import ge.space.ui.util.extension.handleAttributeAction
  * There are 4 realized styles which can be applied to the view:
  *
  * <p>
- *     1. SPBaseView.SPBaseButton.White
- *     2. SPBaseView.SPBaseButton.Accent
- *     3. SPBaseView.SPBaseButton.Dark
- *     4. SPBaseView.SPBaseButton.Transparent
+ *     1. SPBaseView.SPBaseButton.Primary
+ *     2. SPBaseView.SPBaseButton.Secondary
+ *     3. SPBaseView.SPBaseButton.Hollow
  * <p>
  *
- * @property directionArrow [ArrowDirection] value which applies a button arrow direction.
- *  This property can have a value from [ArrowDirection.Right], [ArrowDirection.Left],
- *  [ArrowDirection.None].
+ * @property directionIcon [IconDirection] value which applies a button icon direction.
+ *  This property can have a value from [IconDirection.Right], [IconDirection.Left],
+ *  [IconDirection.None].
  */
 class SPButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr), OnDistractiveInterface {
 
     /**
-     * Makes a button arrow direction.
+     * Makes a button icon direction.
      */
-    private var directionArrow = None
+    var directionIcon = None
+        set(value) {
+            field = value
+
+            handleDirectionArrow()
+        }
+
+    /**
+     * Sets a image resource
+     */
+    @IdRes
+    var src = SPTextFieldBaseView.DEFAULT_INT
         set(value) {
             field = value
 
@@ -91,18 +105,38 @@ class SPButton @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
-            val directionArrowInd = styleAttrs.getInt(
-                R.styleable.sp_button_view_style_directionArrow,
+            val directionIconInd = styleAttrs.getInt(
+                R.styleable.sp_button_view_style_directionIcon,
                 DEFAULT_OBTAIN_VAL
             )
-            val textAppearance = getResourceId(
+
+            textAppearance = getResourceId(
                 R.styleable.sp_button_view_style_android_textAppearance,
                 DEFAULT_OBTAIN_VAL
             )
 
-            directionArrow = ArrowDirection.values()[directionArrowInd]
-            updateTextAppearance(textAppearance)
+            val buttonHeight = getResourceId(
+                R.styleable.sp_button_view_style_buttonHeight,
+                DEFAULT_OBTAIN_VAL
+            )
 
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_button_view_style_distractiveTextAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
+
+            distractiveBackground = getColor(
+                R.styleable.sp_button_view_style_distractiveBackground,
+                Color.WHITE
+            )
+
+            src = getResourceId(R.styleable.sp_button_view_style_android_src, 0)
+
+            directionIcon = IconDirection.values()[directionIconInd]
+
+            background = color
+            updateTextAppearance(textAppearance)
+            setHeight(resources.getDimensionPixelSize(buttonHeight))
             recycle()
         }
     }
@@ -124,34 +158,41 @@ class SPButton @JvmOverloads constructor(
     }
 
     private fun handleDirectionArrow() {
-        when (directionArrow) {
-            None -> directNone()
-            Left -> directLeft()
-            Right -> directRight()
-        }
+        if (src != SPTextFieldBaseView.DEFAULT_INT)
+            when (directionIcon) {
+                None -> directNone()
+                Left -> directLeft()
+                Right -> directRight()
+            }
     }
 
+    /**
+     * remove all drawables
+     */
     private fun directNone() {
-        //remove all drawables
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
     }
 
+    /**
+     * sets left drawable only
+     */
     private fun directLeft() {
-        //sets left drawable only
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
-            ContextCompat.getDrawable(context, R.drawable.bg_arrow_left_inset),
+            ContextCompat.getDrawable(context, src),
             null,
             null,
             null
         )
     }
 
+    /**
+     * sets right drawable only
+     */
     private fun directRight() {
-        //sets right drawable only
         binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
             null,
             null,
-            ContextCompat.getDrawable(context, R.drawable.bg_arrow_right_inset),
+            ContextCompat.getDrawable(context, src),
             null
         )
     }
@@ -163,7 +204,7 @@ class SPButton @JvmOverloads constructor(
      * @property Left applies an arrow left from the text.
      * @property Right applies an arrow right from the text.
      */
-    enum class ArrowDirection {
+    enum class IconDirection {
         None,
         Left,
         Right

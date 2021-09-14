@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemButtonsShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutButtonsDefaultShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
@@ -24,23 +24,22 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
+            val layoutBinding = SpLayoutButtonsDefaultShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPButtonBaseView<SpButtonLayoutBinding>>()
             SPButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
-                val supportsDisable = buttonSample.supportsDisabled
 
                 val itemBinding = SpItemButtonsShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(resId),
                     layoutBinding.buttonsLayout,
                     true
                 )
-
-                if (!supportsDisable)
-                    itemBinding.disableCheck.visibility = View.GONE
+                itemBinding.button.directionIcon = buttonSample.iconDirection
+                itemBinding.button.src = buttonSample.src
+                itemBinding.disableCheck.visibility = View.GONE
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
@@ -55,6 +54,10 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
 
                 itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.button.isEnabled = !isChecked
+                }
+
+                itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.button.isDistractive = isChecked
                 }
 
                 itemBinding.wrapContentCheck.setOnCheckedChangeListener { _, isChecked ->

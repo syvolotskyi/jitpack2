@@ -1,26 +1,25 @@
 package ge.space.design.ui_components.buttons.default_button
 
 import com.example.spacedesignsystem.R
+import ge.space.ui.components.buttons.SPButton
 
 
 data class SPButtonSupportsLoading(
     val resId: Int,
-    val supportsDisabled: Boolean = true,
+    val iconDirection: SPButton.IconDirection = SPButton.IconDirection.None,
+    val src: Int = R.drawable.ic_arrow_left_24_regular,
 )
 
 object SPButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPButton_WhiteView, true),
-        SPButtonSupportsLoading(R.style.SPButton_WhiteWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_WhiteWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_AccentView, true),
-        SPButtonSupportsLoading(R.style.SPButton_AccentWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_AccentWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_DarkView, true),
-        SPButtonSupportsLoading(R.style.SPButton_DarkWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_DarkWithRightArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_TransparentView, true),
-        SPButtonSupportsLoading(R.style.SPButton_TransparentWithLeftArrow, true),
-        SPButtonSupportsLoading(R.style.SPButton_TransparentWithRightArrow, true)
+        SPButtonSupportsLoading(R.style.SPButton_Secondary_Size40),
+        SPButtonSupportsLoading(R.style.SPButton_Secondary_Size48, SPButton.IconDirection.Right),
+        SPButtonSupportsLoading(R.style.SPButton_Secondary_Size56, SPButton.IconDirection.Left),
+        SPButtonSupportsLoading(R.style.SPButton_Primary_Size40),
+        SPButtonSupportsLoading(R.style.SPButton_Primary_Size48, SPButton.IconDirection.Right),
+        SPButtonSupportsLoading(R.style.SPButton_Primary_Size56, SPButton.IconDirection.Left),
+        SPButtonSupportsLoading(R.style.SPButton_Hollow_Size40),
+        SPButtonSupportsLoading(R.style.SPButton_Hollow_Size48, SPButton.IconDirection.Right),
+        SPButtonSupportsLoading(R.style.SPButton_Hollow_Size56, SPButton.IconDirection.Left)
     )
 }

@@ -21,7 +21,7 @@ import ge.space.ui.util.view_factory.SPViewData
  * Allows to show chips with both a bank logo and a payment system icon on
  * light background. Also the view allows to hide or show a border
  *
- * @property border hides or shows a border of the view
+ * @property hasBorder hides or shows a border of the view
  * @property paymentSystemUrl loads a payment system icon
  * @property bankLogoUrl loads a bank icon
  */

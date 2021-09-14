@@ -2,10 +2,13 @@ package ge.space.ui.components.buttons.base
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MotionEvent
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
+import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.SPSetViewStyleInterface
 
 /**
@@ -18,7 +21,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface, OnDistractiveInterface {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
@@ -42,6 +45,42 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
             updateText(value)
         }
 
+    /**
+     * Sets a text appearance
+     */
+    @StyleRes
+    var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    /**
+     *  it is a specific state for buttons.
+     *
+     *  For example, we have two buttons - "Accept" and "Decline",
+     *  and in our case "decline" buttons is with distractive = true attribute
+     */
+
+
+    /**
+     * Sets a distractive text appearance
+     */
+    @StyleRes
+    protected var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    override var isDistractive: Boolean = false
+        set(value) {
+            field = value
+
+            handleDistractiveState()
+        }
+
+    /**
+     * Sets a distractive Background
+     */
+    var distractiveBackground: Int = color
+
+    /**
+     * Saved origin background to have a possibility to switch back from distractive mode
+     */
+    protected var background: Int = color
 
     init {
         binding = _binding
@@ -63,6 +102,15 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
     }
 
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> alpha = CLICKED_ALPHA
+            MotionEvent.ACTION_UP -> alpha = DEFAULT_ALPHA
+            MotionEvent.ACTION_CANCEL -> alpha = DEFAULT_ALPHA
+        }
+        return true
+    }
+
     /**
      * Allows to init ViewBinding
      */
@@ -79,6 +127,14 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
 
     /**
+     * Update view depends on isDistractive attr
+     */
+    protected open fun handleDistractiveState() {
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+        color = if (isDistractive) distractiveBackground else background
+    }
+
+    /**
      * Allows to update button style using ViewBinding
      */
     abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
@@ -86,6 +142,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     companion object {
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ALPHA = 1f
+        private const val CLICKED_ALPHA = 0.8f
         private const val DISABLED_ALPHA = 0.25f
     }
 }

@@ -1,67 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPButton.BaseView" parent="SPBaseView">
+
+    <style name="SPButton.BaseView" parent="shadow_400_primary">
         <item name="roundedCorners">@dimen/dimen_p_10</item>
-        <item name="shadowOffsetX">0dp</item>
-        <item name="shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="shadowAlpha">10%</item>
-        <item name="shadowRadius">@dimen/dimen_p_10</item>
-        <item name="directionArrow">none</item>
+        <item name="directionIcon">none</item>
     </style>
 
-    <style name="SPButton.WhiteView" parent="SPButton.BaseView">
-        <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>
+    <style name="SPButton.BaseView.Size40" parent="SPButton.BaseView">
+        <item name="buttonHeight">@dimen/dimen_p_40</item>
     </style>
 
-    <style name="SPButton.WhiteWithLeftArrow" parent="SPButton.WhiteView">
-        <item name="directionArrow">left</item>
+    <style name="SPButton.BaseView.Size48" parent="SPButton.BaseView">
+        <item name="buttonHeight">@dimen/dimen_p_48</item>
     </style>
 
-    <style name="SPButton.WhiteWithRightArrow" parent="SPButton.WhiteView">
-        <item name="directionArrow">right</item>
+    <style name="SPButton.BaseView.Size56" parent="SPButton.BaseView">
+        <item name="buttonHeight">@dimen/dimen_p_56</item>
     </style>
 
-    <style name="SPButton.AccentView" parent="SPButton.BaseView">
-        <item name="backgroundColor">?attr/colorAccent</item>
-        <item name="android:textAppearance">@style/h700_bold_caps_primary_white</item>
+    <style name="SPButton.Primary_Size40" parent="SPButton.BaseView.Size40">
+        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveBackground">?attr/accent_magenta</item>
     </style>
 
-    <style name="SPButton.AccentWithLeftArrow" parent="SPButton.AccentView">
-        <item name="directionArrow">left</item>
+    <style name="SPButton.Primary_Size48" parent="SPButton.BaseView.Size48">
+        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveBackground">?attr/accent_magenta</item>
+    </style>
+    <style name="SPButton.Primary_Size56" parent="SPButton.BaseView.Size56">
+        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="distractiveBackground">?attr/accent_magenta</item>
     </style>
 
-    <style name="SPButton.AccentWithRightArrow" parent="SPButton.AccentView">
-        <item name="directionArrow">right</item>
+    <style name="SPButton.Secondary_Size40" parent="SPButton.BaseView.Size40">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
-    <style name="SPButton.DarkView" parent="SPButton.BaseView">
-        <item name="backgroundColor">?attr/static_black</item>
-        <item name="android:textAppearance">@style/h700_bold_caps_primary_white</item>
+    <style name="SPButton.Secondary_Size48" parent="SPButton.BaseView.Size48">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
-    <style name="SPButton.DarkWithLeftArrow" parent="SPButton.DarkView">
-        <item name="directionArrow">left</item>
+    <style name="SPButton.Secondary_Size56" parent="SPButton.BaseView.Size56">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
-    <style name="SPButton.DarkWithRightArrow" parent="SPButton.DarkView">
-        <item name="directionArrow">right</item>
-    </style>
-
-    <style name="SPButton.TransparentView" parent="SPButton.BaseView">
+    <style name="SPButton.Hollow_Size40" parent="SPButton.BaseView.Size40">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
         <item name="backgroundColor">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
-        <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
     </style>
 
-    <style name="SPButton.TransparentWithLeftArrow" parent="SPButton.TransparentView">
-        <item name="directionArrow">left</item>
+    <style name="SPButton.Hollow_Size48" parent="SPButton.BaseView.Size48">
+        <item name="shadowOffsetX">0dp</item>
+        <item name="shadowOffsetY">0dp</item>
+        <item name="shadowAlpha">100%</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="shadowRadius">0dp</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
     </style>
 
-    <style name="SPButton.TransparentWithRightArrow" parent="SPButton.TransparentView">
-        <item name="directionArrow">right</item>
+    <style name="SPButton.Hollow_Size56" parent="SPButton.BaseView.Size56">
+        <item name="shadowOffsetX">0dp</item>
+        <item name="shadowOffsetY">0dp</item>
+        <item name="shadowAlpha">100%</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="shadowRadius">0dp</item>
+        <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
     </style>
+
 
 </resources>
