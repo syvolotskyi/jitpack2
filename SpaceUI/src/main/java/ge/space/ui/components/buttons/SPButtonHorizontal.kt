@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
+import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
@@ -89,17 +91,43 @@ class SPButtonHorizontal @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
+            val buttonHeight = getResourceId(
+                R.styleable.sp_button_view_style_buttonHeight,
+                DEFAULT_OBTAIN_VAL
+            )
             text = getString(R.styleable.sp_button_android_text).orEmpty()
-            textAppearance = getResourceId(R.styleable.sp_button_view_style_android_textAppearance, DEFAULT_OBTAIN_VAL)
+            textAppearance =
+                getResourceId(
+                    R.styleable.sp_button_view_style_android_textAppearance,
+                    DEFAULT_OBTAIN_VAL
+                )
+
+            distractiveTextAppearance = getResourceId(
+                R.styleable.sp_button_view_style_distractiveTextAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
+            updateTextAppearance(textAppearance)
+            setHeight(resources.getDimensionPixelSize(buttonHeight))
             recycle()
         }
     }
 
     override fun handleDistractiveState() {
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+        binding.ivRight.setColorFilter(
+            if (isDistractive) ContextCompat.getColor(
+                context,
+                R.color.magenta
+            ) else
+                ContextCompat.getColor(
+                    context,
+                    R.color.light_brand_primary
+                ), android.graphics.PorterDuff.Mode.SRC_IN
+        )
     }
 
     override fun updateText(text: String) {

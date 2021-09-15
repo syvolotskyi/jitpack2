@@ -30,7 +30,6 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
             SPHorizontalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
-                val supportsDisable = buttonSample.supportsDisabled
 
                 val itemBinding = SpItemHorizontalBtnShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(resId),
@@ -38,8 +37,7 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
                     true
                 )
 
-                if (!supportsDisable)
-                    itemBinding.disableCheck.visibility = View.GONE
+                itemBinding.disableCheck.visibility = View.GONE
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
@@ -56,6 +54,9 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
                     itemBinding.button.isEnabled = !isChecked
                 }
 
+                itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.button.isDistractive = isChecked
+                }
 
                 layoutBinding.textInput.addTextChangedListener(object : TextWatcher {
 

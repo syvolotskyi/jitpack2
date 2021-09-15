@@ -16,6 +16,7 @@
     <declare-styleable name="sp_button_vertical">
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
+        <attr name="android:textAppearance" />
         <attr name="android:enabled" format="boolean" />
     </declare-styleable>
 

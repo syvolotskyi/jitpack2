@@ -24,7 +24,6 @@
             android:layout_gravity="center_vertical"
             android:paddingStart="@dimen/dimen_p_4"
             android:paddingEnd="@dimen/dimen_p_8"
-            tools:fontFamily="@font/myriad_geo_bold"
             tools:text="Title" />
 
         <ImageView
