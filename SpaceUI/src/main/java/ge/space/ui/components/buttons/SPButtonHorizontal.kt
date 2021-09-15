@@ -129,7 +129,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
             else
                 ContextCompat.getColor(
                     context,
-                    R.color.light_brand_primary
+                    R.color.appPrimaryColor
                 ), android.graphics.PorterDuff.Mode.SRC_IN
         )
     }
