@@ -66,7 +66,7 @@ class SPButton @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
     /**
      *  it is a specific state for buttons.
@@ -80,18 +80,17 @@ class SPButton @JvmOverloads constructor(
      * Sets a distractive text appearance
      */
     @StyleRes
-    protected var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
     /**
      * Sets a distractive Background
      */
-    var distractiveBackground: Int = color
+    private var distractiveBackground: Int = color
 
     /**
      * Saved origin background to have a possibility to switch back from distractive mode
      */
-    protected var background: Int = color
-
+    private var background: Int = color
 
     init {
         getContext().withStyledAttributes(

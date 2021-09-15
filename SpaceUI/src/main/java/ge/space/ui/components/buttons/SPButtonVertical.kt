@@ -156,8 +156,7 @@ class SPButtonVertical @JvmOverloads constructor(
         private const val DEFAULT_ICON_PADDING = 0
     }
 
-    override fun handleDistractiveState()
-    {
-//        color = if (isDistractive) distractiveBackground else background
+    override fun handleDistractiveState() {
+        //TODO should be implemented
     }
 }
