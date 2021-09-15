@@ -155,4 +155,8 @@ class SPButtonVertical @JvmOverloads constructor(
         private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ICON_PADDING = 0
     }
+
+    override fun handleDistractiveState() {
+        //TODO should be implemented
+    }
 }

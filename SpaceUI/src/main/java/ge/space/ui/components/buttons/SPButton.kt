@@ -39,7 +39,7 @@ class SPButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr), OnDistractiveInterface {
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Makes a button icon direction.
@@ -61,6 +61,36 @@ class SPButton @JvmOverloads constructor(
 
             handleDirectionArrow()
         }
+
+    /**
+     * Sets a text appearance
+     */
+    @StyleRes
+    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    /**
+     *  it is a specific state for buttons.
+     *
+     *  For example, we have two buttons - "Accept" and "Decline",
+     *  and in our case "decline" buttons is with distractive = true attribute
+     */
+
+
+    /**
+     * Sets a distractive text appearance
+     */
+    @StyleRes
+    private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    /**
+     * Sets a distractive Background
+     */
+    private var distractiveBackground: Int = color
+
+    /**
+     * Saved origin background to have a possibility to switch back from distractive mode
+     */
+    private var background: Int = color
 
     init {
         getContext().withStyledAttributes(
@@ -208,5 +238,10 @@ class SPButton @JvmOverloads constructor(
         None,
         Left,
         Right
+    }
+
+    override fun handleDistractiveState() {
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+        color = if (isDistractive) distractiveBackground else background
     }
 }
