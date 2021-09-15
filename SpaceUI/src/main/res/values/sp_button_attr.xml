@@ -9,6 +9,7 @@
         <attr name="distractiveTextAppearance" />
         <attr name="distractiveBackground" />
         <attr name="android:src" format="reference" />
+        <attr name="distractiveColor" format="color|reference" />
         <attr name="buttonHeight" />
         <attr name="btnIconPadding" />
     </declare-styleable>

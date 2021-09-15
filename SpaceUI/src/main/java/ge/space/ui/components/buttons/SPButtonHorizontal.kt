@@ -1,11 +1,10 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import androidx.annotation.AttrRes
-import androidx.annotation.IdRes
-import androidx.annotation.StyleRes
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.TextViewCompat
@@ -59,6 +58,11 @@ class SPButtonHorizontal @JvmOverloads constructor(
     @StyleRes
     private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
+    /**
+     *  it is a distractive color for image color filter.
+     */
+    private var distractiveColor: Int = Color.WHITE
+
 
     init {
         getContext().withStyledAttributes(
@@ -110,6 +114,8 @@ class SPButtonHorizontal @JvmOverloads constructor(
                 R.styleable.sp_button_view_style_distractiveTextAppearance,
                 DEFAULT_OBTAIN_VAL
             )
+            distractiveColor =
+                getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
             updateTextAppearance(textAppearance)
             setHeight(resources.getDimensionPixelSize(buttonHeight))
             recycle()
@@ -119,10 +125,8 @@ class SPButtonHorizontal @JvmOverloads constructor(
     override fun handleDistractiveState() {
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
         binding.ivRight.setColorFilter(
-            if (isDistractive) ContextCompat.getColor(
-                context,
-                R.color.magenta
-            ) else
+            if (isDistractive) distractiveColor
+            else
                 ContextCompat.getColor(
                     context,
                     R.color.light_brand_primary
