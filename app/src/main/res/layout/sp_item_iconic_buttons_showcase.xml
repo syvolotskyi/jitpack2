@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/buttonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        tools:text="Button" />
+
+    <ge.space.ui.components.buttons.SPButtonIconic
+        android:id="@+id/button"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bell_24_regular"
+        app:style="@style/SPButton.VerticalLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/disableCheck"
+            android:layout_width="wrap_content"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="disable" />
+
+        <CheckBox
+            android:id="@+id/distractiveCheck"
+            android:layout_width="wrap_content"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="distractive" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/sp_layout_divider"/>
+
+</LinearLayout>

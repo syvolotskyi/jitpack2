@@ -69,13 +69,14 @@ class SPButton @JvmOverloads constructor(
     private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
     /**
-     *  it is a specific state for buttons.
-     *
-     *  For example, we have two buttons - "Accept" and "Decline",
-     *  and in our case "decline" buttons is with distractive = true attribute
+     * Sets a button title.
      */
+    var text: String = EMPTY_TEXT
+        set(value) {
+            field = value
 
-
+            updateText(value)
+        }
     /**
      * Sets a distractive text appearance
      */
@@ -171,7 +172,7 @@ class SPButton @JvmOverloads constructor(
         }
     }
 
-    override fun updateTextAppearance(textAppearance: Int) {
+    fun updateTextAppearance(textAppearance: Int) {
         binding.buttonLabel.setTextStyle(textAppearance)
         updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
     }
@@ -183,7 +184,7 @@ class SPButton @JvmOverloads constructor(
         }
     }
 
-    override fun updateText(text: String) {
+    fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 

@@ -35,16 +35,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
         getViewBinding()
     }
 
-    /**
-     * Sets a button title.
-     */
-    var text: String = EMPTY_TEXT
-        set(value) {
-            field = value
-
-            updateText(value)
-        }
-
     override var isDistractive: Boolean = false
         set(value) {
             field = value
@@ -85,16 +75,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
-
-    /**
-     * Allows to update a text using ViewBinding
-     */
-    protected abstract fun updateText(text: String)
-
-    /**
-     * Allows to update a text appearance by styles
-     */
-    abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
 
     /**
      * Update view depends on isDistractive attr

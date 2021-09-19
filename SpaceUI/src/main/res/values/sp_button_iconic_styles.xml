@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPButton.Iconic.BubbleView" parent="SPBaseView">
+        <item name="shadowOffsetX">0dp</item>
+        <item name="shadowOffsetY">@dimen/dimen_p_8</item>
+        <item name="shadowAlpha">15%</item>
+        <item name="backgroundColor">?attr/colorAccent</item>
+        <item name="isCircle">true</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
+    </style>
+
+    <style name="SPButton.IconicalBase" parent="SPBaseView">
+        <item name="shadowAlpha">100%</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="shadowRadius">0dp</item>
+        <item name="btnIconPadding">normal</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
+    </style>
+
+    <style name="SPButton.Iconic.Size24" parent="SPButton.BaseHorizontal">
+        <item name="buttonHeight">@dimen/dimen_p_24</item>
+    </style>
+    <style name="SPButton.Horizontal.Size24" parent="SPButton.BaseHorizontal">
+        <item name="buttonHeight">@dimen/dimen_p_24</item>
+    </style>
+
+    <style name="SPButton.Horizontal.Size56" parent="SPButton.BaseHorizontal">
+        <item name="buttonHeight">@dimen/dimen_p_56</item>
+    </style>
+</resources>
