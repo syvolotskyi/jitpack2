@@ -107,7 +107,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
 
     companion object {
-        private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ALPHA = 1f
         private const val CLICKED_ALPHA = 0.8f
         private const val DISABLED_ALPHA = 0.25f

@@ -11,7 +11,7 @@
         <attr name="android:src" format="reference" />
         <attr name="distractiveColor" format="color|reference" />
         <attr name="buttonHeight" />
-        <attr name="btnIconPadding" />
+        <attr name="btnIconPadding"  format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="sp_button_vertical">
@@ -23,7 +23,6 @@
 
     <declare-styleable name="sp_button_horizontal">
         <attr name="android:text" format="string|reference" />
-        <attr name="buttonHeight" />
         <attr name="android:src" format="reference" />
     </declare-styleable>
 
