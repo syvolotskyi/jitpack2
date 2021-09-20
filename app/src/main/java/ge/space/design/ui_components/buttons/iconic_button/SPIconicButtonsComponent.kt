@@ -23,7 +23,7 @@ class SPIconicButtonsComponent : ShowCaseComponent {
             )
             val buttons = mutableListOf<SPButtonIconic>()
             
-            SPiconicButtonStyles.list.onEach { buttonSample ->
+            SPIconicButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
 
@@ -41,6 +41,8 @@ class SPIconicButtonsComponent : ShowCaseComponent {
                 itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.button.isDistractive = isChecked
                 }
+
+                itemBinding.button.src = buttonSample.src
 
                 buttons.add(itemBinding.button)
 

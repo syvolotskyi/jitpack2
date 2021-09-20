@@ -6,18 +6,17 @@
 
     <ge.space.ui.components.layout.SPFrameLayout
         android:id="@+id/btnContainer"
-        app:style="@style/SPButton.Vertical.BubbleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        app:style="@style/SPButton.Vertical.BubbleView">
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="@dimen/dimen_p_24"
             android:layout_height="@dimen/dimen_p_24"
             android:layout_gravity="center"
-            tools:src="@drawable/ic_plus_16_regular"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            tools:src="@drawable/ic_plus_16_regular" />
     </ge.space.ui.components.layout.SPFrameLayout>
-
 </merge>

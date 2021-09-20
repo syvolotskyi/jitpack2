@@ -5,12 +5,15 @@ import com.example.spacedesignsystem.R
 
 data class SPButtonSupportsLoading(
     val resId: Int,
-    val supportsDisabled: Boolean = false,
-    val src: Int = R.drawable.ic_share_ios_24_regular,
+    val src: Int = R.drawable.ic_plus_24_regular,
 )
 
-object SPiconicButtonStyles {
+object SPIconicButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPButton_IconicalBase, true),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Size24),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Size32),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Size40),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Size48),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Secondary_Size24),
     )
 }
