@@ -47,6 +47,7 @@ class SPVerticalButtonsComponent : ShowCaseComponent {
                     text = resName.substringAfter(".", resName)
                 }
 
+                itemBinding.button.src = buttonSample.src
                 buttons.add(itemBinding.button)
 
                 itemBinding.button.setOnClickListener {
