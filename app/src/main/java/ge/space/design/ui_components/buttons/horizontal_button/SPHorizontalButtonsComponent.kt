@@ -37,8 +37,6 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
                     true
                 )
 
-                itemBinding.disableCheck.visibility = View.GONE
-
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
                     text = resName.substringAfter(".", resName)
