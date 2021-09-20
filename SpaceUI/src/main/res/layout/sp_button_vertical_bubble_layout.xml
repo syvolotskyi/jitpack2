@@ -15,7 +15,7 @@
             android:layout_width="@dimen/dimen_p_24"
             android:layout_height="@dimen/dimen_p_24"
             android:layout_gravity="center"
-            tools:src="@drawable/ic_share_ios_24_regular"
+            tools:src="@drawable/ic_plus_16_regular"
             app:tint="@color/white" />
     </ge.space.ui.components.layout.SPFrameLayout>
 

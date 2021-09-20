@@ -12,6 +12,7 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
+import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
@@ -19,6 +20,7 @@ import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
  * Button view extended from [SPButtonBaseView] that allows to change its configuration.
  *
  * @property src [Int] value which applies a button image using a resource ID.
+ * @property distractiveColor [Int] value sets image color in distractive state
  */
 class SPButtonHorizontal @JvmOverloads constructor(
     context: Context,

@@ -11,6 +11,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
+import ge.space.ui.components.buttons.SPButtonVertical
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 class SPVerticalButtonsComponent : ShowCaseComponent {
@@ -25,12 +26,11 @@ class SPVerticalButtonsComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPButtonBaseView<SpButtonVerticalLayoutBinding>>()
-            
+            val buttons = mutableListOf<SPButtonVertical>()
+
             SPVerticalButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
-                val supportsDisable = buttonSample.supportsDisabled
 
                 val itemBinding = SpItemVerticalButtonsShowcaseBinding.inflate(
                     environment.requireThemedLayoutInflater(resId),
@@ -38,8 +38,9 @@ class SPVerticalButtonsComponent : ShowCaseComponent {
                     true
                 )
 
-                if (!supportsDisable)
-                    itemBinding.disableCheck.visibility = View.GONE
+                itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.button.isDistractive = isChecked
+                }
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
