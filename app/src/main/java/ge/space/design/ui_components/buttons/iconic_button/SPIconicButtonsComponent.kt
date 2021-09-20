@@ -1,8 +1,5 @@
 package ge.space.design.ui_components.buttons.iconic_button
 
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
 import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemIconicButtonsShowcaseBinding
@@ -10,10 +7,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
-import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.components.buttons.SPButtonIconic
-import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 class SPIconicButtonsComponent : ShowCaseComponent {
     override fun getNameResId(): Int = R.string.iconic_buttons
@@ -29,7 +23,7 @@ class SPIconicButtonsComponent : ShowCaseComponent {
             )
             val buttons = mutableListOf<SPButtonIconic>()
             
-            SPVerticalButtonStyles.list.onEach { buttonSample ->
+            SPiconicButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
 

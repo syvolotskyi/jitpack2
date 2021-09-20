@@ -48,6 +48,16 @@ class SPButtonVertical @JvmOverloads constructor(
             bubbleLayoutBinding.image.setImageResource(src)
         }
 
+    /**
+     * Sets a button title.
+     */
+    var text: String = EMPTY_TEXT
+        set(value) {
+            field = value
+
+            updateText(value)
+        }
+
     private var iconPadding = resources.getDimensionPixelSize(R.dimen.dimen_p_15)
         set(value) {
             field = value
@@ -132,7 +142,7 @@ class SPButtonVertical @JvmOverloads constructor(
 
     }
 
-    override fun updateText(text: String) {
+     fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
@@ -141,7 +151,7 @@ class SPButtonVertical @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
     }
 
-    override fun updateTextAppearance(textAppearance: Int) =
+     fun updateTextAppearance(textAppearance: Int) =
         binding.buttonLabel.setTextStyle(textAppearance)
 
 

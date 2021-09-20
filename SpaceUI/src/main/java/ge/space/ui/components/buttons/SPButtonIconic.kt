@@ -20,7 +20,6 @@ open class SPButtonIconic@JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPButtonBaseView<SpButtonIconicLayoutBinding>(context, attrs, defStyleAttr)  {
 
-
     /**
      * Sets a image resource
      */
@@ -39,7 +38,7 @@ open class SPButtonIconic@JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_VerticalBase)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_IconicalBase)
             )
         }
 
@@ -81,22 +80,6 @@ open class SPButtonIconic@JvmOverloads constructor(
             recycle()
         }
 
-    }
-
-    /**
-     * Enum class which is for icon padding.
-     *
-     * @property Normal set 8dp padding.
-     * @property Large set 18dp padding.
-     */
-    enum class IconPadding {
-        Normal,
-        Large
-    }
-
-    companion object {
-        private const val FLOAT_ZERO = 0f
-        private const val DEFAULT_ICON_PADDING = 0
     }
 
     override fun handleDistractiveState() {

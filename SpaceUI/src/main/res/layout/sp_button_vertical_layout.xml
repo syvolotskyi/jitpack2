@@ -9,12 +9,7 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
-        <ge.space.ui.components.buttons.SPButtonIconic
-            android:id="@+id/btnContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:style="@style/SPButton.Vertical.BubbleView"/>
+        <include layout="@layout/sp_button_vertical_bubble_layout" />
 
         <TextView
             android:id="@+id/buttonLabel"

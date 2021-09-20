@@ -9,9 +9,8 @@ data class SPButtonSupportsLoading(
     val src: Int = R.drawable.ic_share_ios_24_regular,
 )
 
-object SPVerticalButtonStyles {
+object SPiconicButtonStyles {
     val list = listOf(
-        SPButtonSupportsLoading(R.style.SPButton_VerticalBase, true),
-        SPButtonSupportsLoading(R.style.SPButton_VerticalLarge, true),
+        SPButtonSupportsLoading(R.style.SPButton_IconicalBase, true),
     )
 }
