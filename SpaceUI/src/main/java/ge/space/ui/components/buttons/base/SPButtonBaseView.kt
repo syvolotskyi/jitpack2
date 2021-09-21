@@ -18,9 +18,9 @@ import ge.space.ui.util.extension.SPSetViewStyleInterface
  * @property text [String] value which applies a button label text
  */
 abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+        context: Context,
+        attrs: AttributeSet? = null,
+        @AttrRes defStyleAttr: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface, OnDistractiveInterface {
 
     /**
@@ -73,6 +73,8 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (!isEnabled)
+            return true
         when (event.action) {
             MotionEvent.ACTION_DOWN -> alpha = CLICKED_ALPHA
             MotionEvent.ACTION_UP -> alpha = DEFAULT_ALPHA
@@ -99,7 +101,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Update view depends on isDistractive attr
      */
-   abstract fun handleDistractiveState()
+    abstract fun handleDistractiveState()
 
     /**
      * Allows to update button style using ViewBinding

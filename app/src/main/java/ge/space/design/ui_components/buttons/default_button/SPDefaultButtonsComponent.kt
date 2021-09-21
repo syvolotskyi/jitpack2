@@ -39,7 +39,6 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                 )
                 itemBinding.button.directionIcon = buttonSample.iconDirection
                 itemBinding.button.src = buttonSample.src
-                itemBinding.disableCheck.visibility = View.GONE
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
