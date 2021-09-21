@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPButton.FullWidth.Card" parent="SPBaseView">
+        <item name="shadowAlpha">0%</item>
+        <item name="bottomLeftCornerRadius">@dimen/dimen_p_12</item>
+        <item name="bottomRightCornerRadius">@dimen/dimen_p_12</item>
+        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="buttonHeight">@dimen/dimen_p_56</item>
+    </style>
+
+
+    <style name="SPButton.FullWidth.Keyboard" parent="SPBaseView">
+        <item name="shadowAlpha">0%</item>
+        <item name="topLeftCornerRadius">@dimen/dimen_p_12</item>
+        <item name="topRightCornerRadius">@dimen/dimen_p_12</item>
+        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
+        <item name="buttonHeight">@dimen/dimen_p_48</item>
+    </style>
+
+</resources>
