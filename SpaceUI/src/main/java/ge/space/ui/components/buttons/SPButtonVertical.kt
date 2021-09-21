@@ -33,6 +33,12 @@ class SPButtonVertical @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
 
+    /**
+     * Inflates and returns [SpButtonVerticalLayoutBinding] value
+     */
+    override fun getViewBinding(): SpButtonVerticalLayoutBinding =
+            SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
+
     private val bubbleLayoutBinding by lazy {
         SpButtonVerticalBubbleLayoutBinding.bind(binding.root)
     }
@@ -90,12 +96,6 @@ class SPButtonVertical @JvmOverloads constructor(
     }
 
     /**
-     * Inflates and returns [SpButtonVerticalLayoutBinding] value
-     */
-    override fun getViewBinding(): SpButtonVerticalLayoutBinding =
-        SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-    /**
      * Sets a style for the SPButton view.
      *
      * <p>
@@ -144,11 +144,6 @@ class SPButtonVertical @JvmOverloads constructor(
     override fun updateTextAppearance(textAppearance: Int) =
         binding.buttonLabel.setTextStyle(textAppearance)
 
-
-    companion object {
-        private const val DEFAULT_ICON_PADDING = 0
-    }
-
     override fun handleDistractiveState() {
         bubbleLayoutBinding.btnContainer.color =
             if (isDistractive)
@@ -164,5 +159,9 @@ class SPButtonVertical @JvmOverloads constructor(
     private fun handleImageSize(iconPixelSize: Int) {
         bubbleLayoutBinding.image.setHeight(iconPixelSize)
         bubbleLayoutBinding.image.setWidth(iconPixelSize)
+    }
+
+    companion object {
+        private const val DEFAULT_ICON_PADDING = 0
     }
 }
