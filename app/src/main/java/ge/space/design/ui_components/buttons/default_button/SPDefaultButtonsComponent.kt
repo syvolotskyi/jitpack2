@@ -28,6 +28,8 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                 environment.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPButtonBaseView<SpButtonLayoutBinding>>()
+
+            layoutBinding.butto2n.isDistractive = true
             SPButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId

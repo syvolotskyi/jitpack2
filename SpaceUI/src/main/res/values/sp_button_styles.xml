@@ -7,15 +7,15 @@
     </style>
 
     <style name="SPButton.BaseView.Size40" parent="SPButton.BaseView">
-        <item name="buttonHeight">@dimen/dimen_p_40</item>
+        <item name="buttonHeight">@dimen/dimen_p_46</item>
     </style>
 
     <style name="SPButton.BaseView.Size48" parent="SPButton.BaseView">
-        <item name="buttonHeight">@dimen/dimen_p_48</item>
+        <item name="buttonHeight">@dimen/dimen_p_54</item>
     </style>
 
     <style name="SPButton.BaseView.Size56" parent="SPButton.BaseView">
-        <item name="buttonHeight">@dimen/dimen_p_56</item>
+        <item name="buttonHeight">@dimen/dimen_p_62</item>
     </style>
 
     <style name="SPButton.Primary_Size40" parent="SPButton.BaseView.Size40">

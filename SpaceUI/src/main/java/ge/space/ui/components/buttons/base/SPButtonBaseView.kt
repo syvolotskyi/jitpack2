@@ -74,13 +74,20 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (!isEnabled)
-            return true
+            return false
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> alpha = CLICKED_ALPHA
-            MotionEvent.ACTION_UP -> alpha = DEFAULT_ALPHA
+            MotionEvent.ACTION_DOWN -> {
+                alpha = CLICKED_ALPHA
+                return true
+            }
+            MotionEvent.ACTION_UP -> {
+                alpha = DEFAULT_ALPHA
+                callOnClick()
+                return false
+            }
             MotionEvent.ACTION_CANCEL -> alpha = DEFAULT_ALPHA
         }
-        return true
+        return false
     }
 
     /**

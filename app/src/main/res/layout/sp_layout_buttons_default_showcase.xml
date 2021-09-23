@@ -25,20 +25,73 @@
                 <ge.space.ui.components.buttons.SPButton
                     android:id="@+id/button"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/sp_button_height"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:src="@drawable/ic_plus_16_regular"
                     android:text="Button"
+                    app:directionIcon="left"
                     app:style="@style/SPButton.Primary_Size48" />
+                <View
+                android:layout_width="@dimen/dimen_p_10"
+                android:layout_height="@dimen/sp_button_height_48"
+                android:layout_marginTop="@dimen/dimen_p_2"
+                android:background="@color/appPrimaryColor"/>
 
                 <ge.space.ui.components.buttons.SPButton
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/sp_button_height"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:src="@drawable/ic_plus_16_regular"
                     android:text="Button"
-                    app:style="@style/SPButton.Primary_Size48" />
+                    app:directionIcon="right"
+                    app:style="@style/SPButton.Secondary_Size40" />
+                <View
+                    android:layout_width="@dimen/dimen_p_10"
+                    android:layout_height="@dimen/sp_button_height_40"
+                    android:layout_marginTop="@dimen/dimen_p_2"
+                    android:background="@color/appPrimaryColor"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_p_16">
+
+                <ge.space.ui.components.buttons.SPButtonHorizontal
+                    android:id="@+id/butto2n"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_plus_16_regular"
+                    android:text="Button"
+                    app:directionIcon="left"
+                    app:style="@style/SPButton.Horizontal.Size48" />
+
+                <View
+                    android:layout_width="@dimen/dimen_p_10"
+                    android:layout_height="@dimen/sp_button_height_48"
+                    android:layout_marginTop="@dimen/dimen_p_2"
+                    android:background="@color/appPrimaryColor"/>
+
+                <ge.space.ui.components.buttons.SPButtonHorizontal
+                    android:id="@+id/button232132"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_plus_16_regular"
+                    android:text="Button"
+                    app:directionIcon="right"
+                    app:style="@style/SPButton.Horizontal.Size56" />
+
+                <View
+                    android:layout_width="@dimen/dimen_p_10"
+                    android:layout_marginTop="@dimen/dimen_p_2"
+                    android:layout_height="@dimen/sp_button_height_56"
+                    android:background="@color/appPrimaryColor"/>
             </LinearLayout>
 
             <LinearLayout
@@ -46,23 +99,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimen_p_16">
 
-                <ge.space.ui.components.buttons.SPButton
-                    android:id="@+id/button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/sp_button_height"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:text="Button"
-                    app:style="@style/SPButton.Primary_Size48" />
 
-                <ge.space.ui.components.buttons.SPButton
-                    android:id="@+id/button4"
+                <ge.space.ui.components.buttons.SPButtonVertical
+                    android:id="@+id/button83"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/sp_button_height"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    android:src="@drawable/ic_minus_16_regular"
+
+                    android:text="Buttoddn"
+                    app:style="@style/SPButton.Vertical_Size48" />
+
+                <ge.space.ui.components.buttons.SPButtonVertical
+                    android:id="@+id/button983"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_minus_16_regular"
                     android:text="Button"
-                    app:style="@style/SPButton.Primary_Size48" />
+                    app:style="@style/SPButton.Vertical_Size40" />
+
             </LinearLayout>
 
             <LinearLayout
