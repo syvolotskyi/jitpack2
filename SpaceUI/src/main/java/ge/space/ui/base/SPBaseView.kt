@@ -36,6 +36,8 @@ import kotlin.math.roundToInt
  * @property shadowOffsetX describes [Float] value which allows to offset the shadow by X
  * @property shadowOffsetY describes [Float] value which allows to offset the shadow by Y
  * @property color describes [Int] value which is a color of the view background
+ * @property borderColor describes [Int] value which is a color of the view border
+ * @property borderWidth describes [Int] value which is a border width size of the view
  */
 abstract class SPBaseView @JvmOverloads constructor(
     context: Context,
@@ -43,11 +45,27 @@ abstract class SPBaseView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    /**
+     * Paint instance for shadows to avoid
+     * creating new instances it each time
+     */
     private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.WHITE
         style = Paint.Style.FILL
     }
 
+    /**
+     * Paint instance for borders to avoid
+     * creating new instances it each time
+     */
+    private val borderPaint: Paint = Paint().apply {
+        style = Paint.Style.STROKE
+    }
+
+    /**
+     * Path instance for base view shape
+     * It gives us possibility to manipulate shape forms
+     */
     private val clippingMaskPath : SPMaskPath = SPMaskPathRoundedCorners()
 
     /**
@@ -270,9 +288,8 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
         canvas.clipPath(clippingMaskPath.getPath())
-        canvas.drawPath(clippingMaskPath.getPath(),Paint().apply {
+        canvas.drawPath(clippingMaskPath.getPath(),borderPaint.apply {
             color = borderColor
-            style = Paint.Style.STROKE
             strokeWidth = borderWidth.toFloat()
         })
     }
