@@ -51,6 +51,8 @@
 
     <declare-styleable name="sp_base_view">
         <attr name="style" format="reference" />
+        <attr name="borderColor" />
+        <attr name="borderWidth" />
     </declare-styleable>
 
 </resources>
