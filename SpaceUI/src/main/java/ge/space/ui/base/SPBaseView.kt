@@ -170,10 +170,15 @@ abstract class SPBaseView @JvmOverloads constructor(
             shadowPaint.color = value
         }
 
+    /**
+     * Border color value
+     */
+    private var borderColor: Int = Color.TRANSPARENT
 
-    private var borderColor: Int? = null
-
-    private var borderWidth: Int? = null
+    /**
+     * Border width value
+     */
+    private var borderWidth: Int = DEFAULT_OBTAIN_VAL
 
     init {
         this.setWillNotDraw(false)
@@ -186,6 +191,14 @@ abstract class SPBaseView @JvmOverloads constructor(
         ) {
             setStyle(
                 getResourceId(R.styleable.sp_base_view_style, R.style.SPBaseView)
+            )
+            borderColor = getColor(
+                R.styleable.sp_base_view_borderColor,
+                DEFAULT_OBTAIN_VAL
+            )
+            borderWidth = getDimensionPixelSize(
+                R.styleable.sp_base_view_borderWidth,
+                DEFAULT_OBTAIN_VAL
             )
         }
     }
@@ -206,6 +219,12 @@ abstract class SPBaseView @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         checkShadowMarginContent()
+    }
+
+    fun changeBorder(borderColor:Int,borderWidth: Int){
+        this.borderColor = borderColor
+        this.borderWidth = borderWidth
+        invalidate()
     }
 
     private fun checkShadowMarginContent() {
@@ -251,6 +270,11 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
         canvas.clipPath(clippingMaskPath.getPath())
+        canvas.drawPath(clippingMaskPath.getPath(),Paint().apply {
+            color = borderColor
+            style = Paint.Style.STROKE
+            strokeWidth = borderWidth.toFloat()
+        })
     }
 
     /**
@@ -306,14 +330,7 @@ abstract class SPBaseView @JvmOverloads constructor(
             isCircle = getBoolean(
                 R.styleable.sp_view_style_isCircle, DEFAULT_IS_CIRCLE
             )
-            borderColor = getColor(
-                R.styleable.sp_view_style_borderColor,
-                DEFAULT_OBTAIN_VAL
-            )
-            borderWidth = getDimensionPixelSize(
-                R.styleable.sp_view_style_borderWidth,
-                DEFAULT_OBTAIN_VAL
-            )
+
             recycle()
         }
     }
@@ -386,7 +403,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     companion object {
         const val SIDE_RATIO = 2
         const val SQUARE_RATIO = 4
-
+        //TODO("Vitali EMPTY_TEXT should be delete from here")
         const val EMPTY_TEXT = ""
 
         const val DEFAULT_OBTAIN_VAL = 0
