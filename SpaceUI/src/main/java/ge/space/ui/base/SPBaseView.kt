@@ -213,11 +213,11 @@ abstract class SPBaseView @JvmOverloads constructor(
             )
             borderColor = getColor(
                 R.styleable.sp_base_view_borderColor,
-                DEFAULT_OBTAIN_VAL
+                EMPTY_BORDER_VALUE
             )
             borderWidth = getDimensionPixelSize(
                 R.styleable.sp_base_view_borderWidth,
-                DEFAULT_OBTAIN_VAL
+                EMPTY_BORDER_VALUE
             )
         }
     }

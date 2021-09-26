@@ -111,6 +111,14 @@ fun View.visibleOrGone(visible: Boolean) {
     }
 }
 
+/**
+ * Extension which draw borders by canvas
+ *
+ * @param path of the view
+ * @param borderColor color of border
+ * @param borderWidth width of border
+ * @param borderPaint paint instance for border
+ */
 fun Canvas.drawBorder(
     path: Path,
     borderColor: Int,
