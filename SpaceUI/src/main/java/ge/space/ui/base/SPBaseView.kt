@@ -170,6 +170,11 @@ abstract class SPBaseView @JvmOverloads constructor(
             shadowPaint.color = value
         }
 
+
+    private var borderColor: Int? = null
+
+    private var borderWidth: Int? = null
+
     init {
         this.setWillNotDraw(false)
         this.setLayerType(LAYER_TYPE_SOFTWARE, null)
@@ -301,7 +306,14 @@ abstract class SPBaseView @JvmOverloads constructor(
             isCircle = getBoolean(
                 R.styleable.sp_view_style_isCircle, DEFAULT_IS_CIRCLE
             )
-
+            borderColor = getColor(
+                R.styleable.sp_view_style_borderColor,
+                DEFAULT_OBTAIN_VAL
+            )
+            borderWidth = getDimensionPixelSize(
+                R.styleable.sp_view_style_borderWidth,
+                DEFAULT_OBTAIN_VAL
+            )
             recycle()
         }
     }
