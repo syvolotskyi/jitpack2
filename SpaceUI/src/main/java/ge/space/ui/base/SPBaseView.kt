@@ -12,6 +12,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
+import ge.space.ui.util.extension.drawBorder
 import ge.space.ui.util.extension.scaleTo
 import ge.space.ui.util.extension.withSideRatio
 import ge.space.ui.util.path.SPMaskPath
@@ -288,10 +289,7 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
         canvas.clipPath(clippingMaskPath.getPath())
-        canvas.drawPath(clippingMaskPath.getPath(),borderPaint.apply {
-            color = borderColor
-            strokeWidth = borderWidth.toFloat()
-        })
+        canvas.drawBorder(clippingMaskPath.getPath(),borderColor,borderWidth,borderPaint)
     }
 
     /**
@@ -423,6 +421,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         //TODO("Vitali EMPTY_TEXT should be delete from here")
         const val EMPTY_TEXT = ""
 
+        const val EMPTY_BORDER_VALUE = -1
         const val DEFAULT_OBTAIN_VAL = 0
         private const val ALPHA_BASE = 1
         private const val ALPHA_SCALE = 2
