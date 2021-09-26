@@ -30,7 +30,7 @@ fun Float.scaleTo(scale: Int) =
 
 
 /**
- * Todo(Vitali we should remove this strings from here too)
+ * TODO("Vitali EMPTY_TEXT should be delete from here")
  * Return an empty string
  */
 const val EMPTY_STRING = ""
