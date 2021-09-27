@@ -195,6 +195,7 @@ class SPButton @JvmOverloads constructor(
                 Left -> directLeft()
                 Right -> directRight()
             }
+        updateTextAppearance(textAppearance)
     }
 
     /**
