@@ -12,6 +12,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
+import ge.space.ui.util.extension.drawBorder
 import ge.space.ui.util.extension.scaleTo
 import ge.space.ui.util.extension.withSideRatio
 import ge.space.ui.util.path.SPMaskPath
@@ -36,6 +37,8 @@ import kotlin.math.roundToInt
  * @property shadowOffsetX describes [Float] value which allows to offset the shadow by X
  * @property shadowOffsetY describes [Float] value which allows to offset the shadow by Y
  * @property color describes [Int] value which is a color of the view background
+ * @property borderColor describes [Int] value which is a color of the view border
+ * @property borderWidth describes [Int] value which is a border width size of the view
  */
 abstract class SPBaseView @JvmOverloads constructor(
     context: Context,
@@ -43,11 +46,27 @@ abstract class SPBaseView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    /**
+     * Paint instance for shadows to avoid
+     * creating new instances it each time
+     */
     private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.WHITE
         style = Paint.Style.FILL
     }
 
+    /**
+     * Paint instance for borders to avoid
+     * creating new instances it each time
+     */
+    private val borderPaint: Paint = Paint().apply {
+        style = Paint.Style.STROKE
+    }
+
+    /**
+     * Path instance for base view shape
+     * It gives us possibility to manipulate shape forms
+     */
     private val clippingMaskPath : SPMaskPath = SPMaskPathRoundedCorners()
 
     /**
@@ -170,6 +189,16 @@ abstract class SPBaseView @JvmOverloads constructor(
             shadowPaint.color = value
         }
 
+    /**
+     * Border color value
+     */
+    private var borderColor: Int = Color.TRANSPARENT
+
+    /**
+     * Border width value
+     */
+    private var borderWidth: Int = DEFAULT_OBTAIN_VAL
+
     init {
         this.setWillNotDraw(false)
         this.setLayerType(LAYER_TYPE_SOFTWARE, null)
@@ -181,6 +210,14 @@ abstract class SPBaseView @JvmOverloads constructor(
         ) {
             setStyle(
                 getResourceId(R.styleable.sp_base_view_style, R.style.SPBaseView)
+            )
+            borderColor = getColor(
+                R.styleable.sp_base_view_borderColor,
+                EMPTY_BORDER_VALUE
+            )
+            borderWidth = getDimensionPixelSize(
+                R.styleable.sp_base_view_borderWidth,
+                EMPTY_BORDER_VALUE
             )
         }
     }
@@ -201,6 +238,12 @@ abstract class SPBaseView @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         checkShadowMarginContent()
+    }
+
+    fun changeBorder(borderColor:Int,borderWidth: Int){
+        this.borderColor = borderColor
+        this.borderWidth = borderWidth
+        invalidate()
     }
 
     private fun checkShadowMarginContent() {
@@ -246,6 +289,7 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
         canvas.clipPath(clippingMaskPath.getPath())
+        canvas.drawBorder(clippingMaskPath.getPath(),borderColor,borderWidth,borderPaint)
     }
 
     /**
@@ -374,9 +418,10 @@ abstract class SPBaseView @JvmOverloads constructor(
     companion object {
         const val SIDE_RATIO = 2
         const val SQUARE_RATIO = 4
-
+        //TODO("Vitali EMPTY_TEXT should be delete from here")
         const val EMPTY_TEXT = ""
 
+        const val EMPTY_BORDER_VALUE = -1
         const val DEFAULT_OBTAIN_VAL = 0
         private const val ALPHA_BASE = 1
         private const val ALPHA_SCALE = 2

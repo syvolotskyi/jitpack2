@@ -1,18 +1,17 @@
 package ge.space.ui.util.extension
 
-import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
+import ge.space.ui.base.SPBaseView.Companion.EMPTY_BORDER_VALUE
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
 import ge.space.ui.base.SPBaseView.Companion.SQUARE_RATIO
 import java.math.BigDecimal
@@ -31,8 +30,8 @@ fun Float.scaleTo(scale: Int) =
 
 
 /**
+ * TODO("Vitali EMPTY_TEXT should be delete from here")
  * Return an empty string
- *
  */
 const val EMPTY_STRING = ""
 
@@ -112,29 +111,24 @@ fun View.visibleOrGone(visible: Boolean) {
     }
 }
 
-
-fun View.widthByIsBig(
-    isBig: Boolean,
-    @DimenRes widthId: Int,
-    @DimenRes smallWidthId: Int
+/**
+ * Extension which draw borders by canvas
+ *
+ * @param path of the view
+ * @param borderColor color of border
+ * @param borderWidth width of border
+ * @param borderPaint paint instance for border
+ */
+fun Canvas.drawBorder(
+    path: Path,
+    borderColor: Int,
+    borderWidth: Int,
+    borderPaint: Paint
 ) {
-    setWidth(
-        resources.getDimension(
-            if (isBig) widthId
-            else smallWidthId
-        ).toInt()
-    )
-}
-
-fun View.heightByIsBig(
-    isBig: Boolean,
-    @DimenRes heightId: Int,
-    @DimenRes smallHeightId: Int
-) {
-    setHeight(
-        resources.getDimension(
-            if (isBig) heightId
-            else smallHeightId
-        ).toInt()
-    )
+    if(borderColor != EMPTY_BORDER_VALUE && borderWidth != EMPTY_BORDER_VALUE){
+        drawPath(path, borderPaint.apply {
+            color = borderColor
+            strokeWidth = borderWidth.toFloat()
+        })
+    }
 }
