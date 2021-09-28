@@ -64,6 +64,7 @@
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
+        <item name="distractiveBackground">@color/transparent</item>
         <item name="backgroundColor">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
@@ -75,6 +76,7 @@
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
         <item name="backgroundColor">@color/transparent</item>
+        <item name="distractiveBackground">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
@@ -84,6 +86,7 @@
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
+        <item name="distractiveBackground">@color/transparent</item>
         <item name="backgroundColor">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
