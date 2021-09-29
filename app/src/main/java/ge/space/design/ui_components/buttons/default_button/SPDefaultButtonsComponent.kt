@@ -28,6 +28,7 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                 environment.requireLayoutInflater()
             )
             val buttons = mutableListOf<SPButtonBaseView<SpButtonLayoutBinding>>()
+
             SPButtonStyles.list.onEach { buttonSample ->
 
                 val resId = buttonSample.resId
@@ -39,7 +40,6 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                 )
                 itemBinding.button.directionIcon = buttonSample.iconDirection
                 itemBinding.button.src = buttonSample.src
-                itemBinding.disableCheck.visibility = View.GONE
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
