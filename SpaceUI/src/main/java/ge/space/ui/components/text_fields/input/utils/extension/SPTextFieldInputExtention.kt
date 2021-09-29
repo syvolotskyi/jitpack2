@@ -43,6 +43,23 @@ inline fun SPTextFieldInput.doOnTextChanged(
     addTextChangedListener( watcher)
     return watcher
 }
+/**
+ * Add an action which will be invoked befoure the text is changing.
+ *
+ * @return the [TextWatcher] added to the SPTextFieldInput
+ */
+inline fun SPTextFieldInput.doBeforeTextChanged(
+    crossinline action: (
+        text: CharSequence?,
+        start: Int,
+        before: Int,
+        count: Int
+    ) -> Unit
+): TextWatcher {
+    val watcher = createTextChangedListener(beforeTextChanged = action)
+    addTextChangedListener( watcher)
+    return watcher
+}
 
 /**
  * Add a text changed listener to this SPTextFieldInput using the provided actions

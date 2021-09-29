@@ -14,6 +14,7 @@ import ge.space.ui.components.dialogs.data.SPEditTextDialogChangeHandler
 import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.text_fields.input.utils.extension.doBeforeTextChanged
 
 /**
  * Dialog with EditText which allows to manipulate next parameters:
@@ -41,7 +42,7 @@ class SPDialogEditText : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextD
     override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
 
     override fun getViewBinding(): SpDialogEditTextLayoutBinding =
-            SpDialogEditTextLayoutBinding.inflate(LayoutInflater.from(context))
+        SpDialogEditTextLayoutBinding.inflate(LayoutInflater.from(context))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,9 +58,9 @@ class SPDialogEditText : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextD
                 convertDialogButtonsType()
             )
 
-            etDialog.addTextChangedListener {
+            etDialog.doBeforeTextChanged { text, _, _, _ ->
                 editTextChange?.onChanged?.invoke(
-                    it?.toString().orEmpty()
+                    text?.toString().orEmpty()
                 )
             }
         }
