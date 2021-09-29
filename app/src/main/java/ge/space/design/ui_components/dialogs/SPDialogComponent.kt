@@ -13,6 +13,7 @@ import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.dialogs.*
 import ge.space.ui.components.dialogs.data.*
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 
 class SPDialogComponent : ShowCaseComponent {
 
@@ -50,8 +51,8 @@ class SPDialogComponent : ShowCaseComponent {
         private fun handleDialogs(
             fragmentActivity: FragmentActivity,
             radioGroup: RadioGroup,
-            titleInput: EditText,
-            infoInput: EditText,
+            titleInput: SPTextFieldInput,
+            infoInput: SPTextFieldInput,
             buttonConfigs: ArrayList<SPDialogInfoHolder>,
             multipleButtonConfigs: ArrayList<SPDialogInfoHolder>,
             editTextButtonConfigs: ArrayList<SPEditTextDialogInfoHolder>
@@ -83,12 +84,12 @@ class SPDialogComponent : ShowCaseComponent {
 
         private fun showEditTextDialog(
             fragmentActivity: FragmentActivity,
-            titleInput: EditText,
+            titleInput: SPTextFieldInput,
             editTextButtonConfigs: ArrayList<SPEditTextDialogInfoHolder>
         ) {
             fragmentActivity.showEditTextDialog(
                 SPEditTextDialogInfo(
-                    titleInput.text.toString(),
+                    titleInput.text,
                     editTextButtonConfigs
                 )
             ) {
@@ -98,14 +99,14 @@ class SPDialogComponent : ShowCaseComponent {
 
         private fun showMultipleButtonDialog(
             fragmentActivity: FragmentActivity,
-            titleInput: EditText,
-            infoInput: EditText,
+            titleInput: SPTextFieldInput,
+            infoInput: SPTextFieldInput,
             multipleButtonConfigs: ArrayList<SPDialogInfoHolder>
         ) {
             fragmentActivity.showMultipleButtonDialog(
                 SPDialogInfo(
-                    titleInput.text.toString(),
-                    infoInput.text.toString(),
+                    titleInput.text,
+                    infoInput.text,
                     multipleButtonConfigs
                 ),
                 SPDialogIcon.Alert(R.attr.accent_magenta)
@@ -116,14 +117,14 @@ class SPDialogComponent : ShowCaseComponent {
 
         private fun showQuestionnaireDialog(
             fragmentActivity: FragmentActivity,
-            titleInput: EditText,
-            infoInput: EditText,
+            titleInput: SPTextFieldInput,
+            infoInput: SPTextFieldInput,
             buttonConfigs: ArrayList<SPDialogInfoHolder>
         ) {
             fragmentActivity.showQuestionnaireDialog(
                 SPDialogInfo(
-                    titleInput.text.toString(),
-                    infoInput.text.toString(),
+                    titleInput.text,
+                    infoInput.text,
                     buttonConfigs,
                 ),
                 SPDialogIcon.Info()
@@ -134,13 +135,13 @@ class SPDialogComponent : ShowCaseComponent {
 
         private fun showStandardInfoDialog(
             fragmentActivity: FragmentActivity,
-            titleInput: EditText,
-            infoInput: EditText
+            titleInput: SPTextFieldInput,
+            infoInput: SPTextFieldInput
         ) {
             fragmentActivity.showStandardInfoDialog(
                 SPDialogInfo(
-                    titleInput.text.toString(),
-                    infoInput.text.toString()
+                    titleInput.text,
+                    infoInput.text
                 )
             ) {
                 Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
@@ -149,10 +150,10 @@ class SPDialogComponent : ShowCaseComponent {
 
         private fun showLabelDialog(
             fragmentActivity: FragmentActivity,
-            infoInput: EditText
+            infoInput: SPTextFieldInput
         ) {
             fragmentActivity.showLabelDialog(
-                infoInput.text.toString()
+                infoInput.text
             ) {
                 Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
             }
@@ -160,10 +161,10 @@ class SPDialogComponent : ShowCaseComponent {
 
         private fun showTitleDialog(
             fragmentActivity: FragmentActivity,
-            titleInput: EditText
+            titleInput: SPTextFieldInput
         ) {
             fragmentActivity.showTitleDialog(
-                titleInput.text.toString()
+                titleInput.text
             ) {
                 Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
             }

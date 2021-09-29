@@ -19,6 +19,7 @@ import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
+import ge.space.ui.util.extension.EMPTY_STRING
 
 class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
@@ -69,6 +70,7 @@ class SPTextFieldInput @JvmOverloads constructor(
             defStyleAttr
         ) {
             canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
+            text = getString(R.styleable.sp_text_field_input_android_text) ?: EMPTY_STRING
             drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
             textLength =
                 getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)

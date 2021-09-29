@@ -19,8 +19,8 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:layout_marginVertical="8dp"
+            android:checked="true"
             android:text="Title"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
@@ -71,14 +71,16 @@
             tools:ignore="HardcodedText" />
     </RadioGroup>
 
-    <EditText
+    <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
         android:id="@+id/title_input"
+        style="@style/SPTextField.Input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_32"
         android:layout_marginTop="@dimen/dimen_p_32"
-        android:textColor="?attr/themeTextColor"
         android:text="@string/dialog_title"
+        android:hint="@string/dialog_title"
+        android:textColor="?attr/themeTextColor"
         android:textColorHint="?attr/themeTextColor"
         app:layout_constraintBottom_toTopOf="@id/info_input"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,15 +89,17 @@
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
+    <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
         android:id="@+id/info_input"
+        style="@style/SPTextField.Input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_32"
         android:layout_marginTop="16dp"
-        android:textColor="?attr/themeTextColor"
         android:layout_marginBottom="@dimen/dimen_p_16"
         android:text="@string/dialog_label"
+        android:hint="@string/dialog_label"
+        android:textColor="?attr/themeTextColor"
         android:textColorHint="?attr/themeTextColor"
         app:layout_constraintBottom_toTopOf="@id/show_button"
         app:layout_constraintEnd_toEndOf="parent"
