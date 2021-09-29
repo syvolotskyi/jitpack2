@@ -18,9 +18,9 @@ import ge.space.ui.util.extension.SPSetViewStyleInterface
  * @property text [String] value which applies a button label text
  */
 abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+        context: Context,
+        attrs: AttributeSet? = null,
+        @AttrRes defStyleAttr: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface, OnDistractiveInterface {
 
     /**
@@ -73,12 +73,21 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (!isEnabled)
+            return false
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> alpha = CLICKED_ALPHA
-            MotionEvent.ACTION_UP -> alpha = DEFAULT_ALPHA
+            MotionEvent.ACTION_DOWN -> {
+                alpha = CLICKED_ALPHA
+                return true
+            }
+            MotionEvent.ACTION_UP -> {
+                alpha = DEFAULT_ALPHA
+                callOnClick()
+                return false
+            }
             MotionEvent.ACTION_CANCEL -> alpha = DEFAULT_ALPHA
         }
-        return true
+        return false
     }
 
     /**
@@ -99,7 +108,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Update view depends on isDistractive attr
      */
-   abstract fun handleDistractiveState()
+    abstract fun handleDistractiveState()
 
     /**
      * Allows to update button style using ViewBinding
@@ -107,7 +116,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
 
     companion object {
-        private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ALPHA = 1f
         private const val CLICKED_ALPHA = 0.8f
         private const val DISABLED_ALPHA = 0.25f

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -17,15 +17,15 @@
 
     <ge.space.ui.components.buttons.SPButtonVertical
         android:id="@+id/button"
-        android:layout_margin="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
         android:src="@drawable/ic_bell_24_regular"
-        app:style="@style/SPButton.VerticalLarge"
+        android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center_horizontal" />
+        app:style="@style/SPButton.Vertical_Size48" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,15 +37,23 @@
 
         <CheckBox
             android:id="@+id/disableCheck"
-            android:layout_width="wrap_content"
             style="@style/SPCheckbox.DefaultStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="disable" />
 
+        <CheckBox
+            android:id="@+id/distractiveCheck"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="distractive" />
+
 
     </LinearLayout>
 
-    <include layout="@layout/sp_layout_divider"/>
+    <include layout="@layout/sp_layout_divider" />
 
 </LinearLayout>

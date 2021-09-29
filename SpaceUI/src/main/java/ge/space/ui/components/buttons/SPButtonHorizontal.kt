@@ -12,6 +12,7 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
+import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
@@ -19,6 +20,7 @@ import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
  * Button view extended from [SPButtonBaseView] that allows to change its configuration.
  *
  * @property src [Int] value which applies a button image using a resource ID.
+ * @property distractiveColor [Int] value sets image color in distractive state
  */
 class SPButtonHorizontal @JvmOverloads constructor(
     context: Context,
@@ -71,7 +73,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_Hollow_Size48)
             )
         }
 
@@ -99,10 +101,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
-            val buttonHeight = getResourceId(
-                R.styleable.sp_button_view_style_buttonHeight,
-                DEFAULT_OBTAIN_VAL
-            )
+
             text = getString(R.styleable.sp_button_android_text).orEmpty()
             textAppearance =
                 getResourceId(
@@ -117,7 +116,12 @@ class SPButtonHorizontal @JvmOverloads constructor(
             distractiveColor =
                 getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
             updateTextAppearance(textAppearance)
-            setHeight(resources.getDimensionPixelSize(buttonHeight))
+
+            val buttonHeight = getResourceId(
+                R.styleable.sp_button_view_style_buttonHeight,
+                DEFAULT_OBTAIN_VAL
+        )
+            binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
             recycle()
         }
     }

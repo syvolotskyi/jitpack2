@@ -2,24 +2,20 @@
 <resources>
 
     <style name="SPButton.BaseHorizontal" parent="shadow_400_primary">
-        <item name="android:textColor">?attr/colorPrimary</item>
-        <item name="android:textSize">@dimen/dimen_sp_14</item>
-        <item name="android:fontFamily">@font/myriad_geo_bold</item>
         <item name="shadowAlpha">25%</item>
         <item name="shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="backgroundColor">@color/white</item>
-        <item name="shadowRadius">@dimen/dimen_p_10</item>
-        <item name="roundedCorners">@dimen/dimen_p_10</item>
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
         <item name="distractiveColor">?attr/accent_magenta</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
-        <item name="android:textAppearance">@style/h600_bold_caps</item>
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
     </style>
 
     <style name="SPButton.Horizontal.Size48" parent="SPButton.BaseHorizontal">
-        <item name="buttonHeight">@dimen/dimen_p_48</item>
+        <item name="buttonHeight">@dimen/dimen_p_54</item>
     </style>
 
     <style name="SPButton.Horizontal.Size56" parent="SPButton.BaseHorizontal">
-        <item name="buttonHeight">@dimen/dimen_p_56</item>
+        <item name="buttonHeight">@dimen/dimen_p_62</item>
     </style>
 </resources>
