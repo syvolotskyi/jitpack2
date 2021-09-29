@@ -10,14 +10,13 @@
     </style>
 
     <style name="SPButton.VerticalBase" parent="SPBaseView">
-        <item name="android:textColor">@color/titleLabelTextColor</item>
         <item name="android:textSize">@dimen/dimen_sp_14</item>
         <item name="android:fontFamily">@font/myriad_geo_medium</item>
         <item name="shadowAlpha">100%</item>
         <item name="backgroundColor">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="btnIconPadding">normal</item>
-        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_primary</item>
     </style>
 
     <style name="SPButton.VerticalLarge" parent="SPButton.VerticalBase">
