@@ -22,8 +22,11 @@
     </declare-styleable>
 
     <declare-styleable name="sp_button_iconic">
-        <attr name="android:src" format="reference" />
-        <attr name="android:enabled" format="boolean" />
+        <attr name="iconBackgroundColor" format="reference" />
+        <attr name="iconColor" format="reference" />
+        <attr name="borderColor"/>
+        <attr name="distractiveBorderColor" format="reference"/>
+        <attr name="distractiveIconColor" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="sp_button_horizontal">

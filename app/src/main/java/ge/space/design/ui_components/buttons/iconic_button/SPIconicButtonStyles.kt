@@ -15,5 +15,8 @@ object SPIconicButtonStyles {
         SPButtonSupportsLoading(R.style.SPButton_Iconic_Size40),
         SPButtonSupportsLoading(R.style.SPButton_Iconic_Size48),
         SPButtonSupportsLoading(R.style.SPButton_Iconic_Secondary_Size24),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Secondary_Size32),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Secondary_Size40),
+        SPButtonSupportsLoading(R.style.SPButton_Iconic_Secondary_Size48)
     )
 }

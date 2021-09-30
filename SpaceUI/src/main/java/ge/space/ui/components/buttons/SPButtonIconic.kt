@@ -1,47 +1,34 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
-import android.view.LayoutInflater
+import android.view.View
 import androidx.annotation.AttrRes
-import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.withStyledAttributes
-import androidx.core.view.children
-import ge.space.extensions.setHeight
-import ge.space.extensions.setTextStyle
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpButtonIconicLayoutBinding
-import ge.space.ui.components.buttons.base.SPButtonBaseView
 
+/**
+ * Button view extended from [SPButtonVertical] that allows to change its configuration.
+ *
+ */
 open class SPButtonIconic @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPButtonVertical(context, attrs, defStyleAttr)  {
+) : SPButtonVertical(context, attrs, defStyleAttr) {
 
+    private var bubbleColor: Int = Color.WHITE
+    private var iconColor: Int = Color.WHITE
+    private var distractiveBackgroundColor: Int = Color.WHITE
+    private var distractiveIconColor: Int = Color.WHITE
 
-    init {
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.sp_base_view,
-            defStyleAttr
-        ) {
-            setButtonStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_Iconic_Size24)
-            )
+    var borderColor: Int = bubbleColor
+        set(value) {
+            field = value
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, 8)
         }
 
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.sp_button_iconic,
-            defStyleAttr
-        ) {
-            src = getResourceId(R.styleable.sp_button_iconic_android_src, 0)
-            isEnabled = getBoolean(R.styleable.sp_button_iconic_android_enabled, true)
-        }
-    }
 
     /**
      * Sets a style for the SPButton view.
@@ -53,19 +40,47 @@ open class SPButtonIconic @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
+        super.setButtonStyle(defStyleRes)
+        binding.buttonLabel.visibility = View.GONE
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_iconic)
 
         styleAttrs.run {
 
-            val buttonHeight = getResourceId(
-                    R.styleable.sp_button_view_style_buttonHeight,
-                    DEFAULT_OBTAIN_VAL
+            bubbleColor =
+                getColor(R.styleable.sp_button_iconic_iconBackgroundColor, Color.WHITE)
+            borderColor =
+                getColor(R.styleable.sp_button_iconic_borderColor, Color.WHITE)
+
+            distractiveIconColor =
+                getColor(R.styleable.sp_button_iconic_distractiveIconColor, Color.WHITE)
+            distractiveBackgroundColor =
+                getColor(R.styleable.sp_button_iconic_distractiveBorderColor, Color.WHITE)
+
+            bubbleLayoutBinding.btnContainer.color = bubbleColor
+
+            iconColor = getColor(
+                R.styleable.sp_button_iconic_iconColor,
+                Color.WHITE
             )
-//            binding.image.setHeight(resources.getDimensionPixelSize(buttonHeight))
-//            binding.image.setWidth(resources.getDimensionPixelSize(buttonHeight))
+
+            bubbleLayoutBinding.image.setColorFilter(iconColor)
+
+
             recycle()
         }
+    }
 
+    override fun handleDistractiveState() {
+        if (isDistractive) {
+            bubbleLayoutBinding.btnContainer.color = distractiveColor
+            bubbleLayoutBinding.btnContainer.changeBorder(distractiveBackgroundColor, 8)
+            bubbleLayoutBinding.image.setColorFilter(distractiveIconColor)
+        } else {
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, 8)
+            bubbleLayoutBinding.btnContainer.color = bubbleColor
+            bubbleLayoutBinding.image.setColorFilter(iconColor)
+        }
+        bubbleLayoutBinding.btnContainer.invalidate()
     }
 }
