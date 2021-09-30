@@ -1,7 +1,9 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Color
+import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
@@ -13,7 +15,6 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
-import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.buttons.SPButton.IconDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
@@ -99,8 +100,11 @@ class SPButton @JvmOverloads constructor(
             R.styleable.sp_base_view,
             defStyleAttr
         ) {
-            setButtonStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
+            setViewStyle(
+                getResourceId(
+                    R.styleable.sp_base_view_style,
+                    R.style.SPButton_BaseView_Size40
+                )
             )
         }
 
@@ -113,6 +117,13 @@ class SPButton @JvmOverloads constructor(
                 .handleAttributeAction(EMPTY_TEXT) {
                     text = it
                 }
+
+            val directionIconInd = getInt(
+                R.styleable.sp_button_directionIcon,
+                DEFAULT_OBTAIN_VAL
+            )
+            directionIcon = IconDirection.values()[directionIconInd]
+            src = getResourceId(R.styleable.sp_button_android_src, 0)
         }
     }
 
@@ -135,41 +146,35 @@ class SPButton @JvmOverloads constructor(
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
-        styleAttrs.run {
-            val directionIconInd = styleAttrs.getInt(
-                R.styleable.sp_button_view_style_directionIcon,
-                DEFAULT_OBTAIN_VAL
-            )
+        styleAttrs.run { withStyledResource() }
+    }
 
-            textAppearance = getResourceId(
-                R.styleable.sp_button_view_style_android_textAppearance,
-                DEFAULT_OBTAIN_VAL
-            )
+    private fun TypedArray.withStyledResource() {
+        textAppearance = getResourceId(
+            R.styleable.sp_button_view_style_android_textAppearance,
+            DEFAULT_OBTAIN_VAL
+        )
 
-            val buttonHeight = getResourceId(
-                R.styleable.sp_button_view_style_buttonHeight,
-                DEFAULT_OBTAIN_VAL
-            )
+        val buttonHeight = getResourceId(
+            R.styleable.sp_button_view_style_buttonHeight,
+            DEFAULT_OBTAIN_VAL
+        )
 
-            distractiveTextAppearance = getResourceId(
-                R.styleable.sp_button_view_style_distractiveTextAppearance,
-                DEFAULT_OBTAIN_VAL
-            )
+        distractiveTextAppearance = getResourceId(
+            R.styleable.sp_button_view_style_distractiveTextAppearance,
+            DEFAULT_OBTAIN_VAL
+        )
 
-            distractiveBackground = getColor(
-                R.styleable.sp_button_view_style_distractiveBackground,
-                Color.WHITE
-            )
+        distractiveBackground = getColor(
+            R.styleable.sp_button_view_style_distractiveBackground,
+            Color.WHITE
+        )
 
-            src = getResourceId(R.styleable.sp_button_view_style_android_src, 0)
+        background = color
+        updateTextAppearance(textAppearance)
+        binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
+        recycle()
 
-            directionIcon = IconDirection.values()[directionIconInd]
-
-            background = color
-            updateTextAppearance(textAppearance)
-            setHeight(resources.getDimensionPixelSize(buttonHeight))
-            recycle()
-        }
     }
 
     fun updateTextAppearance(textAppearance: Int) {
@@ -177,11 +182,13 @@ class SPButton @JvmOverloads constructor(
         updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
     }
 
-
     private fun updateDrawableColor(color: Int) {
-        binding.buttonLabel.compoundDrawables.forEach {
-            it?.setTint(color)
-        }
+            binding.buttonLabel.compoundDrawables.forEach {
+                it?.colorFilter = PorterDuffColorFilter(
+                    color,
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
+            }
     }
 
     fun updateText(text: String) {
@@ -195,6 +202,7 @@ class SPButton @JvmOverloads constructor(
                 Left -> directLeft()
                 Right -> directRight()
             }
+        updateTextAppearance(textAppearance)
     }
 
     /**
@@ -228,6 +236,12 @@ class SPButton @JvmOverloads constructor(
         )
     }
 
+
+    override fun handleDistractiveState() {
+        color = if (isDistractive) distractiveBackground else background
+        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
+    }
+
     /**
      * Enum class which is for Button arrow direction.
      *
@@ -239,10 +253,5 @@ class SPButton @JvmOverloads constructor(
         None,
         Left,
         Right
-    }
-
-    override fun handleDistractiveState() {
-        updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
-        color = if (isDistractive) distractiveBackground else background
     }
 }

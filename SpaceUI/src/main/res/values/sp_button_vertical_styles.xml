@@ -6,16 +6,13 @@
     </style>
 
     <style name="SPButton.Vertical_Size40" parent="SPBaseView">
-        <item name="android:textColor">@color/titleLabelTextColor</item>
-        <item name="android:textSize">@dimen/dimen_sp_14</item>
-        <item name="android:fontFamily">@font/myriad_geo_medium</item>
         <item name="shadowAlpha">100%</item>
         <item name="backgroundColor">@color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveColor">?attr/accent_magenta</item>
         <item name="buttonHeight">@dimen/dimen_p_16</item>
         <item name="btnIconPadding">@dimen/dimen_p_12</item>
-        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
+        <item name="android:textAppearance">@style/h700_medium_caps_label_primary</item>
     </style>
 
     <style name="SPButton.Vertical_Size48" parent="SPButton.Vertical_Size40">

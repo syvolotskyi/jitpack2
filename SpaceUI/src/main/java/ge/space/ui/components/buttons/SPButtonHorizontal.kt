@@ -81,7 +81,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_BaseView)
+                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_Hollow_Size48)
             )
         }
 
@@ -109,10 +109,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
 
         styleAttrs.run {
-            val buttonHeight = getResourceId(
-                R.styleable.sp_button_view_style_buttonHeight,
-                DEFAULT_OBTAIN_VAL
-            )
+
             text = getString(R.styleable.sp_button_android_text).orEmpty()
             textAppearance =
                 getResourceId(
@@ -127,7 +124,12 @@ class SPButtonHorizontal @JvmOverloads constructor(
             distractiveColor =
                 getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
             updateTextAppearance(textAppearance)
-            setHeight(resources.getDimensionPixelSize(buttonHeight))
+
+            val buttonHeight = getResourceId(
+                R.styleable.sp_button_view_style_buttonHeight,
+                DEFAULT_OBTAIN_VAL
+        )
+            binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
             recycle()
         }
     }

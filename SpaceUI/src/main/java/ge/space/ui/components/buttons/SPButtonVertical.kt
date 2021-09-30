@@ -33,6 +33,12 @@ class SPButtonVertical @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
 
+    /**
+     * Inflates and returns [SpButtonVerticalLayoutBinding] value
+     */
+    override fun getViewBinding(): SpButtonVerticalLayoutBinding =
+            SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
+
     private val bubbleLayoutBinding by lazy {
         SpButtonVerticalBubbleLayoutBinding.bind(binding.root)
     }
@@ -46,16 +52,6 @@ class SPButtonVertical @JvmOverloads constructor(
             field = value
 
             bubbleLayoutBinding.image.setImageResource(src)
-        }
-
-    /**
-     * Sets a button title.
-     */
-    var text: String = EMPTY_TEXT
-        set(value) {
-            field = value
-
-            updateText(value)
         }
 
     private var iconPadding = resources.getDimensionPixelSize(R.dimen.dimen_p_15)
@@ -98,12 +94,6 @@ class SPButtonVertical @JvmOverloads constructor(
             isEnabled = getBoolean(R.styleable.sp_button_vertical_android_enabled, true)
         }
     }
-
-    /**
-     * Inflates and returns [SpButtonVerticalLayoutBinding] value
-     */
-    override fun getViewBinding(): SpButtonVerticalLayoutBinding =
-        SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     /**
      * Sets a style for the SPButton view.
@@ -154,11 +144,6 @@ class SPButtonVertical @JvmOverloads constructor(
      fun updateTextAppearance(textAppearance: Int) =
         binding.buttonLabel.setTextStyle(textAppearance)
 
-
-    companion object {
-        private const val DEFAULT_ICON_PADDING = 0
-    }
-
     override fun handleDistractiveState() {
         bubbleLayoutBinding.btnContainer.color =
             if (isDistractive)
@@ -174,5 +159,10 @@ class SPButtonVertical @JvmOverloads constructor(
     private fun handleImageSize(iconPixelSize: Int) {
         bubbleLayoutBinding.image.setHeight(iconPixelSize)
         bubbleLayoutBinding.image.setWidth(iconPixelSize)
+    }
+
+    companion object {
+        private const val FLOAT_ZERO = 0f
+        private const val DEFAULT_ICON_PADDING = 0
     }
 }

@@ -5,53 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_16">
-
-        <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sp_button_height"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="Button"
-            app:style="@style/SPButton.Primary_Size48" />
-
-        <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sp_button_height"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="Button"
-            app:style="@style/SPButton.Primary_Size48" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_16">
-
-        <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sp_button_height"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="Button"
-            app:style="@style/SPButton.Primary_Size48" />
-
-        <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/sp_button_height"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="Button"
-            app:style="@style/SPButton.Primary_Size48" />
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -59,12 +12,50 @@
         android:layout_weight="1">
 
         <LinearLayout
-            android:id="@+id/buttonsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="vertical" />
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+
+                <ge.space.ui.components.buttons.SPButton
+                    android:id="@+id/button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_plus_16_regular"
+                    android:text="Button"
+                    app:directionIcon="left"
+                    app:style="@style/SPButton.Primary_Size48" />
+
+                <ge.space.ui.components.buttons.SPButton
+                    android:id="@+id/button2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_plus_16_regular"
+                    android:text="Button"
+                    app:directionIcon="right"
+                    app:style="@style/SPButton.Primary_Size56" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/buttonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" />
+        </LinearLayout>
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatEditText
