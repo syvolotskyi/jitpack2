@@ -13,6 +13,9 @@
     <string name="default_button_description">Default button description</string>
     <string name="default_buttons">Default button</string>
 
+    <string name="fullwidth_button_description">fullwidth button description</string>
+    <string name="fullwidth_buttons">fullwidth button</string>
+
     <string name="horizontal_button_description">Horizontal button description</string>
     <string name="horizontal_buttons">Horizontal button</string>
 
