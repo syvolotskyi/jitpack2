@@ -9,6 +9,11 @@
         <item name="shadowRadius">@dimen/dimen_p_1</item>
     </style>
 
+    <style name="shadow_empty" parent="SPBaseView">
+        <item name="shadowColor">@color/transparent</item>
+        <item name="shadowAlpha">0%</item>
+    </style>
+
     <style name="shadow_100_brand" parent="SPBaseView">
         <item name="shadowOffsetX">@dimen/dimen_p_1</item>
         <item name="shadowOffsetY">@dimen/dimen_p_1</item>
