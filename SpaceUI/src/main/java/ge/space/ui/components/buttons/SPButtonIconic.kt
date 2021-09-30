@@ -15,35 +15,12 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonIconicLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 
-open class SPButtonIconic@JvmOverloads constructor(
+open class SPButtonIconic @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPButtonBaseView<SpButtonIconicLayoutBinding>(context, attrs, defStyleAttr)  {
+) : SPButtonVertical(context, attrs, defStyleAttr)  {
 
-    /**
-     * Sets a image resource
-     */
-    @IdRes
-    var src = 0
-        set(value) {
-            field = value
-
-            binding.image.setImageResource(src)
-        }
-
-
-    private var iconPadding = resources.getDimensionPixelSize(R.dimen.dimen_p_15)
-        set(value) {
-            field = value
-
-            binding.btnContainer.setPadding(
-                    iconPadding,
-                    iconPadding,
-                    iconPadding,
-                    iconPadding
-            )
-        }
 
     init {
         getContext().withStyledAttributes(
@@ -67,12 +44,6 @@ open class SPButtonIconic@JvmOverloads constructor(
     }
 
     /**
-     * Inflates and returns [SpButtonVerticalLayoutBinding] value
-     */
-    override fun getViewBinding(): SpButtonIconicLayoutBinding =
-        SpButtonIconicLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-    /**
      * Sets a style for the SPButton view.
      *
      * <p>
@@ -91,22 +62,10 @@ open class SPButtonIconic@JvmOverloads constructor(
                     R.styleable.sp_button_view_style_buttonHeight,
                     DEFAULT_OBTAIN_VAL
             )
-            iconPadding = resources.getDimensionPixelSize(
-                    getResourceId(
-                            R.styleable.sp_button_view_style_btnIconPadding, DEFAULT_ICON_PADDING
-                    )
-            )
-            binding.image.setHeight(resources.getDimensionPixelSize(buttonHeight))
-            binding.image.setWidth(resources.getDimensionPixelSize(buttonHeight))
+//            binding.image.setHeight(resources.getDimensionPixelSize(buttonHeight))
+//            binding.image.setWidth(resources.getDimensionPixelSize(buttonHeight))
             recycle()
         }
 
-    }
-
-    override fun handleDistractiveState() {
-        //TODO should be implemented
-    }
-    companion object {
-        private const val DEFAULT_ICON_PADDING = 0
     }
 }

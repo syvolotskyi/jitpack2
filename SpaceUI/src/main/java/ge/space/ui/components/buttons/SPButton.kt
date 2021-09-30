@@ -70,15 +70,6 @@ class SPButton @JvmOverloads constructor(
     private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
     /**
-     * Sets a button title.
-     */
-    var text: String = EMPTY_TEXT
-        set(value) {
-            field = value
-
-            updateText(value)
-        }
-    /**
      * Sets a distractive text appearance
      */
     @StyleRes
@@ -191,7 +182,7 @@ class SPButton @JvmOverloads constructor(
             }
     }
 
-    fun updateText(text: String) {
+    override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 

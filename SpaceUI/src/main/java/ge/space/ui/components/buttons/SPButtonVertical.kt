@@ -27,7 +27,7 @@ import ge.space.ui.components.buttons.base.SPButtonBaseView
  * @property distractiveColor [Int] value sets button color in distractive state
  *
  */
-class SPButtonVertical @JvmOverloads constructor(
+open class SPButtonVertical @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -132,7 +132,7 @@ class SPButtonVertical @JvmOverloads constructor(
 
     }
 
-     fun updateText(text: String) {
+     override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 

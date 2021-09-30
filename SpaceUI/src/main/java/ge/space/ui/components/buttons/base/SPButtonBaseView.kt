@@ -8,7 +8,6 @@ import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
 import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.SPSetViewStyleInterface
 
 /**
@@ -34,6 +33,16 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     private val _binding by lazy {
         getViewBinding()
     }
+
+    /**
+     * Sets a button title.
+     */
+    var text: String = EMPTY_TEXT
+        set(value) {
+            field = value
+
+            updateText(value)
+        }
 
     override var isDistractive: Boolean = false
         set(value) {
@@ -79,6 +88,8 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
         return false
     }
+
+    protected abstract fun updateText(text: String)
 
     /**
      * Allows to init ViewBinding

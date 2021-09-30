@@ -50,15 +50,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
      */
     @StyleRes
     private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
-    /**
-     * Sets a button title.
-     */
-    var text: String = EMPTY_TEXT
-        set(value) {
-            field = value
 
-            updateText(value)
-        }
     /**
      *  it is a specific state for buttons.
      *
@@ -146,7 +138,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         )
     }
 
-    fun updateText(text: String) {
+   override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
