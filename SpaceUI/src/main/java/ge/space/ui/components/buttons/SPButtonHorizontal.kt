@@ -138,11 +138,11 @@ class SPButtonHorizontal @JvmOverloads constructor(
         )
     }
 
-    override fun updateText(text: String) {
+   override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
-    override fun updateTextAppearance(textAppearance: Int) =
+    fun updateTextAppearance(textAppearance: Int) =
         binding.buttonLabel.setTextStyle(textAppearance)
 
 }

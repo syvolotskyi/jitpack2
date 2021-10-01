@@ -27,7 +27,7 @@ import ge.space.ui.components.buttons.base.SPButtonBaseView
  * @property distractiveColor [Int] value sets button color in distractive state
  *
  */
-class SPButtonVertical @JvmOverloads constructor(
+open class SPButtonVertical @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -37,9 +37,9 @@ class SPButtonVertical @JvmOverloads constructor(
      * Inflates and returns [SpButtonVerticalLayoutBinding] value
      */
     override fun getViewBinding(): SpButtonVerticalLayoutBinding =
-            SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpButtonVerticalLayoutBinding.inflate(LayoutInflater.from(context), this)
 
-    private val bubbleLayoutBinding by lazy {
+    protected val bubbleLayoutBinding by lazy {
         SpButtonVerticalBubbleLayoutBinding.bind(binding.root)
     }
 
@@ -69,7 +69,7 @@ class SPButtonVertical @JvmOverloads constructor(
     /**
      *  it is a distractive color for image color
      */
-    private var distractiveColor: Int = bubbleLayoutBinding.btnContainer.color
+    protected var distractiveColor: Int = bubbleLayoutBinding.btnContainer.color
 
     init {
         getContext().withStyledAttributes(
@@ -141,7 +141,7 @@ class SPButtonVertical @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.children.forEach { it.isEnabled = enabled }
     }
 
-    override fun updateTextAppearance(textAppearance: Int) =
+    fun updateTextAppearance(textAppearance: Int) =
         binding.buttonLabel.setTextStyle(textAppearance)
 
     override fun handleDistractiveState() {
@@ -156,12 +156,13 @@ class SPButtonVertical @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.invalidate()
     }
 
-    private fun handleImageSize(iconPixelSize: Int) {
+    protected fun handleImageSize(iconPixelSize: Int) {
         bubbleLayoutBinding.image.setHeight(iconPixelSize)
         bubbleLayoutBinding.image.setWidth(iconPixelSize)
     }
 
     companion object {
+        private const val FLOAT_ZERO = 0f
         private const val DEFAULT_ICON_PADDING = 0
     }
 }

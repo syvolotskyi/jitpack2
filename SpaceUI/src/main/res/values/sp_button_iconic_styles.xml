@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPButton.Iconic.Size24" parent="SPBaseView">
+        <item name="shadowAlpha">100%</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="iconBackgroundColor">@color/appPrimaryColor</item>
+        <item name="shadowRadius">0dp</item>
+        <item name="distractiveColor">?attr/accent_magenta</item>
+        <item name="distractiveBorderColor">?attr/accent_magenta</item>
+        <item name="borderColor">@color/appPrimaryColor</item>
+        <item name="buttonHeight">@dimen/dimen_p_8</item>
+        <item name="btnIconPadding">@dimen/dimen_p_10</item>
+        <item name="android:textAppearance">@style/h700_medium_caps_label_primary</item>
+    </style>
+
+    <style name="SPButton.Iconic.Size32" parent="SPButton.Iconic.Size24">
+        <item name="btnIconPadding">@dimen/dimen_p_10</item>
+        <item name="buttonHeight">@dimen/dimen_p_12</item>
+    </style>
+
+    <style name="SPButton.Iconic.Size40" parent="SPButton.Iconic.Size24">
+        <item name="buttonHeight">@dimen/dimen_p_16</item>
+        <item name="btnIconPadding">@dimen/dimen_p_12</item>
+    </style>
+
+    <style name="SPButton.Iconic.Size48" parent="SPButton.Iconic.Size24">
+        <item name="btnIconPadding">@dimen/dimen_p_16</item>
+        <item name="buttonHeight">@dimen/dimen_p_16</item>
+    </style>
+
+    <style name="SPButton.Iconic.Secondary.Size24" parent="SPButton.Iconic.Size24">
+        <item name="iconBackgroundColor">@color/white</item>
+        <item name="distractiveColor">@color/white</item>
+        <item name="distractiveBorderColor">?attr/accent_magenta</item>
+        <item name="distractiveIconColor">?attr/accent_magenta</item>
+        <item name="iconColor">?attr/brand_primary</item>
+    </style>
+
+    <style name="SPButton.Iconic.Secondary.Size32" parent="SPButton.Iconic.Size32">
+        <item name="iconBackgroundColor">@color/white</item>
+        <item name="distractiveColor">@color/white</item>
+        <item name="distractiveBorderColor">?attr/accent_magenta</item>
+        <item name="distractiveIconColor">?attr/accent_magenta</item>
+        <item name="iconColor">?attr/brand_primary</item>
+    </style>
+
+    <style name="SPButton.Iconic.Secondary.Size40" parent="SPButton.Iconic.Size40">
+        <item name="iconBackgroundColor">@color/white</item>
+        <item name="distractiveColor">@color/white</item>
+        <item name="distractiveBorderColor">?attr/accent_magenta</item>
+        <item name="distractiveIconColor">?attr/accent_magenta</item>
+        <item name="iconColor">?attr/brand_primary</item>
+    </style>
+
+    <style name="SPButton.Iconic.Secondary.Size48" parent="SPButton.Iconic.Size48">
+        <item name="iconBackgroundColor">@color/white</item>
+        <item name="distractiveColor">@color/white</item>
+        <item name="distractiveIconColor">?attr/accent_magenta</item>
+        <item name="distractiveBorderColor">?attr/accent_magenta</item>
+        <item name="iconColor">?attr/brand_primary</item>
+    </style>
+
+</resources>
