@@ -26,7 +26,7 @@ open class SPButtonIconic @JvmOverloads constructor(
     var borderColor: Int = bubbleColor
         set(value) {
             field = value
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, 8)
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, 2)
         }
 
 

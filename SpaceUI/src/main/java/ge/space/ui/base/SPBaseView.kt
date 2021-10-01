@@ -51,6 +51,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      * creating new instances it each time
      */
     private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        isAntiAlias = true
         color = Color.WHITE
         style = Paint.Style.FILL
     }
@@ -59,7 +60,8 @@ abstract class SPBaseView @JvmOverloads constructor(
      * Paint instance for borders to avoid
      * creating new instances it each time
      */
-    private val borderPaint: Paint = Paint().apply {
+    private val borderPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        isAntiAlias = true
         style = Paint.Style.STROKE
     }
 
@@ -288,8 +290,8 @@ abstract class SPBaseView @JvmOverloads constructor(
         super.onDraw(canvas)
 
         canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
-        canvas.clipPath(clippingMaskPath.getPath())
         canvas.drawBorder(clippingMaskPath.getPath(),borderColor,borderWidth,borderPaint)
+        canvas.clipPath(clippingMaskPath.getPath())
     }
 
     /**

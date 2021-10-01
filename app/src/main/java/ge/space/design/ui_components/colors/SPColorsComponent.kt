@@ -43,7 +43,7 @@ class SPColorsComponent : ShowCaseComponent {
                 onBind { binding, (name, resId), position ->
                     val colorInt = ContextCompat.getColor(environment.context, resId)
                     binding.colorView.color = colorInt
-                    binding.colorView.changeBorder(Color.GREEN,8)
+                    binding.colorView.changeBorder(Color.GREEN,4)
                     binding.colorDetails.text = buildString {
                         appendln("${position + 1}. $name")
                         // hex value
