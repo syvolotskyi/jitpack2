@@ -22,11 +22,12 @@ open class SPButtonIconic @JvmOverloads constructor(
     private var iconColor: Int = Color.WHITE
     private var distractiveBackgroundColor: Int = Color.WHITE
     private var distractiveIconColor: Int = Color.WHITE
+    private var borderWidth: Int =  context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
 
-    var borderColor: Int = bubbleColor
+    private var borderColor: Int = Color.WHITE
         set(value) {
             field = value
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, 2)
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth)
         }
 
 
@@ -74,10 +75,10 @@ open class SPButtonIconic @JvmOverloads constructor(
     override fun handleDistractiveState() {
         if (isDistractive) {
             bubbleLayoutBinding.btnContainer.color = distractiveColor
-            bubbleLayoutBinding.btnContainer.changeBorder(distractiveBackgroundColor, 8)
+            bubbleLayoutBinding.btnContainer.changeBorder(distractiveBackgroundColor, borderWidth)
             bubbleLayoutBinding.image.setColorFilter(distractiveIconColor)
         } else {
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, 8)
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth)
             bubbleLayoutBinding.btnContainer.color = bubbleColor
             bubbleLayoutBinding.image.setColorFilter(iconColor)
         }
