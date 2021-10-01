@@ -9,27 +9,32 @@
         <attr name="btnIconPadding" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="sp_button">
+    <declare-styleable name="SPButton">
+        <attr name="style"  />
         <attr name="android:text" format="string|reference" />
         <attr name="directionIcon" />
         <attr name="android:src" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="sp_button_vertical">
+    <declare-styleable name="SPButtonVertical">
+        <attr name="style" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
+        <attr name="borderColor" />
         <attr name="android:enabled" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="sp_button_iconic">
+    <declare-styleable name="SPButtonIconic">
+        <attr name="style" />
+        <attr name="borderColor" />
         <attr name="iconBackgroundColor" format="reference" />
         <attr name="iconColor" format="reference" />
-        <attr name="borderColor"/>
         <attr name="distractiveBorderColor" format="reference"/>
         <attr name="distractiveIconColor" format="reference"/>
     </declare-styleable>
 
-    <declare-styleable name="sp_button_horizontal">
+    <declare-styleable name="SPButtonHorizontal">
+        <attr name="style" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
     </declare-styleable>

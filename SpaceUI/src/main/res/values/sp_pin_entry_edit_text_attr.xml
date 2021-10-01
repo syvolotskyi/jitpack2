@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="sp_pin_entry_editText">
+    <declare-styleable name="SPPinEntryEditText">
         <attr name="android:textColor" format="color|reference" />
         <attr name="disableCopyPaste" format="boolean"/>
         <attr name="pinType" format="enum">
@@ -10,7 +10,7 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="sp_pin_entry_view">
+    <declare-styleable name="SPPinEntryView">
         <attr name="android:text" format="string|reference" />
         <attr name="pinLabelText" format="string|reference" />
         <attr name="android:enabled" format="boolean" />

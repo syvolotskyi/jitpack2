@@ -36,11 +36,11 @@ abstract class SPBaseCardList<VB : ViewBinding> @JvmOverloads constructor(
 
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_base_view,
+            R.styleable.SPBaseView,
             defStyleAttr
         ) {
             val style = getResourceId(
-                R.styleable.sp_base_view_style,
+                R.styleable.SPBaseView_style,
                 DEFAULT_OBTAIN_VAL
             )
             handleInnerStyle(style)

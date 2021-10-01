@@ -88,33 +88,26 @@ class SPButton @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_base_view,
+            R.styleable.SPButton,
             defStyleAttr
         ) {
             setViewStyle(
                 getResourceId(
-                    R.styleable.sp_base_view_style,
+                    R.styleable.SPButton_style,
                     R.style.SPButton_BaseView_Size40
                 )
             )
-        }
-
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.sp_button,
-            defStyleAttr
-        ) {
-            getString(R.styleable.sp_button_android_text).orEmpty()
+            getString(R.styleable.SPButton_android_text).orEmpty()
                 .handleAttributeAction(EMPTY_TEXT) {
                     text = it
                 }
 
             val directionIconInd = getInt(
-                R.styleable.sp_button_directionIcon,
+                R.styleable.SPButton_directionIcon,
                 DEFAULT_OBTAIN_VAL
             )
             directionIcon = IconDirection.values()[directionIconInd]
-            src = getResourceId(R.styleable.sp_button_android_src, 0)
+            src = getResourceId(R.styleable.SPButton_android_src, 0)
         }
     }
 
