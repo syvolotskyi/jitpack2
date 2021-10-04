@@ -73,7 +73,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.SPButtonHorizontal_style, R.style.SPButton_Hollow_Size48)
+                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_Hollow_Size48)
             )
             src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
             text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
