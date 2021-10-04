@@ -33,7 +33,7 @@ class SPVerticalButtonsComponent : ShowCaseComponent {
                 val resId = buttonSample.resId
 
                 val itemBinding = SpItemVerticalButtonsShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                    environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
                     true
                 )
