@@ -88,15 +88,22 @@ class SPButton @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButton,
+            R.styleable.SPBaseView,
             defStyleAttr
         ) {
             setViewStyle(
                 getResourceId(
-                    R.styleable.SPButton_style,
+                    R.styleable.SPBaseView_style,
                     R.style.SPButton_BaseView_Size40
                 )
             )
+        }
+
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPButton,
+            defStyleAttr
+        ) {
             getString(R.styleable.SPButton_android_text).orEmpty()
                 .handleAttributeAction(EMPTY_TEXT) {
                     text = it

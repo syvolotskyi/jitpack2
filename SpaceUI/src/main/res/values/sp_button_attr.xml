@@ -10,18 +10,21 @@
     </declare-styleable>
 
     <declare-styleable name="SPButton">
+        <attr name="android:text" format="string|reference" />
         <attr name="directionIcon" />
         <attr name="android:src" format="reference" />
-        <attr name="android:text" format="string|reference" />
     </declare-styleable>
 
     <declare-styleable name="SPButtonVertical">
+        <attr name="style" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
+        <attr name="borderColor" />
         <attr name="android:enabled" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="SPButtonIconic">
+        <attr name="style" />
         <attr name="borderColor" />
         <attr name="iconBackgroundColor" format="reference" />
         <attr name="iconColor" format="reference" />
@@ -30,6 +33,7 @@
     </declare-styleable>
 
     <declare-styleable name="SPButtonHorizontal">
+        <attr name="style" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
     </declare-styleable>
