@@ -78,17 +78,17 @@ class SPPinEntryView @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_pin_entry_view,
+            R.styleable.SPPinEntryView,
             defStyleAttr
         ) {
-            text = getString(R.styleable.sp_pin_entry_view_android_text).orEmpty()
-            labelText = getString(R.styleable.sp_pin_entry_view_pinLabelText).orEmpty()
-            isEnabled = getBoolean(R.styleable.sp_pin_entry_view_android_enabled, true)
-            maxLength = getInt(R.styleable.sp_pin_entry_view_android_maxLength, DEFAULT_MAX_LENGTH)
+            text = getString(R.styleable.SPPinEntryView_android_text).orEmpty()
+            labelText = getString(R.styleable.SPPinEntryView_pinLabelText).orEmpty()
+            isEnabled = getBoolean(R.styleable.SPPinEntryView_android_enabled, true)
+            maxLength = getInt(R.styleable.SPPinEntryView_android_maxLength, DEFAULT_MAX_LENGTH)
 
             binding.pinEntryEditText.setStyle(
                 getResourceId(
-                    R.styleable.sp_pin_entry_view_sp_pinStyle,
+                    R.styleable.SPPinEntryView_sp_pinStyle,
                     R.style.SPPinEntryEditText
                 )
             )

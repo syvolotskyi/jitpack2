@@ -35,7 +35,7 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                 val resId = buttonSample.resId
 
                 val itemBinding = SpItemButtonsShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                    environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
                     true
                 )

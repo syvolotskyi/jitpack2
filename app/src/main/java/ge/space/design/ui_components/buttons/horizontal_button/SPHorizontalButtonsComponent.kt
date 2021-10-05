@@ -31,7 +31,7 @@ class SPHorizontalButtonsComponent : ShowCaseComponent {
                 val resId = buttonSample.resId
 
                 val itemBinding = SpItemHorizontalBtnShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                    environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
                     true
                 )

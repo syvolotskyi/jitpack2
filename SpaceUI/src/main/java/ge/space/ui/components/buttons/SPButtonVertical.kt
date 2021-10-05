@@ -74,24 +74,17 @@ open class SPButtonVertical @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_base_view,
+            R.styleable.SPButtonVertical,
             defStyleAttr
         ) {
             setButtonStyle(
                 getResourceId(
-                    R.styleable.sp_base_view_style, R.style.SPButton_Vertical_Size48
+                    R.styleable.SPBaseView_style, R.style.SPButton_Vertical_Size48
                 )
             )
-        }
-
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.sp_button_vertical,
-            defStyleAttr
-        ) {
-            src = getResourceId(R.styleable.sp_button_vertical_android_src, 0)
-            text = getString(R.styleable.sp_button_vertical_android_text).orEmpty()
-            isEnabled = getBoolean(R.styleable.sp_button_vertical_android_enabled, true)
+            getString(R.styleable.SPButtonVertical_android_text)?.let { text = it }
+            isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
+            src = getResourceId(R.styleable.SPButtonVertical_android_src, R.drawable.ic_plus_16_regular)
         }
     }
 

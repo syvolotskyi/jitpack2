@@ -20,6 +20,7 @@
     <attr name="distractiveTextAppearance" format="reference" />
     <attr name="distractiveBackground" format="reference|color" />
     <attr name="buttonHeight" format="reference" />
+    <attr name="style" format="reference" />
 
     <attr name="directionIcon" format="enum">
         <enum name="none" value="0" />
@@ -44,8 +45,14 @@
         <attr name="borderWidth" />
     </declare-styleable>
 
-    <declare-styleable name="sp_base_view">
-        <attr name="style" format="reference" />
+    <declare-styleable name="SPBaseView">
+        <attr name="style" />
+        <attr name="borderColor" />
+        <attr name="borderWidth" />
+    </declare-styleable>
+
+    <declare-styleable name="SPFrameLayout">
+        <attr name="style" />
         <attr name="borderColor" />
         <attr name="borderWidth" />
     </declare-styleable>

@@ -207,18 +207,18 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_base_view,
+            R.styleable.SPBaseView,
             defStyleAttr
         ) {
             setStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPBaseView)
+                getResourceId(R.styleable.SPBaseView_style, R.style.SPBaseView)
             )
             borderColor = getColor(
-                R.styleable.sp_base_view_borderColor,
+                R.styleable.SPBaseView_borderColor,
                 EMPTY_BORDER_VALUE
             )
             borderWidth = getDimensionPixelSize(
-                R.styleable.sp_base_view_borderWidth,
+                R.styleable.SPBaseView_borderWidth,
                 EMPTY_BORDER_VALUE
             )
         }

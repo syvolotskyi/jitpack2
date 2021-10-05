@@ -44,24 +44,24 @@ open class SPButtonIconic @JvmOverloads constructor(
         super.setButtonStyle(defStyleRes)
         binding.buttonLabel.visibility = View.GONE
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_iconic)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPButtonIconic)
 
         styleAttrs.run {
 
             bubbleColor =
-                getColor(R.styleable.sp_button_iconic_iconBackgroundColor, Color.WHITE)
+                getColor(R.styleable.SPButtonIconic_iconBackgroundColor, Color.WHITE)
             borderColor =
-                getColor(R.styleable.sp_button_iconic_borderColor, Color.WHITE)
+                getColor(R.styleable.SPButtonIconic_borderColor, Color.WHITE)
 
             distractiveIconColor =
-                getColor(R.styleable.sp_button_iconic_distractiveIconColor, Color.WHITE)
+                getColor(R.styleable.SPButtonIconic_distractiveIconColor, Color.WHITE)
             distractiveBackgroundColor =
-                getColor(R.styleable.sp_button_iconic_distractiveBorderColor, Color.WHITE)
+                getColor(R.styleable.SPButtonIconic_distractiveBorderColor, Color.WHITE)
 
             bubbleLayoutBinding.btnContainer.color = bubbleColor
 
             iconColor = getColor(
-                R.styleable.sp_button_iconic_iconColor,
+                R.styleable.SPButtonIconic_iconColor,
                 Color.WHITE
             )
 

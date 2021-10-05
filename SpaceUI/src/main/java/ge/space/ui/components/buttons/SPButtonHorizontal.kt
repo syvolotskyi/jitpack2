@@ -4,15 +4,15 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import androidx.annotation.*
+import androidx.annotation.AttrRes
+import androidx.annotation.IdRes
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import androidx.core.widget.TextViewCompat
 import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
-import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
@@ -69,21 +69,14 @@ class SPButtonHorizontal @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_base_view,
+            R.styleable.SPButtonHorizontal,
             defStyleAttr
         ) {
             setButtonStyle(
-                getResourceId(R.styleable.sp_base_view_style, R.style.SPButton_Hollow_Size48)
+                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_Hollow_Size48)
             )
-        }
-
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.sp_button_horizontal,
-            defStyleAttr
-        ) {
-            src = getResourceId(R.styleable.sp_button_horizontal_android_src, 0)
-            text = getString(R.styleable.sp_button_horizontal_android_text).orEmpty()
+            src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
+            text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
         }
     }
 
@@ -102,7 +95,6 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
         styleAttrs.run {
 
-            text = getString(R.styleable.sp_button_android_text).orEmpty()
             textAppearance =
                 getResourceId(
                     R.styleable.sp_button_view_style_android_textAppearance,
@@ -119,8 +111,8 @@ class SPButtonHorizontal @JvmOverloads constructor(
 
             val buttonHeight = getResourceId(
                 R.styleable.sp_button_view_style_buttonHeight,
-                DEFAULT_OBTAIN_VAL
-        )
+                R.dimen.dimen_p_48
+            )
             binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
             recycle()
         }
@@ -138,7 +130,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         )
     }
 
-   override fun updateText(text: String) {
+    override fun updateText(text: String) {
         binding.buttonLabel.text = text
     }
 
