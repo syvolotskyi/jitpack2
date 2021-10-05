@@ -30,12 +30,12 @@ class SPTextFieldPhone @JvmOverloads constructor(
         inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_base_view,
+            R.styleable.SPTextFieldBaseView,
             defStyleAttr
         ) {
 
             val textAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_android_textAppearance,
+                R.styleable.SPTextFieldBaseView_android_textAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
 
@@ -98,12 +98,12 @@ class SPTextFieldPhone @JvmOverloads constructor(
      */
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldInput)
 
         styleAttrs.run {
 
             val textAppearance = getResourceId(
-                R.styleable.sp_text_field_base_view_android_textAppearance,
+                R.styleable.SPTextFieldBaseView_android_textAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             updateTextAppearance(textAppearance)

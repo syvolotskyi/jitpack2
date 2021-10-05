@@ -66,14 +66,14 @@ class SPTextFieldInput @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_input,
+            R.styleable.SPTextFieldInput,
             defStyleAttr
         ) {
-            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            text = getString(R.styleable.sp_text_field_input_android_text) ?: EMPTY_STRING
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
+            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+            text = getString(R.styleable.SPTextFieldInput_android_text) ?: EMPTY_STRING
+            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+                getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
 
         }
 
@@ -125,13 +125,13 @@ class SPTextFieldInput @JvmOverloads constructor(
      */
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldInput)
 
         styleAttrs.run {
-            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
+            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+                getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
 
             recycle()
         }
