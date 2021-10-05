@@ -12,7 +12,6 @@ import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBannerLayoutBinding
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_TEXT
 import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.view_factory.SPViewData
@@ -69,15 +68,13 @@ class SPBannerView @JvmOverloads constructor(
         }
 
     init {
-        getContext().withStyledAttributes(attrs, R.styleable.sp_banner_base, defStyleAttr) {
-            bannerTitle = getString(R.styleable.sp_banner_base_banner_title).toString()
-            bannerSubtitle = getString(R.styleable.sp_banner_base_banner_subtitle).orEmpty()
-            bannerDescription = getString(R.styleable.sp_banner_base_banner_description).orEmpty()
-            titleVisibility = getBoolean(R.styleable.sp_banner_base_banner_title_is_visible, true)
-            subTitleVisibility =
-                getBoolean(R.styleable.sp_banner_base_banner_subtitle_is_visible, true)
-            descriptionVisibility =
-                getBoolean(R.styleable.sp_banner_base_banner_description_is_visible, true)
+        getContext().withStyledAttributes(attrs, R.styleable.SPBannerView, defStyleAttr) {
+            bannerTitle = getString(R.styleable.SPBannerView_banner_title).toString()
+            bannerSubtitle = getString(R.styleable.SPBannerView_banner_subtitle).orEmpty()
+            bannerDescription = getString(R.styleable.SPBannerView_banner_description).orEmpty()
+            titleVisibility = getBoolean(R.styleable.SPBannerView_banner_title_is_visible, true)
+            subTitleVisibility = getBoolean(R.styleable.SPBannerView_banner_subtitle_is_visible, true)
+            descriptionVisibility = getBoolean(R.styleable.SPBannerView_banner_description_is_visible, true)
 
             setTextAppearances()
         }
@@ -85,7 +82,7 @@ class SPBannerView @JvmOverloads constructor(
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
-        context.theme.obtainStyledAttributes(newStyle, R.styleable.sp_banner_base).run {
+        context.theme.obtainStyledAttributes(newStyle, R.styleable.SPBannerView).run {
             setTextAppearances()
         }
     }
@@ -106,20 +103,26 @@ class SPBannerView @JvmOverloads constructor(
 
     private fun TypedArray.setTextAppearances() {
         with(binding) {
-            bannerTitle.setTextStyle(getResourceId(
-                R.styleable.sp_banner_base_banner_title_text_appearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            ))
+            bannerTitle.setTextStyle(
+                getResourceId(
+                    R.styleable.SPBannerView_banner_title_text_appearance,
+                    R.style.h600_bold_caps_label_secondary
+                )
+            )
 
-            bannerSubtitle.setTextStyle(getResourceId(
-                R.styleable.sp_banner_base_banner_subtitle_text_appearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            ))
+            bannerSubtitle.setTextStyle(
+                getResourceId(
+                    R.styleable.SPBannerView_banner_subtitle_text_appearance,
+                    R.style.h600_medium_label_secondary
+                )
+            )
 
-            bannerDescription.setTextStyle(getResourceId(
-                R.styleable.sp_banner_base_banner_description_text_appearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            ))
+            bannerDescription.setTextStyle(
+                getResourceId(
+                    R.styleable.SPBannerView_banner_description_text_appearance,
+                    R.style.h700_medium_secondary
+                )
+            )
         }
     }
 
