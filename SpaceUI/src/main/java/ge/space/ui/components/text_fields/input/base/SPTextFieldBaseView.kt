@@ -119,7 +119,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPTextFieldBaseView,
+            R.styleable.sp_text_field_base_view,
             defStyleAttr
         ) {
             applyAttributes()
@@ -156,7 +156,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         with(
             context.theme.obtainStyledAttributes(
                 defStyleRes,
-                R.styleable.SPTextFieldBaseView
+                R.styleable.sp_text_field_base_view
             )
         ) {
             applyAttributes()
@@ -167,33 +167,33 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     abstract fun setTextFieldStyle(@StyleRes defStyleRes: Int)
 
     private fun TypedArray.applyAttributes() {
-        labelText = getString(R.styleable.SPTextFieldBaseView_titleText).orEmpty()
-        imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
-        inputMandatory = getBoolean(R.styleable.SPTextFieldBaseView_inputMandatory, false)
+        labelText = getString(R.styleable.sp_text_field_base_view_titleText).orEmpty()
+        imeOption = getInt(R.styleable.sp_text_field_base_view_android_imeOptions, ID_NEXT)
+        inputMandatory = getBoolean(R.styleable.sp_text_field_base_view_inputMandatory, false)
 
-        getString(R.styleable.SPTextFieldBaseView_android_hint).orEmpty()
+        getString(R.styleable.sp_text_field_base_view_android_hint).orEmpty()
             .handleAttributeAction(
                 SPBaseView.EMPTY_TEXT
             ) {
                 hint = it
             }
 
-        descriptionText = getString(R.styleable.SPTextFieldBaseView_descriptionText).orEmpty()
+        descriptionText = getString(R.styleable.sp_text_field_base_view_descriptionText).orEmpty()
 
         textAppearance = getResourceId(
-            R.styleable.SPTextFieldBaseView_android_textAppearance,
+            R.styleable.sp_text_field_base_view_android_textAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
 
         val descTextAppearance = getResourceId(
-            R.styleable.SPTextFieldBaseView_descriptionTextAppearance,
+            R.styleable.sp_text_field_base_view_descriptionTextAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
 
         updateDescriptionTextAppearance(descTextAppearance)
 
         val labelTextAppearance = getResourceId(
-            R.styleable.SPTextFieldBaseView_labelTextAppearance,
+            R.styleable.sp_text_field_base_view_labelTextAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
 

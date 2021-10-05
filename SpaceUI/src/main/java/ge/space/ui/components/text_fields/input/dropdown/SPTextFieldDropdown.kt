@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.widget.TextViewCompat
+import androidx.fragment.app.FragmentActivity
 import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.setWidth
@@ -14,6 +16,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.extension.EMPTY_STRING
 
@@ -116,11 +119,11 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
     override fun setTextFieldStyle(defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldDropdown)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_dropdown)
 
         styleAttrs.run {
             val inflateId = getInt(
-                R.styleable.SPTextFieldDropdown_inflateType,
+                R.styleable.sp_text_field_dropdown_inflateType,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             inflateType = InflateType.values()[inflateId]
