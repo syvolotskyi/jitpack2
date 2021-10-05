@@ -71,16 +71,16 @@ class SPTextFieldNumber @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_currency,
+            R.styleable.SPTextFieldNumber,
             defStyleAttr
         ) {
-            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            currency = getString(R.styleable.SPTextFieldNumber_currency).orEmpty()
             distractiveTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                R.styleable.SPTextFieldNumber_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             currencyTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                R.styleable.SPTextFieldNumber_currencyTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
         }
@@ -119,16 +119,16 @@ class SPTextFieldNumber @JvmOverloads constructor(
 
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_currency)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldNumber)
 
         styleAttrs.run {
-            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            currency = getString(R.styleable.SPTextFieldNumber_currency).orEmpty()
             distractiveTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                R.styleable.SPTextFieldNumber_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             currencyTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                R.styleable.SPTextFieldNumber_currencyTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             recycle()
