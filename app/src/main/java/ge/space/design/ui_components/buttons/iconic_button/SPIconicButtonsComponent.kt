@@ -28,7 +28,7 @@ class SPIconicButtonsComponent : ShowCaseComponent {
                 val resId = buttonSample.resId
 
                 val itemBinding = SpItemIconicButtonsShowcaseBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                    environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
                     true
                 )
