@@ -15,6 +15,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.util.extension.handleAttributeAction
 
 /**
  * Button view extended from [SPButtonBaseView] that allows to change its configuration.
@@ -25,7 +26,8 @@ import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 class SPButtonHorizontal @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPButton_Horizontal_Size48
 ) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
@@ -69,14 +71,26 @@ class SPButtonHorizontal @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
+            R.styleable.SPBaseView,
+            defStyleAttr
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+        getContext().withStyledAttributes(
+            attrs,
             R.styleable.SPButtonHorizontal,
             defStyleAttr
         ) {
-            setButtonStyle(
-                getResourceId(R.styleable.SPBaseView_style, R.style.SPButton_Hollow_Size48)
-            )
             src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
-            text = getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
+            getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
+                .handleAttributeAction(EMPTY_TEXT) {
+                    text = it
+                }
         }
     }
 
