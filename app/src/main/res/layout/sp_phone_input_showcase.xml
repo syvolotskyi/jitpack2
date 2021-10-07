@@ -20,7 +20,6 @@
 
     <ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
         android:id="@+id/phoneInputSecond"
-        style="@style/SPEditText.Masked"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_16"

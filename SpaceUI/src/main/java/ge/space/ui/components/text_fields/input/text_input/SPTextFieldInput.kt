@@ -24,7 +24,8 @@ import ge.space.ui.util.extension.EMPTY_STRING
 class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Input
 ) : SPTextFieldBaseView<SpTextFieldTextLayoutBinding>(context, attrs, defStyleAttr) {
 
     var textLength: Int = DEFAULT_TEXT_LENGTH
@@ -64,6 +65,19 @@ class SPTextFieldInput @JvmOverloads constructor(
         }
 
     init {
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPTextFieldBaseView,
+            defStyleAttr
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPTextFieldBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextFieldInput,

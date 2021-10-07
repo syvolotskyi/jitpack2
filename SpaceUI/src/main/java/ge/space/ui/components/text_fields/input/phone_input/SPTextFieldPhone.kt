@@ -23,24 +23,26 @@ import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 class SPTextFieldPhone @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPEditText_Masked
 ) : SPTextFieldBaseView<SpTextFieldPhoneLayoutBinding>(context, attrs, defStyleAttr) {
 
     init {
-        inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextFieldBaseView,
             defStyleAttr
         ) {
-
-            val textAppearance = getResourceId(
-                R.styleable.SPTextFieldBaseView_android_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPTextFieldBaseView_style,
+                    defStyleRes
+                )
             )
-
-            updateTextAppearance(textAppearance)
         }
+
+        inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
+
 
     }
 
@@ -104,7 +106,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
             val textAppearance = getResourceId(
                 R.styleable.SPTextFieldBaseView_android_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
+                R.style.h600_bold_text_field_phone
             )
             updateTextAppearance(textAppearance)
             recycle()

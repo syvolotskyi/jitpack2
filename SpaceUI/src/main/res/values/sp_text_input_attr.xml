@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPEditTextMasked">
+        <attr name="style" />
         <attr name="mask" format="string" />
     </declare-styleable>
 
     <declare-styleable name="SPTextFieldBaseView">
+        <attr name="style" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
@@ -18,9 +20,8 @@
 
     <declare-styleable name="SPTextFieldInput">
         <attr name="canRemove" format="boolean" />
-        <attr name="android:textAppearance" format="reference" />
-        <attr name="android:text" format="string|reference" />
         <attr name="drawableLeft" format="reference" />
+        <attr name="android:text" format="string|reference" />
         <attr name="android:drawableEnd" format="reference" />
         <attr name="inputTextLength" format="integer" />
     </declare-styleable>
@@ -29,12 +30,10 @@
         <attr name="currency" format="reference" />
         <attr name="distractiveTextAppearance"/>
         <attr name="currencyTextAppearance" format="reference" />
-        <attr name="android:textAppearance" format="reference" />
         <attr name="android:drawableEnd" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="SPTextFieldDropdown">
-        <attr name="android:textAppearance" format="reference" />
         <attr name="inflateType" format="enum">
             <enum name="none" value="0" />
             <enum name="withIcon" value="1" />

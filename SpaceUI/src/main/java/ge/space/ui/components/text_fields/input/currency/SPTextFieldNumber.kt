@@ -19,7 +19,8 @@ import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 class SPTextFieldNumber @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Number
 ) : SPTextFieldBaseView<SpTextFieldTextCurrencyBinding>(context, attrs, defStyleAttr) {
 
     var textLength: Int = DEFAULT_TEXT_LENGTH
@@ -69,6 +70,19 @@ class SPTextFieldNumber @JvmOverloads constructor(
         }
 
     init {
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPTextFieldBaseView,
+            defStyleAttr
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPTextFieldBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextFieldNumber,
