@@ -82,7 +82,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_secondary,
+            R.styleable.SPSecondaryChip,
             defStyleAttr
         ) { withSecondaryChipStyledResource() }
     }
@@ -110,7 +110,7 @@ class SPSecondaryChip @JvmOverloads constructor(
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_secondary)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPSecondaryChip)
 
         styleAttrs.run {
             withSecondaryChipStyledResource()
@@ -118,10 +118,10 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withSecondaryChipStyledResource() {
-        hasBorder = getBoolean(R.styleable.sp_chip_secondary_hasBorder, false)
+        hasBorder = getBoolean(R.styleable.SPSecondaryChip_hasBorder, false)
         placeholderSize =
             SPPlaceholderSize.values()[getInt(
-                R.styleable.sp_chip_secondary_placeholder_size,
+                R.styleable.SPSecondaryChip_placeholder_size,
                 DEFAULT_OBTAIN_VAL
             )]
 

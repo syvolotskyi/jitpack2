@@ -39,11 +39,11 @@ class SPPrimaryChip @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_primary,
+            R.styleable.SPPrimaryChip,
             defStyleAttr
         ) {
             primaryChipImage = getResourceId(
-                R.styleable.sp_chip_primary_chipIcon,
+                R.styleable.SPPrimaryChip_chipIcon,
                 R.drawable.img_primary_chip
             )
         }
@@ -51,11 +51,11 @@ class SPPrimaryChip @JvmOverloads constructor(
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_primary)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPPrimaryChip)
 
         styleAttrs.run {
             primaryChipImage = getResourceId(
-                R.styleable.sp_chip_primary_chipIcon,
+                R.styleable.SPPrimaryChip_chipIcon,
                 R.drawable.img_primary_chip
             )
         }

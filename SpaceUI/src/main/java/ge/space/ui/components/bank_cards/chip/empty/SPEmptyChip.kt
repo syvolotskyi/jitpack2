@@ -51,7 +51,7 @@ class SPEmptyChip @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_empty,
+            R.styleable.SPEmptyChip,
             defStyleAttr
         ) { withEmptyChipStyledResource() }
     }
@@ -63,14 +63,14 @@ class SPEmptyChip @JvmOverloads constructor(
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_empty)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPEmptyChip)
 
         styleAttrs.run { withEmptyChipStyledResource() }
     }
 
     private fun TypedArray.withEmptyChipStyledResource() {
         val styleId = getInt(
-            R.styleable.sp_chip_empty_emptyChipAppearance,
+            R.styleable.SPEmptyChip_emptyChipAppearance,
             DEFAULT_OBTAIN_VAL
         )
         emptyViewStyle = SPEmptyChipStyle.values()[styleId]

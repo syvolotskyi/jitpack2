@@ -79,7 +79,7 @@ class SPDigitalChip @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_digital,
+            R.styleable.SPDigitalChip,
             defStyleAttr
         ) { withDigitalChipStyledResource() }
 
@@ -88,7 +88,7 @@ class SPDigitalChip @JvmOverloads constructor(
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_digital)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPDigitalChip)
 
         styleAttrs.run {
             withDigitalChipStyledResource()
@@ -97,13 +97,13 @@ class SPDigitalChip @JvmOverloads constructor(
 
     private fun TypedArray.withDigitalChipStyledResource() {
         paymentLogoMargin = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_paymentLogoMargin, DEFAULT_OBTAIN_VAL
+            R.styleable.SPDigitalChip_paymentLogoMargin, DEFAULT_OBTAIN_VAL
         )
         brandLogoSizeHeight = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_brandLogoHeight, DEFAULT_OBTAIN_VAL
+            R.styleable.SPDigitalChip_brandLogoHeight, DEFAULT_OBTAIN_VAL
         )
         paymentSystemHeightSize = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_paymentSystemHeight, DEFAULT_OBTAIN_VAL
+            R.styleable.SPDigitalChip_paymentSystemHeight, DEFAULT_OBTAIN_VAL
         )
     }
 

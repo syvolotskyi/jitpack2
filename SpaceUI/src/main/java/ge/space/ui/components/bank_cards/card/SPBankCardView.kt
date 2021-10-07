@@ -217,7 +217,7 @@ class SPBankCardView @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_bank_card_view,
+            R.styleable.SPBankCardView,
             defStyleAttr
         ) {
             setBankCardTextAppearances()
@@ -227,7 +227,7 @@ class SPBankCardView @JvmOverloads constructor(
     private fun TypedArray.setBankCardTextAppearances() {
         nonAvailableBankCardBinding.tvCardStatus.setTextStyle(
             getResourceId(
-                R.styleable.sp_bank_card_view_cardStatusTextAppearance,
+                R.styleable.SPBankCardView_cardStatusTextAppearance,
                 DEFAULT_OBTAIN_VAL
             )
         )
@@ -235,28 +235,28 @@ class SPBankCardView @JvmOverloads constructor(
         with(binding.lytBankCardHeader) {
             tvAmount.setTextStyle(
                 getResourceId(
-                    R.styleable.sp_bank_card_view_cardAmountTextAppearance,
+                    R.styleable.SPBankCardView_cardAmountTextAppearance,
                     DEFAULT_OBTAIN_VAL
                 )
             )
 
             tvBankName.setTextStyle(
                 getResourceId(
-                    R.styleable.sp_bank_card_view_cardBankNameTextAppearance,
+                    R.styleable.SPBankCardView_cardBankNameTextAppearance,
                     DEFAULT_OBTAIN_VAL
                 )
             )
 
             tvBankCardType.setTextStyle(
                 getResourceId(
-                    R.styleable.sp_bank_card_view_cardTypeTextAppearance,
+                    R.styleable.SPBankCardView_cardTypeTextAppearance,
                     DEFAULT_OBTAIN_VAL
                 )
             )
 
             tvBalanceTitle.setTextStyle(
                 getResourceId(
-                    R.styleable.sp_bank_card_view_cardBalanceTextAppearance,
+                    R.styleable.SPBankCardView_cardBalanceTextAppearance,
                     DEFAULT_OBTAIN_VAL
                 )
             )
@@ -265,14 +265,14 @@ class SPBankCardView @JvmOverloads constructor(
         with(binding.lytBankCardBody) {
             tvCreditTitle.setTextStyle(
                 getResourceId(
-                    R.styleable.sp_bank_card_view_cardCreditTitleTextAppearance,
+                    R.styleable.SPBankCardView_cardCreditTitleTextAppearance,
                     DEFAULT_OBTAIN_VAL
                 )
             )
 
             tvAccountNumber.setTextStyle(
                 getResourceId(
-                    R.styleable.sp_bank_card_view_cardAccountNumberTextAppearance,
+                    R.styleable.SPBankCardView_cardAccountNumberTextAppearance,
                     DEFAULT_OBTAIN_VAL
                 )
             )

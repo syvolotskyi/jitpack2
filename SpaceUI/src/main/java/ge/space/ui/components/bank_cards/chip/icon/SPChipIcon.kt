@@ -97,17 +97,17 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun TypedArray.withStyledResource() {
         icon = getResourceId(
-            R.styleable.sp_chip_icon_chipIcon,
+            R.styleable.SPChipIcon_chipIcon,
             R.drawable.ic_bank_24_regular
         )
         iconStyle = SPChipIconStyle.values()[
-                getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
+                getInt(R.styleable.SPChipIcon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
         ]
     }
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_icon)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPChipIcon)
 
         styleAttrs.run { withStyledResource() }
         handleCardAppearance()
