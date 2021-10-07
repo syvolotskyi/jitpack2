@@ -30,7 +30,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1" />
 
-                <ge.space.ui.components.buttons.SPButtonHorizontal
+                <ge.space.ui.components.buttons.SPButton
                     android:id="@+id/button2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
