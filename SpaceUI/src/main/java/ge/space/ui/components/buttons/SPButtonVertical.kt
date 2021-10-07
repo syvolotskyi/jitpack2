@@ -18,6 +18,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.util.extension.handleAttributeAction
 
 /**
  * Button view extended from [LinearLayout] that allows to change its configuration.
@@ -30,7 +31,8 @@ import ge.space.ui.components.buttons.base.SPButtonBaseView
 open class SPButtonVertical @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPButton_Vertical_Size48
 ) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
@@ -79,10 +81,14 @@ open class SPButtonVertical @JvmOverloads constructor(
         ) {
             setButtonStyle(
                 getResourceId(
-                    R.styleable.SPBaseView_style, R.style.SPButton_Vertical_Size48
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
                 )
             )
-            getString(R.styleable.SPButtonVertical_android_text)?.let { text = it }
+            getString(R.styleable.SPButtonVertical_android_text).orEmpty()
+                .handleAttributeAction(EMPTY_TEXT) {
+                    text = it
+                }
             isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
             src = getResourceId(R.styleable.SPButtonVertical_android_src, R.drawable.ic_plus_16_regular)
         }
@@ -117,6 +123,8 @@ open class SPButtonVertical @JvmOverloads constructor(
             )
             distractiveColor =
                 getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
+
+            color = Color.TRANSPARENT
 
             updateTextAppearance(textAppearance)
             handleImageSize(resources.getDimensionPixelSize(buttonHeight))

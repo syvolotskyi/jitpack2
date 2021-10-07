@@ -1,5 +1,6 @@
 package ge.space.ui.components.buttons
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
@@ -39,7 +40,8 @@ import ge.space.ui.util.extension.handleAttributeAction
 class SPButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPButton_Primary_Size48
 ) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
@@ -94,7 +96,7 @@ class SPButton @JvmOverloads constructor(
             setViewStyle(
                 getResourceId(
                     R.styleable.SPBaseView_style,
-                    R.style.SPButton_BaseView_Size40
+                    defStyleRes
                 )
             )
         }

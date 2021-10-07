@@ -23,28 +23,19 @@
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
-
                 <ge.space.ui.components.buttons.SPButton
                     android:id="@+id/button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_plus_16_regular"
-                    android:text="Button"
-                    app:directionIcon="left"
-                    app:style="@style/SPButton.Primary_Size48" />
+                    android:layout_weight="1" />
 
-                <ge.space.ui.components.buttons.SPButton
+                <ge.space.ui.components.buttons.SPButtonHorizontal
                     android:id="@+id/button2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_plus_16_regular"
-                    android:text="Button"
-                    app:directionIcon="right"
-                    app:style="@style/SPButton.Primary_Size56" />
+                    android:layout_weight="1"/>
 
             </LinearLayout>
 
