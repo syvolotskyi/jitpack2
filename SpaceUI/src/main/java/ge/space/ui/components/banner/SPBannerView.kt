@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setTextStyle
@@ -20,7 +21,9 @@ import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 class SPBannerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    defStyleRes: Int = R.style.SPBanner_Base,
+
 ) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     private val binding = SpBannerLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -67,14 +70,22 @@ class SPBannerView @JvmOverloads constructor(
             binding.bannerDescription.visibility = if (value) View.VISIBLE else View.GONE
         }
 
+    @DrawableRes
+    var bannerImage: Int? = null
+        set(value) {
+            field = value
+            setBannerResource(SPViewData.SPImageResourcesData(value!!))
+        }
+
     init {
-        getContext().withStyledAttributes(attrs, R.styleable.SPBannerView, defStyleAttr) {
+        getContext().withStyledAttributes(attrs, R.styleable.SPBannerView, defStyleAttr, defStyleRes) {
             bannerTitle = getString(R.styleable.SPBannerView_banner_title).toString()
             bannerSubtitle = getString(R.styleable.SPBannerView_banner_subtitle).orEmpty()
             bannerDescription = getString(R.styleable.SPBannerView_banner_description).orEmpty()
             titleVisibility = getBoolean(R.styleable.SPBannerView_banner_title_is_visible, true)
             subTitleVisibility = getBoolean(R.styleable.SPBannerView_banner_subtitle_is_visible, true)
             descriptionVisibility = getBoolean(R.styleable.SPBannerView_banner_description_is_visible, true)
+            bannerImage = getResourceId(R.styleable.SPBannerView_banner_image, -1)
 
             setTextAppearances()
         }

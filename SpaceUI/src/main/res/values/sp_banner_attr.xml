@@ -15,6 +15,8 @@
         <attr name="banner_description_is_visible" format="boolean" />
         <attr name="banner_description_text_appearance" format="reference" />
 
+        <attr name="banner_image" format="integer" />
+
     </declare-styleable>
 
 </resources>
