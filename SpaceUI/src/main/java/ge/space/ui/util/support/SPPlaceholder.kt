@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth

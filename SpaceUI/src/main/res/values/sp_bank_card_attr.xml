@@ -24,9 +24,6 @@
         <attr name="cardAccountNumberTextAppearance" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="SPNewCreditCard">
-        <attr name="cardSize" />
-    </declare-styleable>
 
     <declare-styleable name="SPBaseChip">
         <attr name="chipWidth" />
@@ -62,8 +59,12 @@
         <attr name="chipIconAppearance" />
     </declare-styleable>
 
-    <declare-styleable name="sp_credit_card_style">
+    <declare-styleable name="SPNewCreditCard">
         <attr name="creditCardStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_credit_card">
+        <attr name="cardSize" />
     </declare-styleable>
 
     <declare-styleable name="sp_selectable_chip_item">

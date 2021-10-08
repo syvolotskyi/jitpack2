@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
@@ -35,6 +36,7 @@ class SPChipIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPBankCardView_Chip
 ) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
@@ -86,12 +88,17 @@ class SPChipIcon @JvmOverloads constructor(
         SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
-        context.withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_view_style,
+            R.styleable.SPBaseView,
             defStyleAttr
         ) {
-            withStyledResource()
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
         }
     }
 

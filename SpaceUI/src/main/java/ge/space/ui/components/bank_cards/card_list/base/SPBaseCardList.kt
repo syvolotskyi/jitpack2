@@ -16,7 +16,8 @@ import ge.space.ui.base.SPBaseView
 abstract class SPBaseCardList<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr) {
 
     /**
@@ -41,7 +42,7 @@ abstract class SPBaseCardList<VB : ViewBinding> @JvmOverloads constructor(
         ) {
             val style = getResourceId(
                 R.styleable.SPBaseView_style,
-                DEFAULT_OBTAIN_VAL
+                defStyleRes
             )
             handleInnerStyle(style)
         }

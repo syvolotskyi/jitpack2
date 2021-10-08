@@ -47,7 +47,7 @@ class SPNewCreditCard @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_credit_card_style,
+            R.styleable.SPNewCreditCard,
             defStyleAttr
         ) {
             withStyledResource()
@@ -56,7 +56,7 @@ class SPNewCreditCard @JvmOverloads constructor(
 
     private fun TypedArray.withStyledResource() {
         val styleRes = getResourceId(
-            R.styleable.sp_credit_card_style_creditCardStyle,
+            R.styleable.SPNewCreditCard_creditCardStyle,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
         if (styleRes > SPBaseView.DEFAULT_OBTAIN_VAL) {
@@ -66,11 +66,11 @@ class SPNewCreditCard @JvmOverloads constructor(
 
     private fun handleAttributesByStyleRes(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPNewCreditCard)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_credit_card)
 
         styleAttrs.run {
             size = SPChipSize.values()[
-                getInt(R.styleable.SPNewCreditCard_cardSize, SPBaseView.DEFAULT_OBTAIN_VAL)
+                getInt(R.styleable.sp_credit_card_cardSize, SPBaseView.DEFAULT_OBTAIN_VAL)
             ]
         }
     }

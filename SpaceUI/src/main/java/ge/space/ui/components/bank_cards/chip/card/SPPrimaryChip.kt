@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
@@ -21,6 +22,7 @@ class SPPrimaryChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPBankCardView_Chip
 ) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
@@ -37,14 +39,16 @@ class SPPrimaryChip @JvmOverloads constructor(
         }
 
     init {
-        context.withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPPrimaryChip,
+            R.styleable.SPBaseView,
             defStyleAttr
         ) {
-            primaryChipImage = getResourceId(
-                R.styleable.SPPrimaryChip_chipIcon,
-                R.drawable.img_primary_chip
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
             )
         }
     }
