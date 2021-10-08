@@ -24,7 +24,8 @@ import ge.space.ui.util.extension.EMPTY_STRING
 class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Input
 ) : SPTextFieldBaseView<SpTextFieldTextLayoutBinding>(context, attrs, defStyleAttr) {
 
     var textLength: Int = DEFAULT_TEXT_LENGTH
@@ -66,14 +67,27 @@ class SPTextFieldInput @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_input,
+            R.styleable.SPTextFieldBaseView,
             defStyleAttr
         ) {
-            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            text = getString(R.styleable.sp_text_field_input_android_text) ?: EMPTY_STRING
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPTextFieldBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPTextFieldInput,
+            defStyleAttr
+        ) {
+            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+            text = getString(R.styleable.SPTextFieldInput_android_text) ?: EMPTY_STRING
+            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+                getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
 
         }
 
@@ -125,13 +139,13 @@ class SPTextFieldInput @JvmOverloads constructor(
      */
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_input)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldInput)
 
         styleAttrs.run {
-            canRemove = getBoolean(R.styleable.sp_text_field_input_canRemove, false)
-            drawableStart = getResourceId(R.styleable.sp_text_field_input_drawableLeft, DEFAULT_INT)
+            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
-                getInt(R.styleable.sp_text_field_input_inputTextLength, DEFAULT_TEXT_LENGTH)
+                getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
 
             recycle()
         }

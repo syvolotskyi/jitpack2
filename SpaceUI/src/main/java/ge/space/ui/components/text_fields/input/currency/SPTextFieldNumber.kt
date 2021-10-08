@@ -19,7 +19,8 @@ import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 class SPTextFieldNumber @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Number
 ) : SPTextFieldBaseView<SpTextFieldTextCurrencyBinding>(context, attrs, defStyleAttr) {
 
     var textLength: Int = DEFAULT_TEXT_LENGTH
@@ -71,16 +72,29 @@ class SPTextFieldNumber @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_text_field_currency,
+            R.styleable.SPTextFieldBaseView,
             defStyleAttr
         ) {
-            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPTextFieldBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPTextFieldNumber,
+            defStyleAttr
+        ) {
+            currency = getString(R.styleable.SPTextFieldNumber_currency).orEmpty()
             distractiveTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                R.styleable.SPTextFieldNumber_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             currencyTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                R.styleable.SPTextFieldNumber_currencyTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
         }
@@ -119,16 +133,16 @@ class SPTextFieldNumber @JvmOverloads constructor(
 
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_text_field_currency)
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldNumber)
 
         styleAttrs.run {
-            currency = getString(R.styleable.sp_text_field_currency_currency).orEmpty()
+            currency = getString(R.styleable.SPTextFieldNumber_currency).orEmpty()
             distractiveTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_distractiveTextAppearance,
+                R.styleable.SPTextFieldNumber_distractiveTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             currencyTextAppearance = getResourceId(
-                R.styleable.sp_text_field_currency_currencyTextAppearance,
+                R.styleable.SPTextFieldNumber_currencyTextAppearance,
                 SPBaseView.DEFAULT_OBTAIN_VAL
             )
             recycle()

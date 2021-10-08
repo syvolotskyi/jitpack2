@@ -25,7 +25,6 @@
 
     <ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
         android:id="@+id/tfNumber"
-        style="@style/SPTextField.Number"
         android:layout_width="@dimen/dimen_p_100"
         android:layout_height="wrap_content"
         android:enabled="false"
@@ -52,7 +51,6 @@
 
     <ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
         android:id="@+id/tfNumberSecond"
-        style="@style/SPTextField.Number"
         android:layout_width="@dimen/dimen_p_100"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

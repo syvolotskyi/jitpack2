@@ -45,6 +45,10 @@ class SPDialogBottomVerticalButton @JvmOverloads constructor(
             binding.btnDialog.text = value
         }
 
+    override fun setOnClickListener(l: OnClickListener?) {
+        binding.btnDialog.setOnClickListener(l)
+    }
+
     /**
      * Applies a button type. [BottomButtonType.Default] by default.
      *

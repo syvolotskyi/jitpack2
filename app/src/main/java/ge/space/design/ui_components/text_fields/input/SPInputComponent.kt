@@ -37,7 +37,7 @@ class SPInputComponent : ShowCaseComponent {
 
                 val resId = buttonSample.resId
                 val itemBinding = SpItemListTextFieldBinding.inflate(
-                    environment.requireThemedLayoutInflater(resId),
+                    environment.requireLayoutInflater(),
                     layoutBinding.fieldsLayout,
                     true
                 )
