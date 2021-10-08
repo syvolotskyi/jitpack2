@@ -25,7 +25,6 @@ abstract class SPBannerBaseFactory : SPComponentFactory {
         setAttributes()
 
         with(binding) {
-            bannerView.setViewStyle(R.style.SPBanner_Base)
 
             changeResourceButton.setOnClickListener { v: View ->
                 changeBannerResource(v)
