@@ -46,7 +46,6 @@ class SPDialogBottomVerticalButton @JvmOverloads constructor(
         }
 
     override fun setOnClickListener(l: OnClickListener?) {
-        super.setOnClickListener(l)
         binding.btnDialog.setOnClickListener(l)
     }
 

@@ -71,7 +71,7 @@ class SPDialogBottomButtonLayout @JvmOverloads constructor(
             val dialogButton = SPDialogBottomVerticalButton(context)
             dialogButton.buttonType = button.type
             dialogButton.text = button.label
-            dialogButton.setOnClickListener {
+            dialogButton.onClick {
                 button.clickEvent?.invoke()
             }
 

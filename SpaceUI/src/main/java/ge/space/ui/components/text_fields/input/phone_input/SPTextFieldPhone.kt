@@ -43,7 +43,6 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
         inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
 
-
     }
 
     override var text: String = SPBaseView.EMPTY_TEXT
