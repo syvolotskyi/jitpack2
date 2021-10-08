@@ -58,7 +58,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
     init {
         context.withStyledAttributes(
             attrs,
-            R.styleable.sp_chip,
+            R.styleable.SPBaseChip,
             defStyleAttr
         ) {
             withStyledResource()
@@ -67,17 +67,17 @@ abstract class SPBaseChip @JvmOverloads constructor(
 
     override fun setStyle(defStyleRes: Int) {
         super.setStyle(defStyleRes)
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_chip)
+        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBaseChip)
 
         styleAttrs.run { withStyledResource() }
     }
 
     private fun TypedArray.withStyledResource() {
         chipHeight = getDimensionPixelSize(
-            R.styleable.sp_chip_chipHeight, DEFAULT_OBTAIN_VAL
+            R.styleable.SPBaseChip_chipHeight, DEFAULT_OBTAIN_VAL
         )
         chipWidth = getDimensionPixelSize(
-            R.styleable.sp_chip_chipWidth, DEFAULT_OBTAIN_VAL
+            R.styleable.SPBaseChip_chipWidth, DEFAULT_OBTAIN_VAL
         )
     }
 

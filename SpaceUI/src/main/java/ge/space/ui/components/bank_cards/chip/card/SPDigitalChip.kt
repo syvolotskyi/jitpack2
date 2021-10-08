@@ -5,6 +5,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.layoutParams
 import ge.space.extensions.setHeight
@@ -27,6 +28,7 @@ class SPDigitalChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPBankCardView_ChipDigital
 ) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
@@ -36,7 +38,7 @@ class SPDigitalChip @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.vGradient.gradient = value
+            handleCardBackground()
         }
 
     /**
@@ -77,18 +79,26 @@ class SPDigitalChip @JvmOverloads constructor(
         SpDigitalChipLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
-        context.withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_digital,
+            R.styleable.SPBaseView,
             defStyleAttr
-        ) { withDigitalChipStyledResource() }
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
 
         handleChipSize()
+        handleCardBackground()
     }
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_digital)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPDigitalChip)
 
         styleAttrs.run {
             withDigitalChipStyledResource()
@@ -97,13 +107,13 @@ class SPDigitalChip @JvmOverloads constructor(
 
     private fun TypedArray.withDigitalChipStyledResource() {
         paymentLogoMargin = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_paymentLogoMargin, DEFAULT_OBTAIN_VAL
+            R.styleable.SPDigitalChip_paymentLogoMargin, DEFAULT_OBTAIN_VAL
         )
         brandLogoSizeHeight = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_brandLogoHeight, DEFAULT_OBTAIN_VAL
+            R.styleable.SPDigitalChip_brandLogoHeight, DEFAULT_OBTAIN_VAL
         )
         paymentSystemHeightSize = getDimensionPixelSize(
-            R.styleable.sp_chip_digital_paymentSystemHeight, DEFAULT_OBTAIN_VAL
+            R.styleable.SPDigitalChip_paymentSystemHeight, DEFAULT_OBTAIN_VAL
         )
     }
 
@@ -116,6 +126,10 @@ class SPDigitalChip @JvmOverloads constructor(
             vGradient.setWidth(chipWidth)
             vGradient.setHeight(chipHeight)
         }
+    }
+
+    fun handleCardBackground() {
+        binding.vGradient.gradient = cardBackground
     }
 
     private fun changePaymentSystemMargins() {

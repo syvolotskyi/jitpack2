@@ -14,7 +14,7 @@
 
     <attr name="chipIcon" format="reference" />
 
-    <declare-styleable name="sp_bank_card_view">
+    <declare-styleable name="SPBankCardView">
         <attr name="cardStatusTextAppearance" format="reference" />
         <attr name="cardAmountTextAppearance" format="reference" />
         <attr name="cardBankNameTextAppearance" format="reference" />
@@ -24,46 +24,47 @@
         <attr name="cardAccountNumberTextAppearance" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="sp_credit_card">
-        <attr name="cardSize" />
-    </declare-styleable>
 
-    <declare-styleable name="sp_chip">
+    <declare-styleable name="SPBaseChip">
         <attr name="chipWidth" />
         <attr name="chipHeight" />
     </declare-styleable>
 
-    <declare-styleable name="sp_chip_primary">
+    <declare-styleable name="SPPrimaryChip">
         <attr name="chipIcon" />
     </declare-styleable>
 
-    <declare-styleable name="sp_chip_empty">
+    <declare-styleable name="SPEmptyChip">
         <attr name="emptyChipAppearance" format="enum">
             <enum name="white" value="0" />
             <enum name="dark" value="1" />
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="sp_chip_digital">
+    <declare-styleable name="SPDigitalChip">
         <attr name="brandLogoHeight" />
         <attr name="paymentSystemHeight" format="dimension|reference"/>
         <attr name="paymentLogoMargin" format="dimension|reference"/>
         <attr name="chipHeight" />
     </declare-styleable>
 
-    <declare-styleable name="sp_chip_secondary">
+    <declare-styleable name="SPSecondaryChip">
         <attr name="placeholder_size" />
         <attr name="hasBorder" format="boolean"/>
     </declare-styleable>
 
-    <declare-styleable name="sp_chip_icon">
+    <declare-styleable name="SPChipIcon">
         <attr name="cardSize" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>
 
-    <declare-styleable name="sp_credit_card_style">
+    <declare-styleable name="SPNewCreditCard">
         <attr name="creditCardStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="sp_credit_card">
+        <attr name="cardSize" />
     </declare-styleable>
 
     <declare-styleable name="sp_selectable_chip_item">

@@ -5,6 +5,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
@@ -26,6 +27,7 @@ class SPEmptyChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPBankCardView_ChipEmpty_Dark
 ) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
@@ -49,11 +51,18 @@ class SPEmptyChip @JvmOverloads constructor(
     }
 
     init {
-        context.withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_empty,
+            R.styleable.SPBaseView,
             defStyleAttr
-        ) { withEmptyChipStyledResource() }
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
     }
 
     override fun handleChipSize() {
@@ -63,14 +72,14 @@ class SPEmptyChip @JvmOverloads constructor(
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_empty)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPEmptyChip)
 
         styleAttrs.run { withEmptyChipStyledResource() }
     }
 
     private fun TypedArray.withEmptyChipStyledResource() {
         val styleId = getInt(
-            R.styleable.sp_chip_empty_emptyChipAppearance,
+            R.styleable.SPEmptyChip_emptyChipAppearance,
             DEFAULT_OBTAIN_VAL
         )
         emptyViewStyle = SPEmptyChipStyle.values()[styleId]

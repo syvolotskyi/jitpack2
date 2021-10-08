@@ -30,8 +30,8 @@ sealed class SPBankCardGradient {
      * @property degrees applies an angle
      */
     data class SPLinear(
-        val colors: ArrayList<Int> = arrayListOf(Color.WHITE, Color.WHITE),
-        val degrees: Float = 0f
+        val colors: ArrayList<Int> = arrayListOf(Color.WHITE, Color.BLACK),
+        val degrees: Float = 90f
     ) : SPBankCardGradient()
 
     /**

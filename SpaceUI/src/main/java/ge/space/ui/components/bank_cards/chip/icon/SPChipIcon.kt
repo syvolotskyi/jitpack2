@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
+import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
@@ -35,6 +36,7 @@ class SPChipIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPBankCardView_Chip
 ) : SPBaseChip(context, attrs, defStyleAttr) {
 
     /**
@@ -86,28 +88,33 @@ class SPChipIcon @JvmOverloads constructor(
         SpChipIconLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
-        context.withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_view_style,
+            R.styleable.SPBaseView,
             defStyleAttr
         ) {
-            withStyledResource()
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
         }
     }
 
     private fun TypedArray.withStyledResource() {
         icon = getResourceId(
-            R.styleable.sp_chip_icon_chipIcon,
+            R.styleable.SPChipIcon_chipIcon,
             R.drawable.ic_bank_24_regular
         )
         iconStyle = SPChipIconStyle.values()[
-                getInt(R.styleable.sp_chip_icon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
+                getInt(R.styleable.SPChipIcon_chipIconAppearance, DEFAULT_OBTAIN_VAL)
         ]
     }
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_icon)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPChipIcon)
 
         styleAttrs.run { withStyledResource() }
         handleCardAppearance()

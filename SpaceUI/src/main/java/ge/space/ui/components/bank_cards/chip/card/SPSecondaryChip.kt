@@ -1,13 +1,16 @@
 package ge.space.ui.components.bank_cards.chip.card
 
 import android.content.Context
+import android.content.res.Resources
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
+import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.isVisible
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
@@ -16,6 +19,7 @@ import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.view_factory.SPViewData
+
 
 /**
  * Allows to show chips with both a bank logo and a payment system icon on
@@ -29,6 +33,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPBankCardView_ChipSecondary
 ) : SPBaseChip(context, attrs, defStyleAttr) {
     /**
      * Binds a view
@@ -46,7 +51,7 @@ class SPSecondaryChip @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.border.isVisible = value
+            handleBorder()
         }
 
     /**
@@ -80,11 +85,18 @@ class SPSecondaryChip @JvmOverloads constructor(
         }
 
     init {
-        context.withStyledAttributes(
+        getContext().withStyledAttributes(
             attrs,
-            R.styleable.sp_chip_secondary,
+            R.styleable.SPBaseView,
             defStyleAttr
-        ) { withSecondaryChipStyledResource() }
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
     }
 
 
@@ -110,7 +122,7 @@ class SPSecondaryChip @JvmOverloads constructor(
 
     override fun setChipStyle(styleRes: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.sp_chip_secondary)
+            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPSecondaryChip)
 
         styleAttrs.run {
             withSecondaryChipStyledResource()
@@ -118,15 +130,26 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withSecondaryChipStyledResource() {
-        hasBorder = getBoolean(R.styleable.sp_chip_secondary_hasBorder, false)
+        hasBorder = getBoolean(R.styleable.SPSecondaryChip_hasBorder, false)
         placeholderSize =
             SPPlaceholderSize.values()[getInt(
-                R.styleable.sp_chip_secondary_placeholder_size,
+                R.styleable.SPSecondaryChip_placeholder_size,
                 DEFAULT_OBTAIN_VAL
             )]
 
     }
 
+    private fun handleBorder() {
+        if (hasBorder) {
+            val typedValue = TypedValue()
+            val theme: Resources.Theme = context.theme
+            theme.resolveAttribute(R.attr.separator_non_opaque, typedValue, true)
+            @ColorInt val color = typedValue.data
+            changeBorder(color, resources.getDimensionPixelSize(R.dimen.dimen_p_0_5))
+        } else {
+            changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL)
+        }
+    }
 
     override fun getViewData(): SPViewData =
         SPViewData.SPSecondaryChipData(

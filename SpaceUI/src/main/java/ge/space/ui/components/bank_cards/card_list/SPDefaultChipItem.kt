@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import androidx.core.view.isInvisible
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
@@ -21,8 +23,9 @@ import ge.space.ui.components.bank_cards.data.SPDefaultChipData
 class SPDefaultChipItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPBaseCardList<SpDefaultChipItemLayoutBinding>(context, attrs, defStyleAttr) {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPChip_SPSelectableChipItem_Default
+) : SPBaseCardList<SpDefaultChipItemLayoutBinding>(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Sets a chip data which is related to a type of the chip and

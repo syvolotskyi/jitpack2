@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -27,8 +28,9 @@ import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 class SPDigitalChipItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPBaseCardList<SpDigitalChipItemLayoutBinding>(context, attrs, defStyleAttr) {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPChip_SPSelectableChipItem_Digital
+) : SPBaseCardList<SpDigitalChipItemLayoutBinding>(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Sets a title for the item
