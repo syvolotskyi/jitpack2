@@ -15,6 +15,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 
 /**
@@ -137,10 +138,8 @@ class SPButtonHorizontal @JvmOverloads constructor(
         binding.ivRight.setColorFilter(
             if (isDistractive) distractiveColor
             else
-                ContextCompat.getColor(
-                    context,
-                    R.color.appPrimaryColor
-                ), android.graphics.PorterDuff.Mode.SRC_IN
+                context.getColorFromAttribute(R.attr.brand_primary),
+            android.graphics.PorterDuff.Mode.SRC_IN
         )
     }
 

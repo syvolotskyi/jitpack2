@@ -8,6 +8,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import ge.space.spaceui.R
+import ge.space.ui.util.extension.getColorFromAttribute
 
 /**
  * Button view extended from [SPButtonVertical] that allows to change its configuration.
@@ -21,14 +22,15 @@ open class SPButtonIconic @JvmOverloads constructor(
 ) : SPButtonVertical(context, attrs, defStyleAttr, defStyleRes) {
 
     private var bubbleColor: Int =
-        ContextCompat.getColor(context, R.color.appPrimaryColor)
+        context.getColorFromAttribute(R.attr.brand_primary)
     private var iconColor: Int = Color.WHITE
-    private var distractiveBackgroundColor: Int = ContextCompat.getColor(context, R.color.magenta)
+    private var distractiveBackgroundColor: Int =
+        context.getColorFromAttribute(R.attr.accent_magenta)
     private var distractiveIconColor: Int = Color.WHITE
     private var borderWidth: Int = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
 
     private var borderColor: Int =
-        ContextCompat.getColor(context, R.color.appPrimaryColor)
+        context.getColorFromAttribute(R.attr.brand_primary)
         set(value) {
             field = value
             bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth)
@@ -55,12 +57,12 @@ open class SPButtonIconic @JvmOverloads constructor(
             bubbleColor =
                 getColor(
                     R.styleable.SPButtonIconic_iconBackgroundColor,
-                    ContextCompat.getColor(context, R.color.appPrimaryColor)
+                    context.getColorFromAttribute(R.attr.brand_primary)
                 )
             borderColor =
                 getColor(
                     R.styleable.SPButtonIconic_borderColor,
-                    ContextCompat.getColor(context, R.color.appPrimaryColor)
+                    context.getColorFromAttribute(R.attr.brand_primary)
                 )
 
             distractiveIconColor =
@@ -72,7 +74,7 @@ open class SPButtonIconic @JvmOverloads constructor(
             distractiveBackgroundColor =
                 getColor(
                     R.styleable.SPButtonIconic_distractiveBorderColor,
-                    ContextCompat.getColor(context, R.color.magenta)
+                    context.getColorFromAttribute(R.attr.accent_magenta)
                 )
 
             bubbleLayoutBinding.btnContainer.color = bubbleColor

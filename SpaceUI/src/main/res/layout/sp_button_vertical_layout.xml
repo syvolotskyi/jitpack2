@@ -22,7 +22,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:lines="1"
-            android:textColor="@color/text_color_grey"
+            android:textColor="?attr/label_secondary"
             tools:fontFamily="@font/myriad_geo_medium"
             tools:text="Title" />
 

@@ -79,7 +79,7 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.toolbarView.navigationIcon?.setColorFilter(
-            resources.getColor(R.color.appPrimaryColor),
+            getColorFromAttribute(ge.space.spaceui.R.attr.brand_primary),
             PorterDuff.Mode.SRC_ATOP
         );
 
