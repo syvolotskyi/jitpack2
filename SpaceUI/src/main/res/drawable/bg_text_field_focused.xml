@@ -3,6 +3,6 @@
     <stroke
         android:width="@dimen/dimen_p_1"
         android:color="?attr/brand_primary" />
-    <solid android:color="?attr/brand_primary" />
+    <solid android:color="?attr/static_white" />
     <corners android:radius="@dimen/dimen_p_10" />
 </shape>
