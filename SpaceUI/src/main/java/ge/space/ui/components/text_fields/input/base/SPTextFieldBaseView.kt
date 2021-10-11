@@ -14,6 +14,7 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import androidx.viewbinding.ViewBinding
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.appendAsterisk
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
@@ -52,7 +53,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Sets a label text.
      */
-    var labelText: String = SPBaseView.EMPTY_TEXT
+    var labelText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -93,7 +94,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Sets a description text.
      */
-    var descriptionText: String = SPBaseView.EMPTY_TEXT
+    var descriptionText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -173,7 +174,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
         getString(R.styleable.SPTextFieldBaseView_android_hint).orEmpty()
             .handleAttributeAction(
-                SPBaseView.EMPTY_TEXT
+                EMPTY_TEXT
             ) {
                 hint = it
             }

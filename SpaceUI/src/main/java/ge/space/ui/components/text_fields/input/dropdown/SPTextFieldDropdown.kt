@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.setWidth
@@ -15,7 +16,6 @@ import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
-import ge.space.ui.util.extension.EMPTY_STRING
 
 /**
  * Dropdown view which allows to manipulate next parameters:
@@ -60,7 +60,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a dropdown text
      */
-    override var text: String = SPBaseView.EMPTY_TEXT
+    override var text: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
         set(value) {
             field = value
@@ -98,7 +98,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a text hint
      */
-    override var hint: String = SPBaseView.EMPTY_TEXT
+    override var hint: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
             field = value
@@ -154,8 +154,8 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     companion object
     class SPTextFieldDropdownBuilder<T> {
-        private var title: String = EMPTY_STRING
-        private var description: String = EMPTY_STRING
+        private var title: String = EMPTY_TEXT
+        private var description: String = EMPTY_TEXT
         private var listener: (SPTextFieldDropdown<T>) -> Unit = { }
         private var default: T? = null
         private var view: SPTextFieldDropdown<T>? = null

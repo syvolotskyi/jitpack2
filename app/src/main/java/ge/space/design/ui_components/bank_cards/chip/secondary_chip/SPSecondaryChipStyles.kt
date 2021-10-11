@@ -1,13 +1,12 @@
 package ge.space.design.ui_components.bank_cards.chip.secondary_chip
 
 import com.example.spacedesignsystem.R
-
-import ge.space.ui.util.extension.EMPTY_STRING
+import ge.space.extensions.EMPTY_TEXT
 
 data class SPSecondaryChipSupport(
     val resId: Int = R.style.SPBankCardView_ChipSecondary,
-    val bankLogoUrl: String = EMPTY_STRING,
-    val paymentSystemUrl: String = EMPTY_STRING
+    val bankLogoUrl: String = EMPTY_TEXT,
+    val paymentSystemUrl: String = EMPTY_TEXT
 )
 
 object SPSecondaryChipStyles {

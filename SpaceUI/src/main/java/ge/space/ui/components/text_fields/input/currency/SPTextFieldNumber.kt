@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.widget.TextViewCompat
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextCurrencyBinding
@@ -20,7 +19,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPTextField_Number
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Number, s: String
 ) : SPTextFieldBaseView<SpTextFieldTextCurrencyBinding>(context, attrs, defStyleAttr) {
 
     var textLength: Int = DEFAULT_TEXT_LENGTH
@@ -29,7 +28,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
             handleTextLength()
         }
 
-    override var text: String = SPBaseView.EMPTY_TEXT
+    override var text: String = s
         get() = inputTextBinding.etInputField.text.toString()
         set(value) {
             field = value
@@ -37,7 +36,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
             inputTextBinding.etInputField.setText(value)
         }
 
-    override var hint: String = SPBaseView.EMPTY_TEXT
+    override var hint: String = s
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
             field = value
@@ -45,7 +44,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
             inputTextBinding.etInputField.hint = value
         }
 
-    var currency: String = SPBaseView.EMPTY_TEXT
+    var currency: String = s
         set(value) {
             field = value
             inputTextBinding.tvCurrency.text = value

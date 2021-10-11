@@ -1,15 +1,15 @@
 package ge.space.design.ui_components.bank_cards.chip.list_digital_chip
 
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPDefaultChipData
-import ge.space.ui.util.extension.EMPTY_STRING
 
 data class SPDigitalChipItemSupport(
     val enabled: Boolean = true,
     val chipBackground: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),
-    val text: String = EMPTY_STRING,
-    val currency: String = EMPTY_STRING
+    val text: String = EMPTY_TEXT,
+    val currency: String = EMPTY_TEXT
 )
 
 data class SPDefaultChipItemSupport(

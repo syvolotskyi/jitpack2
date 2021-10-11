@@ -1,7 +1,6 @@
 package ge.space.ui.components.text_fields.input.text_input
 
 import android.content.Context
-import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -11,15 +10,13 @@ import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import androidx.core.widget.TextViewCompat
-import ge.space.extensions.isVisible
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
-import ge.space.ui.util.extension.EMPTY_STRING
 
 class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
@@ -35,7 +32,7 @@ class SPTextFieldInput @JvmOverloads constructor(
             handleTextLength()
         }
 
-    override var text: String = SPBaseView.EMPTY_TEXT
+    override var text: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
         set(value) {
             field = value
@@ -43,7 +40,7 @@ class SPTextFieldInput @JvmOverloads constructor(
             inputTextBinding.etInputField.setText(value)
         }
 
-    override var hint: String = SPBaseView.EMPTY_TEXT
+    override var hint: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
             field = value
@@ -84,7 +81,7 @@ class SPTextFieldInput @JvmOverloads constructor(
             defStyleAttr
         ) {
             canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
-            text = getString(R.styleable.SPTextFieldInput_android_text) ?: EMPTY_STRING
+            text = getString(R.styleable.SPTextFieldInput_android_text) ?: EMPTY_TEXT
             drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
                 getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)

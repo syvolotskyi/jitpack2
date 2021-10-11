@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.core.view.isVisible
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
-import ge.space.ui.util.extension.bottomType
 import ge.space.spaceui.databinding.SpDialogBottomVerticalButtonLayoutBinding
-import ge.space.ui.base.SPBaseView.Companion.EMPTY_TEXT
 import ge.space.ui.components.dialogs.base.SPBaseDialog
+import ge.space.ui.util.extension.bottomType
 
 /**
  * Helper view which allows to manipulate [SPBaseDialog] bottom buttons easily. The view

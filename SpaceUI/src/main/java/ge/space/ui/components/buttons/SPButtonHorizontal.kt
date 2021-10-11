@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R

@@ -35,13 +35,6 @@ fun Float.scaleTo(scale: Int) =
         this.toDouble()
     ).setScale(scale, RoundingMode.HALF_EVEN).toFloat()
 
-
-/**
- * TODO("Vitali EMPTY_TEXT should be delete from here")
- * Return an empty string
- */
-const val EMPTY_STRING = ""
-
 /**
  * Creates specified view by [layout] and adds it to parent
  *

@@ -9,7 +9,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.ColorUtils
-import androidx.core.widget.TextViewCompat
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.tintColor
 import ge.space.spaceui.R
@@ -86,7 +86,7 @@ class SPTabNavigationChildView @JvmOverloads constructor(
     /**
      * Sets a navigation title.
      */
-    var text: String = SPBaseView.EMPTY_TEXT
+    var text: String = EMPTY_TEXT
         set(value) {
             field = value
             onActiveStatusChange()

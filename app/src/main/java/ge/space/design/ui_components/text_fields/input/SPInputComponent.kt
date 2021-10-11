@@ -12,11 +12,11 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseB
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
-import ge.space.ui.util.extension.EMPTY_STRING
 
 class SPInputComponent : ShowCaseComponent {
 
@@ -42,11 +42,11 @@ class SPInputComponent : ShowCaseComponent {
                     true
                 )
 
-                with(itemBinding.simpleInput){
+                with(itemBinding.simpleInput) {
                     setViewStyle(buttonSample.resId)
                     setupInputTextWithDone(this, environment.context)
                     buttons.add(this)
-                    doOnTextChanged{ text, _, _, _ ->
+                    doOnTextChanged { text, _, _, _ ->
                         if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
                             showToast(context, text.toString())
                         }
@@ -70,11 +70,11 @@ class SPInputComponent : ShowCaseComponent {
                     itemBinding.simpleInput.descriptionText = if (isChecked) {
                         itemBinding.simpleInput.resources.getString(R.string.description)
                     } else {
-                        EMPTY_STRING
+                        EMPTY_TEXT
                     }
                 }
                 layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
-                    with(itemBinding.simpleInput){
+                    with(itemBinding.simpleInput) {
                         labelText = text.toString()
                         descriptionText = text.toString()
                     }
@@ -93,10 +93,10 @@ class SPInputComponent : ShowCaseComponent {
                         || actionId == EditorInfo.IME_ACTION_DONE
                         || event?.action == KeyEvent.ACTION_DOWN
                     ) {
-                        showToast(context,"$ACTION_DONE ${textInput.text}")
+                        showToast(context, "$ACTION_DONE ${textInput.text}")
                         return@OnEditorActionListener true
                     } else if (actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_FLAG_NAVIGATE_NEXT) {
-                        showToast(context,"$ACTION_NEXT ${textInput.text}")
+                        showToast(context, "$ACTION_NEXT ${textInput.text}")
 
                     }
                     return@OnEditorActionListener false
@@ -116,6 +116,6 @@ class SPInputComponent : ShowCaseComponent {
         const val TEXT_WATCHER_CHECK_TEXT = "Space"
         private const val ACTION_NEXT = "Action Next:"
         private const val ACTION_DONE = "Action Done:"
-        private const val DOT         = "."
+        private const val DOT = "."
     }
 }
