@@ -8,6 +8,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowc
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
@@ -21,7 +22,6 @@ import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
-import ge.space.ui.util.extension.EMPTY_STRING
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
@@ -69,7 +69,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     it.descriptionText = if (isChecked) {
                         layoutBinding.textFieldDropdown.resources.getString(R.string.description)
                     } else {
-                        EMPTY_STRING
+                        EMPTY_TEXT
                     }
                 }
             }
@@ -109,7 +109,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     fragmentActivity.showMultipleButtonDialog(
                         SPDialogInfo(
                             view.resources.getString(R.string.selectIcon),
-                            EMPTY_STRING,
+                            EMPTY_TEXT,
                             createMultipleButtonsConfigs(
                                 SPTextFieldsDropdownItems.getList(view.context),
                                 it
@@ -140,7 +140,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     fragmentActivity.showMultipleButtonDialog(
                         SPDialogInfo(
                             view.resources.getString(R.string.selectIcon),
-                            EMPTY_STRING,
+                            EMPTY_TEXT,
                             createMultipleStringsButtonsConfigs(
                                 items,
                                 it

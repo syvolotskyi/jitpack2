@@ -4,7 +4,7 @@
     <item android:state_enabled="false">
         <shape>
             <stroke android:width="@dimen/dimen_p_1" android:color="#C0C0C0" />
-            <solid android:color="@color/white" />
+            <solid android:color="@color/static_primary_white" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>
     </item>
@@ -12,8 +12,8 @@
     <item android:state_enabled="true">
         <shape>
             <stroke android:width="@dimen/dimen_p_1"
-                android:color="@color/appPrimaryColor" />
-            <solid android:color="@color/white" />
+                android:color="?attr/brand_primary" />
+            <solid android:color="@color/static_primary_white" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>
     </item>

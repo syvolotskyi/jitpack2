@@ -11,12 +11,14 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.view_factory.SPViewData
 
@@ -141,11 +143,10 @@ class SPSecondaryChip @JvmOverloads constructor(
 
     private fun handleBorder() {
         if (hasBorder) {
-            val typedValue = TypedValue()
-            val theme: Resources.Theme = context.theme
-            theme.resolveAttribute(R.attr.separator_non_opaque, typedValue, true)
-            @ColorInt val color = typedValue.data
-            changeBorder(color, resources.getDimensionPixelSize(R.dimen.dimen_p_0_5))
+            changeBorder(
+                context.getColorFromAttribute(R.attr.separator_non_opaque),
+                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
+            )
         } else {
             changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL)
         }

@@ -10,6 +10,11 @@ import android.text.style.SuperscriptSpan
 import android.text.style.TextAppearanceSpan
 import android.util.Patterns
 
+/*
+* Return an empty string
+*/
+const val EMPTY_TEXT = ""
+
 fun String.removeSpanableTag(): String {
     return this.replace("[", "").replace("]", "")
 }

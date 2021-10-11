@@ -8,9 +8,9 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.setWidth
@@ -18,6 +18,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 
 /**
@@ -90,7 +91,10 @@ open class SPButtonVertical @JvmOverloads constructor(
                     text = it
                 }
             isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
-            src = getResourceId(R.styleable.SPButtonVertical_android_src, R.drawable.ic_plus_16_regular)
+            src = getResourceId(
+                R.styleable.SPButtonVertical_android_src,
+                R.drawable.ic_plus_16_regular
+            )
         }
     }
 
@@ -150,10 +154,7 @@ open class SPButtonVertical @JvmOverloads constructor(
             if (isDistractive)
                 distractiveColor
             else
-                ContextCompat.getColor(
-                    context,
-                    R.color.appPrimaryColor
-                )
+                context.getColorFromAttribute(R.attr.brand_primary)
         bubbleLayoutBinding.btnContainer.invalidate()
     }
 

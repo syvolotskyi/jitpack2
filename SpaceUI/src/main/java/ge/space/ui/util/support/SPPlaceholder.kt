@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
-import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
@@ -59,7 +59,10 @@ class SPPlaceholder @JvmOverloads constructor(
             defStyleAttr
         ) {
             placeholderSize =
-                SPPlaceholderSize.values()[getInt(R.styleable.ps_placeholder_placeholder_size, DEFAULT_OBTAIN_VAL)]
+                SPPlaceholderSize.values()[getInt(
+                    R.styleable.ps_placeholder_placeholder_size,
+                    DEFAULT_OBTAIN_VAL
+                )]
         }
     }
 
@@ -86,7 +89,7 @@ class SPPlaceholder @JvmOverloads constructor(
     }
 
     private fun getRootDimenBySize() = resources.getDimension(
-        when(placeholderSize) {
+        when (placeholderSize) {
             SPPlaceholderSize.Big -> R.dimen.sp_bank_logo_placeholder_size_big
             SPPlaceholderSize.XMedium -> R.dimen.sp_bank_logo_placeholder_size_xmedium
             SPPlaceholderSize.Medium -> R.dimen.sp_bank_logo_placeholder_size_medium
@@ -96,7 +99,7 @@ class SPPlaceholder @JvmOverloads constructor(
     ).toInt()
 
     private fun getLogoDimenBySize() = resources.getDimension(
-        when(placeholderSize) {
+        when (placeholderSize) {
             SPPlaceholderSize.Big -> R.dimen.sp_placeholder_logo_size_big
             SPPlaceholderSize.XMedium -> R.dimen.sp_placeholder_logo_size_xmedium
             SPPlaceholderSize.Medium -> R.dimen.sp_placeholder_logo_size_medium
@@ -106,7 +109,7 @@ class SPPlaceholder @JvmOverloads constructor(
     ).toInt()
 
     private fun getStyleBySize() =
-        when(placeholderSize) {
+        when (placeholderSize) {
             SPPlaceholderSize.Big -> R.style.SPChip_PlaceHolder_Big
             SPPlaceholderSize.XMedium -> R.style.SPChip_PlaceHolder_XMedium
             SPPlaceholderSize.Medium -> R.style.SPChip_PlaceHolder_Medium

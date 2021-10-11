@@ -65,15 +65,15 @@
 
     <style name="SPCoreTheme" parent="BaseTheme">
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@color/black</item>
+        <item name="android:windowBackground">?attr/static_black</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
     </style>
 
     <style name="AppTheme" parent="SPCoreTheme">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/appPrimaryColor</item>
-        <item name="android:windowBackground">@color/black</item>
+        <item name="colorPrimary">?attr/static_black</item>
+        <item name="colorPrimaryDark">?attr/static_black</item>
+        <item name="colorAccent">?attr/brand_primary</item>
+        <item name="android:windowBackground">?attr/static_black</item>
         <item name="android:windowEnableSplitTouch">false</item>
         <item name="android:splitMotionEvents">false</item>
 
@@ -86,18 +86,18 @@
     </style>
 
     <style name="AppThemeDark" parent="AppTheme">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/appPrimaryColor</item>
-        <item name="android:windowBackground">@color/black</item>
-        <item name="cardBackground">@color/black</item>
-        <item name="cardTitleBackground">@color/dark_white</item>
+        <item name="colorPrimary">?attr/static_black</item>
+        <item name="colorPrimaryDark">?attr/static_black</item>
+        <item name="colorAccent">?attr/brand_primary</item>
+        <item name="android:windowBackground">?attr/static_black</item>
+        <item name="cardBackground">?attr/static_black</item>
+        <item name="cardTitleBackground">?attr/greyscale_gray_6</item>
         <item name="cardTitleBackgroundLineHeight">0dp</item>
-        <item name="themeMySpaceBackgroundColor">@color/black</item>
-        <item name="themeMySpaceTitleColor">@color/transparent</item>
+        <item name="themeMySpaceBackgroundColor">?attr/static_black</item>
+        <item name="themeMySpaceTitleColor">@android:color/transparent</item>
         <item name="themeLoadingBackgroundColor">@color/loading_transparent_black</item>
-        <item name="themeMistColorLight">@color/white</item>
-        <item name="themeMistColorDark">@color/black</item>
+        <item name="themeMistColorLight">?attr/static_white</item>
+        <item name="themeMistColorDark">?attr/static_black</item>
 
         //brand
         <item name="brand_primary">@color/dark_brand_primary</item>
@@ -140,27 +140,27 @@
         <item name="background_secondary">@color/dark_background_secondary</item>
         <item name="background_tertiary">@color/dark_background_tertiary</item>
 
-        <item name="themeTextColor">@color/white</item>
-        <item name="themeCheckBoxButtonTint">@color/white</item>
+        <item name="themeTextColor">?attr/static_white</item>
+        <item name="themeCheckBoxButtonTint">?attr/static_white</item>
 
         <item name="android:checkboxStyle">@style/SPCheckbox.DefaultStyle</item>
     </style>
 
 
     <style name="AppThemeWhite" parent="AppTheme">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/appPrimaryColor</item>
-        <item name="colorAccent">@color/appPrimaryColor</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">?attr/static_white</item>
+        <item name="colorPrimaryDark">?attr/brand_primary</item>
+        <item name="colorAccent">?attr/brand_primary</item>
+        <item name="android:windowBackground">?attr/static_white</item>
 
-        <item name="cardBackground">@color/white</item>
-        <item name="cardTitleBackground">@color/white</item>
+        <item name="cardBackground">?attr/static_white</item>
+        <item name="cardTitleBackground">?attr/static_white</item>
         <item name="cardTitleBackgroundLineHeight">0.5dp</item>
-        <item name="themeMySpaceBackgroundColor">@color/white</item>
-        <item name="themeMySpaceTitleColor">@color/white</item>
+        <item name="themeMySpaceBackgroundColor">?attr/static_white</item>
+        <item name="themeMySpaceTitleColor">?attr/static_white</item>
         <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half</item>
-        <item name="themeMistColorLight">@color/white</item>
-        <item name="themeMistColorDark">@color/white</item>
+        <item name="themeMistColorLight">?attr/static_white</item>
+        <item name="themeMistColorDark">?attr/static_white</item>
 
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
@@ -203,8 +203,8 @@
         <item name="fill_tertiary">@color/light_fill_tertiary</item>
         <item name="fill_quaternary">@color/light_fill_quaternary</item>
 
-        <item name="themeTextColor">@color/black</item>
-        <item name="themeCheckBoxButtonTint">@color/black</item>
+        <item name="themeTextColor">?attr/static_black</item>
+        <item name="themeCheckBoxButtonTint">?attr/static_black</item>
 
         <item name="android:checkboxStyle">@style/SPCheckbox.DefaultStyle</item>
     </style>
