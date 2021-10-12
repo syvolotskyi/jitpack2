@@ -63,8 +63,6 @@ class SPPhoneComponent : ShowCaseComponent {
     }
 
     companion object {
-        private const val CORRECT_BIG_PASSWORD = "888888"
-        private const val CORRECT_SMALL_PASSWORD = "1010"
         private const val ACTION_DONE = "Action Done: "
         private const val ACTION_NEXT = "1010"
 
