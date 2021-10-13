@@ -25,7 +25,7 @@ interface SPViewFactory {
                 is SPViewData.SPEmptyChipData -> SPEmptyChipIconImpl(context).create(this)
                 is SPViewData.SPNewCreditCards -> SPNewCreditCardImpl(context).create(this)
                 is SPViewData.SPChipData -> SPChipIconImpl(context).create(this)
-                is SPViewData.SPTextInitialsData -> SPTextInitialsImpl(context).create(this)
+                is SPViewData.SPTextData -> SPTextInitialsImpl(context).create(this)
             }
         }
     }

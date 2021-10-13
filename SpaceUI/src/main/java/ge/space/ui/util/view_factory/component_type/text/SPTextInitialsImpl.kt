@@ -8,8 +8,8 @@ import ge.space.extensions.setTextStyle
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 
-class SPTextInitialsImpl(context: Context) : SPViewImpl<SPViewData.SPTextInitialsData>(context) {
-    override fun create(type: SPViewData.SPTextInitialsData): View {
+class SPTextInitialsImpl(context: Context) : SPViewImpl<SPViewData.SPTextData>(context) {
+    override fun create(type: SPViewData.SPTextData): View {
         return TextView(context).apply {
             text = type.initials
             gravity = Gravity.CENTER

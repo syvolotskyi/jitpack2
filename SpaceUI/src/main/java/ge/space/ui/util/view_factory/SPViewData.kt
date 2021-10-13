@@ -26,7 +26,7 @@ sealed class SPViewData : Parcelable {
     data class SPImageUrlData(val url: String) : SPViewData()
 
     @Parcelize
-    data class SPTextInitialsData(val initials: String, @StyleRes var textStyle: Int? = null) :
+    data class SPTextData(val initials: String, @StyleRes var textStyle: Int? = null) :
         SPViewData()
 
     @Parcelize

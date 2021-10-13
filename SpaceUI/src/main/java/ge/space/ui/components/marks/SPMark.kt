@@ -99,7 +99,7 @@ class SPMark @JvmOverloads constructor(
 
     private fun createView(viewData: SPViewData) = when (viewData) {
         is SPViewData.SPImageUrlData -> viewData.createView(context)
-        is SPViewData.SPTextInitialsData -> {
+        is SPViewData.SPTextData -> {
             viewData.apply { textStyle = textAppearance }
             viewData.createView(context)
         }
@@ -144,7 +144,7 @@ class SPMark @JvmOverloads constructor(
         binding.markContentWrapper.setWidth(chipHeight)
     }
 
-
+    //TODO ask Serhii about that static "specific" color
     private fun handleBorder() {
         if (hasBorder) {
             changeBorder(
