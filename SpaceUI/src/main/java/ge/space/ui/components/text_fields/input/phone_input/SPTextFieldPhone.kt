@@ -8,11 +8,10 @@ import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.widget.TextViewCompat
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
 /**
@@ -45,7 +44,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
     }
 
-    override var text: String = SPBaseView.EMPTY_TEXT
+    override var text: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.getRawText()
         set(value) {
             field = value
@@ -53,7 +52,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
             inputTextBinding.etInputField.setText(value)
         }
 
-    override var hint: String = SPBaseView.EMPTY_TEXT
+    override var hint: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
             field = value

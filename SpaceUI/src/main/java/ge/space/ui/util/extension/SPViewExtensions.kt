@@ -1,16 +1,23 @@
 package ge.space.ui.util.extension
 
+import android.content.Context
+import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_BORDER_VALUE
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
 import ge.space.ui.base.SPBaseView.Companion.SQUARE_RATIO
@@ -28,13 +35,6 @@ fun Float.scaleTo(scale: Int) =
         this.toDouble()
     ).setScale(scale, RoundingMode.HALF_EVEN).toFloat()
 
-
-/**
- * TODO("Vitali EMPTY_TEXT should be delete from here")
- * Return an empty string
- */
-const val EMPTY_STRING = ""
-
 /**
  * Creates specified view by [layout] and adds it to parent
  *
@@ -43,6 +43,18 @@ const val EMPTY_STRING = ""
  */
 fun inflateToParent(parent: ViewGroup, layout: Int) {
     LayoutInflater.from(parent.context).inflate(layout, parent, true)
+}
+
+/**
+ * Return a @ColorRes from an attr
+ *
+ * @param attrId [Int] @AttrRes attribute value
+ */
+fun Context.getColorFromAttribute(@AttrRes attrId:Int):  Int {
+    val typedValue = TypedValue()
+    val theme: Resources.Theme = theme
+    theme.resolveAttribute(attrId, typedValue, true)
+   return typedValue.data
 }
 
 /**
@@ -56,12 +68,13 @@ fun <T> T.handleAttributeAction(defVal: T, action: (T) -> Unit) {
         action(this)
     }
 }
+
 /**
  * Create a simple ImageView with icon from resource
  *
  * @param res resource
  */
-fun ImageView.fromResource( @DrawableRes res: Int): ImageView =
+fun ImageView.fromResource(@DrawableRes res: Int): ImageView =
     ImageView(context)
         .apply {
             setImageResource(res)
@@ -125,7 +138,7 @@ fun Canvas.drawBorder(
     borderWidth: Int,
     borderPaint: Paint
 ) {
-    if(borderColor != EMPTY_BORDER_VALUE && borderWidth != EMPTY_BORDER_VALUE){
+    if (borderColor != EMPTY_BORDER_VALUE && borderWidth != EMPTY_BORDER_VALUE) {
         drawPath(path, borderPaint.apply {
             color = borderColor
             strokeWidth = borderWidth.toFloat()

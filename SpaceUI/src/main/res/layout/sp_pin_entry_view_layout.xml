@@ -34,6 +34,6 @@
         android:maxLines="1"
         android:fontFamily="@font/myriad_geo_bold"
         android:imeOptions="actionNone"
-        android:textColor="@color/appPrimaryColor"
+        android:textColor="?attr/brand_primary"
         android:textSize="@dimen/dimen_sp_20" />
 </LinearLayout>

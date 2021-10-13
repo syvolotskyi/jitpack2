@@ -10,6 +10,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.onClick
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R

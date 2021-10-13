@@ -23,6 +23,7 @@ import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.pin.SPPinEntryEditText.PinType.OTP
 import ge.space.ui.components.text_fields.pin.SPPinEntryEditText.PinType.Password
+import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.*
 
 class SPPinEntryEditText : AppCompatEditText {
@@ -157,7 +158,7 @@ class SPPinEntryEditText : AppCompatEditText {
             setTextColor(
                 getColor(
                     R.styleable.SPPinEntryEditText_android_textColor,
-                    ContextCompat.getColor(context, R.color.appPrimaryColor)
+                     context.getColorFromAttribute(R.attr.brand_primary)
                 )
             )
             pinBackground = if (pinType == Password) {

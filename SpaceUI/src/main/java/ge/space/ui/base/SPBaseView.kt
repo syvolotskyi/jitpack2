@@ -420,8 +420,6 @@ abstract class SPBaseView @JvmOverloads constructor(
     companion object {
         const val SIDE_RATIO = 2
         const val SQUARE_RATIO = 4
-        //TODO("Vitali EMPTY_TEXT should be delete from here")
-        const val EMPTY_TEXT = ""
 
         const val EMPTY_BORDER_VALUE = -1
         const val DEFAULT_OBTAIN_VAL = 0

@@ -1,15 +1,15 @@
 package ge.space.design.ui_components.bank_cards.card
 
 import android.graphics.Color
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.ui.components.bank_cards.data.*
-import ge.space.ui.util.extension.EMPTY_STRING
 
 data class SPBankCardSupport(
     val cardModel: SPBankCardModel,
     val accountNumber: String,
     val bankLogo: String,
-    val amount: String = EMPTY_STRING,
-    val paySystemUrl: String = EMPTY_STRING,
+    val amount: String = EMPTY_TEXT,
+    val paySystemUrl: String = EMPTY_TEXT,
     val cardBackground: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),
     val payWaveType: SPPayWaveType = SPPayWaveType.Light,
     val bankCardStatus: SPBankCardStatus = SPBankCardStatus.Available,

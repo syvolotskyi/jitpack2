@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.util.extension.SPSetViewStyleInterface
@@ -17,9 +18,9 @@ import ge.space.ui.util.extension.SPSetViewStyleInterface
  * @property text [String] value which applies a button label text
  */
 abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        @AttrRes defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    @AttrRes defStyleAttr: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface, OnDistractiveInterface {
 
     /**

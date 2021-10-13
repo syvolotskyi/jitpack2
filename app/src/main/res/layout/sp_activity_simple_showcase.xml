@@ -14,7 +14,7 @@
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
         app:contentInsetStartWithNavigation="0dp"
-        app:titleTextColor="@color/appPrimaryColor">
+        app:titleTextColor="?attr/brand_primary">
 
     </androidx.appcompat.widget.Toolbar>
 
