@@ -56,6 +56,11 @@ class SPMark @JvmOverloads constructor(
     var imageSize: Int = 0
 
     /**
+     * Changes the paddings of the add image view
+     */
+    var paddings: Int = 0
+
+    /**
      * Inflates and returns [SpMarkLayoutBinding] value
      */
     val binding =
@@ -103,6 +108,7 @@ class SPMark @JvmOverloads constructor(
                 tintColor = context.getColorFromAttribute(R.attr.brand_primary)
                 height = imageSize
                 width = imageSize
+                padding = paddings
             }
             viewData.createView(context)
         }
@@ -128,6 +134,10 @@ class SPMark @JvmOverloads constructor(
         hasBorder = getBoolean(R.styleable.SPMark_hasBorder, false)
         imageSize = getDimensionPixelSize(
             R.styleable.SPMark_imageSize, DEFAULT_OBTAIN_VAL
+        )
+
+        paddings = getDimensionPixelSize(
+            R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
         )
 
         binding.markContentWrapper.setHeight(chipHeight)
