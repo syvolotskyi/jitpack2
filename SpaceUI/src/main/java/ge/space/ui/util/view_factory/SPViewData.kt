@@ -17,6 +17,7 @@ sealed class SPViewData : Parcelable {
         @DrawableRes val res: Int,
         var height: Int? = null,
         var width: Int? = null,
+        var padding: Int? = null,
         var tintColor: Int? = null
     ) :
         SPViewData()

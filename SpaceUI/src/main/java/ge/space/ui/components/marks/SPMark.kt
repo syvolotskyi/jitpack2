@@ -16,10 +16,16 @@ import ge.space.spaceui.databinding.SpMarkLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
-import ge.space.ui.util.extension.getColorFromTextAppearance
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
+/**
+ * Mark view extended from [SPBaseView].
+ *
+ * @property hasBorder [Boolean] value which applies a border.
+ * @property textAppearance [Int] value sets text Appearance for initials marks
+ */
 class SPMark @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -44,6 +50,10 @@ class SPMark @JvmOverloads constructor(
     @StyleRes
     private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
+    /**
+     * Changes the sizes of the add image view
+     */
+    var imageSize: Int = 0
 
     /**
      * Inflates and returns [SpMarkLayoutBinding] value
@@ -89,14 +99,14 @@ class SPMark @JvmOverloads constructor(
             viewData.createView(context)
         }
         is SPViewData.SPImageResourcesData -> {
-            viewData.apply { tintColor = context.getColorFromTextAppearance(R.attr.brand_primary) }
+            viewData.apply {
+                tintColor = context.getColorFromAttribute(R.attr.brand_primary)
+                height = imageSize
+                width = imageSize
+            }
             viewData.createView(context)
         }
         else -> View(context)
-    }
-
-    fun setText(view: String) {
-        binding.markContentWrapper.removeAllViews()
     }
 
     private fun setMarkStyle(@StyleRes defStyleRes: Int) {
@@ -116,6 +126,9 @@ class SPMark @JvmOverloads constructor(
             DEFAULT_OBTAIN_VAL
         )
         hasBorder = getBoolean(R.styleable.SPMark_hasBorder, false)
+        imageSize = getDimensionPixelSize(
+            R.styleable.SPMark_imageSize, DEFAULT_OBTAIN_VAL
+        )
 
         binding.markContentWrapper.setHeight(chipHeight)
         binding.markContentWrapper.setWidth(chipHeight)

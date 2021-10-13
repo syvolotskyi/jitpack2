@@ -4,5 +4,7 @@
         <attr name="height" />
         <attr name="android:textAppearance" />
         <attr name="hasBorder" />
+        <attr name="imageSize" format="dimension|reference" />
+        <attr name="imagePadding" format="dimension|reference" />
     </declare-styleable>
 </resources>
