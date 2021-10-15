@@ -12,7 +12,6 @@ import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpMarkLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
@@ -60,13 +59,6 @@ class SPMark @JvmOverloads constructor(
      */
     var paddings: Int = 0
 
-    /**
-     * Inflates and returns [SpMarkLayoutBinding] value
-     */
-    val binding =
-        SpMarkLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -92,9 +84,9 @@ class SPMark @JvmOverloads constructor(
 
     fun setViewData(viewData: SPViewData) {
         val view = createView(viewData)
-        binding.markContentWrapper.removeAllViews()
-        binding.markContentWrapper.addView(view)
-        binding.markContentWrapper.invalidate()
+        removeAllViews()
+        addView(view)
+        invalidate()
     }
 
     private fun createView(viewData: SPViewData) = when (viewData) {
@@ -140,16 +132,15 @@ class SPMark @JvmOverloads constructor(
             R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
         )
 
-        binding.markContentWrapper.setHeight(chipHeight)
-        binding.markContentWrapper.setWidth(chipHeight)
+        setHeight(chipHeight)
+        setWidth(chipHeight)
     }
 
-    //TODO ask Serhii about that static "specific" color
     private fun handleBorder() {
         if (hasBorder) {
             changeBorder(
-                Color.parseColor("#3C3C43"),
-                resources.getDimensionPixelSize(R.dimen.dimen_p_1)
+                context.getColorFromAttribute(R.attr.separator_non_opaque),
+                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
             )
         } else {
             changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL)
