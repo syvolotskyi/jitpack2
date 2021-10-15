@@ -4,9 +4,8 @@ import com.example.spacedesignsystem.R
 
 
 object SPMarkStyles {
-    const val brandBankURL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6db62996-9069-488a-b7db-0f279ae84346/BrandBank_of_Georgia_Size20.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211013%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211013T071446Z&X-Amz-Expires=86400&X-Amz-Signature=9c6e7bf88fc79d61cf30f8686562edd53c40ba1aba1c4394273228eb5e522224&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22BrandBank_of_Georgia_Size20.png%22"
-    const val bankURL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8ceb4424-b0fc-4cde-8963-4dbc4226e0ba/Size20.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211013%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211013T071300Z&X-Amz-Expires=86400&X-Amz-Signature=497f6609881cdf3fe8b2421670d28cf50324b82081291eea039d2bcae55ce240&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Size20.png%22"
-
+    const val brandBankURL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/389473e6-c29e-4cab-a28d-d9e862e4f739/space.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T081049Z&X-Amz-Expires=86400&X-Amz-Signature=e043f6902944824be6044ca5e8971be3126f0dfd84138659b793642de12e4b19&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22space.png%22"
+    const val bankURL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5bfe8263-8682-4a8c-b976-f3fb7e4ec064/tbc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T081204Z&X-Amz-Expires=86400&X-Amz-Signature=ab5cc56242905efadc2455a7606b0cbc092d829653155c88438234b136fbc5d2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22tbc.png%22"
     val list = listOf(
         R.style.SPMark_Size16,
         R.style.SPMark_Size20,

@@ -9,6 +9,8 @@ import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.children
+import ge.space.extensions.margin
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
@@ -138,11 +140,23 @@ class SPMark @JvmOverloads constructor(
 
     private fun handleBorder() {
         if (hasBorder) {
+            val borderSize = resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
+            val padding = resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
+            children.forEach {
+                margin(
+                    padding,
+                    padding,
+                    padding,
+                    padding
+                )
+            }
+            shadowRadius = padding.toFloat()
             changeBorder(
                 context.getColorFromAttribute(R.attr.separator_non_opaque),
-                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
+                borderSize
             )
         } else {
+            shadowRadius = 0f
             changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL)
         }
     }

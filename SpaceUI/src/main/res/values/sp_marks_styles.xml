@@ -4,7 +4,7 @@
         <item name="height">@dimen/dimen_p_16</item>
         <item name="imageSize">@dimen/dimen_p_12</item>
         <item name="imagePadding">@dimen/dimen_p_2</item>
-        <item name="android:textAppearance">@style/h900_medium</item>
+        <item name="android:textAppearance">@style/h900_medium_label_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_4</item>
     </style>
 
@@ -12,7 +12,7 @@
         <item name="height">@dimen/dimen_p_20</item>
         <item name="imageSize">@dimen/dimen_p_12</item>
         <item name="imagePadding">@dimen/dimen_p_4</item>
-        <item name="android:textAppearance">@style/h900_bold_caps</item>
+        <item name="android:textAppearance">@style/h900_bold_caps_label_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_5</item>
     </style>
 
@@ -20,7 +20,7 @@
         <item name="height">@dimen/dimen_p_24</item>
         <item name="imageSize">@dimen/dimen_p_12</item>
         <item name="imagePadding">@dimen/dimen_p_6</item>
-        <item name="android:textAppearance">@style/h800_bold_caps</item>
+        <item name="android:textAppearance">@style/h800_bold_caps_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_5</item>
     </style>
 
@@ -28,7 +28,7 @@
         <item name="height">@dimen/dimen_p_32</item>
         <item name="imageSize">@dimen/dimen_p_12</item>
         <item name="imagePadding">@dimen/dimen_p_10</item>
-        <item name="android:textAppearance">@style/h700_bold_caps</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_6</item>
     </style>
 
@@ -36,7 +36,7 @@
         <item name="height">@dimen/dimen_p_40</item>
         <item name="imageSize">@dimen/dimen_p_18</item>
         <item name="imagePadding">@dimen/dimen_p_11</item>
-        <item name="android:textAppearance">@style/h700_bold_caps</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_8</item>
     </style>
 
@@ -44,7 +44,7 @@
         <item name="height">@dimen/dimen_p_48</item>
         <item name="imageSize">@dimen/dimen_p_18</item>
         <item name="imagePadding">@dimen/dimen_p_15</item>
-        <item name="android:textAppearance">@style/h400_bold_caps</item>
+        <item name="android:textAppearance">@style/h400_bold_caps_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_10</item>
     </style>
 
@@ -53,7 +53,7 @@
         <item name="roundedCorners">@dimen/dimen_p_10</item>
         <item name="imageSize">@dimen/dimen_p_24</item>
         <item name="imagePadding">@dimen/dimen_p_16</item>
-        <item name="android:textAppearance">@style/h400_bold_caps</item>
+        <item name="android:textAppearance">@style/h400_bold_caps_secondary</item>
     </style>
 
     <style name="SPMark.Size64" parent="shadow_empty">
@@ -61,7 +61,7 @@
         <item name="height">@dimen/dimen_p_64</item>
         <item name="imageSize">@dimen/dimen_p_24</item>
         <item name="imagePadding">@dimen/dimen_p_20</item>
-        <item name="android:textAppearance">@style/h400_bold_caps</item>
+        <item name="android:textAppearance">@style/h400_bold_caps_secondary</item>
     </style>
 
     <style name="SPMark.WithBorders.Size16" parent="SPMark.Size16">
