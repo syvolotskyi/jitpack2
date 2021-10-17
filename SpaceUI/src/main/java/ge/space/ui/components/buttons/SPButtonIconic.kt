@@ -33,7 +33,7 @@ open class SPButtonIconic @JvmOverloads constructor(
         context.getColorFromAttribute(R.attr.brand_primary)
         set(value) {
             field = value
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth)
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth.toFloat())
         }
 
 
@@ -94,10 +94,10 @@ open class SPButtonIconic @JvmOverloads constructor(
     override fun handleDistractiveState() {
         if (isDistractive) {
             bubbleLayoutBinding.btnContainer.color = distractiveColor
-            bubbleLayoutBinding.btnContainer.changeBorder(distractiveBackgroundColor, borderWidth)
+            bubbleLayoutBinding.btnContainer.changeBorder(distractiveBackgroundColor, borderWidth.toFloat())
             bubbleLayoutBinding.image.setColorFilter(distractiveIconColor)
         } else {
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth)
+            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth.toFloat())
             bubbleLayoutBinding.btnContainer.color = bubbleColor
             bubbleLayoutBinding.image.setColorFilter(iconColor)
         }

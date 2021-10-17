@@ -199,7 +199,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     /**
      * Border width value
      */
-    private var borderWidth: Int = DEFAULT_OBTAIN_VAL
+    private var borderWidth: Float = DEFAULT_OBTAIN_VAL.toFloat()
 
     init {
         this.setWillNotDraw(false)
@@ -220,7 +220,7 @@ abstract class SPBaseView @JvmOverloads constructor(
             borderWidth = getDimensionPixelSize(
                 R.styleable.SPBaseView_borderWidth,
                 EMPTY_BORDER_VALUE
-            )
+            ).toFloat()
         }
     }
 
@@ -242,7 +242,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         checkShadowMarginContent()
     }
 
-    fun changeBorder(borderColor:Int,borderWidth: Int){
+    fun changeBorder(borderColor:Int,borderWidth: Float){
         this.borderColor = borderColor
         this.borderWidth = borderWidth
         invalidate()
