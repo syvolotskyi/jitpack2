@@ -41,8 +41,8 @@ object SPButtonStyles {
     val GRADIENT_LIGHT_GREEN_1 = Color.parseColor("#31C396")
     val GRADIENT_LIGHT_GREEN_2 = Color.parseColor("#4AF693")
 
-    val LOGO_TBC = "https://hh.ru/employer-logo/3190953.png"
-    val LOGO_SPACE = "https://media-exp1.licdn.com/dms/image/C560BAQFRDYOjrYnlMA/company-logo_200_200/0/1525704139391?e=2159024400&v=beta&t=oiF05kfz6n6F0BWRb1jSMLbPpLmfkgo7VNZ3aDJtflA"
+    val LOGO_SPACE = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/389473e6-c29e-4cab-a28d-d9e862e4f739/space.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T081049Z&X-Amz-Expires=86400&X-Amz-Signature=e043f6902944824be6044ca5e8971be3126f0dfd84138659b793642de12e4b19&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22space.png%22"
+    val LOGO_TBC = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5bfe8263-8682-4a8c-b976-f3fb7e4ec064/tbc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T081204Z&X-Amz-Expires=86400&X-Amz-Signature=ab5cc56242905efadc2455a7606b0cbc092d829653155c88438234b136fbc5d2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22tbc.png%22"
     val LOGO_MIB = "https://i1.wp.com/zanimaem.uz/wp-content/uploads/2019/04/Madadinvestbank.jpg?fit=235%2C150&ssl=1"
     val LOGO_GEORGIA_BANK = "https://media.glassdoor.com/sqll/727708/bank-of-georgia-squarelogo-1504165558877.png"
 

@@ -178,6 +178,7 @@ fun View.setHeight(value: Int) {
     lp?.let {
         lp.height = value
         layoutParams = lp
+
     }
 }
 

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPMark">
-        <attr name="height" />
+        <attr name="markHeight" format="dimension|reference" />
         <attr name="android:textAppearance" />
         <attr name="hasBorder" />
+        <attr name="style" />
         <attr name="imageSize" format="dimension|reference" />
         <attr name="imagePadding" format="dimension|reference" />
     </declare-styleable>

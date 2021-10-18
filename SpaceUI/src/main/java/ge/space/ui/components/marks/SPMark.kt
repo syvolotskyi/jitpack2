@@ -1,14 +1,11 @@
 package ge.space.ui.components.marks
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
@@ -113,29 +110,26 @@ class SPMark @JvmOverloads constructor(
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPMark)
 
-        styleAttrs.run { withStyledResource() }
+        styleAttrs.run {
+            val chipHeight = getDimensionPixelSize(
+                R.styleable.SPMark_markHeight, DEFAULT_OBTAIN_VAL
+            )
+            textAppearance = getResourceId(
+                R.styleable.SPMark_android_textAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
+            hasBorder = getBoolean(R.styleable.SPMark_hasBorder, false)
+            imageSize = getDimensionPixelSize(
+                R.styleable.SPMark_imageSize, DEFAULT_OBTAIN_VAL
+            )
 
-    }
+            paddings = getDimensionPixelSize(
+                R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
+            )
 
-    private fun TypedArray.withStyledResource() {
-        val chipHeight = getDimensionPixelSize(
-            R.styleable.SPMark_height, DEFAULT_OBTAIN_VAL
-        )
-        textAppearance = getResourceId(
-            R.styleable.SPMark_android_textAppearance,
-            DEFAULT_OBTAIN_VAL
-        )
-        hasBorder = getBoolean(R.styleable.SPMark_hasBorder, false)
-        imageSize = getDimensionPixelSize(
-            R.styleable.SPMark_imageSize, DEFAULT_OBTAIN_VAL
-        )
+            setSize(chipHeight)
+        }
 
-        paddings = getDimensionPixelSize(
-            R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
-        )
-
-        setHeight(chipHeight)
-        setWidth(chipHeight)
     }
 
     private fun handleBorder() {
