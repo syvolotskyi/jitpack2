@@ -18,6 +18,7 @@ sealed class SPViewData : Parcelable {
         var height: Int? = null,
         var width: Int? = null,
         var padding: Int? = null,
+        var backgroundColor: Int? = null,
         var tintColor: Int? = null
     ) :
         SPViewData()
@@ -26,7 +27,10 @@ sealed class SPViewData : Parcelable {
     data class SPImageUrlData(val url: String) : SPViewData()
 
     @Parcelize
-    data class SPTextData(val initials: String, @StyleRes var textStyle: Int? = null) :
+    data class SPTextData(
+        val initials: String, @StyleRes var textStyle: Int? = null,
+        var backgroundColor: Int? = null
+    ) :
         SPViewData()
 
     @Parcelize

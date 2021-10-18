@@ -13,6 +13,7 @@ class SPTextInitialsImpl(context: Context) : SPViewImpl<SPViewData.SPTextData>(c
         return TextView(context).apply {
             text = type.initials
             gravity = Gravity.CENTER
+            type.backgroundColor?.let { this.setBackgroundColor(it) }
             type.textStyle?.let { setTextStyle(it) }
         }
     }

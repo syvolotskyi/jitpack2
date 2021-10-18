@@ -15,6 +15,7 @@ class SPImageResImpl(context: Context) : SPViewImpl<SPViewData.SPImageResourcesD
             type.tintColor?.let { this.tintColor = it }
             type.height?.let { this.setHeight(it) }
             type.width?.let { this.setWidth(it) }
+            type.backgroundColor?.let { this.setBackgroundColor(it) }
             type.padding?.let { this.setPadding(it,it,it,it) }
         }
     }

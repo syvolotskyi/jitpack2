@@ -2,7 +2,6 @@ package ge.space.ui.components.marks
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
@@ -91,7 +90,10 @@ class SPMark @JvmOverloads constructor(
     private fun createView(viewData: SPViewData) = when (viewData) {
         is SPViewData.SPImageUrlData -> viewData.createView(context)
         is SPViewData.SPTextData -> {
-            viewData.apply { textStyle = textAppearance }
+            viewData.apply {
+                textStyle = textAppearance
+                backgroundColor = context.getColorFromAttribute(R.attr.background_tertiary)
+            }
             viewData.createView(context)
         }
         is SPViewData.SPImageResourcesData -> {
@@ -100,6 +102,7 @@ class SPMark @JvmOverloads constructor(
                 height = imageSize
                 width = imageSize
                 padding = paddings
+                backgroundColor = context.getColorFromAttribute(R.attr.background_tertiary)
             }
             viewData.createView(context)
         }
@@ -140,8 +143,11 @@ class SPMark @JvmOverloads constructor(
             val borderSize = resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             val padding = resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
 
-            setPadding(padding,padding,padding,padding)
-            changeBorder(context.getColorFromAttribute(R.attr.separator_non_opaque), borderSize.toFloat())
+            setPadding(padding, padding, padding, padding)
+            changeBorder(
+                context.getColorFromAttribute(R.attr.separator_non_opaque),
+                borderSize.toFloat()
+            )
         } else {
             shadowRadius = 0f
             changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL.toFloat())
