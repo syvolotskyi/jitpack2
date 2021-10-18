@@ -145,10 +145,10 @@ class SPSecondaryChip @JvmOverloads constructor(
         if (hasBorder) {
             changeBorder(
                 context.getColorFromAttribute(R.attr.separator_non_opaque),
-                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
+                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
             )
         } else {
-            changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL)
+            changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL.toFloat())
         }
     }
 
