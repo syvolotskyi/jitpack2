@@ -79,7 +79,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     /**
      * Changes a size of the view
      */
-    private var placeholderSize: SPPlaceholderSize = SPPlaceholderSize.XSmall
+    private var placeholderSize: SPPlaceholderSize = SPPlaceholderSize.Medium
         set(value) {
             field = value
 

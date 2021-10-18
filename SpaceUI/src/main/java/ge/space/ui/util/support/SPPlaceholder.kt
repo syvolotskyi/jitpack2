@@ -13,6 +13,7 @@ import ge.space.spaceui.databinding.SpPlaceholderBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
 import ge.space.ui.util.extension.loadImageUrl
+import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * A placeholder with a logo which allows to change its size and load an image by its URL
@@ -29,7 +30,7 @@ class SPPlaceholder @JvmOverloads constructor(
     /**
      * Changes a size of the view
      */
-    var placeholderSize: SPPlaceholderSize = SPPlaceholderSize.XSmall
+    var placeholderSize: SPPlaceholderSize = SPPlaceholderSize.Medium
         set(value) {
             field = value
 
@@ -82,47 +83,34 @@ class SPPlaceholder @JvmOverloads constructor(
     }
 
     private fun reSizeLogo() {
-        with(binding.ivLogo) {
-            setHeight(getRootDimenBySize())
-            setWidth(getRootDimenBySize())
-        }
+        binding.ivLogo.setViewStyle(getLogoDimenBySize())
+        loadLogo()
     }
 
     private fun getRootDimenBySize() = resources.getDimension(
         when (placeholderSize) {
             SPPlaceholderSize.Big -> R.dimen.sp_bank_logo_placeholder_size_big
-            SPPlaceholderSize.XMedium -> R.dimen.sp_bank_logo_placeholder_size_xmedium
             SPPlaceholderSize.Medium -> R.dimen.sp_bank_logo_placeholder_size_medium
-            SPPlaceholderSize.XSmall -> R.dimen.sp_bank_logo_placeholder_size_xsmall
             SPPlaceholderSize.Small -> R.dimen.sp_bank_logo_placeholder_size_small
         }
     ).toInt()
 
-    private fun getLogoDimenBySize() = resources.getDimension(
+    private fun getLogoDimenBySize() =
         when (placeholderSize) {
-            SPPlaceholderSize.Big -> R.dimen.sp_placeholder_logo_size_big
-            SPPlaceholderSize.XMedium -> R.dimen.sp_placeholder_logo_size_xmedium
-            SPPlaceholderSize.Medium -> R.dimen.sp_placeholder_logo_size_medium
-            SPPlaceholderSize.XSmall -> R.dimen.sp_placeholder_logo_size_xsmall
-            SPPlaceholderSize.Small -> R.dimen.sp_placeholder_logo_size_small
-        }
-    ).toInt()
+            SPPlaceholderSize.Big -> R.style.SPMark_Size32
+            SPPlaceholderSize.Medium -> R.style.SPMark_Size20
+            SPPlaceholderSize.Small -> R.style.SPMark_Size16}
 
     private fun getStyleBySize() =
         when (placeholderSize) {
             SPPlaceholderSize.Big -> R.style.SPChip_PlaceHolder_Big
-            SPPlaceholderSize.XMedium -> R.style.SPChip_PlaceHolder_XMedium
             SPPlaceholderSize.Medium -> R.style.SPChip_PlaceHolder_Medium
-            SPPlaceholderSize.XSmall -> R.style.SPChip_PlaceHolder_XSmall
             SPPlaceholderSize.Small -> R.style.SPChip_PlaceHolder_Small
         }
 
     private fun loadLogo() {
         if (logoUrl.isNotEmpty()) {
-            context.loadImageUrl(
-                logoUrl,
-                binding.ivLogo
-            )
+            binding.ivLogo.setViewData(SPViewData.SPImageUrlData(logoUrl))
         }
     }
 }
