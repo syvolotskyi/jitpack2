@@ -6,6 +6,7 @@ import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
@@ -111,7 +112,7 @@ class SPMark @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPMark)
 
         styleAttrs.run {
-            val chipHeight = getDimensionPixelSize(
+            val chipSize = getDimensionPixelSize(
                 R.styleable.SPMark_markHeight, DEFAULT_OBTAIN_VAL
             )
             textAppearance = getResourceId(
@@ -127,7 +128,7 @@ class SPMark @JvmOverloads constructor(
                 R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
             )
 
-            setSize(chipHeight)
+            setSize(chipSize, chipSize)
         }
 
     }

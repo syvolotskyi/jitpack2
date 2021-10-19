@@ -250,14 +250,6 @@ abstract class SPBaseView @JvmOverloads constructor(
         invalidate()
     }
 
-    fun setSize(size: Int) {
-        post {
-            this.setHeight(size)
-            this.setWidth(size)
-            this.invalidate()
-        }
-    }
-
     private fun checkShadowMarginContent() {
         if (measuredHeight > 0 && measuredWidth > 0 && !isCircle) {
             children.forEach { childView ->

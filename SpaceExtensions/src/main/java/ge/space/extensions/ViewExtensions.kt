@@ -182,6 +182,21 @@ fun View.setHeight(value: Int) {
 }
 
 /**
+ * Extension method to set View's height and width.
+ */
+fun View.setSize(width: Int, height: Int) {
+    post {
+        val lp = layoutParams
+        lp?.let {
+            lp.height = height
+            lp.width = width
+            layoutParams = lp
+        }
+        this.invalidate()
+    }
+}
+
+/**
  * Extension method to set View's height.
  */
 fun View.setHeightFloat(value: Float) {
