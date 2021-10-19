@@ -11,6 +11,8 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.drawBorder
 import ge.space.ui.util.extension.scaleTo
@@ -69,7 +71,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      * Path instance for base view shape
      * It gives us possibility to manipulate shape forms
      */
-    private val clippingMaskPath : SPMaskPath = SPMaskPathRoundedCorners()
+    private val clippingMaskPath: SPMaskPath = SPMaskPathRoundedCorners()
 
     /**
      * Makes a circled shape of the view.
@@ -242,7 +244,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         checkShadowMarginContent()
     }
 
-    fun changeBorder(borderColor:Int,borderWidth: Float){
+    fun changeBorder(borderColor: Int, borderWidth: Float) {
         this.borderColor = borderColor
         this.borderWidth = borderWidth
         invalidate()
@@ -290,7 +292,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         super.onDraw(canvas)
 
         canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
-        canvas.drawBorder(clippingMaskPath.getPath(),borderColor,borderWidth,borderPaint)
+        canvas.drawBorder(clippingMaskPath.getPath(), borderColor, borderWidth, borderPaint)
         canvas.clipPath(clippingMaskPath.getPath())
     }
 
@@ -305,7 +307,8 @@ abstract class SPBaseView @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     open fun setStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
 
         styleAttrs.run {
             color = getColor(R.styleable.sp_view_style_backgroundColor, Color.WHITE)

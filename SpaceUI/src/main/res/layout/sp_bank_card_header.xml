@@ -8,13 +8,14 @@
     android:background="?attr/static_white"
     tools:ignore="HardcodedText">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ge.space.ui.components.marks.SPMark
         android:id="@+id/ivBankImage"
         android:layout_width="@dimen/sp_bank_logo_size"
         android:layout_height="@dimen/sp_bank_logo_size"
         android:layout_marginStart="@dimen/sp_bank_logo_margin_start"
         android:layout_marginTop="@dimen/sp_bank_card_favorite_margin_top"
         android:layout_marginBottom="@dimen/sp_bank_card_favorite_margin_bottom"
+        app:style="@style/SPMark.Size32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
