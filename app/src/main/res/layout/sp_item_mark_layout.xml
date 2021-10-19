@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -11,19 +12,22 @@
         android:id="@+id/mark1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_6" />
+        android:layout_marginHorizontal="@dimen/dimen_p_6"
+        app:style="@style/SPMark.Size32" />
 
     <ge.space.ui.components.marks.SPMark
         android:id="@+id/mark2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_6" />
+        android:layout_marginHorizontal="@dimen/dimen_p_6"
+        app:style="@style/SPMark.Size64" />
 
     <ge.space.ui.components.marks.SPMark
         android:id="@+id/mark3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_6" />
+        android:layout_marginHorizontal="@dimen/dimen_p_6"
+        app:style="@style/SPMark.Size40" />
 
     <ge.space.ui.components.marks.SPMark
         android:id="@+id/mark4"

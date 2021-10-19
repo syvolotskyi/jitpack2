@@ -176,12 +176,12 @@ class SPButton @JvmOverloads constructor(
     }
 
     private fun updateDrawableColor(color: Int) {
-            binding.buttonLabel.compoundDrawables.forEach {
-                it?.colorFilter = PorterDuffColorFilter(
-                    color,
-                    android.graphics.PorterDuff.Mode.SRC_IN
-                )
-            }
+        binding.buttonLabel.compoundDrawables.forEach {
+            it?.colorFilter = PorterDuffColorFilter(
+                color,
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
+        }
     }
 
     override fun updateText(text: String) {

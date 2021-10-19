@@ -2,12 +2,14 @@ package ge.space.ui.components.marks
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setSize
 import ge.space.spaceui.R
+import ge.space.spaceui.databinding.SpMarkLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
@@ -55,6 +57,13 @@ class SPMark @JvmOverloads constructor(
      */
     var paddings: Int = 0
 
+    /**
+     * Inflates and returns [SpMarkLayoutBinding] value
+     */
+    val binding =
+        SpMarkLayoutBinding.inflate(LayoutInflater.from(context), this)
+
+
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -80,9 +89,9 @@ class SPMark @JvmOverloads constructor(
 
     fun setViewData(viewData: SPViewData) {
         val view = createView(viewData)
-        removeAllViews()
-        addView(view)
-        invalidate()
+        binding.markContentWrapper.removeAllViews()
+        binding.markContentWrapper.addView(view)
+        binding.markContentWrapper.invalidate()
     }
 
     private fun createView(viewData: SPViewData) = when (viewData) {
@@ -128,9 +137,8 @@ class SPMark @JvmOverloads constructor(
                 R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
             )
 
-            setSize(chipSize, chipSize)
+            binding.markContentWrapper.setSize(chipSize, chipSize)
         }
-
     }
 
     private fun handleBorder() {
@@ -138,7 +146,7 @@ class SPMark @JvmOverloads constructor(
             val borderSize = resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             val padding = resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
 
-            setPadding(padding, padding, padding, padding)
+            binding.markContentWrapper.setPadding(padding, padding, padding, padding)
             changeBorder(
                 context.getColorFromAttribute(R.attr.separator_non_opaque),
                 borderSize.toFloat()
