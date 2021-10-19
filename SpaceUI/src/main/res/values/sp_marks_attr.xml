@@ -4,7 +4,8 @@
         <attr name="markHeight" format="dimension|reference" />
         <attr name="android:textAppearance" />
         <attr name="hasBorder" />
-        <attr name="style" />
+        <attr name="image"/>
+        <attr name="text" />
         <attr name="imageSize" format="dimension|reference" />
         <attr name="imagePadding" format="dimension|reference" />
     </declare-styleable>

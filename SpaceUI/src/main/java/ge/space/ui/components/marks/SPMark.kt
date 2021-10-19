@@ -1,19 +1,23 @@
 package ge.space.ui.components.marks
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpMarkLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
+import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
+import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
@@ -77,6 +81,25 @@ class SPMark @JvmOverloads constructor(
                 )
             )
         }
+
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPMark,
+            defStyleAttr
+        ) {
+             getResourceId(
+             R.styleable.SPMark_image, DEFAULT_OBTAIN_VAL
+         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+             if (it != DEFAULT_OBTAIN_VAL)
+                 setViewData(SPViewData.SPImageResourcesData(it))
+         }
+         getString(
+             R.styleable.SPMark_text
+         ).handleAttributeAction(EMPTY_TEXT) {
+             if (!it.isNullOrEmpty())
+                 setViewData(SPViewData.SPTextData(it))
+         }
+     }
     }
 
 
@@ -146,7 +169,7 @@ class SPMark @JvmOverloads constructor(
             val borderSize = resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             val padding = resources.getDimensionPixelSize(R.dimen.dimen_p_0_5)
 
-            binding.markContentWrapper.setPadding(padding, padding, padding, padding)
+            setPadding(padding, padding, padding, padding)
             changeBorder(
                 context.getColorFromAttribute(R.attr.separator_non_opaque),
                 borderSize.toFloat()
