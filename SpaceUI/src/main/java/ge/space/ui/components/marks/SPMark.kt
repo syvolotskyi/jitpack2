@@ -87,19 +87,19 @@ class SPMark @JvmOverloads constructor(
             R.styleable.SPMark,
             defStyleAttr
         ) {
-             getResourceId(
-             R.styleable.SPMark_image, DEFAULT_OBTAIN_VAL
-         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-             if (it != DEFAULT_OBTAIN_VAL)
-                 setViewData(SPViewData.SPImageResourcesData(it))
-         }
-         getString(
-             R.styleable.SPMark_text
-         ).handleAttributeAction(EMPTY_TEXT) {
-             if (!it.isNullOrEmpty())
-                 setViewData(SPViewData.SPTextData(it))
-         }
-     }
+            getResourceId(
+                R.styleable.SPMark_android_src, DEFAULT_OBTAIN_VAL
+            ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                if (it != DEFAULT_OBTAIN_VAL)
+                    setViewData(SPViewData.SPImageResourcesData(it))
+            }
+            getString(
+                R.styleable.SPMark_android_text
+            ).handleAttributeAction(EMPTY_TEXT) {
+                if (!it.isNullOrEmpty())
+                    setViewData(SPViewData.SPTextData(it.take(MAX_LENGTH)))
+            }
+        }
     }
 
 
@@ -178,5 +178,9 @@ class SPMark @JvmOverloads constructor(
             shadowRadius = 0f
             changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL.toFloat())
         }
+    }
+
+    companion object {
+        private val MAX_LENGTH = 2
     }
 }
