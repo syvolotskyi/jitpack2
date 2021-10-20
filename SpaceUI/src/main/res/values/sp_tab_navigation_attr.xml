@@ -5,8 +5,8 @@
         <attr name="activeColor" format="color"/>
         <attr name="inActiveColor" format="color"/>
         <attr name="defaultBackgroundColor" format="color"/>
-        <attr name="text"/>
-        <attr name="image"/>
+        <attr name="android:src" format="reference" />
+        <attr name="android:text" format="string|reference" />
         <attr name="activeTextAppearance" format="reference"/>
         <attr name="inActiveTextAppearance" format="reference"/>
     </declare-styleable>

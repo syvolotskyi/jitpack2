@@ -22,8 +22,6 @@
     <attr name="buttonHeight" format="reference" />
     <attr name="hasBorder" format="boolean"/>
     <attr name="style" format="reference" />
-    <attr name="text" format="string|reference"/>
-    <attr name="image" format="reference"/>
 
     <attr name="directionIcon" format="enum">
         <enum name="none" value="0" />
