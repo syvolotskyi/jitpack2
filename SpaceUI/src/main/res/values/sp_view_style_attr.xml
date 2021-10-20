@@ -20,6 +20,7 @@
     <attr name="distractiveTextAppearance" format="reference" />
     <attr name="distractiveBackground" format="reference|color" />
     <attr name="buttonHeight" format="reference" />
+    <attr name="hasBorder" format="boolean"/>
     <attr name="style" format="reference" />
 
     <attr name="directionIcon" format="enum">

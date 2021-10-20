@@ -62,24 +62,15 @@ enum class SPChipIconStyle {
 enum class SPPlaceholderSize {
 
     /**
-     * For big size 40x40dp
+     * For big size 32x32dp
      */
     Big,
 
-    /**
-     * For x_medium size 32x32dp
-     */
-    XMedium,
 
     /**
-     * For medium size 24x24dp
+     * For medium size 20x20dp
      */
     Medium,
-
-    /**
-     * For x_small size 20x20dp
-     */
-    XSmall,
 
     /**
      * For small size 16x16dp

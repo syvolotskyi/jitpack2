@@ -37,6 +37,9 @@
     <string name="phone_input">Phone input</string>
     <string name="phone_input_desc">Phone input text inputs</string>
 
+    <string name="marks">Marks</string>
+    <string name="marks_desc">Marks component</string>
+
     <string name="dropdown">Dropdown</string>
     <string name="dropdown_desc">Dropdown desc</string>
 

@@ -18,6 +18,7 @@ import ge.space.ui.util.extension.loadRoundImageUrlWithPlaceholder
 import ge.space.ui.util.extension.visibleOrGone
 import ge.space.spaceui.databinding.SpBankCardLayoutBinding
 import ge.space.spaceui.databinding.SpBankCardNonAvailableBinding
+import ge.space.ui.util.view_factory.SPViewData
 
 /**
  * A bank card view which allows to show info of a bank card. A user can
@@ -298,7 +299,7 @@ class SPBankCardView @JvmOverloads constructor(
     }
 
     private fun getCardTypeTitle(cardType: SPBankCardModel): String =
-        when(cardType) {
+        when (cardType) {
             is SPBankCardModel.SPDigital -> String.format(
                 HARDCODED_DIGITAL_CARD_TEMP,
                 cardType.currency
@@ -314,23 +315,9 @@ class SPBankCardView @JvmOverloads constructor(
 
     private fun handleBankLogo() {
         if (bankLogo.isNotEmpty()) {
-            val cornerRadius = getBankLogoCornersRadius()
-            loadBankLogo(cornerRadius)
+            binding.lytBankCardHeader.ivBankImage.setViewData(SPViewData.SPImageUrlData(bankLogo))
         }
     }
-
-    private fun loadBankLogo(cornerRadius: Int) {
-        context.loadRoundImageUrlWithPlaceholder(
-            bankLogo,
-            binding.lytBankCardHeader.ivBankImage,
-            R.drawable.bg_bank_card_logo,
-            cornerRadius
-        )
-    }
-
-    private fun getBankLogoCornersRadius() =
-        resources.getDimension(R.dimen.sp_bank_logo_round_radius)
-            .toInt()
 
     private fun handleAccountNumberStyle() {
         val color = colorByAccountNumberStyle()
@@ -380,7 +367,7 @@ class SPBankCardView @JvmOverloads constructor(
     }
 
     private fun handleBackGradientTypeWithPayWave() {
-        val color =  getPayWaveColor()
+        val color = getPayWaveColor()
         binding.lytBankCardBody.ivPayWave.setColorFilter(
             context.getColorRes(color),
             PorterDuff.Mode.SRC_IN

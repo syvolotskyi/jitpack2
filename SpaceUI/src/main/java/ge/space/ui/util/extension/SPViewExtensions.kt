@@ -11,13 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_BORDER_VALUE
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
 import ge.space.ui.base.SPBaseView.Companion.SQUARE_RATIO
@@ -135,13 +132,13 @@ fun View.visibleOrGone(visible: Boolean) {
 fun Canvas.drawBorder(
     path: Path,
     borderColor: Int,
-    borderWidth: Int,
+    borderWidth: Float,
     borderPaint: Paint
 ) {
-    if (borderColor != EMPTY_BORDER_VALUE && borderWidth != EMPTY_BORDER_VALUE) {
+    if (borderColor != EMPTY_BORDER_VALUE && borderWidth != EMPTY_BORDER_VALUE.toFloat()) {
         drawPath(path, borderPaint.apply {
             color = borderColor
-            strokeWidth = borderWidth.toFloat()
+            strokeWidth = borderWidth
         })
     }
 }

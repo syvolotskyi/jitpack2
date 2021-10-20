@@ -163,9 +163,9 @@ class SPTabNavigationChildView @JvmOverloads constructor(
             R.styleable.sp_tab_navigation_child_view_defaultBackgroundColor,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
-        text = getString(R.styleable.sp_tab_navigation_child_view_text).toString()
+        text = getString(R.styleable.sp_tab_navigation_child_view_android_text).toString()
         image = getResourceId(
-            R.styleable.sp_tab_navigation_child_view_image,
+            R.styleable.sp_tab_navigation_child_view_android_src,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
 

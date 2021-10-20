@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <View
-        android:id="@+id/vRoot"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
-    <ge.space.ui.components.marks.SPMark
-        android:id="@+id/ivLogo"
+    <FrameLayout
+        android:id="@+id/markContentWrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:scaleType="fitCenter" />
-
+        android:background="?attr/background_tertiary"
+        android:gravity="center_vertical" >
+    </FrameLayout>
 </merge>

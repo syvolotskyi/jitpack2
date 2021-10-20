@@ -8,6 +8,7 @@ import ge.space.ui.util.view_factory.component_type.chip.empty.SPEmptyChipIconIm
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPPrimaryChipIconImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageResImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageUrlImpl
+import ge.space.ui.util.view_factory.component_type.text.SPTextInitialsImpl
 
 interface SPViewFactory {
     companion object {
@@ -24,6 +25,7 @@ interface SPViewFactory {
                 is SPViewData.SPEmptyChipData -> SPEmptyChipIconImpl(context).create(this)
                 is SPViewData.SPNewCreditCards -> SPNewCreditCardImpl(context).create(this)
                 is SPViewData.SPChipData -> SPChipIconImpl(context).create(this)
+                is SPViewData.SPTextData -> SPTextInitialsImpl(context).create(this)
             }
         }
     }

@@ -9,16 +9,8 @@
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_small</item>
     </style>
 
-    <style name="SPChip.PlaceHolder.XSmall" parent="SPChip.PlaceHolder">
-        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_xsmall</item>
-    </style>
-
     <style name="SPChip.PlaceHolder.Medium" parent="SPChip.PlaceHolder">
         <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_medium</item>
-    </style>
-
-    <style name="SPChip.PlaceHolder.XMedium" parent="SPChip.PlaceHolder">
-        <item name="roundedCorners">@dimen/sp_bank_logo_placeholder_radius_xmedium</item>
     </style>
 
     <style name="SPChip.PlaceHolder.Big" parent="SPChip.PlaceHolder">

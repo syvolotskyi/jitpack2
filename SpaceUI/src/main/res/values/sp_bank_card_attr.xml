@@ -50,7 +50,7 @@
 
     <declare-styleable name="SPSecondaryChip">
         <attr name="placeholder_size" />
-        <attr name="hasBorder" format="boolean"/>
+        <attr name="hasBorder"/>
     </declare-styleable>
 
     <declare-styleable name="SPChipIcon">

@@ -9,10 +9,10 @@ import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.setHeight
+import ge.space.extensions.setSize
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.util.view_factory.SPViewData
@@ -66,8 +66,7 @@ class SPEmptyChip @JvmOverloads constructor(
     }
 
     override fun handleChipSize() {
-        binding.ivBackground.setHeight(chipHeight)
-        binding.ivBackground.setWidth(chipWidth)
+        binding.ivBackground.setSize(chipWidth, chipHeight)
     }
 
     override fun setChipStyle(styleRes: Int) {
@@ -90,7 +89,12 @@ class SPEmptyChip @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData =
-        SPViewData.SPEmptyChipData(chipHeight, chipWidth, emptyViewStyle, R.style.SPBankCardView_EmptySmall_Base)
+        SPViewData.SPEmptyChipData(
+            chipHeight,
+            chipWidth,
+            emptyViewStyle,
+            R.style.SPBankCardView_EmptySmall_Base
+        )
 
     private fun getBackgroundImage() =
         when (emptyViewStyle) {
