@@ -13,6 +13,7 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
+import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
@@ -22,14 +23,14 @@ import ge.space.ui.util.extension.handleAttributeAction
  * Button view extended from [SPButtonBaseView] that allows to change its configuration.
  *
  * @property src [Int] value which applies a button image using a resource ID.
- * @property distractiveColor [Int] value sets image color in distractive state
+ * @property isDistractive [Boolean] value sets distractive state
  */
 class SPButtonHorizontal @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Horizontal_Size48
-) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr), OnDistractiveInterface {
 
     /**
      * Inflates and returns [SpButtonHorizontalLayoutBinding] value
@@ -53,6 +54,14 @@ class SPButtonHorizontal @JvmOverloads constructor(
      */
     @StyleRes
     private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+
+    override var isDistractive: Boolean = false
+        set(value) {
+            field = value
+
+            handleDistractiveState()
+        }
 
     /**
      *  it is a specific state for buttons.
@@ -133,7 +142,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         }
     }
 
-    override fun handleDistractiveState() {
+    private fun handleDistractiveState() {
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
         binding.ivRight.setColorFilter(
             if (isDistractive) distractiveColor

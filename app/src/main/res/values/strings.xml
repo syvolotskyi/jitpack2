@@ -25,6 +25,9 @@
     <string name="iconic_button_description">Iconic button description</string>
     <string name="iconic_buttons">Iconic button</string>
 
+    <string name="inline_button_description">Inline button description</string>
+    <string name="inline_buttons">Inline button</string>
+
     <string name="component_dialog">Dialog</string>
     <string name="component_dialog_description">Dialog description</string>
 

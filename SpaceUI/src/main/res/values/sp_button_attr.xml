@@ -15,6 +15,18 @@
         <attr name="android:text" format="string|reference" />
     </declare-styleable>
 
+    <declare-styleable name="SPButtonInline">
+        <attr name="containerGravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+        <attr name="android:src" format="reference" />
+        <attr name="android:text" format="string|reference" />
+        <attr name="description" format="string|reference" />
+        <attr name="android:textAppearance" />
+        <attr name="descriptionTextAppearance" />
+    </declare-styleable>
+
     <declare-styleable name="SPButtonVertical">
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
