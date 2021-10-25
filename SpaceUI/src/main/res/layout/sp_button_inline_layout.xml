@@ -29,7 +29,6 @@
             android:layout_marginStart="@dimen/dimen_p_10"
             app:layout_constraintStart_toEndOf="@id/buttonIcon"
             app:layout_constraintTop_toTopOf="@id/buttonIcon"
-            app:layout_constraintBottom_toBottomOf="@id/buttonIcon"
             tools:text="Title p" />
 
         <TextView
