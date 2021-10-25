@@ -2,10 +2,10 @@ package ge.space.design.ui_components.text_fields.phone
 
 import android.content.Context
 import android.view.KeyEvent
-import androidx.core.widget.doOnTextChanged
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpPhoneInputShowcaseBinding
 import ge.space.design.main.SPComponentFactory
@@ -28,12 +28,26 @@ class SPPhoneComponent : ShowCaseComponent {
                 setupPhoneInputTextWithDone(phoneInput, environment.context)
                 setupPhoneInputTextWithDone(phoneInputSecond, environment.context)
             }
+            with(binding.phoneInput) {
+                setPhoneMask(
+                    resources.getString(R.string.phone_prefix),
+                    resources.getString(R.string.phone_mask)
+                )
+            }
+
+            with(binding.phoneInputSecond) {
+                setPhoneMask(
+                    resources.getString(R.string.phone_prefix),
+                    resources.getString(R.string.phone_mask)
+                )
+            }
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.phoneInput.labelText = text.toString()
                 binding.phoneInputSecond.labelText = text.toString()
             }
             return binding.root
+
         }
 
         private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldPhone, context: Context) {

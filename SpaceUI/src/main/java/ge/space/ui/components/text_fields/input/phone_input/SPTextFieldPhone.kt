@@ -40,8 +40,11 @@ class SPTextFieldPhone @JvmOverloads constructor(
             )
         }
 
-        inputTextBinding.etInputField.mask = resources.getString(R.string.phone_mask)
 
+    }
+
+    fun setPhoneMask(prefix: String, mask: String) {
+        inputTextBinding.etInputField.mask = "$prefix $mask"
     }
 
     override var text: String = EMPTY_TEXT
