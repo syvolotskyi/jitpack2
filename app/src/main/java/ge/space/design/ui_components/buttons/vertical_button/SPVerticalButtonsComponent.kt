@@ -2,7 +2,6 @@ package ge.space.design.ui_components.buttons.vertical_button
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemVerticalButtonsShowcaseBinding
@@ -10,9 +9,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
 import ge.space.ui.components.buttons.SPButtonVertical
-import ge.space.ui.components.buttons.base.SPButtonBaseView
 
 class SPVerticalButtonsComponent : ShowCaseComponent {
     override fun getNameResId(): Int = R.string.vertical_buttons

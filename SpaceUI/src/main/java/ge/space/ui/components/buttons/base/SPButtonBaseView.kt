@@ -21,7 +21,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface, OnDistractiveInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
@@ -43,13 +43,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
             field = value
 
             updateText(value)
-        }
-
-    override var isDistractive: Boolean = false
-        set(value) {
-            field = value
-
-            handleDistractiveState()
         }
 
     init {
@@ -96,11 +89,6 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
-
-    /**
-     * Update view depends on isDistractive attr
-     */
-    abstract fun handleDistractiveState()
 
     /**
      * Allows to update button style using ViewBinding

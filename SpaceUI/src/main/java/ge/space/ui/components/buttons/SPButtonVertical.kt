@@ -17,6 +17,7 @@ import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
+import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
@@ -34,7 +35,8 @@ open class SPButtonVertical @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Vertical_Size48
-) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr),
+    OnDistractiveInterface {
 
     /**
      * Inflates and returns [SpButtonVerticalLayoutBinding] value
@@ -55,6 +57,14 @@ open class SPButtonVertical @JvmOverloads constructor(
             field = value
 
             bubbleLayoutBinding.image.setImageResource(src)
+        }
+
+
+    override var isDistractive: Boolean = false
+        set(value) {
+            field = value
+
+            handleDistractiveState()
         }
 
     private var iconPadding = resources.getDimensionPixelSize(R.dimen.dimen_p_15)
@@ -158,7 +168,7 @@ open class SPButtonVertical @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.invalidate()
     }
 
-    protected fun handleImageSize(iconPixelSize: Int) {
+    private fun handleImageSize(iconPixelSize: Int) {
         bubbleLayoutBinding.image.setHeight(iconPixelSize)
         bubbleLayoutBinding.image.setWidth(iconPixelSize)
     }

@@ -8,4 +8,5 @@ package ge.space.ui.base
  */
 interface OnDistractiveInterface {
     var isDistractive: Boolean
+    fun handleDistractiveState()
 }

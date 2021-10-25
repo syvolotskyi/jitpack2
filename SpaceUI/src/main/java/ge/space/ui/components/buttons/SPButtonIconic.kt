@@ -8,6 +8,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import ge.space.spaceui.R
+import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.util.extension.getColorFromAttribute
 
 /**
@@ -35,7 +36,6 @@ open class SPButtonIconic @JvmOverloads constructor(
             field = value
             bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth.toFloat())
         }
-
 
     /**
      * Sets a style for the SPButton view.

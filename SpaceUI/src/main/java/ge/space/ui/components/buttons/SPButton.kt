@@ -16,6 +16,7 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
+import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.buttons.SPButton.IconDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
@@ -36,13 +37,14 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property directionIcon [IconDirection] value which applies a button icon direction.
  *  This property can have a value from [IconDirection.Right], [IconDirection.Left],
  *  [IconDirection.None].
+ * @property isDistractive [Boolean] value sets distractive state
  */
 class SPButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Primary_Size48
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) , OnDistractiveInterface{
 
     /**
      * Makes a button icon direction.
@@ -52,6 +54,13 @@ class SPButton @JvmOverloads constructor(
             field = value
 
             handleDirectionArrow()
+        }
+
+    override var isDistractive: Boolean = false
+        set(value) {
+            field = value
+
+            handleDistractiveState()
         }
 
     /**
