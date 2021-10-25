@@ -124,7 +124,4 @@
 
     <string name="component_new_credit_card">New credit card</string>
     <string name="component_new_credit_card_description">Samples of new credit cards</string>
-
-    <string name="phone_prefix">+995</string>
-    <string name="phone_mask">### ### ###</string>
 </resources>
