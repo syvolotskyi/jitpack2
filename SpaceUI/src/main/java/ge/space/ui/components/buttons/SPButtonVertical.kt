@@ -159,7 +159,7 @@ open class SPButtonVertical @JvmOverloads constructor(
     fun updateTextAppearance(textAppearance: Int) =
         binding.buttonLabel.setTextStyle(textAppearance)
 
-    protected open fun handleDistractiveState() {
+    override fun handleDistractiveState() {
         bubbleLayoutBinding.btnContainer.color =
             if (isDistractive)
                 distractiveColor

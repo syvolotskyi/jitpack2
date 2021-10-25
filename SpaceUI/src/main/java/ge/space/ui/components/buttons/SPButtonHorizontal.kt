@@ -142,7 +142,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         }
     }
 
-    private fun handleDistractiveState() {
+    override fun handleDistractiveState() {
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)
         binding.ivRight.setColorFilter(
             if (isDistractive) distractiveColor

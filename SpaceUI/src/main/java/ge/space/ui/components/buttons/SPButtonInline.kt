@@ -49,7 +49,7 @@ class SPButtonInline @JvmOverloads constructor(
         set(value) {
             field = value
 
-            handleImage()
+            handleIconButton()
         }
 
     /**
@@ -61,14 +61,13 @@ class SPButtonInline @JvmOverloads constructor(
 
             binding.buttonDesc.text = description
             binding.buttonDesc.isVisible = description.isNotEmpty()
-            updateTextAppearance()
         }
 
     /**
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var textAppearance: Int = R.style.h700_bold_caps_brand_primary
 
     /**
      * Sets a text appearance
@@ -109,11 +108,18 @@ class SPButtonInline @JvmOverloads constructor(
                 R.styleable.SPButtonInline_descriptionTextAppearance,
                 DEFAULT_OBTAIN_VAL
             )
-            description = getString(
+            getString(
                 R.styleable.SPButtonInline_description
-            ) ?: EMPTY_TEXT
+            ).orEmpty().handleAttributeAction(EMPTY_TEXT) {
+                description = it
+            }
+
             buttonGravity = ButtonGravity.values()[gravityInd]
-            src = getResourceId(R.styleable.SPButtonInline_android_src, 0)
+            getResourceId(R.styleable.SPButtonInline_android_src, DEFAULT_OBTAIN_VAL)
+                .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                    if (it != DEFAULT_OBTAIN_VAL)
+                        src = it
+                }
             updateTextAppearance()
         }
     }
@@ -160,16 +166,19 @@ class SPButtonInline @JvmOverloads constructor(
         )
         textAppearance = getResourceId(
             R.styleable.sp_button_view_style_android_textAppearance,
-            DEFAULT_OBTAIN_VAL
+            R.style.h700_bold_caps_brand_primary
         )
-        description = getString(
+        getString(
             R.styleable.SPButtonInline_description
-        ) ?: EMPTY_TEXT
+        ).orEmpty().handleAttributeAction(EMPTY_TEXT) {
+            description = it
+        }
         buttonGravity = ButtonGravity.values()[gravityInd]
-        src = getResourceId(R.styleable.SPButtonInline_android_src, 0)
+        getResourceId(R.styleable.SPButtonInline_android_src, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                src = it
+            }
         updateTextAppearance()
-
-
     }
 
     fun updateTextAppearance() {
@@ -182,7 +191,7 @@ class SPButtonInline @JvmOverloads constructor(
         binding.buttonLabel.text = text
     }
 
-    private fun handleImage() {
+    private fun handleIconButton() {
         if (src != DEFAULT_OBTAIN_VAL) {
             binding.buttonIcon.setImageResource(src)
         }
