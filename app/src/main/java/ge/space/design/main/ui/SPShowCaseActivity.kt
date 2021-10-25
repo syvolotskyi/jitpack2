@@ -6,9 +6,9 @@ import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpActivitySimpleShowcaseBinding
@@ -102,9 +102,6 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
         this.componentsListBinding = listBinding
 
         listBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-        listBinding.recyclerView.addItemDecoration(
-            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        )
 
         val adapter = SimpleListAdapter<SpItemComponentBinding, ShowCaseComponent>(
             componentSPS
@@ -113,6 +110,7 @@ class SPShowCaseActivity : SPBaseActivity(), SPShowCaseDisplay {
                 SpItemComponentBinding.inflate(layoutInflater, parent, false)
             }
             onBind { binding, component, _ ->
+                binding.parent.animation = AnimationUtils.loadAnimation(this@SPShowCaseActivity, R.anim.list_anim)
                 binding.title.setText(component.getNameResId())
                 if (component.isNew) {
                     binding.title.apply { append(" "); append(getNewBadge()) }

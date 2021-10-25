@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ge.space.ui.components.layout.SPFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:minHeight="?attr/listPreferredItemHeight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:style="@style/List.ItemView"
+    android:id="@+id/parent"
+    android:paddingVertical="@dimen/dimen_p_8"
     android:paddingStart="?attr/listPreferredItemPaddingStart"
     android:paddingEnd="?attr/listPreferredItemPaddingEnd">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="?attr/themeTextColor"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/dimen_p_10"
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_alignStart="@id/title"
-        android:textColor="?attr/themeTextColor"
-        android:textAppearance="?attr/textAppearanceListItemSecondary" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/h700_medium_label_primary" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/h700_medium_caps_label_secondary"
+ />
+
+    </LinearLayout>
+</ge.space.ui.components.layout.SPFrameLayout>
