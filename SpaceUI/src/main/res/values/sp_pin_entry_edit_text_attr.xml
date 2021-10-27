@@ -12,9 +12,17 @@
 
     <declare-styleable name="SPPinEntryView">
         <attr name="android:text" format="string|reference" />
-        <attr name="pinLabelText" format="string|reference" />
+        <attr name="pinLabelText"  />
+        <attr name="pinDescriptionText" format="string|reference" />
         <attr name="android:enabled" format="boolean" />
         <attr name="android:maxLength" format="integer" />
-        <attr name="sp_pinStyle" format="reference" />
+        <attr name="sp_pinStyle" />
+    </declare-styleable>
+
+    <declare-styleable name="SPPasswordView">
+        <attr name="android:text" format="string|reference" />
+        <attr name="android:maxLength" format="integer" />
+        <attr name="pinLabelText" />
+        <attr name="sp_pinStyle"  />
     </declare-styleable>
 </resources>

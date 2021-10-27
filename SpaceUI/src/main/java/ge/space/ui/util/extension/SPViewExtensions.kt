@@ -5,6 +5,9 @@ import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +21,7 @@ import androidx.fragment.app.Fragment
 import ge.space.ui.base.SPBaseView.Companion.EMPTY_BORDER_VALUE
 import ge.space.ui.base.SPBaseView.Companion.SIDE_RATIO
 import ge.space.ui.base.SPBaseView.Companion.SQUARE_RATIO
+import ge.space.ui.components.text_fields.password.SPPasswordView
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -140,5 +144,23 @@ fun Canvas.drawBorder(
             color = borderColor
             strokeWidth = borderWidth
         })
+    }
+}
+/**
+ * Extension which makes vibration
+ * @param duration with rhe default state = 400
+ *
+ */
+fun Context.makeVibration(duration:Long = 400) {
+    val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        vibrator.vibrate(
+            VibrationEffect.createOneShot(
+                duration,
+                VibrationEffect.DEFAULT_AMPLITUDE
+            )
+        )
+    } else {
+        vibrator.vibrate(duration)
     }
 }
