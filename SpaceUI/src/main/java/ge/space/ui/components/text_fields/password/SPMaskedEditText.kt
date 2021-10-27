@@ -13,11 +13,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
-import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
-import java.util.*
 
 internal class SPMaskedEditText : AppCompatEditText {
 
@@ -103,16 +101,7 @@ internal class SPMaskedEditText : AppCompatEditText {
         charBottom = FloatArray(maxLength)
         var startX: Int
         val bottom = height
-        val rtlFlag: Int
-        val isLayoutRtl =
-            TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == ViewCompat.LAYOUT_DIRECTION_RTL
-        if (isLayoutRtl) {
-            rtlFlag = -1
-            startX = (width - ViewCompat.getPaddingStart(this) - charSize).toInt()
-        } else {
-            rtlFlag = 1
             startX = ViewCompat.getPaddingStart(this)
-        }
         var i = 0
         while (i < maxLength) {
             lineCords?.let { cords ->
@@ -122,14 +111,14 @@ internal class SPMaskedEditText : AppCompatEditText {
                     startX + charSize,
                     bottom.toFloat()
                 )
-                if (pinBackground != null) {
+                pinBackground?.let {
                     cords[i]?.top = paddingTop.toFloat()
                     cords[i]?.right = startX + (cords[i]?.height() ?: 0f)
                 }
                 startX += if (space < 0) {
-                    (rtlFlag * charSize * 2).toInt()
+                    (charSize * 2).toInt()
                 } else {
-                    (rtlFlag * (charSize + space)).toInt()
+                    ((charSize + space)).toInt()
                 }
                 charBottom[i] = (cords[i]?.bottom ?: 0f)
             }

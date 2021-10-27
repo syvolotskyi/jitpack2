@@ -71,18 +71,17 @@ class SPPasswordView @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPPinEntryView,
+            R.styleable.SPPasswordView,
             defStyleAttr
         ) {
-            text = getString(R.styleable.SPPinEntryView_android_text).orEmpty()
-            labelText = getString(R.styleable.SPPinEntryView_pinLabelText).orEmpty()
-            isEnabled = getBoolean(R.styleable.SPPinEntryView_android_enabled, true)
-            maxLength = getInt(R.styleable.SPPinEntryView_android_maxLength, DEFAULT_LENGTH)
+            text = getString(R.styleable.SPPasswordView_android_text).orEmpty()
+            labelText = getString(R.styleable.SPPasswordView_pinLabelText).orEmpty()
+            maxLength = getInt(R.styleable.SPPasswordView_android_maxLength, DEFAULT_LENGTH)
 
             binding.pinEntryEditText.setStyle(
                 getResourceId(
-                    R.styleable.SPPinEntryView_sp_pinStyle,
-                    R.style.SPPinEntryEditText
+                    R.styleable.SPPasswordView_sp_pinStyle,
+                    R.style.SPPassportView
                 )
             )
         }
