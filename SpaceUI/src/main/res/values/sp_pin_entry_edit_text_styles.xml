@@ -11,7 +11,7 @@
         <item name="android:inputType">number</item>
     </style>
 
-    <style name="SPPassportView" parent="SPPinEntryEditText">
+    <style name="SPPasswordView" parent="SPPinEntryEditText">
         <item name="pinType">password</item>
         <item name="disableCopyPaste">true</item>
         <item name="android:textColor">@android:color/transparent</item>

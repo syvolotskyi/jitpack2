@@ -23,6 +23,5 @@
         <attr name="android:text" format="string|reference" />
         <attr name="android:maxLength" format="integer" />
         <attr name="pinLabelText" />
-        <attr name="sp_pinStyle"  />
     </declare-styleable>
 </resources>

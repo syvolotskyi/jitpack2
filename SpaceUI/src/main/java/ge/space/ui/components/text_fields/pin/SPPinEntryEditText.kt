@@ -60,7 +60,7 @@ class SPPinEntryEditText : AppCompatEditText {
             field = value
 
             if (value == Password) {
-                handlePassportInputState()
+                handlePasswordInputState()
             } else {
                 handleOTPInputState()
             }
@@ -225,13 +225,13 @@ class SPPinEntryEditText : AppCompatEditText {
         }
     }
 
-    private fun handlePassportInputState() {
+    private fun handlePasswordInputState() {
         setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
         setPadding(
             resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_passport_padding),
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_password_padding),
             resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_passport_padding)
+            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_password_padding)
         )
     }
 

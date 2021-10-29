@@ -148,7 +148,7 @@ fun Canvas.drawBorder(
 }
 /**
  * Extension which makes vibration
- * @param duration with rhe default state = 400
+ * @param duration with the default state = 400
  *
  */
 fun Context.makeVibration(duration:Long = 400) {
