@@ -1,15 +1,19 @@
 package ge.space.extensions
 
 import android.app.Activity
-import android.content.*
+import android.content.ActivityNotFoundException
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.SystemClock
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.provider.Settings
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
@@ -42,6 +46,25 @@ fun Context.openAppInGooglePlay() {
                 Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
             )
         )
+    }
+}
+
+/**
+ * Extension which makes vibration
+ * @param duration with rhe default state = 400
+ *
+ */
+fun Context.makeVibration(duration: Long = 400) {
+    val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        vibrator.vibrate(
+            VibrationEffect.createOneShot(
+                duration,
+                VibrationEffect.DEFAULT_AMPLITUDE
+            )
+        )
+    } else {
+        vibrator.vibrate(duration)
     }
 }
 

@@ -1,9 +1,6 @@
 package ge.space.ui.components.text_fields.pin
 
 import android.content.Context
-import android.os.Build
-import android.os.VibrationEffect
-import android.os.Vibrator
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.animation.Animation
@@ -12,8 +9,11 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.addTextChangedListener
+import ge.space.extensions.EMPTY_TEXT
+import ge.space.extensions.makeVibration
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
+import ge.space.ui.components.text_fields.password.SPMaskedEditText.Companion.DEFAULT_LENGTH
 
 /**
  * Field view extended from [LinearLayout] that allows to change its configuration.
@@ -22,7 +22,7 @@ import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
  * @property isError [Boolean] value which applies a error to a field.
  * @property maxLength [Int] value which applies a max Length.
  */
-class SPPinEntryView @JvmOverloads constructor(
+class SPOtpEntryView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -53,22 +53,31 @@ class SPPinEntryView @JvmOverloads constructor(
         }
 
     /**
+     * Sets a labelText
+     */
+    var descriptionText: String = EMPTY_TEXT
+        set(value) {
+            field = value
+
+            binding.buttonDescription.text = value
+        }
+
+    /**
      * Sets a error
      */
-    var isError: Boolean
-        get() = binding.pinEntryEditText.isError
+    var isError: Boolean = false
         set(hasError) {
-            binding.pinEntryEditText.isError = hasError
+            binding.pinEntryEditText.setError(hasError)
             if (hasError) {
                 showErrorAnimation()
-                makeVibration()
+                context.makeVibration()
             }
         }
 
     /**
      * Sets a maxLength
      */
-    var maxLength: Int = DEFAULT_MAX_LENGTH
+    var maxLength: Int = DEFAULT_LENGTH
         set(value) {
             field = value
 
@@ -83,8 +92,9 @@ class SPPinEntryView @JvmOverloads constructor(
         ) {
             text = getString(R.styleable.SPPinEntryView_android_text).orEmpty()
             labelText = getString(R.styleable.SPPinEntryView_pinLabelText).orEmpty()
+            descriptionText = getString(R.styleable.SPPinEntryView_pinDescriptionText).orEmpty()
             isEnabled = getBoolean(R.styleable.SPPinEntryView_android_enabled, true)
-            maxLength = getInt(R.styleable.SPPinEntryView_android_maxLength, DEFAULT_MAX_LENGTH)
+            maxLength = getInt(R.styleable.SPPinEntryView_android_maxLength, DEFAULT_LENGTH)
 
             binding.pinEntryEditText.setStyle(
                 getResourceId(
@@ -94,7 +104,7 @@ class SPPinEntryView @JvmOverloads constructor(
             )
 
             binding.pinEntryEditText.addTextChangedListener {
-                binding.pinEntryEditText.isError = false
+                binding.pinEntryEditText.setError(false)
             }
         }
     }
@@ -111,11 +121,12 @@ class SPPinEntryView @JvmOverloads constructor(
      */
     fun resetPin() {
         binding.pinEntryEditText.setText("")
+        binding.pinEntryEditText.setError(false)
     }
 
     private fun showErrorAnimation(){
         val animation = AnimationUtils.loadAnimation(
-            binding.pinEntryEditText.context,
+            binding.pinEntryContainer.context,
             R.anim.sp_shake_anim
         )
 
@@ -128,16 +139,7 @@ class SPPinEntryView @JvmOverloads constructor(
             override fun onAnimationRepeat(animation: Animation) {}
         })
 
-        binding.pinEntryEditText.startAnimation(animation)
-    }
-
-    private fun makeVibration() {
-        val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(VibrationEffect.createOneShot(400, VibrationEffect.DEFAULT_AMPLITUDE))
-        } else {
-            vibrator.vibrate(400)
-        }
+        binding.pinEntryContainer.startAnimation(animation)
     }
 
     override fun setEnabled(enabled: Boolean) {
@@ -147,11 +149,6 @@ class SPPinEntryView @JvmOverloads constructor(
 
     fun setPinEnteredListener(onPinEnteredListener: OnPinEnteredListener) {
         binding.pinEntryEditText.onPinEnteredListener = onPinEnteredListener
-    }
-
-    companion object {
-        private const val EMPTY_TEXT = ""
-        private const val DEFAULT_MAX_LENGTH = 4
     }
 }
 

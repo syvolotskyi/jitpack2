@@ -15,69 +15,29 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
-import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
-import ge.space.ui.components.text_fields.pin.SPPinEntryEditText.PinType.OTP
-import ge.space.ui.components.text_fields.pin.SPPinEntryEditText.PinType.Password
 import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.*
 
-class SPPinEntryEditText : AppCompatEditText {
-
-    /**
-     * Sets disable copy-paste.
-     */
-    private var isDisableCopyPaste = false
-        set(value) {
-            field = value
-
-            if (isDisableCopyPaste) {
-                disableCopyPaste()
-            }
-        }
-
-    /**
-     * Sets a error.
-     */
-    var isError: Boolean
-        get() = hasError
-        set(hasError) {
-            this.hasError = hasError
-            if (hasError) updateDrawableState(hasText = false, isNext = false)
-        }
+class SPOtpEditText : AppCompatEditText {
 
     var onPinEnteredListener: OnPinEnteredListener? = null
-
-    /**
-     * Sets a pin type - password or OTP.
-     */
-    private var pinType = Password
-        set(value) {
-            field = value
-
-            if (value == Password) {
-                handlePassportInputState()
-            } else {
-                handleOTPInputState()
-            }
-        }
 
     private var charSize = DEFAULT_FLOAT
     private var numChars = DEFAULT_FLOAT
     private var maxLength = DEFAULT_LENGTH
     private var lineCords: Array<RectF?>? = null
     private var pinBackground: Drawable? = null
-    private var textHeight = Rect()
 
-    private val space: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_space) }
     private val pinWidth: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_width) }
+    private val pinHeight: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_height) }
     private val lineStroke: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_line_stroke) }
 
-    private var hasError = false
     private lateinit var originalTextColors: ColorStateList
 
     private lateinit var charPaint: Paint
@@ -97,13 +57,24 @@ class SPPinEntryEditText : AppCompatEditText {
         init(context, attrs)
     }
 
+    fun setError(
+        isError: Boolean,
+        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_magenta)
+    ) {
+        setTextColor(if (isError) errorColor else context.getColorFromAttribute(R.attr.brand_primary))
+
+    }
+
     fun setMaxLength(maxLength: Int) {
         val params = this.layoutParams
-        params.width = (pinWidth * maxLength).toInt() +
-                (space * maxLength).withPadding()
+        params.width = (pinWidth * maxLength).toInt()
+        params.height = pinHeight.toInt()
         this.layoutParams = params
+        this.maxLength = maxLength
+        numChars = maxLength.toFloat()
+        filters = arrayOf<InputFilter>(LengthFilter(maxLength))
+        text = null
         requestLayout()
-        applyMaxLength(maxLength)
     }
 
     private fun init(context: Context, attrs: AttributeSet) {
@@ -111,19 +82,11 @@ class SPPinEntryEditText : AppCompatEditText {
             context.obtainStyledAttributes(attrs, R.styleable.SPPinEntryEditText, 0, 0)
 
         ta.run {
-            val pinTypeId = getInt(
-                R.styleable.SPPinEntryEditText_pinType, DEFAULT_PIN_TYPE
-            )
-
             movementMethod = null
-            pinType = PinType.values()[pinTypeId]
-            isDisableCopyPaste =
-                getBoolean(R.styleable.SPPinEntryEditText_disableCopyPaste, false)
-            pinBackground = if (pinType == Password) {
-                ContextCompat.getDrawable(context, R.drawable.bg_pin_circle)
-            } else {
+
+            disableCopyPaste()
+            pinBackground =
                 ContextCompat.getDrawable(context, R.drawable.bg_pin_number)
-            }
 
             recycle()
         }
@@ -135,8 +98,6 @@ class SPPinEntryEditText : AppCompatEditText {
         maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", DEFAULT_LENGTH)
         numChars = maxLength.toFloat()
 
-        //Height of the characters, used if there is a background drawable
-        paint.getTextBounds("|", 0, 1, textHeight)
     }
 
     fun setStyle(@StyleRes defStyleRes: Int) {
@@ -144,28 +105,20 @@ class SPPinEntryEditText : AppCompatEditText {
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEntryEditText)
         styleAttrs.run {
-            val pinTypeId = getInt(
-                R.styleable.SPPinEntryEditText_pinType, DEFAULT_PIN_TYPE
-            )
             isCursorVisible = false
             isClickable = false
             setTextIsSelectable(false)
             includeFontPadding = false
 
-            pinType = PinType.values()[pinTypeId]
-            isDisableCopyPaste =
-                getBoolean(R.styleable.SPPinEntryEditText_disableCopyPaste, false)
+            disableCopyPaste()
             setTextColor(
                 getColor(
                     R.styleable.SPPinEntryEditText_android_textColor,
-                     context.getColorFromAttribute(R.attr.brand_primary)
+                    context.getColorFromAttribute(R.attr.brand_primary)
                 )
             )
-            pinBackground = if (pinType == Password) {
-                ContextCompat.getDrawable(context, R.drawable.bg_pin_circle)
-            } else {
+            pinBackground =
                 ContextCompat.getDrawable(context, R.drawable.bg_pin_number)
-            }
             recycle()
         }
     }
@@ -176,27 +129,12 @@ class SPPinEntryEditText : AppCompatEditText {
         lastCharPaint.color = originalTextColors.defaultColor
         charPaint.color = originalTextColors.defaultColor
 
-        val availableWidth =
-            width - ViewCompat.getPaddingEnd(this) - ViewCompat.getPaddingStart(this)
-        charSize = if (space < 0) {
-            availableWidth / (numChars * 2 - 1)
-        } else {
-            (availableWidth - space * numChars) / (numChars - 1)
-        }
+        charSize = pinWidth
         lineCords = arrayOfNulls(numChars.toInt())
         charBottom = FloatArray(numChars.toInt())
-        var startX: Int
-        val bottom = height - paddingBottom
-        val rtlFlag: Int
-        val isLayoutRtl =
-            TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == ViewCompat.LAYOUT_DIRECTION_RTL
-        if (isLayoutRtl) {
-            rtlFlag = -1
-            startX = (width - ViewCompat.getPaddingStart(this) - charSize).toInt()
-        } else {
-            rtlFlag = 1
-            startX = ViewCompat.getPaddingStart(this)
-        }
+
+
+        var startX: Int = ViewCompat.getPaddingStart(this)
         var i = 0
         while (i < numChars) {
             lineCords?.let { cords ->
@@ -206,52 +144,17 @@ class SPPinEntryEditText : AppCompatEditText {
                     startX + charSize,
                     bottom.toFloat()
                 )
-                if (pinBackground != null) {
-                    if (pinType == Password) {
-                        cords[i]?.top = paddingTop.toFloat()
-                        cords[i]?.right = startX + (cords[i]?.height() ?: 0f)
-                    } else {
-                        cords[i]?.top = cords[i]?.top?.minus(textHeight.height())
-                    }
-                }
-                startX += if (space < 0) {
-                    (rtlFlag * charSize * 2).toInt()
-                } else {
-                    (rtlFlag * (charSize + space)).toInt()
-                }
-                charBottom[i] = (cords[i]?.bottom ?: 0f) - DEFAULT_TEXT_BOTTOM_PADDING
+
+                startX +=
+                    (charSize).toInt()
+
+                charBottom[i] = ((cords[i]?.bottom ?: 0f) + (cords[i]?.top ?: 0f)) / 2
             }
             i++
         }
     }
 
-    private fun handlePassportInputState() {
-        setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
-        setPadding(
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_passport_padding),
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_passport_padding)
-        )
-    }
 
-    private fun handleOTPInputState() {
-        setBackgroundResource(R.drawable.bg_otp_code_shape)
-        setPadding(
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
-            0,
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_horizontal_padding),
-            resources.getDimensionPixelSize(R.dimen.sp_pin_edit_text_vertical_otp_padding)
-        )
-    }
-
-    private fun applyMaxLength(maxLength: Int) {
-        this.maxLength = maxLength
-        numChars = maxLength.toFloat()
-        filters = arrayOf<InputFilter>(LengthFilter(maxLength))
-        text = null
-        invalidate()
-    }
 
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
@@ -267,13 +170,14 @@ class SPPinEntryEditText : AppCompatEditText {
         var i = 0
         while (i < numChars) {
             lineCords?.let { cords ->
-                if (pinBackground != null && (pinType == Password || textLength <= i)) {
-                    updateDrawableState(i < textLength, i == textLength)
+                if (pinBackground != null && (textLength <= i)) {
+                    val padding =
+                        pinWidth.minus(resources.getDimension(R.dimen.sp_pin_edit_line_size)) / 2
                     pinBackground?.setBounds(
-                        cords[i]?.left?.toInt() ?: 0,
-                        (cords[i]?.top?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt(),
-                        cords[i]?.right?.toInt() ?: 0,
-                        (cords[i]?.bottom?.toInt() ?: 0) - DEFAULT_TEXT_BOTTOM_PADDING.toInt()
+                        ((cords[i]?.left?.toInt() ?: 0) + padding).toInt(),
+                        (cords[i]?.top?.toInt() ?: 0),
+                        ((cords[i]?.right?.toInt() ?: 0) - padding).toInt(),
+                        (charBottom[i].toInt())
                     )
                     pinBackground?.draw(canvas)
                 }
@@ -286,7 +190,7 @@ class SPPinEntryEditText : AppCompatEditText {
                             i,
                             i + 1,
                             middle - textWidths[i] / 2,
-                            charBottom[i],
+                            charBottom[i] - 4,
                             charPaint
                         )
                     } else {
@@ -295,7 +199,7 @@ class SPPinEntryEditText : AppCompatEditText {
                             i,
                             i + 1,
                             middle - textWidths[i] / 2,
-                            charBottom[i],
+                            charBottom[i] - 4,
                             lastCharPaint
                         )
 
@@ -326,33 +230,6 @@ class SPPinEntryEditText : AppCompatEditText {
                 return false
             }
         })
-    }
-
-    private fun Float.withPadding(): Int {
-        return this.toInt() + ViewCompat.getPaddingEnd(this@SPPinEntryEditText)
-    }
-
-    private fun updateDrawableState(hasText: Boolean, isNext: Boolean) {
-        if (hasError) {
-            pinBackground?.state = intArrayOf(android.R.attr.state_active)
-        } else if (isFocused) {
-            pinBackground?.state = intArrayOf(android.R.attr.state_focused)
-            if (isNext) {
-                pinBackground?.state =
-                    intArrayOf(android.R.attr.state_focused, android.R.attr.state_selected)
-            } else if (hasText) {
-                pinBackground?.state =
-                    intArrayOf(android.R.attr.state_focused, android.R.attr.state_checked)
-            }
-        } else {
-            if (isNext) {
-                pinBackground?.state =
-                    intArrayOf(android.R.attr.state_focused, android.R.attr.state_selected)
-            } else if (hasText) {
-                pinBackground?.state =
-                    intArrayOf(android.R.attr.state_focused, android.R.attr.state_checked)
-            }
-        }
     }
 
     /**
@@ -391,7 +268,7 @@ class SPPinEntryEditText : AppCompatEditText {
         va.interpolator = OvershootInterpolator()
         va.addUpdateListener { animation ->
             lastCharPaint.textSize = (animation.animatedValue as Float)
-            this@SPPinEntryEditText.invalidate()
+            this@SPOtpEditText.invalidate()
         }
         if (fullText.length == maxLength) {
             va.addListener(object : Animator.AnimatorListener {
@@ -407,23 +284,10 @@ class SPPinEntryEditText : AppCompatEditText {
         va.start()
     }
 
-    /**
-     * Enum class which is for Pin Type.
-     *
-     * @property Password sets view as password input field.
-     * @property OTP sets view as OTP input field.
-     */
-    enum class PinType {
-        Password,
-        OTP
-    }
-
     companion object {
         private const val XML_NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android"
         private const val DEFAULT_ANIMATION_DURATION = 200L
         private const val DEFAULT_LENGTH = 4
-        private const val DEFAULT_PIN_TYPE = 0
-        private const val DEFAULT_TEXT_BOTTOM_PADDING = 10f
         private const val DEFAULT_FLOAT = 0f
     }
 }

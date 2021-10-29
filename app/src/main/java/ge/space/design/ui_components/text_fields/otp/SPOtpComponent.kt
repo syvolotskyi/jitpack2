@@ -10,7 +10,7 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
 import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
-import ge.space.ui.components.text_fields.pin.SPPinEntryView
+import ge.space.ui.components.text_fields.pin.SPOtpEntryView
 
 class SPOtpComponent : ShowCaseComponent {
 
@@ -36,17 +36,17 @@ class SPOtpComponent : ShowCaseComponent {
             return binding.root
         }
 
-        private fun setupBigOtpView(pinEntryViewOtp: SPPinEntryView, context: Context) {
-            pinEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
+        private fun setupBigOtpView(otpEntryViewOtp: SPOtpEntryView, context: Context) {
+            otpEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
                     if (pinCode.toString() == SPPasswordComponent.CORRECT_BIG_PASSWORD) {
-                        pinEntryViewOtp.handleResult(
+                        otpEntryViewOtp.handleResult(
                             context.getString(R.string.correct_password),
                             false
                         )
                     } else {
-                        pinEntryViewOtp.handleResult(
+                        otpEntryViewOtp.handleResult(
                             context.getString(R.string.incorrect_password),
                             true
                         )
@@ -56,20 +56,20 @@ class SPOtpComponent : ShowCaseComponent {
             })
         }
 
-        private fun SPPinEntryView.handleResult(messageText: String, isError: Boolean) {
+        private fun SPOtpEntryView.handleResult(messageText: String, isError: Boolean) {
             this.isError = isError
             Toast.makeText(context, messageText, Toast.LENGTH_SHORT).show()
         }
 
-        private fun setupSmallOtpView(pinEntryViewOtp: SPPinEntryView, context: Context) {
-            pinEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
+        private fun setupSmallOtpView(otpEntryViewOtp: SPOtpEntryView, context: Context) {
+            otpEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 1010
                     if (pinCode.toString() == SPPasswordComponent.CORRECT_SMALL_PASSWORD) {
-                        pinEntryViewOtp.isError = false
+                        otpEntryViewOtp.isError = false
                         Toast.makeText(context, CORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     } else {
-                        pinEntryViewOtp.isError = true
+                        otpEntryViewOtp.isError = true
                         Toast.makeText(context, INCORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     }
                 }

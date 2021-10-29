@@ -9,11 +9,11 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
+import ge.space.extensions.makeVibration
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPasswordEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.password.SPMaskedEditText.Companion.DEFAULT_LENGTH
 import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
-import ge.space.ui.util.extension.makeVibration
 
 class SPPasswordView @JvmOverloads constructor(
     context: Context,

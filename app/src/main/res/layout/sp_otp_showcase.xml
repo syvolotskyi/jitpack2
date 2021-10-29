@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ge.space.ui.components.text_fields.pin.SPPinEntryView
+    <ge.space.ui.components.text_fields.pin.SPOtpEntryView
         android:id="@+id/pinEntryViewOTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:pinLabelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
 
-    <ge.space.ui.components.text_fields.pin.SPPinEntryView
+    <ge.space.ui.components.text_fields.pin.SPOtpEntryView
         android:id="@+id/pinEntryViewOTPSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,8 +27,53 @@
         app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTP"
         app:pinLabelText="Label"
         app:sp_pinStyle="@style/SPPinEntryOTPCode" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/dimen_p_8"
+        android:background="@drawable/bg_otp_code_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTPSmall">
 
-    <ge.space.ui.components.text_fields.pin.SPPinEntryView
+        <TextView
+            android:layout_width="@dimen/dimen_p_37"
+            android:layout_height="@dimen/dimen_p_32"
+            android:text="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/h700_medium_brand_primary"/>
+        <TextView
+            android:layout_width="@dimen/dimen_p_37"
+            android:layout_height="@dimen/dimen_p_32"
+            android:text="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/h700_medium_brand_primary"/>
+        <FrameLayout
+            android:layout_width="@dimen/dimen_p_37"
+            android:layout_height="@dimen/dimen_p_32"
+            android:textAppearance="@style/h700_medium_brand_primary"
+            android:text="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/h700_medium_secondary">
+            <View
+                android:layout_width="@dimen/dimen_p_19"
+                android:layout_height="@dimen/dimen_p_1"
+                android:background="@color/dark_fill_secondary"/>
+        </FrameLayout>
+        <TextView
+            android:layout_width="@dimen/dimen_p_37"
+            android:layout_height="@dimen/dimen_p_32"
+            android:textAppearance="@style/h700_medium_brand_primary"
+            android:text="1"
+            style="@style/h700_medium_secondary"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <ge.space.ui.components.text_fields.pin.SPOtpEntryView
         android:id="@+id/pinEntryViewOTPDisabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
