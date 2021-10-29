@@ -10,14 +10,20 @@ import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.util.AttributeSet
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
 
-internal class SPMaskedEditText : AppCompatEditText {
+internal class SPMaskedEditText @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    @AttrRes defStyleAttr: Int = 0
+) : AppCompatEditText(context, attrs) {
 
     /**
      * Sets a error.
@@ -38,38 +44,11 @@ internal class SPMaskedEditText : AppCompatEditText {
 
     private lateinit var charBottom: FloatArray
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init(context, attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context, attrs)
-    }
-
-    fun setMaxLength(maxLength: Int) {
-        val params = this.layoutParams
-        params.width = ((pinWidth * maxLength) +
-                (space * (maxLength - 1))).toInt()
-        params.height = (pinWidth).toInt()
-
-        this.layoutParams = params
-        this.maxLength = maxLength
-        filters = arrayOf<InputFilter>(LengthFilter(maxLength))
-        text = null
-        invalidate()
-    }
-
-    private fun init(context: Context, attrs: AttributeSet) {
+    init {
         movementMethod = null
         setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
         pinBackground =
             ContextCompat.getDrawable(context, R.drawable.bg_pin_circle)
-        maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", DEFAULT_LENGTH)
-
 
         //Height of the characters, used if there is a background drawable
         paint.getTextBounds("|", 0, 1, Rect())
@@ -90,6 +69,19 @@ internal class SPMaskedEditText : AppCompatEditText {
 
             recycle()
         }
+    }
+
+    fun setMaxLength(maxLength: Int) {
+        val params = this.layoutParams
+        params.width = ((pinWidth * maxLength) +
+                (space * (maxLength - 1))).toInt()
+        params.height = (pinWidth).toInt()
+
+        this.layoutParams = params
+        this.maxLength = maxLength
+        filters = arrayOf<InputFilter>(LengthFilter(maxLength))
+        text = null
+        invalidate()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -157,7 +149,7 @@ internal class SPMaskedEditText : AppCompatEditText {
 
 
     private val fullText: CharSequence
-        get() = text ?: ""
+        get() = text ?: EMPTY_TEXT
 
     private fun updateDrawableState(hasText: Boolean, isNext: Boolean) {
         if (isError) {

@@ -21,9 +21,9 @@ class SPPasswordView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private val binding: SpPasswordEntryViewLayoutBinding by lazy {
+    private val binding: SpPasswordEntryViewLayoutBinding =
         SpPasswordEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)
-    }
+
 
     /**
      * Sets a text
@@ -78,12 +78,8 @@ class SPPasswordView @JvmOverloads constructor(
             labelText = getString(R.styleable.SPPasswordView_pinLabelText).orEmpty()
             maxLength = getInt(R.styleable.SPPasswordView_android_maxLength, DEFAULT_LENGTH)
 
-            binding.pinEntryEditText.setStyle(
-                getResourceId(
-                    R.styleable.SPPasswordView_sp_pinStyle,
-                    R.style.SPPassportView
-                )
-            )
+            binding.pinEntryEditText.setStyle(R.style.SPPasswordView)
+            binding.pinEntryEditText.setOnClickListener{ binding.pinEntryEditText.focus()}
         }
     }
 
@@ -98,7 +94,7 @@ class SPPasswordView @JvmOverloads constructor(
      * Clean previously set password
      */
     fun resetPin() {
-        binding.pinEntryEditText.setText("")
+        binding.pinEntryEditText.setText(EMPTY_TEXT)
         binding.pinEntryEditText.isError = false
     }
 
@@ -110,11 +106,10 @@ class SPPasswordView @JvmOverloads constructor(
 
         animation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
+            override fun onAnimationRepeat(animation: Animation) {}
             override fun onAnimationEnd(animation: Animation) {
                 resetPin()
             }
-
-            override fun onAnimationRepeat(animation: Animation) {}
         })
 
         binding.pinEntryEditText.startAnimation(animation)
