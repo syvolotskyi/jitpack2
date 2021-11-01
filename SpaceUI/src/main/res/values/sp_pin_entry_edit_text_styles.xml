@@ -12,7 +12,6 @@
     </style>
 
     <style name="SPPasswordView" parent="SPPinEntryEditText">
-        <item name="pinType">password</item>
         <item name="disableCopyPaste">true</item>
         <item name="android:textColor">@android:color/transparent</item>
     </style>
@@ -22,7 +21,12 @@
         <item name="paddingStart">@dimen/dimen_p_24</item>
         <item name="paddingEnd">@dimen/dimen_p_24</item>
         <item name="android:textColor">?attr/brand_primary</item>
-        <item name="pinType">otp</item>
+        <item name="backgroundColor">@android:color/transparent</item>
+    </style>
+
+    <style name="SPPinEntryOTPCode.WithBackground" parent="SPPinEntryOTPCode">
+        <item name="backgroundColor">?attr/background_secondary</item>
+        <item name="cornerRadius">@dimen/dimen_p_12</item>
     </style>
 
 </resources>

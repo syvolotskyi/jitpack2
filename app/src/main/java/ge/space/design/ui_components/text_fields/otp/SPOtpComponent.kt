@@ -9,8 +9,8 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
-import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
-import ge.space.ui.components.text_fields.pin.SPOtpEntryView
+import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.pin.SPOtpView
 
 class SPOtpComponent : ShowCaseComponent {
 
@@ -31,12 +31,13 @@ class SPOtpComponent : ShowCaseComponent {
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->
                 binding.pinEntryViewOTP.labelText = text.toString()
                 binding.pinEntryViewOTPSmall.labelText = text.toString()
-                binding.pinEntryViewOTPDisabled.labelText = text.toString()
             }
+
             return binding.root
         }
 
-        private fun setupBigOtpView(otpEntryViewOtp: SPOtpEntryView, context: Context) {
+        private fun setupBigOtpView(otpEntryViewOtp: SPOtpView, context: Context) {
+            setupCounter(otpEntryViewOtp, context)
             otpEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
@@ -56,12 +57,30 @@ class SPOtpComponent : ShowCaseComponent {
             })
         }
 
-        private fun SPOtpEntryView.handleResult(messageText: String, isError: Boolean) {
+        private fun setupCounter(otpEntryViewOtp: SPOtpView, context: Context) {
+            val action = {
+                otpEntryViewOtp.startCount(100) {
+                    Toast.makeText(
+                        context,
+                        "SMS was sent",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            action()
+            otpEntryViewOtp.descriptionText =
+                otpEntryViewOtp.context.getString(R.string.component_otp_resend_sms)
+            otpEntryViewOtp.setOnDescriptionClickListener { action() }
+        }
+
+        private fun SPOtpView.handleResult(messageText: String, isError: Boolean) {
             this.isError = isError
             Toast.makeText(context, messageText, Toast.LENGTH_SHORT).show()
         }
 
-        private fun setupSmallOtpView(otpEntryViewOtp: SPOtpEntryView, context: Context) {
+        private fun setupSmallOtpView(otpEntryViewOtp: SPOtpView, context: Context) {
+            setupCounter(otpEntryViewOtp, context)
             otpEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 1010

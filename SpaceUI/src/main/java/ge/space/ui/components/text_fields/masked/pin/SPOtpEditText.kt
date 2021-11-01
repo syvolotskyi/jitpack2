@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.pin
+package ge.space.ui.components.text_fields.masked.pin
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -21,10 +21,15 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
+import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.*
 
-class SPOtpEditText : AppCompatEditText {
+class SPOtpEditText @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    @AttrRes defStyleAttr: Int = 0
+) : AppCompatEditText(context, attrs) {
 
     var onPinEnteredListener: OnPinEnteredListener? = null
 
@@ -40,64 +45,16 @@ class SPOtpEditText : AppCompatEditText {
 
     private lateinit var originalTextColors: ColorStateList
 
-    private lateinit var charPaint: Paint
-    private lateinit var lastCharPaint: Paint
-    private lateinit var linesPaint: Paint
+    private var charPaint: Paint = Paint(paint)
+    private var lastCharPaint: Paint = Paint(paint)
+    private var linesPaint: Paint = Paint(paint)
     private lateinit var charBottom: FloatArray
+    private val fullText: CharSequence
+        get() = text ?: ""
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init(context, attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        init(context, attrs)
-    }
-
-    fun setError(
-        isError: Boolean,
-        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_magenta)
-    ) {
-        setTextColor(if (isError) errorColor else context.getColorFromAttribute(R.attr.brand_primary))
-
-    }
-
-    fun setMaxLength(maxLength: Int) {
-        val params = this.layoutParams
-        params.width = (pinWidth * maxLength).toInt()
-        params.height = pinHeight.toInt()
-        this.layoutParams = params
-        this.maxLength = maxLength
-        numChars = maxLength.toFloat()
-        filters = arrayOf<InputFilter>(LengthFilter(maxLength))
-        text = null
-        requestLayout()
-    }
-
-    private fun init(context: Context, attrs: AttributeSet) {
-        val ta =
-            context.obtainStyledAttributes(attrs, R.styleable.SPPinEntryEditText, 0, 0)
-
-        ta.run {
-            movementMethod = null
-
-            disableCopyPaste()
-            pinBackground =
-                ContextCompat.getDrawable(context, R.drawable.bg_pin_number)
-
-            recycle()
-        }
-
-        charPaint = Paint(paint)
-        lastCharPaint = Paint(paint)
-        linesPaint = Paint(paint)
+    init {
         linesPaint.strokeWidth = lineStroke
-        maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", DEFAULT_LENGTH)
         numChars = maxLength.toFloat()
-
     }
 
     fun setStyle(@StyleRes defStyleRes: Int) {
@@ -110,7 +67,6 @@ class SPOtpEditText : AppCompatEditText {
             setTextIsSelectable(false)
             includeFontPadding = false
 
-            disableCopyPaste()
             setTextColor(
                 getColor(
                     R.styleable.SPPinEntryEditText_android_textColor,
@@ -121,6 +77,25 @@ class SPOtpEditText : AppCompatEditText {
                 ContextCompat.getDrawable(context, R.drawable.bg_pin_number)
             recycle()
         }
+    }
+
+    fun setError(
+        isError: Boolean,
+        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_magenta)
+    ) {
+        setTextColor(if (isError) errorColor else context.getColorFromAttribute(R.attr.brand_primary))
+    }
+
+    fun setMaxLength(maxLength: Int) {
+        val params = this.layoutParams
+        params.width = (pinWidth * maxLength).toInt()
+        params.height = pinHeight.toInt()
+        this.layoutParams = params
+        this.maxLength = maxLength
+        numChars = maxLength.toFloat()
+        filters = arrayOf<InputFilter>(LengthFilter(maxLength))
+        text = null
+        requestLayout()
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -210,28 +185,6 @@ class SPOtpEditText : AppCompatEditText {
         }
     }
 
-
-    private val fullText: CharSequence
-        get() = text ?: ""
-
-
-    private fun disableCopyPaste() {
-        super.setCustomSelectionActionModeCallback(object : ActionMode.Callback {
-            override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
-                return false
-            }
-
-            override fun onDestroyActionMode(mode: ActionMode) {}
-            override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-                return false
-            }
-
-            override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-                return false
-            }
-        })
-    }
-
     /**
      * Request focus on this PinEntryEditText
      */
@@ -273,19 +226,17 @@ class SPOtpEditText : AppCompatEditText {
         if (fullText.length == maxLength) {
             va.addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator) {}
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
                 override fun onAnimationEnd(animation: Animator) {
                     onPinEnteredListener?.onPinEntered(fullText)
                 }
-
-                override fun onAnimationCancel(animation: Animator) {}
-                override fun onAnimationRepeat(animation: Animator) {}
             })
         }
         va.start()
     }
 
     companion object {
-        private const val XML_NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android"
         private const val DEFAULT_ANIMATION_DURATION = 200L
         private const val DEFAULT_LENGTH = 4
         private const val DEFAULT_FLOAT = 0f

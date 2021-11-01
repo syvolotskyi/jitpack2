@@ -1,91 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <ge.space.ui.components.text_fields.pin.SPOtpEntryView
-        android:id="@+id/pinEntryViewOTP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_p_64"
-        android:maxLength="6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:pinLabelText="Label"
-        app:sp_pinStyle="@style/SPPinEntryOTPCode" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <ge.space.ui.components.text_fields.pin.SPOtpEntryView
-        android:id="@+id/pinEntryViewOTPSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_p_64"
-        android:maxLength="4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTP"
-        app:pinLabelText="Label"
-        app:sp_pinStyle="@style/SPPinEntryOTPCode" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="@dimen/dimen_p_8"
-        android:background="@drawable/bg_otp_code_shape"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTPSmall">
-
-        <TextView
-            android:layout_width="@dimen/dimen_p_37"
-            android:layout_height="@dimen/dimen_p_32"
-            android:text="1"
-            android:gravity="center"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            style="@style/h700_medium_brand_primary"/>
-        <TextView
-            android:layout_width="@dimen/dimen_p_37"
-            android:layout_height="@dimen/dimen_p_32"
-            android:text="1"
-            android:gravity="center"
-            android:layout_gravity="center"
-            style="@style/h700_medium_brand_primary"/>
-        <FrameLayout
-            android:layout_width="@dimen/dimen_p_37"
-            android:layout_height="@dimen/dimen_p_32"
-            android:textAppearance="@style/h700_medium_brand_primary"
-            android:text="1"
-            android:gravity="center"
-            android:layout_gravity="center"
-            style="@style/h700_medium_secondary">
-            <View
-                android:layout_width="@dimen/dimen_p_19"
-                android:layout_height="@dimen/dimen_p_1"
-                android:background="@color/dark_fill_secondary"/>
-        </FrameLayout>
-        <TextView
-            android:layout_width="@dimen/dimen_p_37"
-            android:layout_height="@dimen/dimen_p_32"
-            android:textAppearance="@style/h700_medium_brand_primary"
-            android:text="1"
-            style="@style/h700_medium_secondary"
-            android:gravity="center"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <ge.space.ui.components.text_fields.pin.SPOtpEntryView
-        android:id="@+id/pinEntryViewOTPDisabled"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_p_64"
-        android:enabled="false"
-        android:maxLength="6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTPSmall"
-        app:pinLabelText="Label"
-        app:sp_pinStyle="@style/SPPinEntryOTPCode" />
+            <ge.space.ui.components.text_fields.masked.pin.SPOtpView
+                android:id="@+id/pinEntryViewOTPSmall"
+                app:style="@style/SPPinEntryOTPCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_p_64"
+                android:maxLength="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pinEntryViewOTP"
+                app:pinLabelText="Label" />
 
+            <ge.space.ui.components.text_fields.masked.pin.SPOtpView
+                android:id="@+id/pinEntryViewOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_p_64"
+                android:maxLength="6"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pinLabelText="Label"
+                app:style="@style/SPPinEntryOTPCode" />
+
+        </LinearLayout>
+    </ScrollView>
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/labelTextInput"
         android:layout_width="match_parent"
@@ -98,4 +57,4 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:hint="Input label title" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

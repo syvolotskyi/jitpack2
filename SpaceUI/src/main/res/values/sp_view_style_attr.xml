@@ -24,7 +24,6 @@
     <attr name="style" format="reference" />
     <attr name="descriptionTextAppearance" format="reference" />
     <attr name="pinLabelText" format="string|reference" />
-    <attr name="sp_pinStyle" format="reference" />
 
     <attr name="directionIcon" format="enum">
         <enum name="none" value="0" />

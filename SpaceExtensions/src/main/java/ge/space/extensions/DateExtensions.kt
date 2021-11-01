@@ -1,7 +1,9 @@
 package ge.space.extensions
 
 import android.content.Context
+import android.widget.TextView
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 fun Array<String>.getMonthName(month: Int = 0, isShotName: Boolean = false): String {
     if (month <= 0) return ""
@@ -129,6 +131,12 @@ fun Long.shortIntervalTo(months: Array<String>, endDate: Long): String {
     } else {
         "$startDay - $endDay $endMonth $year"
     }
+}
+
+fun Long.getTimeLabel():String{
+    val minutesPart: Long = TimeUnit.MILLISECONDS.toMinutes(this)
+    val secondsPart: Long = TimeUnit.MILLISECONDS.toSeconds(this) - minutesPart * 60
+    return "$minutesPart:$secondsPart"
 }
 
 fun Long.monthAgo(monthsCount: Int = 1, timeZone: TimeZone = TimeZone.getTimeZone("UTC")): Long {

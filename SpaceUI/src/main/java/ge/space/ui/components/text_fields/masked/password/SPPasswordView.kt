@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.password
+package ge.space.ui.components.text_fields.masked.password
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,61 +12,19 @@ import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.makeVibration
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPasswordEntryViewLayoutBinding
-import ge.space.ui.components.text_fields.password.SPMaskedEditText.Companion.DEFAULT_LENGTH
-import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
+import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
+import ge.space.ui.components.text_fields.masked.password.SPPasswordEditText.Companion.DEFAULT_LENGTH
+import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.base.SPPinEditText
 
 class SPPasswordView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
+) : SPPinEditText<SpPasswordEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
-    private val binding: SpPasswordEntryViewLayoutBinding =
+    override fun getViewBinding(): SpPasswordEntryViewLayoutBinding =
         SpPasswordEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)
-
-
-    /**
-     * Sets a text
-     */
-    var text: String = EMPTY_TEXT
-        set(value) {
-            field = value
-
-            binding.pinEntryEditText.setText(value)
-        }
-
-    /**
-     * Sets a labelText
-     */
-    var labelText: String = EMPTY_TEXT
-        set(value) {
-            field = value
-
-            binding.buttonLabel.text = value
-        }
-
-    /**
-     * Sets a error
-     */
-    var isError: Boolean
-        get() = binding.pinEntryEditText.isError
-        set(hasError) {
-            binding.pinEntryEditText.isError = hasError
-            if (hasError) {
-                showErrorAnimation()
-                context.makeVibration()
-            }
-        }
-
-    /**
-     * Sets a maxLength
-     */
-    var maxLength: Int = DEFAULT_LENGTH
-        set(value) {
-            field = value
-
-            binding.pinEntryEditText.setMaxLength(maxLength)
-        }
 
     init {
         getContext().withStyledAttributes(
@@ -122,5 +80,30 @@ class SPPasswordView @JvmOverloads constructor(
 
     fun setPinEnteredListener(onPinEnteredListener: OnPinEnteredListener) {
         binding.pinEntryEditText.onPinEnteredListener = onPinEnteredListener
+    }
+
+    override fun updateText(text: String) {
+        binding.pinEntryEditText.setText(text)
+    }
+
+
+    override fun updateLabel(text: String) {
+        binding.buttonLabel.text = text
+    }
+
+    override fun updateDescription(text: String) {
+        binding.labelDescription.text = text
+    }
+
+    override fun handleError() {
+        binding.pinEntryEditText.isError = isError
+        if (isError) {
+            showErrorAnimation()
+            context.makeVibration()
+        }
+    }
+
+    override fun handleMaxLength() {
+        binding.pinEntryEditText.setMaxLength(maxLength)
     }
 }

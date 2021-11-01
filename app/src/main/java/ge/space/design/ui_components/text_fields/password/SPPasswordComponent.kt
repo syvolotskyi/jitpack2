@@ -8,8 +8,8 @@ import com.example.spacedesignsystem.databinding.SpPasswordShowCaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.text_fields.password.SPPasswordView
-import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.password.SPPasswordView
+import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 
 class SPPasswordComponent : ShowCaseComponent {
 

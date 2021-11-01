@@ -1,4 +1,4 @@
-package ge.space.ui.components.text_fields.password
+package ge.space.ui.components.text_fields.masked.password
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -17,9 +17,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
-import ge.space.ui.components.text_fields.pin.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 
-internal class SPMaskedEditText @JvmOverloads constructor(
+internal class SPPasswordEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0

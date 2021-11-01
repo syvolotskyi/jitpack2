@@ -121,6 +121,7 @@
 
     <string name="enter_you_details_here">Enter your details here</string>
     <string name="title_default_items">Showcases for default items</string>
+    <string name="component_otp_resend_sms">SMS-ის ხელმეორედ გაგზავნა</string>
 
     <string name="component_new_credit_card">New credit card</string>
     <string name="component_new_credit_card_description">Samples of new credit cards</string>
