@@ -10,6 +10,8 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.getTimeLabel
 import ge.space.extensions.makeVibration
@@ -17,6 +19,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.components.text_fields.masked.base.SPPinEditText
+import ge.space.ui.components.text_fields.masked.password.SPPasswordEditText
 import java.util.concurrent.TimeUnit
 
 /**
@@ -29,15 +32,17 @@ import java.util.concurrent.TimeUnit
 class SPOtpView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPPinEntryOTPCode
 ) : SPPinEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
 
     override fun getViewBinding(): SpPinEntryViewLayoutBinding {
-        return SpPinEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+        return SpPinEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this)
     }
 
     init {
+
         binding.pinEntryEditText.setStyle(R.style.SPPinEntryEditText)
         binding.pinEntryEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
@@ -83,7 +88,7 @@ class SPOtpView @JvmOverloads constructor(
         }.start()
     }
 
-    fun setOnDescriptionClickListener(listener: () -> Unit) {
+    override fun setOnDescriptionClickListener(listener: () -> Unit) {
         binding.buttonDescription.setOnClickListener { listener() }
     }
 

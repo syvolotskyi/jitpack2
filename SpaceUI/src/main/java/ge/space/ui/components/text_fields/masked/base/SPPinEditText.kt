@@ -3,18 +3,21 @@ package ge.space.ui.components.text_fields.masked.base
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.viewbinding.ViewBinding
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.base.SPSetViewStyleInterface
 import ge.space.ui.components.text_fields.masked.password.SPPasswordEditText
+import ge.space.ui.util.extension.handleAttributeAction
 
 abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-): SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
@@ -81,6 +84,7 @@ abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
     init {
 
         binding = _binding
+
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPPinEditText,
@@ -95,6 +99,35 @@ abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
                 SPPasswordEditText.DEFAULT_LENGTH
             )
         }
+    }
+
+    override fun setViewStyle(newStyle: Int) {
+        with(newStyle) {
+            setStyle(this)
+            setOTPStyle(this)
+        }
+    }
+
+    abstract fun setOnDescriptionClickListener(listener: () -> Unit)
+
+    protected fun setOTPStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEditText)
+
+        styleAttrs.run {
+            text = getString(R.styleable.SPPinEditText_android_text).orEmpty()
+            getString(R.styleable.SPPinEditText_pinLabelText).handleAttributeAction(
+                EMPTY_TEXT
+            ) {
+                it?.let { labelText = it }
+            }
+            getString(R.styleable.SPPinEditText_pinDescriptionText).handleAttributeAction(
+                EMPTY_TEXT
+            ) {
+                it?.let { descriptionText = it }
+            }
+        }
+
     }
 
     /**

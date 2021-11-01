@@ -82,10 +82,13 @@ class SPPasswordView @JvmOverloads constructor(
         binding.pinEntryEditText.onPinEnteredListener = onPinEnteredListener
     }
 
+    override fun setOnDescriptionClickListener(listener: () -> Unit) {
+        binding.labelDescription.setOnClickListener { listener() }
+    }
+
     override fun updateText(text: String) {
         binding.pinEntryEditText.setText(text)
     }
-
 
     override fun updateLabel(text: String) {
         binding.buttonLabel.text = text

@@ -29,12 +29,15 @@ class SPPasswordComponent : ShowCaseComponent {
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.pinEntryViewPassword.labelText = text.toString()
+                binding.pinEntryViewPassword.descriptionText = text.toString()
                 binding.pinEntryViewPasswordSmall.labelText = text.toString()
+                binding.pinEntryViewPasswordSmall.descriptionText = text.toString()
             }
             return binding.root
         }
 
         private fun setupBigPasswordView(passwordEntryViewOtp: SPPasswordView, context: Context) {
+            passwordEntryViewOtp.setOnDescriptionClickListener{Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()}
             passwordEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
@@ -51,6 +54,7 @@ class SPPasswordComponent : ShowCaseComponent {
         }
 
         private fun setupSmallPasswordView(passwordEntryViewOtp: SPPasswordView, context: Context) {
+            passwordEntryViewOtp.setOnDescriptionClickListener{Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()}
             passwordEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 1010

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
+    android:background="@color/static_primary_white"
     android:orientation="vertical">
 
     <ScrollView
@@ -41,7 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:pinLabelText="Label"
-                app:style="@style/SPPinEntryOTPCode" />
+                app:style="@style/SPPinEntryOTPCode.WithBackground" />
 
         </LinearLayout>
     </ScrollView>
