@@ -3,20 +3,20 @@ package ge.space.ui.components.text_fields.masked.password
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.makeVibration
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPasswordEntryViewLayoutBinding
-import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
-import ge.space.ui.components.text_fields.masked.password.SPPasswordEditText.Companion.DEFAULT_LENGTH
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.components.text_fields.masked.base.SPPinEditText
+import ge.space.ui.components.text_fields.masked.base.SPPinState
 
+/**
+ * Field view extended from [SPPinEditText] that allows to change its configuration.
+ */
 class SPPasswordView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -44,33 +44,20 @@ class SPPasswordView @JvmOverloads constructor(
     /**
      * Request focus on this PinEntryEditText
      */
-    fun focus() {
+    override fun focus() {
         binding.pinEntryEditText.focus()
     }
 
     /**
      * Clean previously set password
      */
-    fun resetPin() {
+    override fun resetPin() {
         binding.pinEntryEditText.setText(EMPTY_TEXT)
         binding.pinEntryEditText.isError = false
     }
 
     private fun showErrorAnimation() {
-        val animation = AnimationUtils.loadAnimation(
-            binding.pinEntryEditText.context,
-            R.anim.sp_shake_anim
-        )
-
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationRepeat(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                resetPin()
-            }
-        })
-
-        binding.pinEntryEditText.startAnimation(animation)
+        binding.pinEntryEditText.startAnimation(errorAnimation)
     }
 
     override fun setEnabled(enabled: Boolean) {
@@ -98,15 +85,20 @@ class SPPasswordView @JvmOverloads constructor(
         binding.labelDescription.text = text
     }
 
-    override fun handleError() {
-        binding.pinEntryEditText.isError = isError
-        if (isError) {
+    override fun handleState() {
+        binding.pinEntryEditText.isError = state == SPPinState.ERROR
+        if (state == SPPinState.ERROR) {
             showErrorAnimation()
             context.makeVibration()
         }
     }
 
-    override fun handleMaxLength() {
+    override fun setMaxLength() {
         binding.pinEntryEditText.setMaxLength(maxLength)
+    }
+
+    override fun updateTextAppearance() {
+        binding.buttonLabel.setTextStyle(textAppearance)
+        binding.labelDescription.setTextStyle(descriptionTextAppearance)
     }
 }

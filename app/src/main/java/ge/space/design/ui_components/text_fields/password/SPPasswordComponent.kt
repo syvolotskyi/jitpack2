@@ -10,6 +10,7 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.masked.password.SPPasswordView
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.base.SPPinState
 
 class SPPasswordComponent : ShowCaseComponent {
 
@@ -42,10 +43,10 @@ class SPPasswordComponent : ShowCaseComponent {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888
                     if (pinCode.toString() == CORRECT_BIG_PASSWORD) {
-                        passwordEntryViewOtp.isError = false
+                        passwordEntryViewOtp.state = SPPinState.SUCCESSFUL
                         Toast.makeText(context, CORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     } else {
-                        passwordEntryViewOtp.isError = true
+                        passwordEntryViewOtp.state = SPPinState.ERROR
                         Toast.makeText(context, INCORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -59,10 +60,10 @@ class SPPasswordComponent : ShowCaseComponent {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 1010
                     if (pinCode.toString() == CORRECT_SMALL_PASSWORD) {
-                        passwordEntryViewOtp.isError = false
+                        passwordEntryViewOtp.state = SPPinState.SUCCESSFUL
                         Toast.makeText(context, CORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     } else {
-                        passwordEntryViewOtp.isError = true
+                        passwordEntryViewOtp.state = SPPinState.ERROR
                         Toast.makeText(context, INCORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     }
                 }

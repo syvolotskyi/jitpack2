@@ -2,32 +2,27 @@ package ge.space.ui.components.text_fields.masked.pin
 
 import android.content.Context
 import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.getTimeLabel
 import ge.space.extensions.makeVibration
+import ge.space.extensions.onTextChanged
+import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.components.text_fields.masked.base.SPPinEditText
-import ge.space.ui.components.text_fields.masked.password.SPPasswordEditText
+import ge.space.ui.components.text_fields.masked.base.SPPinState
 import java.util.concurrent.TimeUnit
 
 /**
- * Field view extended from [LinearLayout] that allows to change its configuration.
+ * Field view extended from [SPPinEditText] that allows to change its configuration.
  *
- * @property text [String] value which sets a label text.
- * @property isError [Boolean] value which applies a error to a field.
- * @property maxLength [Int] value which applies a max Length.
+ * @property counterTextAppearance [Int] value which sets a counter view.
  */
 class SPOtpView @JvmOverloads constructor(
     context: Context,
@@ -36,6 +31,13 @@ class SPOtpView @JvmOverloads constructor(
     @StyleRes defStyleRes: Int = R.style.SPPinEntryOTPCode
 ) : SPPinEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
+    /**
+     * Sets a  counter text appearance
+     */
+    @StyleRes
+    var counterTextAppearance: Int = R.style.h700_bold_magenta
+
+    private var counter : CountDownTimer? = null
 
     override fun getViewBinding(): SpPinEntryViewLayoutBinding {
         return SpPinEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this)
@@ -44,36 +46,21 @@ class SPOtpView @JvmOverloads constructor(
     init {
 
         binding.pinEntryEditText.setStyle(R.style.SPPinEntryEditText)
-        binding.pinEntryEditText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {}
-            override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                s: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                binding.pinEntryEditText.setError(false)
-            }
-        })
+        binding.pinEntryEditText.onTextChanged {
+            binding.pinEntryEditText.setError(false)
+        }
     }
 
     fun startCount(
-        second: Long,
+        seconds: Long,
         onFinishListener: () -> Unit
     ) {
         val diff = 1000.toLong()
-        val maxCount = TimeUnit.SECONDS.toMillis(second)
+        val maxCount = TimeUnit.SECONDS.toMillis(seconds)
         binding.buttonDescription.isEnabled = false
         binding.buttonCounter.isVisible = true
-        object : CountDownTimer(maxCount, diff) {
+
+        counter = object : CountDownTimer(maxCount, diff) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.buttonDescription.alpha = 0.3f
                 binding.buttonCounter.text = millisUntilFinished.getTimeLabel()
@@ -95,34 +82,20 @@ class SPOtpView @JvmOverloads constructor(
     /**
      * Request focus on this PinEntryEditText
      */
-    fun focus() {
+    override fun focus() {
         binding.pinEntryEditText.focus()
     }
 
     /**
      * Clean previously set password
      */
-    fun resetPin() {
+    override fun resetPin() {
         binding.pinEntryEditText.setText("")
         binding.pinEntryEditText.setError(false)
     }
 
     private fun showErrorAnimation(){
-        val animation = AnimationUtils.loadAnimation(
-            binding.pinEntryContainer.context,
-            R.anim.sp_shake_anim
-        )
-
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                resetPin()
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
-
-        binding.pinEntryContainer.startAnimation(animation)
+        binding.pinEntryContainer.startAnimation(errorAnimation)
     }
 
     override fun setEnabled(enabled: Boolean) {
@@ -146,16 +119,24 @@ class SPOtpView @JvmOverloads constructor(
         binding.buttonDescription.text = text
     }
 
-    override fun handleError() {
-        binding.pinEntryEditText.setError(isError)
-        if (isError) {
+    override fun handleState() {
+        binding.pinEntryEditText.setError(state == SPPinState.ERROR)
+        if (state == SPPinState.SUCCESSFUL) {
+            counter?.cancel()
+            binding.buttonCounter.isVisible = false
+        } else if (state == SPPinState.ERROR) {
             showErrorAnimation()
             context.makeVibration()
         }
     }
 
-    override fun handleMaxLength() {
+    override fun setMaxLength() =
         binding.pinEntryEditText.setMaxLength(maxLength)
+
+    override fun updateTextAppearance() {
+        binding.buttonLabel.setTextStyle(textAppearance)
+        binding.buttonDescription.setTextStyle(descriptionTextAppearance)
+        binding.buttonCounter.setTextStyle(counterTextAppearance)
     }
 }
 

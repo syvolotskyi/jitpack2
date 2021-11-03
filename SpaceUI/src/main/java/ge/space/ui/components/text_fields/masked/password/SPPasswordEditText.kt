@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.base.SPPinEditText.Companion.DEFAULT_LENGTH
 
 internal class SPPasswordEditText @JvmOverloads constructor(
     context: Context,
@@ -204,8 +205,5 @@ internal class SPPasswordEditText @JvmOverloads constructor(
         }
     }
 
-    companion object {
-        private const val XML_NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android"
-        const val DEFAULT_LENGTH = 4
-    }
+
 }

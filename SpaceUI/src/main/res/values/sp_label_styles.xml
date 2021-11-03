@@ -120,4 +120,8 @@
         <item name="android:textColor">?attr/label_secondary</item>
     </style>
 
+    <style name="h400_bold_caps_primary" parent="h400_bold_caps">
+        <item name="android:textColor">?attr/brand_primary</item>
+    </style>
+
 </resources>

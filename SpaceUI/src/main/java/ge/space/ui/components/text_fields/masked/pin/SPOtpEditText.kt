@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.base.SPPinEditText.Companion.DEFAULT_LENGTH
 import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.*
 
@@ -238,7 +239,6 @@ class SPOtpEditText @JvmOverloads constructor(
 
     companion object {
         private const val DEFAULT_ANIMATION_DURATION = 200L
-        private const val DEFAULT_LENGTH = 4
         private const val DEFAULT_FLOAT = 0f
     }
 }

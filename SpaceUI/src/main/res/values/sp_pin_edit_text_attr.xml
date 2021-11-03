@@ -11,6 +11,8 @@
         <attr name="pinLabelText"  />
         <attr name="pinDescriptionText" format="string|reference" />
         <attr name="android:enabled" format="boolean" />
+        <attr name="android:textAppearance" />
+        <attr name="descriptionTextAppearance" />
         <attr name="android:maxLength" format="integer" />
     </declare-styleable>
 

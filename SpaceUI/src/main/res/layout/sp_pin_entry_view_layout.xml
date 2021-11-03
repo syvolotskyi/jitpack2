@@ -20,7 +20,6 @@
             android:layout_marginBottom="@dimen/dimen_p_16"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/h700_medium_caps_label_secondary"
             tools:text="Title" />
 
         <FrameLayout
@@ -28,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_p_48"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dimen_p_16"
             android:background="@drawable/bg_otp_code_shape"
             android:padding="@dimen/dimen_p_8">
 
@@ -39,12 +39,9 @@
                 android:layout_gravity="center"
                 android:background="@null"
                 android:focusable="true"
-                android:fontFamily="@font/myriad_geo_bold"
                 android:gravity="center"
                 android:imeOptions="actionNone"
-                android:maxLines="1"
-                android:textColor="?attr/brand_primary"
-                android:textSize="@dimen/dimen_sp_20" />
+                android:maxLines="1" />
 
         </FrameLayout>
         <TextView
@@ -57,7 +54,6 @@
             android:layout_marginTop="@dimen/dimen_p_16"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/h700_bold_caps_brand_primary"
             tools:text="Title" />
 
         <TextView
@@ -69,7 +65,6 @@
             android:layout_marginEnd="@dimen/dimen_p_8"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textAppearance="@style/h700_bold_magenta"
             tools:text="Title" />
     </LinearLayout>
 </merge>

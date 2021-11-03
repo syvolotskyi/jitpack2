@@ -10,6 +10,7 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
+import ge.space.ui.components.text_fields.masked.base.SPPinState
 import ge.space.ui.components.text_fields.masked.pin.SPOtpView
 
 class SPOtpComponent : ShowCaseComponent {
@@ -75,7 +76,7 @@ class SPOtpComponent : ShowCaseComponent {
         }
 
         private fun SPOtpView.handleResult(messageText: String, isError: Boolean) {
-            this.isError = isError
+            this.state = if (isError) SPPinState.ERROR else SPPinState.SUCCESSFUL
             Toast.makeText(context, messageText, Toast.LENGTH_SHORT).show()
         }
 
@@ -85,10 +86,10 @@ class SPOtpComponent : ShowCaseComponent {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 1010
                     if (pinCode.toString() == SPPasswordComponent.CORRECT_SMALL_PASSWORD) {
-                        otpEntryViewOtp.isError = false
+                        otpEntryViewOtp.state = SPPinState.SUCCESSFUL
                         Toast.makeText(context, CORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     } else {
-                        otpEntryViewOtp.isError = true
+                        otpEntryViewOtp.state = SPPinState.ERROR
                         Toast.makeText(context, INCORRECT_PASSWORD, Toast.LENGTH_SHORT).show()
                     }
                 }
