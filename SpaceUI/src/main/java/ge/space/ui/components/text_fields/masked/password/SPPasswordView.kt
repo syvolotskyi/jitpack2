@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.makeVibration
@@ -97,8 +98,9 @@ class SPPasswordView @JvmOverloads constructor(
         binding.pinEntryEditText.setMaxLength(maxLength)
     }
 
-    override fun updateTextAppearance() {
-        binding.buttonLabel.setTextStyle(textAppearance)
-        binding.labelDescription.setTextStyle(descriptionTextAppearance)
+    override fun updateTextAppearances(@StyleRes labelAppearance:Int,
+                                       @StyleRes descAppearance:Int) {
+        binding.buttonLabel.setTextStyle(labelAppearance)
+        binding.labelDescription.setTextStyle(descAppearance)
     }
 }

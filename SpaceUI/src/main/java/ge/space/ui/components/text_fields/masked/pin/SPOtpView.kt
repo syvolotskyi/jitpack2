@@ -31,12 +31,6 @@ class SPOtpView @JvmOverloads constructor(
     @StyleRes defStyleRes: Int = R.style.SPPinEntryOTPCode
 ) : SPBasePinEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
-    /**
-     * Sets a  counter text appearance
-     */
-    @StyleRes
-    var counterTextAppearance: Int = R.style.h700_bold_magenta
-
     private var counter: CountDownTimer? = null
 
     override fun getViewBinding(): SpPinEntryViewLayoutBinding {
@@ -102,8 +96,15 @@ class SPOtpView @JvmOverloads constructor(
         super.setEnabled(enabled)
         counter?.cancel()
         binding.pinEntryEditText.isEnabled = enabled
-        binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.colorSecondary),
-            resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
+        binding.pinEntryContainer.changeBorder(
+            context.getColorFromAttribute(R.attr.colorSecondary),
+            resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat()
+        )
+        if (enabled) {
+            updateTextAppearances()
+        } else {
+            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_secondary))
+        }
     }
 
     fun setPinEnteredListener(onPinEnteredListener: OnPinEnteredListener) {
@@ -146,9 +147,10 @@ class SPOtpView @JvmOverloads constructor(
     override fun setMaxLength() =
         binding.pinEntryEditText.setMaxLength(maxLength)
 
-    override fun updateTextAppearance() {
-        binding.buttonLabel.setTextStyle(textAppearance)
-        binding.buttonDescription.setTextStyle(descriptionTextAppearance)
+    override fun updateTextAppearances(@StyleRes labelAppearance:Int,
+                                       @StyleRes descAppearance:Int) {
+        binding.buttonLabel.setTextStyle(labelAppearance)
+        binding.buttonDescription.setTextStyle(descAppearance)
         binding.buttonCounter.setTextStyle(counterTextAppearance)
     }
 

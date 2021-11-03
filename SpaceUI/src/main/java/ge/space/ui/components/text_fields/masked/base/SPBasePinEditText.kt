@@ -1,6 +1,7 @@
 package ge.space.ui.components.text_fields.masked.base
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -102,6 +103,13 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
     @StyleRes
     protected var descriptionTextAppearance: Int = R.style.h700_bold_caps_brand_primary
 
+    /**
+     * Sets a  counter text appearance
+     */
+    @StyleRes
+    protected var counterTextAppearance: Int = R.style.h700_bold_magenta
+
+
     protected val errorAnimation: Animation by lazy {
         AnimationUtils.loadAnimation(
             context,
@@ -150,7 +158,7 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
             ) {
                 if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
             }
-            updateTextAppearance()
+            updateTextAppearances()
             handleState()
         }
     }
@@ -169,37 +177,49 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEditText)
 
         styleAttrs.run {
-            text = getString(R.styleable.SPPinEditText_android_text).orEmpty()
-            getString(R.styleable.SPPinEditText_pinLabelText).handleAttributeAction(
-                EMPTY_TEXT
-            ) {
-                it?.let { labelText = it }
-            }
-            getString(R.styleable.SPPinEditText_pinDescriptionText).handleAttributeAction(
-                EMPTY_TEXT
-            ) {
-                it?.let { descriptionText = it }
-            }
+            withStyledResource()
+        }
+    }
 
-            getResourceId(
-                R.styleable.SPPinEditText_android_textAppearance,
-                DEFAULT_OBTAIN_VAL
-            ).handleAttributeAction(
-                DEFAULT_OBTAIN_VAL
-            ) {
-                if (it != DEFAULT_OBTAIN_VAL) textAppearance = it
-            }
-            getResourceId(
-                R.styleable.SPPinEditText_descriptionTextAppearance,
-                DEFAULT_OBTAIN_VAL
-            ).handleAttributeAction(
-                DEFAULT_OBTAIN_VAL
-            ) {
-                if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
-            }
-            updateTextAppearance()
+    private fun TypedArray.withStyledResource() {
+        text = getString(R.styleable.SPPinEditText_android_text).orEmpty()
+        getString(R.styleable.SPPinEditText_pinLabelText).handleAttributeAction(
+            EMPTY_TEXT
+        ) {
+            it?.let { labelText = it }
+        }
+        getInt(
+            R.styleable.SPPinEditText_android_maxLength,
+            DEFAULT_LENGTH
+        ).handleAttributeAction(
+            DEFAULT_LENGTH
+        ) {
+           maxLength = it
+        }
+        getString(R.styleable.SPPinEditText_pinDescriptionText).handleAttributeAction(
+            EMPTY_TEXT
+        ) {
+            it?.let { descriptionText = it }
         }
 
+        getResourceId(
+            R.styleable.SPPinEditText_android_textAppearance,
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(
+            DEFAULT_OBTAIN_VAL
+        ) {
+            if (it != DEFAULT_OBTAIN_VAL) textAppearance = it
+        }
+        getResourceId(
+            R.styleable.SPPinEditText_descriptionTextAppearance,
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(
+            DEFAULT_OBTAIN_VAL
+        ) {
+            if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
+        }
+        updateTextAppearances()
+        handleState()
     }
 
     /**
@@ -210,7 +230,10 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Update all text Appearances
      */
-    protected abstract fun updateTextAppearance()
+    abstract fun updateTextAppearances(
+        @StyleRes labelAppearance: Int = textAppearance,
+        @StyleRes descAppearance: Int = descriptionTextAppearance
+    )
 
     /**
      * Update a main text

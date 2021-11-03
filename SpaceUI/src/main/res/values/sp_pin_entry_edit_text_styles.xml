@@ -14,7 +14,7 @@
 
     <style name="SPOtpEntryStyle" parent="SPBaseView">
         <item name="backgroundColor">@android:color/white</item>
-        <item name="roundedCorners">10dp</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
     </style>
 
     <style name="SPPasswordView" parent="SPPinEntryEditText">
