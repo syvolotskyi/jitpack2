@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.CountDownTimer
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.view.isVisible
@@ -15,12 +14,13 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPPinEditText
+import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
+import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.concurrent.TimeUnit
 
 /**
- * Field view extended from [SPPinEditText] that allows to change its configuration.
+ * Field view extended from [SPBasePinEditText] that allows to change its configuration.
  *
  * @property counterTextAppearance [Int] value which sets a counter view.
  */
@@ -29,7 +29,7 @@ class SPOtpView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPPinEntryOTPCode
-) : SPPinEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPBasePinEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
     /**
      * Sets a  counter text appearance
@@ -37,7 +37,7 @@ class SPOtpView @JvmOverloads constructor(
     @StyleRes
     var counterTextAppearance: Int = R.style.h700_bold_magenta
 
-    private var counter : CountDownTimer? = null
+    private var counter: CountDownTimer? = null
 
     override fun getViewBinding(): SpPinEntryViewLayoutBinding {
         return SpPinEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this)
@@ -55,7 +55,7 @@ class SPOtpView @JvmOverloads constructor(
         seconds: Long,
         onFinishListener: () -> Unit
     ) {
-        val diff = 1000.toLong()
+        val diff = ONE_SECOND
         val maxCount = TimeUnit.SECONDS.toMillis(seconds)
         binding.buttonDescription.isEnabled = false
         binding.buttonCounter.isVisible = true
@@ -91,7 +91,7 @@ class SPOtpView @JvmOverloads constructor(
      */
     override fun resetPin() {
         binding.pinEntryEditText.setText("")
-        binding.pinEntryEditText.setError(false)
+        state = SPPinState.DEFAULT
     }
 
     private fun showErrorAnimation(){
@@ -100,7 +100,10 @@ class SPOtpView @JvmOverloads constructor(
 
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
+        counter?.cancel()
         binding.pinEntryEditText.isEnabled = enabled
+        binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.colorSecondary),
+            resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
     }
 
     fun setPinEnteredListener(onPinEnteredListener: OnPinEnteredListener) {
@@ -121,12 +124,22 @@ class SPOtpView @JvmOverloads constructor(
 
     override fun handleState() {
         binding.pinEntryEditText.setError(state == SPPinState.ERROR)
-        if (state == SPPinState.SUCCESSFUL) {
-            counter?.cancel()
-            binding.buttonCounter.isVisible = false
-        } else if (state == SPPinState.ERROR) {
-            showErrorAnimation()
-            context.makeVibration()
+        when (state) {
+            SPPinState.SUCCESSFUL -> {
+                counter?.cancel()
+                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
+                    resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
+            }
+            SPPinState.ERROR -> {
+                showErrorAnimation()
+                context.makeVibration()
+                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.accent_magenta),
+                    resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
+            }
+            else -> {
+                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
+                    resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
+            }
         }
     }
 
@@ -137,6 +150,10 @@ class SPOtpView @JvmOverloads constructor(
         binding.buttonLabel.setTextStyle(textAppearance)
         binding.buttonDescription.setTextStyle(descriptionTextAppearance)
         binding.buttonCounter.setTextStyle(counterTextAppearance)
+    }
+
+    companion object {
+        private const val ONE_SECOND: Long = 1000
     }
 }
 

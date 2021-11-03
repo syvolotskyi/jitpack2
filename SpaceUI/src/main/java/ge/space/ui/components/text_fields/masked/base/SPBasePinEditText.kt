@@ -23,7 +23,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property descriptionText [String] value which sets a description text.
  * @property maxLength [Int] value which sets a count of symbols.
  */
-abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
+abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -74,7 +74,7 @@ abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Sets a error
      */
-    var state: SPPinState = SPPinState.UNKNOWN
+    var state: SPPinState = SPPinState.DEFAULT
         set(state) {
             field = state
             handleState()
@@ -151,6 +151,7 @@ abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
                 if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
             }
             updateTextAppearance()
+            handleState()
         }
     }
 
@@ -205,13 +206,45 @@ abstract class SPPinEditText<VB : ViewBinding> @JvmOverloads constructor(
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
+
+    /**
+     * Update all text Appearances
+     */
     protected abstract fun updateTextAppearance()
+
+    /**
+     * Update a main text
+     */
     protected abstract fun updateText(text: String)
+
+    /**
+     * Update a label text
+     */
     protected abstract fun updateLabel(text: String)
+
+    /**
+     * Update a Description text
+     */
     protected abstract fun updateDescription(text: String)
+
+    /**
+     * handle state - Default, Succesfull or Error
+     */
     protected abstract fun handleState()
+
+    /**
+     * set max Length to main input
+     */
     protected abstract fun setMaxLength()
+
+    /**
+     * Request focus on this PinEntryEditText
+     */
     protected abstract fun focus()
+
+    /**
+     * Clean previously set password
+     */
     protected abstract fun resetPin()
 
     companion object {

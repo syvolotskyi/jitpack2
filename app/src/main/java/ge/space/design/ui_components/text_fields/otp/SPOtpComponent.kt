@@ -26,11 +26,14 @@ class SPOtpComponent : ShowCaseComponent {
             val binding = SpOtpShowcaseBinding.inflate(environment.requireLayoutInflater())
             with(binding) {
                 setupBigOtpView(pinEntryViewOTP, environment.context)
+                setupBigOtpView(disabledPinEntryViewOTP, environment.context)
                 setupSmallOtpView(pinEntryViewOTPSmall, environment.context)
+                disabledPinEntryViewOTP.isEnabled = false
             }
 
             binding.labelTextInput.doOnTextChanged { text, start, before, count ->
                 binding.pinEntryViewOTP.labelText = text.toString()
+                binding.disabledPinEntryViewOTP.labelText = text.toString()
                 binding.pinEntryViewOTPSmall.labelText = text.toString()
             }
 

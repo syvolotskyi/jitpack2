@@ -10,9 +10,6 @@ import android.graphics.drawable.Drawable
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.util.AttributeSet
-import android.view.ActionMode
-import android.view.Menu
-import android.view.MenuItem
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
@@ -22,7 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPPinEditText.Companion.DEFAULT_LENGTH
+import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText.Companion.DEFAULT_LENGTH
 import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.*
 
@@ -44,7 +41,6 @@ class SPOtpEditText @JvmOverloads constructor(
     private val pinHeight: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_height) }
     private val lineStroke: Float by lazy { resources.getDimension(R.dimen.sp_pin_edit_text_line_stroke) }
 
-    private lateinit var originalTextColors: ColorStateList
 
     private var charPaint: Paint = Paint(paint)
     private var lastCharPaint: Paint = Paint(paint)
@@ -79,7 +75,7 @@ class SPOtpEditText @JvmOverloads constructor(
             recycle()
         }
     }
-
+    var isError: Boolean = false
     fun setError(
         isError: Boolean,
         @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_magenta)
@@ -101,9 +97,6 @@ class SPOtpEditText @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        originalTextColors = textColors
-        lastCharPaint.color = originalTextColors.defaultColor
-        charPaint.color = originalTextColors.defaultColor
 
         charSize = pinWidth
         lineCords = arrayOfNulls(numChars.toInt())
@@ -138,6 +131,9 @@ class SPOtpEditText @JvmOverloads constructor(
         super.setOnClickListener {
             setSelection(fullText.length)
         }
+
+        lastCharPaint.color = textColors.defaultColor
+        charPaint.color = textColors.defaultColor
 
         val textLength = fullText.length
         val textWidths = FloatArray(textLength)

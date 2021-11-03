@@ -5,5 +5,5 @@ package ge.space.ui.components.text_fields.masked.base
  *
  */
 enum class SPPinState {
-    SUCCESSFUL, ERROR, UNKNOWN
+    SUCCESSFUL, ERROR, DEFAULT
 }

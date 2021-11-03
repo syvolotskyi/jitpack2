@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,13 +23,13 @@
             android:maxLines="1"
             tools:text="Title" />
 
-        <FrameLayout
+        <ge.space.ui.components.layout.SPFrameLayout
             android:id="@+id/pinEntryContainer"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_p_48"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/dimen_p_16"
-            android:background="@drawable/bg_otp_code_shape"
+            app:style="@style/SPOtpEntryStyle"
             android:padding="@dimen/dimen_p_8">
 
             <ge.space.ui.components.text_fields.masked.pin.SPOtpEditText
@@ -43,7 +44,7 @@
                 android:imeOptions="actionNone"
                 android:maxLines="1" />
 
-        </FrameLayout>
+        </ge.space.ui.components.layout.SPFrameLayout>
         <TextView
             android:id="@+id/buttonDescription"
             android:layout_width="wrap_content"

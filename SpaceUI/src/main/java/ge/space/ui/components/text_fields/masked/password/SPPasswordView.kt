@@ -11,17 +11,17 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPasswordEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPPinEditText
+import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
 
 /**
- * Field view extended from [SPPinEditText] that allows to change its configuration.
+ * Field view extended from [SPBasePinEditText] that allows to change its configuration.
  */
 class SPPasswordView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPPinEditText<SpPasswordEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPBasePinEditText<SpPasswordEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
     override fun getViewBinding(): SpPasswordEntryViewLayoutBinding =
         SpPasswordEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)

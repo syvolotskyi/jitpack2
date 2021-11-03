@@ -44,6 +44,19 @@
                 app:pinLabelText="Label"
                 app:style="@style/SPPinEntryOTPCode.WithBackground" />
 
+            <ge.space.ui.components.text_fields.masked.pin.SPOtpView
+                android:id="@+id/disabledPinEntryViewOTP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_p_64"
+                android:maxLength="6"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pinLabelText="Label"
+                app:style="@style/SPPinEntryOTPCode" />
+
         </LinearLayout>
     </ScrollView>
     <androidx.appcompat.widget.AppCompatEditText
