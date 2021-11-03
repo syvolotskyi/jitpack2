@@ -56,14 +56,16 @@ class SPOtpView @JvmOverloads constructor(
 
         counter = object : CountDownTimer(maxCount, diff) {
             override fun onTick(millisUntilFinished: Long) {
-                binding.buttonDescription.alpha = 0.3f
+                binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_secondary))
                 binding.buttonCounter.text = millisUntilFinished.getTimeLabel()
             }
 
             override fun onFinish() {
                 onFinishListener()
+                counter?.cancel()
                 binding.buttonDescription.isEnabled = true
                 binding.buttonDescription.alpha = 1f
+                binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_primary))
                 binding.buttonCounter.isVisible = false
             }
         }.start()
@@ -103,7 +105,7 @@ class SPOtpView @JvmOverloads constructor(
         if (enabled) {
             updateTextAppearances()
         } else {
-            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_secondary))
+            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_tertiary))
         }
     }
 
@@ -127,7 +129,7 @@ class SPOtpView @JvmOverloads constructor(
         binding.pinEntryEditText.setError(state == SPPinState.ERROR)
         when (state) {
             SPPinState.SUCCESSFUL -> {
-                counter?.cancel()
+                counter?.onFinish()
                 binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
                     resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
             }
