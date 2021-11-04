@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.text.InputFilter
@@ -19,7 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText.Companion.DEFAULT_LENGTH
+import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText.Companion.DEFAULT_LENGTH
 import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.*
 

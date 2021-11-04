@@ -12,17 +12,18 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPasswordEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText
+import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
 
 /**
- * Field view extended from [SPBasePinEditText] that allows to change its configuration.
+ * Field view extended from [SPPinBaseEditText] that allows to change its configuration.
  */
 class SPPasswordView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPBasePinEditText<SpPasswordEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPPasswordView
+) : SPPinBaseEditText<SpPasswordEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
     override fun getViewBinding(): SpPasswordEntryViewLayoutBinding =
         SpPasswordEntryViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -30,11 +31,24 @@ class SPPasswordView @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
+            R.styleable.SPBaseView,
+            defStyleAttr
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+        getContext().withStyledAttributes(
+            attrs,
             R.styleable.SPPasswordView,
             defStyleAttr
         ) {
             text = getString(R.styleable.SPPasswordView_android_text).orEmpty()
             labelText = getString(R.styleable.SPPasswordView_pinLabelText).orEmpty()
+            descriptionText = getString(R.styleable.SPPasswordView_pinDescriptionText).orEmpty()
             maxLength = getInt(R.styleable.SPPasswordView_android_maxLength, DEFAULT_LENGTH)
 
             binding.pinEntryEditText.setStyle(R.style.SPPasswordView)

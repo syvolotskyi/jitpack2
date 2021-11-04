@@ -18,7 +18,7 @@ import androidx.core.view.ViewCompat
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText.Companion.DEFAULT_LENGTH
+import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText.Companion.DEFAULT_LENGTH
 
 internal class SPPasswordEditText @JvmOverloads constructor(
     context: Context,
@@ -39,10 +39,10 @@ internal class SPPasswordEditText @JvmOverloads constructor(
     private var maxLength = DEFAULT_LENGTH
     private var lineCords: Array<RectF?>? = null
     private var pinBackground: Drawable? = null
-
     private val space: Float by lazy { resources.getDimension(R.dimen.sp_password_text_space) }
     private val pinWidth: Float by lazy { resources.getDimension(R.dimen.sp_password_text_width) }
-
+    private val fullText: CharSequence
+        get() = text ?: EMPTY_TEXT
     private lateinit var charBottom: FloatArray
 
     init {
@@ -56,18 +56,15 @@ internal class SPPasswordEditText @JvmOverloads constructor(
     }
 
     fun setStyle(@StyleRes defStyleRes: Int) {
-
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEntryEditText)
         styleAttrs.run {
-
             isCursorVisible = false
             isClickable = false
             setTextIsSelectable(false)
             includeFontPadding = false
             setTextColor(ContextCompat.getColor(context, android.R.color.transparent))
             pinBackground = ContextCompat.getDrawable(context, R.drawable.bg_pin_circle)
-
             recycle()
         }
     }
@@ -148,9 +145,34 @@ internal class SPPasswordEditText @JvmOverloads constructor(
         }
     }
 
+    override fun onTextChanged(
+        text: CharSequence,
+        start: Int,
+        lengthBefore: Int,
+        lengthAfter: Int
+    ) {
 
-    private val fullText: CharSequence
-        get() = text ?: EMPTY_TEXT
+        if (lineCords == null) {
+            if (text.length == maxLength) {
+                onPinEnteredListener?.onPinEntered(text)
+            }
+            return
+        }
+        if (lengthAfter > lengthBefore && fullText.length == maxLength) {
+            onPinEnteredListener?.onPinEntered(fullText)
+        }
+    }
+    /**
+     * Request focus on this PinEntryEditText
+     */
+    fun focus() {
+        requestFocus()
+
+        // Show keyboard
+        val inputMethodManager = context
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.showSoftInput(this, 0)
+    }
 
     private fun updateDrawableState(hasText: Boolean, isNext: Boolean) {
         if (isError) {
@@ -174,36 +196,4 @@ internal class SPPasswordEditText @JvmOverloads constructor(
             }
         }
     }
-
-    /**
-     * Request focus on this PinEntryEditText
-     */
-    fun focus() {
-        requestFocus()
-
-        // Show keyboard
-        val inputMethodManager = context
-            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.showSoftInput(this, 0)
-    }
-
-    override fun onTextChanged(
-        text: CharSequence,
-        start: Int,
-        lengthBefore: Int,
-        lengthAfter: Int
-    ) {
-
-        if (lineCords == null) {
-            if (text.length == maxLength) {
-                onPinEnteredListener?.onPinEntered(text)
-            }
-            return
-        }
-        if (lengthAfter > lengthBefore && fullText.length == maxLength) {
-            onPinEnteredListener?.onPinEntered(fullText)
-        }
-    }
-
-
 }

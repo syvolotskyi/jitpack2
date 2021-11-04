@@ -7,7 +7,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.withStyledAttributes
 import androidx.viewbinding.ViewBinding
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
@@ -24,7 +23,7 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property descriptionText [String] value which sets a description text.
  * @property maxLength [Int] value which sets a count of symbols.
  */
-abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
+abstract class SPPinBaseEditText<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
@@ -95,7 +94,7 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    protected var textAppearance: Int = R.style.h700_medium_caps_label_secondary
+    protected var labelTextAppearance: Int = R.style.h700_medium_caps_label_secondary
 
     /**
      * Sets a description text appearance
@@ -126,114 +125,18 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
     }
 
     init {
-
         binding = _binding
-
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.SPPinEditText,
-            defStyleAttr
-        ) {
-            text = getString(R.styleable.SPPinEditText_android_text).orEmpty()
-            labelText = getString(R.styleable.SPPinEditText_pinLabelText).orEmpty()
-            descriptionText = getString(R.styleable.SPPinEditText_pinDescriptionText).orEmpty()
-            isEnabled = getBoolean(R.styleable.SPPinEditText_android_enabled, true)
-            maxLength = getInt(
-                R.styleable.SPPinEditText_android_maxLength,
-                DEFAULT_LENGTH
-            )
-            getResourceId(
-                R.styleable.SPPinEditText_android_textAppearance,
-                DEFAULT_OBTAIN_VAL
-            ).handleAttributeAction(
-                DEFAULT_OBTAIN_VAL
-            ) {
-                if (it != DEFAULT_OBTAIN_VAL) textAppearance = it
-            }
-            getResourceId(
-                R.styleable.SPPinEditText_descriptionTextAppearance,
-                DEFAULT_OBTAIN_VAL
-            ).handleAttributeAction(
-                DEFAULT_OBTAIN_VAL
-            ) {
-                if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
-            }
-            updateTextAppearances()
-            handleState()
-        }
     }
 
-    override fun setViewStyle(newStyle: Int) {
-        with(newStyle) {
-            setStyle(this)
-            setOTPStyle(this)
-        }
-    }
-
+    /**
+     * Listener of description label click
+     */
     abstract fun setOnDescriptionClickListener(listener: () -> Unit)
-
-    private fun setOTPStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEditText)
-
-        styleAttrs.run {
-            withStyledResource()
-        }
-    }
-
-    private fun TypedArray.withStyledResource() {
-        text = getString(R.styleable.SPPinEditText_android_text).orEmpty()
-        getString(R.styleable.SPPinEditText_pinLabelText).handleAttributeAction(
-            EMPTY_TEXT
-        ) {
-            it?.let { labelText = it }
-        }
-        getInt(
-            R.styleable.SPPinEditText_android_maxLength,
-            DEFAULT_LENGTH
-        ).handleAttributeAction(
-            DEFAULT_LENGTH
-        ) {
-           maxLength = it
-        }
-        getString(R.styleable.SPPinEditText_pinDescriptionText).handleAttributeAction(
-            EMPTY_TEXT
-        ) {
-            it?.let { descriptionText = it }
-        }
-
-        getResourceId(
-            R.styleable.SPPinEditText_android_textAppearance,
-            DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(
-            DEFAULT_OBTAIN_VAL
-        ) {
-            if (it != DEFAULT_OBTAIN_VAL) textAppearance = it
-        }
-        getResourceId(
-            R.styleable.SPPinEditText_descriptionTextAppearance,
-            DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(
-            DEFAULT_OBTAIN_VAL
-        ) {
-            if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
-        }
-        updateTextAppearances()
-        handleState()
-    }
 
     /**
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
-
-    /**
-     * Update all text Appearances
-     */
-    abstract fun updateTextAppearances(
-        @StyleRes labelAppearance: Int = textAppearance,
-        @StyleRes descAppearance: Int = descriptionTextAppearance
-    )
 
     /**
      * Update a main text
@@ -263,12 +166,72 @@ abstract class SPBasePinEditText<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Request focus on this PinEntryEditText
      */
-    protected abstract fun focus()
+    abstract fun focus()
 
     /**
      * Clean previously set password
      */
-    protected abstract fun resetPin()
+    abstract fun resetPin()
+
+    /**
+     * Update all text Appearances
+     */
+    abstract fun updateTextAppearances(
+        @StyleRes labelAppearance: Int = labelTextAppearance,
+        @StyleRes descAppearance: Int = descriptionTextAppearance
+    )
+
+    override fun setViewStyle(newStyle: Int) {
+        with(newStyle) {
+            setStyle(this)
+            setOTPStyle(this)
+        }
+    }
+
+    private fun setOTPStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEditText)
+
+        styleAttrs.run {
+            withStyledResource()
+        }
+    }
+
+    fun TypedArray.withStyledResource() {
+        text = getString(R.styleable.SPPinEditText_android_text).orEmpty()
+        getString(R.styleable.SPPinEditText_pinLabelText).handleAttributeAction(
+            EMPTY_TEXT
+        ) {
+            it?.let { labelText = it }
+        }
+        maxLength = getInt(
+            R.styleable.SPPinEditText_android_maxLength,
+            DEFAULT_LENGTH
+        )
+        getString(R.styleable.SPPinEditText_pinDescriptionText).handleAttributeAction(
+            EMPTY_TEXT
+        ) {
+            it?.let { descriptionText = it }
+        }
+        getResourceId(
+            R.styleable.SPPinEditText_descriptionTextAppearance,
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(
+            DEFAULT_OBTAIN_VAL
+        ) {
+            if (it != DEFAULT_OBTAIN_VAL) descriptionTextAppearance = it
+        }
+        getResourceId(
+            R.styleable.SPPinEditText_labelTextAppearance,
+            R.style.h700_medium_caps_label_secondary
+        ).handleAttributeAction(
+            R.style.h700_medium_caps_label_secondary
+        ) {
+            if (it != DEFAULT_OBTAIN_VAL) labelTextAppearance = it
+        }
+        updateTextAppearances(labelTextAppearance, descriptionTextAppearance)
+        handleState()
+    }
 
     companion object {
         const val DEFAULT_LENGTH = 4

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.getTimeLabel
 import ge.space.extensions.makeVibration
@@ -14,13 +15,13 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
-import ge.space.ui.components.text_fields.masked.base.SPBasePinEditText
+import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
 import ge.space.ui.util.extension.getColorFromAttribute
 import java.util.concurrent.TimeUnit
 
 /**
- * Field view extended from [SPBasePinEditText] that allows to change its configuration.
+ * Field view extended from [SPPinBaseEditText] that allows to change its configuration.
  *
  * @property counterTextAppearance [Int] value which sets a counter view.
  */
@@ -29,7 +30,7 @@ class SPOtpView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPPinEntryOTPCode
-) : SPBasePinEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPPinBaseEditText<SpPinEntryViewLayoutBinding>(context, attrs, defStyleAttr) {
 
     private var counter: CountDownTimer? = null
 
@@ -38,41 +39,31 @@ class SPOtpView @JvmOverloads constructor(
     }
 
     init {
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPBaseView,
+            defStyleAttr
+        ) {
+            setViewStyle(
+                getResourceId(
+                    R.styleable.SPBaseView_style,
+                    defStyleRes
+                )
+            )
+        }
+
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPPinEditText,
+            defStyleAttr
+        ) {
+            withStyledResource()
+        }
 
         binding.pinEntryEditText.setStyle(R.style.SPPinEntryEditText)
         binding.pinEntryEditText.onTextChanged {
             binding.pinEntryEditText.setError(false)
         }
-    }
-
-    fun startCount(
-        seconds: Long,
-        onFinishListener: () -> Unit
-    ) {
-        val diff = ONE_SECOND
-        val maxCount = TimeUnit.SECONDS.toMillis(seconds)
-        binding.buttonDescription.isEnabled = false
-        binding.buttonCounter.isVisible = true
-
-        counter = object : CountDownTimer(maxCount, diff) {
-            override fun onTick(millisUntilFinished: Long) {
-                binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_secondary))
-                binding.buttonCounter.text = millisUntilFinished.getTimeLabel()
-            }
-
-            override fun onFinish() {
-                onFinishListener()
-                counter?.cancel()
-                binding.buttonDescription.isEnabled = true
-                binding.buttonDescription.alpha = 1f
-                binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_primary))
-                binding.buttonCounter.isVisible = false
-            }
-        }.start()
-    }
-
-    override fun setOnDescriptionClickListener(listener: () -> Unit) {
-        binding.buttonDescription.setOnClickListener { listener() }
     }
 
     /**
@@ -97,20 +88,7 @@ class SPOtpView @JvmOverloads constructor(
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         counter?.cancel()
-        binding.pinEntryEditText.isEnabled = enabled
-        binding.pinEntryContainer.changeBorder(
-            context.getColorFromAttribute(R.attr.colorSecondary),
-            resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat()
-        )
-        if (enabled) {
-            updateTextAppearances()
-        } else {
-            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_tertiary))
-        }
-    }
-
-    fun setPinEnteredListener(onPinEnteredListener: OnPinEnteredListener) {
-        binding.pinEntryEditText.onPinEnteredListener = onPinEnteredListener
+        handleEnabledStatus(enabled)
     }
 
     override fun updateText(text: String) {
@@ -140,8 +118,10 @@ class SPOtpView @JvmOverloads constructor(
                     resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
             }
             else -> {
-                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
-                    resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
+                binding.pinEntryContainer.changeBorder(
+                    context.getColorFromAttribute(R.attr.brand_primary),
+                    resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat()
+                )
             }
         }
     }
@@ -149,11 +129,85 @@ class SPOtpView @JvmOverloads constructor(
     override fun setMaxLength() =
         binding.pinEntryEditText.setMaxLength(maxLength)
 
-    override fun updateTextAppearances(@StyleRes labelAppearance:Int,
-                                       @StyleRes descAppearance:Int) {
+    override fun updateTextAppearances(
+        @StyleRes labelAppearance: Int,
+        @StyleRes descAppearance: Int
+    ) {
         binding.buttonLabel.setTextStyle(labelAppearance)
         binding.buttonDescription.setTextStyle(descAppearance)
         binding.buttonCounter.setTextStyle(counterTextAppearance)
+    }
+
+    /**
+     * Start count while user can resend a Sms
+     *
+     * @property seconds [Long] count of seconds.
+     * @property onFinishListener [() -> Unit]listener of the end of counting.
+     *
+     */
+    fun startCount(
+        seconds: Long,
+        onFinishListener: () -> Unit
+    ) {
+        with(binding) {
+            buttonDescription.isEnabled = false
+            buttonCounter.isVisible = true
+            buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_secondary))
+        }
+        counter =
+            getCounter(TimeUnit.SECONDS.toMillis(seconds), onFinishListener).start()
+    }
+
+    /**
+     * Set a listener for description
+     *
+     */
+    override fun setOnDescriptionClickListener(listener: () -> Unit) {
+        binding.buttonDescription.setOnClickListener { listener() }
+    }
+
+    /**
+     * Set interface which allow to listen view and are called when the text is entered
+     *
+     */
+    fun setPinEnteredListener(onPinEnteredListener: OnPinEnteredListener) {
+        binding.pinEntryEditText.onPinEnteredListener = onPinEnteredListener
+    }
+
+    private fun handleEnabledStatus(enabled: Boolean) {
+        binding.pinEntryEditText.isEnabled = enabled
+
+        if (enabled) {
+            updateTextAppearances(labelTextAppearance, descriptionTextAppearance)
+        } else {
+            binding.pinEntryContainer.changeBorder(
+                context.getColorFromAttribute(R.attr.colorSecondary),
+                resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat()
+            )
+            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_tertiary))
+        }
+    }
+
+    private fun getCounter(
+        maxCount: Long,
+        onFinishListener: () -> Unit
+    ): CountDownTimer =
+        object : CountDownTimer(maxCount, ONE_SECOND) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.buttonCounter.text = millisUntilFinished.getTimeLabel()
+            }
+
+            override fun onFinish() {
+                onFinishListener()
+                counter?.cancel()
+                setPossibilityToSendSms()
+            }
+        }
+
+    private fun setPossibilityToSendSms() {
+        binding.buttonDescription.isEnabled = true
+        binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_primary))
+        binding.buttonCounter.isVisible = false
     }
 
     companion object {

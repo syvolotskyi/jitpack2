@@ -39,6 +39,8 @@ class SPOtpComponent : ShowCaseComponent {
 
         private fun setupBigOtpView(otpEntryViewOtp: SPOtpView, context: Context) {
             setupCounter(otpEntryViewOtp, context)
+            otpEntryViewOtp.labelText =
+                context.getString(R.string.component_otp_label) + "\n" + context.getString(R.string.component_otp_phone)
             otpEntryViewOtp.setPinEnteredListener(object : OnPinEnteredListener {
                 override fun onPinEntered(pinCode: CharSequence) {
                     // correct password is 888888

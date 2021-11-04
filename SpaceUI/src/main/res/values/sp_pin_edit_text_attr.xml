@@ -9,9 +9,9 @@
     <declare-styleable name="SPPinEditText">
         <attr name="android:text" format="string|reference" />
         <attr name="pinLabelText"  />
-        <attr name="pinDescriptionText" format="string|reference" />
+        <attr name="pinDescriptionText" />
         <attr name="android:enabled" format="boolean" />
-        <attr name="android:textAppearance" />
+        <attr name="labelTextAppearance" />
         <attr name="descriptionTextAppearance" />
         <attr name="android:maxLength" format="integer" />
     </declare-styleable>
@@ -20,5 +20,6 @@
         <attr name="android:text" format="string|reference" />
         <attr name="android:maxLength" format="integer" />
         <attr name="pinLabelText" />
+        <attr name="pinDescriptionText" />
     </declare-styleable>
 </resources>

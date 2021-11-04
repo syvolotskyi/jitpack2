@@ -19,21 +19,23 @@
 
     <style name="SPPasswordView" parent="SPPinEntryEditText">
         <item name="disableCopyPaste">true</item>
+        <item name="backgroundColor">@android:color/transparent</item>
         <item name="android:textColor">@android:color/transparent</item>
-        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
         <item name="descriptionTextAppearance">@style/h700_bold_caps_brand_primary</item>
     </style>
 
     <style name="SPPinEntryOTPCode" parent="SPPinEntryEditText">
         <item name="android:textColor">?attr/brand_primary</item>
         <item name="backgroundColor">@android:color/transparent</item>
-        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
         <item name="descriptionTextAppearance">@style/h700_bold_caps_brand_primary</item>
     </style>
 
     <style name="SPPinEntryOTPCode.WithBackground" parent="SPPinEntryOTPCode">
         <item name="backgroundColor">?attr/background_secondary</item>
         <item name="background">?attr/background_secondary</item>
+        <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
     </style>
 
