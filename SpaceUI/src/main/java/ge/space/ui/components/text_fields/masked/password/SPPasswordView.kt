@@ -41,19 +41,17 @@ class SPPasswordView @JvmOverloads constructor(
                 )
             )
         }
+
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPPasswordView,
+            R.styleable.SPPinEditText,
             defStyleAttr
         ) {
-            text = getString(R.styleable.SPPasswordView_android_text).orEmpty()
-            labelText = getString(R.styleable.SPPasswordView_pinLabelText).orEmpty()
-            descriptionText = getString(R.styleable.SPPasswordView_pinDescriptionText).orEmpty()
-            maxLength = getInt(R.styleable.SPPasswordView_android_maxLength, DEFAULT_LENGTH)
-
-            binding.pinEntryEditText.setStyle(R.style.SPPasswordView)
-            binding.pinEntryEditText.setOnClickListener{ binding.pinEntryEditText.focus()}
+            withStyledResource()
         }
+
+        binding.pinEntryEditText.setStyle(R.style.SPPasswordView)
+        binding.pinEntryEditText.setOnClickListener{ binding.pinEntryEditText.focus()}
     }
 
     /**

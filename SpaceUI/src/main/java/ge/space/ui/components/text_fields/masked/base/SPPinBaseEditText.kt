@@ -184,11 +184,11 @@ abstract class SPPinBaseEditText<VB : ViewBinding> @JvmOverloads constructor(
     override fun setViewStyle(newStyle: Int) {
         with(newStyle) {
             setStyle(this)
-            setOTPStyle(this)
+            setPinStyle(this)
         }
     }
 
-    private fun setOTPStyle(@StyleRes defStyleRes: Int) {
+    private fun setPinStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPPinEditText)
 
