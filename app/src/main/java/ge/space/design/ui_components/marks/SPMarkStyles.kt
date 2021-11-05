@@ -4,8 +4,10 @@ import com.example.spacedesignsystem.R
 
 
 object SPMarkStyles {
-    const val brandBankURL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/389473e6-c29e-4cab-a28d-d9e862e4f739/space.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T081049Z&X-Amz-Expires=86400&X-Amz-Signature=e043f6902944824be6044ca5e8971be3126f0dfd84138659b793642de12e4b19&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22space.png%22"
-    const val bankURL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5bfe8263-8682-4a8c-b976-f3fb7e4ec064/tbc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211015%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211015T081204Z&X-Amz-Expires=86400&X-Amz-Signature=ab5cc56242905efadc2455a7606b0cbc092d829653155c88438234b136fbc5d2&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22tbc.png%22"
+    const val brandBankURL =
+        "https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg"
+    const val bankURL =
+        "https://media.cntraveller.com/photos/611bf0b8f6bd8f17556db5e4/1:1/w_2000,h_2000,c_limit/gettyimages-1146431497.jpg"
     val list = listOf(
         R.style.SPMark_Size16,
         R.style.SPMark_Size20,

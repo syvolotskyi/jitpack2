@@ -3,7 +3,6 @@ package ge.space.ui.util.view_factory
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
-import com.google.android.material.resources.TextAppearance
 import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
@@ -24,7 +23,10 @@ sealed class SPViewData : Parcelable {
         SPViewData()
 
     @Parcelize
-    data class SPImageUrlData(val url: String) : SPViewData()
+    data class SPImageUrlData(
+        val url: String,
+        var roundedCorners: Float = 0f
+    ) : SPViewData()
 
     @Parcelize
     data class SPTextData(

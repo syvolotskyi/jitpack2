@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <stroke
-        android:width=".5dp"
-        android:color="?attr/separator_non_opaque" />
+        android:width="10dp"
+        android:color="@color/dark_fill_secondary" />
     <corners
         android:radius="@dimen/sp_bank_round_radius" />
 </shape>
