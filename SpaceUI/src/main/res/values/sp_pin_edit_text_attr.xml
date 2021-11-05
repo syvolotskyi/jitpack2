@@ -4,17 +4,15 @@
     <declare-styleable name="SPPinEntryEditText">
         <attr name="android:textColor" format="color|reference" />
         <attr name="disableCopyPaste" format="boolean"/>
-        <attr name="pinType" format="enum">
-            <enum name="password" value="0" />
-            <enum name="otp" value="1" />
-        </attr>
     </declare-styleable>
 
-    <declare-styleable name="SPPinEntryView">
+    <declare-styleable name="SPPinEditText">
         <attr name="android:text" format="string|reference" />
-        <attr name="pinLabelText" format="string|reference" />
+        <attr name="pinLabelText"  />
+        <attr name="pinDescriptionText" />
         <attr name="android:enabled" format="boolean" />
+        <attr name="labelTextAppearance" />
+        <attr name="descriptionTextAppearance" />
         <attr name="android:maxLength" format="integer" />
-        <attr name="sp_pinStyle" format="reference" />
     </declare-styleable>
 </resources>

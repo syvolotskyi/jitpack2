@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="sp_pin_edit_text_space">@dimen/dimen_p_16</dimen>
-    <dimen name="sp_pin_edit_text_width">@dimen/dimen_p_16</dimen>
+    <dimen name="sp_pin_edit_text_height">@dimen/dimen_p_32</dimen>
+    <dimen name="sp_pin_edit_text_width">@dimen/dimen_p_37</dimen>
+    <dimen name="sp_pin_edit_text_size">20sp</dimen>
+    <dimen name="sp_pin_edit_line_size">19dp</dimen>
     <dimen name="sp_pin_edit_text_line_stroke">@dimen/dimen_p_1</dimen>
-    <dimen name="sp_pin_edit_text_horizontal_padding">@dimen/dimen_p_16</dimen>
-    <dimen name="sp_pin_edit_text_vertical_passport_padding">@dimen/dimen_p_10</dimen>
-    <dimen name="sp_pin_edit_text_vertical_otp_padding">@dimen/dimen_p_8</dimen>
+    <dimen name="sp_pin_edit_text_horizontal_padding">@dimen/dimen_p_8</dimen>
+    <dimen name="sp_pin_edit_text_vertical_password_padding">@dimen/dimen_p_10</dimen>
+    <dimen name="sp_pin_edit_text_vertical_otp_padding">@dimen/dimen_p_10</dimen>
+
+
+    <dimen name="sp_password_text_space">@dimen/dimen_p_15</dimen>
+    <dimen name="sp_password_text_width">@dimen/dimen_p_15</dimen>
 </resources>

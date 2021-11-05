@@ -1,39 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/buttonLabel"
-        style="@style/Typography.Base.MyriadGEO.Medium"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/dimen_p_8"
-        android:layout_marginEnd="@dimen/dimen_p_8"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textAppearance="@style/h700_medium_caps_label_secondary"
-        tools:text="Title" />
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/dimen_p_24"
+        android:paddingHorizontal="@dimen/dimen_p_18">
 
-    <ge.space.ui.components.text_fields.pin.SPPinEntryEditText
-        android:id="@+id/pinEntryEditText"
-        style="@style/SPPinEntryEditText"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_p_35"
-        android:layout_marginTop="@dimen/dimen_p_16"
-        android:background="@null"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/dimen_p_8"
-        android:layout_marginEnd="@dimen/dimen_p_8"
-        android:gravity="center"
-        android:focusable="true"
-        android:maxLines="1"
-        android:fontFamily="@font/myriad_geo_bold"
-        android:imeOptions="actionNone"
-        android:textColor="?attr/brand_primary"
-        android:textSize="@dimen/dimen_sp_20" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/buttonLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_p_8"
+            android:layout_marginEnd="@dimen/dimen_p_8"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/dimen_p_16"
+            tools:text="Title" />
+
+        <ge.space.ui.components.layout.SPFrameLayout
+            android:id="@+id/pinEntryContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_p_48"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dimen_p_16"
+            app:style="@style/SPOtpEntryStyle"
+            android:padding="@dimen/dimen_p_8">
+
+            <ge.space.ui.components.text_fields.masked.pin.SPOtpEditText
+                android:id="@+id/pinEntryEditText"
+                style="@style/SPPinEntryEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/static_primary_white"
+                android:focusable="true"
+                android:gravity="center"
+                android:imeOptions="actionNone"
+                android:maxLines="1" />
+
+        </ge.space.ui.components.layout.SPFrameLayout>
+        <TextView
+            android:id="@+id/buttonDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_p_8"
+            android:layout_marginEnd="@dimen/dimen_p_8"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/buttonCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_p_8"
+            android:layout_marginEnd="@dimen/dimen_p_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Title" />
+    </LinearLayout>
+</merge>
