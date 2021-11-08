@@ -11,8 +11,6 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.drawBorder
 import ge.space.ui.util.extension.scaleTo
@@ -64,7 +62,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      */
     private val borderPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         isAntiAlias = true
-        style = Paint.Style.STROKE
+        style = Paint.Style.FILL
     }
 
     /**
@@ -72,6 +70,12 @@ abstract class SPBaseView @JvmOverloads constructor(
      * It gives us possibility to manipulate shape forms
      */
     private val clippingMaskPath: SPMaskPath = SPMaskPathRoundedCorners()
+
+    /**
+     * Path instance for base view shape
+     * It gives us possibility to manipulate shape forms
+     */
+    private val bordersClippingMaskPath: SPMaskPath = SPMaskPathRoundedCorners()
 
     /**
      * Makes a circled shape of the view.
@@ -290,10 +294,8 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-        canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
-        canvas.drawBorder(clippingMaskPath.getPath(), borderColor, borderWidth, borderPaint)
-        canvas.clipPath(clippingMaskPath.getPath())
+        reInitRoundRadius()
+        canvas.drawView()
     }
 
     /**
@@ -387,11 +389,25 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     private fun reInitRoundRadius() {
         clippingMaskPath.setRadius(
+            getInsideCornerRadius(topLeftCornerRadius),
+            getInsideCornerRadius(topRightCornerRadius),
+            getInsideCornerRadius(bottomRightCornerRadius),
+            getInsideCornerRadius(bottomLeftCornerRadius)
+        )
+
+        bordersClippingMaskPath.setRadius(
             getCornerRadius(topLeftCornerRadius),
             getCornerRadius(topRightCornerRadius),
             getCornerRadius(bottomRightCornerRadius),
             getCornerRadius(bottomLeftCornerRadius)
         )
+    }
+
+    private fun Canvas.drawView() {
+        drawBorder(bordersClippingMaskPath.getPath(), borderColor, borderWidth, borderPaint)
+        drawPath(clippingMaskPath.getPath(), shadowPaint)
+        clipPath(clippingMaskPath.getPath())
+        clipPath(bordersClippingMaskPath.getPath())
     }
 
     private fun reBuildClippingMaskAndInvalidate() {
@@ -401,25 +417,59 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     private fun reBuildClippingMask() {
         if (isCircle) {
-            clippingMaskPath.circle(
-                (measuredWidth / SIDE_RATIO).toFloat(),
-                shadowRadius
-            )
+            reBuildClippingCircleMask()
         } else {
-            clippingMaskPath.rebuildPath(
-                measuredWidth,
-                measuredHeight,
-                shadowRadius,
-                shadowOffsetX,
-                shadowOffsetY
-            )
+            reBuildClippingSquareMask()
         }
+    }
+
+    private fun reBuildClippingCircleMask() {
+        clippingMaskPath.circle(
+            ((measuredWidth - borderWidth * SIDE_RATIO) / SIDE_RATIO),
+            shadowRadius
+        )
+        clippingMaskPath.getPath().offset(borderWidth, borderWidth)
+
+        bordersClippingMaskPath.circle(
+            (measuredWidth / SIDE_RATIO.toFloat()),
+            shadowRadius
+        )
+    }
+
+    private fun reBuildClippingSquareMask() {
+        clippingMaskPath.rebuildPath(
+            (measuredWidth - borderWidth * SIDE_RATIO).toInt(),
+            (measuredHeight - borderWidth * SIDE_RATIO).toInt(),
+            shadowRadius,
+            shadowOffsetX,
+            shadowOffsetY
+        )
+        clippingMaskPath.getPath().offset(borderWidth, borderWidth)
+
+        bordersClippingMaskPath.rebuildPath(
+            measuredWidth,
+            measuredHeight,
+            shadowRadius,
+            shadowOffsetX,
+            shadowOffsetY
+        )
     }
 
     private fun getCornerRadius(cornerRadius: Float) =
         if (cornerRadius > SPMaskPathRoundedCorners.DEFAULT_START_POINT) cornerRadius
         else roundedCorners
 
+    private fun getInsideCornerRadius(cornerRadius: Float): Float {
+        val radius = if (cornerRadius > SPMaskPathRoundedCorners.DEFAULT_START_POINT) cornerRadius
+        else roundedCorners
+
+        return if (borderWidth != EMPTY_BORDER_VALUE.toFloat() && borderWidth != 0f) {
+            val difference = radius - borderWidth
+            if (difference > 0) difference else 0f
+        } else {
+            radius
+        }
+    }
     companion object {
         const val SIDE_RATIO = 2
         const val SQUARE_RATIO = 4

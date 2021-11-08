@@ -1,9 +1,7 @@
 package ge.space.ui.components.marks
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
@@ -11,10 +9,8 @@ import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setSize
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpMarkLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
-import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
@@ -61,13 +57,6 @@ class SPMark @JvmOverloads constructor(
      */
     var paddings: Int = 0
 
-    /**
-     * Inflates and returns [SpMarkLayoutBinding] value
-     */
-    val binding =
-        SpMarkLayoutBinding.inflate(LayoutInflater.from(context), this)
-
-
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -112,17 +101,19 @@ class SPMark @JvmOverloads constructor(
 
     fun setViewData(viewData: SPViewData) {
         val view = createView(viewData)
-        binding.markContentWrapper.removeAllViews()
-        binding.markContentWrapper.addView(view)
-        binding.markContentWrapper.invalidate()
+        removeAllViews()
+        addView(view)
+        invalidate()
     }
 
     private fun createView(viewData: SPViewData) = when (viewData) {
-        is SPViewData.SPImageUrlData -> viewData.createView(context)
+        is SPViewData.SPImageUrlData -> {
+            viewData.roundedCorners = roundedCorners
+            viewData.createView(context)
+        }
         is SPViewData.SPTextData -> {
             viewData.apply {
                 textStyle = textAppearance
-                backgroundColor = context.getColorFromAttribute(R.attr.background_tertiary)
             }
             viewData.createView(context)
         }
@@ -132,7 +123,6 @@ class SPMark @JvmOverloads constructor(
                 height = imageSize
                 width = imageSize
                 padding = paddings
-                backgroundColor = context.getColorFromAttribute(R.attr.background_tertiary)
             }
             viewData.createView(context)
         }
@@ -160,7 +150,7 @@ class SPMark @JvmOverloads constructor(
                 R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
             )
 
-            binding.markContentWrapper.setSize(chipSize, chipSize)
+            setSize(chipSize, chipSize)
         }
     }
 
@@ -181,6 +171,6 @@ class SPMark @JvmOverloads constructor(
     }
 
     companion object {
-        private val MAX_LENGTH = 2
+        private const val MAX_LENGTH = 2
     }
 }
