@@ -295,11 +295,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         reInitRoundRadius()
-        canvas.drawBorder(bordersClippingMaskPath.getPath(), borderColor, borderWidth, borderPaint)
-
-        canvas.drawPath(clippingMaskPath.getPath(), shadowPaint)
-        canvas.clipPath(clippingMaskPath.getPath())
-        canvas.clipPath(bordersClippingMaskPath.getPath())
+        canvas.drawView()
     }
 
     /**
@@ -398,14 +394,20 @@ abstract class SPBaseView @JvmOverloads constructor(
             getInsideCornerRadius(bottomRightCornerRadius),
             getInsideCornerRadius(bottomLeftCornerRadius)
         )
+
         bordersClippingMaskPath.setRadius(
             getCornerRadius(topLeftCornerRadius),
             getCornerRadius(topRightCornerRadius),
             getCornerRadius(bottomRightCornerRadius),
             getCornerRadius(bottomLeftCornerRadius)
         )
+    }
 
-        reBuildClippingMask()
+    private fun Canvas.drawView() {
+        drawBorder(bordersClippingMaskPath.getPath(), borderColor, borderWidth, borderPaint)
+        drawPath(clippingMaskPath.getPath(), shadowPaint)
+        clipPath(clippingMaskPath.getPath())
+        clipPath(bordersClippingMaskPath.getPath())
     }
 
     private fun reBuildClippingMaskAndInvalidate() {
@@ -415,34 +417,42 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     private fun reBuildClippingMask() {
         if (isCircle) {
-            clippingMaskPath.circle(
-                ((measuredWidth - borderWidth * 2) / SIDE_RATIO).toFloat(),
-                shadowRadius
-            )
-            clippingMaskPath.getPath().offset(borderWidth, borderWidth)
-
-            bordersClippingMaskPath.circle(
-                (measuredWidth / SIDE_RATIO).toFloat(),
-                shadowRadius
-            )
+            reBuildClippingCircleMask()
         } else {
-            clippingMaskPath.rebuildPath(
-                (measuredWidth - borderWidth * 2).toInt(),
-                (measuredHeight - borderWidth * 2).toInt(),
-                shadowRadius,
-                shadowOffsetX,
-                shadowOffsetY
-            )
-            clippingMaskPath.getPath().offset(borderWidth, borderWidth)
-
-            bordersClippingMaskPath.rebuildPath(
-                measuredWidth,
-                measuredHeight,
-                shadowRadius,
-                shadowOffsetX,
-                shadowOffsetY
-            )
+            reBuildClippingSquareMask()
         }
+    }
+
+    private fun reBuildClippingCircleMask() {
+        clippingMaskPath.circle(
+            ((measuredWidth - borderWidth * SIDE_RATIO) / SIDE_RATIO),
+            shadowRadius
+        )
+        clippingMaskPath.getPath().offset(borderWidth, borderWidth)
+
+        bordersClippingMaskPath.circle(
+            (measuredWidth / SIDE_RATIO.toFloat()),
+            shadowRadius
+        )
+    }
+
+    private fun reBuildClippingSquareMask() {
+        clippingMaskPath.rebuildPath(
+            (measuredWidth - borderWidth * SIDE_RATIO).toInt(),
+            (measuredHeight - borderWidth * SIDE_RATIO).toInt(),
+            shadowRadius,
+            shadowOffsetX,
+            shadowOffsetY
+        )
+        clippingMaskPath.getPath().offset(borderWidth, borderWidth)
+
+        bordersClippingMaskPath.rebuildPath(
+            measuredWidth,
+            measuredHeight,
+            shadowRadius,
+            shadowOffsetX,
+            shadowOffsetY
+        )
     }
 
     private fun getCornerRadius(cornerRadius: Float) =
@@ -450,14 +460,14 @@ abstract class SPBaseView @JvmOverloads constructor(
         else roundedCorners
 
     private fun getInsideCornerRadius(cornerRadius: Float): Float {
-        val radius =  if (cornerRadius > SPMaskPathRoundedCorners.DEFAULT_START_POINT) cornerRadius
+        val radius = if (cornerRadius > SPMaskPathRoundedCorners.DEFAULT_START_POINT) cornerRadius
         else roundedCorners
 
-        if ( borderWidth != EMPTY_BORDER_VALUE.toFloat() && borderWidth!=0f) {
+        return if (borderWidth != EMPTY_BORDER_VALUE.toFloat() && borderWidth != 0f) {
             val difference = radius - borderWidth
-            return if (difference > 0) difference else 0f
+            if (difference > 0) difference else 0f
         } else {
-            return radius
+            radius
         }
     }
     companion object {
