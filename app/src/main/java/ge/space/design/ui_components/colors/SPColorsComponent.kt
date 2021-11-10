@@ -45,11 +45,11 @@ class SPColorsComponent : ShowCaseComponent {
                     binding.colorView.color = colorInt
                     binding.colorView.changeBorder(Color.GREEN,4F)
                     binding.colorDetails.text = buildString {
-                        appendln("${position + 1}. $name")
+                        appendLine("${position + 1}. $name")
                         // hex value
                         append("argb hex: #${Integer.toHexString(colorInt)} ")
                         // alpha channel
-                        appendln("${(Color.alpha(colorInt) / 255f * 100).roundToInt()}%")
+                        appendLine("${(Color.alpha(colorInt) / 255f * 100).roundToInt()}%")
                         // rgb components
                         append(
                             "rgb: ${
