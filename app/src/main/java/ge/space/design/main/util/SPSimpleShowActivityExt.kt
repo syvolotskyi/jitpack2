@@ -1,6 +1,7 @@
 package ge.space.design.main.util
 
 import androidx.appcompat.app.AlertDialog
+import com.example.spacedesignsystem.R
 import ge.space.design.main.ui.SPBaseActivity
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfo
