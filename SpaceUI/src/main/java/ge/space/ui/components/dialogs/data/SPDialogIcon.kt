@@ -3,7 +3,7 @@ package ge.space.ui.components.dialogs.data
 import android.os.Parcelable
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Sealed class which allows to change an icon for the Space dialogs. In order to add new
