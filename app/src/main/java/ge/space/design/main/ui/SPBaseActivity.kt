@@ -15,7 +15,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutSimpleShowcaseListBindi
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.flattenSubComponentSPS
 import ge.space.design.main.util.hasSubComponents
-import ge.space.design.main.util.showThemeDialog
+import ge.space.design.main.util.showThemeCustomDialog
 
 abstract class SPBaseActivity : AppCompatActivity() {
 
@@ -65,7 +65,7 @@ abstract class SPBaseActivity : AppCompatActivity() {
                 true
             }
             R.id.action_theme -> {
-                showThemeDialog()
+                showThemeCustomDialog()
                 true
             }
             else -> super.onOptionsItemSelected(item)
