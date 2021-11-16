@@ -10,7 +10,7 @@ import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButto
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
 
 fun SPBaseActivity.showThemeAlertDialog() {
-    AlertDialog.Builder(this)
+    AlertDialog.Builder(this) // Window is leaking sometimes via 'this' object
         .setTitle("Choose theme")
         .setSingleChoiceItems(
             arrayOf("Space Dark","Space Light"),
