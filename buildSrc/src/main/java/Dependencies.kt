@@ -13,7 +13,7 @@ object Versions {
     val anko = "0.10.8"
 
     val appCompat = "1.0.0-rc01"
-    val constraintLayout = "1.1.3"
+    val constraintLayout = "2.1.1"
     val legacySupport = "1.0.0"
     val ktx = "1.5.0"
     val dexter = "5.0.0"
@@ -25,7 +25,7 @@ object Versions {
     val cameraView = "2.6.2"
     val scrollingPagerIndicator = "1.0.6"
 
-    val material = "1.3.0"
+    val material = "1.4.0"
     val shimmer = "0.4.0"
     val cardIo = "5.5.0"
 
