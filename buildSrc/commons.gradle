@@ -3,7 +3,7 @@ if (name == "app")
 else apply plugin: "com.android.library"
 
 apply plugin: "kotlin-android"
-apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-parcelize"
 apply plugin: "kotlin-kapt"
 apply plugin: "org.jetbrains.dokka-android"
 
@@ -32,10 +32,6 @@ android {
     lintOptions {
         disable 'MissingTranslation'
         abortOnError false
-    }
-
-    androidExtensions {
-        experimental = true
     }
 
     buildFeatures {

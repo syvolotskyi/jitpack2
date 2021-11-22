@@ -2,8 +2,8 @@ package ge.space.design.ui_components.banners.full_screen
 
 import android.os.Parcelable
 import ge.space.ui.util.view_factory.SPViewData
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 
 /**

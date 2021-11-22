@@ -4,7 +4,7 @@ import android.os.Parcelable
 import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
 import ge.space.ui.components.dialogs.dialog_types.SPDialog
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Sealed class which allows to init [SPDialog]

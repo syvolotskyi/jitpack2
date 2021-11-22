@@ -5,14 +5,12 @@ import android.content.res.TypedArray
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import androidx.core.widget.TextViewCompat
 import androidx.viewbinding.ViewBinding
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.appendAsterisk
@@ -22,7 +20,6 @@ import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.extension.handleAttributeAction
-import kotlinx.android.synthetic.main.sp_text_field_layout.view.*
 
 /**
  * Field view extended from [LinearLayout] that allows to change its configuration.
