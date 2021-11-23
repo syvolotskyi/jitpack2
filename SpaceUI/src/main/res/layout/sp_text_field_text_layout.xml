@@ -1,45 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/etInputField"
+    style="@style/SPTextField.Input"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/sp_text_field_height">
-
-    <ImageView
-        android:id="@+id/ivLeftImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/sp_text_field_horizontal_text_padding"
-        android:src="@drawable/ic_search_24_regular"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlSymmetry" />
-
-    <EditText
-        android:id="@+id/etInputField"
-        style="@style/SPTextField.Input"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/sp_text_field_height"
-        android:background="@null"
-        android:gravity="start|center_vertical"
-        android:inputType="textVisiblePassword"
-        android:paddingHorizontal="@dimen/sp_text_field_horizontal_text_padding"
-        android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
-        android:paddingBottom="@dimen/sp_text_field_bottom_text_padding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivClear"
-        app:layout_constraintStart_toEndOf="@id/ivLeftImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivClear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sp_text_field_delete_icon_margin"
-        android:src="@drawable/ic_close_circle_24_filled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="wrap_content"
+    android:background="@null"
+    android:gravity="start|center_vertical"
+    android:inputType="textVisiblePassword"
+    android:paddingTop="@dimen/sp_text_field_vertical_text_padding"
+    android:paddingBottom="@dimen/sp_text_field_bottom_text_padding" />

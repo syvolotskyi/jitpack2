@@ -12,7 +12,12 @@ class SPTextInitialsImpl(context: Context) : SPViewImpl<SPViewData.SPTextData>(c
     override fun create(type: SPViewData.SPTextData): View {
         return TextView(context).apply {
             text = type.initials
-            gravity = Gravity.CENTER
+            gravity = type.params?.gravity ?: Gravity.CENTER
+            type.params?.let {
+                it.height?.let { this.height = it }
+                it.width?.let { this.width = it }
+                setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)
+            }
             type.backgroundColor?.let { this.setBackgroundColor(it) }
             type.textStyle?.let { setTextStyle(it) }
         }

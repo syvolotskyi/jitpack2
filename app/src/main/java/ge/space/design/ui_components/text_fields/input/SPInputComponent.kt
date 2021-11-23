@@ -1,6 +1,7 @@
 package ge.space.design.ui_components.text_fields.input
 
 import android.content.Context
+import android.view.Gravity
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
@@ -13,10 +14,11 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.extensions.EMPTY_TEXT
-import ge.space.spaceui.databinding.SpTextFieldTextLayoutBinding
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
+import ge.space.ui.util.view_factory.SPViewData
+import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
+import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 
 class SPInputComponent : ShowCaseComponent {
 
@@ -31,7 +33,6 @@ class SPInputComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutTextFieldsListShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPTextFieldBaseView<SpTextFieldTextLayoutBinding>>()
 
             SPTextFieldsInputButtonStyles.list.onEach { buttonSample ->
 
@@ -41,11 +42,11 @@ class SPInputComponent : ShowCaseComponent {
                     layoutBinding.fieldsLayout,
                     true
                 )
+                val context = itemBinding.simpleInput.context
 
                 with(itemBinding.simpleInput) {
                     setViewStyle(buttonSample.resId)
                     setupInputTextWithDone(this, environment.context)
-                    buttons.add(this)
                     doOnTextChanged { text, _, _, _ ->
                         if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
                             showToast(context, text.toString())
@@ -72,6 +73,43 @@ class SPInputComponent : ShowCaseComponent {
                     } else {
                         EMPTY_TEXT
                     }
+                }
+
+                itemBinding.primaryChip.setOnClickListener {
+                    itemBinding.simpleInput.leadingView =
+                        SPDefaultPrimaryChipData.getSmallChipData(
+                            context, SPViewData.SPViewDataParams(
+                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
+                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
+                            )
+                        )
+                            .createView(context)
+                }
+
+                itemBinding.phone.setOnClickListener {
+                    itemBinding.simpleInput.leadingView = SPViewData.SPTextData(
+                        context.getString(R.string.phone_prefix),
+                        textStyle = R.style.h600_bold_text_field_phone,
+                        SPViewData.SPViewDataParams(
+                            gravity = Gravity.CENTER_VERTICAL or Gravity.END,
+                            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
+                            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
+                            paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
+                        ),
+
+                        )
+
+                        .createView(context)
+                }
+
+                itemBinding.image.setOnClickListener {
+                    itemBinding.simpleInput.leadingView = SPViewData.SPImageResourcesData(
+                        R.drawable.ic_chat_message_24_regular,
+                        SPViewData.SPViewDataParams(paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
+                        paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14))
+                    )
+
+                        .createView(context)
                 }
                 layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
                     with(itemBinding.simpleInput) {

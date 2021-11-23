@@ -20,7 +20,6 @@
 
     <declare-styleable name="SPTextFieldInput">
         <attr name="canRemove" format="boolean" />
-        <attr name="drawableLeft" format="reference" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:drawableEnd" format="reference" />
         <attr name="inputTextLength" format="integer" />

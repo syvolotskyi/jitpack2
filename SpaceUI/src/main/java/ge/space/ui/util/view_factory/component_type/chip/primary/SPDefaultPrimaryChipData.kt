@@ -8,12 +8,14 @@ import ge.space.ui.util.view_factory.SPViewData
 class SPDefaultPrimaryChipData {
     companion object {
         fun getSmallChipData(
-            context: Context
+            context: Context,
+            params: SPViewData.SPViewDataParams? = null,
         ): SPViewData.SPrimaryChipData {
             return SPViewData.SPrimaryChipData(
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
-                R.style.SPBankCardView_ChipPrimary_Small
+                R.style.SPBankCardView_ChipPrimary_Small,
+                params
             )
         }
 

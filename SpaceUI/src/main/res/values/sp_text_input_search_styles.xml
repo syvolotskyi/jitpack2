@@ -3,6 +3,5 @@
 
     <style name="SPTextField.Search" parent="SPTextField.Base">
         <item name="canRemove">true</item>
-        <item name="drawableLeft">@drawable/ic_search_24_regular</item>
     </style>
 </resources>

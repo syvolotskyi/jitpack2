@@ -8,6 +8,7 @@
     <dimen name="sp_text_field_delete_icon_margin">@dimen/dimen_p_14</dimen>
     <dimen name="sp_text_field_currency_margin">@dimen/dimen_p_10</dimen>
     <dimen name="sp_text_field_height">@dimen/dimen_p_38</dimen>
+    <dimen name="sp_text_input_field_height">@dimen/dimen_p_48</dimen>
 
     <dimen name="sp_text_field_dropdown_icon_margin">@dimen/dimen_p_8</dimen>
     <dimen name="sp_text_field_dropdown_icon_height">@dimen/dimen_p_28</dimen>

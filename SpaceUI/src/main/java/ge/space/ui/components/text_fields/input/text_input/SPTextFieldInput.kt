@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
@@ -48,19 +49,6 @@ class SPTextFieldInput @JvmOverloads constructor(
             inputTextBinding.etInputField.hint = value
         }
 
-    private var canRemove: Boolean = false
-        set(value) {
-            field = value
-            inputTextBinding.ivClear.isVisible = value
-        }
-
-    @IdRes
-    var drawableStart: Int = DEFAULT_INT
-        set(value) {
-            field = value
-            handleDrawableStart()
-        }
-
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -80,15 +68,14 @@ class SPTextFieldInput @JvmOverloads constructor(
             R.styleable.SPTextFieldInput,
             defStyleAttr
         ) {
-            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+//            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
             text = getString(R.styleable.SPTextFieldInput_android_text) ?: EMPTY_TEXT
-            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
                 getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
 
         }
 
-        inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
+//        inputTextBinding.ivClear.setOnClickListener { inputTextBinding.etInputField.setText("") }
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
@@ -118,7 +105,7 @@ class SPTextFieldInput @JvmOverloads constructor(
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         inputTextBinding.etInputField.isEnabled = enabled
-        inputTextBinding.ivClear.isEnabled = enabled
+//        inputTextBinding.ivClear.isEnabled = enabled
     }
 
     override fun handleImeOption() {
@@ -139,8 +126,8 @@ class SPTextFieldInput @JvmOverloads constructor(
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldInput)
 
         styleAttrs.run {
-            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
-            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
+//            canRemove = getBoolean(R.styleable.SPTextFieldInput_canRemove, false)
+//            drawableStart = getResourceId(R.styleable.SPTextFieldInput_drawableLeft, DEFAULT_INT)
             textLength =
                 getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
 
@@ -150,11 +137,6 @@ class SPTextFieldInput @JvmOverloads constructor(
 
     fun focus() {
         inputTextBinding.etInputField.requestFocus()
-    }
-
-    private fun handleDrawableStart() {
-        inputTextBinding.ivLeftImage.isVisible = drawableStart != SPBaseView.DEFAULT_OBTAIN_VAL
-        inputTextBinding.ivLeftImage.setImageResource(drawableStart)
     }
 
     private fun handleTextLength() {

@@ -120,9 +120,14 @@ class SPMark @JvmOverloads constructor(
         is SPViewData.SPImageResourcesData -> {
             viewData.apply {
                 tintColor = context.getColorFromAttribute(R.attr.brand_primary)
-                height = imageSize
-                width = imageSize
-                padding = paddings
+                params = SPViewData.SPViewDataParams().apply {
+                    height = imageSize
+                    width = imageSize
+                    paddingStart = paddings
+                    paddingEnd = paddings
+                    paddingTop = paddings
+                    paddingBottom = paddings
+                }
             }
             viewData.createView(context)
         }

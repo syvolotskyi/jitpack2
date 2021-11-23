@@ -1,6 +1,7 @@
 package ge.space.ui.util.view_factory
 
 import android.os.Parcelable
+import android.view.Gravity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import ge.space.spaceui.R
@@ -14,9 +15,7 @@ sealed class SPViewData : Parcelable {
     @Parcelize
     data class SPImageResourcesData(
         @DrawableRes val res: Int,
-        var height: Int? = null,
-        var width: Int? = null,
-        var padding: Int? = null,
+        var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null,
         var tintColor: Int? = null
     ) :
@@ -30,7 +29,9 @@ sealed class SPViewData : Parcelable {
 
     @Parcelize
     data class SPTextData(
-        val initials: String, @StyleRes var textStyle: Int? = null,
+        val initials: String,
+        @StyleRes var textStyle: Int? = null,
+        var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null
     ) :
         SPViewData()
@@ -55,7 +56,8 @@ sealed class SPViewData : Parcelable {
     data class SPrimaryChipData(
         val chipHeight: Int,
         val chipWidth: Int,
-        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base
+        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     @Parcelize
@@ -80,4 +82,16 @@ sealed class SPViewData : Parcelable {
 
     @Parcelize
     data class SPNewCreditCards(val chipSize: SPChipSize) : SPViewData()
+
+    @Parcelize
+    data class SPViewDataParams(
+        var height: Int? = null,
+        var width: Int? = null,
+        var gravity: Int = Gravity.CENTER,
+        var paddingStart: Int = 0,
+        var paddingEnd: Int = 0,
+        var paddingTop: Int = 0,
+        var paddingBottom: Int = 0,
+    ) :
+        Parcelable
 }

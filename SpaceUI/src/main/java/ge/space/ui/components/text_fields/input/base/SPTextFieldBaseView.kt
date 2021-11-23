@@ -21,6 +21,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.util.extension.SPSetViewStyleInterface
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 import kotlinx.android.synthetic.main.sp_text_field_layout.view.*
 
@@ -103,6 +104,23 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     var onFocusChangeListener: (Boolean) -> Unit = { }
 
+    var leadingView: View? = null
+        set(value) {
+            field = value
+
+            binding.flLeading.removeAllViews()
+            binding.flLeading.addView(leadingView)
+            binding.flInputFieldContainer.invalidate()
+        }
+
+    var trailView: View? = null
+        set(value) {
+            field = value
+
+            binding.flTrail.removeAllViews()
+            binding.flTrail.addView(trailView)
+        }
+
     /**
      * Lazy property for initialize ViewBinding in constructor
      */
@@ -126,7 +144,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             applyAttributes()
             includeInputFieldContainer()
             setOnFocusChangeListener { _, focused ->
-                binding.flInputFieldContainer.setBackgroundResource(
+                binding.flContainer.setBackgroundResource(
                     if (focused) {
                         R.drawable.bg_text_field_focused
                     } else {
@@ -136,6 +154,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
                 onFocusChangeListener(focused)
             }
+            binding.flContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
+                resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
         }
     }
 
