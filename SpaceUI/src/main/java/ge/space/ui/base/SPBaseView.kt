@@ -401,6 +401,8 @@ abstract class SPBaseView @JvmOverloads constructor(
             getCornerRadius(bottomRightCornerRadius),
             getCornerRadius(bottomLeftCornerRadius)
         )
+
+        reBuildClippingMask()
     }
 
     private fun Canvas.drawView() {
