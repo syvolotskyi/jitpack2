@@ -7,15 +7,13 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 
 /**
- * Field view extended from [SPTextFieldBaseView] that allows
+ * Field view extended from [SPTextFieldInput] that allows
  * to change EditorAction and sets the mask.
  *
  */
@@ -24,9 +22,9 @@ class SPTextFieldPhone @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPEditText_Masked
-) : SPTextFieldBaseView<SpTextFieldPhoneLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPTextFieldInput(context, attrs, defStyleAttr) {
 
-    init {
+  /*  init {
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextFieldBaseView,
@@ -90,7 +88,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
         inputTextBinding.etInputField.imeOptions = imeOption
     }
 
-    /**
+    *//**
      * Sets a style for the SPButton view.
      *
      * <p>
@@ -98,7 +96,7 @@ class SPTextFieldPhone @JvmOverloads constructor(
      * <p>
      *
      * @param defStyleRes [Int] style resource id
-     */
+     *//*
     override fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldInput)
@@ -117,5 +115,5 @@ class SPTextFieldPhone @JvmOverloads constructor(
 
     override fun updateTextAppearance(textAppearance: Int) =
         inputTextBinding.etInputField.setTextStyle(textAppearance)
-
+*/
 }

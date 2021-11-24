@@ -20,7 +20,7 @@ import ge.space.spaceui.databinding.SpButtonInlineLayoutBinding
 import ge.space.ui.components.buttons.SPButtonInline.ButtonGravity.Center
 import ge.space.ui.components.buttons.SPButtonInline.ButtonGravity.Left
 import ge.space.ui.components.buttons.base.SPButtonBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 
@@ -45,7 +45,7 @@ class SPButtonInline @JvmOverloads constructor(
      * Sets a image resource
      */
     @IdRes
-    var src = SPTextFieldBaseView.DEFAULT_INT
+    var src = SPTextFieldInput.DEFAULT_INT
         set(value) {
             field = value
 
@@ -73,7 +73,7 @@ class SPButtonInline @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var descriptionTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var descriptionTextAppearance: Int = SPTextFieldInput.DEFAULT_INT
 
     init {
         getContext().withStyledAttributes(

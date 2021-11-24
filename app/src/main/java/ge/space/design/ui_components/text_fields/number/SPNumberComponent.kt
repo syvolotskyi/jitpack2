@@ -71,18 +71,18 @@ class SPNumberComponent : ShowCaseComponent {
                 rbFirst.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
                         rbSecond.isChecked = false
-                        tfNumber.focus()
+//                        tfNumber.focus()
                     } else {
-                        tfNumber.isActive = false
+//                        tfNumber.isActive = false
                     }
                 }
 
                 rbSecond.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
                         rbFirst.isChecked = false
-                        tfNumberSecond.focus()
+//                        tfNumberSecond.focus()
                     } else {
-                        tfNumberSecond.isActive = false
+//                        tfNumberSecond.isActive = false
                     }
                 }
 
@@ -98,15 +98,15 @@ class SPNumberComponent : ShowCaseComponent {
             rbFocused: RadioButton,
             rbUnfocused: RadioButton
         ) {
-            tfFocused.focus()
-            tfUnfocused.isActive = false
+//            tfFocused.focus()
+//            tfUnfocused.isActive = false
             rbUnfocused.isChecked = false
             rbFocused.isChecked = true
         }
 
         private fun SpLayoutTextFieldNumberShowcaseBinding.selectCurrency(currency: String) {
-            tfNumber.currency = currency
-            tfNumberSecond.currency = currency
+//            tfNumber.currency = currency
+//            tfNumberSecond.currency = currency
         }
     }
 

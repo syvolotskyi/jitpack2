@@ -28,7 +28,7 @@ class SPPhoneComponent : ShowCaseComponent {
                 setupPhoneInputTextWithDone(phoneInput, environment.context)
                 setupPhoneInputTextWithDone(phoneInputSecond, environment.context)
             }
-            with(binding.phoneInput) {
+          /*  with(binding.phoneInput) {
                 setPhoneMask(
                     resources.getString(R.string.phone_prefix),
                     resources.getString(R.string.phone_mask)
@@ -40,7 +40,7 @@ class SPPhoneComponent : ShowCaseComponent {
                     resources.getString(R.string.phone_prefix),
                     resources.getString(R.string.phone_mask)
                 )
-            }
+            }*/
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.phoneInput.labelText = text.toString()
@@ -51,7 +51,7 @@ class SPPhoneComponent : ShowCaseComponent {
         }
 
         private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldPhone, context: Context) {
-            phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
+           /* phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
             { _: TextView?, actionId: Int, event: KeyEvent? ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH
                     || actionId == EditorInfo.IME_ACTION_DONE
@@ -64,7 +64,7 @@ class SPPhoneComponent : ShowCaseComponent {
                 }
 
                 return@OnEditorActionListener false
-            })
+            })*/
         }
 
         fun showToast(context: Context, text: String) {

@@ -14,7 +14,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.extensions.EMPTY_TEXT
-import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
@@ -86,6 +86,27 @@ class SPInputComponent : ShowCaseComponent {
                             .createView(context)
                 }
 
+                itemBinding.trailPrimaryChip.setOnClickListener {
+                    itemBinding.simpleInput.trailView =
+                        SPDefaultPrimaryChipData.getSmallChipData(
+                            context, SPViewData.SPViewDataParams(
+                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
+                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
+                            )
+                        )
+                            .createView(context)
+                }
+                itemBinding.removeIcon.setOnClickListener {
+                    itemBinding.simpleInput.trailView = SPViewData.SPImageResourcesData(
+                        R.drawable.ic_close_circle_24_filled,
+                        SPViewData.SPViewDataParams(
+                            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
+                            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
+                        )
+                    )
+                            .createView(context)
+                }
+
                 itemBinding.phone.setOnClickListener {
                     itemBinding.simpleInput.leadingView = SPViewData.SPTextData(
                         context.getString(R.string.phone_prefix),
@@ -105,11 +126,19 @@ class SPInputComponent : ShowCaseComponent {
                 itemBinding.image.setOnClickListener {
                     itemBinding.simpleInput.leadingView = SPViewData.SPImageResourcesData(
                         R.drawable.ic_chat_message_24_regular,
-                        SPViewData.SPViewDataParams(paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                        paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14))
+                        SPViewData.SPViewDataParams(
+                            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
+                            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14)
+                        )
                     )
 
                         .createView(context)
+                }
+                itemBinding.none.setOnClickListener {
+                    itemBinding.simpleInput.leadingView = null
+                }
+                itemBinding.noneTrail.setOnClickListener {
+                    itemBinding.simpleInput.trailView = null
                 }
                 layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
                     with(itemBinding.simpleInput) {
@@ -124,7 +153,7 @@ class SPInputComponent : ShowCaseComponent {
         }
 
         private fun setupInputTextWithDone(textInput: SPTextFieldInput, context: Context) {
-            textInput.setOnEditorActionListener(
+           /* textInput.setOnEditorActionListener(
                 TextView.OnEditorActionListener
                 { _: TextView?, actionId: Int, event: KeyEvent? ->
                     if (actionId == EditorInfo.IME_ACTION_SEARCH
@@ -138,7 +167,7 @@ class SPInputComponent : ShowCaseComponent {
 
                     }
                     return@OnEditorActionListener false
-                })
+                })*/
         }
 
         private fun showToast(context: Context, text: String) {

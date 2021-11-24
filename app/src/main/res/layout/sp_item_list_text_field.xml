@@ -15,7 +15,7 @@
         android:textColor="?attr/static_black"
         tools:text="Button" />
 
-    <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/simpleInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,43 +58,123 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:checked="true"
             android:text="@string/description" />
 
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cbDistractive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Distractive (error)" />
+
     </LinearLayout>
- <RadioGroup
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/primaryChip"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:enabled="true"
-            android:text="primary" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-     <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_16"
+                android:layout_marginTop="10dp"
+                android:text="Leading:" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/primaryChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:enabled="true"
+                    android:text="primary" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:enabled="true"
+                    android:text="phone input" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="image" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="true"
+                    android:text="None" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:enabled="true"
-            android:text="phone input" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-     <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:checked="true"
-            android:text="image" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_16"
+                android:layout_marginTop="10dp"
+                android:text="Trail:" />
 
-    </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/trailPrimaryChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:enabled="true"
+                    android:text="primary" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/removeIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Remove Icon" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/noneTrail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:checked="true"
+                    android:text="None" />
+
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
 
     <include layout="@layout/sp_layout_divider" />
 

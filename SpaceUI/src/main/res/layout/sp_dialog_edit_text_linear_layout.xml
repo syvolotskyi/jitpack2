@@ -19,11 +19,11 @@
         android:gravity="center"
         tools:text="ბარათის სახელის შეცვლა" />
 
-    <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/etDialog"
         android:layout_width="@dimen/sp_et_dialog_edit_text_width"
         android:layout_height="wrap_content"
-        style="@style/SPTextField.Input"
+        style="@style/SPTextField.Base"
         android:layout_marginTop="@dimen/sp_et_dialog_margin_top"
         android:layout_marginStart="@dimen/sp_dialog_space_def_margin"
         android:layout_marginEnd="@dimen/sp_dialog_space_def_margin"

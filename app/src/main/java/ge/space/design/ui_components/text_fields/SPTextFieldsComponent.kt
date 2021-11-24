@@ -19,10 +19,8 @@ class SPTextFieldsComponent : ShowCaseComponent {
         return listOf(
             SPPasswordComponent(),
             SPOtpComponent(),
-            SPPhoneComponent(),
             SPInputComponent(),
             SPDropdownComponent(),
-            SPNumberComponent()
         )
     }
 }

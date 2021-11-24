@@ -6,9 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.ContextCompat
 import ge.space.spaceui.R
-import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.util.extension.getColorFromAttribute
 
 /**

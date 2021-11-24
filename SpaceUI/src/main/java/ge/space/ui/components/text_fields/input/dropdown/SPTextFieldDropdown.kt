@@ -9,12 +9,11 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
-import ge.space.extensions.setTextStyle
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 
 /**
@@ -30,7 +29,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldBaseView<SpTextFieldDropdownBinding>(context, attrs, defStyleAttr) {
+) : SPTextFieldInput(context, attrs, defStyleAttr) {
 
     /**
      * Binding a item view after selecting
@@ -57,9 +56,9 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     private var inflateType: InflateType = InflateType.None
 
-    /**
+  /*  *//**
      * Sets a dropdown text
-     */
+     *//*
     override var text: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.text.toString()
         set(value) {
@@ -67,10 +66,10 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
             inputTextBinding.etInputField.text = value
         }
-
-    /**
+*/
+   /* *//**
      * Sets a left image, if inflate type is withImage
-     */
+     *//*
     fun setImage(view: View) {
         inputTextBinding.ivLeftContainer.removeAllViews()
         if (inflateType == InflateType.WithIcon) {
@@ -78,7 +77,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             view.setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
             inputTextBinding.ivLeftContainer.addView(view)
         }
-    }
+    }*/
 
     /**
      * Sets a default Item and bind it
@@ -95,9 +94,9 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     fun onSelectedItem(item: T) =
         bindViewValue(this, item)
 
-    /**
+   /* *//**
      * Sets a text hint
-     */
+     *//*
     override var hint: String = EMPTY_TEXT
         get() = inputTextBinding.etInputField.hint.toString()
         set(value) {
@@ -143,7 +142,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
     override fun removeTextChangedListener(watcher: TextWatcher) =
         inputTextBinding.etInputField.addTextChangedListener(watcher)
-
+*/
     enum class InflateType {
         None,
         WithIcon

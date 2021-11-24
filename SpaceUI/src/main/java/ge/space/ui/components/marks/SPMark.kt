@@ -11,7 +11,7 @@ import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPSetViewStyleInterface
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.view_factory.SPViewData
@@ -45,7 +45,7 @@ class SPMark @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var textAppearance: Int = SPTextFieldInput.DEFAULT_INT
 
     /**
      * Changes the sizes of the add image view

@@ -5,19 +5,22 @@ import android.content.res.TypedArray
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import androidx.viewbinding.ViewBinding
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.appendAsterisk
-import ge.space.extensions.setTextStyle
+import androidx.core.view.setPadding
+import ge.space.extensions.*
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.base.SPOnDistractiveInterface
+import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
@@ -31,22 +34,43 @@ import ge.space.ui.util.extension.handleAttributeAction
  * @property inputMandatory [Boolean] value which sets a input mandatory.
  * @property descriptionText [String] value which sets a description text.
  */
-abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
+open class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface, SPOnDistractiveInterface {
+
+    private var borderWidth: Float =
+        context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
+    private val emptyLeadingView = FrameLayout(context).apply {
+        setPadding(resources.getDimensionPixelSize(R.dimen.dimen_p_8))
+    }
+    private val emptyTrailView = FrameLayout(context).apply {
+        setPadding(resources.getDimensionPixelSize(R.dimen.dimen_p_8))
+    }
 
     /**
      * Sets a button title.
      */
-    abstract var text: String
+    var text: String = EMPTY_TEXT
+        get() = contextView?.text.toString()
+        set(value) {
+            field = value
+
+            contextView?.setText(value)
+        }
 
 
     /**
      * Sets a button hint.
      */
-    abstract var hint: String
+    var hint: String = EMPTY_TEXT
+        get() = contextView?.hint.toString()
+        set(value) {
+            field = value
+
+            contextView?.hint = value
+        }
 
     /**
      * Sets a label text.
@@ -101,29 +125,49 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     var onFocusChangeListener: (Boolean) -> Unit = { }
 
-    var leadingView: View? = null
+    var leadingView: View? = emptyLeadingView
         set(value) {
             field = value
 
             binding.flLeading.removeAllViews()
-            binding.flLeading.addView(leadingView)
+            if (leadingView != null) {
+                binding.flLeading.addView(leadingView)
+            } else {
+                binding.flLeading.addView(emptyLeadingView)
+            }
             binding.flInputFieldContainer.invalidate()
         }
 
-    var trailView: View? = null
+    var trailView: View? = emptyTrailView
         set(value) {
             field = value
 
             binding.flTrail.removeAllViews()
-            binding.flTrail.addView(trailView)
+            if (trailView != null) {
+                binding.flTrail.addView(trailView)
+            } else {
+                binding.flTrail.addView(emptyTrailView)
+            }
+            binding.flInputFieldContainer.invalidate()
         }
 
-    /**
-     * Lazy property for initialize ViewBinding in constructor
-     */
-    protected val inputTextBinding by lazy {
-        getChildViewBinding()
-    }
+    var contextView: EditText = EditText(context)
+        set(value) {
+            field = value
+
+            binding.flInputFieldContainer.removeAllViews()
+            binding.flInputFieldContainer.addView(trailView)
+            binding.flInputFieldContainer.invalidate()
+        }
+
+
+    override var isDistractive: Boolean = false
+        set(value) {
+            field = value
+
+            handleDistractiveState()
+        }
+
 
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
@@ -132,6 +176,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         SpTextFieldLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
+
     init {
         getContext().withStyledAttributes(
             attrs,
@@ -139,26 +184,24 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
             defStyleAttr
         ) {
             applyAttributes()
-            includeInputFieldContainer()
             setOnFocusChangeListener { _, focused ->
-                binding.flContainer.setBackgroundResource(
-                    if (focused) {
-                        R.drawable.bg_text_field_focused
-                    } else {
-                        R.drawable.bg_text_field
-                    }
-                )
-
+                /*   binding.flContainer.changeBorder(
+                       if (focused) {
+                           R.drawable.bg_text_field_focused
+                       } else {
+                           R.drawable.bg_text_field
+                       }
+                   )*/
                 onFocusChangeListener(focused)
             }
-            binding.flContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
-                resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
+            binding.flContainer.changeBorder(
+                context.getColorFromAttribute(R.attr.brand_primary),
+                borderWidth
+            )
+            leadingView = emptyLeadingView
         }
     }
 
-    private fun includeInputFieldContainer() {
-        binding.flInputFieldContainer.addView(inputTextBinding.root)
-    }
 
     /**
      * Sets a style for the view.
@@ -182,7 +225,18 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         }
     }
 
-    abstract fun setTextFieldStyle(@StyleRes defStyleRes: Int)
+    fun setTextFieldStyle(@StyleRes defStyleRes: Int) {
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldInput)
+
+        styleAttrs.run {
+            contextView.setTextLength(
+                getInt(R.styleable.SPTextFieldInput_inputTextLength, DEFAULT_TEXT_LENGTH)
+            )
+
+            recycle()
+        }
+    }
 
     private fun TypedArray.applyAttributes() {
         labelText = getString(R.styleable.SPTextFieldBaseView_titleText).orEmpty()
@@ -229,7 +283,8 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Allows to update a text appearance by styles
      */
-    protected abstract fun updateTextAppearance(@StyleRes textAppearance: Int)
+    private fun updateTextAppearance(textAppearance: Int) =
+        contextView.setTextStyle(textAppearance)
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
         binding.textLabel.setTextStyle(textAppearance)
@@ -253,16 +308,33 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
         binding.textDesc.text = descriptionText
     }
 
-    protected abstract fun handleImeOption()
+    override fun handleDistractiveState() {
+        if (isDistractive) {
+            binding.flContainer.changeBorder(
+                context.getColorFromAttribute(R.attr.accent_magenta),
+                borderWidth
+            )
+        } else {
+            binding.flContainer.changeBorder(
+                context.getColorFromAttribute(R.attr.brand_primary),
+                borderWidth
+            )
 
-    abstract fun addTextChangedListener(watcher: TextWatcher)
+        }
+        binding.flContainer.invalidate()
+    }
 
-    abstract fun removeTextChangedListener(watcher: TextWatcher)
+    protected fun handleImeOption() {
+        contextView.imeOptions = imeOption
+    }
 
-    /**
-     * Allows to init ViewBinding
-     */
-    protected abstract fun getChildViewBinding(): VB
+    fun addTextChangedListener(watcher: TextWatcher) {
+        contextView.addTextChangedListener(watcher)
+    }
+
+     fun removeTextChangedListener(watcher: TextWatcher) {
+         contextView.addTextChangedListener(watcher)
+    }
 
     companion object {
         const val ID_NEXT = 5

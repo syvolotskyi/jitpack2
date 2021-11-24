@@ -4,9 +4,8 @@ import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
 import android.widget.EditText
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
-import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
 
 /**
  * Add an action which will be invoked when the text is changing.
@@ -99,5 +98,5 @@ inline fun createTextChangedListener(
 
 fun EditText.setTextLength(length: Int) {
     this.filters =
-        arrayOf<InputFilter>(InputFilter.LengthFilter(SPTextFieldBaseView.DEFAULT_TEXT_LENGTH))
+        arrayOf<InputFilter>(InputFilter.LengthFilter(SPTextFieldInput.DEFAULT_TEXT_LENGTH))
 }

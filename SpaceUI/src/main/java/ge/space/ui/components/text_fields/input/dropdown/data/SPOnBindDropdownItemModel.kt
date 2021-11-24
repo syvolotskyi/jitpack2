@@ -8,7 +8,7 @@ class SPOnBindDropdownItemModel : SPOnBindInterface<SPDropdownItemModel> {
         { view, item ->
             item.iconData?.let {
                 val image = it.createView(view.context)
-                view.setImage(image)
+//                view.setImage(image)
             }
             view.text = item.value
         }

@@ -7,22 +7,19 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldTextCurrencyBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
-import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 
 class SPTextFieldNumber @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPTextField_Number
-) : SPTextFieldBaseView<SpTextFieldTextCurrencyBinding>(context, attrs, defStyleAttr) {
-
+) : SPTextFieldInput(context, attrs, defStyleAttr) {
+/*
     var textLength: Int = DEFAULT_TEXT_LENGTH
         set(value) {
             field = value
@@ -57,7 +54,7 @@ class SPTextFieldNumber @JvmOverloads constructor(
     @StyleRes
     private var currencyTextAppearance: Int = DEFAULT_INT
 
-    var isDistractive: Boolean = false
+    override var isDistractive: Boolean = false
         set(value) {
             field = value
             handleDistractive()
@@ -173,5 +170,5 @@ class SPTextFieldNumber @JvmOverloads constructor(
     companion object {
         private const val ALPHA_ACTIVE: Float = 1.0f
         private const val ALPHA_INACTIVE: Float = 0.5f
-    }
+    }*/
 }
