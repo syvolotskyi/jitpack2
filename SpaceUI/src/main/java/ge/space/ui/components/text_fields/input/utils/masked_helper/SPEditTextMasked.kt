@@ -45,6 +45,11 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
             cleanUp()
         }
 
+    constructor(context: Context) :
+            super(context) {
+        init(context, null)
+    }
+
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) :
             super(context, attrs, defStyle) {
         init(context, attrs)

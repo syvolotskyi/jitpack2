@@ -1,8 +1,10 @@
 package ge.space.ui.util.view_factory
 
 import android.os.Parcelable
+import android.text.InputType
 import android.view.Gravity
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
 import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
@@ -33,6 +35,25 @@ sealed class SPViewData : Parcelable {
         @StyleRes var textStyle: Int? = null,
         var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null
+    ) :
+        SPViewData()
+
+    @Parcelize
+    data class SPEditTextData(
+        @StyleRes var style: Int? = null,
+        var hint: String? = null,
+        var inputType: Int = InputType.TYPE_CLASS_TEXT,
+        var lines: Int? = null,
+        var params: SPViewDataParams? = null,
+    ) :
+        SPViewData()
+
+    @Parcelize
+    data class SPMaskedEditTextData(
+        @StyleRes var style: Int? = null,
+        var mask: String,
+        @StringRes var hint: Int? = null,
+        var params: SPViewDataParams? = null,
     ) :
         SPViewData()
 

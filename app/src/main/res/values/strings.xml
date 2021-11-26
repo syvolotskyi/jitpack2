@@ -120,6 +120,7 @@
     <string name="created_programmatically">created by programmatically\n(without icon)</string>
 
     <string name="enter_you_details_here">Enter your details here</string>
+    <string name="enter_amount">Enter amount</string>
     <string name="title_default_items">Showcases for default items</string>
     <string name="component_otp_resend_sms">SMS-ის ხელმეორედ გაგზავნა</string>
     <string name="component_otp_label">შეიყვანე ვერიფიკაციის კოდი, რომელიც მიიღე ნომერზე:</string>

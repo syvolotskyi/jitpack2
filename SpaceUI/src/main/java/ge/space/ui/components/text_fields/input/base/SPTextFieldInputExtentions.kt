@@ -7,7 +7,7 @@ import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimar
 
 fun SPTextFieldInput.setupTextInputPrimary(isRemovable:Boolean) {
     if (isRemovable)
-        trailView =SPViewData.SPImageResourcesData(
+        trailView = SPViewData.SPImageResourcesData(
         R.drawable.ic_close_circle_24_filled,
         SPViewData.SPViewDataParams(
             paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),

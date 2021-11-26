@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -19,6 +20,8 @@ import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
+import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
+import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
 
 class SPInputComponent : ShowCaseComponent {
 
@@ -74,72 +77,82 @@ class SPInputComponent : ShowCaseComponent {
                         EMPTY_TEXT
                     }
                 }
+                itemBinding.cbDistractive.setOnCheckedChangeListener { _, isChecked ->
+                    itemBinding.simpleInput.isDistractive = isChecked
+                }
 
-                itemBinding.primaryChip.setOnClickListener {
-                    itemBinding.simpleInput.leadingView =
-                        SPDefaultPrimaryChipData.getSmallChipData(
+
+                itemBinding.rgContent.setOnCheckedChangeListener { group, checkedId ->
+                    itemBinding.simpleInput.contextView = when (checkedId) {
+                        R.id.phoneMask -> SPViewData.SPMaskedEditTextData(
+                            R.style.h700_bold_caps_text_field,
+                            context.getString(R.string.phone_mask),
+                            hint = R.string.enter_you_details_here
+                        ).createView(context)
+                        R.id.numberInput -> getNumberEditTextViewData(
+                            context,
+                            context.getString(R.string.enter_amount)
+                        )
+                            .createView(context)
+                        else -> SPViewData.SPEditTextData(
+                            R.style.h700_bold_caps_text_field,
+                            context.getString(R.string.enter_you_details_here)
+                        ).createView(context)
+                    } as EditText
+                }
+
+                itemBinding.rgLeading.setOnCheckedChangeListener { group, checkedId ->
+                    itemBinding.simpleInput.leadingView = when (checkedId) {
+                        R.id.primaryChip -> SPDefaultPrimaryChipData.getSmallChipData(
                             context, SPViewData.SPViewDataParams(
                                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
                                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
                             )
                         )
                             .createView(context)
+                        R.id.phone -> SPViewData.SPTextData(
+                            context.getString(R.string.phone_prefix),
+                            textStyle = R.style.h600_bold_text_field_phone,
+                            SPViewData.SPViewDataParams(
+                                gravity = Gravity.CENTER_VERTICAL or Gravity.END,
+                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
+                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4)/*,
+                            paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),*/
+                            )
+                        ).createView(context)
+                        R.id.image -> SPViewData.SPImageResourcesData(
+                            R.drawable.ic_chat_message_24_regular,
+                            SPViewData.SPViewDataParams(
+                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
+                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14)
+                            )
+                        ).createView(context)
+                        else -> null
+                    }
                 }
-
-                itemBinding.trailPrimaryChip.setOnClickListener {
-                    itemBinding.simpleInput.trailView =
-                        SPDefaultPrimaryChipData.getSmallChipData(
+                itemBinding.rgTrail.setOnCheckedChangeListener { group, checkedId ->
+                    itemBinding.simpleInput.trailView = when (checkedId) {
+                        R.id.trailPrimaryChip -> SPDefaultPrimaryChipData.getSmallChipData(
                             context, SPViewData.SPViewDataParams(
                                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
                                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
                             )
+                        ).createView(context)
+                        R.id.rbCurrency -> getCurrencyViewData(context, "$")
+                            .createView(context)
+                        R.id.removeIcon -> SPViewData.SPImageResourcesData(
+                            R.drawable.ic_close_circle_24_filled,
+                            SPViewData.SPViewDataParams(
+                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
+                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
+                            )
                         )
                             .createView(context)
-                }
-                itemBinding.removeIcon.setOnClickListener {
-                    itemBinding.simpleInput.trailView = SPViewData.SPImageResourcesData(
-                        R.drawable.ic_close_circle_24_filled,
-                        SPViewData.SPViewDataParams(
-                            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
-                            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
-                        )
-                    )
-                            .createView(context)
+                        else -> null
+                    }
                 }
 
-                itemBinding.phone.setOnClickListener {
-                    itemBinding.simpleInput.leadingView = SPViewData.SPTextData(
-                        context.getString(R.string.phone_prefix),
-                        textStyle = R.style.h600_bold_text_field_phone,
-                        SPViewData.SPViewDataParams(
-                            gravity = Gravity.CENTER_VERTICAL or Gravity.END,
-                            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
-                            paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
-                        ),
 
-                        )
-
-                        .createView(context)
-                }
-
-                itemBinding.image.setOnClickListener {
-                    itemBinding.simpleInput.leadingView = SPViewData.SPImageResourcesData(
-                        R.drawable.ic_chat_message_24_regular,
-                        SPViewData.SPViewDataParams(
-                            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14)
-                        )
-                    )
-
-                        .createView(context)
-                }
-                itemBinding.none.setOnClickListener {
-                    itemBinding.simpleInput.leadingView = null
-                }
-                itemBinding.noneTrail.setOnClickListener {
-                    itemBinding.simpleInput.trailView = null
-                }
                 layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
                     with(itemBinding.simpleInput) {
                         labelText = text.toString()
@@ -153,7 +166,7 @@ class SPInputComponent : ShowCaseComponent {
         }
 
         private fun setupInputTextWithDone(textInput: SPTextFieldInput, context: Context) {
-           /* textInput.setOnEditorActionListener(
+            textInput.setOnEditorActionListener(
                 TextView.OnEditorActionListener
                 { _: TextView?, actionId: Int, event: KeyEvent? ->
                     if (actionId == EditorInfo.IME_ACTION_SEARCH
@@ -167,7 +180,7 @@ class SPInputComponent : ShowCaseComponent {
 
                     }
                     return@OnEditorActionListener false
-                })*/
+                })
         }
 
         private fun showToast(context: Context, text: String) {

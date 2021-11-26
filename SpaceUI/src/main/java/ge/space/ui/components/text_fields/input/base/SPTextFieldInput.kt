@@ -53,11 +53,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * Sets a button title.
      */
     var text: String = EMPTY_TEXT
-        get() = contextView?.text.toString()
+        get() = contextView.text.toString()
         set(value) {
             field = value
 
-            contextView?.setText(value)
+            contextView.setText(value)
         }
 
 
@@ -156,7 +156,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             field = value
 
             binding.flInputFieldContainer.removeAllViews()
-            binding.flInputFieldContainer.addView(trailView)
+            binding.flInputFieldContainer.addView(contextView)
             binding.flInputFieldContainer.invalidate()
         }
 
@@ -324,6 +324,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
         binding.flContainer.invalidate()
     }
 
+    fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
+        contextView.setOnEditorActionListener(listener)
+    }
+
     protected fun handleImeOption() {
         contextView.imeOptions = imeOption
     }
@@ -332,7 +336,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         contextView.addTextChangedListener(watcher)
     }
 
-     fun removeTextChangedListener(watcher: TextWatcher) {
+    fun removeTextChangedListener(watcher: TextWatcher) {
          contextView.addTextChangedListener(watcher)
     }
 
