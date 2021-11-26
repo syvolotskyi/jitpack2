@@ -89,11 +89,15 @@ class SPInputComponent : ShowCaseComponent {
                             context.getString(R.string.phone_mask),
                             hint = R.string.enter_you_details_here
                         ).createView(context)
+                        R.id.dateMask -> SPViewData.SPMaskedEditTextData(
+                            R.style.h700_bold_caps_text_field,
+                            context.getString(R.string.day_mask),
+                            hint = R.string.enter_you_details_here
+                        ).createView(context)
                         R.id.numberInput -> getNumberEditTextViewData(
                             context,
                             context.getString(R.string.enter_amount)
-                        )
-                            .createView(context)
+                        ).createView(context)
                         else -> SPViewData.SPEditTextData(
                             R.style.h700_bold_caps_text_field,
                             context.getString(R.string.enter_you_details_here)

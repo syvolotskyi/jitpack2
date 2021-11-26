@@ -367,8 +367,8 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
     }
 
     companion object {
-        const val SPACE = "/"
-        const val ALLOWED_CHARS = "1234567890 X"
+        const val SPACE = " "
+        const val ALLOWED_CHARS = "1234567890 /X"
         const val CHAR_REPRESENTATION = "#"
         const val MASK_SYMBOL = "X"
     }
