@@ -10,4 +10,10 @@
     <string name="title_default_chip_item_physical_title">Order Physical Card</string>
     <string name="title_default_chip_item_digital_title">Create Digital Card</string>
     <string name="title_default_chip_item_add_title">Add another card</string>
+
+    <string name="status_message_success"></string>
+    <string name="status_message_info"></string>
+    <string name="status_message_pending"></string>
+    <string name="status_message_error"></string>
+
 </resources>

@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPStatusMessage" parent="SPBaseView">
+    <style name="SPStatusMessage.Base" parent="shadow_empty">
 
     </style>
 
+    <style name="SPStatusMessage.Success" parent="SPStatusMessage.Base">
+        <item name="status">success</item>
+        <item name="android:textAppearance">@style/h800_medium_accent_green</item>
+        <item name="android:src">@drawable/ic_checkmark_circle_16_regular</item>
+    </style>
+
+    <style name="SPStatusMessage.Error" parent="SPStatusMessage.Base">
+        <item name="status">error</item>
+        <item name="android:textAppearance">@style/h800_medium_accent_magenta</item>
+        <item name="android:src">@drawable/ic_alert_circle_16_regular</item>
+    </style>
+
+    <style name="SPStatusMessage.Pending" parent="SPStatusMessage.Base">
+        <item name="status">pending</item>
+        <item name="android:textAppearance">@style/h800_medium_accent_orange</item>
+        <item name="android:src">@drawable/ic_clock_circle_24_regular</item>
+    </style>
+
+    <style name="SPStatusMessage.Info" parent="SPStatusMessage.Base">
+        <item name="status">info</item>
+        <item name="android:textAppearance">@style/h800_medium_brand_primary</item>
+        <item name="android:src">@drawable/ic_info_circle_16_regular</item>
+    </style>
 
 </resources>

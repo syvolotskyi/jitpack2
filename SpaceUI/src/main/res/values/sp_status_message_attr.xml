@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="SPStatusTextView">
+        <attr name="style" />
+        <attr name="android:textAppearance" />
+        <attr name="android:text" />
+        <attr name="android:src" format="reference" />
+
+        <attr name="status" format="enum">
+            <enum name="success">0</enum>
+            <enum name="error">1</enum>
+            <enum name="pending">2</enum>
+            <enum name="info">3</enum>
+        </attr>
+    </declare-styleable>
+
+
+
+
 </resources>

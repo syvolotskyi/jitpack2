@@ -22,6 +22,9 @@
     <string name="vertical_button_description">Vertical button description</string>
     <string name="vertical_buttons">Vertical button</string>
 
+    <string name="status_textview_description">Status TextView description</string>
+    <string name="status_textview">Status TextView</string>
+
     <string name="iconic_button_description">Iconic button description</string>
     <string name="iconic_buttons">Iconic button</string>
 
