@@ -266,6 +266,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        contextView.isEnabled = enabled
+        trailView?.isEnabled = enabled
+        leadingView?.isEnabled = enabled
+        handleBorderColor()
+    }
+
     /**
      * Sets a end click listener.
      */
@@ -300,19 +308,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     override fun handleDistractiveState() {
-        if (isDistractive) {
-            binding.flContainer.changeBorder(
-                context.getColorFromAttribute(R.attr.accent_magenta),
-                borderWidth
-            )
-        } else {
-            binding.flContainer.changeBorder(
-                context.getColorFromAttribute(R.attr.brand_primary),
-                borderWidth
-            )
-
-        }
-        binding.flContainer.invalidate()
+        handleBorderColor()
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
@@ -348,15 +344,23 @@ open class SPTextFieldInput @JvmOverloads constructor(
     private fun handleContextView() {
         binding.flInputFieldContainer.addContentView(contextView)
         contextView.setOnFocusChangeListener { _, focused ->
-            binding.flContainer.changeBorder(
-                if (focused) {
-                    context.getColorFromAttribute(R.attr.brand_primary)
-                } else {
-                    context.getColorFromAttribute(R.attr.separator_opaque)
-                }, borderWidth
-            )
+            handleBorderColor()
             onFocusChangeListener(focused)
         }
+    }
+
+    private fun handleBorderColor() {
+        binding.flContainer.changeBorder(
+            if (!isEnabled) {
+                context.getColorFromAttribute(R.attr.separator_opaque)
+            } else if (isDistractive) {
+                context.getColorFromAttribute(R.attr.accent_magenta)
+            } else if (contextView.isFocused) {
+                context.getColorFromAttribute(R.attr.brand_primary)
+            } else {
+                context.getColorFromAttribute(R.attr.separator_opaque)
+            }, borderWidth
+        )
     }
 
     companion object {
