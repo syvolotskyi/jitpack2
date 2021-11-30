@@ -44,6 +44,7 @@ class SPInputComponent : ShowCaseComponent {
                     setViewStyle(buttonSample.resId)
                     setupInputTextWithDone(this, environment.context)
                     doOnTextChanged { text, _, _, _ ->
+                        isDistractive = false
                         if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
                             showToast(context, text.toString())
                         }
