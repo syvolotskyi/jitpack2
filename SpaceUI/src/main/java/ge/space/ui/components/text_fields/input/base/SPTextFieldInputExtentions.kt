@@ -12,6 +12,14 @@ import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
 import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
 
 /**
+ * Setup a view as input for number and currency
+ */
+fun SPTextFieldInput.setupNumberInput(currency: String) {
+    setupContextViewByType(SPContextViewType.NUMBER)
+    setupTrailViewByType(SPTrailViewType.CURRENCY, currency = currency)
+}
+
+/**
  * Setup a Context View due to type
  */
 fun SPTextFieldInput.setupContextViewByType(

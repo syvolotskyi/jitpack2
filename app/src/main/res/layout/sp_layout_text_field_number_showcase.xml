@@ -25,10 +25,9 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber"
-        android:layout_width="@dimen/dimen_p_100"
+        android:layout_width="@dimen/dimen_p_150"
         android:layout_height="wrap_content"
-        android:enabled="false"
-        android:maxLength="6"
+        app:style="@style/SPTextField.Number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,13 +50,12 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumberSecond"
-        android:layout_width="@dimen/dimen_p_100"
+        android:layout_width="@dimen/dimen_p_150"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dimen_p_64"
-        android:enabled="false"
-        android:maxLength="6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:style="@style/SPTextField.Number"
         app:layout_constraintTop_toBottomOf="@+id/tfNumber" />
 
     <TextView

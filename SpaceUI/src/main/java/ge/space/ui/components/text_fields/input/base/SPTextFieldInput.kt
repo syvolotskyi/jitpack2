@@ -68,7 +68,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * Sets a button hint.
      */
     var hint: String = EMPTY_TEXT
-        get() = contextView.hint.toString()
         set(value) {
             field = value
 
@@ -258,6 +257,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .apply {
                 setupTrailViewByType(SPTrailViewType.values()[this])
             }
+        handleBorderColor()
     }
 
     override fun setViewStyle(newStyle: Int) {
@@ -326,6 +326,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
     fun removeTextChangedListener(watcher: TextWatcher) {
         contextView.addTextChangedListener(watcher)
     }
+
+    fun focus() = contextView.requestFocus()
 
     fun removeAllText() {
         contextView.setText("")

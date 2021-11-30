@@ -8,6 +8,9 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+import ge.space.ui.components.text_fields.input.base.SPTrailViewType
+import ge.space.ui.components.text_fields.input.base.setupNumberInput
+import ge.space.ui.components.text_fields.input.base.setupTrailViewByType
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import java.math.BigDecimal
 
@@ -35,12 +38,15 @@ class SPNumberComponent : ShowCaseComponent {
                     }
                 }
 
+                tfNumber.setupNumberInput(EURO)
+                tfNumberSecond.setupNumberInput(EURO)
+
                 cbDisable.setOnCheckedChangeListener { _, isChecked ->
-//                    tfNumber.isEnabled = !isChecked
-//                    tfNumberSecond.isEnabled = !isChecked
+                   tfNumber.isEnabled = !isChecked
+                   tfNumberSecond.isEnabled = !isChecked
                 }
 
-             /*   tfNumber.doOnTextChanged { text, _, _, _ ->
+                tfNumber.doOnTextChanged { text, _, _, _ ->
                     with(text.toString()) {
                         try {
                             tfNumber.isDistractive =
@@ -54,35 +60,31 @@ class SPNumberComponent : ShowCaseComponent {
                             ).show()
                         }
                     }
-                }*/
+                }
 
-               /* tfNumber.onFocusChangeListener = { checked ->
+                tfNumber.onFocusChangeListener = { checked ->
                     if (checked) {
                         onFocusOnTextFields(tfNumber, tfNumberSecond, rbFirst, rbSecond)
                     }
                 }
-*/
-              /*  tfNumberSecond.onFocusChangeListener = { checked ->
+
+                tfNumberSecond.onFocusChangeListener = { checked ->
                     if (checked) {
                         onFocusOnTextFields(tfNumberSecond, tfNumber, rbSecond, rbFirst)
                     }
-                }*/
+                }
 
                 rbFirst.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
                         rbSecond.isChecked = false
-//                        tfNumber.focus()
-                    } else {
-//                        tfNumber.isActive = false
+                        tfNumber.focus()
                     }
                 }
 
                 rbSecond.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
                         rbFirst.isChecked = false
-//                        tfNumberSecond.focus()
-                    } else {
-//                        tfNumberSecond.isActive = false
+                        tfNumberSecond.focus()
                     }
                 }
 
@@ -98,15 +100,14 @@ class SPNumberComponent : ShowCaseComponent {
             rbFocused: RadioButton,
             rbUnfocused: RadioButton
         ) {
-//            tfFocused.focus()
-//            tfUnfocused.isActive = false
+            tfFocused.focus()
             rbUnfocused.isChecked = false
             rbFocused.isChecked = true
         }
 
         private fun SpLayoutTextFieldNumberShowcaseBinding.selectCurrency(currency: String) {
-//            tfNumber.currency = currency
-//            tfNumberSecond.currency = currency
+            tfNumber.setupTrailViewByType(SPTrailViewType.CURRENCY, currency = currency)
+            tfNumberSecond.setupTrailViewByType(SPTrailViewType.CURRENCY, currency = currency)
         }
     }
 
