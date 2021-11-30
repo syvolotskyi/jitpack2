@@ -2,5 +2,4 @@
 <resources>
     <string name="phone_prefix">+995</string>
     <string name="phone_mask">### ### ###</string>
-    <string name="day_mask">##/##/##</string>
 </resources>
