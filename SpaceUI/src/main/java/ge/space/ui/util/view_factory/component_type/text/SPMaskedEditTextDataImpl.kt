@@ -17,7 +17,7 @@ class SPMaskedEditTextDataImpl(context: Context) : SPViewImpl<SPViewData.SPMaske
         return  editText.etInputField.apply {
             mask = type.mask
             gravity = type.params?.gravity ?: Gravity.LEFT
-            type.hint?.let { setHint(it) }
+            type.hint?.let { hint = it }
             background = null
             type.params?.let {
                 it.height?.let { this.height = it }

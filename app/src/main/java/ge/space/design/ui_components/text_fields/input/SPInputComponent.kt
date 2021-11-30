@@ -1,10 +1,8 @@
 package ge.space.design.ui_components.text_fields.input
 
 import android.content.Context
-import android.view.Gravity
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -15,13 +13,8 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.extensions.EMPTY_TEXT
-import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+import ge.space.ui.components.text_fields.input.base.*
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
-import ge.space.ui.util.view_factory.SPViewData
-import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
-import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
-import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
-import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
 
 class SPInputComponent : ShowCaseComponent {
 
@@ -82,77 +75,66 @@ class SPInputComponent : ShowCaseComponent {
                 }
 
 
-                itemBinding.rgContent.setOnCheckedChangeListener { group, checkedId ->
-                    itemBinding.simpleInput.contextView = when (checkedId) {
-                        R.id.phoneMask -> SPViewData.SPMaskedEditTextData(
-                            R.style.h700_bold_caps_text_field,
-                            context.getString(R.string.phone_mask),
-                            hint = R.string.enter_you_details_here
-                        ).createView(context)
-                        R.id.dateMask -> SPViewData.SPMaskedEditTextData(
-                            R.style.h700_bold_caps_text_field,
-                            context.getString(R.string.day_mask),
-                            hint = R.string.enter_you_details_here
-                        ).createView(context)
-                        R.id.numberInput -> getNumberEditTextViewData(
-                            context,
-                            context.getString(R.string.enter_amount)
-                        ).createView(context)
-                        else -> SPViewData.SPEditTextData(
-                            R.style.h700_bold_caps_text_field,
-                            context.getString(R.string.enter_you_details_here)
-                        ).createView(context)
-                    } as EditText
-                }
-
-                itemBinding.rgLeading.setOnCheckedChangeListener { group, checkedId ->
-                    itemBinding.simpleInput.leadingView = when (checkedId) {
-                        R.id.primaryChip -> SPDefaultPrimaryChipData.getSmallChipData(
-                            context, SPViewData.SPViewDataParams(
-                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
-                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
+                itemBinding.rgContent.setOnCheckedChangeListener { _, checkedId ->
+                    when (checkedId) {
+                        R.id.phoneMask ->
+                            itemBinding.simpleInput.setupContextViewByType(
+                                SPContextViewType.MASK,
+                                context.getString(R.string.phone_mask),
+                                context.getString(R.string.enter_you_details_here)
                             )
+                        R.id.dateMask ->
+                            itemBinding.simpleInput.setupContextViewByType(
+                                SPContextViewType.MASK,
+                                context.getString(R.string.day_mask),
+                                context.getString(R.string.enter_you_details_here)
+                            )
+                        R.id.numberInput ->
+                            itemBinding.simpleInput.setupContextViewByType(
+                                SPContextViewType.NUMBER,
+                                inputHint = context.getString(R.string.enter_amount)
+                            )
+                        else -> itemBinding.simpleInput.setupContextViewByType(
+                            SPContextViewType.TEXT,
+                            inputHint = context.getString(R.string.enter_you_details_here)
                         )
-                            .createView(context)
-                        R.id.phone -> SPViewData.SPTextData(
-                            context.getString(R.string.phone_prefix),
-                            textStyle = R.style.h600_bold_text_field_phone,
-                            SPViewData.SPViewDataParams(
-                                gravity = Gravity.CENTER_VERTICAL or Gravity.END,
-                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4)/*,
-                            paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),*/
-                            )
-                        ).createView(context)
-                        R.id.image -> SPViewData.SPImageResourcesData(
-                            R.drawable.ic_chat_message_24_regular,
-                            SPViewData.SPViewDataParams(
-                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14)
-                            )
-                        ).createView(context)
-                        else -> null
                     }
                 }
-                itemBinding.rgTrail.setOnCheckedChangeListener { group, checkedId ->
-                    itemBinding.simpleInput.trailView = when (checkedId) {
-                        R.id.trailPrimaryChip -> SPDefaultPrimaryChipData.getSmallChipData(
-                            context, SPViewData.SPViewDataParams(
-                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
-                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
-                            )
-                        ).createView(context)
-                        R.id.rbCurrency -> getCurrencyViewData(context, "$")
-                            .createView(context)
-                        R.id.removeIcon -> SPViewData.SPImageResourcesData(
-                            R.drawable.ic_close_circle_24_filled,
-                            SPViewData.SPViewDataParams(
-                                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
-                                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
-                            )
+
+                itemBinding.rgLeading.setOnCheckedChangeListener { _, checkedId ->
+                    when (checkedId) {
+                        R.id.primaryChip -> itemBinding.simpleInput.setupLeadingViewByType(
+                            SPLeadingViewType.CARD
                         )
-                            .createView(context)
-                        else -> null
+                        R.id.phone -> itemBinding.simpleInput.setupLeadingViewByType(
+                            SPLeadingViewType.PHONE_PREFIX,
+                            phonePrefix = context.getString(R.string.phone_prefix)
+                        )
+                        R.id.image -> itemBinding.simpleInput.setupLeadingViewByType(
+                            SPLeadingViewType.IMAGE, icon = R.drawable.ic_chat_message_24_regular
+                        )
+
+                        R.id.none -> itemBinding.simpleInput.setupLeadingViewByType(
+                            SPLeadingViewType.NONE
+                        )
+                    }
+                }
+
+                itemBinding.rgTrail.setOnCheckedChangeListener { _, checkedId ->
+                    when (checkedId) {
+                        R.id.trailPrimaryChip -> itemBinding.simpleInput.setupTrailViewByType(
+                            SPTrailViewType.CARD
+                        )
+                        R.id.rbCurrency -> itemBinding.simpleInput.setupTrailViewByType(
+                            SPTrailViewType.CURRENCY,
+                            currency = "$"
+                        )
+                        R.id.removeIcon -> itemBinding.simpleInput.setupTrailViewByType(
+                            SPTrailViewType.REMOVABLE
+                        )
+                        R.id.noneTrail -> itemBinding.simpleInput.setupLeadingViewByType(
+                        SPLeadingViewType.NONE
+                    )
                     }
                 }
 
