@@ -8,6 +8,7 @@ import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
+import ge.space.design.ui_components.status_messages.SPStatusTextViewComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 
@@ -23,8 +24,8 @@ object DesignSystemComponents : ShowCaseComponent {
         return listOf(
             new { SPColorsComponent() },
             new { SPButtonComponent() },
-            // new { SPStatusTextViewComponent() },
             new { SPDialogComponent() },
+            new { SPStatusTextViewComponent() },
             new { SPTextFieldsComponent() },
             new { SPBannerComponent() },
             new { SPBankCardComponent() },

@@ -5,25 +5,16 @@ import android.content.res.TypedArray
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import androidx.viewbinding.ViewBinding
 import com.google.android.material.textview.MaterialTextView
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpStatusMessageButtonBinding
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPSetViewStyleInterface
-import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.util.extension.getColorFromTextAppearance
-import ge.space.ui.util.extension.handleAttributeAction
-import java.lang.reflect.Array.getInt
-
 
 class SPStatusTextView @JvmOverloads constructor(
     context: Context,
@@ -31,9 +22,7 @@ class SPStatusTextView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPStatusMessage_Info
 ) : MaterialTextView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
-
-    //private val binding : SpStatusMessageButtonBinding
-
+    
     var status : SPMessageStatus = SPMessageStatus.INFO
         set(value) {
             field = value
@@ -59,12 +48,15 @@ class SPStatusTextView @JvmOverloads constructor(
 
     override fun setViewStyle(newStyle: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(0, R.styleable.SPStatusTextView)
+            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPStatusTextView)
 
         styleAttrs.run { withStyledAttributes() }
     }
 
     private fun TypedArray.withStyledAttributes() {
+        val statusId = getInt(R.styleable.SPStatusTextView_status, DEFAULT_OBTAIN_VAL)
+        status = SPMessageStatus.values()[statusId]
+
         val textAppearance = getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
         updateTextAppearance(textAppearance)
     }
@@ -72,19 +64,11 @@ class SPStatusTextView @JvmOverloads constructor(
     fun updateTextAppearance(textAppearance: Int) {
         setTextStyle(textAppearance)
         updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
-
-        val statusId = getInt(
-            R.styleable.SPStatusTextView_status,
-            DEFAULT_OBTAIN_VAL
-        )
-
-        status = SPMessageStatus.values()[statusId]
-
     }
 
     private fun updateDrawableColor(color: Int) {
         compoundDrawables.forEach {
-            it.colorFilter = PorterDuffColorFilter(
+            it?.colorFilter = PorterDuffColorFilter(
                 color,
                 PorterDuff.Mode.SRC_IN
             )
