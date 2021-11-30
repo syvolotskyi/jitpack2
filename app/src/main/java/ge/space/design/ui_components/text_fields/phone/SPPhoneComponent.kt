@@ -11,7 +11,7 @@ import com.example.spacedesignsystem.databinding.SpPhoneInputShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.text_fields.input.phone_input.SPTextFieldPhone
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 
 class SPPhoneComponent : ShowCaseComponent {
 
@@ -50,7 +50,7 @@ class SPPhoneComponent : ShowCaseComponent {
 
         }
 
-        private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldPhone, context: Context) {
+        private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldInput, context: Context) {
            /* phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
             { _: TextView?, actionId: Int, event: KeyEvent? ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH

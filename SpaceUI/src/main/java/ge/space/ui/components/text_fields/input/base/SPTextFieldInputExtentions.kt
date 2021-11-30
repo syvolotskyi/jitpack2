@@ -1,5 +1,6 @@
 package ge.space.ui.components.text_fields.input.base
 
+import android.content.Context
 import android.view.Gravity
 import android.widget.EditText
 import ge.space.extensions.EMPTY_TEXT
@@ -9,7 +10,6 @@ import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
 import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
-
 
 /**
  * Setup a Context View due to type
@@ -46,12 +46,7 @@ fun SPTextFieldInput.setupTrailViewByType(
 ) {
     trailView = when (type) {
         SPTrailViewType.NONE -> null
-        SPTrailViewType.CARD -> SPDefaultPrimaryChipData.getSmallChipData(
-            context, SPViewData.SPViewDataParams(
-                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
-                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
-            )
-        )
+        SPTrailViewType.CARD -> getSmallCardView(context)
         SPTrailViewType.CURRENCY -> getCurrencyViewData(context, currency)
         SPTrailViewType.REMOVABLE -> SPViewData.SPImageResourcesData(
             R.drawable.ic_close_circle_24_filled,
@@ -71,7 +66,6 @@ fun SPTextFieldInput.setupTrailViewByType(
 
     if (type == SPTrailViewType.REMOVABLE)
         setTrailClickListener { removeAllText() }
-
 }
 
 /**
@@ -84,12 +78,7 @@ fun SPTextFieldInput.setupLeadingViewByType(
 ) {
     leadingView = when (type) {
         SPLeadingViewType.NONE -> null
-        SPLeadingViewType.CARD -> SPDefaultPrimaryChipData.getSmallChipData(
-            context, SPViewData.SPViewDataParams(
-                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
-                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
-            )
-        )
+        SPLeadingViewType.CARD -> getSmallCardView(context)
         SPLeadingViewType.PHONE_PREFIX -> SPViewData.SPTextData(
             phonePrefix,
             textStyle = R.style.h600_bold_text_field_phone,
@@ -110,20 +99,10 @@ fun SPTextFieldInput.setupLeadingViewByType(
     }?.createView(context)
 }
 
-fun SPTextFieldInput.setupPhoneMaskInput() {
-
-}
-
-fun SPTextFieldInput.setupDateMaskInput() {
-
-}
-
-fun SPTextFieldInput.setupCardView() {
-    leadingView = SPDefaultPrimaryChipData.getSmallChipData(
+private fun getSmallCardView(context: Context): SPViewData.SPrimaryChipData =
+    SPDefaultPrimaryChipData.getSmallChipData(
         context, SPViewData.SPViewDataParams(
             paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
             paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
         )
     )
-        .createView(context)
-}

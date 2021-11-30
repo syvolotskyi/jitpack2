@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber"
         android:layout_width="@dimen/dimen_p_100"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         tools:ignore="HardcodedText" />
 
 
-    <ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumberSecond"
         android:layout_width="@dimen/dimen_p_100"
         android:layout_height="wrap_content"

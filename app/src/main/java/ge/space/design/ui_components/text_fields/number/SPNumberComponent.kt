@@ -7,7 +7,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldNumberShowcase
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import java.math.BigDecimal
 
@@ -36,11 +36,11 @@ class SPNumberComponent : ShowCaseComponent {
                 }
 
                 cbDisable.setOnCheckedChangeListener { _, isChecked ->
-                    tfNumber.isEnabled = !isChecked
-                    tfNumberSecond.isEnabled = !isChecked
+//                    tfNumber.isEnabled = !isChecked
+//                    tfNumberSecond.isEnabled = !isChecked
                 }
 
-                tfNumber.doOnTextChanged { text, _, _, _ ->
+             /*   tfNumber.doOnTextChanged { text, _, _, _ ->
                     with(text.toString()) {
                         try {
                             tfNumber.isDistractive =
@@ -54,19 +54,19 @@ class SPNumberComponent : ShowCaseComponent {
                             ).show()
                         }
                     }
-                }
+                }*/
 
-                tfNumber.onFocusChangeListener = { checked ->
+               /* tfNumber.onFocusChangeListener = { checked ->
                     if (checked) {
                         onFocusOnTextFields(tfNumber, tfNumberSecond, rbFirst, rbSecond)
                     }
                 }
-
-                tfNumberSecond.onFocusChangeListener = { checked ->
+*/
+              /*  tfNumberSecond.onFocusChangeListener = { checked ->
                     if (checked) {
                         onFocusOnTextFields(tfNumberSecond, tfNumber, rbSecond, rbFirst)
                     }
-                }
+                }*/
 
                 rbFirst.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
@@ -93,8 +93,8 @@ class SPNumberComponent : ShowCaseComponent {
         }
 
         private fun onFocusOnTextFields(
-            tfFocused: SPTextFieldNumber,
-            tfUnfocused: SPTextFieldNumber,
+            tfFocused: SPTextFieldInput,
+            tfUnfocused: SPTextFieldInput,
             rbFocused: RadioButton,
             rbUnfocused: RadioButton
         ) {

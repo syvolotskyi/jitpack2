@@ -5,25 +5,6 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.widget.EditText
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-import ge.space.ui.components.text_fields.input.currency.SPTextFieldNumber
-
-/**
- * Add an action which will be invoked when the text is changing.
- *
- * @return the [TextWatcher] added to the SPTextFieldInput
- */
-inline fun SPTextFieldNumber.doOnTextChanged(
-    crossinline action: (
-        text: CharSequence?,
-        start: Int,
-        before: Int,
-        count: Int
-    ) -> Unit
-): TextWatcher {
-    val watcher = createTextChangedListener(onTextChanged = action)
-    addTextChangedListener(watcher)
-    return watcher
-}
 
 /**
  * Add an action which will be invoked when the text is changing.
@@ -98,5 +79,5 @@ inline fun createTextChangedListener(
 
 fun EditText.setTextLength(length: Int) {
     this.filters =
-        arrayOf<InputFilter>(InputFilter.LengthFilter(SPTextFieldInput.DEFAULT_TEXT_LENGTH))
+        arrayOf<InputFilter>(InputFilter.LengthFilter(length))
 }
