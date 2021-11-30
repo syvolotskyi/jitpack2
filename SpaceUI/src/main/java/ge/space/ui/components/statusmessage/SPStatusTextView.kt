@@ -34,7 +34,7 @@ class SPStatusTextView @JvmOverloads constructor(
 
     //private val binding : SpStatusMessageButtonBinding
 
-    var status : SPMessageStatus = SPMessageStatus.Info()
+    var status : SPMessageStatus = SPMessageStatus.INFO
         set(value) {
             field = value
             updateTextAppearance(value.textAppearance)
@@ -59,7 +59,7 @@ class SPStatusTextView @JvmOverloads constructor(
 
     override fun setViewStyle(newStyle: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(0, R.styleable.sp_button_view_style)
+            context.theme.obtainStyledAttributes(0, R.styleable.SPStatusTextView)
 
         styleAttrs.run { withStyledAttributes() }
     }

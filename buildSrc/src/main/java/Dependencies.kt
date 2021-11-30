@@ -13,7 +13,7 @@ object Versions {
     val anko = "0.10.8"
 
     val appCompat = "1.0.0-rc01"
-    val constraintLayout = "2.1.1"
+    val constraintLayout = "1.1.3"
     val legacySupport = "1.0.0"
     val ktx = "1.5.0"
     val dexter = "5.0.0"

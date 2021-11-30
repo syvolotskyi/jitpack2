@@ -81,8 +81,8 @@ class SPStatusTextViewComponent : ShowCaseComponent {
                     }
                 })
                 itemBinding.button.setViewStyle(buttonSample.resId)
-                itemBinding.button.text = "Button"
-            }*/
+                itemBinding.button.text = "Button"*/
+            }
             return layoutBinding.root
 
         }
