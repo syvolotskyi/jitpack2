@@ -27,8 +27,6 @@ class SPStatusTextViewComponent : ShowCaseComponent {
 
             SPStatusTextViewStyles.list.onEach { textViewSample ->
 
-                val styleId = textViewSample.styleId
-
                 val itemBinding = SpItemStatusTextViewShowcaseBinding.inflate(
                     environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
