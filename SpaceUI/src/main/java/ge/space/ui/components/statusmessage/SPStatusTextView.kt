@@ -5,9 +5,6 @@ import android.content.res.TypedArray
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
@@ -25,12 +22,6 @@ class SPStatusTextView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPStatusTextView_Info
 ) : MaterialTextView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
-
-    var gravity : Gravity = Gravity.Center
-    set(value) {
-        field = value
-        handleGravity()
-    }
 
     var status : SPMessageStatus = SPMessageStatus.INFO
         set(value) {
@@ -82,21 +73,5 @@ class SPStatusTextView @JvmOverloads constructor(
                 PorterDuff.Mode.SRC_IN
             )
         }
-    }
-
-    private fun handleGravity() {
-        val params = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        if (gravity == Gravity.Start) {
-            params.gravity = android.view.Gravity.START
-            layoutParams = params
-        } else {
-            params.gravity = android.view.Gravity.CENTER
-            layoutParams = params
-        }
-    }
-
-    enum class Gravity {
-        Start,
-        Center
     }
 }

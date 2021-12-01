@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="SPStatusTextView.Success.TextAppearance" parent="h800_medium_accent_green">
+        <item name="android:drawablePadding">@dimen/dimen_p_9</item>
+    </style>
+    <style name="SPStatusTextView.Error.TextAppearance" parent="h800_medium_accent_magenta">
+        <item name="android:drawablePadding">@dimen/dimen_p_9</item>
+    </style>
+
+    <style name="SPStatusTextView.Pending.TextAppearance" parent="h800_medium_accent_orange">
+        <item name="android:drawablePadding">@dimen/dimen_p_9</item>
+    </style>
+
+    <style name="SPStatusTextView.Info.TextAppearance" parent="h800_medium_brand_primary">
+        <item name="android:drawablePadding">@dimen/dimen_p_9</item>
+    </style>
+
     <style name="SPStatusTextView.Base" parent="shadow_empty">
         <item name="android:drawablePadding">@dimen/dimen_p_9</item>
         <item name="android:paddingTop">@dimen/dimen_p_6</item>
@@ -10,25 +25,25 @@
 
     <style name="SPStatusTextView.Success" parent="SPStatusTextView.Base">
         <item name="status">success</item>
-        <item name="android:textAppearance">@style/h800_medium_accent_green</item>
+        <item name="android:textAppearance">@style/SPStatusTextView.Success.TextAppearance</item>
         <item name="android:drawableStart">@drawable/ic_checkmark_circle_16_regular</item>
     </style>
 
     <style name="SPStatusTextView.Error" parent="SPStatusTextView.Base">
         <item name="status">error</item>
-        <item name="android:textAppearance">@style/h800_medium_accent_magenta</item>
+        <item name="android:textAppearance">@style/SPStatusTextView.Error.TextAppearance</item>
         <item name="android:drawableStart">@drawable/ic_alert_circle_16_regular</item>
     </style>
 
     <style name="SPStatusTextView.Pending" parent="SPStatusTextView.Base">
         <item name="status">pending</item>
-        <item name="android:textAppearance">@style/h800_medium_accent_orange</item>
+        <item name="android:textAppearance">@style/SPStatusTextView.Pending.TextAppearance</item>
         <item name="android:drawableStart">@drawable/ic_clock_circle_16_regular</item>
     </style>
 
     <style name="SPStatusTextView.Info" parent="SPStatusTextView.Base">
         <item name="status">info</item>
-        <item name="android:textAppearance">@style/h800_medium_brand_primary</item>
+        <item name="android:textAppearance">@style/SPStatusTextView.Info.TextAppearance</item>
         <item name="android:drawableStart">@drawable/ic_info_circle_16_regular</item>
     </style>
 </resources>

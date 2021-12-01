@@ -2,12 +2,16 @@ package ge.space.design.ui_components.status_messages
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
+import android.widget.LinearLayout
+import androidx.core.view.setMargins
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemStatusTextViewShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.extensions.dpToPx
 import ge.space.ui.components.statusmessage.SPMessageStatus
 import ge.space.ui.components.statusmessage.SPStatusTextView
 
@@ -46,8 +50,14 @@ class SPStatusTextViewComponent : ShowCaseComponent {
 
                 itemBinding.cbGravity.setOnCheckedChangeListener { _, isChecked ->
                     with(itemBinding.tvStatus) {
-                        gravity = if (isChecked) SPStatusTextView.Gravity.Start
-                        else SPStatusTextView.Gravity.Center
+                        val params = LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT)
+                        params.gravity = if (isChecked) Gravity.START
+                        else Gravity.CENTER
+                        val margins = context.dpToPx(12.toFloat())
+                        params.setMargins(margins)
+                        layoutParams = params
                     }
                 }
 
