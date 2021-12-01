@@ -2,15 +2,13 @@ package ge.space.design.ui_components.status_messages
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemVerticalButtonsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpItemStatusTextViewShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.buttons.vertical_button.SPVerticalButtonStyles
-import ge.space.ui.components.buttons.SPButtonVertical
+import ge.space.ui.components.statusmessage.SPMessageStatus
 import ge.space.ui.components.statusmessage.SPStatusTextView
 
 class SPStatusTextViewComponent : ShowCaseComponent {
@@ -25,38 +23,35 @@ class SPStatusTextViewComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPStatusTextView>()
+            val textViews = mutableListOf<SPStatusTextView>()
 
-            SPStatusTextViewStyles.list.onEach { buttonSample ->
+            SPStatusTextViewStyles.list.onEach { textViewSample ->
 
-                val resId = buttonSample.styleId
+                val styleId = textViewSample.styleId
 
-               /* val itemBinding = SpItemVerticalButtonsShowcaseBinding.inflate(
+                val itemBinding = SpItemStatusTextViewShowcaseBinding.inflate(
                     environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
                     true
                 )
 
-                itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.button.isDistractive = isChecked
+                itemBinding.tvStatus.status = SPMessageStatus.PENDING
+                textViews.add(itemBinding.tvStatus)
+
+                itemBinding.tvStatus.status = SPMessageStatus.SUCCESS
+                textViews.add(itemBinding.tvStatus)
+
+                itemBinding.tvStatus.status = SPMessageStatus.ERROR
+                textViews.add(itemBinding.tvStatus)
+
+                itemBinding.tvStatus.setViewStyle(textViewSample.styleId)
+
+                itemBinding.cbGravity.setOnCheckedChangeListener { _, isChecked ->
+                    with(itemBinding.tvStatus) {
+                        gravity = if (isChecked) SPStatusTextView.Gravity.Start
+                        else SPStatusTextView.Gravity.Center
+                    }
                 }
-
-                with(itemBinding.buttonName) {
-                    val resName = resources.getResourceEntryName(resId)
-                    text = resName.substringAfter(".", resName)
-                }
-
-                itemBinding.button.src = buttonSample.src
-                buttons.add(itemBinding.button)
-
-                itemBinding.button.setOnClickListener {
-                    Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
-                }
-
-                itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.button.isEnabled = !isChecked
-                }
-
 
                 layoutBinding.textInput.addTextChangedListener(object : TextWatcher {
 
@@ -77,11 +72,10 @@ class SPStatusTextViewComponent : ShowCaseComponent {
                         before: Int,
                         count: Int
                     ) {
-                        buttons.onEach { it.text = s.toString() }
+                        textViews.onEach { it.text = s.toString() }
                     }
                 })
-                itemBinding.button.setViewStyle(buttonSample.resId)
-                itemBinding.button.text = "Button"*/
+
             }
             return layoutBinding.root
 

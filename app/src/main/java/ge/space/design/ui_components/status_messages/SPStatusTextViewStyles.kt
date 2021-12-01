@@ -1,7 +1,6 @@
 package ge.space.design.ui_components.status_messages
 
 import com.example.spacedesignsystem.R
-import ge.space.design.ui_components.buttons.vertical_button.SPButtonSupportsLoading
 
 data class SPStatusTextViewSupportsLoading(
     val styleId: Int
@@ -9,9 +8,9 @@ data class SPStatusTextViewSupportsLoading(
 
 object SPStatusTextViewStyles {
     val list = listOf(
-        SPStatusTextViewSupportsLoading(R.style.SPStatusMessage_Success),
-        SPStatusTextViewSupportsLoading(R.style.SPStatusMessage_Error),
-        SPStatusTextViewSupportsLoading(R.style.SPStatusMessage_Pending),
-        SPStatusTextViewSupportsLoading(R.style.SPStatusMessage_Info)
+        SPStatusTextViewSupportsLoading(R.style.SPStatusTextView_Success),
+        SPStatusTextViewSupportsLoading(R.style.SPStatusTextView_Error),
+        SPStatusTextViewSupportsLoading(R.style.SPStatusTextView_Pending),
+        SPStatusTextViewSupportsLoading(R.style.SPStatusTextView_Info)
     )
 }
