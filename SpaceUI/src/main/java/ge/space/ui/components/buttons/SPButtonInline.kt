@@ -45,7 +45,7 @@ class SPButtonInline @JvmOverloads constructor(
      * Sets a image resource
      */
     @IdRes
-    var src = SPTextFieldInput.DEFAULT_INT
+    var src = DEFAULT_INT
         set(value) {
             field = value
 
@@ -73,7 +73,7 @@ class SPButtonInline @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var descriptionTextAppearance: Int = SPTextFieldInput.DEFAULT_INT
+    private var descriptionTextAppearance: Int = DEFAULT_INT
 
     init {
         getContext().withStyledAttributes(

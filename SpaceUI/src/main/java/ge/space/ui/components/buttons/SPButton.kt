@@ -16,11 +16,10 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonLayoutBinding
-import ge.space.ui.base.SPOnDistractiveInterface
+import ge.space.ui.base.SPDistractiveMode
 import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.buttons.SPButton.IconDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 
@@ -44,7 +43,7 @@ class SPButton @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Primary_Size48
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) , SPOnDistractiveInterface{
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) , SPDistractiveMode{
 
     /**
      * Makes a button icon direction.
@@ -67,7 +66,7 @@ class SPButton @JvmOverloads constructor(
      * Sets a image resource
      */
     @IdRes
-    var src = SPTextFieldInput.DEFAULT_INT
+    var src = DEFAULT_INT
         set(value) {
             field = value
 
@@ -78,13 +77,13 @@ class SPButton @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = SPTextFieldInput.DEFAULT_INT
+    private var textAppearance: Int = DEFAULT_INT
 
     /**
      * Sets a distractive text appearance
      */
     @StyleRes
-    private var distractiveTextAppearance: Int = SPTextFieldInput.DEFAULT_INT
+    private var distractiveTextAppearance: Int = DEFAULT_INT
 
     /**
      * Sets a distractive Background
@@ -179,7 +178,7 @@ class SPButton @JvmOverloads constructor(
 
     }
 
-    fun updateTextAppearance(textAppearance: Int) {
+    private fun updateTextAppearance(textAppearance: Int) {
         binding.buttonLabel.setTextStyle(textAppearance)
         updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
     }
@@ -198,7 +197,7 @@ class SPButton @JvmOverloads constructor(
     }
 
     private fun handleDirectionArrow() {
-        if (src != SPTextFieldInput.DEFAULT_INT)
+        if (src != DEFAULT_INT)
             when (directionIcon) {
                 None -> directNone()
                 Left -> directLeft()

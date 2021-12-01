@@ -22,7 +22,7 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.base.SPOnDistractiveInterface
+import ge.space.ui.base.SPDistractiveMode
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.extension.getColorFromAttribute
@@ -41,7 +41,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface, SPOnDistractiveInterface {
+) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface, SPDistractiveMode {
 
     private var borderWidth: Float =
         context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
@@ -284,7 +284,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Allows to update a text appearance by styles
      */
-    fun updateTextAppearance(textAppearance: Int) =
+    private fun updateTextAppearance(textAppearance: Int) =
         contextView.setTextStyle(textAppearance)
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
@@ -315,7 +315,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         contextView.setOnEditorActionListener(listener)
     }
 
-    protected fun handleImeOption() {
+    private fun handleImeOption() {
         contextView.imeOptions = imeOption
     }
 
@@ -368,7 +368,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
 
     companion object {
         const val ID_NEXT = 5
-        const val DEFAULT_INT = 0
         const val DEFAULT_TEXT_LENGTH = -1 //no borders
     }
 }

@@ -6,7 +6,7 @@ package ge.space.ui.base
  *  For example, we have two buttons - "Accept" and "Decline",
  *  and in our case "decline" buttons is with distractive = true attribute
  */
-interface SPOnDistractiveInterface {
+interface SPDistractiveMode {
     var isDistractive: Boolean
     fun handleDistractiveState()
 }

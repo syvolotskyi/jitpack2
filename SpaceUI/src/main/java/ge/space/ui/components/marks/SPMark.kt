@@ -45,7 +45,7 @@ class SPMark @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = SPTextFieldInput.DEFAULT_INT
+    private var textAppearance: Int = DEFAULT_INT
 
     /**
      * Changes the sizes of the add image view

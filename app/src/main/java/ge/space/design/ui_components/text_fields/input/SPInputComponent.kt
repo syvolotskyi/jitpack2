@@ -76,7 +76,7 @@ class SPInputComponent : ShowCaseComponent {
                 }
 
 
-                itemBinding.rgContent.setOnCheckedChangeListener { _, checkedId ->
+                itemBinding.rgContext.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
                         R.id.phoneMask ->
                             itemBinding.simpleInput.setupContextViewByType(
