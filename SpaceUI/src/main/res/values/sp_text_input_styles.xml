@@ -6,4 +6,12 @@
         <item name="descriptionTextAppearance">@style/h800_medium_label_tertiary</item>
         <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
     </style>
+
+
+
+    <style name="SPTextField.Phone" parent="SPTextField.Base">
+        <item name="trailView">none</item>
+        <item name="contextView">number</item>
+    </style>
+
 </resources>
