@@ -3,12 +3,6 @@
     <declare-styleable name="SPStatusTextView">
         <attr name="style" />
         <attr name="android:textAppearance" />
-
-        <attr name="status" format="enum">
-            <enum name="success" value="0" />
-            <enum name="error" value="1" />
-            <enum name="pending" value="2" />
-            <enum name="info" value="3" />
-        </attr>
+        <attr name="android:src" />
     </declare-styleable>
 </resources>

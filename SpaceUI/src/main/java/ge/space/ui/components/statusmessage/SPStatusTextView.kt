@@ -14,21 +14,15 @@ import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPSetViewStyleInterface
 import ge.space.ui.util.extension.getColorFromTextAppearance
+import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setCompoundDrawablesTint
 
 class SPStatusTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPStatusTextView_Info
-) : MaterialTextView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
-
-    /*var status : SPMessageStatus = SPMessageStatus.INFO
-        set(value) {
-            field = value
-            updateTextAppearance(value.textAppearance)
-            setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(context, value.icon),
-                null, null, null)
-        }*/
+) : MaterialTextView(context, attrs, defStyleAttr, defStyleRes), SPSetViewStyleInterface {
 
     init {
         getContext().withStyledAttributes(
@@ -43,8 +37,7 @@ class SPStatusTextView @JvmOverloads constructor(
                 )
             )
 
-            val textAppearance = getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
-            updateTextAppearance(textAppearance)
+            withStyledAttributes()
         }
     }
 
@@ -52,29 +45,31 @@ class SPStatusTextView @JvmOverloads constructor(
         val styleAttrs =
             context.theme.obtainStyledAttributes(newStyle, R.styleable.SPStatusTextView)
 
-        styleAttrs.run { withStyledAttributes() }
+        styleAttrs.run {
+            withStyledAttributes()
+            recycle()
+        }
     }
 
     private fun TypedArray.withStyledAttributes() {
-        /*val statusId = getInt(R.styleable.SPStatusTextView_status, DEFAULT_OBTAIN_VAL)
-        status = SPMessageStatus.values()[statusId]*/
+        getResourceId(R.styleable.SPStatusTextView_android_src, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                text = resources.getResourceEntryName(it)
+                setCompoundDrawablesWithIntrinsicBounds(
+                    it,
+                    DEFAULT_OBTAIN_VAL,
+                    DEFAULT_OBTAIN_VAL,
+                    DEFAULT_OBTAIN_VAL
+                )
+            }
 
-        val textAppearance = getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
+        val textAppearance =
+            getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
         updateTextAppearance(textAppearance)
     }
 
     fun updateTextAppearance(textAppearance: Int) {
         setTextStyle(textAppearance)
-        updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
-    }
-
-    private fun updateDrawableColor(color: Int) {
-        compoundDrawables.forEach {
-            it?.colorFilter = PorterDuffColorFilter(
-                color,
-                PorterDuff.Mode.SRC_IN
-            )
-            //withStyledAttributes()
-        }
+        setCompoundDrawablesTint(context.getColorFromTextAppearance(textAppearance))
     }
 }
