@@ -5,17 +5,115 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ge.space.ui.components.statusmessage.SPStatusTextView
-        android:id="@+id/tvStatus"
+    <com.google.android.material.textview.MaterialTextView
+         android:id="@+id/tvSuccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/dimen_p_12"
-        app:style="@style/SPStatusTextView.Info"
-        android:text="Info"
+        android:text="@string/status_message_success"
+        style="@style/SPStatusTextView.Success"
         />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_10"
+        android:layout_marginBottom="@dimen/dimen_p_10">
+
+        <CheckBox
+            android:id="@+id/cbGravity1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:text="@string/set_gravity_start" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_p_12"
+        android:text="@string/status_message_error"
+        style="@style/SPStatusTextView.Error"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_10"
+        android:layout_marginBottom="@dimen/dimen_p_10">
+
+        <CheckBox
+            android:id="@+id/cbGravity2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:text="@string/set_gravity_start" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_p_12"
+        android:text="@string/status_message_pending"
+        style="@style/SPStatusTextView.Pending"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_10"
+        android:layout_marginBottom="@dimen/dimen_p_10">
+
+        <CheckBox
+            android:id="@+id/cbGravity3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:text="@string/set_gravity_start" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen_p_12"
+        android:text="@string/status_message_info"
+        style="@style/SPStatusTextView.Info"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_10"
+        android:layout_marginBottom="@dimen/dimen_p_10">
+
+        <CheckBox
+            android:id="@+id/cbGravity4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SPCheckbox.DefaultStyle"
+            android:text="@string/set_gravity_start" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -28,9 +126,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/SPCheckbox.DefaultStyle"
-            android:text="Set Gravity Start" />
+            android:text="@string/set_gravity_start" />
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </LinearLayout>

@@ -130,4 +130,10 @@
 
     <string name="component_new_credit_card">New credit card</string>
     <string name="component_new_credit_card_description">Samples of new credit cards</string>
+
+    <string name="status_message_success">Success</string>
+    <string name="status_message_error">Error</string>
+    <string name="status_message_pending">Pending</string>
+    <string name="status_message_info">Info</string>
+    <string name="set_gravity_start">Set Gravity Start</string>
 </resources>

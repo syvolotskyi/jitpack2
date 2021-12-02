@@ -23,13 +23,13 @@ class SPStatusTextView @JvmOverloads constructor(
     @StyleRes defStyleRes: Int = R.style.SPStatusTextView_Info
 ) : MaterialTextView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
-    var status : SPMessageStatus = SPMessageStatus.INFO
+    /*var status : SPMessageStatus = SPMessageStatus.INFO
         set(value) {
             field = value
             updateTextAppearance(value.textAppearance)
             setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(context, value.icon),
                 null, null, null)
-        }
+        }*/
 
     init {
         getContext().withStyledAttributes(
@@ -54,8 +54,8 @@ class SPStatusTextView @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledAttributes() {
-        val statusId = getInt(R.styleable.SPStatusTextView_status, DEFAULT_OBTAIN_VAL)
-        status = SPMessageStatus.values()[statusId]
+        /*val statusId = getInt(R.styleable.SPStatusTextView_status, DEFAULT_OBTAIN_VAL)
+        status = SPMessageStatus.values()[statusId]*/
 
         val textAppearance = getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
         updateTextAppearance(textAppearance)

@@ -16,14 +16,6 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-
-            <ge.space.ui.components.statusmessage.SPStatusTextView
-                android:id="@+id/tvStatus1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:style="@style/SPStatusTextView.Success"
-                />
-
         </LinearLayout>
 
     </ScrollView>

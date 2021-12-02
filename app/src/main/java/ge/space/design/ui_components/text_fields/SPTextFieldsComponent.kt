@@ -9,7 +9,7 @@ import ge.space.design.ui_components.text_fields.otp.SPOtpComponent
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
 import ge.space.design.ui_components.text_fields.phone.SPPhoneComponent
 
-class SPTextFieldsComponent : ShowCaseComponent {
+open class SPTextFieldsComponent : ShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.text_fields
 
