@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.RadioGroup
+import androidx.annotation.RequiresApi
 import androidx.core.view.setMargins
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemStatusTextViewShowcaseBinding
@@ -41,10 +42,22 @@ class SPStatusTextViewComponent : ShowCaseComponent {
                     true
                 )
 
+                itemBinding.tvSuccess.setViewStyle(R.style.SPStatusTextView_Success)
+                itemBinding.tvSuccess.updateTextAppearance(R.style.h800_medium_accent_magenta)
                 textViews.add(itemBinding.tvSuccess)
-                /*textViews.add(itemBinding.tvError)
-                textViews.add(itemBinding.tvPending)
-                textViews.add(itemBinding.tvInfo)*/
+
+                itemBinding.tvSuccess.setViewStyle(R.style.SPStatusTextView_Error)
+                itemBinding.tvSuccess.updateTextAppearance(R.style.h800_medium_accent_magenta)
+                textViews.add(itemBinding.tvSuccess)
+
+
+                textViews.add(itemBinding.tvSuccess)
+                itemBinding.tvSuccess.setViewStyle(R.style.SPStatusTextView_Pending)
+                itemBinding.tvSuccess.updateTextAppearance(R.style.h800_medium_accent_orange)
+
+                textViews.add(itemBinding.tvSuccess)
+                itemBinding.tvSuccess.setViewStyle(R.style.SPStatusTextView_Info)
+                itemBinding.tvSuccess.updateTextAppearance(R.style.h800_medium_brand_primary)
 
                 fun MaterialTextView.toggleGravity(isChecked: Boolean) {
                     val params = LinearLayout.LayoutParams(
@@ -61,7 +74,7 @@ class SPStatusTextViewComponent : ShowCaseComponent {
                     itemBinding.tvSuccess.toggleGravity(isChecked)
                 }
 
-                itemBinding.cbGravity2.setOnCheckedChangeListener { _, isChecked ->
+                /*itemBinding.cbGravity2.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.tvError.toggleGravity(isChecked)
                 }
 
@@ -71,7 +84,7 @@ class SPStatusTextViewComponent : ShowCaseComponent {
 
                 itemBinding.cbGravity4.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.tvInfo.toggleGravity(isChecked)
-                }
+                }*/
 
                 layoutBinding.textInput.addTextChangedListener(object : TextWatcher {
 
