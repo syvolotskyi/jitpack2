@@ -141,3 +141,19 @@ fun Canvas.drawBorder(
         })
     }
 }
+
+/**
+ * Extension which set Tint for all compound Drawables
+ *
+ * @param color color of drawables
+ */
+fun TextView.setCompoundDrawablesTint(
+    color: Int
+) {
+    compoundDrawables.forEach {
+        it?.colorFilter = PorterDuffColorFilter(
+            color,
+            PorterDuff.Mode.SRC_IN
+        )
+    }
+}
