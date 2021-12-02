@@ -7,7 +7,6 @@ import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import com.google.android.material.textview.MaterialTextView
 import ge.space.extensions.setTextStyle
@@ -43,6 +42,9 @@ class SPStatusTextView @JvmOverloads constructor(
                     defStyleRes
                 )
             )
+
+            val textAppearance = getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
+            updateTextAppearance(textAppearance)
         }
     }
 
@@ -72,6 +74,7 @@ class SPStatusTextView @JvmOverloads constructor(
                 color,
                 PorterDuff.Mode.SRC_IN
             )
+            //withStyledAttributes()
         }
     }
 }
