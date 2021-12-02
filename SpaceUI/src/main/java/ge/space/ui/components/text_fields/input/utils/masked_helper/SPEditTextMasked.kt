@@ -171,7 +171,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         super.onSelectionChanged(selStart, selEnd)
     }
 
-    private fun cleanUp() {
+    fun cleanUp() {
         initialized = false
         if (mask.isEmpty()) {
             return
