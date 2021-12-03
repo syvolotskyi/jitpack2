@@ -12,6 +12,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+import ge.space.ui.components.text_fields.input.base.setupPhoneInput
 
 class SPPhoneComponent : ShowCaseComponent {
 
@@ -28,19 +29,18 @@ class SPPhoneComponent : ShowCaseComponent {
                 setupPhoneInputTextWithDone(phoneInput, environment.context)
                 setupPhoneInputTextWithDone(phoneInputSecond, environment.context)
             }
-          /*  with(binding.phoneInput) {
-                setPhoneMask(
+            with(binding.phoneInput) {
+                setupPhoneInput(
+                    resources.getString(R.string.phone_prefix),
+                    resources.getString(R.string.phone_mask))
+            }
+
+            with(binding.phoneInputSecond) {
+                setupPhoneInput(
                     resources.getString(R.string.phone_prefix),
                     resources.getString(R.string.phone_mask)
                 )
             }
-
-            with(binding.phoneInputSecond) {
-                setPhoneMask(
-                    resources.getString(R.string.phone_prefix),
-                    resources.getString(R.string.phone_mask)
-                )
-            }*/
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.phoneInput.labelText = text.toString()
@@ -51,7 +51,7 @@ class SPPhoneComponent : ShowCaseComponent {
         }
 
         private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldInput, context: Context) {
-           /* phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
+            phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
             { _: TextView?, actionId: Int, event: KeyEvent? ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH
                     || actionId == EditorInfo.IME_ACTION_DONE
@@ -64,7 +64,7 @@ class SPPhoneComponent : ShowCaseComponent {
                 }
 
                 return@OnEditorActionListener false
-            })*/
+            })
         }
 
         fun showToast(context: Context, text: String) {
@@ -79,7 +79,5 @@ class SPPhoneComponent : ShowCaseComponent {
     companion object {
         private const val ACTION_DONE = "Action Done: "
         private const val ACTION_NEXT = "1010"
-
     }
-
 }

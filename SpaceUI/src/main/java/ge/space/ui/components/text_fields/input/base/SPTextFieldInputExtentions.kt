@@ -20,6 +20,15 @@ fun SPTextFieldInput.setupNumberInput(currency: String) {
 }
 
 /**
+ * Setup a view as input for phone
+ */
+fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
+    setupContextViewByType(SPContextViewType.MASK, inputMask = mask)
+    setupTrailViewByType(SPTrailViewType.NONE)
+    setupLeadingViewByType(SPLeadingViewType.PHONE_PREFIX, phonePrefix = prefix)
+}
+
+/**
  * Setup a Context View due to type
  */
 fun SPTextFieldInput.setupContextViewByType(
@@ -29,11 +38,11 @@ fun SPTextFieldInput.setupContextViewByType(
 ) {
     contextView = when (type) {
         SPContextViewType.TEXT -> SPViewData.SPEditTextData(
-            R.style.h700_bold_caps_text_field,
+            R.style.h600_bold_caps,
             inputHint
         ).createView(context)
         SPContextViewType.MASK -> SPViewData.SPMaskedEditTextData(
-            R.style.h700_bold_caps_text_field,
+            R.style.h600_bold_text_field_phone,
             inputMask,
             inputHint
         ).createView(context)
@@ -91,9 +100,10 @@ fun SPTextFieldInput.setupLeadingViewByType(
             phonePrefix,
             textStyle = R.style.h600_bold_text_field_phone,
             SPViewData.SPViewDataParams(
-                gravity = Gravity.CENTER_VERTICAL or Gravity.END,
+                gravity =  Gravity.END,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4)
+                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
+                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1),
             )
         )
         SPLeadingViewType.IMAGE -> SPViewData.SPImageResourcesData(

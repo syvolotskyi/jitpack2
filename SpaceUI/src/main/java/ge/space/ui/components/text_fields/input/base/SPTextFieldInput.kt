@@ -212,7 +212,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     private fun TypedArray.applyAttributes() {
-        labelText = getString(R.styleable.SPTextFieldBaseView_titleText).orEmpty()
+        getString(R.styleable.SPTextFieldBaseView_titleText).orEmpty()
+            .handleAttributeAction(EMPTY_TEXT) {
+                labelText = it
+            }
         imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldBaseView_inputMandatory, false)
         contextView.setTextLength(
@@ -225,7 +228,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 hint = it
             }
 
-        descriptionText = getString(R.styleable.SPTextFieldBaseView_descriptionText).orEmpty()
+        getString(R.styleable.SPTextFieldBaseView_descriptionText).orEmpty()
+            .handleAttributeAction(EMPTY_TEXT) {
+                descriptionText = it
+            }
 
         textAppearance = getResourceId(
             R.styleable.SPTextFieldBaseView_android_textAppearance,
@@ -335,7 +341,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         if (view is SPEditTextMasked)
             view.mask = view.mask
         else
-            view.setText(ge.space.extensions.EMPTY_TEXT)
+            view.setText(EMPTY_TEXT)
     }
 
     private fun FrameLayout.addContentView(view: View?, defaultView: View? = null) {

@@ -20,7 +20,8 @@ class SPTextFieldsComponent : ShowCaseComponent {
             SPPasswordComponent(),
             SPOtpComponent(),
             SPInputComponent(),
-            SPNumberComponent()
+            SPNumberComponent(),
+            SPPhoneComponent(),
         )
     }
 }
