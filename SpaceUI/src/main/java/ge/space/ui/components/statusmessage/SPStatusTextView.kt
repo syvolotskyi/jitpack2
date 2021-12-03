@@ -2,8 +2,6 @@ package ge.space.ui.components.statusmessage
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
