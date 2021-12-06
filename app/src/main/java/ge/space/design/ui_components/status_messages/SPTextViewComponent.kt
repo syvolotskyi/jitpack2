@@ -39,10 +39,6 @@ class SPTextViewComponent : ShowCaseComponent {
                     textViews.add(this)
                 }
 
-                itemBinding.cbGravity1.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.tvSuccess.viewGravity = if (isChecked) SPTextView.ViewGravity.START
-                    else SPTextView.ViewGravity.CENTER
-                }
 
                 layoutBinding.textInput.onTextChanged { s ->
                     textViews.onEach { it.text = s }

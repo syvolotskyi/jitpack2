@@ -24,13 +24,7 @@ class SPTextView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPTextView_Info
-) : MaterialTextView(context, attrs, defStyleAttr, defStyleRes), SPSetViewStyleInterface {
-
-    var viewGravity = ViewGravity.START
-    set(value) {
-        field = value
-        toggleGravity()
-    }
+) : MaterialTextView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
 
     init {
         getContext().withStyledAttributes(
@@ -44,7 +38,6 @@ class SPTextView @JvmOverloads constructor(
                     defStyleRes
                 )
             )
-
             withStyledAttributes()
         }
     }
@@ -61,20 +54,27 @@ class SPTextView @JvmOverloads constructor(
 
     private fun TypedArray.withStyledAttributes() {
         getResourceId(R.styleable.SPTextView_android_src, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                text = resources.getResourceEntryName(it)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) { it ->
                 setCompoundDrawablesWithIntrinsicBounds(
                     it,
                     DEFAULT_OBTAIN_VAL,
                     DEFAULT_OBTAIN_VAL,
                     DEFAULT_OBTAIN_VAL
                 )
+
             }
 
-        getResourceId(R.styleable.SPTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPTextView_android_drawablePadding, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                compoundDrawablePadding = resources.getDimensionPixelSize(it)
+            }
+
+        getResourceId(R.styleable.SPTextView_textAppearance, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 updateTextAppearance(it)
             }
+
+
     }
 
     fun updateTextAppearance(textAppearance: Int) {
@@ -82,21 +82,6 @@ class SPTextView @JvmOverloads constructor(
         setCompoundDrawablesTint(context.getColorFromTextAppearance(textAppearance))
     }
 
-    private fun toggleGravity() {
-        val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        params.gravity = if (viewGravity == ViewGravity.START) Gravity.START
-        else Gravity.CENTER
-        val margins = context.dpToPx(12.toFloat())
-        params.setMargins(margins)
-        layoutParams = params
-    }
 
-    enum class ViewGravity {
-        START,
-        CENTER
-    }
 
 }

@@ -2,7 +2,7 @@
 <resources>
     <declare-styleable name="SPTextView">
         <attr name="style" />
-        <attr name="android:textAppearance" />
+        <attr name="textAppearance" format="reference"/>
         <attr name="android:src" />
         <attr name="android:drawablePadding" />
         <attr name="android:paddingStart" />
