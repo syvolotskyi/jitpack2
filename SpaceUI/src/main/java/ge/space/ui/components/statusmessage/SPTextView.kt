@@ -3,14 +3,10 @@ package ge.space.ui.components.statusmessage
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.Gravity
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.setMargins
 import com.google.android.material.textview.MaterialTextView
-import ge.space.extensions.dpToPx
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
@@ -73,8 +69,6 @@ class SPTextView @JvmOverloads constructor(
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 updateTextAppearance(it)
             }
-
-
     }
 
     fun updateTextAppearance(textAppearance: Int) {

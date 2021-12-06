@@ -39,7 +39,6 @@ class SPTextViewComponent : ShowCaseComponent {
                     textViews.add(this)
                 }
 
-
                 layoutBinding.textInput.onTextChanged { s ->
                     textViews.onEach { it.text = s }
                 }
