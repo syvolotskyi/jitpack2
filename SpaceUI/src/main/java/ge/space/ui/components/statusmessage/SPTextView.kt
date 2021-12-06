@@ -3,10 +3,14 @@ package ge.space.ui.components.statusmessage
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.view.Gravity
+import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.setMargins
 import com.google.android.material.textview.MaterialTextView
+import ge.space.extensions.dpToPx
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
@@ -15,22 +19,28 @@ import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setCompoundDrawablesTint
 
-class SPStatusTextView @JvmOverloads constructor(
+class SPTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPStatusTextView_Info
+    @StyleRes defStyleRes: Int = R.style.SPTextView_Info
 ) : MaterialTextView(context, attrs, defStyleAttr, defStyleRes), SPSetViewStyleInterface {
+
+    var viewGravity = ViewGravity.START
+    set(value) {
+        field = value
+        toggleGravity()
+    }
 
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPStatusTextView,
+            R.styleable.SPTextView,
             defStyleAttr
         ) {
             setViewStyle(
                 getResourceId(
-                    R.styleable.SPStatusTextView_style,
+                    R.styleable.SPTextView_style,
                     defStyleRes
                 )
             )
@@ -39,9 +49,9 @@ class SPStatusTextView @JvmOverloads constructor(
         }
     }
 
-    override fun setViewStyle(newStyle: Int) {
+    override fun setViewStyle(@StyleRes newStyle: Int) {
         val styleAttrs =
-            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPStatusTextView)
+            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPTextView)
 
         styleAttrs.run {
             withStyledAttributes()
@@ -50,7 +60,7 @@ class SPStatusTextView @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledAttributes() {
-        getResourceId(R.styleable.SPStatusTextView_android_src, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPTextView_android_src, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 text = resources.getResourceEntryName(it)
                 setCompoundDrawablesWithIntrinsicBounds(
@@ -61,13 +71,32 @@ class SPStatusTextView @JvmOverloads constructor(
                 )
             }
 
-        val textAppearance =
-            getResourceId(R.styleable.SPStatusTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
-        updateTextAppearance(textAppearance)
+        getResourceId(R.styleable.SPTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                updateTextAppearance(it)
+            }
     }
 
     fun updateTextAppearance(textAppearance: Int) {
         setTextStyle(textAppearance)
         setCompoundDrawablesTint(context.getColorFromTextAppearance(textAppearance))
     }
+
+    private fun toggleGravity() {
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        params.gravity = if (viewGravity == ViewGravity.START) Gravity.START
+        else Gravity.CENTER
+        val margins = context.dpToPx(12.toFloat())
+        params.setMargins(margins)
+        layoutParams = params
+    }
+
+    enum class ViewGravity {
+        START,
+        CENTER
+    }
+
 }

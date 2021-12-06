@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPStatusTextView.Base" parent="shadow_empty">
+    <style name="SPTextView.Base" parent="shadow_empty">
         <item name="android:drawablePadding">@dimen/dimen_p_8</item>
         <item name="android:paddingTop">@dimen/dimen_p_8</item>
         <item name="android:paddingBottom">@dimen/dimen_p_8</item>
@@ -8,25 +8,25 @@
         <item name="android:paddingEnd">@dimen/dimen_p_16</item>
     </style>
 
-    <style name="SPStatusTextView.Success" parent="SPStatusTextView.Base">
+    <style name="SPTextView.Success" parent="SPTextView.Base">
         <item name="android:textAppearance">@style/h800_medium_accent_green</item>
         <item name="android:src">@drawable/ic_checkmark_circle_16_regular</item>
         <item name="drawableTint">?attr/accent_green</item>
     </style>
 
-    <style name="SPStatusTextView.Error" parent="SPStatusTextView.Base">
+    <style name="SPTextView.Error" parent="SPTextView.Base">
         <item name="android:textAppearance">@style/h800_medium_accent_magenta</item>
         <item name="android:src">@drawable/ic_alert_circle_16_regular</item>
         <item name="drawableTint">?attr/accent_magenta</item>
     </style>
 
-    <style name="SPStatusTextView.Pending" parent="SPStatusTextView.Base">
+    <style name="SPTextView.Pending" parent="SPTextView.Base">
         <item name="android:textAppearance">@style/h800_medium_accent_orange</item>
         <item name="android:src">@drawable/ic_clock_circle_16_regular</item>
         <item name="drawableTint">?attr/accent_orange</item>
     </style>
 
-    <style name="SPStatusTextView.Info" parent="SPStatusTextView.Base">
+    <style name="SPTextView.Info" parent="SPTextView.Base">
         <item name="android:textAppearance">@style/h800_medium_brand_primary</item>
         <item name="android:src">@drawable/ic_info_circle_16_regular</item>
         <item name="drawableTint">?attr/brand_primary</item>

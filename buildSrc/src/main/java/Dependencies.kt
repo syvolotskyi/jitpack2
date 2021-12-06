@@ -25,7 +25,7 @@ object Versions {
     val cameraView = "2.6.2"
     val scrollingPagerIndicator = "1.0.6"
 
-    val material = "1.4.0"
+    val material = "1.3.0"
     val shimmer = "0.4.0"
     val cardIo = "5.5.0"
 

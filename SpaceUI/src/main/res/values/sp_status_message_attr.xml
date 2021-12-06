@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SPStatusTextView">
+    <declare-styleable name="SPTextView">
         <attr name="style" />
         <attr name="android:textAppearance" />
         <attr name="android:src" />
+        <attr name="android:drawablePadding" />
+        <attr name="android:paddingStart" />
+        <attr name="android:paddingEnd" />
+        <attr name="android:paddingTop" />
+        <attr name="android:paddingBottom" />
     </declare-styleable>
 </resources>

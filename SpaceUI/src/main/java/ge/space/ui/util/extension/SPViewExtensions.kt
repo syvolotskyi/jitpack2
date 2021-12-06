@@ -143,7 +143,7 @@ fun Canvas.drawBorder(
 }
 
 /**
- * Extension which set Tint for all compound Drawables
+ * Sets tint for all compound Drawables
  *
  * @param color color of drawables
  */
