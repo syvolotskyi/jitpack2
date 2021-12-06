@@ -50,7 +50,7 @@ class SPTextView @JvmOverloads constructor(
 
     private fun TypedArray.withStyledAttributes() {
         getResourceId(R.styleable.SPTextView_android_src, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) { it ->
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 setCompoundDrawablesWithIntrinsicBounds(
                     it,
                     DEFAULT_OBTAIN_VAL,
@@ -64,6 +64,48 @@ class SPTextView @JvmOverloads constructor(
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 compoundDrawablePadding = resources.getDimensionPixelSize(it)
             }
+
+        // TextView paddings
+        /*val start = resources.getDimensionPixelSize(
+            getResourceId(R.styleable.SPTextView_android_paddingStart, DEFAULT_OBTAIN_VAL)
+        )
+        val top = resources.getDimensionPixelSize(
+            getResourceId(R.styleable.SPTextView_android_paddingTop, DEFAULT_OBTAIN_VAL)
+        )
+        val end = resources.getDimensionPixelSize(
+            getResourceId(R.styleable.SPTextView_android_paddingEnd, DEFAULT_OBTAIN_VAL)
+        )
+
+        val bottom = resources.getDimensionPixelSize(
+            getResourceId(R.styleable.SPTextView_android_paddingBottom, DEFAULT_OBTAIN_VAL)
+        )
+
+        setPaddingRelative(start, top, end, bottom)*/
+
+        var start = 0
+        var top = 0
+        var end = 0
+        var bottom = 0
+
+        getResourceId(R.styleable.SPTextView_android_paddingStart, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                start = resources.getDimensionPixelSize(it)
+            }
+        getResourceId(R.styleable.SPTextView_android_paddingTop, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                top = resources.getDimensionPixelSize(it)
+            }
+        getResourceId(R.styleable.SPTextView_android_paddingEnd, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                end = resources.getDimensionPixelSize(it)
+            }
+        getResourceId(R.styleable.SPTextView_android_paddingBottom, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                bottom = resources.getDimensionPixelSize(it)
+            }
+
+        setPaddingRelative(start, top, end, bottom)
+
 
         getResourceId(R.styleable.SPTextView_textAppearance, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
