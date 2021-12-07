@@ -15,6 +15,11 @@ import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setCompoundDrawablesTint
 
+
+/**
+ * Custom MaterialTextView currently used for displaying status messages,
+ * with 4 predefined styles: Success, Error, Pending and Info
+ */
 class SPTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -65,27 +70,22 @@ class SPTextView @JvmOverloads constructor(
                 compoundDrawablePadding = resources.getDimensionPixelSize(it)
             }
 
-        // TextView paddings
-        /*val start = resources.getDimensionPixelSize(
-            getResourceId(R.styleable.SPTextView_android_paddingStart, DEFAULT_OBTAIN_VAL)
-        )
-        val top = resources.getDimensionPixelSize(
-            getResourceId(R.styleable.SPTextView_android_paddingTop, DEFAULT_OBTAIN_VAL)
-        )
-        val end = resources.getDimensionPixelSize(
-            getResourceId(R.styleable.SPTextView_android_paddingEnd, DEFAULT_OBTAIN_VAL)
-        )
+        setViewPaddings()
 
-        val bottom = resources.getDimensionPixelSize(
-            getResourceId(R.styleable.SPTextView_android_paddingBottom, DEFAULT_OBTAIN_VAL)
-        )
+        getResourceId(R.styleable.SPTextView_textAppearance, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                updateTextAppearance(it)
+            }
+    }
 
-        setPaddingRelative(start, top, end, bottom)*/
-
-        var start = 0
-        var top = 0
-        var end = 0
-        var bottom = 0
+    /**
+     * Adds paddings to view when setting the style
+     */
+    private fun TypedArray.setViewPaddings() {
+        var start = DEFAULT_OBTAIN_VAL
+        var top = DEFAULT_OBTAIN_VAL
+        var end = DEFAULT_OBTAIN_VAL
+        var bottom = DEFAULT_OBTAIN_VAL
 
         getResourceId(R.styleable.SPTextView_android_paddingStart, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
@@ -105,19 +105,10 @@ class SPTextView @JvmOverloads constructor(
             }
 
         setPaddingRelative(start, top, end, bottom)
-
-
-        getResourceId(R.styleable.SPTextView_textAppearance, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                updateTextAppearance(it)
-            }
     }
 
-    fun updateTextAppearance(textAppearance: Int) {
+    private fun updateTextAppearance(textAppearance: Int) {
         setTextStyle(textAppearance)
         setCompoundDrawablesTint(context.getColorFromTextAppearance(textAppearance))
     }
-
-
-
 }

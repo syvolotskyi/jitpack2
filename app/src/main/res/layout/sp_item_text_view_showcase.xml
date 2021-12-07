@@ -10,22 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/dimen_p_12"
-        android:text="@string/status_message_success"/>
+        android:text="@string/status_message_success" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dimen_p_10"
-        android:layout_marginBottom="@dimen/dimen_p_10">
-
-        <CheckBox
-            android:id="@+id/cbGravity1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SPCheckbox.DefaultStyle"
-            android:text="@string/set_gravity_start" />
-
-    </LinearLayout>
 </LinearLayout>
