@@ -81,29 +81,20 @@ class SPTextView @JvmOverloads constructor(
      * Adds paddings to view when setting the style
      */
     private fun TypedArray.setViewPaddings() {
-        var start = DEFAULT_OBTAIN_VAL
-        var top = DEFAULT_OBTAIN_VAL
-        var end = DEFAULT_OBTAIN_VAL
-        var bottom = DEFAULT_OBTAIN_VAL
+        var vertical = DEFAULT_OBTAIN_VAL
+        var horizontal = DEFAULT_OBTAIN_VAL
 
-        getResourceId(R.styleable.SPTextView_android_paddingStart, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPTextView_paddingVertical, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                start = resources.getDimensionPixelSize(it)
+                vertical = resources.getDimensionPixelSize(it)
             }
-        getResourceId(R.styleable.SPTextView_android_paddingTop, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPTextView_paddingHorizontal, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                top = resources.getDimensionPixelSize(it)
-            }
-        getResourceId(R.styleable.SPTextView_android_paddingEnd, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                end = resources.getDimensionPixelSize(it)
-            }
-        getResourceId(R.styleable.SPTextView_android_paddingBottom, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                bottom = resources.getDimensionPixelSize(it)
+                horizontal = resources.getDimensionPixelSize(it)
             }
 
-        setPaddingRelative(start, top, end, bottom)
+        if (vertical != DEFAULT_OBTAIN_VAL || horizontal != DEFAULT_OBTAIN_VAL)
+            setPaddingRelative(horizontal, vertical, horizontal, vertical)
     }
 
     private fun updateTextAppearance(textAppearance: Int) {

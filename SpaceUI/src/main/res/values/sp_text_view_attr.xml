@@ -5,9 +5,7 @@
         <attr name="textAppearance" format="reference"/>
         <attr name="android:src" />
         <attr name="android:drawablePadding" />
-        <attr name="android:paddingStart" />
-        <attr name="android:paddingEnd" />
-        <attr name="android:paddingTop" />
-        <attr name="android:paddingBottom" />
+        <attr name="paddingVertical" format="dimension" />
+        <attr name="paddingHorizontal" format="dimension" />
     </declare-styleable>
 </resources>

@@ -2,10 +2,8 @@
 <resources>
     <style name="SPTextView.Base" parent="shadow_empty">
         <item name="android:drawablePadding">@dimen/dimen_p_8</item>
-        <item name="android:paddingTop">@dimen/dimen_p_8</item>
-        <item name="android:paddingBottom">@dimen/dimen_p_8</item>
-        <item name="android:paddingStart">@dimen/dimen_p_16</item>
-        <item name="android:paddingEnd">@dimen/dimen_p_16</item>
+        <item name="paddingVertical">@dimen/dimen_p_8</item>
+        <item name="paddingHorizontal">@dimen/dimen_p_16</item>
     </style>
 
     <style name="SPTextView.Success" parent="SPTextView.Base">
