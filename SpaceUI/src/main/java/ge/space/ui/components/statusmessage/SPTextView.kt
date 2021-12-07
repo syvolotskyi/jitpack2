@@ -62,7 +62,6 @@ class SPTextView @JvmOverloads constructor(
                     DEFAULT_OBTAIN_VAL,
                     DEFAULT_OBTAIN_VAL
                 )
-
             }
 
         getResourceId(R.styleable.SPTextView_android_drawablePadding, DEFAULT_OBTAIN_VAL)
