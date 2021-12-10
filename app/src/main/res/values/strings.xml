@@ -135,5 +135,4 @@
     <string name="status_message_error">Error</string>
     <string name="status_message_pending">Pending</string>
     <string name="status_message_info">Info</string>
-    <string name="set_gravity_start">Set Gravity Start</string>
 </resources>
