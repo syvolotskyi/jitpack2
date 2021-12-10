@@ -133,8 +133,8 @@ class SPInputComponent : ShowCaseComponent {
                         R.id.removeIcon -> itemBinding.simpleInput.setupTrailViewByType(
                             SPTrailViewType.REMOVABLE
                         )
-                        R.id.noneTrail -> itemBinding.simpleInput.setupLeadingViewByType(
-                        SPLeadingViewType.NONE
+                        R.id.noneTrail -> itemBinding.simpleInput.setupTrailViewByType(
+                            SPTrailViewType.NONE
                     )
                     }
                 }
