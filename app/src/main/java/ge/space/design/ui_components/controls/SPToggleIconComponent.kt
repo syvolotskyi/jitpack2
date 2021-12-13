@@ -61,5 +61,6 @@ class SPToggleIconComponent : ShowCaseComponent {
             return layoutBinding.root
 
         }
+    }
 
 }
