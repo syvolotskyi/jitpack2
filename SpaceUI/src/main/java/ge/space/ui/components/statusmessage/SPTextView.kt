@@ -97,7 +97,7 @@ class SPTextView @JvmOverloads constructor(
             setPaddingRelative(horizontal, vertical, horizontal, vertical)
     }
 
-    private fun updateTextAppearance(textAppearance: Int) {
+    fun updateTextAppearance(textAppearance: Int) {
         setTextStyle(textAppearance)
         setCompoundDrawablesTint(context.getColorFromTextAppearance(textAppearance))
     }
