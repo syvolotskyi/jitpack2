@@ -19,7 +19,7 @@ class SPToggleIcon @JvmOverloads constructor(
 
     val binding: SpToggleIconLayoutBinding
 
-    var toggleState: ToggleState = ToggleState.DISABLED
+    var toggleState: ToggleState = ToggleState.UNSELECTED
     set(value) {
         field = value
         toggle()
@@ -42,12 +42,12 @@ class SPToggleIcon @JvmOverloads constructor(
     }
 
     private fun toggle() {
-        toggleState = if (toggleState == ToggleState.DISABLED)
-            ToggleState.ENABLED else ToggleState.DISABLED
+        toggleState = if (toggleState == ToggleState.UNSELECTED)
+            ToggleState.SELECTED else ToggleState.UNSELECTED
     }
 
     enum class ToggleState {
-        DISABLED,
-        ENABLED
+        UNSELECTED,
+        SELECTED
     }
 }
