@@ -22,6 +22,7 @@ class SPTextFieldsComponent : ShowCaseComponent {
             SPInputComponent(),
             SPNumberComponent(),
             SPPhoneComponent(),
+            SPDropdownComponent()
         )
     }
 }

@@ -3,8 +3,10 @@ package ge.space.ui.components.text_fields.input.dropdown
 import android.content.Context
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import ge.space.extensions.EMPTY_TEXT
@@ -13,8 +15,11 @@ import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.text_fields.input.base.SPContextViewType
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+import ge.space.ui.util.view_factory.SPViewData
+import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
 /**
  * Dropdown view which allows to manipulate next parameters:
@@ -56,28 +61,17 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     private var inflateType: InflateType = InflateType.None
 
-  /*  *//**
-     * Sets a dropdown text
-     *//*
-    override var text: String = EMPTY_TEXT
-        get() = inputTextBinding.etInputField.text.toString()
-        set(value) {
-            field = value
 
-            inputTextBinding.etInputField.text = value
-        }
-*/
-   /* *//**
+    /**
      * Sets a left image, if inflate type is withImage
-     *//*
+     */
     fun setImage(view: View) {
-        inputTextBinding.ivLeftContainer.removeAllViews()
         if (inflateType == InflateType.WithIcon) {
             view.setHeight(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
             view.setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
-            inputTextBinding.ivLeftContainer.addView(view)
+            leadingView = view
         }
-    }*/
+    }
 
     /**
      * Sets a default Item and bind it
@@ -94,28 +88,10 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     fun onSelectedItem(item: T) =
         bindViewValue(this, item)
 
-   /* *//**
-     * Sets a text hint
-     *//*
-    override var hint: String = EMPTY_TEXT
-        get() = inputTextBinding.etInputField.hint.toString()
-        set(value) {
-            field = value
-
-            inputTextBinding.etInputField.hint = value
-        }
-
-    override fun getChildViewBinding(): SpTextFieldDropdownBinding {
-        return SpTextFieldDropdownBinding.inflate(
-            LayoutInflater.from(context),
-            this,
-            false
-        )
-    }
-
-    override fun setTextFieldStyle(defStyleRes: Int) {
+    override fun setViewStyle(newStyle: Int) {
+        super.setViewStyle(newStyle)
         val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPTextFieldDropdown)
+            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPTextFieldDropdown)
 
         styleAttrs.run {
             val inflateId = getInt(
@@ -124,25 +100,13 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             )
             inflateType = InflateType.values()[inflateId]
 
+            contextView = SPViewData.SPTextData(text, R.style.h700_bold_caps_text_field, SPViewData.SPViewDataParams(gravity = Gravity.START), null).createView(context) as TextView
             recycle()
         }
 
         setOnClickListener { onClickListener(this) }
     }
 
-    override fun handleImeOption() {
-        inputTextBinding.etInputField.imeOptions = imeOption
-    }
-
-    override fun updateTextAppearance(textAppearance: Int) =
-        inputTextBinding.etInputField.setTextStyle(textAppearance)
-
-    override fun addTextChangedListener(watcher: TextWatcher) =
-        inputTextBinding.etInputField.addTextChangedListener(watcher)
-
-    override fun removeTextChangedListener(watcher: TextWatcher) =
-        inputTextBinding.etInputField.addTextChangedListener(watcher)
-*/
     enum class InflateType {
         None,
         WithIcon

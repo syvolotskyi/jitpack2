@@ -156,7 +156,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(trailView, emptyTrailView)
         }
 
-    var contextView: EditText = EditText(context)
+    var contextView: TextView = EditText(context)
         set(value) {
             field = value
 
@@ -218,9 +218,12 @@ open class SPTextFieldInput @JvmOverloads constructor(
             }
         imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldBaseView_inputMandatory, false)
-        contextView.setTextLength(
-            getInt(R.styleable.SPTextFieldBaseView_inputTextLength, DEFAULT_TEXT_LENGTH)
-        )
+        if (contextView is EditText) {
+            (contextView as EditText).setTextLength(
+                getInt(R.styleable.SPTextFieldBaseView_inputTextLength, DEFAULT_TEXT_LENGTH)
+            )
+        }
+
         getString(R.styleable.SPTextFieldBaseView_android_hint).orEmpty()
             .handleAttributeAction(
                 EMPTY_TEXT

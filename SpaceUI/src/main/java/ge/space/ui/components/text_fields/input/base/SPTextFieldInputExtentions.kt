@@ -117,7 +117,7 @@ fun SPTextFieldInput.setupLeadingViewByType(
     }?.createView(context)
 }
 
-private fun getSmallCardView(context: Context): SPViewData.SPrimaryChipData =
+fun getSmallCardView(context: Context): SPViewData.SPrimaryChipData =
     SPDefaultPrimaryChipData.getSmallChipData(
         context, SPViewData.SPViewDataParams(
             paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),

@@ -2,10 +2,9 @@ package ge.space.design.ui_components.text_fields.dropdown
 
 import android.content.Context
 import com.example.spacedesignsystem.R
-import ge.space.ui.components.bank_cards.data.SPChipSize
+import ge.space.ui.components.text_fields.input.base.getSmallCardView
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.util.view_factory.SPViewData
-import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 
 object SPTextFieldsDropdownItems {
     private const val MASTER_CARD =
@@ -15,7 +14,14 @@ object SPTextFieldsDropdownItems {
         SPDropdownItemModel(
             1,
             "Image from resources",
-            SPViewData.SPImageResourcesData(R.drawable.ic_small_empty_chip_dark)
+            SPViewData.SPImageResourcesData(
+                R.drawable.ic_small_empty_chip_dark,
+                SPViewData.SPViewDataParams(
+                    paddingStart = context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_14),
+                    paddingEnd = context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_16)
+                )
+            )
+
         ),
         SPDropdownItemModel(
             2,
@@ -25,7 +31,7 @@ object SPTextFieldsDropdownItems {
         SPDropdownItemModel(
             3,
             "Primary chip",
-            SPDefaultPrimaryChipData.getSmallChipData(context)
+            getSmallCardView(context)
         ),
     )
 }
