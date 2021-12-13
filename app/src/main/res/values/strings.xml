@@ -55,6 +55,9 @@
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>
 
+    <string name="controls">Controls</string>
+    <string name="controls_desc">Controls description</string>
+
     <string name="toggle_icon">Toggle Icon</string>
     <string name="toggle_icon_desc">Toggle Icon description</string>
 
