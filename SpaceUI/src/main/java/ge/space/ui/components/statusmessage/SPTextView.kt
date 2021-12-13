@@ -49,6 +49,7 @@ class SPTextView @JvmOverloads constructor(
 
         styleAttrs.run {
             withStyledAttributes()
+            setViewPaddings()
             recycle()
         }
     }
@@ -68,8 +69,6 @@ class SPTextView @JvmOverloads constructor(
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 compoundDrawablePadding = resources.getDimensionPixelSize(it)
             }
-
-        setViewPaddings()
 
         getResourceId(R.styleable.SPTextView_textAppearance, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
@@ -93,8 +92,7 @@ class SPTextView @JvmOverloads constructor(
                 horizontal = resources.getDimensionPixelSize(it)
             }
 
-        if (vertical != DEFAULT_OBTAIN_VAL || horizontal != DEFAULT_OBTAIN_VAL)
-            setPaddingRelative(horizontal, vertical, horizontal, vertical)
+        setPaddingRelative(horizontal, vertical, horizontal, vertical)
     }
 
     fun updateTextAppearance(textAppearance: Int) {
