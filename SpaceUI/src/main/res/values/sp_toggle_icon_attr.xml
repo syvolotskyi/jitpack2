@@ -2,5 +2,10 @@
 <resources>
     <declare-styleable name="SPToggleIcon">
         <attr name="style" />
+        <attr name="android:src" />
+        <attr name="toggleState" format="enum">
+            <enum name="disabled" value="0" />
+            <enum name="enabled" value="1" />
+        </attr>
     </declare-styleable>
 </resources>

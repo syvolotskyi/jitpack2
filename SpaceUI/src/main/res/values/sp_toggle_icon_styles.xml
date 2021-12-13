@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPToggleIcon.Base" parent="SPBaseView">
+    <style name="SPToggleIcon.ShapeAppearanceOverlay" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
+    <style name="SPToggleIcon.Base" parent="SPBaseView">
+        <item name="icon">@drawable/ic_filter_24_regular</item>
+        <item name="iconTint">?attr/brand_primary</item>
+        <item name="shapeAppearanceOverlay">@style/SPToggleIcon.ShapeAppearanceOverlay</item>
+    </style>
+
+    <style name="SPToggleIcon.Unselected" parent="SPToggleIcon.Base">
+        <item name="background">@android:color/transparent</item>
+    </style>
+
+    <style name="SPToggleIcon.Selected" parent="SPToggleIcon.Base">
+        <item name="background">?attr/brand_primary</item>
     </style>
 
 </resources>
