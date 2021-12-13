@@ -7,9 +7,8 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
 import ge.space.extensions.EMPTY_TEXT
-import ge.space.ui.base.OnDistractiveInterface
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.util.extension.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 
 /**
  * Abstract base Button view extended from [SPBaseView] that allows to change its configuration.
@@ -21,7 +20,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding

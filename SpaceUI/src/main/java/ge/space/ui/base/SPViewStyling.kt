@@ -1,12 +1,11 @@
-package ge.space.ui.util.extension
+package ge.space.ui.base
 
 import androidx.annotation.StyleRes
 
 /**
- * Interface marker to add possibility set Style Resource programmatically.
- *
+ * Adds possibility to set Style Resource programmatically
  */
-interface SPSetViewStyleInterface {
+interface SPViewStyling {
     /**
      * Set style programmatically
      *
