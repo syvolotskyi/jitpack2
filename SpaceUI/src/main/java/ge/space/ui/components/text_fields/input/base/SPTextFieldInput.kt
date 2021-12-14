@@ -139,21 +139,21 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a start view.
      */
-    var leadingView: View? = emptyLeadingView
+    var startView: View? = emptyLeadingView
         set(value) {
             field = value
 
-            binding.flLeading.addContentView(leadingView, emptyLeadingView)
+            binding.flLeading.addContentView(startView, emptyLeadingView)
         }
 
     /**
      * Sets a end view.
      */
-    var trailView: View? = emptyTrailView
+    var endView: View? = emptyTrailView
         set(value) {
             field = value
 
-            binding.flTrail.addContentView(trailView, emptyTrailView)
+            binding.flTrail.addContentView(endView, emptyTrailView)
         }
 
     var contextView: EditText = EditText(context)
@@ -185,7 +185,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         ) {
             applyAttributes()
 
-            leadingView = emptyLeadingView
+            startView = emptyLeadingView
         }
     }
 
@@ -254,15 +254,15 @@ open class SPTextFieldInput @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPTextFieldBaseView_contextView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .apply {
-                setupContextViewByType(SPContextViewType.values()[this])
+                setupContextViewByType(SPTextInputViewType.values()[this])
             }
         getResourceId(R.styleable.SPTextFieldBaseView_leadingView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .apply {
-                setupLeadingViewByType(SPLeadingViewType.values()[this])
+                setupLeadingViewByType(SPStartViewType.values()[this])
             }
         getResourceId(R.styleable.SPTextFieldBaseView_trailView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .apply {
-                setupTrailViewByType(SPTrailViewType.values()[this])
+                setupEndViewByType(SPEndViewType.values()[this])
             }
         handleBorderColor()
     }
@@ -276,8 +276,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         contextView.isEnabled = enabled
-        trailView?.isEnabled = enabled
-        leadingView?.isEnabled = enabled
+        endView?.isEnabled = enabled
+        startView?.isEnabled = enabled
         handleBorderColor()
     }
 
@@ -285,7 +285,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * Sets a end click listener.
      */
     fun setTrailClickListener(onClickListener: () -> Unit? = {}) {
-        trailView?.onClick { onClickListener() }
+        endView?.onClick { onClickListener() }
     }
 
     /**

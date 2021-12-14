@@ -7,7 +7,7 @@ import ge.space.extensions.setTextStyle
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 
-class SPEditTextDataImpl(context: Context) : SPViewImpl<SPViewData.SPEditTextData>(context) {
+class SPEditTextImpl(context: Context) : SPViewImpl<SPViewData.SPEditTextData>(context) {
     override fun create(type: SPViewData.SPEditTextData): EditText {
         return EditText(context).apply {
             gravity = type.params?.gravity ?: Gravity.LEFT

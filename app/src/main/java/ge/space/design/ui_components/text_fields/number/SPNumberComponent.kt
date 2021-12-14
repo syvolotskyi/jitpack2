@@ -8,9 +8,9 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-import ge.space.ui.components.text_fields.input.base.SPTrailViewType
+import ge.space.ui.components.text_fields.input.base.SPEndViewType
 import ge.space.ui.components.text_fields.input.base.setupNumberInput
-import ge.space.ui.components.text_fields.input.base.setupTrailViewByType
+import ge.space.ui.components.text_fields.input.base.setupEndViewByType
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import java.math.BigDecimal
 
@@ -106,8 +106,8 @@ class SPNumberComponent : ShowCaseComponent {
         }
 
         private fun SpLayoutTextFieldNumberShowcaseBinding.selectCurrency(currency: String) {
-            tfNumber.setupTrailViewByType(SPTrailViewType.CURRENCY, currency = currency)
-            tfNumberSecond.setupTrailViewByType(SPTrailViewType.CURRENCY, currency = currency)
+            tfNumber.setupEndViewByType(SPEndViewType.CURRENCY, currency = currency)
+            tfNumberSecond.setupEndViewByType(SPEndViewType.CURRENCY, currency = currency)
         }
     }
 
