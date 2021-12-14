@@ -15,38 +15,38 @@ import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
  * Setup a view as input for number and currency
  */
 fun SPTextFieldInput.setupNumberInput(currency: String) {
-    setupContextViewByType(SPContextViewType.NUMBER)
-    setupTrailViewByType(SPTrailViewType.CURRENCY, currency = currency)
+    setupContextViewByType(SPTextInputViewType.NUMBER)
+    setupEndViewByType(SPEndViewType.CURRENCY, currency = currency)
 }
 
 /**
  * Setup a view as input for phone
  */
 fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
-    setupContextViewByType(SPContextViewType.MASK, inputMask = mask)
-    setupTrailViewByType(SPTrailViewType.NONE)
-    setupLeadingViewByType(SPLeadingViewType.PHONE_PREFIX, phonePrefix = prefix)
+    setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
+    setupEndViewByType(SPEndViewType.NONE)
+    setupLeadingViewByType(SPStartViewType.PHONE_PREFIX, phonePrefix = prefix)
 }
 
 /**
  * Setup a Context View due to type
  */
 fun SPTextFieldInput.setupContextViewByType(
-    type: SPContextViewType,
+    type: SPTextInputViewType,
     inputMask: String = mask,
     inputHint: String = hint
 ) {
     contextView = when (type) {
-        SPContextViewType.TEXT -> SPViewData.SPEditTextData(
+        SPTextInputViewType.TEXT -> SPViewData.SPEditTextData(
             R.style.h600_bold_caps,
             inputHint
         ).createView(context)
-        SPContextViewType.MASK -> SPViewData.SPMaskedEditTextData(
+        SPTextInputViewType.MASK -> SPViewData.SPMaskedEditTextData(
             R.style.h600_bold_text_field_phone,
             inputMask,
             inputHint
         ).createView(context)
-        SPContextViewType.NUMBER -> getNumberEditTextViewData(
+        SPTextInputViewType.NUMBER -> getNumberEditTextViewData(
             context,
             inputHint
         ).createView(context)
@@ -54,25 +54,25 @@ fun SPTextFieldInput.setupContextViewByType(
 }
 
 /**
- * Setup a trailView due to type
+ * Setup a endView due to type
  */
-fun SPTextFieldInput.setupTrailViewByType(
-    type: SPTrailViewType,
+fun SPTextFieldInput.setupEndViewByType(
+    type: SPEndViewType,
     image: Int = 0,
     currency: String = ""
 ) {
-    trailView = when (type) {
-        SPTrailViewType.NONE -> null
-        SPTrailViewType.CARD -> getSmallCardView(context)
-        SPTrailViewType.CURRENCY -> getCurrencyViewData(context, currency)
-        SPTrailViewType.REMOVABLE -> SPViewData.SPImageResourcesData(
+    endView = when (type) {
+        SPEndViewType.NONE -> null
+        SPEndViewType.CARD -> getSmallCardView(context)
+        SPEndViewType.CURRENCY -> getCurrencyViewData(context, currency)
+        SPEndViewType.REMOVABLE -> SPViewData.SPImageResourcesData(
             R.drawable.ic_close_circle_24_filled,
             SPViewData.SPViewDataParams(
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
             )
         )
-        SPTrailViewType.IMAGE -> SPViewData.SPImageResourcesData(
+        SPEndViewType.IMAGE -> SPViewData.SPImageResourcesData(
             image,
             SPViewData.SPViewDataParams(
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
@@ -81,7 +81,7 @@ fun SPTextFieldInput.setupTrailViewByType(
         )
     }?.createView(context)
 
-    if (type == SPTrailViewType.REMOVABLE)
+    if (type == SPEndViewType.REMOVABLE)
         setTrailClickListener { removeAllText() }
 }
 
@@ -89,14 +89,14 @@ fun SPTextFieldInput.setupTrailViewByType(
  * Setup a leadingView due to type
  */
 fun SPTextFieldInput.setupLeadingViewByType(
-    type: SPLeadingViewType,
+    type: SPStartViewType,
     icon: Int = R.drawable.ic_chat_message_24_regular,
     phonePrefix: String = EMPTY_TEXT
 ) {
-    leadingView = when (type) {
-        SPLeadingViewType.NONE -> null
-        SPLeadingViewType.CARD -> getSmallCardView(context)
-        SPLeadingViewType.PHONE_PREFIX -> SPViewData.SPTextData(
+    startView = when (type) {
+        SPStartViewType.NONE -> null
+        SPStartViewType.CARD -> getSmallCardView(context)
+        SPStartViewType.PHONE_PREFIX -> SPViewData.SPTextData(
             phonePrefix,
             textStyle = R.style.h600_bold_text_field_phone,
             SPViewData.SPViewDataParams(
@@ -106,7 +106,7 @@ fun SPTextFieldInput.setupLeadingViewByType(
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1),
             )
         )
-        SPLeadingViewType.IMAGE -> SPViewData.SPImageResourcesData(
+        SPStartViewType.IMAGE -> SPViewData.SPImageResourcesData(
             icon,
             SPViewData.SPViewDataParams(
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),

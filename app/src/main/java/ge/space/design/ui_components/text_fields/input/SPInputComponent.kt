@@ -80,23 +80,23 @@ class SPInputComponent : ShowCaseComponent {
                     when (checkedId) {
                         R.id.phoneMask ->
                             itemBinding.simpleInput.setupContextViewByType(
-                                SPContextViewType.MASK,
+                                SPTextInputViewType.MASK,
                                 context.getString(R.string.phone_mask),
                                 context.getString(R.string.enter_you_details_here)
                             )
                         R.id.dateMask ->
                             itemBinding.simpleInput.setupContextViewByType(
-                                SPContextViewType.MASK,
+                                SPTextInputViewType.MASK,
                                 context.getString(R.string.day_mask),
                                 context.getString(R.string.enter_you_details_here)
                             )
                         R.id.numberInput ->
                             itemBinding.simpleInput.setupContextViewByType(
-                                SPContextViewType.NUMBER,
+                                SPTextInputViewType.NUMBER,
                                 inputHint = context.getString(R.string.enter_amount)
                             )
                         else -> itemBinding.simpleInput.setupContextViewByType(
-                            SPContextViewType.TEXT,
+                            SPTextInputViewType.TEXT,
                             inputHint = context.getString(R.string.enter_you_details_here)
                         )
                     }
@@ -105,36 +105,36 @@ class SPInputComponent : ShowCaseComponent {
                 itemBinding.rgLeading.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
                         R.id.primaryChip -> itemBinding.simpleInput.setupLeadingViewByType(
-                            SPLeadingViewType.CARD
+                            SPStartViewType.CARD
                         )
                         R.id.phone -> itemBinding.simpleInput.setupLeadingViewByType(
-                            SPLeadingViewType.PHONE_PREFIX,
+                            SPStartViewType.PHONE_PREFIX,
                             phonePrefix = context.getString(R.string.phone_prefix)
                         )
                         R.id.image -> itemBinding.simpleInput.setupLeadingViewByType(
-                            SPLeadingViewType.IMAGE, icon = R.drawable.ic_chat_message_24_regular
+                            SPStartViewType.IMAGE, icon = R.drawable.ic_chat_message_24_regular
                         )
 
                         R.id.none -> itemBinding.simpleInput.setupLeadingViewByType(
-                            SPLeadingViewType.NONE
+                            SPStartViewType.NONE
                         )
                     }
                 }
 
                 itemBinding.rgTrail.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
-                        R.id.trailPrimaryChip -> itemBinding.simpleInput.setupTrailViewByType(
-                            SPTrailViewType.CARD
+                        R.id.trailPrimaryChip -> itemBinding.simpleInput.setupEndViewByType(
+                            SPEndViewType.CARD
                         )
-                        R.id.rbCurrency -> itemBinding.simpleInput.setupTrailViewByType(
-                            SPTrailViewType.CURRENCY,
+                        R.id.rbCurrency -> itemBinding.simpleInput.setupEndViewByType(
+                            SPEndViewType.CURRENCY,
                             currency = "$"
                         )
-                        R.id.removeIcon -> itemBinding.simpleInput.setupTrailViewByType(
-                            SPTrailViewType.REMOVABLE
+                        R.id.removeIcon -> itemBinding.simpleInput.setupEndViewByType(
+                            SPEndViewType.REMOVABLE
                         )
-                        R.id.noneTrail -> itemBinding.simpleInput.setupTrailViewByType(
-                            SPTrailViewType.NONE
+                        R.id.noneTrail -> itemBinding.simpleInput.setupEndViewByType(
+                            SPEndViewType.NONE
                     )
                     }
                 }
