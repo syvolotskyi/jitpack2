@@ -63,6 +63,7 @@
         android:layout_gravity="start"
         android:layout_marginTop="@dimen/sp_text_field_vertical_text_padding"
         android:ellipsize="end"
+        android:visibility="gone"
         android:maxLines="1"
         tools:text="First label" />
 </LinearLayout>
