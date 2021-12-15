@@ -3,8 +3,9 @@
 
     <ImageView
         android:id="@+id/toggleIcon"
+        android:layout_width="@dimen/dimen_p_40"
+        android:layout_height="@dimen/dimen_p_40"
         style="@style/SPToggleIcon.Unselected"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         />
+
 </merge>

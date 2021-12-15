@@ -2,10 +2,14 @@
 <resources>
     <declare-styleable name="SPToggleIcon">
         <attr name="style" />
+        <attr name="backgroundColor" />
+        <attr name="selectedBackgroundColor" format="color|reference" />
+        <attr name="iconTint" format="color|reference" />
+        <attr name="selectedIconTint" format="color|reference" />
         <attr name="android:src" />
         <attr name="toggleState" format="enum">
-            <enum name="disabled" value="0" />
-            <enum name="enabled" value="1" />
+            <enum name="unselected" value="0" />
+            <enum name="selected" value="1" />
         </attr>
     </declare-styleable>
 </resources>
