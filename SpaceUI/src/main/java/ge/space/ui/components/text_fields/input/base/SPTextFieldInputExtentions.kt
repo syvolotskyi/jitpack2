@@ -38,11 +38,11 @@ fun SPTextFieldInput.setupContextViewByType(
 ) {
     contextView = when (type) {
         SPTextInputViewType.TEXT -> SPViewData.SPEditTextData(
-            R.style.h600_bold_caps,
+            textAppearance,
             inputHint
         ).createView(context)
         SPTextInputViewType.MASK -> SPViewData.SPMaskedEditTextData(
-            R.style.h600_bold_text_field_phone,
+            textAppearance,
             inputMask,
             inputHint
         ).createView(context)
@@ -98,7 +98,7 @@ fun SPTextFieldInput.setupLeadingViewByType(
         SPStartViewType.CARD -> getSmallCardView(context)
         SPStartViewType.PHONE_PREFIX -> SPViewData.SPTextData(
             phonePrefix,
-            textStyle = R.style.h600_bold_text_field_phone,
+            textAppearance,
             SPViewData.SPViewDataParams(
                 gravity =  Gravity.END,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),

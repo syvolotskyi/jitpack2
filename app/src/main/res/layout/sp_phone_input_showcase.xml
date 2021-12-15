@@ -8,7 +8,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/phoneInput"
-        style="@style/SPEditText.Masked"
+        app:style="@style/SPEditText.Masked"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_16"
@@ -23,6 +23,7 @@
         android:id="@+id/phoneInputSecond"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:style="@style/SPEditText.Masked"
         android:layout_margin="@dimen/dimen_p_16"
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"

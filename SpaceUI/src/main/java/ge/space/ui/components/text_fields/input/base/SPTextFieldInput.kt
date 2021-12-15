@@ -41,7 +41,8 @@ import ge.space.ui.util.extension.handleAttributeAction
 open class SPTextFieldInput @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Base
 ) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface, SPDistractiveMode {
 
     private var borderWidth: Float =
@@ -183,6 +184,18 @@ open class SPTextFieldInput @JvmOverloads constructor(
             R.styleable.SPTextFieldBaseView,
             defStyleAttr
         ) {
+            getContext().withStyledAttributes(
+                attrs,
+                R.styleable.SPBaseView,
+                defStyleAttr
+            ) {
+                setViewStyle(
+                    getResourceId(
+                        R.styleable.SPBaseView_style,
+                        defStyleRes
+                    )
+                )
+            }
             applyAttributes()
 
             startView = emptyLeadingView
@@ -233,10 +246,12 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 descriptionText = it
             }
 
-        textAppearance = getResourceId(
-            R.styleable.SPTextFieldBaseView_android_textAppearance,
+        getResourceId(
+            R.styleable.SPTextFieldBaseView_textAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
-        )
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            textAppearance = it
+        }
 
         val descTextAppearance = getResourceId(
             R.styleable.SPTextFieldBaseView_descriptionTextAppearance,
