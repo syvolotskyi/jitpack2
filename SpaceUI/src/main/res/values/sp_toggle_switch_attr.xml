@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <declare-styleable name="SPToggleSwitch">
         <attr name="style" />
+        <attr name="track" />
+        <attr name="android:thumb" />
+        <attr name="trackTint" />
+        <attr name="thumbTint" />
+        <attr name="android:state_enabled" />
+        <attr name="android:state_selected" />
+        <attr name="showText" />
     </declare-styleable>
-
 </resources>

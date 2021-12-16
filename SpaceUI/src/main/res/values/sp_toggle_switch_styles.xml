@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="SPToggleSwitch.Root" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="showText">false</item>
+        <item name="track">@drawable/switch_track_selector</item>
+        <item name="android:thumb">@drawable/switch_thumb</item>
+    </style>
+
     <style name="SPToggleSwitch.Base" parent="SPBaseView">
 
+    </style>
+
+    <!-- NB Don't override trackTint here because this style has got custom track -->
+    <style name="SPToggleSwitch.Disabled.Unselected" parent="SPToggleSwitch.Root">
+        <item name="android:state_enabled">false</item>
+        <item name="android:state_selected">false</item>
+    </style>
+
+    <style name="SPToggleSwitch.Disabled.Selected" parent="SPToggleSwitch.Root">
+        <item name="android:state_enabled">false</item>
+        <item name="android:state_selected">true</item>
+        <item name="trackTint">@color/light_brand_secondary</item>
+        <item name="thumbTint">@color/static_primary_white</item>
+    </style>
+
+    <style name="SPToggleSwitch.Enabled.Unselected" parent="SPToggleSwitch.Root">
+        <item name="android:state_enabled">true</item>
+        <item name="android:state_selected">false</item>
+        <item name="trackTint">@color/light_greyscale_gray_4</item>
+        <item name="thumbTint">@color/static_primary_white</item>
+    </style>
+
+    <style name="SPToggleSwitch.Enabled.Selected" parent="SPToggleSwitch.Root">
+        <item name="android:state_enabled">true</item>
+        <item name="android:state_selected">true</item>
+        <item name="trackTint">@color/light_brand_primary</item>
+        <item name="thumbTint">@color/static_primary_white</item>
     </style>
 
 </resources>
