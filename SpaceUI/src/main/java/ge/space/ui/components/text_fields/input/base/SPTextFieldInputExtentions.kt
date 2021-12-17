@@ -20,12 +20,21 @@ fun SPTextFieldInput.setupNumberInput(currency: String) {
 }
 
 /**
+ *  Setup a view as input for date
+ */
+fun SPTextFieldInput.setupDateInput(mask: String) {
+    setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
+    setupEndViewByType(SPEndViewType.NONE)
+    setupStartViewByType(SPStartViewType.NONE)
+}
+
+/**
  * Setup a view as input for phone
  */
 fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
+    setupStartViewByType(SPStartViewType.PHONE_PREFIX, phonePrefix = prefix)
     setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
     setupEndViewByType(SPEndViewType.NONE)
-    setupLeadingViewByType(SPStartViewType.PHONE_PREFIX, phonePrefix = prefix)
 }
 
 /**
@@ -88,7 +97,7 @@ fun SPTextFieldInput.setupEndViewByType(
 /**
  * Setup a leadingView due to type
  */
-fun SPTextFieldInput.setupLeadingViewByType(
+fun SPTextFieldInput.setupStartViewByType(
     type: SPStartViewType,
     icon: Int = R.drawable.ic_chat_message_24_regular,
     phonePrefix: String = EMPTY_TEXT
@@ -102,7 +111,6 @@ fun SPTextFieldInput.setupLeadingViewByType(
             SPViewData.SPViewDataParams(
                 gravity =  Gravity.END,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1),
             )
         )

@@ -273,7 +273,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             }
         getResourceId(R.styleable.SPTextFieldBaseView_leadingView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .apply {
-                setupLeadingViewByType(SPStartViewType.values()[this])
+                setupStartViewByType(SPStartViewType.values()[this])
             }
         getResourceId(R.styleable.SPTextFieldBaseView_trailView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .apply {

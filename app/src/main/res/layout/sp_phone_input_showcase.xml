@@ -31,6 +31,18 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneInput"
         app:titleText="Input phone number" />
 
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+        android:id="@+id/dateInputSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:style="@style/SPEditText.DateMasked"
+        android:layout_margin="@dimen/dimen_p_16"
+        android:imeOptions="actionDone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneInput"
+        app:titleText="Input phone number" />
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/labelTextInput"
         android:layout_width="match_parent"

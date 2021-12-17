@@ -104,18 +104,18 @@ class SPInputComponent : ShowCaseComponent {
 
                 itemBinding.rgLeading.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
-                        R.id.primaryChip -> itemBinding.simpleInput.setupLeadingViewByType(
+                        R.id.primaryChip -> itemBinding.simpleInput.setupStartViewByType(
                             SPStartViewType.CARD
                         )
-                        R.id.phone -> itemBinding.simpleInput.setupLeadingViewByType(
+                        R.id.phone -> itemBinding.simpleInput.setupStartViewByType(
                             SPStartViewType.PHONE_PREFIX,
                             phonePrefix = context.getString(R.string.phone_prefix)
                         )
-                        R.id.image -> itemBinding.simpleInput.setupLeadingViewByType(
+                        R.id.image -> itemBinding.simpleInput.setupStartViewByType(
                             SPStartViewType.IMAGE, icon = R.drawable.ic_chat_message_24_regular
                         )
 
-                        R.id.none -> itemBinding.simpleInput.setupLeadingViewByType(
+                        R.id.none -> itemBinding.simpleInput.setupStartViewByType(
                             SPStartViewType.NONE
                         )
                     }
