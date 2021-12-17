@@ -328,7 +328,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     private fun String.removeAllSymbols(symbol: String) = replace(symbol, "")
 
-
     private fun calculateRange(start: Int, end: Int): Range {
         val range = Range()
         var i = start

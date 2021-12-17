@@ -20,12 +20,21 @@ fun SPTextFieldInput.setupNumberInput(currency: String) {
 }
 
 /**
+ *  Setup a view as input for date
+ */
+fun SPTextFieldInput.setupDateInput(mask: String) {
+    setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
+    setupEndViewByType(SPEndViewType.NONE)
+    setupStartViewByType(SPStartViewType.NONE)
+}
+
+/**
  * Setup a view as input for phone
  */
 fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
+    setupStartViewByType(SPStartViewType.PHONE_PREFIX, phonePrefix = prefix)
     setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
     setupEndViewByType(SPEndViewType.NONE)
-    setupLeadingViewByType(SPStartViewType.PHONE_PREFIX, phonePrefix = prefix)
 }
 
 /**
@@ -38,11 +47,11 @@ fun SPTextFieldInput.setupContextViewByType(
 ) {
     contextView = when (type) {
         SPTextInputViewType.TEXT -> SPViewData.SPEditTextData(
-            R.style.h600_bold_caps,
+            textAppearance,
             inputHint
         ).createView(context)
         SPTextInputViewType.MASK -> SPViewData.SPMaskedEditTextData(
-            R.style.h600_bold_text_field_phone,
+            textAppearance,
             inputMask,
             inputHint
         ).createView(context)
@@ -88,7 +97,7 @@ fun SPTextFieldInput.setupEndViewByType(
 /**
  * Setup a leadingView due to type
  */
-fun SPTextFieldInput.setupLeadingViewByType(
+fun SPTextFieldInput.setupStartViewByType(
     type: SPStartViewType,
     icon: Int = R.drawable.ic_chat_message_24_regular,
     phonePrefix: String = EMPTY_TEXT
@@ -98,11 +107,10 @@ fun SPTextFieldInput.setupLeadingViewByType(
         SPStartViewType.CARD -> getSmallCardView(context)
         SPStartViewType.PHONE_PREFIX -> SPViewData.SPTextData(
             phonePrefix,
-            textStyle = R.style.h600_bold_text_field_phone,
+            textAppearance,
             SPViewData.SPViewDataParams(
                 gravity =  Gravity.END,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1),
             )
         )

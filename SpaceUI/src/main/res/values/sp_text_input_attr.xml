@@ -10,7 +10,7 @@
         <attr name="android:text" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
-        <attr name="android:textAppearance" format="reference" />
+        <attr name="textAppearance" format="reference" />
         <attr name="descriptionTextAppearance" />
         <attr name="labelTextAppearance" format="reference" />
         <attr name="titleText" format="string|reference" />
