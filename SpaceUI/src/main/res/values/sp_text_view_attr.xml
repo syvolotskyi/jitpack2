@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPTextView">
+        <attr name="style" />
+        <attr name="textAppearance" format="reference"/>
+        <attr name="android:src" />
+        <attr name="android:drawablePadding" />
+        <attr name="paddingVertical" format="dimension" />
+        <attr name="paddingHorizontal" format="dimension" />
+    </declare-styleable>
+</resources>

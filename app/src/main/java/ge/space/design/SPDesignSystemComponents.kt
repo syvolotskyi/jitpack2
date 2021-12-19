@@ -8,6 +8,7 @@ import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
+import ge.space.design.ui_components.status_messages.SPTextViewComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 
@@ -24,12 +25,12 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPColorsComponent() },
             new { SPButtonComponent() },
             new { SPDialogComponent() },
+            new { SPTextViewComponent() },
             new { SPTextFieldsComponent() },
             new { SPBannerComponent() },
             new { SPBankCardComponent() },
             new { SPMarksComponent() },
             new { SPTabNavigationComponent() }
-
         )
     }
 }
@@ -37,7 +38,7 @@ object DesignSystemComponents : ShowCaseComponent {
 /**
  * If you want component with "new" badge use [new].
  */
-inline fun <reified T : ShowCaseComponent> ShowCaseComponent.new(block: () -> T): T =
+inline fun <reified T : ShowCaseComponent> new(block: () -> T): T =
     block().also { NEW_COMPONENTS.add(T::class.java) }
 
 val NEW_COMPONENTS = mutableSetOf<Class<out ShowCaseComponent>>()
