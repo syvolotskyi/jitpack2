@@ -11,7 +11,7 @@ import androidx.viewbinding.ViewBinding
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.base.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.handleAttributeAction
 
 
@@ -27,7 +27,7 @@ abstract class SPPinBaseEditText<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
