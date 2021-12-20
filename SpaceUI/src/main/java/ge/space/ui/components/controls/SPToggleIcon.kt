@@ -9,13 +9,13 @@ import androidx.annotation.StyleRes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpToggleIconLayoutBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.base.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 
 class SPToggleIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
 
     val binding: SpToggleIconLayoutBinding
 
