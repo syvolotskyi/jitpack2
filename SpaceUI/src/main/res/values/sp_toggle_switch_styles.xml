@@ -20,22 +20,22 @@
     <style name="SPToggleSwitch.Disabled.Selected" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">false</item>
         <item name="android:state_selected">true</item>
-        <item name="trackTint">@color/light_brand_secondary</item>
-        <item name="thumbTint">@color/static_primary_white</item>
+        <item name="trackTint">?attr/brand_secondary</item>
+        <item name="thumbTint">?attr/static_white</item>
     </style>
 
     <style name="SPToggleSwitch.Enabled.Unselected" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">true</item>
         <item name="android:state_selected">false</item>
-        <item name="trackTint">@color/light_greyscale_gray_4</item>
-        <item name="thumbTint">@color/static_primary_white</item>
+        <item name="trackTint">?attr/greyscale_gray_4</item>
+        <item name="thumbTint">?attr/static_white</item>
     </style>
 
     <style name="SPToggleSwitch.Enabled.Selected" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">true</item>
         <item name="android:state_selected">true</item>
-        <item name="trackTint">@color/light_brand_primary</item>
-        <item name="thumbTint">@color/static_primary_white</item>
+    <item name="trackTint">?attr/brand_primary</item>
+        <item name="thumbTint">?attr/static_white</item>
     </style>
 
 </resources>
