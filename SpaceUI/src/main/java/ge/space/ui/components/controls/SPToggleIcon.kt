@@ -2,6 +2,8 @@ package ge.space.ui.components.controls
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
@@ -21,6 +23,7 @@ class SPToggleIcon @JvmOverloads constructor(
 
     init {
         binding = SpToggleIconLayoutBinding.inflate(LayoutInflater.from(context), this)
+        isCircle = true
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
@@ -37,8 +40,15 @@ class SPToggleIcon @JvmOverloads constructor(
 
     override fun setSelected(selected: Boolean) {
         super.setSelected(selected)
-        color = if (selected) R.attr.brand_primary
-        else android.R.color.transparent
+        if (selected) {
+            color = R.attr.brand_primary
+            binding.toggleIcon.colorFilter = PorterDuffColorFilter(R.attr.static_white,
+                PorterDuff.Mode.SRC_IN)
+        } else {
+            color = android.R.color.transparent
+            binding.toggleIcon.colorFilter = PorterDuffColorFilter(R.attr.brand_primary,
+                PorterDuff.Mode.SRC_IN)
+        }
     }
 
 }
