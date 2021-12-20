@@ -18,7 +18,7 @@ import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.util.extension.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.handleAttributeAction
 
 /**
@@ -34,7 +34,7 @@ abstract class SPTextFieldBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : LinearLayout(context, attrs, defStyleAttr), SPViewStyling {
 
     /**
      * Sets a button title.

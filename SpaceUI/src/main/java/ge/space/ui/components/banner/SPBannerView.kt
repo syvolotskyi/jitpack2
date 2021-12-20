@@ -14,7 +14,7 @@ import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBannerLayoutBinding
-import ge.space.ui.util.extension.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
@@ -24,7 +24,7 @@ class SPBannerView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0,
     defStyleRes: Int = R.style.SPBanner_Base,
 
-) : LinearLayout(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : LinearLayout(context, attrs, defStyleAttr), SPViewStyling {
 
     private val binding = SpBannerLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
