@@ -10,7 +10,7 @@ import com.google.android.material.textview.MaterialTextView
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
-import ge.space.ui.base.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setCompoundDrawablesTint
@@ -25,7 +25,7 @@ class SPTextView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPTextView_Info
-) : MaterialTextView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : MaterialTextView(context, attrs, defStyleAttr), SPViewStyling {
 
     init {
         getContext().withStyledAttributes(
