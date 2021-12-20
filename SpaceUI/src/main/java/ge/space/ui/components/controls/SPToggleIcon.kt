@@ -19,12 +19,6 @@ class SPToggleIcon @JvmOverloads constructor(
 
     val binding: SpToggleIconLayoutBinding
 
-    var toggleState: ToggleState = ToggleState.UNSELECTED
-    set(value) {
-        field = value
-        toggle()
-    }
-
     init {
         binding = SpToggleIconLayoutBinding.inflate(LayoutInflater.from(context), this)
     }
@@ -41,13 +35,10 @@ class SPToggleIcon @JvmOverloads constructor(
 
     }
 
-    private fun toggle() {
-        toggleState = if (toggleState == ToggleState.UNSELECTED)
-            ToggleState.SELECTED else ToggleState.UNSELECTED
+    override fun setSelected(selected: Boolean) {
+        super.setSelected(selected)
+        color = if (selected) R.attr.brand_primary
+        else android.R.color.transparent
     }
 
-    enum class ToggleState {
-        UNSELECTED,
-        SELECTED
-    }
 }

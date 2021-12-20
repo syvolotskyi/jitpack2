@@ -7,9 +7,6 @@
         <attr name="iconTint" format="color|reference" />
         <attr name="selectedIconTint" format="color|reference" />
         <attr name="android:src" />
-        <attr name="toggleState" format="enum">
-            <enum name="unselected" value="0" />
-            <enum name="selected" value="1" />
-        </attr>
+        <attr name="android:state_selected" />
     </declare-styleable>
 </resources>
