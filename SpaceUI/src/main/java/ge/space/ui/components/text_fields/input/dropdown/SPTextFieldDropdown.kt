@@ -13,9 +13,7 @@ import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.text_fields.input.base.SPContextViewType
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.view_factory.SPViewData
@@ -69,7 +67,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         if (inflateType == InflateType.WithIcon) {
             view.setHeight(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
             view.setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
-            leadingView = view
+            startView = view
         }
     }
 
