@@ -9,13 +9,13 @@ import androidx.core.content.withStyledAttributes
 import com.google.android.material.switchmaterial.SwitchMaterial
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
-import ge.space.ui.base.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 
 class SPToggleSwitch @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SwitchMaterial(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : SwitchMaterial(context, attrs, defStyleAttr), SPViewStyling {
 
     init {
         getContext().withStyledAttributes(attrs, R.styleable.SPToggleSwitch, defStyleAttr) {
