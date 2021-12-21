@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_p_16"
                 android:layout_marginTop="10dp"
-                android:text="Leading:" />
+                android:text="Start:" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_p_16"
                 android:layout_marginTop="10dp"
-                android:text="Trail:" />
+                android:text="End:" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -213,14 +213,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Phone mask" />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/dateMask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:checked="true"
-            android:text="Date mask" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/numberInput"

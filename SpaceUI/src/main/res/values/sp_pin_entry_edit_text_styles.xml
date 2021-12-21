@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPEditText.Masked" parent="SPTextField.Base">
+    <style name="SPEditText.Phone" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
         <item name="android:hint">XXXXXXXXX</item>
     </style>
@@ -8,6 +8,9 @@
     <style name="SPEditText.DateMasked" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
         <item name="android:hint">XXXXXX</item>
+        <item name="startView">none</item>
+        <item name="endView">none</item>
+        <item name="contentInputView">date_mask</item>
     </style>
 
     <style name="SPPinEntryEditText">

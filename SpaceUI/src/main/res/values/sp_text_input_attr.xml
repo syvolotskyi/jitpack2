@@ -10,7 +10,7 @@
         <attr name="android:text" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
-        <attr name="textAppearance" format="reference" />
+        <attr name="textAppearance" />
         <attr name="descriptionTextAppearance" />
         <attr name="labelTextAppearance" format="reference" />
         <attr name="titleText" format="string|reference" />
@@ -18,17 +18,23 @@
         <attr name="inputMandatory" format="boolean" />
         <attr name="inputTextLength" format="integer" />
 
-        <attr name="trailView" format="enum">
+        <attr name="endViewText" format="string|reference"/>
+        <attr name="startViewText" format="string|reference"/>
+
+        <attr name="endView" format="enum">
             <enum name="none" value="0" />
             <enum name="removeIcon" value="1" />
             <enum name="primaryChip" value="2" />
-        </attr>
-        <attr name="leadingView" format="enum">
-            <enum name="none" value="0" />
-            <enum name="primaryChip" value="1" />
+            <enum name="currency" value="3" />
         </attr>
 
-        <attr name="contextView" format="enum">
+        <attr name="startView" format="enum">
+            <enum name="none" value="0" />
+            <enum name="primaryChip" value="1" />
+            <enum name="phone_prefix" value="2" />
+        </attr>
+
+        <attr name="contentInputView" format="enum">
             <enum name="text" value="0" />
             <enum name="date_mask" value="1" />
             <enum name="number" value="2" />

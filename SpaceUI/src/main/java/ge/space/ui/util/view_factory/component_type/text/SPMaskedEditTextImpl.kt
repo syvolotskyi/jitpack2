@@ -16,6 +16,7 @@ class SPMaskedEditTextImpl(context: Context) : SPViewImpl<SPViewData.SPMaskedEdi
             mask = type.mask
             gravity = type.params?.gravity ?: Gravity.LEFT
             type.hint?.let { hint = it }
+
             background = null
             type.params?.let {
                 it.height?.let { this.height = it }

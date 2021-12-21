@@ -208,8 +208,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         throw RuntimeException("Mask must contain at least one representation char")
     }
 
-    private fun hasHint(): Boolean = hint != null
-
     /**
      * Generates positions for values characters. For instance:
      * Input data: mask = "+7(###)###-##-##

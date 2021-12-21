@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="SPTextField.Number" parent="SPTextField.Base">
-        <item name="contextView">number</item>
+        <item name="contentInputView">number</item>
     </style>
 
     <style name="SPTextField.TextCurrency" parent="SPTextField.Base">

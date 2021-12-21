@@ -7,13 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpPhoneInputShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsMaskedShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.base.setupDateInput
-import ge.space.ui.components.text_fields.input.base.setupNumberInput
 import ge.space.ui.components.text_fields.input.base.setupPhoneInput
 
 class SPMaskedComponent : ShowCaseComponent {
@@ -26,22 +25,21 @@ class SPMaskedComponent : ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val binding = SpPhoneInputShowcaseBinding.inflate(environment.requireLayoutInflater())
+            val binding =
+                SpLayoutTextFieldsMaskedShowcaseBinding.inflate(environment.requireLayoutInflater())
             with(binding) {
                 setupPhoneInputTextWithDone(phoneInput, environment.context)
-                setupPhoneInputTextWithDone(phoneInputSecond, environment.context)
             }
             with(binding.phoneInput) {
                 setupPhoneInput(
                     resources.getString(R.string.phone_prefix),
-                    resources.getString(R.string.phone_mask))
+                    resources.getString(R.string.phone_mask)
+                )
             }
-
-            binding.dateInputSecond.setupDateInput(binding.phoneInputSecond.context.getString(R.string.day_mask))
 
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.phoneInput.labelText = text.toString()
-                binding.phoneInputSecond.labelText = text.toString()
+                binding.dateInputSecond.labelText = text.toString()
             }
             return binding.root
 
