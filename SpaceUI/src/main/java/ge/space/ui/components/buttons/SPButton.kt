@@ -3,7 +3,6 @@ package ge.space.ui.components.buttons
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
-import android.graphics.PorterDuffColorFilter
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
@@ -22,6 +21,7 @@ import ge.space.ui.components.buttons.SPButton.IconDirection.*
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setCompoundDrawablesTint
 
 /**
  * Button view extended from abstract [SPButtonBaseView] generic that allows to change its configuration.
@@ -180,16 +180,7 @@ class SPButton @JvmOverloads constructor(
 
     private fun updateTextAppearance(textAppearance: Int) {
         binding.buttonLabel.setTextStyle(textAppearance)
-        updateDrawableColor(context.getColorFromTextAppearance(textAppearance))
-    }
-
-    private fun updateDrawableColor(color: Int) {
-        binding.buttonLabel.compoundDrawables.forEach {
-            it?.colorFilter = PorterDuffColorFilter(
-                color,
-                android.graphics.PorterDuff.Mode.SRC_IN
-            )
-        }
+        binding.buttonLabel.setCompoundDrawablesTint(context.getColorFromTextAppearance(textAppearance))
     }
 
     override fun updateText(text: String) {

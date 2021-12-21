@@ -10,8 +10,8 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.bank_cards.data.SPChipSize
-import ge.space.ui.util.extension.SPSetViewStyleInterface
 import ge.space.ui.util.view_factory.SPViewFactoryData
 
 /**
@@ -24,7 +24,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPViewFactoryData, SPSetViewStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewFactoryData, SPViewStyling {
 
     /**
      * Changes the size of the view

@@ -10,7 +10,7 @@ import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.base.SPSetViewStyleInterface
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
@@ -28,7 +28,7 @@ class SPMark @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPMark_Size40
-) : SPBaseView(context, attrs, defStyleAttr), SPSetViewStyleInterface {
+) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
 
 
     /**

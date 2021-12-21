@@ -2,17 +2,13 @@ package ge.space.ui.util.extension
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
-import android.os.Build
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.graphics.*
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.core.view.isGone
@@ -143,5 +139,21 @@ fun Canvas.drawBorder(
             color = borderColor
             strokeWidth = borderWidth
         })
+    }
+}
+
+/**
+ * Sets tint for all compound Drawables
+ *
+ * @param color color of drawables
+ */
+fun TextView.setCompoundDrawablesTint(
+    color: Int
+) {
+    compoundDrawables.forEach {
+        it?.colorFilter = PorterDuffColorFilter(
+            color,
+            PorterDuff.Mode.SRC_IN
+        )
     }
 }

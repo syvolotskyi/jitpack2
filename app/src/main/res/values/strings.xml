@@ -23,6 +23,9 @@
     <string name="vertical_button_description">Vertical button description</string>
     <string name="vertical_buttons">Vertical button</string>
 
+    <string name="status_textview_description">Status TextView description</string>
+    <string name="status_textview">Status TextView</string>
+
     <string name="iconic_button_description">Iconic button description</string>
     <string name="iconic_buttons">Iconic button</string>
 
@@ -131,4 +134,9 @@
     <string name="component_new_credit_card_description">Samples of new credit cards</string>
 
     <string name="day_mask">##/##/##</string>
+
+    <string name="status_message_success">Success</string>
+    <string name="status_message_error">Error</string>
+    <string name="status_message_pending">Pending</string>
+    <string name="status_message_info">Info</string>
 </resources>
