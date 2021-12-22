@@ -10,7 +10,7 @@
         <item name="android:hint">XXXXXX</item>
         <item name="startView">none</item>
         <item name="endView">none</item>
-        <item name="contentInputView">date_mask</item>
+        <item name="contentInputView">dateMask</item>
     </style>
 
     <style name="SPPinEntryEditText">
