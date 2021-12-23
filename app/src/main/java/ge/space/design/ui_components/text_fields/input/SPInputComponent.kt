@@ -79,23 +79,17 @@ class SPInputComponent : ShowCaseComponent {
                 itemBinding.rgContext.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
                         R.id.phoneMask ->
-                            itemBinding.simpleInput.setupContextViewByType(
+                            itemBinding.simpleInput.setupContentInputViewByType(
                                 SPTextInputViewType.MASK,
                                 context.getString(R.string.phone_mask),
                                 context.getString(R.string.enter_you_details_here)
                             )
-                        R.id.dateMask ->
-                            itemBinding.simpleInput.setupContextViewByType(
-                                SPTextInputViewType.MASK,
-                                context.getString(R.string.day_mask),
-                                context.getString(R.string.enter_you_details_here)
-                            )
                         R.id.numberInput ->
-                            itemBinding.simpleInput.setupContextViewByType(
+                            itemBinding.simpleInput.setupContentInputViewByType(
                                 SPTextInputViewType.NUMBER,
                                 inputHint = context.getString(R.string.enter_amount)
                             )
-                        else -> itemBinding.simpleInput.setupContextViewByType(
+                        else -> itemBinding.simpleInput.setupContentInputViewByType(
                             SPTextInputViewType.TEXT,
                             inputHint = context.getString(R.string.enter_you_details_here)
                         )

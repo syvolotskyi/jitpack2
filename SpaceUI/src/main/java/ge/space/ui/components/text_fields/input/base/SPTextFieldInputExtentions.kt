@@ -15,7 +15,7 @@ import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
  * Setup a view as input for number and currency
  */
 fun SPTextFieldInput.setupNumberInput(currency: String) {
-    setupContextViewByType(SPTextInputViewType.NUMBER)
+    setupContentInputViewByType(SPTextInputViewType.NUMBER)
     setupEndViewByType(SPEndViewType.CURRENCY, currency = currency)
 }
 
@@ -23,7 +23,7 @@ fun SPTextFieldInput.setupNumberInput(currency: String) {
  *  Setup a view as input for date
  */
 fun SPTextFieldInput.setupDateInput(mask: String) {
-    setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
+    setupContentInputViewByType(SPTextInputViewType.MASK, inputMask = mask)
     setupEndViewByType(SPEndViewType.NONE)
     setupStartViewByType(SPStartViewType.NONE)
 }
@@ -33,19 +33,19 @@ fun SPTextFieldInput.setupDateInput(mask: String) {
  */
 fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
     setupStartViewByType(SPStartViewType.PHONE_PREFIX, phonePrefix = prefix)
-    setupContextViewByType(SPTextInputViewType.MASK, inputMask = mask)
+    setupContentInputViewByType(SPTextInputViewType.MASK, inputMask = mask, hint)
     setupEndViewByType(SPEndViewType.NONE)
 }
 
 /**
  * Setup a Context View due to type
  */
-fun SPTextFieldInput.setupContextViewByType(
+fun SPTextFieldInput.setupContentInputViewByType(
     type: SPTextInputViewType,
     inputMask: String = mask,
     inputHint: String = hint
 ) {
-    contextView = when (type) {
+    contentInputView = when (type) {
         SPTextInputViewType.TEXT -> SPViewData.SPEditTextData(
             textAppearance,
             inputHint
@@ -95,7 +95,7 @@ fun SPTextFieldInput.setupEndViewByType(
 }
 
 /**
- * Setup a leadingView due to type
+ * Setup a startView due to type
  */
 fun SPTextFieldInput.setupStartViewByType(
     type: SPStartViewType,
