@@ -271,13 +271,17 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
         getInt(R.styleable.SPTextFieldBaseView_startView, SPBaseView.DEFAULT_OBTAIN_VAL)
-            .apply {
-                setupStartViewByType(SPStartViewType.values()[this])
+            .handleAttributeAction(
+                SPBaseView.NO_OBTAIN_VAL
+            ) {
+                handleStartView(it)
             }
 
-        getInt(R.styleable.SPTextFieldBaseView_endView, SPBaseView.DEFAULT_OBTAIN_VAL)
-            .apply {
-                setupEndViewByType(SPEndViewType.values()[this])
+        getInt(R.styleable.SPTextFieldBaseView_endView, SPBaseView.NO_OBTAIN_VAL)
+            .handleAttributeAction(
+                SPBaseView.NO_OBTAIN_VAL
+            ) {
+                handleEndView(it)
             }
 
         getInt(R.styleable.SPTextFieldBaseView_contentInputView, SPBaseView.NO_OBTAIN_VAL)
@@ -293,6 +297,32 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 }
             }
         handleBorderColor()
+    }
+
+    private fun TypedArray.handleStartView(it: Int) {
+        val startType = SPStartViewType.values()[it]
+        if (startType == SPStartViewType.PHONE_PREFIX) {
+            getString(R.styleable.SPTextFieldBaseView_startViewText)
+                ?: context.getString(R.string.default_phone_prefix)
+                    .handleAttributeAction(EMPTY_TEXT) {
+                        setupStartViewByType(startType, phonePrefix = it)
+                    }
+        } else {
+            setupStartViewByType(startType)
+        }
+    }
+
+    private fun TypedArray.handleEndView(it: Int) {
+        val endType = SPEndViewType.values()[it]
+        if (endType == SPEndViewType.CURRENCY) {
+            getString(R.styleable.SPTextFieldBaseView_endViewText)
+                ?: context.getString(R.string.default_currency)
+                    .handleAttributeAction(EMPTY_TEXT) {
+                        setupEndViewByType(endType, currency = it)
+                    }
+        } else {
+            setupEndViewByType(endType)
+        }
     }
 
     override fun setViewStyle(newStyle: Int) {
