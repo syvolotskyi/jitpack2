@@ -98,7 +98,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             )
             inflateType = InflateType.values()[inflateId]
 
-            contextView = SPViewData.SPTextData(text, R.style.h700_bold_caps_text_field, SPViewData.SPViewDataParams(gravity = Gravity.START), null).createView(context) as TextView
+            contentInputView = SPViewData.SPTextData(text, R.style.h700_bold_caps_text_field, SPViewData.SPViewDataParams(gravity = Gravity.START), null).createView(context) as TextView
             recycle()
         }
 

@@ -227,16 +227,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
         imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldBaseView_inputMandatory, false)
         if (contentInputView is EditText) {
-            (contentInputView as EditText).setTextLength(
                 getInt(
                     R.styleable.SPTextFieldBaseView_inputTextLength,
                     DEFAULT_TEXT_LENGTH
                 ).handleAttributeAction(
                     DEFAULT_TEXT_LENGTH
                 ) {
-                    contentInputView.setTextLength(it)
+                    (contentInputView as EditText).setTextLength(it)
                 }
-            )
         }
 
         getString(R.styleable.SPTextFieldBaseView_android_hint).orEmpty()
