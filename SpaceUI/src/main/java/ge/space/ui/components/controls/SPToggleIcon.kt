@@ -42,13 +42,12 @@ class SPToggleIcon @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPToggleIcon_android_state_selected, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                binding.toggleIcon.isSelected = it != DEFAULT_OBTAIN_VAL
+                binding.toggleIcon.isSelected = getBoolean(it, false)
             }
 
         getResourceId(R.styleable.SPToggleIcon_backgroundColor, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                val bgColor = getColor(it, DEFAULT_OBTAIN_VAL)
-                binding.toggleIcon.setBackgroundColor(bgColor)
+                binding.toggleIcon.setBackgroundColor(getColor(it, DEFAULT_OBTAIN_VAL))
             }
 
         getResourceId(R.styleable.SPToggleIcon_selectedBackgroundColor, DEFAULT_OBTAIN_VAL)
