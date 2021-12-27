@@ -12,6 +12,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpToggleIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.util.extension.handleAttributeAction
 
 class SPToggleIcon @JvmOverloads constructor(
     context: Context,
@@ -19,23 +20,51 @@ class SPToggleIcon @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
 
-    val binding: SpToggleIconLayoutBinding
+    val binding = SpToggleIconLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
-        binding = SpToggleIconLayoutBinding.inflate(LayoutInflater.from(context), this)
         isCircle = true
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
         val styleAttrs = context.theme.obtainStyledAttributes(newStyle, R.styleable.SPToggleIcon)
         with(styleAttrs) {
-            styledAttributes()
+            withStyledAttributes()
             recycle()
         }
     }
 
-    private fun TypedArray.styledAttributes() {
+    private fun TypedArray.withStyledAttributes() {
+        getResourceId(R.styleable.SPToggleIcon_android_src, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                binding.toggleIcon.setImageResource(it)
+            }
 
+        getResourceId(R.styleable.SPToggleIcon_android_state_selected, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                binding.toggleIcon.isSelected = it != DEFAULT_OBTAIN_VAL
+            }
+
+        getResourceId(R.styleable.SPToggleIcon_backgroundColor, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                val bgColor = getColor(it, DEFAULT_OBTAIN_VAL)
+                binding.toggleIcon.setBackgroundColor(bgColor)
+            }
+
+        getResourceId(R.styleable.SPToggleIcon_selectedBackgroundColor, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+
+            }
+
+        getResourceId(R.styleable.SPToggleIcon_iconTint, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+
+            }
+
+        getResourceId(R.styleable.SPToggleIcon_selectedIconTint, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+
+            }
     }
 
     override fun setSelected(selected: Boolean) {
