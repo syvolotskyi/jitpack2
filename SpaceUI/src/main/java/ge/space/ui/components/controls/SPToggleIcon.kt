@@ -52,17 +52,19 @@ class SPToggleIcon @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPToggleIcon_selectedBackgroundColor, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-
+                binding.toggleIcon.setBackgroundColor(getColor(it, DEFAULT_OBTAIN_VAL))
             }
 
         getResourceId(R.styleable.SPToggleIcon_iconTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-
+                binding.toggleIcon.colorFilter = PorterDuffColorFilter(R.attr.brand_primary,
+                    PorterDuff.Mode.SRC_IN)
             }
 
         getResourceId(R.styleable.SPToggleIcon_selectedIconTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-
+                binding.toggleIcon.colorFilter = PorterDuffColorFilter(R.attr.static_white,
+                    PorterDuff.Mode.SRC_IN)
             }
     }
 

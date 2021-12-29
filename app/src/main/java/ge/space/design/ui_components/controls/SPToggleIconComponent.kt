@@ -8,7 +8,9 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.buttons.iconic_button.SPIconicButtonStyles
+import ge.space.spaceui.databinding.SpToggleIconLayoutBinding
 import ge.space.ui.components.buttons.SPButtonIconic
+import ge.space.ui.components.controls.SPToggleIcon
 
 class SPToggleIconComponent : ShowCaseComponent {
     override fun getNameResId() = R.string.toggle_icon
@@ -22,19 +24,16 @@ class SPToggleIconComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPButtonIconic>()
+            val buttons = mutableListOf<SPToggleIcon>()
 
-            SPIconicButtonStyles.list.onEach { buttonSample ->
+            SPToggleIconStyles.list.onEach { buttonSample ->
 
-                val resId = buttonSample.resId
-
-                val itemBinding = SpItemIconicButtonsShowcaseBinding.inflate(
+                val itemBinding = SpToggleIconLayoutBinding.inflate(
                     environment.requireLayoutInflater(),
-                    layoutBinding.buttonsLayout,
-                    true
+                    layoutBinding.buttonsLayout
                 )
 
-                with(itemBinding.buttonName) {
+                /*with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)
                     text = resName.substringAfter(".", resName)
                 }
@@ -53,10 +52,10 @@ class SPToggleIconComponent : ShowCaseComponent {
 
                 itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->
                     itemBinding.button.isEnabled = !isChecked
-                }
+                }*/
 
 
-                itemBinding.button.setViewStyle(buttonSample.resId)
+                //itemBinding.button.setViewStyle(buttonSample.styleId)
             }
             return layoutBinding.root
 
