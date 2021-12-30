@@ -10,6 +10,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.util.extension.handleAttributeAction
 
 class SPToggleSwitch @JvmOverloads constructor(
     context: Context,
@@ -32,7 +33,47 @@ class SPToggleSwitch @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledAttributes() {
+        getResourceId(R.styleable.SPToggleSwitch_showText, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                showText = getBoolean(it, false)
+            }
 
+        getResourceId(R.styleable.SPToggleSwitch_android_state_enabled, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                isEnabled = getBoolean(it, true)
+            }
+
+        getResourceId(R.styleable.SPToggleSwitch_android_state_selected, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                isSelected = getBoolean(it, false)
+            }
+
+        getResourceId(R.styleable.SPToggleSwitch_android_thumb, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                setThumbResource(it)
+            }
+
+        getResourceId(R.styleable.SPToggleSwitch_track, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                setTrackResource(it)
+            }
+
+        getResourceId(R.styleable.SPToggleSwitch_thumbTint, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                //thumbDrawable.colorFilter = PorterDuffColorFilter
+            }
+
+        getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+
+            }
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+    }
+
+    override fun setSelected(selected: Boolean) {
+        super.setSelected(selected)
+    }
 }
