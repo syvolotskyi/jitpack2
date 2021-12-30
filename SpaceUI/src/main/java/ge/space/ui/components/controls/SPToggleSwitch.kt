@@ -1,6 +1,7 @@
 package ge.space.ui.components.controls
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
@@ -21,7 +22,6 @@ class SPToggleSwitch @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(attrs, R.styleable.SPToggleSwitch, defStyleAttr) {
             setViewStyle(getResourceId(R.styleable.SPToggleSwitch_style, DEFAULT_OBTAIN_VAL))
-            withStyledAttributes()
         }
     }
 
@@ -60,12 +60,13 @@ class SPToggleSwitch @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPToggleSwitch_thumbTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                //thumbDrawable.colorFilter = PorterDuffColorFilter
+                // think about using ColorStateList constructor
+                thumbTintList = ColorStateList.valueOf(getColor(it, DEFAULT_OBTAIN_VAL))
             }
 
         getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-
+                trackTintList = ColorStateList.valueOf(getColor(it, DEFAULT_OBTAIN_VAL))
             }
     }
 
