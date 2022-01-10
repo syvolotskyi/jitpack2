@@ -50,6 +50,9 @@
     <string name="dropdown">Dropdown</string>
     <string name="dropdown_desc">Dropdown desc</string>
 
+    <string name="textArea">Text Area</string>
+    <string name="textArea_desc">Text Area desc</string>
+
     <string name="number_input">Number input</string>
     <string name="number_input_desc">Enter sum more than 120.0 to show distractive attr</string>
 

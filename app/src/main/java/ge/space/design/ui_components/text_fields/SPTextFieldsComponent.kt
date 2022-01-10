@@ -2,6 +2,7 @@ package ge.space.design.ui_components.text_fields
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
+import ge.space.design.ui_components.text_fields.area.SPTextAreaComponent
 import ge.space.design.ui_components.text_fields.input.SPInputComponent
 import ge.space.design.ui_components.text_fields.number.SPNumberComponent
 import ge.space.design.ui_components.text_fields.otp.SPOtpComponent
@@ -21,6 +22,7 @@ class SPTextFieldsComponent : ShowCaseComponent {
             SPInputComponent(),
             SPNumberComponent(),
             SPMaskedComponent(),
+            SPTextAreaComponent(),
         )
     }
 }

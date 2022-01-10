@@ -10,6 +10,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
+import ge.space.spaceui.databinding.SpTextAreaLayoutBinding
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 
 class SPTextAreaView @JvmOverloads constructor(
@@ -22,22 +23,17 @@ class SPTextAreaView @JvmOverloads constructor(
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
      */
-    private  val contentBilding by lazy {
-        SpTextFieldLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+    private  val contentBinding by lazy {
+        SpTextAreaLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
-
-    var contentView: FrameLayout? = null
-        set(value) {
-            field = value
-
-            handleContentInputView()
-        }
+    init {
+        handleContentInputView()
+    }
 
     private fun handleContentInputView() {
-        binding.flInputFieldContainer.addContentView(contentView)
-        contentInputView.setOnFocusChangeListener { _, focused ->
-            handleBorderColor()
+        binding.flInputFieldContainer.addContentView(contentBinding.root)
+        contentBinding..setOnFocusChangeListener { _, focused ->
             onFocusChangeListener(focused)
         }
     }
