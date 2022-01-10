@@ -31,8 +31,9 @@ import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 class SPTextFieldDropdown<T> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldInput(context, attrs, defStyleAttr) {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Dropdown
+) : SPTextFieldInput(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Binding a item view after selecting
