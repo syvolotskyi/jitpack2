@@ -58,7 +58,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a button title.
      */
-    var text: String = EMPTY_TEXT
+    open var text: String = EMPTY_TEXT
         get() = contentInputView.text.toString()
         set(value) {
             field = value
@@ -70,7 +70,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a button hint.
      */
-    var hint: String = EMPTY_TEXT
+    open var hint: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -158,12 +158,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    var contentInputView: EditText = EditText(context)
+    open var contentInputView: EditText = EditText(context)
         set(value) {
             field = value
 
             handleContentInputView()
         }
+
 
     override var isDistractive: Boolean = false
         set(value) {
@@ -175,7 +176,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
      */
-    protected val binding by lazy {
+    protected open val binding by lazy {
         SpTextFieldLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
@@ -349,7 +350,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Allows to update a text appearance by styles
      */
-    private fun updateTextAppearance(textAppearance: Int) =
+    protected fun updateTextAppearance(textAppearance: Int) =
         contentInputView.setTextStyle(textAppearance)
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
@@ -399,10 +400,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
         if (view is SPEditTextMasked)
             view.mask = view.mask
         else
-            view.setText(EMPTY_TEXT)
+           text = EMPTY_TEXT
     }
 
-    private fun FrameLayout.addContentView(view: View?, defaultView: View? = null) {
+    protected fun FrameLayout.addContentView(view: View?, defaultView: View? = null) {
         removeAllViews()
         if (view != null) {
             addView(view)
@@ -420,7 +421,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
-    private fun handleBorderColor() {
+    protected fun handleBorderColor() {
         binding.flContainer.changeBorder(
             when {
                 !isEnabled ->
