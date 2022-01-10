@@ -16,6 +16,7 @@
         <attr name="titleText" format="string|reference" />
         <attr name="descriptionText" format="string|reference" />
         <attr name="inputMandatory" format="boolean" />
+        <attr name="showInfoView" format="boolean" />
         <attr name="inputTextLength" format="integer" />
 
         <attr name="endViewText" format="string|reference"/>

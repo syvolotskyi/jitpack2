@@ -103,6 +103,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
     /**
+     * Sets a visibility for info button
+     */
+    private var showInfoButton = false
+        set(value) {
+            field = value
+
+            binding.infoImage.isVisible = field
+        }
+
+    /**
      * Sets a imeOption.
      */
     var imeOption: Int = 0
@@ -225,6 +235,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 labelText = it
             }
         imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
+        imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldBaseView_inputMandatory, false)
         if (contentInputView is EditText) {
                 getInt(
@@ -344,6 +355,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
      */
     fun setTrailClickListener(onClickListener: () -> Unit? = {}) {
         endView?.onClick { onClickListener() }
+    }
+
+    /**
+     * Sets a info click listener.
+     */
+    fun setInfoListener(onClickListener: () -> Unit? = {}) {
+        showInfoButton = true
+        binding.infoImage.onClick { onClickListener() }
     }
 
     /**
