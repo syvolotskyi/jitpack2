@@ -1,10 +1,8 @@
 package ge.space.ui.components.text_fields.input.dropdown
 
 import android.content.Context
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.annotation.AttrRes
@@ -14,7 +12,9 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.text_fields.input.base.SPEndViewType
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+import ge.space.ui.components.text_fields.input.base.setupEndViewByType
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
@@ -98,8 +98,14 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             )
             inflateType = InflateType.values()[inflateId]
 
-            contentInputView = SPViewData.SPTextData(text, R.style.h700_bold_caps_text_field, SPViewData.SPViewDataParams(gravity = Gravity.START), null).createView(context) as TextView
-            recycle()
+            contentInputView = SPViewData.SPTextData(
+                text,
+                R.style.h700_bold_caps_text_field,
+                SPViewData.SPViewDataParams(gravity = Gravity.START),
+                null
+            ).createView(context) as TextView
+
+            setupEndViewByType(SPEndViewType.IMAGE, R.drawable.ic_chevron_down_24_regular)
         }
 
         setOnClickListener { onClickListener(this) }
