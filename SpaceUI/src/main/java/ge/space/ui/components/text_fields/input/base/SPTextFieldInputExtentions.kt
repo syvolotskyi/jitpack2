@@ -38,7 +38,7 @@ fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
 }
 
 /**
- * Setup a Context View due to type
+ * Setup a Content View due to type
  */
 fun SPTextFieldInput.setupContentInputViewByType(
     type: SPTextInputViewType,
