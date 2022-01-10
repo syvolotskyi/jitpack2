@@ -28,7 +28,7 @@ fun getCurrencyViewData(
  */
 fun getNumberEditTextViewData(
     context: Context,
-    hint: String,
+    hint: String?,
     @StyleRes textStyle: Int = R.style.h600_bold_caps_brand_primary
 ): SPViewData =
     SPViewData.SPEditTextData(
