@@ -51,10 +51,13 @@ fun SPTextFieldInput.setupContentInputViewByType(
         is SPTextInputViewType.SPMaskViewType -> SPViewData.SPMaskedEditTextData(
             textAppearance,
             type.mask,
-            type.hint
+            type.hint,
+            SPViewData.SPViewDataParams(
+                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
+                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
+            )
         ).createView(context)
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
-            context,
             type.hint
         ).createView(context)
     } as EditText)
@@ -104,9 +107,10 @@ fun SPTextFieldInput.setupStartViewByType(
             type.phonePrefix,
             textAppearance,
             SPViewData.SPViewDataParams(
-                gravity = Gravity.END,
+                gravity = Gravity.END or Gravity.CENTER_VERTICAL,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4)
+                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
+                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
         )
         is SPStartViewType.SPImageViewType -> SPViewData.SPImageResourcesData(

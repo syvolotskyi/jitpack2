@@ -171,7 +171,7 @@ sealed class SPViewData : Parcelable {
     data class SPViewDataParams(
         var height: Int? = null,
         var width: Int? = null,
-        var gravity: Int = Gravity.CENTER,
+        var gravity: Int = Gravity.LEFT or Gravity.CENTER_VERTICAL,
         var paddingStart: Int = 0,
         var paddingEnd: Int = 0,
         var paddingTop: Int = 0,

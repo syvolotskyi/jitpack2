@@ -28,7 +28,6 @@ fun getCurrencyViewData(
  * Returns a SPViewData object with preset styles and paddings which are using for number input fields.
  */
 fun getNumberEditTextViewData(
-    context: Context,
     hint: String?,
     @StyleRes textStyle: Int = R.style.h600_bold_caps_brand_primary
 ): SPViewData =
@@ -38,8 +37,6 @@ fun getNumberEditTextViewData(
         inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL,
         lines = 1,
         params = SPViewData.SPViewDataParams(
-            paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-            paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
             gravity = Gravity.LEFT
         )
     )
