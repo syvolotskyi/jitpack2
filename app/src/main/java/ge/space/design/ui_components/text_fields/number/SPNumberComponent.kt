@@ -40,6 +40,7 @@ class SPNumberComponent : ShowCaseComponent {
 
                 tfNumber.setupNumberInput(EURO)
                 tfNumberSecond.setupNumberInput(EURO)
+                tfNumberSecond.setupNumberInput(EURO)
 
                 cbDisable.setOnCheckedChangeListener { _, isChecked ->
                    tfNumber.isEnabled = !isChecked

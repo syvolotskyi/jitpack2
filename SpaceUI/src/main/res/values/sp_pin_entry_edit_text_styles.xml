@@ -2,7 +2,7 @@
 <resources>
     <style name="SPEditText.Phone" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
-        <item name="android:hint">XXXXXXXXX</item>
+        <item name="android:hint">XXXXXXXXXX</item>
     </style>
 
     <style name="SPEditText.DateMasked" parent="SPTextField.Base">
@@ -11,6 +11,11 @@
         <item name="startView">none</item>
         <item name="endView">none</item>
         <item name="contentInputView">dateMask</item>
+    </style>
+
+    <style name="SPEditText.CardMasked" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
+        <item name="android:hint">XXXXXXXXXXXXXXXX</item>
     </style>
 
     <style name="SPPinEntryEditText">

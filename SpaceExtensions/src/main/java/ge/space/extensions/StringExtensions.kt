@@ -15,6 +15,11 @@ import android.util.Patterns
 */
 const val EMPTY_TEXT = ""
 
+/*
+* Return an space string
+*/
+const val SPACE = " "
+
 fun String.removeSpanableTag(): String {
     return this.replace("[", "").replace("]", "")
 }

@@ -101,7 +101,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
+                    android:checked="true"
                     android:text="Primary input" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/primarySimpleHint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:enabled="true"
+                    android:text="Primary input with hint" />
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/primaryRemovableSimple"
                     android:layout_width="wrap_content"
@@ -109,13 +117,14 @@
                     android:layout_marginStart="10dp"
                     android:enabled="true"
                     android:text="Primary input removable" />
+
                 <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/primaryIconSimple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
-                    android:text="Primary input mask date with icon" />
+                    android:text="Primary with message icon and removable" />
 
             </RadioGroup>
         </LinearLayout>

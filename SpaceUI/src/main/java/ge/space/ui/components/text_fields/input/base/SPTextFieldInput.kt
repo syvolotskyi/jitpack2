@@ -295,7 +295,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     }
                     SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
                     SPTextInputViewType.NUMBER -> setupContentInputViewByType(
-                        SPTextInputViewType.SPNumberViewType()
+                        SPTextInputViewType.SPNumberViewType(hint)
                     )
                 }
             }
