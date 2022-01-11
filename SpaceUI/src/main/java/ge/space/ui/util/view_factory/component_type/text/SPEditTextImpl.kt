@@ -16,8 +16,13 @@ class SPEditTextImpl(context: Context) : SPViewImpl<SPViewData.SPEditTextData>(c
             type.params?.let {
                 it.height?.let { this.height = it }
                 it.width?.let { this.width = it }
-                setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)
             }
+            setPadding(
+                type.params?.paddingStart ?: 0,
+                type.params?.paddingTop ?: 0,
+                type.params?.paddingEnd ?: 0,
+                type.params?.paddingBottom ?: 0
+            )
             type.style?.let { setTextStyle(it) }
             type.lines?.let { maxLines = it }
             type.hint?.let { hint = it }
