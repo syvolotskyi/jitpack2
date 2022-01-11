@@ -277,7 +277,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 handleStartView(it)
             }
 
-        getInt(R.styleable.SPTextFieldBaseView_endView, SPBaseView.NO_OBTAIN_VAL)
+        getInt(R.styleable.SPTextFieldBaseView_endView,  SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
             ) {
