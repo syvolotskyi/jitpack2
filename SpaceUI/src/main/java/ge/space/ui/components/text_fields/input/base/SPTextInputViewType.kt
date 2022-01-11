@@ -1,14 +1,25 @@
 package ge.space.ui.components.text_fields.input.base
 
-enum class SPTextInputViewType {
-    TEXT, MASK, NUMBER
-}
+import android.text.InputType
 
-enum class SPStartViewType {
-    NONE, CARD, PHONE_PREFIX, IMAGE
-}
+sealed class SPTextInputViewType {
+    data class SPTextViewType(
+        var hint: String? = null,
+        var inputType: Int = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+    ) : SPTextInputViewType()
 
-enum class SPEndViewType {
-    NONE, CARD, REMOVABLE, CURRENCY, IMAGE
-}
+    data class SPMaskViewType(
+        var mask: String,
+        var hint: String? = null
+    ) : SPTextInputViewType()
 
+    data class SPNumberViewType(
+        var hint: String? = null
+    ) : SPTextInputViewType()
+
+    companion object {
+        const val TEXT = 0
+        const val MASKED = 1
+        const val NUMBER = 2
+    }
+}

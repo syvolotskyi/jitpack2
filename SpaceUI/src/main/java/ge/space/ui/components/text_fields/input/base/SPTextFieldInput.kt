@@ -289,41 +289,55 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
             ) {
-                when (SPTextInputViewType.values()[it]) {
-                    SPTextInputViewType.MASK -> {
+                when (it) {
+                    SPTextInputViewType.MASKED -> {
                         mask = context.getString(R.string.day_mask)
-                        setupContentInputViewByType(SPTextInputViewType.MASK, inputMask = mask)
+                        setupContentInputViewByType(SPTextInputViewType.SPMaskViewType(mask))
                     }
-                    else -> setupContentInputViewByType(SPTextInputViewType.values()[it])
+                    SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
+                    SPTextInputViewType.NUMBER -> setupContentInputViewByType(
+                        SPTextInputViewType.SPNumberViewType()
+                    )
                 }
             }
         handleBorderColor()
     }
 
     private fun TypedArray.handleStartView(it: Int) {
-        val startType = SPStartViewType.values()[it]
-        if (startType == SPStartViewType.PHONE_PREFIX) {
-            getString(R.styleable.SPTextFieldBaseView_startViewText)
-                ?: context.getString(R.string.default_phone_prefix)
-                    .handleAttributeAction(EMPTY_TEXT) {
-                        setupStartViewByType(startType, phonePrefix = it)
-                    }
-        } else {
-            setupStartViewByType(startType)
+        val type: SPStartViewType = when (it) {
+            SPStartViewType.PHONE_PREFIX -> {
+                if (getPhonePrefixFromAttr() != EMPTY_TEXT) {
+                    SPStartViewType.SPPhonePrefixViewType(getPhonePrefixFromAttr())
+                } else SPStartViewType.SPNoneViewType
+            }
+            SPStartViewType.IMAGE -> SPStartViewType.SPImageViewType()
+            SPStartViewType.CARD -> SPStartViewType.SPCardViewType
+            else -> SPStartViewType.SPNoneViewType
         }
+        setupStartViewByType(type)
     }
 
+    private fun TypedArray.getPhonePrefixFromAttr() =
+        (getString(R.styleable.SPTextFieldBaseView_startViewText)
+            ?: context.getString(R.string.default_phone_prefix))
+
+    private fun TypedArray.getCurrencyFromAttr() =
+        (getString(R.styleable.SPTextFieldBaseView_endViewText)
+            ?: context.getString(R.string.default_currency))
+
     private fun TypedArray.handleEndView(it: Int) {
-        val endType = SPEndViewType.values()[it]
-        if (endType == SPEndViewType.CURRENCY) {
-            getString(R.styleable.SPTextFieldBaseView_endViewText)
-                ?: context.getString(R.string.default_currency)
-                    .handleAttributeAction(EMPTY_TEXT) {
-                        setupEndViewByType(endType, currency = it)
-                    }
-        } else {
-            setupEndViewByType(endType)
+        val endType = when (it) {
+            SPEndViewType.CURRENCY -> if (getCurrencyFromAttr() != EMPTY_TEXT) {
+                SPEndViewType.SPCurrencyViewType(getCurrencyFromAttr())
+            } else {
+                SPEndViewType.SPNoneViewType
+            }
+            SPEndViewType.CARD -> SPEndViewType.SPCardViewType
+            SPEndViewType.IMAGE -> SPEndViewType.SPImageViewType()
+            SPEndViewType.REMOVABLE -> SPEndViewType.SPRemovableViewType
+            else -> SPEndViewType.SPNoneViewType
         }
+        setupEndViewByType(endType)
     }
 
     override fun setViewStyle(newStyle: Int) {

@@ -9,10 +9,17 @@ import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
+import ge.space.ui.components.buttons.SPButton.IconDirection.Right
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 sealed class SPViewData : Parcelable {
+
+    /**
+     * Create an image view with resource
+     *
+     * @property params helps to setup view params for view
+     */
     @Parcelize
     data class SPImageResourcesData(
         @DrawableRes val res: Int,
@@ -22,12 +29,23 @@ sealed class SPViewData : Parcelable {
     ) :
         SPViewData()
 
+    /**
+     * Create an image view form url
+     *
+     * @property styleRes applies a style for view
+     */
     @Parcelize
     data class SPImageUrlData(
         val url: String,
         var roundedCorners: Float = 0f
     ) : SPViewData()
 
+    /**
+     * Create a text view with style
+     *
+     * @property params helps to setup view params for view
+     * @property styleRes applies a style for view
+     */
     @Parcelize
     data class SPTextData(
         val initials: String,
@@ -37,6 +55,12 @@ sealed class SPViewData : Parcelable {
     ) :
         SPViewData()
 
+    /**
+     * Create an edit text view
+     *
+     * @property params helps to setup view params for view
+     * @property styleRes applies a style for view
+     */
     @Parcelize
     data class SPEditTextData(
         @StyleRes var style: Int? = null,
@@ -47,6 +71,12 @@ sealed class SPViewData : Parcelable {
     ) :
         SPViewData()
 
+    /**
+     * Create a masked edit text (for example phone or date)
+     *
+     * @property params helps to setup view params for view
+     * @property styleRes applies a style for view
+     */
     @Parcelize
     data class SPMaskedEditTextData(
         @StyleRes var style: Int? = null,
@@ -56,6 +86,11 @@ sealed class SPViewData : Parcelable {
     ) :
         SPViewData()
 
+    /**
+     * Create an empty chip
+     *
+     * @property styleRes applies a style for view, default is R.style.SPBankCardView_Chip_Base
+     */
     @Parcelize
     data class SPEmptyChipData(
         val chipHeight: Int,
@@ -64,6 +99,11 @@ sealed class SPViewData : Parcelable {
         @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base
     ) : SPViewData()
 
+    /**
+     * Create an chip with drawable
+     *
+     * @property styleRes applies a style for view,
+     */
     @Parcelize
     data class SPChipData(
         val chipHeight: Int,
@@ -72,6 +112,12 @@ sealed class SPViewData : Parcelable {
         @StyleRes val styleRes: Int
     ) : SPViewData()
 
+    /**
+     * Create a primary chip
+     *
+     * @property params helps to setup view params for view
+     * @property styleRes applies a style for view, default is R.style.SPBankCardView_Chip_Base
+     */
     @Parcelize
     data class SPrimaryChipData(
         val chipHeight: Int,
@@ -80,6 +126,11 @@ sealed class SPViewData : Parcelable {
         var params: SPViewDataParams? = null,
     ) : SPViewData()
 
+    /**
+     * Create a secondary chip
+     *
+     * @property styleRes applies a style for view
+     */
     @Parcelize
     data class SPSecondaryChipData(
         val chipHeight: Int,
@@ -91,6 +142,11 @@ sealed class SPViewData : Parcelable {
     ) :
         SPViewData()
 
+    /**
+     * Create a digital chip
+     *
+     * @property styleRes applies a style for view
+     */
     @Parcelize
     data class SPDigitalChipData(
         val chipHeight: Int,
@@ -100,14 +156,22 @@ sealed class SPViewData : Parcelable {
     ) :
         SPViewData()
 
+    /**
+     * Create a credit card
+     *
+     * @property chipSize it's SPChipSize enum, can either Big, Medium or Small
+     */
     @Parcelize
     data class SPNewCreditCards(val chipSize: SPChipSize) : SPViewData()
 
+    /**
+     * View params which is used in others data class, helps to setup view params for view
+     */
     @Parcelize
     data class SPViewDataParams(
         var height: Int? = null,
         var width: Int? = null,
-        var gravity: Int = Gravity.CENTER,
+        var gravity: Int = Gravity.LEFT or Gravity.CENTER_VERTICAL,
         var paddingStart: Int = 0,
         var paddingEnd: Int = 0,
         var paddingTop: Int = 0,

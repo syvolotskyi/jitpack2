@@ -80,18 +80,17 @@ class SPInputComponent : ShowCaseComponent {
                     when (checkedId) {
                         R.id.phoneMask ->
                             itemBinding.simpleInput.setupContentInputViewByType(
-                                SPTextInputViewType.MASK,
-                                context.getString(R.string.phone_mask),
-                                context.getString(R.string.enter_you_details_here)
+                                SPTextInputViewType.SPMaskViewType(
+                                    mask = context.getString(R.string.phone_mask),
+                                    hint = context.getString(R.string.enter_you_details_here)
+                                )
                             )
                         R.id.numberInput ->
                             itemBinding.simpleInput.setupContentInputViewByType(
-                                SPTextInputViewType.NUMBER,
-                                inputHint = context.getString(R.string.enter_amount)
+                                SPTextInputViewType.SPNumberViewType(hint = context.getString(R.string.enter_amount)),
                             )
                         else -> itemBinding.simpleInput.setupContentInputViewByType(
-                            SPTextInputViewType.TEXT,
-                            inputHint = context.getString(R.string.enter_you_details_here)
+                            SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here))
                         )
                     }
                 }
@@ -99,18 +98,17 @@ class SPInputComponent : ShowCaseComponent {
                 itemBinding.rgLeading.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
                         R.id.primaryChip -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.CARD
+                            SPStartViewType.SPCardViewType
                         )
                         R.id.phone -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.PHONE_PREFIX,
-                            phonePrefix = context.getString(R.string.phone_prefix)
+                            SPStartViewType.SPPhonePrefixViewType(phonePrefix = context.getString(R.string.phone_prefix))
                         )
                         R.id.image -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.IMAGE, icon = R.drawable.ic_chat_message_24_regular
+                            SPStartViewType.SPImageViewType(icon = R.drawable.ic_chat_message_24_regular)
                         )
 
                         R.id.none -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.NONE
+                            SPStartViewType.SPNoneViewType
                         )
                     }
                 }
@@ -118,17 +116,16 @@ class SPInputComponent : ShowCaseComponent {
                 itemBinding.rgTrail.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
                         R.id.trailPrimaryChip -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.CARD
+                            SPEndViewType.SPCardViewType
                         )
                         R.id.rbCurrency -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.CURRENCY,
-                            currency = "$"
+                            SPEndViewType.SPCurrencyViewType(currency = "$")
                         )
                         R.id.removeIcon -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.REMOVABLE
+                            SPEndViewType.SPRemovableViewType
                         )
                         R.id.noneTrail -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.NONE
+                            SPEndViewType.SPNoneViewType
                     )
                     }
                 }
