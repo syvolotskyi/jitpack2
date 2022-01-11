@@ -106,13 +106,13 @@ fun SPTextFieldInput.setupStartViewByType(
             SPViewData.SPViewDataParams(
                 gravity = Gravity.END,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
-                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1),
+                paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4)
             )
         )
         is SPStartViewType.SPImageViewType -> SPViewData.SPImageResourcesData(
             type.icon,
             SPViewData.SPViewDataParams(
-                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
+                paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
             )
         )
