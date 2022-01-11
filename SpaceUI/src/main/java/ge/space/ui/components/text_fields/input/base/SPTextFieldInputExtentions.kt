@@ -46,7 +46,11 @@ fun SPTextFieldInput.setupContentInputViewByType(
         is SPTextInputViewType.SPTextViewType -> SPViewData.SPEditTextData(
             textAppearance,
             type.hint,
-            type.inputType
+            type.inputType,
+            params = SPViewData.SPViewDataParams(
+                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
+                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
+            )
         ).createView(context)
         is SPTextInputViewType.SPMaskViewType -> SPViewData.SPMaskedEditTextData(
             textAppearance,
