@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/textDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginTop="@dimen/sp_text_field_vertical_text_padding"

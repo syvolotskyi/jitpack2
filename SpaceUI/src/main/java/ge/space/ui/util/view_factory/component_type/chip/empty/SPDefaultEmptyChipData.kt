@@ -17,8 +17,8 @@ class SPDefaultEmptyChipData {
                 chipStyle,
                 R.style.SPBankCardView_ChipEmpty_Small_White,
                 SPViewData.SPViewDataParams(
-                    paddingStart = context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_14),
-                    paddingEnd = context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_16)
+                    paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
+                    paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
                 )
             )
         }

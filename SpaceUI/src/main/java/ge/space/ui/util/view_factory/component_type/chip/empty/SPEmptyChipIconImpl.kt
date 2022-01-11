@@ -19,8 +19,13 @@ class SPEmptyChipIconImpl(context: Context) :
             type.params?.let {
                 it.height?.let { this.setHeight(it) }
                 it.width?.let { this.setWidth(it) }
-                setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)
             }
+            setPadding(
+                type.params?.paddingStart ?: 0,
+                type.params?.paddingTop ?: 0,
+                type.params?.paddingEnd ?: 0,
+                type.params?.paddingBottom ?: 0
+            )
         }
     }
 }
