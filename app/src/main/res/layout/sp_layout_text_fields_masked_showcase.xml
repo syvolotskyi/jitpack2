@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateInputSecond"
-        app:style="@style/SPEditText.CardMasked"
+        app:style="@style/SPTextField.CardMasked"
         app:titleText="Input card number" />
 
     <androidx.appcompat.widget.AppCompatEditText
