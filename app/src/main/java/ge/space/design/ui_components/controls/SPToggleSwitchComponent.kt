@@ -1,23 +1,17 @@
 package ge.space.design.ui_components.controls
 
-import android.widget.Toast
-import com.example.spacedesignsystem.databinding.SpItemIconicButtonsShowcaseBinding
+import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.buttons.iconic_button.SPIconicButtonStyles
-import ge.space.ui.components.buttons.SPButtonIconic
+import ge.space.ui.components.controls.SPToggleSwitch
 
 class SPToggleSwitchComponent : ShowCaseComponent {
 
-    override fun getNameResId(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getNameResId() = R.string.toggle_switch
 
-    override fun getDescriptionResId(): Int {
-        return super.getDescriptionResId()
-    }
+    override fun getDescriptionResId() = R.string.toggle_switch_description
 
     override fun getComponentClass(): Class<*> = SPFactory::class.java
 
@@ -26,20 +20,18 @@ class SPToggleSwitchComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPButtonIconic>()
+            val buttons = mutableListOf<SPToggleSwitch>()
 
-            SPIconicButtonStyles.list.onEach { buttonSample ->
+            SPToggleSwitchStyles.list.onEach { switchSample ->
 
-                val resId = buttonSample.resId
-
-                val itemBinding = SpItemIconicButtonsShowcaseBinding.inflate(
+                /*val itemBinding = SpItemIconicButtonsShowcaseBinding.inflate(
                     environment.requireLayoutInflater(),
                     layoutBinding.buttonsLayout,
                     true
                 )
 
                 with(itemBinding.buttonName) {
-                    val resName = resources.getResourceEntryName(resId)
+                    val resName = resources.getResourceEntryName(switchSample.styleId)
                     text = resName.substringAfter(".", resName)
                 }
 
@@ -47,7 +39,7 @@ class SPToggleSwitchComponent : ShowCaseComponent {
                     itemBinding.button.isDistractive = isChecked
                 }
 
-                itemBinding.button.src = buttonSample.src
+                itemBinding.button.src = switchSample.src
 
                 buttons.add(itemBinding.button)
 
@@ -60,7 +52,7 @@ class SPToggleSwitchComponent : ShowCaseComponent {
                 }
 
 
-                itemBinding.button.setViewStyle(buttonSample.resId)
+                itemBinding.button.setViewStyle(switchSample.styleId)*/
             }
             return layoutBinding.root
 
