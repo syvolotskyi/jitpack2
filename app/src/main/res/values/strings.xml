@@ -25,6 +25,9 @@
     <string name="status_textview_description">Status TextView description</string>
     <string name="status_textview">Status TextView</string>
 
+    <string name="controls_description">Controls description</string>
+    <string name="controls">Controls</string>
+
     <string name="toggle_switch_description">Toggle Switch description</string>
     <string name="toggle_switch">Toggle Switch</string>
 

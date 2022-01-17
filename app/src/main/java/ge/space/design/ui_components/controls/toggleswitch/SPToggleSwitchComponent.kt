@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.controls
+package ge.space.design.ui_components.controls.toggleswitch
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
