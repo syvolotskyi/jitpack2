@@ -28,6 +28,7 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPControlsComponent() },
             new { SPDialogComponent() },
             new { SPTextViewComponent() },
+            new { SPControlsComponent() },
             new { SPTextFieldsComponent() },
             new { SPBannerComponent() },
             new { SPBankCardComponent() },

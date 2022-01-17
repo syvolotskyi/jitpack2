@@ -7,10 +7,9 @@ import ge.space.design.ui_components.controls.toggleicon.SPToggleIconComponent
 class SPControlsComponent : ShowCaseComponent {
     override fun getNameResId() = R.string.controls
 
-    override fun getDescriptionResId() = R.string.controls_desc
+    override fun getDescriptionResId() = R.string.controls_description
 
     override fun getSubComponents(): List<ShowCaseComponent> {
         return listOf(SPToggleIconComponent())
     }
-
 }
