@@ -1,15 +1,11 @@
-package ge.space.design.ui_components.controls
+package ge.space.design.ui_components.controls.toggleicon
 
-import android.widget.Toast
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemIconicButtonsShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.buttons.iconic_button.SPIconicButtonStyles
 import ge.space.spaceui.databinding.SpToggleIconLayoutBinding
-import ge.space.ui.components.buttons.SPButtonIconic
 import ge.space.ui.components.controls.SPToggleIcon
 
 class SPToggleIconComponent : ShowCaseComponent {
