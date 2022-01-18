@@ -76,57 +76,50 @@ class SPInputComponent : ShowCaseComponent {
                 }
 
 
-                itemBinding.rgContext.setOnCheckedChangeListener { _, checkedId ->
+                itemBinding.typeOfInput.setOnCheckedChangeListener { _, checkedId ->
                     when (checkedId) {
-                        R.id.phoneMask ->
-                            itemBinding.simpleInput.setupContentInputViewByType(
-                                SPTextInputViewType.SPMaskViewType(
-                                    mask = context.getString(R.string.phone_mask),
-                                    hint = context.getString(R.string.enter_you_details_here)
+                        R.id.primarySimple ->
+                            with(itemBinding.simpleInput) {
+                                setupStartViewByType(SPStartViewType.SPNoneViewType)
+                                setupContentInputViewByType(
+                                    SPTextInputViewType.SPTextViewType()
                                 )
-                            )
-                        R.id.numberInput ->
-                            itemBinding.simpleInput.setupContentInputViewByType(
-                                SPTextInputViewType.SPNumberViewType(hint = context.getString(R.string.enter_amount)),
-                            )
+                                setupEndViewByType(SPEndViewType.SPNoneViewType)
+                            }
+
+                        R.id.primarySimpleHint ->
+                            with(itemBinding.simpleInput) {
+                                setupStartViewByType(SPStartViewType.SPNoneViewType)
+                                setupContentInputViewByType(
+                                    SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here))
+                                )
+                                setupEndViewByType(SPEndViewType.SPNoneViewType)
+                            }
+
+
+                        R.id.primaryRemovableSimple -> {
+                            with(itemBinding.simpleInput) {
+                                setupStartViewByType(SPStartViewType.SPNoneViewType)
+                                setupContentInputViewByType(
+                                    SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here)),
+                                )
+                                setupEndViewByType(SPEndViewType.SPRemovableViewType)
+                            }
+                        }
+
+                        R.id.primaryIconSimple -> {
+                            with(itemBinding.simpleInput) {
+                                setupStartViewByType(SPStartViewType.SPImageViewType())
+                                setupContentInputViewByType(
+                                    SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here)),
+                                )
+                                setupEndViewByType(SPEndViewType.SPRemovableViewType)
+                            }
+                        }
+
                         else -> itemBinding.simpleInput.setupContentInputViewByType(
                             SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here))
                         )
-                    }
-                }
-
-                itemBinding.rgLeading.setOnCheckedChangeListener { _, checkedId ->
-                    when (checkedId) {
-                        R.id.primaryChip -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.SPCardViewType
-                        )
-                        R.id.phone -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.SPPhonePrefixViewType(phonePrefix = context.getString(R.string.phone_prefix))
-                        )
-                        R.id.image -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.SPImageViewType(icon = R.drawable.ic_chat_message_24_regular)
-                        )
-
-                        R.id.none -> itemBinding.simpleInput.setupStartViewByType(
-                            SPStartViewType.SPNoneViewType
-                        )
-                    }
-                }
-
-                itemBinding.rgTrail.setOnCheckedChangeListener { _, checkedId ->
-                    when (checkedId) {
-                        R.id.trailPrimaryChip -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.SPCardViewType
-                        )
-                        R.id.rbCurrency -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.SPCurrencyViewType(currency = "$")
-                        )
-                        R.id.removeIcon -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.SPRemovableViewType
-                        )
-                        R.id.noneTrail -> itemBinding.simpleInput.setupEndViewByType(
-                            SPEndViewType.SPNoneViewType
-                    )
                     }
                 }
 

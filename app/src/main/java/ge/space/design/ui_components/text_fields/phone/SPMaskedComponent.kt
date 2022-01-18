@@ -11,9 +11,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsMaskedShowcas
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-import ge.space.ui.components.text_fields.input.base.setupDateInput
-import ge.space.ui.components.text_fields.input.base.setupPhoneInput
+import ge.space.ui.components.text_fields.input.base.*
 
 class SPMaskedComponent : ShowCaseComponent {
 
@@ -37,13 +35,23 @@ class SPMaskedComponent : ShowCaseComponent {
                 )
             }
 
+            with(binding.cardInput) {
+                setupCardInput {
+                    return@setupCardInput if (it.count() == CARD_COUNT) {
+                        setupEndViewByType(SPEndViewType.SPCardViewType)
+                        true
+                    } else false
+                }
+            }
+
             binding.labelTextInput.doOnTextChanged { text, _, _, _ ->
                 binding.phoneInput.labelText = text.toString()
                 binding.dateInputSecond.labelText = text.toString()
+                binding.cardInput.labelText = text.toString()
             }
             return binding.root
-
         }
+
 
         private fun setupPhoneInputTextWithDone(phoneInput: SPTextFieldInput, context: Context) {
             phoneInput.setOnEditorActionListener(TextView.OnEditorActionListener
@@ -74,5 +82,6 @@ class SPMaskedComponent : ShowCaseComponent {
     companion object {
         private const val ACTION_DONE = "Action Done: "
         private const val ACTION_NEXT = "1010"
+        private const val CARD_COUNT = 16
     }
 }

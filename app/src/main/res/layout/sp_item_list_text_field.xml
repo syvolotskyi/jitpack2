@@ -57,6 +57,7 @@
             android:id="@+id/cbEnableDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:layout_marginStart="10dp"
             android:text="@string/description" />
 
@@ -85,145 +86,48 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_p_16"
                 android:layout_marginTop="10dp"
-                android:text="Start:" />
+                android:text="Type Of Input:" />
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:id="@+id/rgLeading"
+                android:id="@+id/typeOfInput"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/primaryChip"
+                    android:id="@+id/primarySimple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
-                    android:text="primary" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:enabled="true"
-                    android:text="phone input" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="image" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/none"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:checked="true"
-                    android:text="None" />
-
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_p_16"
-                android:layout_marginTop="10dp"
-                android:text="End:" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/rgTrail"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
+                    android:text="Primary input" />
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/trailPrimaryChip"
+                    android:id="@+id/primarySimpleHint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
-                    android:text="primary" />
-
+                    android:text="Primary input with hint" />
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/removeIcon"
+                    android:id="@+id/primaryRemovableSimple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Remove Icon" />
+                    android:enabled="true"
+                    android:text="Primary input removable" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rbCurrency"
+                    android:id="@+id/primaryIconSimple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Currency" />
-
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/noneTrail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:checked="true"
-                    android:text="None" />
+                    android:enabled="true"
+                    android:text="Primary with message icon and removable" />
 
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_16"
-        android:layout_marginTop="10dp"
-        android:text="Content:" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rgContext"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:checked="true"
-            android:enabled="true"
-            android:text="text" />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/phoneMask"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Phone mask" />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/numberInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Number Input" />
-
-    </RadioGroup>
-
-    <include layout="@layout/sp_layout_divider" />
-
 </LinearLayout>
