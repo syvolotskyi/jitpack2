@@ -41,6 +41,11 @@ fun SPTextFieldInput.setupPhoneInput(prefix: String, mask: String) {
 
 /**
  * Setup a view as input for card
+ *
+ * @property mask [String] value which sets a mask.
+ * @property cardEnteredListener [(cardNumber: String) -> Boolean] functions called when user enters card number,
+ * require a Boolean result,
+ * where true - card is checked, false - card is wrong.
  */
 fun SPTextFieldInput.setupCardInput(
     mask: String = context.getString(R.string.card_mask),

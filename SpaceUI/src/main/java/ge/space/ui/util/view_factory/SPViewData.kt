@@ -79,7 +79,7 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPMaskedEditTextData(
-        @StyleRes var style: Int? = null,
+        @StyleRes var textAppereance: Int? = null,
         var mask: String,
         var hint: String? = null,
         var params: SPViewDataParams? = null,

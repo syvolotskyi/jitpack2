@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="SPEditText.CardMasked" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
-        <item name="android:hint">XXXXXXXXXXXXXXXX</item>
-    </style>
-
-    <style name="SPEditText.Phone" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
-        <item name="android:hint">XXXXXXXXXX</item>
-    </style>
-
-    <style name="SPEditText.DateMasked" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
-        <item name="android:hint">XX/XX/XXXX</item>
-        <item name="mask">@string/day_mask</item>
-        <item name="startView">none</item>
-        <item name="endView">none</item>
-        <item name="contentInputView">mask</item>
-    </style>
-
-    <style name="SPTextField.CardMasked" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
-        <item name="android:hint">XXXX XXXX XXXX XXXX</item>
-        <item name="mask">@string/card_mask</item>
-        <item name="startView">none</item>
-        <item name="endView">none</item>
-        <item name="contentInputView">mask</item>
-    </style>
-
     <style name="SPPinEntryEditText">
         <item name="android:digits">1234567890</item>
         <item name="android:includeFontPadding">false</item>

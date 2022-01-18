@@ -227,6 +227,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
 
+        getResourceId(
+            R.styleable.SPTextFieldInput_textAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            textAppearance = it
+        }
+
         getInt(R.styleable.SPTextFieldInput_startView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
@@ -245,16 +252,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
             ) {
-                when (it) {
-                    SPTextInputViewType.MASKED -> {
-                        mask = getMaskFromAttr()
-                        setupContentInputViewByType(SPTextInputViewType.SPMaskViewType(mask))
-                    }
-                    SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
-                    SPTextInputViewType.NUMBER -> setupContentInputViewByType(
-                        SPTextInputViewType.SPNumberViewType(hint)
-                    )
-                }
+                handleContentAttr(it)
             }
 
         getInt(
@@ -288,13 +286,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
             }
 
         getResourceId(
-            R.styleable.SPTextFieldInput_textAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-            textAppearance = it
-        }
-
-        getResourceId(
             R.styleable.SPTextFieldInput_descriptionTextAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
@@ -309,6 +300,33 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
         handleBorderColor()
+    }
+
+    private fun handleContentAttr(it: Int) {
+        when (it) {
+            SPTextInputViewType.DATE_MASKED -> {
+                mask = resources.getString(R.string.day_mask)
+                setupContentInputViewByType(
+                    SPTextInputViewType.SPMaskViewType(
+                        mask,
+                        hint
+                    )
+                )
+            }
+            SPTextInputViewType.CARD_MASKED -> {
+                mask = resources.getString(R.string.card_mask)
+                setupContentInputViewByType(
+                    SPTextInputViewType.SPMaskViewType(
+                        mask,
+                        hint
+                    )
+                )
+            }
+            SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
+            SPTextInputViewType.NUMBER -> setupContentInputViewByType(
+                SPTextInputViewType.SPNumberViewType(hint)
+            )
+        }
     }
 
     private fun TypedArray.handleStartView(it: Int) {
@@ -334,10 +352,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
     private fun TypedArray.getPhonePrefixFromAttr() =
         (getString(R.styleable.SPTextFieldInput_startViewText)
             ?: context.getString(R.string.default_phone_prefix))
-
-    private fun TypedArray.getMaskFromAttr() =
-        (getString(R.styleable.SPTextFieldInput_mask)
-            ?: context.getString(R.string.day_mask))
 
     private fun TypedArray.getCurrencyFromAttr() =
         (getString(R.styleable.SPTextFieldInput_endViewText)
@@ -440,10 +454,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
 
     fun removeAllText() {
         val view = contentInputView
-        if (view is SPEditTextMasked)
-            view.mask = view.mask
-        else
+        if (view is SPEditTextMasked) {
+            setupContentInputViewByType(
+                SPTextInputViewType.SPMaskViewType(
+                    mask,
+                    hint
+                )
+            )
+        } else {
             view.setText(EMPTY_TEXT)
+        }
     }
 
     private fun FrameLayout.addContentView(view: View?, defaultView: View? = null) {

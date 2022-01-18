@@ -19,7 +19,8 @@ sealed class SPTextInputViewType {
 
     companion object {
         const val TEXT = 0
-        const val MASKED = 1
-        const val NUMBER = 2
+        const val DATE_MASKED = 1
+        const val CARD_MASKED = 2
+        const val NUMBER = 3
     }
 }
