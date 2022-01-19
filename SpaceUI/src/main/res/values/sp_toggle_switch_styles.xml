@@ -34,7 +34,7 @@
     <style name="SPToggleSwitch.Enabled.Selected" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">true</item>
         <item name="android:state_selected">true</item>
-    <item name="trackTint">?attr/brand_primary</item>
+        <item name="trackTint">?attr/brand_primary</item>
         <item name="thumbTint">?attr/static_white</item>
     </style>
 

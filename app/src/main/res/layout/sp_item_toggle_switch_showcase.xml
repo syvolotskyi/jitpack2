@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ge.space.ui.components.controls.SPToggleSwitch
+        android:id="@+id/toggleSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_16"
+        android:layout_marginEnd="@dimen/dimen_p_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:style="@style/SPToggleSwitch.Disabled.Unselected" />
+
+
+
+    <CheckBox
+        android:id="@+id/cbDisable"
+        android:layout_width="wrap_content"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:layout_marginStart="10dp"
+        android:text="@string/disable" />
+
+</merge>

@@ -1,7 +1,10 @@
 package ge.space.design.ui_components.controls.toggleswitch
 
 import com.example.spacedesignsystem.R
+import com.example.spacedesignsystem.databinding.SpItemIconicButtonsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpItemToggleSwitchShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLayoutToggleSwitchShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
@@ -17,43 +20,10 @@ class SPToggleSwitchComponent : ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpLayoutButtonsShowcaseBinding.inflate(
+            val layoutBinding = SpLayoutToggleSwitchShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            val buttons = mutableListOf<SPToggleSwitch>()
 
-            SPToggleSwitchStyles.list.onEach { switchSample ->
-
-                /*val itemBinding = SpItemIconicButtonsShowcaseBinding.inflate(
-                    environment.requireLayoutInflater(),
-                    layoutBinding.buttonsLayout,
-                    true
-                )
-
-                with(itemBinding.buttonName) {
-                    val resName = resources.getResourceEntryName(switchSample.styleId)
-                    text = resName.substringAfter(".", resName)
-                }
-
-                itemBinding.distractiveCheck.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.button.isDistractive = isChecked
-                }
-
-                itemBinding.button.src = switchSample.src
-
-                buttons.add(itemBinding.button)
-
-                itemBinding.button.setOnClickListener {
-                    Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
-                }
-
-                itemBinding.disableCheck.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.button.isEnabled = !isChecked
-                }
-
-
-                itemBinding.button.setViewStyle(switchSample.styleId)*/
-            }
             return layoutBinding.root
 
         }
