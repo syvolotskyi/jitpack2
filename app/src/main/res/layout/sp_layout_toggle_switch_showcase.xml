@@ -4,20 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/dimen_p_16">
 
-    <ge.space.ui.components.controls.SPToggleSwitch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/toggleSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/SPToggleSwitch.Disabled.Unselected" />
-
-
+        android:thumb="@drawable/switch_thumb"
+        app:track="@drawable/switch_track_selector"
+        style="@style/SPToggleSwitch.Disabled.Unchecked" />
 
     <CheckBox
         android:id="@+id/cbDisable"
@@ -27,6 +25,5 @@
         android:layout_marginTop="@dimen/dimen_p_32"
         android:layout_marginStart="10dp"
         android:text="@string/disable" />
-
 
 </LinearLayout>

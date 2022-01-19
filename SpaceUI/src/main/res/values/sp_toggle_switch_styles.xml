@@ -7,33 +7,29 @@
         <item name="android:thumb">@drawable/switch_thumb</item>
     </style>
 
-    <style name="SPToggleSwitch.Base" parent="SPBaseView">
-
-    </style>
-
     <!-- NB Don't override trackTint here because this style has got custom track -->
-    <style name="SPToggleSwitch.Disabled.Unselected" parent="SPToggleSwitch.Root">
+    <style name="SPToggleSwitch.Disabled.Unchecked" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">false</item>
-        <item name="android:state_selected">false</item>
+        <item name="android:state_checked">false</item>
     </style>
 
-    <style name="SPToggleSwitch.Disabled.Selected" parent="SPToggleSwitch.Root">
+    <style name="SPToggleSwitch.Disabled.Checked" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">false</item>
-        <item name="android:state_selected">true</item>
+        <item name="android:state_checked">true</item>
         <item name="trackTint">?attr/brand_secondary</item>
         <item name="thumbTint">?attr/static_white</item>
     </style>
 
-    <style name="SPToggleSwitch.Enabled.Unselected" parent="SPToggleSwitch.Root">
+    <style name="SPToggleSwitch.Enabled.Unchecked" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">true</item>
-        <item name="android:state_selected">false</item>
+        <item name="android:state_checked">false</item>
         <item name="trackTint">?attr/greyscale_gray_4</item>
         <item name="thumbTint">?attr/static_white</item>
     </style>
 
-    <style name="SPToggleSwitch.Enabled.Selected" parent="SPToggleSwitch.Root">
+    <style name="SPToggleSwitch.Enabled.Checked" parent="SPToggleSwitch.Root">
         <item name="android:state_enabled">true</item>
-        <item name="android:state_selected">true</item>
+        <item name="android:state_checked">true</item>
         <item name="trackTint">?attr/brand_primary</item>
         <item name="thumbTint">?attr/static_white</item>
     </style>

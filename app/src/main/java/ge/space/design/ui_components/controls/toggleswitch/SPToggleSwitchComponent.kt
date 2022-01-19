@@ -1,9 +1,6 @@
 package ge.space.design.ui_components.controls.toggleswitch
 
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemIconicButtonsShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpItemToggleSwitchShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutToggleSwitchShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
