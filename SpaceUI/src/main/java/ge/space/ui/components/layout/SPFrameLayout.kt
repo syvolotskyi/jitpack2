@@ -8,7 +8,7 @@ import ge.space.ui.base.SPBaseView
 /**
  * Simple extended view from [SPBaseView] which has no any additional properties.
  */
-class SPFrameLayout @JvmOverloads constructor(
+open class SPFrameLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0

@@ -15,10 +15,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.appendAsterisk
-import ge.space.extensions.onClick
-import ge.space.extensions.setTextStyle
+import ge.space.extensions.*
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -59,12 +56,12 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * Sets a button title.
      */
     open var text: String = EMPTY_TEXT
-        get() = contentInputView.text.toString()
+     /*   get() = contentInputView.text.toString()
         set(value) {
             field = value
 
             contentInputView.setText(value)
-        }
+        }*/
 
 
     /**
@@ -74,7 +71,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            contentInputView.hint = value
+//            contentInputView.hint = value
         }
 
     /**
@@ -158,7 +155,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    open var contentInputView: EditText = EditText(context)
+    open var contentInputView: SPTextWatcher? =null
         set(value) {
             field = value
 
@@ -262,7 +259,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         ).handleAttributeAction(
             DEFAULT_TEXT_LENGTH
         ) {
-            contentInputView.setTextLength(it)
+//            contentInputView.setTextLength(it)
         }
 
 
@@ -278,7 +275,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 EMPTY_TEXT
             ) {
                 text = it
-                contentInputView.setText(text)
+//                contentInputView.setText(text)
             }
 
         getString(R.styleable.SPTextFieldInput_descriptionText).orEmpty()
@@ -291,6 +288,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             updateDescriptionTextAppearance(it)
+        }
+
+        getResourceId(
+            R.styleable.SPTextFieldInput_contentHeight,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            binding.flContainer.setHeight(resources.getDimensionPixelSize(it))
         }
 
         getResourceId(
@@ -323,6 +327,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     )
                 )
             }
+            SPTextInputViewType.TEXT_AREA -> setupContentInputViewByType(SPTextInputViewType.SPTextAreaViewType())
             SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
             SPTextInputViewType.NUMBER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
@@ -408,8 +413,9 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Allows to update a text appearance by styles
      */
-    protected fun updateTextAppearance(textAppearance: Int) =
-        contentInputView.setTextStyle(textAppearance)
+    protected fun updateTextAppearance(textAppearance: Int) {
+//        contentInputView.setTextStyle(textAppearance)
+    }
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
         binding.textLabel.setTextStyle(textAppearance)
@@ -436,19 +442,19 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
-        contentInputView.setOnEditorActionListener(listener)
+//        contentInputView.setOnEditorActionListener(listener)
     }
 
     private fun handleImeOption() {
-        contentInputView.imeOptions = imeOption
+//        contentInputView.imeOptions = imeOption
     }
 
     fun addTextChangedListener(watcher: TextWatcher) {
-        contentInputView.addTextChangedListener(watcher)
+//        contentInputView.addTextChangedListener(watcher)
     }
 
     fun removeTextChangedListener(watcher: TextWatcher) {
-        contentInputView.addTextChangedListener(watcher)
+//        contentInputView.addTextChangedListener(watcher)
     }
 
     fun focus() = contentInputView.requestFocus()

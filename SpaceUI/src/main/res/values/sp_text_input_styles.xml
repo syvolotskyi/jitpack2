@@ -3,9 +3,16 @@
 
     <style name="SPTextField.Base" parent="">
         <item name="contentInputView">text</item>
+        <item name="contentHeight">@dimen/dimen_p_158</item>
         <item name="textAppearance">@style/h600_bold_caps_text_field</item>
         <item name="descriptionTextAppearance">@style/h800_medium_label_tertiary</item>
         <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
+    </style>
+
+
+    <style name="SPTextField.Area" parent="SPTextField.Base">
+        <item name="contentInputView">textArea</item>
+        <item name="contentHeight">@dimen/dimen_p_158</item>
     </style>
 
 </resources>

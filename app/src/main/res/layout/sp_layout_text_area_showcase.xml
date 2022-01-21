@@ -28,8 +28,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Button" />
 
-            <ge.space.ui.components.text_fields.input.base.SPTextAreaView
+            <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
                 android:id="@+id/textArea"
+                app:style="@style/SPTextField.Area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -17,6 +17,7 @@
         <attr name="descriptionText" format="string|reference" />
         <attr name="inputMandatory" format="boolean" />
         <attr name="inputTextLength" format="integer" />
+        <attr name="contentHeight" format="reference" />
 
         <attr name="endViewText" format="string|reference"/>
         <attr name="startViewText" format="string|reference"/>
@@ -41,6 +42,7 @@
             <enum name="dateMask" value="1" />
             <enum name="cardMask" value="2" />
             <enum name="number" value="3" />
+            <enum name="textArea" value="4" />
         </attr>
     </declare-styleable>
 

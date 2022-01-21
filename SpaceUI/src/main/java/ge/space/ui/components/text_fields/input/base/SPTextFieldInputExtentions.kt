@@ -94,7 +94,15 @@ fun SPTextFieldInput.setupContentInputViewByType(
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
             type.hint
         ).createView(context)
-    } as EditText)
+        is SPTextInputViewType.SPTextAreaViewType -> SPViewData.SPTextAreaData(
+            textAppearance,
+            type.hint,
+            SPViewData.SPViewDataParams(
+                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
+                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
+            )
+        ).createView(context)
+    })
 }
 
 /**

@@ -25,10 +25,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/sp_text_input_field_height">
+            android:layout_height="match_parent">
 
             <FrameLayout
-                android:id="@+id/flLeading"
+                android:id="@+id/flStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -39,11 +39,11 @@
             <FrameLayout
                 android:id="@+id/flInputFieldContainer"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="start|center_vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/flTrail"
-                app:layout_constraintStart_toEndOf="@id/flLeading"
+                app:layout_constraintStart_toEndOf="@id/flStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <FrameLayout
