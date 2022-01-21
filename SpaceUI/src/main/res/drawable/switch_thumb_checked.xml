@@ -13,6 +13,7 @@
     <item>
         <shape android:shape="oval" android:dither="true" android:useLevel="false">
             <solid android:color="?attr/static_white"/>
+            <stroke android:width="@dimen/dimen_p_4" android:color="@android:color/transparent" />
         </shape>
     </item>
 </layer-list>
