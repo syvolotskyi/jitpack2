@@ -1,7 +1,6 @@
 package ge.space.ui.util.view_factory.component_type.chip.primary
 
 import android.content.Context
-import androidx.annotation.StyleRes
 import ge.space.spaceui.R
 import ge.space.ui.util.view_factory.SPViewData
 

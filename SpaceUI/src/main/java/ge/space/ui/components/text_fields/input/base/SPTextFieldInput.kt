@@ -103,6 +103,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
     /**
+     * Sets a visibility for info button
+     */
+    private var showInfoButton = false
+        set(value) {
+            field = value
+
+            binding.infoImage.isVisible = field
+        }
+
+    /**
      * Sets a imeOption.
      */
     var imeOption: Int = 0
@@ -158,7 +168,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    var contentInputView: EditText = EditText(context)
+    var contentInputView: TextView = EditText(context)
         set(value) {
             field = value
 
@@ -225,17 +235,18 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 labelText = it
             }
         imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
+        imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldBaseView_inputMandatory, false)
-
-        getInt(
-            R.styleable.SPTextFieldBaseView_inputTextLength,
-            DEFAULT_TEXT_LENGTH
-        ).handleAttributeAction(
-            DEFAULT_TEXT_LENGTH
-        ) {
-            contentInputView.setTextLength(it)
+        if (contentInputView is EditText) {
+                getInt(
+                    R.styleable.SPTextFieldBaseView_inputTextLength,
+                    DEFAULT_TEXT_LENGTH
+                ).handleAttributeAction(
+                    DEFAULT_TEXT_LENGTH
+                ) {
+                    (contentInputView as EditText).setTextLength(it)
+                }
         }
-
 
         getString(R.styleable.SPTextFieldBaseView_android_hint).orEmpty()
             .handleAttributeAction(
@@ -358,6 +369,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
      */
     fun setTrailClickListener(onClickListener: () -> Unit? = {}) {
         endView?.onClick { onClickListener() }
+    }
+
+    /**
+     * Sets a info click listener.
+     */
+    fun setInfoListener(onClickListener: () -> Unit? = {}) {
+        showInfoButton = true
+        binding.infoImage.onClick { onClickListener() }
     }
 
     /**
