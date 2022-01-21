@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -56,12 +57,12 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * Sets a button title.
      */
     open var text: String = EMPTY_TEXT
-     /*   get() = contentInputView.text.toString()
+        get() = contentInputView.text.toString()
         set(value) {
             field = value
 
             contentInputView.text = value
-        }*/
+        }
 
 
     /**
@@ -71,7 +72,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-//            contentInputView.hint = value
+            contentInputView.hint = value
         }
 
     /**
@@ -152,7 +153,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.flLeading.addContentView(startView, emptyStartView)
+            binding.flStart.addContentView(startView, emptyStartView)
         }
 
     /**
@@ -165,7 +166,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    open var contentInputView: SPTextWatcher? =null
+    open var contentInputView: TextView = EditText(context)
         set(value) {
             field = value
 
@@ -285,7 +286,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 EMPTY_TEXT
             ) {
                 text = it
-//                contentInputView.text = text
+                contentInputView.text = text
             }
 
         getString(R.styleable.SPTextFieldInput_descriptionText).orEmpty()
@@ -337,7 +338,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     )
                 )
             }
-            SPTextInputViewType.TEXT_AREA -> setupContentInputViewByType(SPTextInputViewType.SPTextAreaViewType())
             SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
             SPTextInputViewType.NUMBER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
@@ -432,7 +432,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * Allows to update a text appearance by styles
      */
     protected fun updateTextAppearance(textAppearance: Int) {
-//        contentInputView.setTextStyle(textAppearance)
+        contentInputView.setTextStyle(textAppearance)
     }
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
@@ -460,19 +460,19 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     fun setOnEditorActionListener(listener: TextView.OnEditorActionListener) {
-//        contentInputView.setOnEditorActionListener(listener)
+        contentInputView.setOnEditorActionListener(listener)
     }
 
     private fun handleImeOption() {
-//        contentInputView.imeOptions = imeOption
+        contentInputView.imeOptions = imeOption
     }
 
     fun addTextChangedListener(watcher: TextWatcher) {
-//        contentInputView.addTextChangedListener(watcher)
+        contentInputView.addTextChangedListener(watcher)
     }
 
     fun removeTextChangedListener(watcher: TextWatcher) {
-//        contentInputView.addTextChangedListener(watcher)
+        contentInputView.addTextChangedListener(watcher)
     }
 
     fun focus() = contentInputView.requestFocus()
@@ -491,7 +491,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
-    protected fun FrameLayout.addContentView(view: View?, defaultView: View? = null) {
+    private fun ViewGroup.addContentView(view: View?, defaultView: View? = null) {
         removeAllViews()
         if (view != null) {
             addView(view)

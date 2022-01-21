@@ -11,9 +11,8 @@ import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.widget.AppCompatEditText
 import ge.space.spaceui.R
-import ge.space.ui.components.text_fields.input.base.SPTextWatcher
 
-open class SPEditTextMasked : AppCompatEditText, TextWatcher, SPTextWatcher {
+open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     private var keepHint = true
     private var rawText: RawText = RawText()
@@ -369,13 +368,5 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher, SPTextWatcher {
         const val ALLOWED_CHARS = "1234567890 /X"
         const val CHAR_REPRESENTATION = "#"
         const val MASK_SYMBOL = "X"
-    }
-
-    override fun setText(text: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun setTextAppearance() {
-        TODO("Not yet implemented")
     }
 }

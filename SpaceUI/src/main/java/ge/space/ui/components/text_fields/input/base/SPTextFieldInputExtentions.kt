@@ -9,7 +9,6 @@ import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
-import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData.Companion.getSmallChipData
 import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
 import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
@@ -79,7 +78,7 @@ fun SPTextFieldInput.setupContentInputViewByType(
             type.hint,
             type.inputType,
             params = SPViewData.SPViewDataParams(
-                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
+                gravity = Gravity.START or Gravity.TOP,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
         ).createView(context)
@@ -95,15 +94,8 @@ fun SPTextFieldInput.setupContentInputViewByType(
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
             type.hint
         ).createView(context)
-        is SPTextInputViewType.SPTextAreaViewType -> SPViewData.SPTextAreaData(
-            textAppearance,
-            type.hint,
-            SPViewData.SPViewDataParams(
-                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
-                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
-            )
-        ).createView(context)
-    })
+
+    }) as EditText
 }
 
 /**

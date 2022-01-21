@@ -88,20 +88,6 @@ sealed class SPViewData : Parcelable {
         SPViewData()
 
     /**
-     * Create a masked edit text (for example phone or date)
-     *
-     * @property params helps to setup view params for view
-     * @property styleRes applies a style for view
-     */
-    @Parcelize
-    data class SPTextAreaData(
-        @StyleRes var textAppereance: Int? = null,
-        var hint: String? = null,
-        var params: SPViewDataParams? = null,
-    ) :
-        SPViewData()
-
-    /**
      * Create an empty chip
      *
      * @property styleRes applies a style for view, default is R.style.SPBankCardView_Chip_Base

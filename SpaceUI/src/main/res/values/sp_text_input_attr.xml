@@ -44,7 +44,6 @@
             <enum name="dateMask" value="1" />
             <enum name="cardMask" value="2" />
             <enum name="number" value="3" />
-            <enum name="textArea" value="4" />
         </attr>
     </declare-styleable>
 
