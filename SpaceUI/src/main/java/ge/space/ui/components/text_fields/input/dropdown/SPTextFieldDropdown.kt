@@ -101,12 +101,10 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
             contentInputView = SPViewData.SPTextData(
                 text,
-                R.style.h700_bold_caps_text_field,
+                textAppearance,
                 SPViewData.SPViewDataParams(gravity = Gravity.START),
                 null
             ).createView(context) as TextView
-
-            setupEndViewByType(SPEndViewType.SPImageViewType(R.drawable.ic_chevron_down_24_regular))
         }
 
         setOnClickListener { onClickListener(this) }

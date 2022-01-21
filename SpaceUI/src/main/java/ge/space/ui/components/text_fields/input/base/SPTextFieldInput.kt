@@ -63,7 +63,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            contentInputView.setText(value)
+            contentInputView.text = value
         }
 
 
@@ -234,7 +234,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .handleAttributeAction(EMPTY_TEXT) {
                 labelText = it
             }
-        imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
         if (contentInputView is EditText) {
@@ -288,7 +287,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 EMPTY_TEXT
             ) {
                 text = it
-                contentInputView.setText(text)
+                contentInputView.text = text
             }
 
         getString(R.styleable.SPTextFieldInput_descriptionText).orEmpty()
@@ -481,7 +480,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 )
             )
         } else {
-            view.setText(EMPTY_TEXT)
+            view.text = EMPTY_TEXT
         }
     }
 

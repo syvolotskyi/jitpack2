@@ -29,6 +29,7 @@
             <enum name="primaryChip" value="1" />
             <enum name="removeIcon" value="2" />
             <enum name="currency" value="3" />
+            <enum name="image" value="4" />
         </attr>
 
         <attr name="startView" format="enum">
