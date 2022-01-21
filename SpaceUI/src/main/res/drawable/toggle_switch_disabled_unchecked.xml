@@ -5,6 +5,9 @@
     <size android:height="@dimen/dimen_p_24" android:width="@dimen/dimen_p_40" />
     <solid android:color="#F5F5F5" />
     <stroke android:color="#D8D8D8" android:width="@dimen/dimen_p_2" />
-    <padding android:top="@dimen/dimen_p_2" android:bottom="@dimen/dimen_p_2"
-        android:left="@dimen/dimen_p_2" android:right="@dimen/dimen_p_2" />
+    <padding
+        android:top="@dimen/dimen_p_6"
+        android:bottom="@dimen/dimen_p_6"
+        android:left="@dimen/dimen_p_6"
+        android:right="@dimen/dimen_p_6" />
 </shape>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/switch_thumb_unchecked" android:state_checked="false" />
+    <item android:drawable="@drawable/switch_thumb_checked" android:state_checked="true" />
+</selector>
+
+<!--<vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="18dp"
     android:height="18dp"
     android:viewportWidth="18"
@@ -11,4 +16,4 @@
         <path android:pathData="M0 0V18H18V0"
             android:fillColor="#D8D8D8" />
     </group>
-</vector>
+</vector>-->

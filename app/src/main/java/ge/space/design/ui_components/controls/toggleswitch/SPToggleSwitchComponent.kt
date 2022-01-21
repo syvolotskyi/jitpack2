@@ -21,8 +21,16 @@ class SPToggleSwitchComponent : ShowCaseComponent {
                 environment.requireLayoutInflater()
             )
 
-            return layoutBinding.root
+            with(layoutBinding) {
+                cbDisable.setOnCheckedChangeListener { _, isChecked ->
+                    toggleSwitch.isEnabled = !isChecked
+                }
+                cbDisable2.setOnCheckedChangeListener { _, isChecked ->
+                    toggleSwitch2.isEnabled = !isChecked
+                }
+            }
 
+            return layoutBinding.root
         }
     }
 }

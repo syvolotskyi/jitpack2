@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,19 +10,39 @@
         android:id="@+id/toggleSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
         android:thumb="@drawable/switch_thumb"
-        app:track="@drawable/switch_track_selector"
-        style="@style/SPToggleSwitch.Disabled.Unchecked" />
+        app:track="@drawable/switch_track_selector" />
 
     <CheckBox
         android:id="@+id/cbDisable"
         android:layout_width="wrap_content"
-        style="@style/SPCheckbox.DefaultStyle"
         android:layout_height="wrap_content"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dimen_p_32"
-        android:layout_marginStart="10dp"
+        android:text="@string/disable" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/toggleSwitch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_16"
+        android:layout_marginStart="@dimen/dimen_p_16"
+        android:layout_marginEnd="@dimen/dimen_p_16"
+        android:thumb="@drawable/switch_thumb"
+        app:track="@drawable/switch_track_selector" />
+
+    <CheckBox
+        android:id="@+id/cbDisable2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_32"
         android:text="@string/disable" />
 
 </LinearLayout>
