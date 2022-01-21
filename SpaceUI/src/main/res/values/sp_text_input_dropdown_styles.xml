@@ -4,6 +4,7 @@
     <style name="SPTextField.Dropdown" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h600_bold_caps_text_field</item>
         <item name="inflateType">none</item>
+        <item name="showInfoView">true</item>
         <item name="android:background">@null</item>
     </style>
 

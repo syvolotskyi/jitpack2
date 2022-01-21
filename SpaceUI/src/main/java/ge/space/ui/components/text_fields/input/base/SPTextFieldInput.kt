@@ -103,6 +103,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
     /**
+     * Sets a visibility for info button
+     */
+    private var showInfoButton = false
+        set(value) {
+            field = value
+
+            binding.infoImage.isVisible = field
+        }
+
+    /**
      * Sets a imeOption.
      */
     var imeOption: Int = 0
@@ -158,7 +168,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    var contentInputView: EditText = EditText(context)
+    var contentInputView: TextView = EditText(context)
         set(value) {
             field = value
 
@@ -224,10 +234,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .handleAttributeAction(EMPTY_TEXT) {
                 labelText = it
             }
+        imeOption = getInt(R.styleable.SPTextFieldBaseView_android_imeOptions, ID_NEXT)
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
-
-        getResourceId(
+        if (contentInputView is EditText) {
+                getResourceId(
             R.styleable.SPTextFieldInput_textAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
@@ -257,13 +268,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
 
         getInt(
             R.styleable.SPTextFieldInput_inputTextLength,
-            DEFAULT_TEXT_LENGTH
-        ).handleAttributeAction(
-            DEFAULT_TEXT_LENGTH
-        ) {
-            contentInputView.setTextLength(it)
+                    DEFAULT_TEXT_LENGTH
+                ).handleAttributeAction(
+                    DEFAULT_TEXT_LENGTH
+                ) {
+                    (contentInputView as EditText).setTextLength(it)
+                }
         }
-
 
         getString(R.styleable.SPTextFieldInput_android_hint).orEmpty()
             .handleAttributeAction(
@@ -402,6 +413,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
      */
     fun setTrailClickListener(onClickListener: () -> Unit? = {}) {
         endView?.onClick { onClickListener() }
+    }
+
+    /**
+     * Sets a info click listener.
+     */
+    fun setInfoListener(onClickListener: () -> Unit? = {}) {
+        showInfoButton = true
+        binding.infoImage.onClick { onClickListener() }
     }
 
     /**

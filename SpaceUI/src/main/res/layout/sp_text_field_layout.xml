@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,13 +7,41 @@
     android:layout_gravity="center"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/infoImage"
+        android:layout_width="@dimen/dimen_p_16"
+        android:layout_height="@dimen/dimen_p_16"
+        android:src="@drawable/ic_info_circle_24_regular"
+        app:layout_constraintBottom_toBottomOf="@id/textLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:tint="?attr/brand_primary" />
+
     <TextView
         android:id="@+id/textLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/infoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="start"
         android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingBottom="@dimen/sp_text_field_vertical_text_padding"
+        tools:text="First label" />
+
+    <TextView
+        android:id="@+id/textDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/sp_text_field_vertical_text_padding"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/flContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:text="First label" />
 
     <ge.space.ui.components.layout.SPFrameLayout
@@ -21,6 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_text_input_field_height"
         android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/textLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:style="@style/SPInputField">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,15 +86,4 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ge.space.ui.components.layout.SPFrameLayout>
-
-    <TextView
-        android:id="@+id/textDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="@dimen/sp_text_field_vertical_text_padding"
-        android:ellipsize="end"
-        android:visibility="gone"
-        android:maxLines="1"
-        tools:text="First label" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
