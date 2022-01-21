@@ -10,6 +10,7 @@ import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
+import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData.Companion.getSmallChipData
 import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
 import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
 
@@ -117,14 +118,14 @@ fun SPTextFieldInput.setupEndViewByType(
         is SPEndViewType.SPCurrencyViewType -> getCurrencyViewData(context, type.currency)
         is SPEndViewType.SPRemovableViewType -> SPViewData.SPImageResourcesData(
             R.drawable.ic_close_circle_24_filled,
-            SPViewData.SPViewDataParams(
+            params = SPViewData.SPViewDataParams(
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
             )
         )
         is SPEndViewType.SPImageViewType -> SPViewData.SPImageResourcesData(
             type.icon,
-            SPViewData.SPViewDataParams(
+            params = SPViewData.SPViewDataParams(
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_14),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
             )
@@ -157,7 +158,7 @@ fun SPTextFieldInput.setupStartViewByType(
         )
         is SPStartViewType.SPImageViewType -> SPViewData.SPImageResourcesData(
             type.icon,
-            SPViewData.SPViewDataParams(
+            params = SPViewData.SPViewDataParams(
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
             )
@@ -166,8 +167,8 @@ fun SPTextFieldInput.setupStartViewByType(
     }?.createView(context)
 }
 
-private fun getSmallCardView(context: Context): SPViewData.SPrimaryChipData =
-    SPDefaultPrimaryChipData.getSmallChipData(
+fun getSmallCardView(context: Context): SPViewData.SPrimaryChipData =
+    getSmallChipData(
         context, SPViewData.SPViewDataParams(
             paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
             paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)

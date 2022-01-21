@@ -16,6 +16,7 @@
         <attr name="titleText" format="string|reference" />
         <attr name="descriptionText" format="string|reference" />
         <attr name="inputMandatory" format="boolean" />
+        <attr name="showInfoView" format="boolean" />
         <attr name="inputTextLength" format="integer" />
         <attr name="contentHeight" format="reference" />
 
@@ -29,6 +30,7 @@
             <enum name="primaryChip" value="1" />
             <enum name="removeIcon" value="2" />
             <enum name="currency" value="3" />
+            <enum name="image" value="4" />
         </attr>
 
         <attr name="startView" format="enum">

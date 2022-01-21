@@ -60,7 +60,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            contentInputView.setText(value)
+            contentInputView.text = value
         }*/
 
 
@@ -97,6 +97,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
             field = value
 
             handleShowingLabelText()
+        }
+
+    /**
+     * Sets a visibility for info button
+     */
+    private var showInfoButton = false
+        set(value) {
+            field = value
+
+            binding.infoImage.isVisible = field
         }
 
     /**
@@ -224,8 +234,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
             }
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
-
-        getResourceId(
+        if (contentInputView is EditText) {
+                getResourceId(
             R.styleable.SPTextFieldInput_textAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
@@ -255,13 +265,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
 
         getInt(
             R.styleable.SPTextFieldInput_inputTextLength,
-            DEFAULT_TEXT_LENGTH
-        ).handleAttributeAction(
-            DEFAULT_TEXT_LENGTH
-        ) {
-//            contentInputView.setTextLength(it)
+                    DEFAULT_TEXT_LENGTH
+                ).handleAttributeAction(
+                    DEFAULT_TEXT_LENGTH
+                ) {
+                    (contentInputView as EditText).setTextLength(it)
+                }
         }
-
 
         getString(R.styleable.SPTextFieldInput_android_hint).orEmpty()
             .handleAttributeAction(
@@ -275,7 +285,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 EMPTY_TEXT
             ) {
                 text = it
-//                contentInputView.setText(text)
+//                contentInputView.text = text
             }
 
         getString(R.styleable.SPTextFieldInput_descriptionText).orEmpty()
@@ -411,6 +421,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     /**
+     * Sets a info click listener.
+     */
+    fun setInfoListener(onClickListener: () -> Unit? = {}) {
+        showInfoButton = true
+        binding.infoImage.onClick { onClickListener() }
+    }
+
+    /**
      * Allows to update a text appearance by styles
      */
     protected fun updateTextAppearance(textAppearance: Int) {
@@ -469,7 +487,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 )
             )
         } else {
-            text = EMPTY_TEXT
+            view.text = EMPTY_TEXT
         }
     }
 

@@ -23,9 +23,9 @@ sealed class SPViewData : Parcelable {
     @Parcelize
     data class SPImageResourcesData(
         @DrawableRes val res: Int,
-        var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null,
-        var tintColor: Int? = null
+        var tintColor: Int? = null,
+        var params: SPViewDataParams? = null,
     ) :
         SPViewData()
 
@@ -37,7 +37,8 @@ sealed class SPViewData : Parcelable {
     @Parcelize
     data class SPImageUrlData(
         val url: String,
-        var roundedCorners: Float = 0f
+        var roundedCorners: Float = 0f,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     /**
@@ -110,7 +111,8 @@ sealed class SPViewData : Parcelable {
         val chipHeight: Int,
         val chipWidth: Int,
         val chipStyle: SPEmptyChipStyle,
-        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base
+        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     /**
