@@ -91,6 +91,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
     /**
+     * Sets a text max input lenght.
+     */
+    var maxLenght: Int = 0
+        set(value) {
+            field = value
+
+            (contentInputView as EditText).setTextLength(value)
+        }
+
+    /**
      * Sets a input mandatory red star at the and of label text
      */
     var inputMandatory = false
@@ -236,11 +246,21 @@ open class SPTextFieldInput @JvmOverloads constructor(
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
         if (contentInputView is EditText) {
-                getResourceId(
-            R.styleable.SPTextFieldInput_textAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-            textAppearance = it
+            getResourceId(
+                R.styleable.SPTextFieldInput_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+                textAppearance = it
+            }
+        }
+
+        getInt(
+            R.styleable.SPTextFieldInput_inputTextLength,
+            DEFAULT_TEXT_LENGTH
+        ).handleAttributeAction(
+            DEFAULT_TEXT_LENGTH
+        ) {
+            maxLenght = it
         }
 
         getInt(R.styleable.SPTextFieldInput_startView, SPBaseView.DEFAULT_OBTAIN_VAL)
@@ -263,16 +283,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
             ) {
                 handleContentAttr(it)
             }
-
-        getInt(
-            R.styleable.SPTextFieldInput_inputTextLength,
-                    DEFAULT_TEXT_LENGTH
-                ).handleAttributeAction(
-                    DEFAULT_TEXT_LENGTH
-                ) {
-                    (contentInputView as EditText).setTextLength(it)
-                }
-        }
 
         getString(R.styleable.SPTextFieldInput_android_hint).orEmpty()
             .handleAttributeAction(
@@ -338,12 +348,18 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     )
                 )
             }
-            SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
+            SPTextInputViewType.EDIT_TEXT -> setupContentInputViewByType(getContentEditText())
             SPTextInputViewType.NUMBER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
             )
+            SPTextInputViewType.TEXT -> setupContentInputViewByType(
+                SPTextInputViewType.SPTextViewType(hint)
+            )
         }
     }
+
+    protected open fun getContentEditText() =
+        SPTextInputViewType.SPEditTextViewType(lines = Int.MAX_VALUE)
 
     private fun TypedArray.handleStartView(it: Int) {
         val type: SPStartViewType = when (it) {
@@ -491,7 +507,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
-    private fun ViewGroup.addContentView(view: View?, defaultView: View? = null) {
+    protected fun ViewGroup.addContentView(
+        view: View?,
+        defaultView: View? = null
+    ) {
+
         removeAllViews()
         if (view != null) {
             addView(view)
@@ -499,9 +519,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
             addView(defaultView)
         }
         binding.flInputFieldContainer.invalidate()
+
     }
 
-    private fun handleContentInputView() {
+    protected open fun handleContentInputView() {
         binding.flInputFieldContainer.addContentView(contentInputView)
         contentInputView.setOnFocusChangeListener { _, focused ->
             handleBorderColor()

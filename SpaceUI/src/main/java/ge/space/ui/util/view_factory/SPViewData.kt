@@ -5,6 +5,7 @@ import android.text.InputType
 import android.view.Gravity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
@@ -49,7 +50,7 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPTextData(
-        val initials: String,
+        val initials: String = EMPTY_TEXT,
         @StyleRes var textStyle: Int? = null,
         var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null

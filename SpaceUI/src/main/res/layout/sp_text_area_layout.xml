@@ -2,12 +2,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
         <TextView
             android:id="@+id/textInputCounter"
             android:layout_width="wrap_content"
@@ -18,19 +12,4 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="10/123" />
 
-        <EditText
-            android:id="@+id/textInput"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:layout_gravity="start|top"
-            android:gravity="top"
-            android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding"
-            android:paddingBottom="@dimen/sp_text_field_vertical_text_padding"
-            app:layout_constraintBottom_toTopOf="@id/textInputCounter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="First label" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>
