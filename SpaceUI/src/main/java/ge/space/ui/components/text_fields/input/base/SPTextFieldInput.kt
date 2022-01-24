@@ -185,15 +185,9 @@ open class SPTextFieldInput @JvmOverloads constructor(
             R.styleable.SPTextFieldInput,
             defStyleAttr
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPTextFieldInput_style,
-                    defStyleRes
-                )
-            )
+
             applyAttributes()
 
-            startView = emptyStartView
         }
     }
 
@@ -361,7 +355,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         (getResourceId(R.styleable.SPTextFieldInput_endViewIcon, SPBaseView.DEFAULT_OBTAIN_VAL))
 
     private fun TypedArray.getStartIconFromAttr() =
-        (getResourceId(R.styleable.SPTextFieldInput_endViewIcon, SPBaseView.DEFAULT_OBTAIN_VAL))
+        (getResourceId(R.styleable.SPTextFieldInput_startViewIcon, SPBaseView.DEFAULT_OBTAIN_VAL))
 
     private fun TypedArray.handleEndView(it: Int) {
         val endType = when (it) {
@@ -383,10 +377,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
         setupEndViewByType(endType)
     }
 
-    override fun setViewStyle(newStyle: Int) {
-        with(newStyle) {
-            setStyle(this)
-        }
+    override fun setViewStyle(@StyleRes newStyle: Int) {
+        setStyle(newStyle)
     }
 
     override fun setEnabled(enabled: Boolean) {
