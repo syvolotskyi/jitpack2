@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_p_16">
+
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+        android:id="@+id/tfNumber"
+        app:style="@style/SPTextField.Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Enter Amount"
+        app:endView="currency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleText="Dollar input field" />
+
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+        android:id="@+id/tfNumber2"
+        style="@style/SPTextField.Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:hint="Enter Amount"
+        app:descriptionText="@string/description"
+        app:endView="currency"
+        app:inputTextLength="2"
+        app:endViewText="₾"
+        android:text="2222"
+        app:inputMandatory="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfNumber"
+        app:titleText="Gel input field" />
+
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+        android:id="@+id/tfNumber3"
+        style="@style/SPTextField.Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="Enter Amount"
+        app:endView="currency"
+        app:endViewText="UZB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfNumber2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
