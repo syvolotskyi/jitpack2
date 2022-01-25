@@ -113,7 +113,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a visibility for info button
      */
-    private var showInfoButton = false
+    var showInfoButton = false
         set(value) {
             field = value
 

@@ -40,12 +40,13 @@ class SPTextAreaComponent : ShowCaseComponent {
             }
 
             layoutBinding.cbInfoButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked)
                 layoutBinding.textArea.setInfoListener {
                     Toast.makeText(
                         layoutBinding.textArea.context,
                         "Info icon was clicked", Toast.LENGTH_SHORT
                     ).show()
-                }
+                } else layoutBinding.textArea.showInfoButton = false
             }
 
             layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
