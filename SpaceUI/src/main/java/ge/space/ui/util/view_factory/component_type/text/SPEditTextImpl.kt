@@ -24,7 +24,7 @@ class SPEditTextImpl(context: Context) : SPViewImpl<SPViewData.SPEditTextData>(c
                 type.params?.paddingBottom ?: 0
             )
             type.style?.let { setTextStyle(it) }
-            type.lines?.let { maxLines = it }
+            type.lines?.let { setLines(it)}
             type.hint?.let { hint = it }
         }
     }

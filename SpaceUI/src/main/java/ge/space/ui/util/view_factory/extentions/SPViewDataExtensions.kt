@@ -17,7 +17,7 @@ fun getCurrencyViewData(
 ): SPViewData =
     SPViewData.SPTextData(
         initials, textStyle,
-        SPViewData.SPViewDataParams(
+        params = SPViewData.SPViewDataParams(
             paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1),
             paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
             paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16)
@@ -35,7 +35,6 @@ fun getNumberEditTextViewData(
         style = textStyle,
         hint = hint,
         inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL,
-        lines = 1,
         params = SPViewData.SPViewDataParams(
             gravity = Gravity.LEFT
         )

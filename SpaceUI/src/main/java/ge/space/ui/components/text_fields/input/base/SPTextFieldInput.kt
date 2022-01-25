@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -15,10 +16,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.appendAsterisk
-import ge.space.extensions.onClick
-import ge.space.extensions.setTextStyle
+import ge.space.extensions.*
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -58,19 +56,19 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a button title.
      */
-    var text: String = EMPTY_TEXT
+    open var text: String = EMPTY_TEXT
         get() = contentInputView.text.toString()
         set(value) {
             field = value
 
-            contentInputView.setText(value)
+            contentInputView.text = value
         }
 
 
     /**
      * Sets a button hint.
      */
-    var hint: String = EMPTY_TEXT
+    open var hint: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -93,6 +91,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
     /**
+     * Sets a text max input length.
+     */
+    open var maxLength: Int = 0
+        set(value) {
+            field = value
+
+            handleTextLength(value)
+        }
+
+    /**
      * Sets a input mandatory red star at the and of label text
      */
     var inputMandatory = false
@@ -100,6 +108,16 @@ open class SPTextFieldInput @JvmOverloads constructor(
             field = value
 
             handleShowingLabelText()
+        }
+
+    /**
+     * Sets a visibility for info button
+     */
+    var showInfoButton = false
+        set(value) {
+            field = value
+
+            binding.infoImage.isVisible = field
         }
 
     /**
@@ -145,7 +163,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.flLeading.addContentView(startView, emptyStartView)
+            binding.flStart.addContentView(startView, emptyStartView)
         }
 
     /**
@@ -158,12 +176,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    var contentInputView: EditText = EditText(context)
+    open var contentInputView: TextView = EditText(context)
         set(value) {
             field = value
 
             handleContentInputView()
         }
+
 
     override var isDistractive: Boolean = false
         set(value) {
@@ -175,7 +194,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
      */
-    protected val binding by lazy {
+    protected open val binding by lazy {
         SpTextFieldLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
@@ -220,14 +239,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
             }
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
-
-        getResourceId(
-            R.styleable.SPTextFieldInput_textAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-            textAppearance = it
+        if (contentInputView is EditText) {
+            getResourceId(
+                R.styleable.SPTextFieldInput_textAppearance,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+                textAppearance = it
+            }
         }
-
         getInt(R.styleable.SPTextFieldInput_startView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
@@ -242,22 +261,21 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 handleEndView(it)
             }
 
-        getInt(R.styleable.SPTextFieldInput_contentInputView, SPBaseView.NO_OBTAIN_VAL)
-            .handleAttributeAction(
-                SPBaseView.NO_OBTAIN_VAL
-            ) {
-                handleContentAttr(it)
-            }
-
         getInt(
             R.styleable.SPTextFieldInput_inputTextLength,
             DEFAULT_TEXT_LENGTH
         ).handleAttributeAction(
             DEFAULT_TEXT_LENGTH
         ) {
-            contentInputView.setTextLength(it)
+            maxLength = it
         }
 
+        getInt(R.styleable.SPTextFieldInput_contentInputView, SPBaseView.NO_OBTAIN_VAL)
+            .handleAttributeAction(
+                SPBaseView.NO_OBTAIN_VAL
+            ) {
+                handleContentAttr(it)
+            }
 
         getString(R.styleable.SPTextFieldInput_android_hint).orEmpty()
             .handleAttributeAction(
@@ -271,7 +289,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 EMPTY_TEXT
             ) {
                 text = it
-                contentInputView.setText(text)
+                contentInputView.text = text
             }
 
         getString(R.styleable.SPTextFieldInput_descriptionText).orEmpty()
@@ -284,6 +302,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             updateDescriptionTextAppearance(it)
+        }
+
+        getResourceId(
+            R.styleable.SPTextFieldInput_contentHeight,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            binding.flContainer.setHeight(resources.getDimensionPixelSize(it))
         }
 
         getResourceId(
@@ -316,12 +341,18 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     )
                 )
             }
-            SPTextInputViewType.TEXT -> setupContentInputViewByType(SPTextInputViewType.SPTextViewType())
+            SPTextInputViewType.EDIT_TEXT -> setupContentInputViewByType(getContentEditText())
             SPTextInputViewType.NUMBER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
             )
+            SPTextInputViewType.TEXT -> setupContentInputViewByType(
+                SPTextInputViewType.SPTextViewType(hint)
+            )
         }
     }
+
+    protected open fun getContentEditText() =
+        SPTextInputViewType.SPEditTextViewType(lines = Int.MAX_VALUE)
 
     private fun TypedArray.handleStartView(it: Int) {
         val type: SPStartViewType = when (it) {
@@ -397,10 +428,19 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     /**
+     * Sets a info click listener.
+     */
+    fun setInfoListener(onClickListener: () -> Unit? = {}) {
+        showInfoButton = true
+        binding.infoImage.onClick { onClickListener() }
+    }
+
+    /**
      * Allows to update a text appearance by styles
      */
-    private fun updateTextAppearance(textAppearance: Int) =
+    protected fun updateTextAppearance(textAppearance: Int) {
         contentInputView.setTextStyle(textAppearance)
+    }
 
     private fun updateLabelTextAppearance(textAppearance: Int) =
         binding.textLabel.setTextStyle(textAppearance)
@@ -454,11 +494,15 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 )
             )
         } else {
-            view.setText(EMPTY_TEXT)
+            view.text = EMPTY_TEXT
         }
     }
 
-    private fun FrameLayout.addContentView(view: View?, defaultView: View? = null) {
+    protected fun ViewGroup.addContentView(
+        view: View?,
+        defaultView: View? = null
+    ) {
+
         removeAllViews()
         if (view != null) {
             addView(view)
@@ -466,17 +510,26 @@ open class SPTextFieldInput @JvmOverloads constructor(
             addView(defaultView)
         }
         binding.flInputFieldContainer.invalidate()
+
     }
 
-    private fun handleContentInputView() {
+    protected open fun handleContentInputView() {
         binding.flInputFieldContainer.addContentView(contentInputView)
+        setupFocusChangeListener()
+    }
+
+    protected fun setupFocusChangeListener() {
         contentInputView.setOnFocusChangeListener { _, focused ->
             handleBorderColor()
             onFocusChangeListener(focused)
         }
     }
 
-    private fun handleBorderColor() {
+    protected open fun handleTextLength(value: Int) {
+        (contentInputView as EditText).setTextLength(value)
+    }
+
+    protected fun handleBorderColor() {
         binding.flContainer.changeBorder(
             when {
                 !isEnabled ->

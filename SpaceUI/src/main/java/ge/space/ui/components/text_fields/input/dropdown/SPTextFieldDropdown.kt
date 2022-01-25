@@ -2,10 +2,14 @@ package ge.space.ui.components.text_fields.input.dropdown
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import ge.space.extensions.EMPTY_TEXT
+import ge.space.extensions.setHeight
+import ge.space.extensions.setWidth
 import ge.space.spaceui.R
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 
@@ -21,8 +25,9 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
 class SPTextFieldDropdown<T> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPTextFieldInput(context, attrs, defStyleAttr) {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPTextField_Dropdown
+) : SPTextFieldInput(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Binding a item view after selecting
@@ -49,6 +54,18 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     private var inflateType: InflateType = InflateType.None
 
+
+    /**
+     * Sets a left image, if inflate type is withImage
+     */
+    fun setImage(view: View) {
+        if (inflateType == InflateType.WithIcon) {
+            view.setHeight(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
+            view.setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
+            startView = view
+        }
+    }
+
     /**
      * Sets a default Item and bind it
      */
@@ -63,6 +80,22 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     fun onSelectedItem(item: T) =
         bindViewValue(this, item)
+
+    override fun setViewStyle(newStyle: Int) {
+        super.setViewStyle(newStyle)
+        val styleAttrs =
+            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPTextFieldDropdown)
+
+        styleAttrs.run {
+            val inflateId = getInt(
+                R.styleable.SPTextFieldDropdown_inflateType,
+                SPBaseView.DEFAULT_OBTAIN_VAL
+            )
+            inflateType = InflateType.values()[inflateId]
+        }
+
+        setOnClickListener { onClickListener(this) }
+    }
 
     enum class InflateType {
         None,

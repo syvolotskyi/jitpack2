@@ -5,6 +5,7 @@ import android.text.InputType
 import android.view.Gravity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
@@ -23,9 +24,9 @@ sealed class SPViewData : Parcelable {
     @Parcelize
     data class SPImageResourcesData(
         @DrawableRes val res: Int,
-        var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null,
-        var tintColor: Int? = null
+        var tintColor: Int? = null,
+        var params: SPViewDataParams? = null,
     ) :
         SPViewData()
 
@@ -37,7 +38,8 @@ sealed class SPViewData : Parcelable {
     @Parcelize
     data class SPImageUrlData(
         val url: String,
-        var roundedCorners: Float = 0f
+        var roundedCorners: Float = 0f,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     /**
@@ -48,8 +50,9 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPTextData(
-        val initials: String,
+        val initials: String = EMPTY_TEXT,
         @StyleRes var textStyle: Int? = null,
+        var lines: Int = 1,
         var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null
     ) :
@@ -75,11 +78,11 @@ sealed class SPViewData : Parcelable {
      * Create a masked edit text (for example phone or date)
      *
      * @property params helps to setup view params for view
-     * @property styleRes applies a style for view
+     * @property textAppearance applies a style for view
      */
     @Parcelize
     data class SPMaskedEditTextData(
-        @StyleRes var textAppereance: Int? = null,
+        @StyleRes var textAppearance: Int? = null,
         var mask: String,
         var hint: String? = null,
         var params: SPViewDataParams? = null,
@@ -96,7 +99,8 @@ sealed class SPViewData : Parcelable {
         val chipHeight: Int,
         val chipWidth: Int,
         val chipStyle: SPEmptyChipStyle,
-        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base
+        @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     /**
