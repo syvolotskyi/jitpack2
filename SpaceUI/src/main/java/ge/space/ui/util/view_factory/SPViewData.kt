@@ -78,11 +78,11 @@ sealed class SPViewData : Parcelable {
      * Create a masked edit text (for example phone or date)
      *
      * @property params helps to setup view params for view
-     * @property styleRes applies a style for view
+     * @property textAppearance applies a style for view
      */
     @Parcelize
     data class SPMaskedEditTextData(
-        @StyleRes var textAppereance: Int? = null,
+        @StyleRes var textAppearance: Int? = null,
         var mask: String,
         var hint: String? = null,
         var params: SPViewDataParams? = null,

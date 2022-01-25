@@ -13,7 +13,7 @@
     <style name="SPTextField.Area" parent="SPTextField.Base">
         <item name="contentInputView">edit_text</item>
         <item name="contentHeight">@dimen/dimen_p_158</item>
-        <item name="inputTextLength">500</item>
+        <item name="inputTextLength">@integer/default_text_length</item>
     </style>
 
 </resources>

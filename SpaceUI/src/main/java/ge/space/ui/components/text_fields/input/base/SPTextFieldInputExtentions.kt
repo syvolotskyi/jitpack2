@@ -82,7 +82,7 @@ fun SPTextFieldInput.setupContentInputViewByType(
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
-        ).createView(context)
+        )
         is SPTextInputViewType.SPMaskViewType -> SPViewData.SPMaskedEditTextData(
             textAppearance,
             type.mask,
@@ -91,10 +91,10 @@ fun SPTextFieldInput.setupContentInputViewByType(
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
-        ).createView(context)
+        )
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
             type.hint
-        ).createView(context)
+        )
         is SPTextInputViewType.SPTextViewType -> SPViewData.SPTextData(
             type.text.orEmpty(),
             textAppearance,
@@ -102,9 +102,9 @@ fun SPTextFieldInput.setupContentInputViewByType(
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
-        ).createView(context)
+        )
 
-    }) as TextView
+    }).createView(context) as TextView
 }
 
 /**

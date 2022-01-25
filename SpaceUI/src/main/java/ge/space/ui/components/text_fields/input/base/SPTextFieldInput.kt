@@ -253,16 +253,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 textAppearance = it
             }
         }
-
-        getInt(
-            R.styleable.SPTextFieldInput_inputTextLength,
-            DEFAULT_TEXT_LENGTH
-        ).handleAttributeAction(
-            DEFAULT_TEXT_LENGTH
-        ) {
-            maxLength = it
-        }
-
         getInt(R.styleable.SPTextFieldInput_startView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
@@ -283,6 +273,15 @@ open class SPTextFieldInput @JvmOverloads constructor(
             ) {
                 handleContentAttr(it)
             }
+
+        getInt(
+            R.styleable.SPTextFieldInput_inputTextLength,
+            DEFAULT_TEXT_LENGTH
+        ).handleAttributeAction(
+            DEFAULT_TEXT_LENGTH
+        ) {
+            maxLength = it
+        }
 
         getString(R.styleable.SPTextFieldInput_android_hint).orEmpty()
             .handleAttributeAction(
