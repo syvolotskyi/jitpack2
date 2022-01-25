@@ -6,15 +6,15 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_p_16">
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <ge.space.ui.components.controls.SPToggleSwitch
         android:id="@+id/toggleSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        android:thumb="@drawable/switch_thumb"
-        app:track="@drawable/switch_track_selector" />
+        style="@style/SPToggleSwitch.Root"
+        />
 
     <CheckBox
         android:id="@+id/cbDisable"
@@ -25,7 +25,7 @@
         android:layout_marginTop="@dimen/dimen_p_32"
         android:text="@string/disable" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <ge.space.ui.components.controls.SPToggleSwitch
         android:id="@+id/toggleSwitch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,11 +33,29 @@
         android:layout_marginTop="@dimen/dimen_p_16"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        android:thumb="@drawable/switch_thumb"
-        app:track="@drawable/switch_track_selector" />
+        style="@style/SPToggleSwitch.Enabled.Unchecked" />
 
     <CheckBox
         android:id="@+id/cbDisable2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SPCheckbox.DefaultStyle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:text="@string/disable" />
+
+    <ge.space.ui.components.controls.SPToggleSwitch
+        android:id="@+id/toggleSwitch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_16"
+        android:layout_marginStart="@dimen/dimen_p_16"
+        android:layout_marginEnd="@dimen/dimen_p_16"
+        style="@style/SPToggleSwitch.SmallTrack.Enabled.Unchecked" />
+
+    <CheckBox
+        android:id="@+id/cbDisable3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/SPCheckbox.DefaultStyle"

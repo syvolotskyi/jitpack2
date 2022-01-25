@@ -21,7 +21,7 @@ class SPToggleSwitch @JvmOverloads constructor(
 
     init {
         getContext().withStyledAttributes(attrs, R.styleable.SPToggleSwitch, defStyleAttr) {
-            setViewStyle(getResourceId(R.styleable.SPToggleSwitch_style, DEFAULT_OBTAIN_VAL))
+            withStyledAttributes()
         }
     }
 
@@ -45,13 +45,12 @@ class SPToggleSwitch @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPToggleSwitch_thumbTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                // think about using ColorStateList constructor
                 thumbTintList = ColorStateList.valueOf(getColor(it, DEFAULT_OBTAIN_VAL))
             }
 
-        getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
+        /*getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 trackTintList = ColorStateList.valueOf(getColor(it, DEFAULT_OBTAIN_VAL))
-            }
+            }*/
     }
 }

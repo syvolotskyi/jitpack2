@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="false">
+    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/toggle_switch_disabled_unchecked">
         <shape android:shape="rectangle" android:dither="true" android:useLevel="false">
             <corners android:radius="@dimen/dimen_p_64" />
             <size android:height="@dimen/dimen_p_24" android:width="@dimen/dimen_p_40" />
-            <solid android:color="#F5F5F5" />
-            <stroke android:color="#D8D8D8" android:width="@dimen/dimen_p_4" />
+            <stroke android:color="?attr/greyscale_gray_4" android:width="@dimen/dimen_p_2" />
+            <solid android:color="?attr/background_secondary" />
         </shape>
     </item>
     <item android:state_enabled="false" android:state_checked="true">
