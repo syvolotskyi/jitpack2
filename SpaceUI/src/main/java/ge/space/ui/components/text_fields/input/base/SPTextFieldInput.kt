@@ -91,9 +91,9 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
 
     /**
-     * Sets a text max input lenght.
+     * Sets a text max input length.
      */
-    var maxLenght: Int = 0
+    var maxLength: Int = 0
         set(value) {
             field = value
 
@@ -260,7 +260,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         ).handleAttributeAction(
             DEFAULT_TEXT_LENGTH
         ) {
-            maxLenght = it
+            maxLength = it
         }
 
         getInt(R.styleable.SPTextFieldInput_startView, SPBaseView.DEFAULT_OBTAIN_VAL)

@@ -5,15 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/buttonName"
@@ -33,6 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_p_16"
+                app:titleText="@string/textArea"
+                android:hint="@string/enter_you_details_here"
                 android:layout_marginEnd="@dimen/dimen_p_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +68,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/cbEnableDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/textInput"

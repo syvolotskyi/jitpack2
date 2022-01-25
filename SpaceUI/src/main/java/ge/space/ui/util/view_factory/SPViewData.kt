@@ -52,6 +52,7 @@ sealed class SPViewData : Parcelable {
     data class SPTextData(
         val initials: String = EMPTY_TEXT,
         @StyleRes var textStyle: Int? = null,
+        var lines: Int = 1,
         var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null
     ) :

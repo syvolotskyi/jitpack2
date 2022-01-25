@@ -77,8 +77,9 @@ fun SPTextFieldInput.setupContentInputViewByType(
             textAppearance,
             type.hint,
             type.inputType,
-            params = SPViewData.SPViewDataParams(
-                gravity = Gravity.START or Gravity.TOP,
+            type.lines,
+            params = type.params ?: SPViewData.SPViewDataParams(
+                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
         ).createView(context)
@@ -97,7 +98,7 @@ fun SPTextFieldInput.setupContentInputViewByType(
         is SPTextInputViewType.SPTextViewType -> SPViewData.SPTextData(
             type.text.orEmpty(),
             textAppearance,
-            SPViewData.SPViewDataParams(
+            params = SPViewData.SPViewDataParams(
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
@@ -149,7 +150,7 @@ fun SPTextFieldInput.setupStartViewByType(
         is SPStartViewType.SPPhonePrefixViewType -> SPViewData.SPTextData(
             type.phonePrefix,
             textAppearance,
-            SPViewData.SPViewDataParams(
+            params = SPViewData.SPViewDataParams(
                 gravity = Gravity.END or Gravity.CENTER_VERTICAL,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),
