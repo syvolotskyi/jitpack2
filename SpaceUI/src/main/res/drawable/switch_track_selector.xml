@@ -6,11 +6,6 @@
             <size android:height="@dimen/dimen_p_24" android:width="@dimen/dimen_p_40" />
             <solid android:color="#F5F5F5" />
             <stroke android:color="#D8D8D8" android:width="@dimen/dimen_p_4" />
-            <padding
-                android:top="@dimen/dimen_p_4"
-                android:bottom="@dimen/dimen_p_4"
-                android:left="@dimen/dimen_p_4"
-                android:right="@dimen/dimen_p_4" />
         </shape>
     </item>
     <item android:state_enabled="false" android:state_checked="true">
@@ -18,11 +13,6 @@
             <corners android:radius="@dimen/dimen_p_64" />
             <size android:height="@dimen/dimen_p_24" android:width="@dimen/dimen_p_40" />
             <solid android:color="?attr/brand_secondary" />
-            <padding
-                android:top="@dimen/dimen_p_4"
-                android:bottom="@dimen/dimen_p_4"
-                android:left="@dimen/dimen_p_4"
-                android:right="@dimen/dimen_p_4" />
         </shape>
     </item>
     <item android:state_enabled="true" android:state_checked="false">
@@ -30,11 +20,6 @@
             <corners android:radius="@dimen/dimen_p_64" />
             <size android:height="@dimen/dimen_p_24" android:width="@dimen/dimen_p_40" />
             <solid android:color="?attr/greyscale_gray_4" />
-            <padding
-                android:top="@dimen/dimen_p_4"
-                android:bottom="@dimen/dimen_p_4"
-                android:left="@dimen/dimen_p_4"
-                android:right="@dimen/dimen_p_4" />
         </shape>
     </item>
     <item android:state_enabled="true" android:state_checked="true">
@@ -42,11 +27,6 @@
             <corners android:radius="@dimen/dimen_p_64" />
             <size android:height="@dimen/dimen_p_24" android:width="@dimen/dimen_p_40" />
             <solid android:color="?attr/brand_primary" />
-            <padding
-                android:top="@dimen/dimen_p_4"
-                android:bottom="@dimen/dimen_p_4"
-                android:left="@dimen/dimen_p_4"
-                android:right="@dimen/dimen_p_4" />
         </shape>
     </item>
 </selector>
