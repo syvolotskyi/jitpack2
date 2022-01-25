@@ -2,11 +2,13 @@ package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.view.Gravity
-import android.widget.EditText
+import android.widget.TextView
+import ge.space.extensions.EMPTY_TEXT
+import ge.space.extensions.SPACE
 import ge.space.spaceui.R
+import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
-import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData.Companion.getSmallChipData
 import ge.space.ui.util.view_factory.extentions.getCurrencyViewData
 import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
@@ -31,11 +33,38 @@ fun SPTextFieldInput.setupDateInput(mask: String) {
 /**
  * Setup a view as input for phone
  */
-fun SPTextFieldInput.setupPhoneInput(prefix: String, mask:String) {
+fun SPTextFieldInput.setupPhoneInput(prefix: String, mask: String) {
     setupStartViewByType(SPStartViewType.SPPhonePrefixViewType(phonePrefix = prefix))
     setupContentInputViewByType(SPTextInputViewType.SPMaskViewType(mask, hint))
     setupEndViewByType(SPEndViewType.SPNoneViewType)
 }
+
+/**
+ * Setup a view as input for card
+ *
+ * @property mask [String] value which sets a mask.
+ * @property cardEnteredListener [(cardNumber: String) -> Boolean] functions called when user enters card number,
+ * require a Boolean result,
+ * where true - card is checked, false - card is wrong.
+ */
+fun SPTextFieldInput.setupCardInput(
+    mask: String = context.getString(R.string.card_mask),
+    cardEnteredListener: (cardNumber: String) -> Boolean
+) {
+    setupStartViewByType(SPStartViewType.SPNoneViewType)
+    setupContentInputViewByType(SPTextInputViewType.SPMaskViewType(mask, hint))
+    setupEndViewByType(SPEndViewType.SPRemovableViewType)
+
+    doOnTextChanged { text, _, _, _ ->
+        if (!cardEnteredListener(
+                text.toString().replace("X", EMPTY_TEXT)
+                    .replace(SPACE, EMPTY_TEXT)
+            )
+        )
+            setupEndViewByType(SPEndViewType.SPRemovableViewType)
+    }
+}
+
 
 /**
  * Setup a Content View due to type
@@ -44,15 +73,16 @@ fun SPTextFieldInput.setupContentInputViewByType(
     type: SPTextInputViewType
 ) {
     contentInputView = (when (type) {
-        is SPTextInputViewType.SPTextViewType -> SPViewData.SPEditTextData(
+        is SPTextInputViewType.SPEditTextViewType -> SPViewData.SPEditTextData(
             textAppearance,
             type.hint,
             type.inputType,
-            params = SPViewData.SPViewDataParams(
+            type.lines,
+            params = type.params ?: SPViewData.SPViewDataParams(
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
-        ).createView(context)
+        )
         is SPTextInputViewType.SPMaskViewType -> SPViewData.SPMaskedEditTextData(
             textAppearance,
             type.mask,
@@ -61,11 +91,20 @@ fun SPTextFieldInput.setupContentInputViewByType(
                 gravity = Gravity.START or Gravity.CENTER_VERTICAL,
                 paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
             )
-        ).createView(context)
+        )
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
             type.hint
-        ).createView(context)
-    } as EditText)
+        )
+        is SPTextInputViewType.SPTextViewType -> SPViewData.SPTextData(
+            type.text.orEmpty(),
+            textAppearance,
+            params = SPViewData.SPViewDataParams(
+                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
+                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
+            )
+        )
+
+    }).createView(context) as TextView
 }
 
 /**
@@ -111,7 +150,7 @@ fun SPTextFieldInput.setupStartViewByType(
         is SPStartViewType.SPPhonePrefixViewType -> SPViewData.SPTextData(
             type.phonePrefix,
             textAppearance,
-            SPViewData.SPViewDataParams(
+            params = SPViewData.SPViewDataParams(
                 gravity = Gravity.END or Gravity.CENTER_VERTICAL,
                 paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_16),
                 paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_4),

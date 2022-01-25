@@ -50,6 +50,9 @@
     <string name="dropdown">Dropdown</string>
     <string name="dropdown_desc">Dropdown desc</string>
 
+    <string name="textArea">Text Area</string>
+    <string name="textArea_desc">Text Area desc</string>
+
     <string name="number_input">Number input</string>
     <string name="number_input_desc">Enter sum more than 120.0 to show distractive attr</string>
 
@@ -63,6 +66,7 @@
     <string name="disable">Disable</string>
     <string name="chooseSettings">Choose settings</string>
     <string name="description">Description</string>
+    <string name="information_icon">Information icon</string>
     <string name="active">Active</string>
     <string name="pleaseEnterTheRightValue">Please, enter the right value</string>
 

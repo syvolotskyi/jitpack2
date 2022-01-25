@@ -5,6 +5,7 @@ import android.text.InputType
 import android.view.Gravity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
+import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
@@ -49,8 +50,9 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPTextData(
-        val initials: String,
+        val initials: String = EMPTY_TEXT,
         @StyleRes var textStyle: Int? = null,
+        var lines: Int = 1,
         var params: SPViewDataParams? = null,
         var backgroundColor: Int? = null
     ) :
@@ -76,11 +78,11 @@ sealed class SPViewData : Parcelable {
      * Create a masked edit text (for example phone or date)
      *
      * @property params helps to setup view params for view
-     * @property styleRes applies a style for view
+     * @property textAppearance applies a style for view
      */
     @Parcelize
     data class SPMaskedEditTextData(
-        @StyleRes var style: Int? = null,
+        @StyleRes var textAppearance: Int? = null,
         var mask: String,
         var hint: String? = null,
         var params: SPViewDataParams? = null,

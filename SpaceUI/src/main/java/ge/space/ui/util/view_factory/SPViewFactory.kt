@@ -3,7 +3,9 @@ package ge.space.ui.util.view_factory
 import android.content.Context
 import android.view.View
 import ge.space.ui.util.view_factory.component_type.card.SPNewCreditCardImpl
-import ge.space.ui.util.view_factory.component_type.chip.*
+import ge.space.ui.util.view_factory.component_type.chip.SPChipIconImpl
+import ge.space.ui.util.view_factory.component_type.chip.SPDigitalChipIconImpl
+import ge.space.ui.util.view_factory.component_type.chip.SPSecondaryChipIconImpl
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPEmptyChipIconImpl
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPPrimaryChipIconImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageResImpl
