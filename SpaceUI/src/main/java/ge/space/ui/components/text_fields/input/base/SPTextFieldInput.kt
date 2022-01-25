@@ -93,11 +93,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a text max input length.
      */
-    var maxLength: Int = 0
+    open var maxLength: Int = 0
         set(value) {
             field = value
 
-            (contentInputView as EditText).setTextLength(value)
+            handleTextLength(value)
         }
 
     /**
@@ -527,6 +527,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
             handleBorderColor()
             onFocusChangeListener(focused)
         }
+    }
+
+    protected open fun handleTextLength(value: Int) {
+        (contentInputView as EditText).setTextLength(value)
     }
 
     protected fun handleBorderColor() {

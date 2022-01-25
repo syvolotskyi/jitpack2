@@ -59,13 +59,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/cbMandatory" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbInfoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:checked="false"
+                android:text="@string/information_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbEnableDescription" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbDisable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_p_32"
                 android:text="disable"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cbEnableDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/cbInfoButton" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,6 +19,12 @@ import ge.space.ui.components.text_fields.input.base.SPTextInputViewType
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
+
+/**
+ * Field view extended from [SPTextFieldInput] to add the possibility to create
+ * a large input text with a symbol counter.
+ *
+ */
 class SPTextAreaView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -26,10 +32,24 @@ class SPTextAreaView @JvmOverloads constructor(
     @StyleRes defStyleRes: Int = R.style.SPTextField_Area,
 ) : SPTextFieldInput(context, attrs, defStyleAttr, defStyleRes) {
 
+    /**
+     * A text view contains information about current text length and max length.
+     */
     private var counterView: TextView? = null
 
     override fun handleContentInputView() {
         binding.flInputFieldContainer.addView(createScrollView())
+        setupCounterView()
+        binding.flInputFieldContainer.addView(counterView)
+    }
+
+    override fun handleTextLength(value: Int) {
+        super.handleTextLength(value)
+
+        updateCounterText()
+    }
+
+    private fun setupCounterView() {
         counterView =
             (SPViewData.SPTextData(
                 params = SPViewData.SPViewDataParams(
@@ -45,13 +65,15 @@ class SPTextAreaView @JvmOverloads constructor(
                     )
                 }
         (contentInputView as EditText).onChange {
-            counterView?.setText(
-                getCounterText(),
-                TextView.BufferType.SPANNABLE
-            )
+            updateCounterText()
         }
-        binding.flInputFieldContainer.addView(counterView)
     }
+
+    private fun updateCounterText() =
+        counterView?.setText(
+            getCounterText(),
+            TextView.BufferType.SPANNABLE
+        )
 
     private fun createScrollView(): ScrollView {
         val scrollView = ScrollView(context).apply {
@@ -95,7 +117,9 @@ class SPTextAreaView @JvmOverloads constructor(
         SPTextInputViewType.SPEditTextViewType(
             hint,
             lines = null,
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE,
+            inputType = InputType.TYPE_CLASS_TEXT
+                    or InputType.TYPE_TEXT_FLAG_MULTI_LINE
+                    or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD,
             params = SPViewData.SPViewDataParams(
                 gravity = Gravity.START or Gravity.TOP,
                 paddingTop = resources.getDimensionPixelSize(R.dimen.dimen_p_12),
