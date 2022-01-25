@@ -40,6 +40,7 @@
             android:id="@+id/cbMandatory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/themeTextColor"
             android:layout_marginStart="10dp"
             android:enabled="true"
             android:text="mandatory" />
@@ -48,6 +49,7 @@
             android:id="@+id/cbDisable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/themeTextColor"
             android:layout_marginStart="10dp"
             android:enabled="true"
             android:text="disable" />
@@ -57,13 +59,14 @@
             android:id="@+id/cbEnableDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:textColor="?attr/themeTextColor"
             android:layout_marginStart="10dp"
             android:text="@string/description" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/cbDistractive"
             android:layout_width="wrap_content"
+            android:textColor="?attr/themeTextColor"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Distractive (error)" />
@@ -100,6 +103,7 @@
                     android:id="@+id/primarySimple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="?attr/themeTextColor"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
                     android:checked="true"
@@ -108,6 +112,7 @@
                     android:id="@+id/primarySimpleHint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="?attr/themeTextColor"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
                     android:text="Primary input with hint" />
@@ -116,6 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:textColor="?attr/themeTextColor"
                     android:enabled="true"
                     android:text="Primary input removable" />
 
@@ -123,6 +129,7 @@
                     android:id="@+id/primaryIconSimple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="?attr/themeTextColor"
                     android:layout_marginStart="10dp"
                     android:enabled="true"
                     android:text="Primary with message icon and removable" />
