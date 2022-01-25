@@ -25,8 +25,6 @@ class SPNumberXMLComponent: ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
 
-        private val distractiveSum: BigDecimal = BigDecimal(BIG_DECIMAL_VALUE)
-
         override fun create(environment: SPShowCaseEnvironment): Any {
             val binding = SpLayoutTextFieldNumberXmlShowcaseBinding.inflate(environment.requireLayoutInflater())
             return binding.root
@@ -34,10 +32,4 @@ class SPNumberXMLComponent: ShowCaseComponent {
 
     }
 
-    companion object {
-        private const val EURO = "€"
-        private const val GEL  = "₾"
-        private const val UZS  = "UZS"
-        private const val BIG_DECIMAL_VALUE  = "120.0"
-    }
 }

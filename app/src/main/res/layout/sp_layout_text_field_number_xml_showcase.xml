@@ -9,7 +9,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber"
-        app:style="@style/SPTextField.Number"
+        style="@style/SPTextField.Number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
