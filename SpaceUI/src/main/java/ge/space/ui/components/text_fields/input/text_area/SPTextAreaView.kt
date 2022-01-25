@@ -42,31 +42,23 @@ class SPTextAreaView @JvmOverloads constructor(
         setupCounterView()
         setupFocusChangeListener()
         binding.flInputFieldContainer.addView(counterView)
+        registerCounterListener()
     }
 
-    override fun handleTextLength(value: Int) {
-        super.handleTextLength(value)
-
-        updateCounterText()
+    private fun registerCounterListener(){
+        (contentInputView as EditText).onChange {
+            updateCounterText()
+        }
     }
 
     private fun setupCounterView() {
-        counterView =
-            (SPViewData.SPTextData(
-                params = SPViewData.SPViewDataParams(
-                    gravity = Gravity.END or Gravity.CENTER_VERTICAL,
-                    paddingBottom = resources.getDimensionPixelSize(R.dimen.dimen_p_4),
-                )
+        counterView = (SPViewData.SPTextData(
+            params = SPViewData.SPViewDataParams(gravity = Gravity.END or Gravity.CENTER_VERTICAL, paddingBottom = resources.getDimensionPixelSize(R.dimen.dimen_p_4),)
+        ).createView(context) as TextView).apply {
+            setText(
+                getCounterText(),
+                TextView.BufferType.SPANNABLE
             )
-                .createView(context) as TextView)
-                .apply {
-                    setText(
-                        getCounterText(),
-                        TextView.BufferType.SPANNABLE
-                    )
-                }
-        (contentInputView as EditText).onChange {
-            updateCounterText()
         }
     }
 
@@ -82,6 +74,7 @@ class SPTextAreaView @JvmOverloads constructor(
             setFadingEdgeLength(resources.getDimensionPixelSize(R.dimen.dimen_p_60))
             isVerticalFadingEdgeEnabled = true
             isVerticalScrollBarEnabled = false
+            overScrollMode = OVER_SCROLL_NEVER
         }
 
         val param = LayoutParams(
