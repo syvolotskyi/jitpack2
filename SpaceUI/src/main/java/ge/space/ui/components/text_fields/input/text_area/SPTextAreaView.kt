@@ -40,6 +40,7 @@ class SPTextAreaView @JvmOverloads constructor(
     override fun handleContentInputView() {
         binding.flInputFieldContainer.addView(createScrollView())
         setupCounterView()
+        setupFocusChangeListener()
         binding.flInputFieldContainer.addView(counterView)
     }
 

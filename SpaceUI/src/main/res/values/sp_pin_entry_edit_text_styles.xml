@@ -35,8 +35,8 @@
     </style>
 
     <style name="SPInputField" parent="SPBaseView">
-        <item name="backgroundColor">?attr/static_white</item>
-        <item name="background">?attr/static_white</item>
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="background">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
     </style>
 

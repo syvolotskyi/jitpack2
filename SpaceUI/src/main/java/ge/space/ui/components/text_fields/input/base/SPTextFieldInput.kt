@@ -523,6 +523,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
 
     protected open fun handleContentInputView() {
         binding.flInputFieldContainer.addContentView(contentInputView)
+        setupFocusChangeListener()
+    }
+
+    protected fun setupFocusChangeListener() {
         contentInputView.setOnFocusChangeListener { _, focused ->
             handleBorderColor()
             onFocusChangeListener(focused)
