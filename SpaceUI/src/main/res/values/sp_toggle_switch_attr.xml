@@ -5,5 +5,10 @@
         <attr name="android:thumb" />
         <attr name="trackTint" />
         <attr name="thumbTint" />
+        <attr name="track_disabled_unchecked" format="reference" />
+        <attr name="thumbTint_disabled_unchecked" format="color" />
+        <!--<attr name="trackTint_enabled_checked" format="color|reference" />
+        <attr name="trackTint_enabled_unchecked" format="color|reference" />
+        <attr name="trackTint_disabled_checked" format="color|reference" />-->
     </declare-styleable>
 </resources>

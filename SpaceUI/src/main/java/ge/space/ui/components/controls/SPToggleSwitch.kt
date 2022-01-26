@@ -53,5 +53,19 @@ class SPToggleSwitch @JvmOverloads constructor(
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 trackTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
             }
+
+        getResourceId(R.styleable.SPToggleSwitch_track_disabled_unchecked, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                if (!isEnabled && !isChecked) {
+                    setTrackResource(it)
+                }
+            }
+
+        getResourceId(R.styleable.SPToggleSwitch_thumbTint_disabled_unchecked, DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+                if (!isEnabled && !isChecked) {
+                    thumbTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
+                }
+            }
     }
 }

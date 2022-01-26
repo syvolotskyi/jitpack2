@@ -32,7 +32,7 @@
         android:layout_marginTop="@dimen/dimen_p_16"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        style="@style/SPToggleSwitch.Enabled.Unchecked" />
+        style="@style/SPToggleSwitch.Root" />
 
     <CheckBox
         android:id="@+id/cbDisable2"

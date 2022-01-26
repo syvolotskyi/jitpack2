@@ -4,10 +4,9 @@
     <style name="SPToggleSwitch.Root" parent="Widget.MaterialComponents.CompoundButton.Switch">
         <item name="track">@drawable/switch_track_selector</item>
         <item name="android:thumb">@drawable/switch_thumb</item>
-    </style>
-
-    <style name="SPToggleSwitch.Default" parent="SPToggleSwitch.Root">
-
+        <item name="track_disabled_unchecked">@drawable/switch_track_disabled_unchecked</item>
+        <item name="thumbTint_disabled_unchecked">?attr/background_secondary</item>
+        <item name="thumbTint">?attr/static_white</item>
     </style>
 
 
