@@ -101,7 +101,6 @@ class SPNumberComponent : ShowCaseComponent {
             rbFocused: RadioButton,
             rbUnfocused: RadioButton
         ) {
-            tfFocused.focus()
             rbUnfocused.isChecked = false
             rbFocused.isChecked = true
         }
