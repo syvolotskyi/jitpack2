@@ -8,7 +8,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/phoneInput"
-        app:style="@style/SPTextInput.Phone"
+        style="@style/SPTextInput.Phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_16"
@@ -22,7 +22,7 @@
         android:id="@+id/dateInputSecond"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:style="@style/SPTextInput.DateMasked"
+        style="@style/SPTextInput.DateMasked"
         android:layout_margin="@dimen/dimen_p_16"
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateInputSecond"
-        app:style="@style/SPTextInput.CardMasked"
+        style="@style/SPTextInput.CardMasked"
         app:titleText="Input card number" />
 
     <androidx.appcompat.widget.AppCompatEditText

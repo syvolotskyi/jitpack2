@@ -6,7 +6,6 @@
     </declare-styleable>
 
     <declare-styleable name="SPTextFieldInput">
-        <attr name="style" />
         <attr name="android:text" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
