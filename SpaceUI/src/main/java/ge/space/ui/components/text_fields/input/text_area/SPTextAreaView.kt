@@ -1,5 +1,6 @@
 package ge.space.ui.components.text_fields.input.text_area
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.InputType
 import android.text.Spannable
@@ -12,6 +13,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.view.children
 import ge.space.extensions.onChange
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
@@ -68,12 +70,17 @@ class SPTextAreaView @JvmOverloads constructor(
             TextView.BufferType.SPANNABLE
         )
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun createScrollView(): ScrollView {
         val scrollView = ScrollView(context).apply {
             addView(contentInputView)
             setFadingEdgeLength(resources.getDimensionPixelSize(R.dimen.dimen_p_60))
             isVerticalFadingEdgeEnabled = true
             isVerticalScrollBarEnabled = false
+            setOnTouchListener { _, _ ->
+                focus()
+                return@setOnTouchListener false
+            }
             overScrollMode = OVER_SCROLL_NEVER
         }
 
