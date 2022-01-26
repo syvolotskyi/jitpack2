@@ -13,8 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        style="@style/SPToggleSwitch.Root"
-        />
+        style="@style/SPToggleSwitch.Root" />
 
     <CheckBox
         android:id="@+id/cbDisable"

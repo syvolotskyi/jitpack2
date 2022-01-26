@@ -5,6 +5,5 @@
         <attr name="android:thumb" />
         <attr name="trackTint" />
         <attr name="thumbTint" />
-        <attr name="showText" />
     </declare-styleable>
 </resources>

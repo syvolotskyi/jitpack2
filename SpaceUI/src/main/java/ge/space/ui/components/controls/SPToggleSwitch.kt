@@ -6,6 +6,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import com.google.android.material.switchmaterial.SwitchMaterial
 import ge.space.spaceui.R
@@ -45,12 +46,12 @@ class SPToggleSwitch @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPToggleSwitch_thumbTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                thumbTintList = ColorStateList.valueOf(getColor(it, DEFAULT_OBTAIN_VAL))
+                thumbTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
             }
 
-        /*getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                trackTintList = ColorStateList.valueOf(getColor(it, DEFAULT_OBTAIN_VAL))
-            }*/
+                trackTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
+            }
     }
 }

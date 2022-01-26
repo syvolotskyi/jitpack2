@@ -6,10 +6,13 @@
         <item name="android:thumb">@drawable/switch_thumb</item>
     </style>
 
-    <!-- NB Don't override trackTint here because this style has got custom track -->
+    <style name="SPToggleSwitch.Default" parent="SPToggleSwitch.Root">
+
+    </style>
+
+
     <style name="SPToggleSwitch.Disabled.Unchecked" parent="SPToggleSwitch.Root">
         <item name="thumbTint">?attr/greyscale_gray_4</item>
-<!--        <item name="track">@drawable/toggle_switch_disabled_unchecked</item>-->
     </style>
 
     <style name="SPToggleSwitch.Disabled.Checked" parent="SPToggleSwitch.Root">
