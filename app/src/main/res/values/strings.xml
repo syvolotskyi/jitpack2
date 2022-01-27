@@ -28,6 +28,9 @@
     <string name="controls_description">Controls description</string>
     <string name="controls">Controls</string>
 
+    <string name="toggle_switch_description">Toggle Switch description</string>
+    <string name="toggle_switch">Toggle Switch</string>
+
     <string name="toggle_icon">Toggle Icon</string>
     <string name="toggle_icon_desc">Toggle Icon description</string>
 
