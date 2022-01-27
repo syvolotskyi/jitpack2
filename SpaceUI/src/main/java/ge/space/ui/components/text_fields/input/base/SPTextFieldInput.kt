@@ -202,11 +202,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextFieldInput,
-            defStyleAttr, defStyleRes
+            defStyleAttr,
+            defStyleRes
         ) {
 
             applyAttributes()
-
         }
     }
 
@@ -503,7 +503,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         defaultView: View? = null
     ) {
 
-        removeAllViewsInLayout()
+        removeAllViews()
         if (view != null) {
             addView(view)
         } else if (defaultView != null) {

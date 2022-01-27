@@ -7,7 +7,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemListTextFieldBinding
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
@@ -30,110 +29,105 @@ class SPInputComponent : ShowCaseComponent {
                 environment.requireLayoutInflater()
             )
 
-            SPTextFieldsInputButtonStyles.list.onEach { buttonSample ->
+            val context = layoutBinding.simpleInput.context
 
-                val resId = buttonSample.resId
-                val itemBinding = SpItemListTextFieldBinding.inflate(
-                    environment.requireLayoutInflater(),
-                    layoutBinding.fieldsLayout,
-                    true
-                )
-                val context = itemBinding.simpleInput.context
-
-                with(itemBinding.simpleInput) {
-                    setViewStyle(buttonSample.resId)
-                    setupInputTextWithDone(this, environment.context)
-                    doOnTextChanged { text, _, _, _ ->
-                        isDistractive = false
-                        if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
-                            showToast(context, text.toString())
-                        }
+            with(layoutBinding.simpleInput) {
+                setupInputTextWithDone(this, environment.context)
+                doOnTextChanged { text, _, _, _ ->
+                    isDistractive = false
+                    if (text.toString() == TEXT_WATCHER_CHECK_TEXT) {
+                        showToast(context, text.toString())
                     }
                 }
-
-                with(itemBinding.buttonName) {
-                    val resName = resources.getResourceEntryName(resId)
-                    text = resName.substringAfter(DOT, resName)
-                }
-
-                itemBinding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.simpleInput.inputMandatory = isChecked
-                }
-
-                itemBinding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.simpleInput.isEnabled = !isChecked
-                }
-
-                itemBinding.cbEnableDescription.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.simpleInput.descriptionText = if (isChecked) {
-                        itemBinding.simpleInput.resources.getString(R.string.description)
-                    } else {
-                        EMPTY_TEXT
-                    }
-                }
-                itemBinding.cbDistractive.setOnCheckedChangeListener { _, isChecked ->
-                    itemBinding.simpleInput.isDistractive = isChecked
-                }
-
-
-                itemBinding.typeOfInput.setOnCheckedChangeListener { _, checkedId ->
-                    when (checkedId) {
-                        R.id.primarySimple ->
-                            with(itemBinding.simpleInput) {
-                                setupStartViewByType(SPStartViewType.SPNoneViewType)
-                                setupContentInputViewByType(
-                                    SPTextInputViewType.SPEditTextViewType()
-                                )
-                                setupEndViewByType(SPEndViewType.SPNoneViewType)
-                            }
-
-                        R.id.primarySimpleHint ->
-                            with(itemBinding.simpleInput) {
-                                setupStartViewByType(SPStartViewType.SPNoneViewType)
-                                setupContentInputViewByType(
-                                    SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here))
-                                )
-                                setupEndViewByType(SPEndViewType.SPNoneViewType)
-                            }
-
-
-                        R.id.primaryRemovableSimple -> {
-                            with(itemBinding.simpleInput) {
-                                setupStartViewByType(SPStartViewType.SPNoneViewType)
-                                setupContentInputViewByType(
-                                    SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here)),
-                                )
-                                setupEndViewByType(SPEndViewType.SPRemovableViewType)
-                            }
-                        }
-
-                        R.id.primaryIconSimple -> {
-                            with(itemBinding.simpleInput) {
-                                setupStartViewByType(SPStartViewType.SPImageViewType())
-                                setupContentInputViewByType(
-                                    SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here)),
-                                )
-                                setupEndViewByType(SPEndViewType.SPRemovableViewType)
-                            }
-                        }
-
-                        else -> itemBinding.simpleInput.setupContentInputViewByType(
-                            SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here))
-                        )
-                    }
-                }
-
-
-                layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
-                    with(itemBinding.simpleInput) {
-                        labelText = text.toString()
-                        descriptionText = text.toString()
-                    }
-                }
-
             }
-            return layoutBinding.root
 
+            layoutBinding.cbMandatory.setOnCheckedChangeListener { _, isChecked ->
+                layoutBinding.simpleInput.inputMandatory = isChecked
+            }
+
+            layoutBinding.cbDisable.setOnCheckedChangeListener { _, isChecked ->
+                layoutBinding.simpleInput.isEnabled = !isChecked
+            }
+
+            layoutBinding.cbEnableDescription.setOnCheckedChangeListener { _, isChecked ->
+                layoutBinding.simpleInput.descriptionText = if (isChecked) {
+                    layoutBinding.simpleInput.resources.getString(R.string.description)
+                } else {
+                    EMPTY_TEXT
+                }
+            }
+            layoutBinding.cbDistractive.setOnCheckedChangeListener { _, isChecked ->
+                layoutBinding.simpleInput.isDistractive = isChecked
+            }
+
+
+            layoutBinding.typeOfInput.setOnCheckedChangeListener { _, checkedId ->
+                when (checkedId) {
+                    R.id.primarySimple ->
+                        with(layoutBinding.simpleInput) {
+                            setupStartViewByType(SPStartViewType.SPNoneViewType)
+                            setupContentInputViewByType(
+                                SPTextInputViewType.SPEditTextViewType()
+                            )
+                            setupEndViewByType(SPEndViewType.SPNoneViewType)
+                        }
+
+                    R.id.primarySimpleHint ->
+                        with(layoutBinding.simpleInput) {
+                            setupStartViewByType(SPStartViewType.SPNoneViewType)
+                            setupContentInputViewByType(
+                                SPTextInputViewType.SPEditTextViewType(
+                                    hint = context.getString(
+                                        R.string.enter_you_details_here
+                                    )
+                                )
+                            )
+                            setupEndViewByType(SPEndViewType.SPNoneViewType)
+                        }
+
+
+                    R.id.primaryRemovableSimple -> {
+                        with(layoutBinding.simpleInput) {
+                            setupStartViewByType(SPStartViewType.SPNoneViewType)
+                            setupContentInputViewByType(
+                                SPTextInputViewType.SPEditTextViewType(
+                                    hint = context.getString(
+                                        R.string.enter_you_details_here
+                                    )
+                                ),
+                            )
+                            setupEndViewByType(SPEndViewType.SPRemovableViewType)
+                        }
+                    }
+
+                    R.id.primaryIconSimple -> {
+                        with(layoutBinding.simpleInput) {
+                            setupStartViewByType(SPStartViewType.SPImageViewType())
+                            setupContentInputViewByType(
+                                SPTextInputViewType.SPEditTextViewType(
+                                    hint = context.getString(
+                                        R.string.enter_you_details_here
+                                    )
+                                ),
+                            )
+                            setupEndViewByType(SPEndViewType.SPRemovableViewType)
+                        }
+                    }
+
+                    else -> layoutBinding.simpleInput.setupContentInputViewByType(
+                        SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here))
+                    )
+                }
+            }
+
+            layoutBinding.textInput.doOnTextChanged { text, _, _, _ ->
+                with(layoutBinding.simpleInput) {
+                    labelText = text.toString()
+                    descriptionText = text.toString()
+                }
+            }
+
+            return layoutBinding.root
         }
 
         private fun setupInputTextWithDone(textInput: SPTextFieldInput, context: Context) {
