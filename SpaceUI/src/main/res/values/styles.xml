@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BaseTheme.Core" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme.Core" parent="Theme.MaterialComponents.Light.NoActionBar">
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
         <item name="brand_secondary">@color/light_brand_secondary</item>
