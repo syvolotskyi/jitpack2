@@ -82,7 +82,7 @@ class SPInputComponent : ShowCaseComponent {
                             with(itemBinding.simpleInput) {
                                 setupStartViewByType(SPStartViewType.SPNoneViewType)
                                 setupContentInputViewByType(
-                                    SPTextInputViewType.SPTextViewType()
+                                    SPTextInputViewType.SPEditTextViewType()
                                 )
                                 setupEndViewByType(SPEndViewType.SPNoneViewType)
                             }
@@ -91,7 +91,7 @@ class SPInputComponent : ShowCaseComponent {
                             with(itemBinding.simpleInput) {
                                 setupStartViewByType(SPStartViewType.SPNoneViewType)
                                 setupContentInputViewByType(
-                                    SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here))
+                                    SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here))
                                 )
                                 setupEndViewByType(SPEndViewType.SPNoneViewType)
                             }
@@ -101,7 +101,7 @@ class SPInputComponent : ShowCaseComponent {
                             with(itemBinding.simpleInput) {
                                 setupStartViewByType(SPStartViewType.SPNoneViewType)
                                 setupContentInputViewByType(
-                                    SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here)),
+                                    SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here)),
                                 )
                                 setupEndViewByType(SPEndViewType.SPRemovableViewType)
                             }
@@ -111,14 +111,14 @@ class SPInputComponent : ShowCaseComponent {
                             with(itemBinding.simpleInput) {
                                 setupStartViewByType(SPStartViewType.SPImageViewType())
                                 setupContentInputViewByType(
-                                    SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here)),
+                                    SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here)),
                                 )
                                 setupEndViewByType(SPEndViewType.SPRemovableViewType)
                             }
                         }
 
                         else -> itemBinding.simpleInput.setupContentInputViewByType(
-                            SPTextInputViewType.SPTextViewType(hint = context.getString(R.string.enter_you_details_here))
+                            SPTextInputViewType.SPEditTextViewType(hint = context.getString(R.string.enter_you_details_here))
                         )
                     }
                 }

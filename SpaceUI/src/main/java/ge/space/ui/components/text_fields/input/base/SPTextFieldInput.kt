@@ -503,7 +503,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         defaultView: View? = null
     ) {
 
-        removeAllViews()
+        removeAllViewsInLayout()
         if (view != null) {
             addView(view)
         } else if (defaultView != null) {
