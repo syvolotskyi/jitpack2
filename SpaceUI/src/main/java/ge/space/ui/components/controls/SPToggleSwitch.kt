@@ -20,15 +20,14 @@ class SPToggleSwitch @JvmOverloads constructor(
 ) : SwitchCompat(context, attrs), SPViewStyling {
 
     init {
-        getContext().withStyledAttributes(attrs, R.styleable.SwitchCompat, defStyleAttr, defStyleRes) {
+        context.withStyledAttributes(attrs, R.styleable.SwitchCompat, defStyleAttr, defStyleRes) {
             withStyledAttributes()
         }
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
-        context.theme.obtainStyledAttributes(newStyle, R.styleable.SwitchCompat).run {
+        context.withStyledAttributes(newStyle, R.styleable.SwitchCompat) {
             withStyledAttributes()
-            recycle()
         }
     }
 
