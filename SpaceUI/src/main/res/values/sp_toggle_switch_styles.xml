@@ -2,7 +2,7 @@
 <resources>
 
     <style name="SPToggleSwitch.Standard" parent="Widget.AppCompat.CompoundButton.Switch">
-        <item name="track">@drawable/switch_track_selector</item>
+        <item name="track">@drawable/switch_track</item>
         <item name="android:thumb">@drawable/switch_thumb</item>
     </style>
 

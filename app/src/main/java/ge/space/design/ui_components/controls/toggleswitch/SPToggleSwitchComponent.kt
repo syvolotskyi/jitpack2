@@ -5,7 +5,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutToggleSwitchShowcaseBin
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.controls.SPToggleSwitch
 
 class SPToggleSwitchComponent : ShowCaseComponent {
 

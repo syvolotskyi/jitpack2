@@ -1,15 +1,12 @@
 package ge.space.ui.components.controls
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import com.google.android.material.switchmaterial.SwitchMaterial
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPViewStyling
