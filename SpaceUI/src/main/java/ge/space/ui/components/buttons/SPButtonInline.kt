@@ -157,7 +157,7 @@ class SPButtonInline @JvmOverloads constructor(
     }
 
     private fun handleGravity() {
-        if (buttonGravity == ButtonGravity.Left) {
+        if (buttonGravity == Left) {
             binding.buttonContentWrapper.setWidth(MATCH_PARENT)
         } else {
 

@@ -42,7 +42,6 @@ class SPTextView @JvmOverloads constructor(
         context.withStyledAttributes(newStyle, R.styleable.SPTextView) {
             withStyledAttributes()
             setViewPaddings()
-            recycle()
         }
     }
 
