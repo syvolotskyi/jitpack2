@@ -6,9 +6,6 @@
         <item name="android:thumb">@drawable/switch_thumb</item>
     </style>
 
-    <style name="SPToggleSwitch.SmallTrack" parent="Widget.AppCompat.CompoundButton.Switch">
-        <!--<item name="track">@drawable/abc_switch_track_mtrl_alpha</item>
-        <item name="android:thumb">@drawable/abc_switch_thumb_material</item>-->
-    </style>
+    <style name="SPToggleSwitch.SmallTrack" parent="Widget.AppCompat.CompoundButton.Switch" />
 
 </resources>
