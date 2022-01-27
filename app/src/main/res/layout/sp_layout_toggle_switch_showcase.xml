@@ -6,14 +6,15 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_p_16">
 
-    <ge.space.ui.components.controls.SPToggleSwitch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/toggleSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        style="@style/SPToggleSwitch.Root" />
+        android:thumb="@drawable/switch_thumb"
+        app:track="@drawable/switch_track_selector" />
 
     <CheckBox
         android:id="@+id/cbDisable"

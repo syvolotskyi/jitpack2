@@ -1,49 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPToggleSwitch.Root" parent="Widget.MaterialComponents.CompoundButton.Switch">
+    <style name="SPToggleSwitch.Root" parent="Widget.AppCompat.CompoundButton.Switch">
         <item name="track">@drawable/switch_track_selector</item>
         <item name="android:thumb">@drawable/switch_thumb</item>
-        <item name="thumbTint">?attr/static_white</item>
     </style>
 
-    <style name="SPToggleSwitch.Disabled.Unchecked" parent="SPToggleSwitch.Root">
-        <item name="thumbTint">?attr/greyscale_gray_4</item>
-    </style>
-
-    <style name="SPToggleSwitch.Disabled.Checked" parent="SPToggleSwitch.Root">
-        <item name="trackTint">?attr/brand_secondary</item>
-        <item name="thumbTint">?attr/static_white</item>
-    </style>
-
-    <style name="SPToggleSwitch.Enabled.Unchecked" parent="SPToggleSwitch.Root">
-        <item name="trackTint">?attr/greyscale_gray_4</item>
-        <item name="thumbTint">?attr/static_white</item>
-    </style>
-
-    <style name="SPToggleSwitch.Enabled.Checked" parent="SPToggleSwitch.Root">
-        <item name="trackTint">?attr/brand_primary</item>
-        <item name="thumbTint">?attr/static_white</item>
-    </style>
-
-    <style name="SPToggleSwitch.SmallTrack" parent="Widget.MaterialComponents.CompoundButton.Switch">
-        <item name="track">@drawable/abc_switch_track_mtrl_alpha</item>
-        <item name="android:thumb">@drawable/abc_switch_thumb_material</item>
-    </style>
-
-    <style name="SPToggleSwitch.SmallTrack.Enabled.Unchecked" parent="SPToggleSwitch.SmallTrack">
-        <item name="trackTint">?attr/greyscale_gray_4</item>
-        <item name="thumbTint">?attr/static_white</item>
-    </style>
-
-    <style name="SPToggleSwitch.SmallTrack.Enabled.Checked" parent="SPToggleSwitch.SmallTrack">
-        <item name="trackTint">?attr/brand_primary</item>
-        <item name="thumbTint">?attr/static_white</item>
-    </style>
-
-    <style name="SPToggleSwitch.SmallTrack.Disabled.Checked" parent="SPToggleSwitch.SmallTrack">
-        <item name="trackTint">?attr/brand_secondary</item>
-        <item name="thumbTint">?attr/static_white</item>
+    <style name="SPToggleSwitch.SmallTrack" parent="Widget.AppCompat.CompoundButton.Switch">
+        <!--<item name="track">@drawable/abc_switch_track_mtrl_alpha</item>
+        <item name="android:thumb">@drawable/abc_switch_thumb_material</item>-->
     </style>
 
 </resources>
