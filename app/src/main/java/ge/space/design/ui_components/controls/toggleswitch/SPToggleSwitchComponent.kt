@@ -5,7 +5,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutToggleSwitchShowcaseBin
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.controls.SPToggleSwitch
 
 class SPToggleSwitchComponent : ShowCaseComponent {
 
@@ -24,12 +23,6 @@ class SPToggleSwitchComponent : ShowCaseComponent {
             with(layoutBinding) {
                 cbDisable.setOnCheckedChangeListener { _, isChecked ->
                     toggleSwitch.isEnabled = !isChecked
-                }
-                cbDisable2.setOnCheckedChangeListener { _, isChecked ->
-                    toggleSwitch2.isEnabled = !isChecked
-                }
-                cbDisable3.setOnCheckedChangeListener { _, isChecked ->
-                    toggleSwitch3.isEnabled = !isChecked
                 }
             }
 

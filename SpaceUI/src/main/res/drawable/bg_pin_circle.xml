@@ -23,21 +23,21 @@
     <item android:state_focused="true" android:state_selected="true">
         <shape android:shape="oval">
             <stroke android:width="1dp" android:color="?attr/brand_primary" />
-            <solid android:color="@color/static_primary_white" />
+            <solid android:color="?attr/static_white" />
         </shape>
     </item>
     <!--Space is the next space for character input -->
     <item android:state_selected="true">
         <shape android:shape="oval">
             <stroke android:width="1dp" android:color="?attr/brand_primary" />
-            <solid android:color="@color/static_primary_white" />
+            <solid android:color="?attr/static_white" />
         </shape>
     </item>
     <!-- PinEntryEditText is focused -->
     <item android:state_focused="true">
         <shape android:shape="oval">
             <stroke android:width="1dp" android:color="?attr/brand_primary" />
-            <solid android:color="@color/static_primary_white" />
+            <solid android:color="?attr/static_white" />
         </shape>
     </item>
 
@@ -45,7 +45,7 @@
     <item >
         <shape android:shape="oval">
             <stroke android:width="1dp" android:color="?attr/brand_primary" />
-            <solid android:color="@color/static_primary_white" />
+            <solid android:color="?attr/static_white" />
         </shape>
     </item>
 
