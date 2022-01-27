@@ -25,12 +25,6 @@ class SPToggleSwitchComponent : ShowCaseComponent {
                 cbDisable.setOnCheckedChangeListener { _, isChecked ->
                     toggleSwitch.isEnabled = !isChecked
                 }
-                cbDisable2.setOnCheckedChangeListener { _, isChecked ->
-                    toggleSwitch2.isEnabled = !isChecked
-                }
-                cbDisable3.setOnCheckedChangeListener { _, isChecked ->
-                    toggleSwitch3.isEnabled = !isChecked
-                }
             }
 
             return layoutBinding.root
