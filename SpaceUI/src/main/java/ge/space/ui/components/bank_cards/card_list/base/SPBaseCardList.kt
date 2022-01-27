@@ -52,7 +52,7 @@ abstract class SPBaseCardList<VB : ViewBinding> @JvmOverloads constructor(
      * Sets a specific style for the view
      */
     fun setChipItemStyle(@StyleRes style: Int) {
-        setStyle(style)
+        setBaseViewStyle(style)
         handleInnerStyle(style)
     }
 

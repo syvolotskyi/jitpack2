@@ -65,8 +65,8 @@ abstract class SPBaseChip @JvmOverloads constructor(
         }
     }
 
-    override fun setStyle(defStyleRes: Int) {
-        super.setStyle(defStyleRes)
+    override fun setBaseViewStyle(defStyleRes: Int) {
+        super.setBaseViewStyle(defStyleRes)
         val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBaseChip)
 
         styleAttrs.run { withStyledResource() }
@@ -90,7 +90,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
      */
     override fun setViewStyle(@StyleRes newStyle: Int) {
         with(newStyle) {
-            setStyle(this)
+            setBaseViewStyle(this)
             setChipStyle(this)
         }
     }

@@ -94,7 +94,7 @@ class SPMark @JvmOverloads constructor(
 
     override fun setViewStyle(newStyle: Int) {
         with(newStyle) {
-            setStyle(this)
+            setBaseViewStyle(this)
             setMarkStyle(this)
         }
     }
