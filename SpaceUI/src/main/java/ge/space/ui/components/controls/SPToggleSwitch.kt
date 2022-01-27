@@ -6,6 +6,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -17,55 +18,32 @@ import ge.space.ui.util.extension.handleAttributeAction
 class SPToggleSwitch @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SwitchMaterial(context, attrs, defStyleAttr), SPViewStyling {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = R.style.SPToggleSwitch_Standard
+) : SwitchCompat(context, attrs), SPViewStyling {
 
     init {
-        getContext().withStyledAttributes(attrs, R.styleable.SPToggleSwitch, defStyleAttr) {
+        getContext().withStyledAttributes(attrs, R.styleable.SwitchCompat, defStyleAttr, defStyleRes) {
             withStyledAttributes()
         }
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
-        context.theme.obtainStyledAttributes(newStyle, R.styleable.SPToggleSwitch).run {
+        context.theme.obtainStyledAttributes(newStyle, R.styleable.SwitchCompat).run {
             withStyledAttributes()
             recycle()
         }
     }
 
     private fun TypedArray.withStyledAttributes() {
-        getResourceId(R.styleable.SPToggleSwitch_android_thumb, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SwitchCompat_android_thumb, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 setThumbResource(it)
             }
 
-        getResourceId(R.styleable.SPToggleSwitch_track, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SwitchCompat_track, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 setTrackResource(it)
             }
-
-        getResourceId(R.styleable.SPToggleSwitch_thumbTint, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                thumbTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
-            }
-
-        getResourceId(R.styleable.SPToggleSwitch_trackTint, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                trackTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
-            }
-
-        /*getResourceId(R.styleable.SPToggleSwitch_track_disabled_unchecked, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                if (!isEnabled && !isChecked) {
-                    setTrackResource(it)
-                }
-            }
-
-        getResourceId(R.styleable.SPToggleSwitch_thumbTint_disabled_unchecked, DEFAULT_OBTAIN_VAL)
-            .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                if (!isEnabled && !isChecked) {
-                    thumbTintList = ColorStateList.valueOf(ContextCompat.getColor(context, it))
-                }
-            }*/
     }
 }
