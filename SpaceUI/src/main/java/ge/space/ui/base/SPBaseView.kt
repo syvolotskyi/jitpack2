@@ -46,7 +46,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Paint instance for shadows to avoid

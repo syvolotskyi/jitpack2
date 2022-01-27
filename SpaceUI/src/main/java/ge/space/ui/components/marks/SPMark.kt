@@ -1,19 +1,17 @@
 package ge.space.ui.components.marks
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
@@ -28,7 +26,7 @@ class SPMark @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPMark_Size40
-) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
+) : SPBaseView(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
 
     /**
@@ -58,36 +56,13 @@ class SPMark @JvmOverloads constructor(
     var paddings: Int = 0
 
     init {
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
-        ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
-        }
 
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPMark,
             defStyleAttr
         ) {
-            getResourceId(
-                R.styleable.SPMark_android_src, DEFAULT_OBTAIN_VAL
-            ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                if (it != DEFAULT_OBTAIN_VAL)
-                    setViewData(SPViewData.SPImageResourcesData(it))
-            }
-            getString(
-                R.styleable.SPMark_android_text
-            ).handleAttributeAction(EMPTY_TEXT) {
-                if (!it.isNullOrEmpty())
-                    setViewData(SPViewData.SPTextData(it.take(MAX_LENGTH)))
-            }
+            applyMarkAttrs()
         }
     }
 
@@ -108,14 +83,14 @@ class SPMark @JvmOverloads constructor(
 
     private fun createView(viewData: SPViewData) = when (viewData) {
         is SPViewData.SPImageUrlData -> {
-            viewData.roundedCorners = roundedCorners
-            viewData.createView(context)
+            viewData.apply {
+                roundedCorners = this@SPMark.roundedCorners
+            }
         }
         is SPViewData.SPTextData -> {
             viewData.apply {
                 textStyle = textAppearance
             }
-            viewData.createView(context)
         }
         is SPViewData.SPImageResourcesData -> {
             viewData.apply {
@@ -124,34 +99,34 @@ class SPMark @JvmOverloads constructor(
                 width = imageSize
                 padding = paddings
             }
-            viewData.createView(context)
         }
-        else -> View(context)
-    }
+        else -> viewData
+    }.createView(context)
 
     private fun setMarkStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPMark)
-
-        styleAttrs.run {
-            val chipSize = getDimensionPixelSize(
-                R.styleable.SPMark_markHeight, DEFAULT_OBTAIN_VAL
-            )
-            textAppearance = getResourceId(
-                R.styleable.SPMark_android_textAppearance,
-                DEFAULT_OBTAIN_VAL
-            )
-            hasBorder = getBoolean(R.styleable.SPMark_hasBorder, false)
-            imageSize = getDimensionPixelSize(
-                R.styleable.SPMark_imageSize, DEFAULT_OBTAIN_VAL
-            )
-
-            paddings = getDimensionPixelSize(
-                R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
-            )
-
-            setSize(chipSize, chipSize)
+        context.withStyledAttributes(defStyleRes, R.styleable.SPMark) {
+            applyMarkAttrs()
         }
+    }
+
+    private fun TypedArray.applyMarkAttrs() {
+        val chipSize = getDimensionPixelSize(
+            R.styleable.SPMark_markHeight, DEFAULT_OBTAIN_VAL
+        )
+        textAppearance = getResourceId(
+            R.styleable.SPMark_android_textAppearance,
+            DEFAULT_OBTAIN_VAL
+        )
+        hasBorder = getBoolean(R.styleable.SPMark_hasBorder, false)
+        imageSize = getDimensionPixelSize(
+            R.styleable.SPMark_imageSize, DEFAULT_OBTAIN_VAL
+        )
+
+        paddings = getDimensionPixelSize(
+            R.styleable.SPMark_imagePadding, DEFAULT_OBTAIN_VAL
+        )
+
+        setSize(chipSize, chipSize)
     }
 
     private fun handleBorder() {
@@ -168,9 +143,5 @@ class SPMark @JvmOverloads constructor(
             shadowRadius = 0f
             changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL.toFloat())
         }
-    }
-
-    companion object {
-        private const val MAX_LENGTH = 2
     }
 }
