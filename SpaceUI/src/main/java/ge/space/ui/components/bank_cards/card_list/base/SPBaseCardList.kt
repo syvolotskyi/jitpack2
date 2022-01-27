@@ -18,7 +18,7 @@ abstract class SPBaseCardList<VB : ViewBinding> @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr) {
+) : SPBaseView(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding

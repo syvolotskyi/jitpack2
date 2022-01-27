@@ -1,13 +1,10 @@
 package ge.space.ui.components.bank_cards.chip.card
 
 import android.content.Context
-import android.content.res.Resources
 import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
@@ -36,7 +33,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPBankCardView_ChipSecondary
-) : SPBaseChip(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr, defStyleRes) {
     /**
      * Binds a view
      */
@@ -87,17 +84,12 @@ class SPSecondaryChip @JvmOverloads constructor(
         }
 
     init {
-        getContext().withStyledAttributes(
+        context.withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.SPSecondaryChip,
             defStyleAttr
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
+            withSecondaryChipStyledResource()
         }
     }
 
@@ -123,10 +115,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     override fun setChipStyle(styleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPSecondaryChip)
-
-        styleAttrs.run {
+        context.withStyledAttributes(styleRes, R.styleable.SPSecondaryChip) {
             withSecondaryChipStyledResource()
         }
     }
