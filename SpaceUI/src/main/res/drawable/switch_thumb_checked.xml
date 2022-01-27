@@ -3,7 +3,7 @@
     android:shape="oval">
     <solid android:color="?attr/static_white" />
     <stroke
-        android:width="@dimen/dimen_p_4"
+        android:width="@dimen/dimen_p_6"
         android:color="@android:color/transparent" />
     <size
         android:width="@dimen/dimen_p_24"
