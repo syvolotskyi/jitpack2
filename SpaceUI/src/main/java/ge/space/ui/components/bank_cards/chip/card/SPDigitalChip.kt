@@ -81,15 +81,11 @@ class SPDigitalChip @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
+            R.styleable.SPDigitalChip,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
+            withDigitalChipStyledResource()
         }
 
         handleChipSize()
@@ -97,12 +93,12 @@ class SPDigitalChip @JvmOverloads constructor(
     }
 
     override fun setChipStyle(styleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPDigitalChip)
-
-        styleAttrs.run {
+        context.withStyledAttributes(styleRes, R.styleable.SPDigitalChip) {
             withDigitalChipStyledResource()
         }
+
+        handleChipSize()
+        handleCardBackground()
     }
 
     private fun TypedArray.withDigitalChipStyledResource() {
