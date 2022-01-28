@@ -67,9 +67,9 @@ abstract class SPBaseChip @JvmOverloads constructor(
         }
     }
 
-    override fun setBaseViewStyle(defStyleRes: Int) {
-        super.setBaseViewStyle(defStyleRes)
-        context.withStyledAttributes(defStyleRes, R.styleable.SPBaseChip) { withStyledResource() }
+    override fun setBaseViewStyle(styleRes: Int) {
+        super.setBaseViewStyle(styleRes)
+        context.withStyledAttributes(styleRes, R.styleable.SPBaseChip) { withStyledResource() }
     }
 
     private fun TypedArray.withStyledResource() {

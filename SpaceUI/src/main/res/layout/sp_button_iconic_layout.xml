@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:style="@style/SPButton.Vertical.BubbleView">
+        style="@style/SPButton.Vertical.BubbleView">
 
         <ImageView
             android:id="@+id/image"
