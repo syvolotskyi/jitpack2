@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpToggleIconLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -27,10 +28,8 @@ class SPToggleIcon @JvmOverloads constructor(
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
-        val styleAttrs = context.theme.obtainStyledAttributes(newStyle, R.styleable.SPToggleIcon)
-        with(styleAttrs) {
+        context.withStyledAttributes(newStyle, R.styleable.SPToggleIcon) {
             withStyledAttributes()
-            recycle()
         }
     }
 

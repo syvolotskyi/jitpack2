@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPToggleIcon">
-        <attr name="style" />
         <attr name="backgroundColor" />
         <attr name="selectedBackgroundColor" format="color|reference" />
         <attr name="iconTint" format="color|reference" />

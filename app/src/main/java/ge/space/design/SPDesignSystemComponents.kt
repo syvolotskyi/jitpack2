@@ -25,7 +25,6 @@ object DesignSystemComponents : ShowCaseComponent {
         return listOf(
             new { SPColorsComponent() },
             new { SPButtonComponent() },
-            new { SPControlsComponent() },
             new { SPDialogComponent() },
             new { SPTextViewComponent() },
             new { SPControlsComponent() },
