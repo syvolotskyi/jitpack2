@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPToggleIcon">
-        <attr name="backgroundColor" />
-        <attr name="selectedBackgroundColor" format="color|reference" />
-        <attr name="iconTint" format="color|reference" />
-        <attr name="selectedIconTint" format="color|reference" />
-        <attr name="android:src" />
-        <attr name="android:state_selected" />
+        <attr name="android:background" />
     </declare-styleable>
 </resources>
