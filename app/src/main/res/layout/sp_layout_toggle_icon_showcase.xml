@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/dimen_p_16">
+    android:padding="@dimen/dimen_p_16"
+    android:animateLayoutChanges="true">
 
     <ge.space.ui.components.controls.SPToggleIcon
         android:id="@+id/toggleIcon"
@@ -12,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16"
-        style="@style/SPToggleIcon.Standard"
+        style="@style/Widget.Button.Toggle"
         />
 
 </LinearLayout>

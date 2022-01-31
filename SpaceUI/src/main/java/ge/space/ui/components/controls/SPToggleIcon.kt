@@ -16,9 +16,15 @@ import ge.space.ui.util.extension.handleAttributeAction
 class SPToggleIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPToggleIcon_Standard
+    @AttrRes defStyleAttr: Int = android.R.attr.buttonStyleToggle,
+    @StyleRes defStyleRes: Int = R.style.Widget_Button_Toggle
 ) : AppCompatToggleButton(context, attrs, defStyleAttr), SPViewStyling {
+
+    init {
+        context.withStyledAttributes(attrs, R.styleable.SPToggleIcon, defStyleAttr, defStyleRes) {
+            withStyledAttributes()
+        }
+    }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
         context.withStyledAttributes(newStyle, R.styleable.SPToggleIcon) {

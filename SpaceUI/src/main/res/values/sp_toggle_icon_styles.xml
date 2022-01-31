@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPToggleIcon" parent="android:Widget.Button.Toggle">
+    <style name="Widget.Button.Toggle" parent="android:Widget.Button.Toggle">
         <item name="android:background">@drawable/bg_toggle_icon</item>
         <item name="android:textOff" />
         <item name="android:textOn" />
     </style>
 
-    <style name="SPToggleIcon.Standard" parent="SPToggleIcon">
-        <item name="android:buttonStyleToggle">@style/SPToggleIcon</item>
-    </style>
+    <!--<style name="SPToggleIcon.Standard" parent="">
+        <item name="android:buttonStyleToggle">@style/Widget.Material3.Button.IconButton</item>
+    </style>-->
 
 </resources>
