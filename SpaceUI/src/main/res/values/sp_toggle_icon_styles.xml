@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.Button.Toggle" parent="android:Widget.Button.Toggle">
+    <style name="SPToggleIcon.Standard" parent="android:Widget.Button.Toggle">
         <item name="android:background">@drawable/bg_toggle_icon</item>
+        <item name="android:minWidth">@dimen/dimen_p_0</item>
+        <item name="android:minHeight">@dimen/dimen_p_0</item>
         <item name="android:textOff" />
         <item name="android:textOn" />
     </style>
-
-    <!--<style name="SPToggleIcon.Standard" parent="">
-        <item name="android:buttonStyleToggle">@style/Widget.Material3.Button.IconButton</item>
-    </style>-->
 
 </resources>

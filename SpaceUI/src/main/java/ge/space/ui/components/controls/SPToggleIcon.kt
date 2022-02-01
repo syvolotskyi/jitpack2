@@ -17,7 +17,7 @@ class SPToggleIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = android.R.attr.buttonStyleToggle,
-    @StyleRes defStyleRes: Int = R.style.Widget_Button_Toggle
+    @StyleRes defStyleRes: Int = R.style.SPToggleIcon_Standard
 ) : AppCompatToggleButton(context, attrs, defStyleAttr), SPViewStyling {
 
     init {

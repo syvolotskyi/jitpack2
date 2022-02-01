@@ -83,6 +83,10 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
+
+        <!-- Custom ToggleButton style in the parent app theme
+             allows SPToggleIcon display correctly -->
+        <item name="android:buttonStyleToggle">@style/SPToggleIcon.Standard</item>
     </style>
 
     <style name="AppThemeDark" parent="AppTheme">
