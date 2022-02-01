@@ -6,7 +6,8 @@
             <solid android:color="@android:color/transparent" />
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_toggle_off_default"
+    <item android:id="@+id/icon"
+        android:drawable="@drawable/ic_toggle_off_default"
         android:top="@dimen/dimen_p_12" android:bottom="@dimen/dimen_p_12"
         android:left="@dimen/dimen_p_12" android:right="@dimen/dimen_p_12" />
 </layer-list>

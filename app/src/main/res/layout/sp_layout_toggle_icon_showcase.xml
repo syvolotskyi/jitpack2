@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/dimen_p_16"
-    android:animateLayoutChanges="true">
+    android:padding="@dimen/dimen_p_16">
 
     <ge.space.ui.components.controls.SPToggleIcon
         android:id="@+id/toggleIcon"

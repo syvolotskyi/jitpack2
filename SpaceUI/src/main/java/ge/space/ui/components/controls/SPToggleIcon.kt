@@ -1,5 +1,6 @@
 package ge.space.ui.components.controls
 
+import android.animation.AnimatorInflater
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
@@ -16,14 +17,15 @@ import ge.space.ui.util.extension.handleAttributeAction
 class SPToggleIcon @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = android.R.attr.buttonStyleToggle,
+    @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPToggleIcon_Standard
-) : AppCompatToggleButton(context, attrs, defStyleAttr), SPViewStyling {
+) : AppCompatToggleButton(context, attrs), SPViewStyling {
 
     init {
         context.withStyledAttributes(attrs, R.styleable.SPToggleIcon, defStyleAttr, defStyleRes) {
             withStyledAttributes()
         }
+        //stateListAnimator = AnimatorInflater.loadStateListAnimator(context, R.xml.sp_toggle_icon_animator)
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
