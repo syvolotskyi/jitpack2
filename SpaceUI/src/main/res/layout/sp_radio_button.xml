@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/dimen_p_12"
+    android:paddingHorizontal="@dimen/dimen_p_16">
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/textView"
+        style="@style/SPRadioButtonBase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/dimen_p_10"
+        tools:text="@string/enter_you_details_here" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_24"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"/>
+
+</LinearLayout>

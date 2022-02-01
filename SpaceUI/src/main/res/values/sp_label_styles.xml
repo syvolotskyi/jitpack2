@@ -35,6 +35,10 @@
         <item name="android:textColor">?attr/label_tertiary</item>
     </style>
 
+    <style name="h800_medium_label_secondary" parent="h800_medium">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
     <style name="h800_medium_brand_primary" parent="h800_medium">
         <item name="android:textColor">?attr/brand_primary</item>
     </style>

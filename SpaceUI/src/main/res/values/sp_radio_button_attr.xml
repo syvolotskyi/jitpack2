@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPRadioButton">
+        <attr name="android:textAppearance" format="reference" />
+        <attr name="android:text" format="string" localization="suggested" />
+        <attr name="descriptionTextAppearance" />
+        <attr name="descriptionText" />
+        <attr name="hasDescription" format="reference|boolean"/>
+    </declare-styleable>
+</resources>
