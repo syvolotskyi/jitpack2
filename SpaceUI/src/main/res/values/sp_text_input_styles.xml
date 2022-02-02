@@ -2,7 +2,7 @@
 <resources>
 
     <style name="SPTextField.Base" parent="">
-        <item name="contentInputView">edit_text</item>
+        <item name="contentInputView">text</item>
         <item name="contentHeight">@dimen/dimen_p_48</item>
         <item name="textAppearance">@style/h600_bold_caps_text_field</item>
         <item name="descriptionTextAppearance">@style/h800_medium_label_tertiary</item>
@@ -11,7 +11,7 @@
 
 
     <style name="SPTextField.Area" parent="SPTextField.Base">
-        <item name="contentInputView">edit_text</item>
+        <item name="contentInputView">text</item>
         <item name="contentHeight">@dimen/dimen_p_158</item>
         <item name="textAppearance">@style/h600_medium_text_field</item>
         <item name="inputTextLength">@integer/default_text_length</item>

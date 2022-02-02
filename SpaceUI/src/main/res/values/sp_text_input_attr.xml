@@ -40,13 +40,13 @@
         </attr>
 
         <attr name="contentInputView" format="enum">
-            <enum name="edit_text" value="0" />
+            <enum name="text" value="0" />
             <enum name="dateMask" value="1" />
             <enum name="cardMask" value="2" />
             <enum name="number" value="3" />
-            <enum name="email" value="5"/>
-            <enum name="amountInteger" value="6"/>
-            <enum name="amountDecimal" value="7"/>
+            <enum name="email" value="4"/>
+            <enum name="amountInteger" value="5"/>
+            <enum name="amountDecimal" value="6"/>
         </attr>
     </declare-styleable>
 

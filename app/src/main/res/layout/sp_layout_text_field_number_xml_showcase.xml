@@ -9,7 +9,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber"
-        style="@style/SPTextField.Number"
+        style="@style/SPTextField.AmountDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -22,7 +22,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber2"
-        style="@style/SPTextField.Number"
+        style="@style/SPTextField.AmountDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_p_32"
@@ -39,7 +39,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber3"
-        style="@style/SPTextField.Number"
+        style="@style/SPTextField.AmountDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

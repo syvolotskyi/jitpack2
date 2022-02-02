@@ -2,6 +2,7 @@ package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.text.InputFilter
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -17,6 +18,9 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
+import com.space.formatter.extensions.addFormattingTextWatcher
+import com.space.formatter.format.SPDefaultFormatterFactory
+import com.space.formatter.format.StringFormatter
 import ge.space.extensions.*
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
@@ -192,6 +196,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
             handleDistractiveState()
         }
 
+    private var inputType: Int = SPTextInputViewType.TEXT
+
+    private var watcher: TextWatcher? = null
+
     /**
      * Inflates and returns [SpTextFieldLayoutBinding] value
      */
@@ -275,6 +283,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
             ) {
+                inputType = it
                 handleContentAttr(it)
             }
 
@@ -341,7 +350,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     )
                 )
             }
-            SPTextInputViewType.EDIT_TEXT -> setupContentInputViewByType(getContentEditText())
+            SPTextInputViewType.TEXT -> setupContentInputViewByType(getContentEditText())
             SPTextInputViewType.NUMBER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
             )
@@ -350,8 +359,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
             )
             SPTextInputViewType.AMOUNT_INTEGER -> setupContentInputViewByType(
-                SPTextInputViewType.SPEditTextViewType(hint,
-                    inputType = InputType.TYPE_CLASS_NUMBER)
+                SPTextInputViewType.SPNumberViewType(hint)
             )
             SPTextInputViewType.AMOUNT_DECIMAL -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint,
@@ -488,6 +496,18 @@ open class SPTextFieldInput @JvmOverloads constructor(
         contentInputView.addTextChangedListener(watcher)
     }
 
+    /**
+     * Possibility to add own formatter
+     */
+    fun setFormatter(inputAmountFormatter: StringFormatter) {
+        contentInputView.apply {
+            removeTextChangedListener(watcher)
+            addFormattingTextWatcher(
+                inputAmountFormatter
+            )
+        }
+    }
+
     fun removeTextChangedListener(watcher: TextWatcher) {
         contentInputView.addTextChangedListener(watcher)
     }
@@ -525,6 +545,24 @@ open class SPTextFieldInput @JvmOverloads constructor(
     protected open fun handleContentInputView() {
         binding.flInputFieldContainer.addContentView(contentInputView)
         setupFocusChangeListener()
+
+        if (inputType == SPTextInputViewType.AMOUNT_INTEGER
+            || inputType == SPTextInputViewType.AMOUNT_DECIMAL
+        ) {
+            addNumberFormatter()
+        }
+    }
+
+    private fun addNumberFormatter() {
+        contentInputView.addFormattingTextWatcher(
+            if (maxLength > 0)
+                SPDefaultFormatterFactory.produceInputAmountFormatter(maxLength)
+            else SPDefaultFormatterFactory.produceInputAmountFormatter()
+        ).also {
+            watcher = it
+        }
+        // reset length filter because the filter is already added in formatter
+        contentInputView.filters = arrayOf<InputFilter>()
     }
 
     protected fun setupFocusChangeListener() {

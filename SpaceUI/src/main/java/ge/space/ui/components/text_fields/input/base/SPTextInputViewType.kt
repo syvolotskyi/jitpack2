@@ -22,12 +22,12 @@ sealed class SPTextInputViewType {
     ) : SPTextInputViewType()
 
     companion object {
-        const val EDIT_TEXT = 0
+        const val TEXT = 0
         const val DATE_MASKED = 1
         const val CARD_MASKED = 2
         const val NUMBER = 3
-        const val EMAIL = 5
-        const val AMOUNT_INTEGER  = 6
-        const val AMOUNT_DECIMAL = 7
+        const val EMAIL = 4
+        const val AMOUNT_INTEGER  = 5
+        const val AMOUNT_DECIMAL = 6
     }
 }

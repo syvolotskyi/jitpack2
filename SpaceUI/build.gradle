@@ -18,4 +18,5 @@ dependencies {
     kapt Libraries.glideCompiler
 
     implementation project(':SpaceExtensions')
+    implementation project(':SpaceFormatter')
 }

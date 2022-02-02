@@ -1,6 +1,7 @@
 package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
+import android.text.InputType
 import android.view.Gravity
 import android.widget.EditText
 import ge.space.extensions.EMPTY_TEXT
@@ -18,6 +19,14 @@ import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
  */
 fun SPTextFieldInput.setupNumberInput(currency: String) {
     setupContentInputViewByType(SPTextInputViewType.SPNumberViewType())
+    setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
+}
+
+/**
+ * Setup a view as input for amount decimal (with formatter) and currency
+ */
+fun SPTextFieldInput.setupAmountDecimalInput(currency: String) {
+    setupContentInputViewByType(SPTextInputViewType.SPNumberViewType(inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS))
     setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
 }
 
@@ -93,7 +102,9 @@ fun SPTextFieldInput.setupContentInputViewByType(
             )
         )
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
-            type.hint, type.inputType
+            hint = type.hint,
+            inputType = type.inputType,
+            textAppearance
         )
     }).createView(context) as EditText
 
