@@ -2,6 +2,7 @@ package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -61,7 +62,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            contentInputView.text = value
+            contentInputView.setText(value)
         }
 
 
@@ -176,7 +177,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flTrail.addContentView(endView, emptyEndView)
         }
 
-    open var contentInputView: TextView = EditText(context)
+    open var contentInputView: EditText = EditText(context)
         set(value) {
             field = value
 
@@ -239,14 +240,14 @@ open class SPTextFieldInput @JvmOverloads constructor(
             }
         imeOption = getInt(R.styleable.SPTextFieldInput_android_imeOptions, ID_NEXT)
         inputMandatory = getBoolean(R.styleable.SPTextFieldInput_inputMandatory, false)
-        if (contentInputView is EditText) {
-            getResourceId(
-                R.styleable.SPTextFieldInput_textAppearance,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-                textAppearance = it
-            }
+
+        getResourceId(
+            R.styleable.SPTextFieldInput_textAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            textAppearance = it
         }
+
         getInt(R.styleable.SPTextFieldInput_startView, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
@@ -289,7 +290,6 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 EMPTY_TEXT
             ) {
                 text = it
-                contentInputView.text = text
             }
 
         getString(R.styleable.SPTextFieldInput_descriptionText).orEmpty()
@@ -345,8 +345,18 @@ open class SPTextFieldInput @JvmOverloads constructor(
             SPTextInputViewType.NUMBER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
             )
-            SPTextInputViewType.TEXT -> setupContentInputViewByType(
-                SPTextInputViewType.SPTextViewType(hint)
+            SPTextInputViewType.EMAIL -> setupContentInputViewByType(
+                SPTextInputViewType.SPEditTextViewType(hint,
+                    inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
+            )
+            SPTextInputViewType.AMOUNT_INTEGER -> setupContentInputViewByType(
+                SPTextInputViewType.SPEditTextViewType(hint,
+                    inputType = InputType.TYPE_CLASS_NUMBER)
+            )
+            SPTextInputViewType.AMOUNT_DECIMAL -> setupContentInputViewByType(
+                SPTextInputViewType.SPNumberViewType(hint,
+                    inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
+                )
             )
         }
     }
@@ -423,7 +433,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a end click listener.
      */
-    fun setTrailClickListener(onClickListener: () -> Unit? = {}) {
+    fun setEndClickListener(onClickListener: () -> Unit? = {}) {
         endView?.onClick { onClickListener() }
     }
 
@@ -494,11 +504,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 )
             )
         } else {
-            view.text = EMPTY_TEXT
+            view.setText(EMPTY_TEXT)
         }
     }
 
-    protected fun ViewGroup.addContentView(
+    private fun ViewGroup.addContentView(
         view: View?,
         defaultView: View? = null
     ) {
@@ -509,8 +519,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         } else if (defaultView != null) {
             addView(defaultView)
         }
-        binding.flInputFieldContainer.invalidate()
-
+        invalidate()
     }
 
     protected open fun handleContentInputView() {
@@ -525,9 +534,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
         }
     }
 
-    protected open fun handleTextLength(value: Int) {
-        (contentInputView as EditText).setTextLength(value)
-    }
+    protected open fun handleTextLength(value: Int) =
+        contentInputView.setTextLength(value)
 
     protected fun handleBorderColor() {
         binding.flContainer.changeBorder(

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import ge.space.extensions.goAway
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.getColorFromAttribute
 
@@ -46,7 +47,7 @@ open class SPButtonIconic @JvmOverloads constructor(
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
         super.setButtonStyle(defStyleRes)
-        binding.buttonLabel.visibility = View.GONE
+        binding.buttonLabel.goAway()
         val styleAttrs =
             context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPButtonIconic)
 

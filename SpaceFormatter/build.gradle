@@ -1,0 +1,11 @@
+apply plugin: 'GradleConfigPlugin'
+
+configPlugin {
+    config {
+        flavors = [new CountryFlavor()]
+        buildTypes = [BuildTypes.PRODUCTION]
+    }
+}
+
+dependencies {
+}

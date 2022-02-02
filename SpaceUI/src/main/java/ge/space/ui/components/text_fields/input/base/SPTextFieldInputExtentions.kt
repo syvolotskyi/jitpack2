@@ -2,7 +2,7 @@ package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
 import android.view.Gravity
-import android.widget.TextView
+import android.widget.EditText
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.SPACE
 import ge.space.spaceui.R
@@ -93,18 +93,11 @@ fun SPTextFieldInput.setupContentInputViewByType(
             )
         )
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
-            type.hint
+            type.hint, type.inputType
         )
-        is SPTextInputViewType.SPTextViewType -> SPViewData.SPTextData(
-            type.text.orEmpty(),
-            textAppearance,
-            params = SPViewData.SPViewDataParams(
-                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
-                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
-            )
-        )
+    }).createView(context) as EditText
 
-    }).createView(context) as TextView
+
 }
 
 /**
@@ -134,7 +127,7 @@ fun SPTextFieldInput.setupEndViewByType(
     }?.createView(context)
 
     if (type == SPEndViewType.SPRemovableViewType)
-        setTrailClickListener { removeAllText() }
+        setEndClickListener { removeAllText() }
 }
 
 /**

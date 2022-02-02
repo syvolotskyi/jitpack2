@@ -44,7 +44,9 @@
             <enum name="dateMask" value="1" />
             <enum name="cardMask" value="2" />
             <enum name="number" value="3" />
-            <enum name="text" value="4" />
+            <enum name="email" value="5"/>
+            <enum name="amountInteger" value="6"/>
+            <enum name="amountDecimal" value="7"/>
         </attr>
     </declare-styleable>
 
