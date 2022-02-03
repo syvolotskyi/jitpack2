@@ -7,7 +7,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/toggleIcon"
-        style="@style/SPToggleIcon.V2"
+        style="@style/SPToggleIcon.Standard"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16" />
