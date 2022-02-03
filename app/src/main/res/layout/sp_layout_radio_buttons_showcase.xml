@@ -7,6 +7,7 @@
     android:padding="@dimen/dimen_p_16">
 
     <ge.space.ui.components.controls.radio.SPRadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
