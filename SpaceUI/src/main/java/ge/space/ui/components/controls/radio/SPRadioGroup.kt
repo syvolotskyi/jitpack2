@@ -19,13 +19,7 @@ class SPRadioGroup constructor(
     private var onCheckedChangeListener: OnCheckedChangeListener? = null
 
     override fun addView(child: View, index: Int, params: ViewGroup.LayoutParams?) {
-        if (child is SPRadioButton) {
-            child.onClick {
-                setAllButtonsToUnselectedState()
-                child.isChecked = true
-                onCheckedChangeListener?.onCheckedChanged(this@SPRadioGroup, child.id)
-            }
-        } else throw UnsupportedOperationException("Use a SPRadioButton only as a child for SPRadioGroup")
+        initChildView(child)
         super.addView(child, index, params)
     }
 
@@ -33,11 +27,23 @@ class SPRadioGroup constructor(
         onCheckedChangeListener = listener
     }
 
-    private fun setAllButtonsToUnselectedState() {
-        children.forEach {
-            if (it is SPRadioButton) {
-                it.isChecked = false
+    private fun initChildView(childView: View) {
+        when (childView) {
+            is SPRadioButton -> {
+                childView.onClick {
+                    setAllButtonsToUnselectedState()
+                    childView.isChecked = true
+                    onCheckedChangeListener?.onCheckedChanged(this,childView.id)
+                }
             }
+            else -> throw UnsupportedOperationException("SPRadioGroup only supports SPRadioButton component")
         }
     }
+
+    private fun setAllButtonsToUnselectedState() {
+        children.forEach { childView ->
+            (childView as SPRadioButton).isChecked = false
+        }
+    }
+
 }
