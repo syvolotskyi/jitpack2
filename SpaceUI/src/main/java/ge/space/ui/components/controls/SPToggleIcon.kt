@@ -8,6 +8,7 @@ import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatToggleButton
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
+import com.google.android.material.button.MaterialButton
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPViewStyling
@@ -18,7 +19,7 @@ class SPToggleIcon @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPToggleIcon_Standard
-) : AppCompatToggleButton(context, attrs), SPViewStyling {
+) : MaterialButton(context, attrs), SPViewStyling {
 
     init {
         context.withStyledAttributes(attrs, R.styleable.SPToggleIcon, defStyleAttr, defStyleRes) {

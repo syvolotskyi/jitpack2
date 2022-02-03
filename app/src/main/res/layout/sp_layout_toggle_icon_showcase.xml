@@ -5,10 +5,9 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_p_16">
 
-    <ge.space.ui.components.controls.SPToggleIcon
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/toggleIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SPToggleIcon.V2"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16" />
