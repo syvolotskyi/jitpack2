@@ -11,6 +11,7 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setTextStyle
+import ge.space.extensions.visibleIf
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpRadioButtonBinding
 import ge.space.ui.base.SPBaseView
@@ -25,7 +26,7 @@ class SPRadioButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPRadioButtonBase
+    @StyleRes defStyleRes: Int = R.style.SPRadioButton_Standard
 ) : LinearLayout(context, attrs, defStyleAttr), SPViewStyling {
 
     /**
@@ -35,7 +36,7 @@ class SPRadioButton @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.descriptionText.text = description
+            handleDesc()
         }
 
     /**
@@ -49,20 +50,16 @@ class SPRadioButton @JvmOverloads constructor(
         }
 
     /**
-     * Show of hide description label
-     */
-    var hasDescription: Boolean = false
-        set(value) {
-            field = value
-
-            binding.descriptionText.isVisible = value
-        }
-
-    /**
      * Sets a text appearance
      */
     @StyleRes
     private var titleTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+
+    /**
+     * Sets a text appearance in case if view description isn't empty
+     */
+    @StyleRes
+    private var titleTextAppearanceWithDesc: Int = SPTextFieldBaseView.DEFAULT_INT
 
     /**
      * Sets a description appearance
@@ -85,24 +82,23 @@ class SPRadioButton @JvmOverloads constructor(
     }
 
     private fun TypedArray.applyStyledAttributes() {
-        getString(
-            R.styleable.SPRadioButton_descriptionText
-        ).orEmpty()
-            .handleAttributeAction(EMPTY_TEXT) {
-                description = it
-            }
 
         val text = getString(
             R.styleable.SPRadioButton_android_text
         ).orEmpty()
 
-        hasDescription = getBoolean(R.styleable.SPRadioButton_hasDescription, false)
-
         getResourceId(
-            R.styleable.SPRadioButton_android_textAppearance,
+            R.styleable.SPRadioButton_titleTextAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             titleTextAppearance = it
+        }
+
+        getResourceId(
+            R.styleable.SPRadioButton_titleTextAppearanceWithDesc,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            titleTextAppearanceWithDesc = it
         }
 
         getResourceId(
@@ -111,11 +107,17 @@ class SPRadioButton @JvmOverloads constructor(
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             descriptionTextAppearance = it
         }
+        updateTextAppearance(titleTextAppearance, descriptionTextAppearance)
+
+        getString(
+            R.styleable.SPRadioButton_descriptionText
+        ).orEmpty()
+            .handleAttributeAction(EMPTY_TEXT) {
+                description = it
+            }
 
         binding.textView.text = text
-        updateTextAppearance(titleTextAppearance, descriptionTextAppearance)
     }
-
 
     /**
      * Sets a textAppearance and descriptionTextAppearance to view
@@ -139,5 +141,17 @@ class SPRadioButton @JvmOverloads constructor(
         ) {
             applyStyledAttributes()
         }
+    }
+
+
+    private fun handleDesc() {
+        binding.descriptionText.text = description
+        binding.descriptionText.visibleIf(description.isNotEmpty())
+
+        updateTextAppearance(
+           textAppearance =  if (description.isEmpty())
+                titleTextAppearance
+            else titleTextAppearanceWithDesc, descriptionTextAppearance
+        )
     }
 }

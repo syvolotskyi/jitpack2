@@ -27,7 +27,6 @@
 
         <ge.space.ui.components.controls.radio.SPRadioButton
             android:id="@+id/radio3"
-            style="@style/SPRadioButton.Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@drawable/selector_radio_button"
