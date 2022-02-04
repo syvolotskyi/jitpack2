@@ -83,6 +83,9 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
+
+        // Custom Components
+        <item name="spToggleIconStyle">@style/SPToggleIcon.Standard</item>
     </style>
 
     <style name="AppThemeDark" parent="AppTheme">
