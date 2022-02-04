@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/dimen_p_16">
 
@@ -9,6 +10,40 @@
         android:id="@+id/toggleIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_marginBottom="@dimen/dimen_p_24"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="@dimen/dimen_p_16"
+        android:layout_marginEnd="@dimen/dimen_p_16" />
+
+    <ge.space.ui.components.controls.SPToggleIcon
+        android:id="@+id/toggleIcon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_p_24"
+        app:icon="@drawable/ic_alert_circle_32_regular"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="@dimen/dimen_p_16"
+        android:layout_marginEnd="@dimen/dimen_p_16" />
+
+    <ge.space.ui.components.controls.SPToggleIcon
+        android:id="@+id/toggleIcon3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_p_24"
+        app:checked="true"
+        app:icon="@drawable/ic_arrow_down_circle_24_regular"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="@dimen/dimen_p_16"
+        android:layout_marginEnd="@dimen/dimen_p_16" />
+
+    <ge.space.ui.components.controls.SPToggleIcon
+        android:id="@+id/toggleIcon4"
+        android:checked="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_p_24"
+        app:icon="@drawable/ic_alert_triangle_32_regular"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dimen_p_16"
         android:layout_marginEnd="@dimen/dimen_p_16" />

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- SPToggleIcon Default style attribute -->
+    <!-- This attribute is overridden in core theme-->
+    <attr name="spToggleIconStyle" format="reference" />
+
     <declare-styleable name="SPToggleIcon">
-        <attr name="android:background" />
+        <attr name="checked" format="boolean" />
     </declare-styleable>
+
 </resources>

@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPToggleIcon.Standard" parent="android:Widget.Button.Toggle">
-        <item name="android:background">@drawable/bg_toggle_icon</item>
-        <item name="android:foreground">@drawable/toggle_icon_ripple</item>
-        <item name="android:minWidth">@dimen/dimen_p_0</item>
-        <item name="android:minHeight">@dimen/dimen_p_0</item>
-        <item name="android:textOff" />
-        <item name="android:textOn" />
+    <!-- layout_width and layout_height should have the same value
+         in order to retain circle shape of ToggleIcon -->
+    <style name="SPToggleIcon.Standard" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
+        <item name="android:maxWidth">@dimen/dimen_p_48</item>
+        <item name="android:minWidth">@dimen/dimen_p_48</item>
+        <item name="android:checkable">true</item>
+        <item name="android:backgroundTint">@color/toggle_icon_bg_tint</item>
+        <item name="icon">@drawable/ic_filter_24_regular</item>
+        <item name="iconSize">@dimen/dimen_p_24</item>
+        <item name="iconTint">@color/toggle_icon_tint</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/dimen_p_0</item>
+        <item name="android:paddingStart">@dimen/dimen_p_12</item>
+        <item name="android:paddingEnd">@dimen/dimen_p_12</item>
+        <item name="android:insetLeft">@dimen/dimen_p_0</item>
+        <item name="android:insetTop">@dimen/dimen_p_0</item>
+        <item name="android:insetRight">@dimen/dimen_p_0</item>
+        <item name="android:insetBottom">@dimen/dimen_p_0</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="strokeWidth">@dimen/dimen_p_0</item>
+        <item name="shapeAppearanceOverlay">@style/SPToggleIcon.Corners</item>
+    </style>
+
+    <style name="SPToggleIcon.Corners" parent="ShapeAppearance.MaterialComponents">
+        <item name="cornerSize">50%</item>
     </style>
 
 </resources>
