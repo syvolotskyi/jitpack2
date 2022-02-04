@@ -21,6 +21,7 @@
         <item name="android:insetBottom">@dimen/dimen_p_0</item>
         <item name="strokeColor">@android:color/transparent</item>
         <item name="strokeWidth">@dimen/dimen_p_0</item>
+        <item name="android:foreground">@drawable/toggle_icon_ripple</item>
         <item name="shapeAppearanceOverlay">@style/SPToggleIcon.Corners</item>
     </style>
 

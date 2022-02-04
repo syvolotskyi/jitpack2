@@ -39,7 +39,6 @@
 
     <ge.space.ui.components.controls.SPToggleIcon
         android:id="@+id/toggleIcon4"
-        android:checked="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_p_24"
