@@ -202,11 +202,11 @@ open class SPTextFieldInput @JvmOverloads constructor(
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextFieldInput,
-            defStyleAttr, defStyleRes
+            defStyleAttr,
+            defStyleRes
         ) {
 
             applyAttributes()
-
         }
     }
 
