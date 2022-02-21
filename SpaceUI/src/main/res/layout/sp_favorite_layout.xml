@@ -5,7 +5,7 @@
     android:id="@+id/lyt_root"
     android:layout_width="@dimen/sp_favorite_size"
     android:layout_height="@dimen/sp_favorite_size"
-    app:style="@style/SPBankCardView.Favorite"
+    style="@style/SPBankCardView.Favorite"
     android:visibility="gone"
     tools:visibility="visible">
 

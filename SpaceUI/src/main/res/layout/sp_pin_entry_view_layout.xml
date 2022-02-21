@@ -28,7 +28,7 @@
             android:layout_height="@dimen/dimen_p_48"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/dimen_p_16"
-            app:style="@style/SPOtpEntryStyle"
+            style="@style/SPOtpEntryStyle"
             android:padding="@dimen/dimen_p_8">
 
             <ge.space.ui.components.text_fields.masked.pin.SPOtpEditText

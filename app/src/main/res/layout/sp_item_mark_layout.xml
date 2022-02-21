@@ -13,21 +13,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_6"
-        app:style="@style/SPMark.Size32" />
+        style="@style/SPMark.Size32" />
 
     <ge.space.ui.components.marks.SPMark
         android:id="@+id/mark2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_6"
-        app:style="@style/SPMark.Size64" />
+        style="@style/SPMark.Size64" />
 
     <ge.space.ui.components.marks.SPMark
         android:id="@+id/mark3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_6"
-        app:style="@style/SPMark.Size40" />
+        style="@style/SPMark.Size40" />
 
     <ge.space.ui.components.marks.SPMark
         android:id="@+id/mark4"

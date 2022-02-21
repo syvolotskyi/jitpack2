@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/sp_bank_logo_margin_start"
         android:layout_marginTop="@dimen/sp_bank_card_favorite_margin_top"
         android:layout_marginBottom="@dimen/sp_bank_card_favorite_margin_bottom"
-        app:style="@style/SPMark.Size32"
+        style="@style/SPMark.Size32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

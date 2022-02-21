@@ -5,8 +5,10 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import androidx.viewbinding.ViewBinding
 import ge.space.extensions.EMPTY_TEXT
+import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 
@@ -19,8 +21,9 @@ import ge.space.ui.base.SPViewStyling
 abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPViewStyling {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = 0,
+) : SPBaseView(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     /**
      * Reference to [VB] instance which is related to ViewBinding
@@ -50,7 +53,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
 
     override fun setViewStyle(newStyle: Int) {
         with(newStyle) {
-            setStyle(this)
+            setBaseViewStyle(this)
             setButtonStyle(this)
         }
     }
@@ -92,7 +95,7 @@ abstract class SPButtonBaseView<VB : ViewBinding> @JvmOverloads constructor(
     /**
      * Allows to update button style using ViewBinding
      */
-    abstract fun setButtonStyle(@StyleRes defStyleRes: Int)
+    abstract fun setButtonStyle(@StyleRes styleRes: Int)
 
     companion object {
         private const val DEFAULT_ALPHA = 1f
