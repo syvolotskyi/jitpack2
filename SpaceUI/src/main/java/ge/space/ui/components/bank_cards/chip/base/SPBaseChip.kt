@@ -23,8 +23,9 @@ import ge.space.ui.util.view_factory.SPViewFactoryData
 abstract class SPBaseChip @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : SPBaseView(context, attrs, defStyleAttr), SPViewFactoryData, SPViewStyling {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = 0
+) : SPBaseView(context, attrs, defStyleAttr, defStyleRes), SPViewFactoryData, SPViewStyling {
 
     /**
      * Changes the size of the view
@@ -59,17 +60,16 @@ abstract class SPBaseChip @JvmOverloads constructor(
         context.withStyledAttributes(
             attrs,
             R.styleable.SPBaseChip,
-            defStyleAttr
+            defStyleAttr,
+            defStyleRes
         ) {
             withStyledResource()
         }
     }
 
-    override fun setStyle(defStyleRes: Int) {
-        super.setStyle(defStyleRes)
-        val styleAttrs = context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPBaseChip)
-
-        styleAttrs.run { withStyledResource() }
+    override fun setBaseViewStyle(styleRes: Int) {
+        super.setBaseViewStyle(styleRes)
+        context.withStyledAttributes(styleRes, R.styleable.SPBaseChip) { withStyledResource() }
     }
 
     private fun TypedArray.withStyledResource() {
@@ -90,7 +90,7 @@ abstract class SPBaseChip @JvmOverloads constructor(
      */
     override fun setViewStyle(@StyleRes newStyle: Int) {
         with(newStyle) {
-            setStyle(this)
+            setBaseViewStyle(this)
             setChipStyle(this)
         }
     }

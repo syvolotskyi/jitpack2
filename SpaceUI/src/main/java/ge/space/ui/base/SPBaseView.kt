@@ -1,6 +1,7 @@
 package ge.space.ui.base
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -43,8 +44,9 @@ import kotlin.math.roundToInt
 abstract class SPBaseView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+    @AttrRes defStyleAttr: Int = 0,
+    @StyleRes defStyleRes: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Paint instance for shadows to avoid
@@ -80,7 +82,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     /**
      * Makes a circled shape of the view.
      */
-    protected var isCircle: Boolean = DEFAULT_IS_CIRCLE
+    var isCircle: Boolean = DEFAULT_IS_CIRCLE
         set(value) {
             field = value
 
@@ -213,20 +215,11 @@ abstract class SPBaseView @JvmOverloads constructor(
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
+            R.styleable.sp_view_style,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setStyle(
-                getResourceId(R.styleable.SPBaseView_style, R.style.SPBaseView)
-            )
-            borderColor = getColor(
-                R.styleable.SPBaseView_borderColor,
-                EMPTY_BORDER_VALUE
-            )
-            borderWidth = getDimensionPixelSize(
-                R.styleable.SPBaseView_borderWidth,
-                EMPTY_BORDER_VALUE
-            ).toFloat()
+            withApplyResource()
         }
     }
 
@@ -308,53 +301,52 @@ abstract class SPBaseView @JvmOverloads constructor(
      *
      * @param defStyleRes [Int] style resource id
      */
-    open fun setStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_view_style)
-
-        styleAttrs.run {
-            color = getColor(R.styleable.sp_view_style_backgroundColor, Color.WHITE)
-            shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
-            shadowAlpha = getFraction(
-                R.styleable.sp_view_style_shadowAlpha,
-                ALPHA_BASE,
-                ALPHA_BASE,
-                DEFAULT_ALPHA
-            ).scaleTo(ALPHA_SCALE)
-            shadowRadius = getDimensionPixelSize(
-                R.styleable.sp_view_style_shadowRadius, DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            shadowOffsetX = getDimensionPixelSize(
-                R.styleable.sp_view_style_shadowOffsetX, DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            shadowOffsetY = getDimensionPixelSize(
-                R.styleable.sp_view_style_shadowOffsetY, DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            topLeftCornerRadius = getDimensionPixelSize(
-                R.styleable.sp_view_style_topLeftCornerRadius,
-                DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            topRightCornerRadius = getDimensionPixelSize(
-                R.styleable.sp_view_style_topRightCornerRadius,
-                DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            bottomRightCornerRadius = getDimensionPixelSize(
-                R.styleable.sp_view_style_bottomRightCornerRadius,
-                DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            bottomLeftCornerRadius = getDimensionPixelSize(
-                R.styleable.sp_view_style_bottomLeftCornerRadius,
-                DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            roundedCorners = getDimensionPixelSize(
-                R.styleable.sp_view_style_roundedCorners, DEFAULT_OBTAIN_VAL
-            ).toFloat()
-            isCircle = getBoolean(
-                R.styleable.sp_view_style_isCircle, DEFAULT_IS_CIRCLE
-            )
-
-            recycle()
+    open fun setBaseViewStyle(@StyleRes defStyleRes: Int) {
+        context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style){
+            withApplyResource()
         }
+    }
+
+    private fun TypedArray.withApplyResource() {
+        color = getColor(R.styleable.sp_view_style_backgroundColor, Color.WHITE)
+        shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
+        shadowAlpha = getFraction(
+            R.styleable.sp_view_style_shadowAlpha,
+            ALPHA_BASE,
+            ALPHA_BASE,
+            DEFAULT_ALPHA
+        ).scaleTo(ALPHA_SCALE)
+        shadowRadius = getDimensionPixelSize(
+            R.styleable.sp_view_style_shadowRadius, DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        shadowOffsetX = getDimensionPixelSize(
+            R.styleable.sp_view_style_shadowOffsetX, DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        shadowOffsetY = getDimensionPixelSize(
+            R.styleable.sp_view_style_shadowOffsetY, DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        topLeftCornerRadius = getDimensionPixelSize(
+            R.styleable.sp_view_style_topLeftCornerRadius,
+            DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        topRightCornerRadius = getDimensionPixelSize(
+            R.styleable.sp_view_style_topRightCornerRadius,
+            DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        bottomRightCornerRadius = getDimensionPixelSize(
+            R.styleable.sp_view_style_bottomRightCornerRadius,
+            DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        bottomLeftCornerRadius = getDimensionPixelSize(
+            R.styleable.sp_view_style_bottomLeftCornerRadius,
+            DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        roundedCorners = getDimensionPixelSize(
+            R.styleable.sp_view_style_roundedCorners, DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        isCircle = getBoolean(
+            R.styleable.sp_view_style_isCircle, DEFAULT_IS_CIRCLE
+        )
     }
 
     private fun getAlpha(shadowAlpha: Float) =

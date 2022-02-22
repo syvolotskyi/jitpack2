@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BaseTheme.Core" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme.Core" parent="Theme.MaterialComponents.Light.NoActionBar">
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
         <item name="brand_secondary">@color/light_brand_secondary</item>
@@ -83,6 +83,9 @@
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowFullscreen">false</item>
+
+        // Custom Components
+        <item name="spToggleIconStyle">@style/SPToggleIcon.Standard</item>
     </style>
 
     <style name="AppThemeDark" parent="AppTheme">

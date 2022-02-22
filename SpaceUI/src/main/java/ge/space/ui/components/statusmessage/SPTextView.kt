@@ -31,26 +31,17 @@ class SPTextView @JvmOverloads constructor(
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPTextView,
-            defStyleAttr
+            defStyleAttr,
+            defStyleRes
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPTextView_style,
-                    defStyleRes
-                )
-            )
             withStyledAttributes()
         }
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPTextView)
-
-        styleAttrs.run {
+        context.withStyledAttributes(newStyle, R.styleable.SPTextView) {
             withStyledAttributes()
             setViewPaddings()
-            recycle()
         }
     }
 

@@ -12,7 +12,6 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPlaceholderBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
-import ge.space.ui.util.extension.loadImageUrl
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -70,7 +69,7 @@ class SPPlaceholder @JvmOverloads constructor(
     private fun handleSize() {
         reSizeRoot()
         reSizeLogo()
-        setStyle(
+        setBaseViewStyle(
             getStyleBySize()
         )
     }

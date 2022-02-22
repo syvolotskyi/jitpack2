@@ -25,7 +25,7 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:style="@style/SPButton.Vertical_Size48" />
+        style="@style/SPButton.Vertical_Size48" />
 
     <LinearLayout
         android:layout_width="match_parent"

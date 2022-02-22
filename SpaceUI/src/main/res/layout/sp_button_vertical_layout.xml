@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -22,8 +21,6 @@
             android:ellipsize="end"
             android:gravity="center"
             android:lines="1"
-            android:textColor="?attr/label_secondary"
-            tools:fontFamily="@font/myriad_geo_medium"
             tools:text="Title" />
 
     </LinearLayout>
