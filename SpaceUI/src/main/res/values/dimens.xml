@@ -18,6 +18,7 @@
 
     <dimen name="card_transfer_swap_image_minus_padding">-20dp</dimen>
 
+    <dimen name="dimen_p_0">0dp</dimen>
     <dimen name="dimen_p_0_5">0.5dp</dimen>
     <dimen name="dimen_p_1">1.0dp</dimen>
     <dimen name="dimen_p_2">2.0dp</dimen>

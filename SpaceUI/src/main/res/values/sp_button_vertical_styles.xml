@@ -5,10 +5,8 @@
         <item name="isCircle">true</item>
     </style>
 
-    <style name="SPButton.Vertical_Size40" parent="SPBaseView">
-        <item name="shadowAlpha">100%</item>
+    <style name="SPButton.Vertical_Size40" parent="shadow_empty">
         <item name="backgroundColor">@android:color/transparent</item>
-        <item name="shadowRadius">0dp</item>
         <item name="distractiveColor">?attr/accent_magenta</item>
         <item name="buttonHeight">@dimen/dimen_p_16</item>
         <item name="btnIconPadding">@dimen/dimen_p_12</item>

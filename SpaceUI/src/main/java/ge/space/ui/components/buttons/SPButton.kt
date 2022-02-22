@@ -44,7 +44,8 @@ class SPButton @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Primary_Size48
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr) , OnDistractiveInterface{
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr, defStyleRes),
+    OnDistractiveInterface {
 
     /**
      * Makes a button icon direction.
@@ -99,33 +100,20 @@ class SPButton @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
+            R.styleable.sp_button_view_style,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
+            applyStyledResource()
         }
 
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPButton,
-            defStyleAttr
+            defStyleAttr,
+            defStyleRes
         ) {
-            getString(R.styleable.SPButton_android_text).orEmpty()
-                .handleAttributeAction(EMPTY_TEXT) {
-                    text = it
-                }
-
-            val directionIconInd = getInt(
-                R.styleable.SPButton_directionIcon,
-                DEFAULT_OBTAIN_VAL
-            )
-            directionIcon = IconDirection.values()[directionIconInd]
-            src = getResourceId(R.styleable.SPButton_android_src, 0)
+            applyButtonStylesResource()
         }
     }
 
@@ -142,16 +130,32 @@ class SPButton @JvmOverloads constructor(
      * Default style theme is SPBaseView.SPBaseButton style.
      * <p>
      *
-     * @param defStyleRes [Int] style resource id
+     * @param styleRes [Int] style resource id
      */
-    override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
-
-        styleAttrs.run { withStyledResource() }
+    override fun setButtonStyle(@StyleRes styleRes: Int) {
+        context.withStyledAttributes(styleRes, R.styleable.sp_button_view_style) {
+            applyStyledResource()
+        }
+        context.withStyledAttributes(styleRes,  R.styleable.SPButton) {
+            applyButtonStylesResource()
+        }
     }
 
-    private fun TypedArray.withStyledResource() {
+    private fun TypedArray.applyButtonStylesResource() {
+        getString(R.styleable.SPButton_android_text).orEmpty()
+            .handleAttributeAction(EMPTY_TEXT) {
+                text = it
+            }
+
+        val directionIconInd = getInt(
+            R.styleable.SPButton_directionIcon,
+            DEFAULT_OBTAIN_VAL
+        )
+        directionIcon = values()[directionIconInd]
+        src = getResourceId(R.styleable.SPButton_android_src, DEFAULT_OBTAIN_VAL)
+    }
+
+    private fun TypedArray.applyStyledResource() {
         textAppearance = getResourceId(
             R.styleable.sp_button_view_style_android_textAppearance,
             DEFAULT_OBTAIN_VAL
@@ -175,8 +179,6 @@ class SPButton @JvmOverloads constructor(
         background = color
         updateTextAppearance(textAppearance)
         binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
-        recycle()
-
     }
 
     fun updateTextAppearance(textAppearance: Int) {

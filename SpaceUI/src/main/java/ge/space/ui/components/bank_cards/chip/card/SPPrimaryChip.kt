@@ -1,6 +1,7 @@
 package ge.space.ui.components.bank_cards.chip.card
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
@@ -23,7 +24,7 @@ class SPPrimaryChip @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPBankCardView_Chip
-) : SPBaseChip(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Binds a view
@@ -41,29 +42,27 @@ class SPPrimaryChip @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
+            R.styleable.SPPrimaryChip,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
+            applyPrimaryChipAttr()
         }
+        handleChipSize()
     }
 
     override fun setChipStyle(styleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPPrimaryChip)
-
-        styleAttrs.run {
-            primaryChipImage = getResourceId(
-                R.styleable.SPPrimaryChip_chipIcon,
-                R.drawable.img_primary_chip
-            )
+        context.withStyledAttributes(styleRes, R.styleable.SPPrimaryChip) {
+            applyPrimaryChipAttr()
         }
         handleChipSize()
+    }
+
+    private fun TypedArray.applyPrimaryChipAttr() {
+        primaryChipImage = getResourceId(
+            R.styleable.SPPrimaryChip_chipIcon,
+            R.drawable.img_primary_chip
+        )
     }
 
     override fun handleChipSize() {

@@ -1,6 +1,7 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -35,7 +36,7 @@ open class SPButtonVertical @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Vertical_Size48
-) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr),
+) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr, defStyleRes),
     OnDistractiveInterface {
 
     /**
@@ -87,24 +88,20 @@ open class SPButtonVertical @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPButtonVertical,
-            defStyleAttr
+            R.styleable.sp_button_view_style,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setButtonStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
-            getString(R.styleable.SPButtonVertical_android_text).orEmpty()
-                .handleAttributeAction(EMPTY_TEXT) {
-                    text = it
-                }
-            isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
-            src = getResourceId(
-                R.styleable.SPButtonVertical_android_src,
-                R.drawable.ic_plus_16_regular
-            )
+            applyStyledResource()
+        }
+
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPButtonVertical,
+            defStyleAttr,
+            defStyleRes
+        ) {
+            applyVerticalButtonAttr()
         }
     }
 
@@ -115,36 +112,54 @@ open class SPButtonVertical @JvmOverloads constructor(
      * Default style theme is SPBaseView.SPBaseButton style.
      * <p>
      *
-     * @param defStyleRes [Int] style resource id
+     * @param styleRes [Int] style resource id
      */
-    override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
-
-        styleAttrs.run {
-            val textAppearance = getResourceId(
-                R.styleable.sp_button_view_style_android_textAppearance,
-                DEFAULT_OBTAIN_VAL
-            )
-            val buttonHeight = getResourceId(
-                R.styleable.sp_button_view_style_buttonHeight,
-                DEFAULT_OBTAIN_VAL
-            )
-            iconPadding = resources.getDimensionPixelSize(
-                getResourceId(
-                    R.styleable.sp_button_view_style_btnIconPadding, DEFAULT_ICON_PADDING
-                )
-            )
-            distractiveColor =
-                getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
-
-            color = Color.TRANSPARENT
-
-            updateTextAppearance(textAppearance)
-            handleImageSize(resources.getDimensionPixelSize(buttonHeight))
-            recycle()
+    override fun setButtonStyle(@StyleRes styleRes: Int) {
+        context.withStyledAttributes(styleRes, R.styleable.sp_button_view_style) {
+            applyStyledResource()
         }
 
+        context.withStyledAttributes(styleRes, R.styleable.SPButtonVertical) {
+            applyVerticalButtonAttr()
+        }
+    }
+
+
+    private fun TypedArray.applyVerticalButtonAttr() {
+        getString(R.styleable.SPButtonVertical_android_text).orEmpty()
+            .handleAttributeAction(EMPTY_TEXT) {
+                text = it
+            }
+        isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
+        src = getResourceId(
+            R.styleable.SPButtonVertical_android_src,
+            R.drawable.ic_plus_16_regular
+        )
+    }
+
+    private fun TypedArray.applyStyledResource() {
+        val textAppearance = getResourceId(
+            R.styleable.sp_button_view_style_android_textAppearance,
+            DEFAULT_OBTAIN_VAL
+        )
+        val buttonHeight = getResourceId(
+            R.styleable.sp_button_view_style_buttonHeight,
+            DEFAULT_OBTAIN_VAL
+        )
+        iconPadding = resources.getDimensionPixelSize(
+            getResourceId(
+                R.styleable.sp_button_view_style_btnIconPadding, DEFAULT_OBTAIN_VAL
+            )
+        )
+        distractiveColor =
+            getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
+
+        color = Color.TRANSPARENT
+
+        updateTextAppearance(textAppearance)
+        handleImageSize(resources.getDimensionPixelSize(buttonHeight))
+        bubbleLayoutBinding.btnContainer.isCircle = true
+        handleDistractiveState()
     }
 
     override fun updateText(text: String) {
@@ -171,10 +186,5 @@ open class SPButtonVertical @JvmOverloads constructor(
     private fun handleImageSize(iconPixelSize: Int) {
         bubbleLayoutBinding.image.setHeight(iconPixelSize)
         bubbleLayoutBinding.image.setWidth(iconPixelSize)
-    }
-
-    companion object {
-        private const val FLOAT_ZERO = 0f
-        private const val DEFAULT_ICON_PADDING = 0
     }
 }

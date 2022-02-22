@@ -18,7 +18,7 @@
             android:id="@+id/tabImageContainer"
             android:layout_width="@dimen/sp_tab_navigation_child_image_container_width"
             android:layout_height="@dimen/sp_tab_navigation_child_image_container_height"
-            app:style="@style/SPTabNavigation.RoundedView">
+            style="@style/SPTabNavigation.RoundedView">
 
             <ImageView
                 android:id="@+id/tabImage"

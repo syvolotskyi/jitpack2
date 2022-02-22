@@ -29,7 +29,7 @@ class SPButtonInline @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButtonInline_Primary
-) : SPButtonBaseView<SpButtonInlineLayoutBinding>(context, attrs, defStyleAttr) {
+) : SPButtonBaseView<SpButtonInlineLayoutBinding>(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Makes a button gravity.
@@ -76,51 +76,14 @@ class SPButtonInline @JvmOverloads constructor(
     private var descriptionTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
 
     init {
-        getContext().withStyledAttributes(
-            attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
-        ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
-        }
 
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPButtonInline,
-            defStyleAttr
+            defStyleAttr,
+            defStyleRes
         ) {
-            getString(R.styleable.SPButtonInline_android_text).orEmpty()
-                .handleAttributeAction(EMPTY_TEXT) {
-                    text = it
-                }
-
-            val gravityInd = getInt(
-                R.styleable.SPButtonInline_containerGravity,
-                DEFAULT_OBTAIN_VAL
-            )
-
-            descriptionTextAppearance = getResourceId(
-                R.styleable.SPButtonInline_descriptionTextAppearance,
-                DEFAULT_OBTAIN_VAL
-            )
-            getString(
-                R.styleable.SPButtonInline_description
-            ).orEmpty().handleAttributeAction(EMPTY_TEXT) {
-                description = it
-            }
-
-            buttonGravity = ButtonGravity.values()[gravityInd]
-            getResourceId(R.styleable.SPButtonInline_android_src, DEFAULT_OBTAIN_VAL)
-                .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-                    if (it != DEFAULT_OBTAIN_VAL)
-                        src = it
-                }
-            updateTextAppearance()
+            withStyledResource()
         }
     }
 
@@ -137,15 +100,11 @@ class SPButtonInline @JvmOverloads constructor(
      * Default style theme is SPBaseView.SPBaseButton style.
      * <p>
      *
-     * @param defStyleRes [Int] style resource id
+     * @param styleRes [Int] style resource id
      */
-    override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.SPButtonInline)
-
-        styleAttrs.run {
+    override fun setButtonStyle(@StyleRes styleRes: Int) {
+        context.withStyledAttributes(styleRes, R.styleable.SPButtonInline) {
             withStyledResource()
-            recycle()
         }
     }
 
@@ -198,7 +157,7 @@ class SPButtonInline @JvmOverloads constructor(
     }
 
     private fun handleGravity() {
-        if (buttonGravity == ButtonGravity.Left) {
+        if (buttonGravity == Left) {
             binding.buttonContentWrapper.setWidth(MATCH_PARENT)
         } else {
 

@@ -29,7 +29,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
-                    android:text="title" />
+                    android:text="title"
+                    style="@style/SPButton.Primary_Size56"/>
 
                 <ge.space.ui.components.buttons.SPButton
                     android:id="@+id/button2"

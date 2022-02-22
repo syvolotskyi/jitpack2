@@ -183,7 +183,7 @@ abstract class SPPinBaseEditText<VB : ViewBinding> @JvmOverloads constructor(
 
     override fun setViewStyle(newStyle: Int) {
         with(newStyle) {
-            setStyle(this)
+            setBaseViewStyle(this)
             setPinStyle(this)
         }
     }
