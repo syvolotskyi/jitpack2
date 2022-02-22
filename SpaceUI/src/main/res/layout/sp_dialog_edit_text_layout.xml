@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:focusable="true"
-        app:style="@style/SPDialog.FrameLayout">
+        style="@style/SPDialog.FrameLayout">
 
         <include
             android:id="@+id/lytDialogLinear"

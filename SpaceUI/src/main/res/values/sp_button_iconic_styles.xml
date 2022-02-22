@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPButton.Iconic.Size24" parent="SPBaseView">
-        <item name="shadowAlpha">100%</item>
-        <item name="backgroundColor">@android:color/transparent</item>
+    <style name="SPButton.Iconic.Size24" parent="shadow_empty">
         <item name="iconBackgroundColor">?attr/brand_primary</item>
-        <item name="shadowRadius">0dp</item>
         <item name="distractiveColor">?attr/accent_magenta</item>
         <item name="distractiveBorderColor">?attr/accent_magenta</item>
         <item name="borderColor">?attr/brand_primary</item>

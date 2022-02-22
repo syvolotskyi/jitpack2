@@ -46,7 +46,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPTextField_Base
-) : LinearLayout(context, attrs, defStyleAttr), SPViewStyling, SPDistractiveMode {
+) : LinearLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling, SPDistractiveMode {
 
     private var borderWidth: Float =
         context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
@@ -270,6 +270,12 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 handleEndView(it)
             }
 
+        getInt(R.styleable.SPTextFieldInput_contentInputView, SPBaseView.NO_OBTAIN_VAL)
+            .handleAttributeAction(
+                SPBaseView.NO_OBTAIN_VAL
+            ) {
+                handleContentAttr(it)
+            }
         getInt(
             R.styleable.SPTextFieldInput_inputTextLength,
             DEFAULT_TEXT_LENGTH

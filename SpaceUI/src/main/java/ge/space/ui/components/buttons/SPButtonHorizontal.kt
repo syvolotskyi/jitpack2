@@ -1,6 +1,7 @@
 package ge.space.ui.components.buttons
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -29,7 +30,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Horizontal_Size48
-) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr), SPDistractiveMode {
+) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr, defStyleRes), SPDistractiveMode {
 
     /**
      * Inflates and returns [SpButtonHorizontalLayoutBinding] value
@@ -80,26 +81,20 @@ class SPButtonHorizontal @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
+            R.styleable.sp_button_view_style,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
+            applyStyledResource()
         }
+
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPButtonHorizontal,
-            defStyleAttr
+            defStyleAttr,
+            defStyleRes
         ) {
-            src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
-            getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
-                .handleAttributeAction(EMPTY_TEXT) {
-                    text = it
-                }
+            applyHorizontalStyleAttrs()
         }
     }
 
@@ -110,36 +105,47 @@ class SPButtonHorizontal @JvmOverloads constructor(
      * Default style theme is SPBaseView.SPBaseButton style.
      * <p>
      *
-     * @param defStyleRes [Int] style resource id
+     * @param styleRes [Int] style resource id
      */
-    override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(defStyleRes, R.styleable.sp_button_view_style)
-
-        styleAttrs.run {
-
-            textAppearance =
-                getResourceId(
-                    R.styleable.sp_button_view_style_android_textAppearance,
-                    DEFAULT_OBTAIN_VAL
-                )
-
-            distractiveTextAppearance = getResourceId(
-                R.styleable.sp_button_view_style_distractiveTextAppearance,
-                DEFAULT_OBTAIN_VAL
-            )
-            distractiveColor =
-                getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
-            updateTextAppearance(textAppearance)
-
-            val buttonHeight = getResourceId(
-                R.styleable.sp_button_view_style_buttonHeight,
-                R.dimen.dimen_p_48
-            )
-            binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
-            recycle()
+    override fun setButtonStyle(@StyleRes styleRes: Int) {
+        context.withStyledAttributes(styleRes, R.styleable.sp_button_view_style){
+            applyStyledResource()
+        }
+        context.withStyledAttributes(styleRes, R.styleable.SPButtonHorizontal){
+            applyHorizontalStyleAttrs()
         }
     }
+
+    private fun TypedArray.applyHorizontalStyleAttrs() {
+        src = getResourceId(R.styleable.SPButtonHorizontal_android_src, 0)
+        getString(R.styleable.SPButtonHorizontal_android_text).orEmpty()
+            .handleAttributeAction(EMPTY_TEXT) {
+                text = it
+            }
+    }
+
+    private fun TypedArray.applyStyledResource() {
+        textAppearance =
+            getResourceId(
+                R.styleable.sp_button_view_style_android_textAppearance,
+                DEFAULT_OBTAIN_VAL
+            )
+
+        distractiveTextAppearance = getResourceId(
+            R.styleable.sp_button_view_style_distractiveTextAppearance,
+            DEFAULT_OBTAIN_VAL
+        )
+        distractiveColor =
+            getColor(R.styleable.sp_button_view_style_distractiveColor, Color.WHITE)
+        updateTextAppearance(textAppearance)
+
+        val buttonHeight = getResourceId(
+            R.styleable.sp_button_view_style_buttonHeight,
+            R.dimen.dimen_p_48
+        )
+        binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
+    }
+
 
     override fun handleDistractiveState() {
         updateTextAppearance(if (isDistractive) distractiveTextAppearance else textAppearance)

@@ -20,7 +20,6 @@ import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 import ge.space.ui.util.extension.loadImageUrl
-import ge.space.ui.util.extension.loadRoundImageUrl
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -37,7 +36,7 @@ class SPChipIcon @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPBankCardView_Chip
-) : SPBaseChip(context, attrs, defStyleAttr) {
+) : SPBaseChip(context, attrs, defStyleAttr, defStyleRes) {
 
     /**
      * Small icon
@@ -90,16 +89,13 @@ class SPChipIcon @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
-            defStyleAttr
+            R.styleable.SPChipIcon,
+            defStyleAttr,
+            defStyleRes
         ) {
-            setViewStyle(
-                getResourceId(
-                    R.styleable.SPBaseView_style,
-                    defStyleRes
-                )
-            )
+            withStyledResource()
         }
+        handleCardAppearance()
     }
 
     private fun TypedArray.withStyledResource() {
@@ -113,10 +109,7 @@ class SPChipIcon @JvmOverloads constructor(
     }
 
     override fun setChipStyle(styleRes: Int) {
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(styleRes, R.styleable.SPChipIcon)
-
-        styleAttrs.run { withStyledResource() }
+        context.withStyledAttributes(styleRes, R.styleable.SPChipIcon) { withStyledResource() }
         handleCardAppearance()
     }
 

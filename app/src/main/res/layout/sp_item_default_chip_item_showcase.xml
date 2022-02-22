@@ -6,7 +6,7 @@
 
     <ge.space.ui.components.bank_cards.card_list.SPDefaultChipItem
         android:id="@+id/chipItem"
-        app:style="@style/SPChip.SPSelectableChipItem.Default"
+        style="@style/SPChip.SPSelectableChipItem.Default"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />

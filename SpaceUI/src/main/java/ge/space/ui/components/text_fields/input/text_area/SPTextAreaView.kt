@@ -2,22 +2,29 @@ package ge.space.ui.components.text_fields.input.text_area
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.text.InputType
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
-import android.widget.EditText
-import android.widget.ScrollView
-import android.widget.TextView
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.view.children
+import androidx.core.view.forEach
+import ge.space.extensions.focus
+import ge.space.extensions.hide
 import ge.space.extensions.onChange
+import ge.space.extensions.onClick
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.base.SPTextInputViewType
+import ge.space.ui.util.extension.showKeyboard
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
@@ -47,7 +54,12 @@ class SPTextAreaView @JvmOverloads constructor(
         registerCounterListener()
     }
 
-    private fun registerCounterListener(){
+    override fun handleTextLength(value: Int) {
+        super.handleTextLength(value)
+        updateCounterText()
+    }
+
+    private fun registerCounterListener() {
         (contentInputView as EditText).onChange {
             updateCounterText()
         }
@@ -55,7 +67,10 @@ class SPTextAreaView @JvmOverloads constructor(
 
     private fun setupCounterView() {
         counterView = (SPViewData.SPTextData(
-            params = SPViewData.SPViewDataParams(gravity = Gravity.END or Gravity.CENTER_VERTICAL, paddingBottom = resources.getDimensionPixelSize(R.dimen.dimen_p_4),)
+            params = SPViewData.SPViewDataParams(
+                gravity = Gravity.END or Gravity.CENTER_VERTICAL,
+                paddingBottom = resources.getDimensionPixelSize(R.dimen.dimen_p_4),
+            )
         ).createView(context) as TextView).apply {
             setText(
                 getCounterText(),
@@ -70,28 +85,20 @@ class SPTextAreaView @JvmOverloads constructor(
             TextView.BufferType.SPANNABLE
         )
 
-    @SuppressLint("ClickableViewAccessibility")
-    private fun createScrollView(): ScrollView {
-        val scrollView = ScrollView(context).apply {
+    private fun createScrollView() = ScrollView(context).apply {
+        // Configure scrollview
+        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1.0f)
+        setFadingEdgeLength(resources.getDimensionPixelSize(R.dimen.dimen_p_60))
+        isVerticalFadingEdgeEnabled = true
+        isVerticalScrollBarEnabled = false
+        overScrollMode = OVER_SCROLL_NEVER
+
+        // Add editText
+        addView(LinearLayout(context).apply {
             addView(contentInputView)
-            setFadingEdgeLength(resources.getDimensionPixelSize(R.dimen.dimen_p_60))
-            isVerticalFadingEdgeEnabled = true
-            isVerticalScrollBarEnabled = false
-            setOnTouchListener { _, _ ->
-                focus()
-                return@setOnTouchListener false
-            }
-            overScrollMode = OVER_SCROLL_NEVER
-        }
-
-        val param = LayoutParams(
-            LayoutParams.MATCH_PARENT,
-            LayoutParams.MATCH_PARENT,
-            1.0f
-        )
-
-        scrollView.layoutParams = param
-        return scrollView
+            isFillViewport = true
+            onClick { contentInputView.showKeyboard() }
+        })
     }
 
     private fun getCounterText(): SpannableString {
@@ -116,8 +123,7 @@ class SPTextAreaView @JvmOverloads constructor(
 
     override fun getContentEditText(): SPTextInputViewType.SPEditTextViewType =
         SPTextInputViewType.SPEditTextViewType(
-            hint,
-            lines = null,
+            hint = hint, lines = null,
             inputType = InputType.TYPE_CLASS_TEXT
                     or InputType.TYPE_TEXT_FLAG_MULTI_LINE
                     or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD,
