@@ -32,6 +32,9 @@
     <string name="toggle_switch_description">Toggle Switch description</string>
     <string name="toggle_switch">Toggle Switch</string>
 
+    <string name="radio_buttons_description">Radio Buttons description</string>
+    <string name="radio_buttons">Radio Buttons</string>
+
     <string name="toggle_icon">Toggle Icon</string>
     <string name="toggle_icon_desc">Toggle Icon description</string>
 
@@ -141,6 +144,7 @@
     <string name="title_default_items">Showcases for default items</string>
     <string name="component_otp_resend_sms">SMS-ის ხელმეორედ გაგზავნა</string>
     <string name="component_otp_label">შეიყვანე ვერიფიკაციის კოდი, რომელიც მიიღე ნომერზე:</string>
+    <string name="text_sample">აჩუ-აჩუ ცხენო\nსაით გაგაჭენო,\nალაზანი დიდია\nშიგ ბებერი კიდია,\nპური ვთხოვე არ მაჭამა\nჩემი ცოდვა კიდია</string>
     <string name="component_otp_phone">+995 577 712021</string>
 
     <string name="component_new_credit_card">New credit card</string>
