@@ -66,6 +66,8 @@
     <string name="textArea_desc">Text Area desc</string>
 
     <string name="number_input">Number input</string>
+    <string name="number_input_xml">Number input from XML</string>
+    <string name="number_input_xml_desc">Number input ediTexts from configuration XML</string>
     <string name="number_input_desc">Enter sum more than 120.0 to show distractive attr</string>
 
     <string name="text_input">Text input</string>

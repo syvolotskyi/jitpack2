@@ -336,8 +336,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
         handleBorderColor()
     }
 
-    private fun handleContentAttr(it: Int) {
-        when (it) {
+    private fun handleContentAttr(contentType: Int) {
+        when (contentType) {
             SPTextInputViewType.DATE_MASKED -> {
                 mask = resources.getString(R.string.day_mask)
                 setupContentInputViewByType(

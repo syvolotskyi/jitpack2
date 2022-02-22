@@ -26,7 +26,7 @@
         android:id="@+id/tfNumber"
         android:layout_width="@dimen/dimen_p_150"
         android:layout_height="wrap_content"
-        style="@style/SPTextField.Number"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,12 +79,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dimen_p_64"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/SPTextField.AmountInteger"
         app:layout_constraintTop_toBottomOf="@+id/tfNumberSecond" />
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumberSecond"
-        style="@style/SPTextField.AmountDecimal"
         android:layout_width="@dimen/dimen_p_150"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
