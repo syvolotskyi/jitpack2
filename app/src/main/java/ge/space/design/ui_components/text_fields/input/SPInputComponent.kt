@@ -1,6 +1,7 @@
 package ge.space.design.ui_components.text_fields.input
 
 import android.content.Context
+import android.text.InputType
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
@@ -95,6 +96,19 @@ class SPInputComponent : ShowCaseComponent {
                                         R.string.enter_you_details_here
                                     )
                                 ),
+                            )
+                            setupEndViewByType(SPEndViewType.SPRemovableViewType)
+                        }
+                    }
+
+                    R.id.email -> {
+                        with(layoutBinding.simpleInput) {
+                            setupStartViewByType(SPStartViewType.SPNoneViewType)
+                            setupContentInputViewByType(
+                                SPTextInputViewType.SPEditTextViewType(
+                                    hint = context.getString(
+                                        R.string.enter_you_details_here
+                                    ), inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
                             )
                             setupEndViewByType(SPEndViewType.SPRemovableViewType)
                         }

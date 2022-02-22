@@ -18,4 +18,8 @@
         <item name="inputTextLength">@integer/default_text_length</item>
     </style>
 
+    <style name="SPTextField.Email" parent="SPTextField.Base">
+        <item name="contentInputView">email</item>
+    </style>
+
 </resources>
