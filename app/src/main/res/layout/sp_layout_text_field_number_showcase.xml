@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSettings" />
 
-    <RadioGroup
+    <ge.space.ui.components.controls.radio.SPRadioGroup
         android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,33 +86,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbDisable">
 
-        <RadioButton
+        <ge.space.ui.components.controls.radio.SPRadioButton
             android:id="@+id/eur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
             android:checked="true"
             android:text="EUR"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
-        <RadioButton
+        <ge.space.ui.components.controls.radio.SPRadioButton
             android:id="@+id/gel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
             android:text="GEL"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
-        <RadioButton
+        <ge.space.ui.components.controls.radio.SPRadioButton
             android:id="@+id/uzs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
             android:text="UZS"
             android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
-    </RadioGroup>
+    </ge.space.ui.components.controls.radio.SPRadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
