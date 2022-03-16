@@ -196,7 +196,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             handleDistractiveState()
         }
 
-    private var inputType: Int = SPTextInputViewType.TEXT
+    var inputType: Int = SPTextInputViewType.TEXT
 
     private var watcher: TextWatcher? = null
 

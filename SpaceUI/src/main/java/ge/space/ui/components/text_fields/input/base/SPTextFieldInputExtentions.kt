@@ -18,6 +18,7 @@ import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
  * Setup a view as input for number and currency
  */
 fun SPTextFieldInput.setupNumberInput(currency: String) {
+    inputType = SPTextInputViewType.AMOUNT_DECIMAL
     setupContentInputViewByType(SPTextInputViewType.SPNumberViewType())
     setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
 }
@@ -26,6 +27,7 @@ fun SPTextFieldInput.setupNumberInput(currency: String) {
  * Setup a view as input for amount decimal (with formatter) and currency
  */
 fun SPTextFieldInput.setupAmountDecimalInput(currency: String) {
+    inputType = SPTextInputViewType.AMOUNT_DECIMAL
     setupContentInputViewByType(SPTextInputViewType.SPNumberViewType(inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS))
     setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
 }
