@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.core.view.children
 import ge.space.extensions.onClick
+import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
+import ge.space.ui.components.controls.radio.standart.SPRadioButton
+import ge.space.ui.components.controls.radio.list_item.SPListItemButton
 
 /**
  *  Extended view from [RadioGroup] and add the possibility to work with SPRadioButton.
@@ -29,21 +32,24 @@ class SPRadioGroup constructor(
 
     private fun initChildView(childView: View) {
         when (childView) {
-            is SPRadioButton -> {
+            is SpBaseRadioButton -> {
                 childView.onClick {
                     setAllButtonsToUnselectedState()
                     childView.isChecked = true
-                    onCheckedChangeListener?.onCheckedChanged(this,childView.id)
+                    onCheckedChangeListener?.onCheckedChanged(this, childView.id)
                 }
             }
-            else -> throw UnsupportedOperationException("SPRadioGroup only supports SPRadioButton component")
+            else -> throw UnsupportedOperationException("SPRadioGroup only supports" +
+                    " children of SpBaseRadioButton component")
         }
     }
+
 
     private fun setAllButtonsToUnselectedState() {
         children.forEach { childView ->
-            (childView as SPRadioButton).isChecked = false
+            when (childView) {
+                is SpBaseRadioButton -> childView.isChecked = false
+            }
         }
     }
-
 }

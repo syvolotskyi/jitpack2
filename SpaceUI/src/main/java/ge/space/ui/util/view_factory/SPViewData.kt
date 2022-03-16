@@ -1,5 +1,6 @@
 package ge.space.ui.util.view_factory
 
+import android.graphics.Color
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
@@ -26,6 +27,15 @@ sealed class SPViewData : Parcelable {
     data class SPImageUrlData(
         val url: String,
         var roundedCorners: Float = 0f
+    ) : SPViewData()
+
+    @Parcelize
+    data class SPCircleImageUrlData(
+        var height: Int? = null,
+        var width: Int? = null,
+        val url: String,
+        var borderSize: Int = 0,
+        var borderColor: Int = Color.WHITE
     ) : SPViewData()
 
     @Parcelize

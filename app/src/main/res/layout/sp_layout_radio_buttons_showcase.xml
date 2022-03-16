@@ -11,25 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ge.space.ui.components.controls.radio.SPRadioButton
+        <ge.space.ui.components.controls.radio.standart.SPRadioButton
             android:id="@+id/radio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_p_16"
-            android:button="@drawable/selector_radio_button"
             android:text="Radio button 1" />
 
-        <ge.space.ui.components.controls.radio.SPRadioButton
+        <ge.space.ui.components.controls.radio.standart.SPRadioButton
             android:id="@+id/radio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Radio button 2" />
 
-        <ge.space.ui.components.controls.radio.SPRadioButton
+        <ge.space.ui.components.controls.radio.standart.SPRadioButton
             android:id="@+id/radio3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:button="@drawable/selector_radio_button"
             android:text="Radio button 3"
             app:descriptionText="@string/text_sample" />
     </ge.space.ui.components.controls.radio.SPRadioGroup>

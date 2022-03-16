@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.controls.radio_buttons
+package ge.space.design.ui_components.controls.radio_buttons.standart
 
 import android.widget.Toast
 import com.example.spacedesignsystem.R
@@ -7,7 +7,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 
-class SPRadioButtonComponent : ShowCaseComponent {
+class SPRadioButtonStandartComponent : ShowCaseComponent {
 
     override fun getNameResId() = R.string.radio_buttons
 

@@ -6,6 +6,7 @@ import ge.space.ui.util.view_factory.component_type.card.SPNewCreditCardImpl
 import ge.space.ui.util.view_factory.component_type.chip.*
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPEmptyChipIconImpl
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPPrimaryChipIconImpl
+import ge.space.ui.util.view_factory.component_type.image.SPCircleImageUrlImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageResImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageUrlImpl
 import ge.space.ui.util.view_factory.component_type.text.SPTextInitialsImpl
@@ -26,6 +27,7 @@ interface SPViewFactory {
                 is SPViewData.SPNewCreditCards -> SPNewCreditCardImpl(context).create(this)
                 is SPViewData.SPChipData -> SPChipIconImpl(context).create(this)
                 is SPViewData.SPTextData -> SPTextInitialsImpl(context).create(this)
+                is SPViewData.SPCircleImageUrlData -> SPCircleImageUrlImpl(context).create(this)
             }
         }
     }

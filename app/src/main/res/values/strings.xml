@@ -31,8 +31,14 @@
     <string name="toggle_switch_description">Toggle Switch description</string>
     <string name="toggle_switch">Toggle Switch</string>
 
-    <string name="radio_buttons_description">Radio Buttons description</string>
+    <string name="list_item_button">List item button</string>
+    <string name="list_item_button_desc">List item button Description</string>
+
+    <string name="radio_buttons_description">Radio Buttons Description</string>
     <string name="radio_buttons">Radio Buttons</string>
+
+    <string name="radio_buttons_component_description">Radio Buttons with description and view</string>
+    <string name="radio_buttons_component">Radio Buttons </string>
 
     <string name="toggle_icon">Toggle Icon</string>
     <string name="toggle_icon_desc">Toggle Icon description</string>
@@ -148,4 +154,9 @@
     <string name="status_message_error">Error</string>
     <string name="status_message_pending">Pending</string>
     <string name="status_message_info">Info</string>
+
+    <string name="georgian">Georgian</string>
+    <string name="english">English</string>
+    <string name="uzbekistan">Uzbekistan</string>
+    <string name="ukraine">Ukraine</string>
 </resources>

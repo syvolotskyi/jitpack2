@@ -4,6 +4,7 @@
         <attr name="titleTextAppearance" format="reference" />
         <attr name="titleTextAppearanceWithDesc" format="reference" />
         <attr name="android:text" format="string" localization="suggested" />
+        <attr name="android:button" format="string"/>
         <attr name="descriptionTextAppearance" />
         <attr name="descriptionText" />
     </declare-styleable>
