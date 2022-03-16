@@ -62,7 +62,6 @@ open class SPButtonIconic @JvmOverloads constructor(
      */
     override fun setButtonStyle(@StyleRes defStyleRes: Int) {
         super.setButtonStyle(defStyleRes)
-        binding.buttonLabel.goAway()
 
         context.withStyledAttributes(defStyleRes, R.styleable.SPButtonIconic) {
             applyButtonStyledAttrs()
@@ -102,6 +101,7 @@ open class SPButtonIconic @JvmOverloads constructor(
         )
 
         bubbleLayoutBinding.image.setColorFilter(iconColor)
+        binding.buttonLabel.goAway()
         color = Color.TRANSPARENT
     }
 
