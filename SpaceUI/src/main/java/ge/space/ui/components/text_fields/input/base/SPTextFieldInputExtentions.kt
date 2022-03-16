@@ -138,7 +138,7 @@ fun SPTextFieldInput.setupEndViewByType(
     }?.createView(context)
 
     if (type == SPEndViewType.SPRemovableViewType)
-        setEndClickListener { removeAllText() }
+        setEndViewClickListener { removeAllText() }
 }
 
 /**

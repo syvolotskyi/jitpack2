@@ -274,7 +274,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             .handleAttributeAction(
                 SPBaseView.NO_OBTAIN_VAL
             ) {
-                handleContentAttr(it)
+                handleContentType(it)
             }
         getInt(
             R.styleable.SPTextFieldInput_inputTextLength,
@@ -290,7 +290,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 SPBaseView.NO_OBTAIN_VAL
             ) {
                 inputType = it
-                handleContentAttr(it)
+                handleContentType(it)
             }
 
         getString(R.styleable.SPTextFieldInput_android_hint).orEmpty()
@@ -336,7 +336,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         handleBorderColor()
     }
 
-    private fun handleContentAttr(contentType: Int) {
+    private fun handleContentType(contentType: Int) {
         when (contentType) {
             SPTextInputViewType.DATE_MASKED -> {
                 mask = resources.getString(R.string.day_mask)
@@ -447,7 +447,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * Sets a end click listener.
      */
-    fun setEndClickListener(onClickListener: () -> Unit? = {}) {
+    fun setEndViewClickListener(onClickListener: () -> Unit? = {}) {
         endView?.onClick { onClickListener() }
     }
 
@@ -538,37 +538,33 @@ open class SPTextFieldInput @JvmOverloads constructor(
         view: View?,
         defaultView: View? = null
     ) {
-
-        removeAllViews()
-        if (view != null) {
-            addView(view)
-        } else if (defaultView != null) {
-            addView(defaultView)
+        removeAllViews().also {
+            when {
+                view != null -> addView(view)
+                defaultView != null -> addView(defaultView)
+                else -> Unit
+            }
+            invalidate()
         }
-        invalidate()
     }
 
     protected open fun handleContentInputView() {
         binding.flInputFieldContainer.addContentView(contentInputView)
         setupFocusChangeListener()
-
-        if (inputType == SPTextInputViewType.AMOUNT_INTEGER
-            || inputType == SPTextInputViewType.AMOUNT_DECIMAL
-        ) {
-            addNumberFormatter()
-        }
+        addNumberFormatter()
     }
 
     private fun addNumberFormatter() {
-        contentInputView.addFormattingTextWatcher(
-            if (maxLength > 0)
-                SPDefaultFormatterFactory.produceInputAmountFormatter(maxLength)
-            else SPDefaultFormatterFactory.produceInputAmountFormatter()
-        ).also {
-            watcher = it
+        if (inputType == SPTextInputViewType.AMOUNT_INTEGER || inputType == SPTextInputViewType.AMOUNT_DECIMAL) {
+            setFormatter(
+                if (maxLength > 0)
+                    SPDefaultFormatterFactory.produceInputAmountFormatter(maxLength)
+                else
+                    SPDefaultFormatterFactory.produceInputAmountFormatter()
+            )
+            // reset length filter because the filter is already added in formatter
+            contentInputView.filters = arrayOf<InputFilter>()
         }
-        // reset length filter because the filter is already added in formatter
-        contentInputView.filters = arrayOf<InputFilter>()
     }
 
     protected fun setupFocusChangeListener() {
