@@ -1,24 +1,15 @@
 package ge.space.ui.components.text_fields.input.text_area
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.text.InputType
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.TextAppearanceSpan
 import android.util.AttributeSet
-import android.util.Log
 import android.view.Gravity
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.core.view.children
-import androidx.core.view.forEach
-import ge.space.extensions.focus
-import ge.space.extensions.hide
 import ge.space.extensions.onChange
 import ge.space.extensions.onClick
 import ge.space.spaceui.R
@@ -55,8 +46,8 @@ class SPTextAreaView @JvmOverloads constructor(
         registerCounterListener()
     }
 
-    override fun handleTextLength(value: Int) {
-        super.handleTextLength(value)
+    override fun setTextLength(value: Int) {
+        super.setTextLength(value)
         updateCounterText()
     }
 
