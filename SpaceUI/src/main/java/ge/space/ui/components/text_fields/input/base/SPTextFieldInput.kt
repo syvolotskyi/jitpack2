@@ -183,7 +183,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.flTrail.addContentView(endView, emptyEndView)
+            binding.flEndView.addContentView(endView, emptyEndView)
         }
 
     /**
