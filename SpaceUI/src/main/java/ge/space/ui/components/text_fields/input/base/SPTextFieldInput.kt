@@ -578,9 +578,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
     fun setFormatter(inputAmountFormatter: StringFormatter) {
         contentInputView.apply {
             removeTextChangedListener(watcher)
-            addFormattingTextWatcher(
-                inputAmountFormatter
-            )
+            addFormattingTextWatcher(inputAmountFormatter)
         }
     }
 
