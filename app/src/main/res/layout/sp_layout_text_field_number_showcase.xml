@@ -14,7 +14,7 @@
         android:layout_marginVertical="8dp"
         android:layout_marginEnd="@dimen/dimen_p_16"
         android:layout_weight="1"
-        android:text="Number input"
+        android:text="Decimal input"
         android:textColor="?attr/themeTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/tfNumber"
         app:layout_constraintEnd_toStartOf="@+id/tfNumber"
@@ -26,7 +26,6 @@
         android:id="@+id/tfNumber"
         android:layout_width="@dimen/dimen_p_150"
         android:layout_height="wrap_content"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +37,7 @@
         android:layout_marginVertical="8dp"
         android:layout_marginEnd="@dimen/dimen_p_16"
         android:layout_weight="1"
-        android:text="Amount decimal input"
+        android:text="Decimal input"
         android:textColor="?attr/themeTextColor"
         app:layout_constraintBottom_toBottomOf="@id/tfNumberSecond"
         app:layout_constraintEnd_toStartOf="@+id/tfNumberSecond"

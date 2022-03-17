@@ -1,10 +1,13 @@
 package ge.space.design.ui_components.text_fields.number
 
+import android.util.Log
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldNumberXmlShowcaseBinding
+import com.space.formatter.format.SPDefaultFormatterFactory
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.extensions.onChange
 
 class SPNumberXMLComponent: ShowCaseComponent {
 
@@ -17,8 +20,25 @@ class SPNumberXMLComponent: ShowCaseComponent {
     class SPFactory : SPComponentFactory {
 
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val binding = SpLayoutTextFieldNumberXmlShowcaseBinding.inflate(environment.requireLayoutInflater())
-            return binding.root
+            SpLayoutTextFieldNumberXmlShowcaseBinding.inflate(environment.requireLayoutInflater()).apply {
+
+                // You can set Formatter
+                // tfNumber2.setFormatter(SPDefaultFormatterFactory.produceInputAmountFormatter(tfNumber2.maxLength))
+
+                tfNumber.contentInputView.onChange {
+                    Log.d("Input:",it)
+                }
+
+                tfNumber2.contentInputView.onChange {
+                    Log.d("Input:",it)
+                }
+
+                tfNumber3.contentInputView.onChange {
+                    Log.d("Input:",it)
+                }
+
+                return root
+            }
         }
 
     }
