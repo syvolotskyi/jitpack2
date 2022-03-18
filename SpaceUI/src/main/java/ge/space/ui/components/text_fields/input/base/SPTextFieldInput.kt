@@ -374,14 +374,17 @@ open class SPTextFieldInput @JvmOverloads constructor(
                 SPTextInputViewType.SPNumberViewType(hint)
             )
             SPTextInputViewType.EMAIL -> setupContentInputViewByType(
-                SPTextInputViewType.SPEditTextViewType(hint,
-                    inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
+                SPTextInputViewType.SPEditTextViewType(
+                    hint,
+                    inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                )
             )
             SPTextInputViewType.AMOUNT_INTEGER -> setupContentInputViewByType(
                 SPTextInputViewType.SPNumberViewType(hint)
             )
             SPTextInputViewType.AMOUNT_DECIMAL -> setupContentInputViewByType(
-                SPTextInputViewType.SPNumberViewType(hint,
+                SPTextInputViewType.SPNumberViewType(
+                    hint,
                     inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
                 )
             )
@@ -447,13 +450,15 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * [getPhonePrefixFromAttr] returns phones prefix from attr
      */
     private fun TypedArray.getPhonePrefixFromAttr() =
-        (getString(R.styleable.SPTextFieldInput_startViewText) ?: context.getString(R.string.default_phone_prefix))
+        (getString(R.styleable.SPTextFieldInput_startViewText)
+            ?: context.getString(R.string.default_phone_prefix))
 
     /**
      * [getCurrencyFromAttr] returns currency from attr
      */
     private fun TypedArray.getCurrencyFromAttr() =
-        (getString(R.styleable.SPTextFieldInput_endViewText) ?: context.getString(R.string.default_currency))
+        (getString(R.styleable.SPTextFieldInput_endViewText)
+            ?: context.getString(R.string.default_currency))
 
     /**
      * [getEndIconFromAttr] returns end icon from attr
@@ -591,8 +596,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
      * [removeAllText] clears text of the input field
      */
     fun removeAllText() {
-        when(contentInputView){
-            is SPEditTextMasked -> setupContentInputViewByType(SPTextInputViewType.SPMaskViewType(mask, hint))
+        when (contentInputView) {
+            is SPEditTextMasked -> setupContentInputViewByType(
+                SPTextInputViewType.SPMaskViewType(
+                    mask,
+                    hint
+                )
+            )
             else -> contentInputView.setText(EMPTY_TEXT)
         }
     }
@@ -662,19 +672,21 @@ open class SPTextFieldInput @JvmOverloads constructor(
     /**
      * [changeBorderColor] updates border colors
      */
-    protected fun changeBorderColor() {
-        binding.flContainer.changeBorder(
-            when {
-                !isEnabled ->
-                    context.getColorFromAttribute(R.attr.separator_opaque)
-                isDistractive ->
-                    context.getColorFromAttribute(R.attr.accent_magenta)
-                contentInputView.isFocused ->
-                    context.getColorFromAttribute(R.attr.brand_primary)
-                else ->
-                    context.getColorFromAttribute(R.attr.separator_opaque)
-            }, borderWidth
-        )
+    private fun changeBorderColor() {
+        binding.flContainer.post {
+            binding.flContainer.changeBorder(
+                when {
+                    !isEnabled ->
+                        context.getColorFromAttribute(R.attr.separator_opaque)
+                    isDistractive ->
+                        context.getColorFromAttribute(R.attr.accent_magenta)
+                    contentInputView.isFocused ->
+                        context.getColorFromAttribute(R.attr.brand_primary)
+                    else ->
+                        context.getColorFromAttribute(R.attr.separator_opaque)
+                }, borderWidth
+            )
+        }
     }
 
     /**
