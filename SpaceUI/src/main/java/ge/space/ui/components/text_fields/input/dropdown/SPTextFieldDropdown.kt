@@ -1,10 +1,13 @@
 package ge.space.ui.components.text_fields.input.dropdown
 
 import android.content.Context
+import android.content.res.TypedArray
+import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
@@ -75,6 +78,26 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         defaultItem?.let { bindViewValue(this, it) }
     }
 
+    init {
+        getContext().withStyledAttributes(
+            attrs,
+            R.styleable.SPTextFieldDropdown,
+            defStyleAttr,
+            defStyleRes
+        ) {
+            applyStyledAttrs()
+        }
+
+        setOnClickListener { onClickListener(this) }
+    }
+
+    override fun handleContentInputView() {
+        super.handleContentInputView()
+
+        contentInputView.isFocusableInTouchMode = false
+        contentInputView.setOnClickListener { onClickListener(this) }
+    }
+
     /**
      * Bind selected Item
      */
@@ -83,18 +106,17 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
 
     override fun setViewStyle(newStyle: Int) {
         super.setViewStyle(newStyle)
-        val styleAttrs =
-            context.theme.obtainStyledAttributes(newStyle, R.styleable.SPTextFieldDropdown)
-
-        styleAttrs.run {
-            val inflateId = getInt(
-                R.styleable.SPTextFieldDropdown_inflateType,
-                SPBaseView.DEFAULT_OBTAIN_VAL
-            )
-            inflateType = InflateType.values()[inflateId]
+        context.withStyledAttributes(newStyle, R.styleable.SPTextFieldDropdown) {
+            applyStyledAttrs()
         }
+    }
 
-        setOnClickListener { onClickListener(this) }
+    private fun TypedArray.applyStyledAttrs() {
+        val inflateId = getInt(
+            R.styleable.SPTextFieldDropdown_inflateType,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+        inflateType = InflateType.values()[inflateId]
     }
 
     enum class InflateType {

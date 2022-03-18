@@ -1,8 +1,9 @@
 package ge.space.ui.components.text_fields.input.base
 
 import android.content.Context
+import android.text.InputType
 import android.view.Gravity
-import android.widget.TextView
+import android.widget.EditText
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.extensions.SPACE
 import ge.space.spaceui.R
@@ -17,7 +18,17 @@ import ge.space.ui.util.view_factory.extentions.getNumberEditTextViewData
  * Setup a view as input for number and currency
  */
 fun SPTextFieldInput.setupNumberInput(currency: String) {
+    inputType = SPTextInputViewType.AMOUNT_DECIMAL
     setupContentInputViewByType(SPTextInputViewType.SPNumberViewType())
+    setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
+}
+
+/**
+ * Setup a view as input for amount decimal (with formatter) and currency
+ */
+fun SPTextFieldInput.setupAmountDecimalInput(currency: String) {
+    inputType = SPTextInputViewType.AMOUNT_DECIMAL
+    setupContentInputViewByType(SPTextInputViewType.SPNumberViewType(inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS))
     setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
 }
 
@@ -93,18 +104,13 @@ fun SPTextFieldInput.setupContentInputViewByType(
             )
         )
         is SPTextInputViewType.SPNumberViewType -> getNumberEditTextViewData(
-            type.hint
+            hint = type.hint,
+            inputType = type.inputType,
+            textAppearance
         )
-        is SPTextInputViewType.SPTextViewType -> SPViewData.SPTextData(
-            type.text.orEmpty(),
-            textAppearance,
-            params = SPViewData.SPViewDataParams(
-                gravity = Gravity.START or Gravity.CENTER_VERTICAL,
-                paddingBottom = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
-            )
-        )
+    }).createView(context) as EditText
 
-    }).createView(context) as TextView
+
 }
 
 /**
@@ -134,7 +140,7 @@ fun SPTextFieldInput.setupEndViewByType(
     }?.createView(context)
 
     if (type == SPEndViewType.SPRemovableViewType)
-        setTrailClickListener { removeAllText() }
+        setEndViewClickListener { removeAllText() }
 }
 
 /**

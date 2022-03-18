@@ -11,26 +11,23 @@ sealed class SPTextInputViewType {
         var params: SPViewData.SPViewDataParams? = null
     ) : SPTextInputViewType()
 
-    data class SPTextViewType(
-        var text: String? = null,
-        var hint: String? = null,
-        var inputType: Int = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-    ) : SPTextInputViewType()
-
     data class SPMaskViewType(
         var mask: String,
         var hint: String? = null
     ) : SPTextInputViewType()
 
     data class SPNumberViewType(
-        var hint: String? = null
+        var hint: String? = null,
+        var inputType: Int = InputType.TYPE_CLASS_NUMBER,
     ) : SPTextInputViewType()
 
     companion object {
-        const val EDIT_TEXT = 0
+        const val TEXT = 0
         const val DATE_MASKED = 1
         const val CARD_MASKED = 2
         const val NUMBER = 3
-        const val TEXT = 4
+        const val EMAIL = 4
+        const val AMOUNT_INTEGER  = 5
+        const val AMOUNT_DECIMAL = 6
     }
 }

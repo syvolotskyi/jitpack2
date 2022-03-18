@@ -9,7 +9,7 @@
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber"
-        style="@style/SPTextField.Number"
+        style="@style/SPTextField.AmountInteger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -18,11 +18,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleText="Dollar input field" />
+        app:titleText="Amount Integer Type" />
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber2"
-        style="@style/SPTextField.Number"
+        style="@style/SPTextField.AmountDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_p_32"
@@ -35,11 +35,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tfNumber"
-        app:titleText="Gel input field" />
+        app:titleText="Amount Decimal Type" />
 
     <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/tfNumber3"
-        style="@style/SPTextField.Number"
+        style="@style/SPTextField.AmountDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

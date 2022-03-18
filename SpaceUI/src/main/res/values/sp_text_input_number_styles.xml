@@ -5,6 +5,16 @@
         <item name="contentInputView">number</item>
     </style>
 
+    <style name="SPTextField.AmountDecimal" parent="SPTextField.Number">
+        <item name="textAppearance">@style/h600_medium_text_input</item>
+        <item name="contentInputView">amountDecimal</item>
+    </style>
+
+    <style name="SPTextField.AmountInteger" parent="SPTextField.Number">
+        <item name="textAppearance">@style/h600_medium_text_input</item>
+        <item name="contentInputView">amountInteger</item>
+    </style>
+
     <style name="SPTextField.TextCurrency" parent="SPTextField.Base">
         <item name="android:textAppearance">@style/h600_medium_label_secondary</item>
     </style>

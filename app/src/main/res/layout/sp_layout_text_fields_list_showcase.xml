@@ -135,6 +135,15 @@
                             android:text="Primary with message icon and removable"
                             android:textColor="?attr/themeTextColor" />
 
+                        <ge.space.ui.components.controls.radio.SPRadioButton
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:enabled="true"
+                            android:text="Email"
+                            android:textColor="?attr/themeTextColor" />
+
                     </ge.space.ui.components.controls.radio.SPRadioGroup>
                 </LinearLayout>
             </LinearLayout>

@@ -7,15 +7,14 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_p_16">
 
-    <RadioButton
+    <TextView
         android:id="@+id/rb_first"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         android:layout_marginEnd="@dimen/dimen_p_16"
         android:layout_weight="1"
-        android:checked="true"
-        android:text="First number input"
+        android:text="Decimal input"
         android:textColor="?attr/themeTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/tfNumber"
         app:layout_constraintEnd_toStartOf="@+id/tfNumber"
@@ -27,19 +26,18 @@
         android:id="@+id/tfNumber"
         android:layout_width="@dimen/dimen_p_150"
         android:layout_height="wrap_content"
-        style="@style/SPTextField.Number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <RadioButton
+    <TextView
         android:id="@+id/rb_second"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         android:layout_marginEnd="@dimen/dimen_p_16"
         android:layout_weight="1"
-        android:text="Second number input"
+        android:text="Decimal input"
         android:textColor="?attr/themeTextColor"
         app:layout_constraintBottom_toBottomOf="@id/tfNumberSecond"
         app:layout_constraintEnd_toStartOf="@+id/tfNumberSecond"
@@ -48,15 +46,20 @@
         tools:ignore="HardcodedText" />
 
 
-    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-        android:id="@+id/tfNumberSecond"
-        android:layout_width="@dimen/dimen_p_150"
+    <TextView
+        android:id="@+id/rb_third"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dimen_p_64"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/SPTextField.Number"
-        app:layout_constraintTop_toBottomOf="@+id/tfNumber" />
+        android:layout_marginVertical="8dp"
+        android:layout_marginEnd="@dimen/dimen_p_16"
+        android:layout_weight="1"
+        android:text="Integer number input"
+        android:textColor="?attr/themeTextColor"
+        app:layout_constraintBottom_toBottomOf="@id/tfNumberThird"
+        app:layout_constraintEnd_toStartOf="@+id/tfNumberThird"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tfNumberThird"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvSettings"
@@ -65,7 +68,26 @@
         android:layout_marginTop="@dimen/dimen_p_24"
         android:text="@string/chooseSettings"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfNumberThird" />
+
+
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+        android:id="@+id/tfNumberThird"
+        android:layout_width="@dimen/dimen_p_150"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_64"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tfNumberSecond" />
+
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+        android:id="@+id/tfNumberSecond"
+        android:layout_width="@dimen/dimen_p_150"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_p_64"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tfNumber" />
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cbDisable"

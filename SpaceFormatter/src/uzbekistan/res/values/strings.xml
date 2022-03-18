@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="formatter_validator_workplace_error">The employer must be indicated</string>
+    <string name="formatter_validator_actual_region_error">>Enter the region</string>
+    <string name="formatter_validator_actual_locality_error">Choose a city</string>
+    <string name="formatter_validator_home_phone_error">Enter your home phone number</string>
+    <string name="formatter_validator_missing_region_empty">Enter the address of registration</string>
+    <string name="formatter_validator_missing_city_empty">Enter the address of registration, City</string>
+    <string name="formatter_validator_missing_street_empty">Enter the address of registration, street</string>
+    <string name="formatter_validator_temp_locality_error">Enter temporary registration address, city</string>
+    <string name="formatter_validator_actual_street_error">Enter an exact address, street, house</string>
+    <string name="formatter_validator_temp_address_error">Enter your temporary registration address</string>
+    <string name="formatter_validator_temp_region_error">Enter temporary registration address, region</string>
+    <string name="formatter_validator_email_error">Enter E-mail in correct format</string>
+</resources>

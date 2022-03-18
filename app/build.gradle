@@ -96,6 +96,7 @@ dependencies {
 
     implementation project(':SpaceUI')
     implementation project(':SpaceExtensions')
+    implementation project(':SpaceFormatter')
 
 
 }

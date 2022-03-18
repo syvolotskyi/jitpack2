@@ -29,12 +29,13 @@ fun getCurrencyViewData(
  */
 fun getNumberEditTextViewData(
     hint: String?,
+    inputType: Int = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL,
     @StyleRes textStyle: Int = R.style.h600_bold_caps_brand_primary
 ): SPViewData =
     SPViewData.SPEditTextData(
         style = textStyle,
         hint = hint,
-        inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL,
+        inputType = inputType,
         params = SPViewData.SPViewDataParams(
             gravity = Gravity.LEFT
         )
