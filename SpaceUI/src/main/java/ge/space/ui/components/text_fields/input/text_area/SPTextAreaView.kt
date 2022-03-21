@@ -52,9 +52,10 @@ class SPTextAreaView @JvmOverloads constructor(
     }
 
     private fun registerCounterListener() {
-        (contentInputView as EditText).onChange {
+        contentInputView.onChange {
             updateCounterText()
         }
+        setTextLength(maxLength)
     }
 
     private fun setupCounterView() {
@@ -115,7 +116,8 @@ class SPTextAreaView @JvmOverloads constructor(
 
     override fun getContentEditText(): SPTextInputViewType.SPEditTextViewType =
         SPTextInputViewType.SPEditTextViewType(
-            hint = hint, lines = null,
+            hint = hint,
+            lines = null,
             inputType = InputType.TYPE_CLASS_TEXT
                     or InputType.TYPE_TEXT_FLAG_MULTI_LINE
                     or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD,
