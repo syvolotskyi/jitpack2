@@ -441,10 +441,10 @@ open class SPTextFieldInput @JvmOverloads constructor(
     }
 
     /**
-     * [getContentEditText] returns content of editText
+     * [getContentEditText] returns content of default editText
      */
     protected open fun getContentEditText() =
-        SPTextInputViewType.SPEditTextViewType(lines = Int.MAX_VALUE)
+        SPTextInputViewType.SPEditTextViewType(lines = DEFAULT_TEXT_LINE_LENGTH)
 
     /**
      * [getPhonePrefixFromAttr] returns phones prefix from attr
@@ -696,7 +696,8 @@ open class SPTextFieldInput @JvmOverloads constructor(
         context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
 
     companion object {
-        const val ID_NEXT = 5
-        const val DEFAULT_TEXT_LENGTH = -1 //no borders
+        private const val ID_NEXT = 5
+        private const val DEFAULT_TEXT_LENGTH = -1 //no borders
+        private const val DEFAULT_TEXT_LINE_LENGTH = 100
     }
 }

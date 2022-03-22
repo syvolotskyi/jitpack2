@@ -109,8 +109,6 @@ fun SPTextFieldInput.setupContentInputViewByType(
             textAppearance
         )
     }).createView(context) as EditText
-
-
 }
 
 /**
