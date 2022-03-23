@@ -71,9 +71,8 @@
             tools:ignore="HardcodedText" />
     </RadioGroup>
 
-    <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/title_input"
-        style="@style/SPTextField.Input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_32"
@@ -89,9 +88,8 @@
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
         android:id="@+id/info_input"
-        style="@style/SPTextField.Input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen_p_32"

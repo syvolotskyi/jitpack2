@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPMaskedEditText" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
+        <item name="android:hint">XXXXXXXXXXXXXXXXX</item>
+    </style>
+
+    <style name="SPTextInput.Phone" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
+        <item name="android:hint">XXXXXXXXXX</item>
+    </style>
+
+    <style name="SPTextInput.DateMasked" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
+        <item name="android:hint">XXXXXX</item>
+        <item name="startView">none</item>
+        <item name="endView">none</item>
+        <item name="contentInputView">dateMask</item>
+    </style>
+
+    <style name="SPTextInput.CardMasked" parent="SPTextField.Base">
+        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
+        <item name="android:hint">XXXXXXXXXXXXXXXX</item>
+        <item name="endView">removeIcon</item>
+        <item name="contentInputView">cardMask</item>
+    </style>
+
+</resources>

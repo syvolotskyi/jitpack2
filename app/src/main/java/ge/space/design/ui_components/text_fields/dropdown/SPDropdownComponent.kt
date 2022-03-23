@@ -10,19 +10,17 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
-import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfo
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
-import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
 
@@ -40,7 +38,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 environment.requireLayoutInflater()
             )
 
-            val dropdowns = mutableListOf<SPTextFieldBaseView<SpTextFieldDropdownBinding>>()
+            val dropdowns = mutableListOf<SPTextFieldInput>()
             val simpleDropdown = createDropdownProgrammatically(
                 layoutBinding.tfDropdownFrame,
                 environment.requireFragmentActivity()

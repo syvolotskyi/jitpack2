@@ -5,32 +5,49 @@
         <attr name="mask" format="string" />
     </declare-styleable>
 
-    <declare-styleable name="SPTextFieldBaseView">
-        <attr name="style" />
+    <declare-styleable name="SPTextFieldInput">
         <attr name="android:text" format="string|reference" />
         <attr name="android:imeOptions" format="reference" />
         <attr name="android:hint" format="string|reference" />
-        <attr name="android:textAppearance" format="reference" />
+        <attr name="textAppearance" />
         <attr name="descriptionTextAppearance" />
         <attr name="labelTextAppearance" format="reference" />
         <attr name="titleText" format="string|reference" />
         <attr name="descriptionText" format="string|reference" />
         <attr name="inputMandatory" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="SPTextFieldInput">
-        <attr name="canRemove" format="boolean" />
-        <attr name="drawableLeft" format="reference" />
-        <attr name="android:text" format="string|reference" />
-        <attr name="android:drawableEnd" format="reference" />
+        <attr name="showInfoView" format="boolean" />
         <attr name="inputTextLength" format="integer" />
-    </declare-styleable>
+        <attr name="contentHeight" format="reference" />
 
-    <declare-styleable name="SPTextFieldNumber">
-        <attr name="currency" format="reference" />
-        <attr name="distractiveTextAppearance"/>
-        <attr name="currencyTextAppearance" format="reference" />
-        <attr name="android:drawableEnd" format="reference" />
+        <attr name="endViewText" format="string|reference"/>
+        <attr name="startViewText" format="string|reference"/>
+        <attr name="endViewIcon" format="reference"/>
+        <attr name="startViewIcon" format="reference"/>
+
+        <attr name="endView" format="enum">
+            <enum name="none" value="0" />
+            <enum name="primaryChip" value="1" />
+            <enum name="removeIcon" value="2" />
+            <enum name="currency" value="3" />
+            <enum name="image" value="4" />
+        </attr>
+
+        <attr name="startView" format="enum">
+            <enum name="none" value="0" />
+            <enum name="primaryChip" value="1" />
+            <enum name="phonePrefix" value="2" />
+            <enum name="icon" value="3" />
+        </attr>
+
+        <attr name="contentInputView" format="enum">
+            <enum name="text" value="0" />
+            <enum name="dateMask" value="1" />
+            <enum name="cardMask" value="2" />
+            <enum name="number" value="3" />
+            <enum name="email" value="4"/>
+            <enum name="amountInteger" value="5"/>
+            <enum name="amountDecimal" value="6"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="SPTextFieldDropdown">

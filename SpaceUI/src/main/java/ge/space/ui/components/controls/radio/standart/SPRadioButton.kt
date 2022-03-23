@@ -15,6 +15,7 @@ import ge.space.extensions.visibleIf
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpRadioButtonBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
@@ -45,13 +46,13 @@ class SPRadioButton @JvmOverloads constructor(
      * Sets a text appearance in case if view description isn't empty
      */
     @StyleRes
-    private var titleTextAppearanceWithDesc: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var titleTextAppearanceWithDesc: Int = DEFAULT_INT
 
     /**
      * Sets a description appearance
      */
     @StyleRes
-    private var descriptionTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var descriptionTextAppearance: Int = DEFAULT_INT
 
     /**
      * Sets a button resource

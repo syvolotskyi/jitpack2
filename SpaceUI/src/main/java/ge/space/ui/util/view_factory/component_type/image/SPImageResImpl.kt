@@ -13,10 +13,12 @@ class SPImageResImpl(context: Context) : SPViewImpl<SPViewData.SPImageResourcesD
     override fun create(type: SPViewData.SPImageResourcesData): ImageView {
         return ImageView(context).fromResource(type.res).apply {
             type.tintColor?.let { this.tintColor = it }
-            type.height?.let { this.setHeight(it) }
-            type.width?.let { this.setWidth(it) }
             type.backgroundColor?.let { this.setBackgroundColor(it) }
-            type.padding?.let { this.setPadding(it,it,it,it) }
+            type.params?.let {
+                it.height?.let { this.setHeight(it) }
+                it.width?.let { this.setWidth(it) }
+                setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)
+            }
         }
     }
 }

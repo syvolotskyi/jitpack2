@@ -18,6 +18,8 @@
 
     <dimen name="card_transfer_swap_image_minus_padding">-20dp</dimen>
 
+    <integer name="default_text_length">500</integer>
+
     <dimen name="dimen_p_0">0dp</dimen>
     <dimen name="dimen_p_0_5">0.5dp</dimen>
     <dimen name="dimen_p_1">1.0dp</dimen>

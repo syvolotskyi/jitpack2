@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPEditText.Masked" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h600_bold_text_field_phone</item>
-        <item name="android:hint">XXXXXXXXX</item>
-    </style>
-
     <style name="SPPinEntryEditText">
         <item name="android:digits">1234567890</item>
         <item name="android:includeFontPadding">false</item>
@@ -36,6 +31,12 @@
         <item name="backgroundColor">?attr/background_secondary</item>
         <item name="background">?attr/background_secondary</item>
         <item name="labelTextAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
+    </style>
+
+    <style name="SPInputField" parent="SPBaseView">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="background">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
     </style>
 
