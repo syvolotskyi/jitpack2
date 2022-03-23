@@ -3,6 +3,16 @@ package ge.space.ui.components.text_fields.input.base
 import android.text.InputType
 import ge.space.ui.util.view_factory.SPViewData
 
+/**
+ * Sealed class helps to handle text input view type for SPTextFieldInput.
+ *
+ * Contains:
+ * @class SPEditTextViewType [SPTextInputViewType] provides an information for edit text.
+ * @class SPMaskViewType [SPTextInputViewType] provides an information for masked edit text,
+ *      using for phone entering.
+ * @class SPNumberViewType [SPTextInputViewType] provides an information for number input edit text.
+ */
+
 sealed class SPTextInputViewType {
     data class SPEditTextViewType(
         var hint: String? = null,
@@ -27,7 +37,7 @@ sealed class SPTextInputViewType {
         const val CARD_MASKED = 2
         const val NUMBER = 3
         const val EMAIL = 4
-        const val AMOUNT_INTEGER  = 5
+        const val AMOUNT_INTEGER = 5
         const val AMOUNT_DECIMAL = 6
     }
 }

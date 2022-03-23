@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.extensions.EMPTY_TEXT
+import ge.space.extensions.onClick
 import ge.space.extensions.setHeight
 import ge.space.extensions.setWidth
 import ge.space.spaceui.R
@@ -88,7 +89,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             applyStyledAttrs()
         }
 
-        setOnClickListener { onClickListener(this) }
+        onClick { onClickListener(this) }
     }
 
     override fun handleContentInputView() {
