@@ -16,7 +16,6 @@ import ge.space.spaceui.databinding.SpListItemButtonBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.handleAttributeAction
 
 /**

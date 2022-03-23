@@ -6,8 +6,8 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import ge.space.extensions.EMPTY_TEXT
+import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 
 /**
  * Abstract base RadioButton view extended from [LinearLayout] that allows to change its configuration.
@@ -46,7 +46,7 @@ abstract class SpBaseRadioButton  @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    protected var titleTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    protected var titleTextAppearance: Int = DEFAULT_INT
 
     protected abstract fun handleTitle(value: String)
 
