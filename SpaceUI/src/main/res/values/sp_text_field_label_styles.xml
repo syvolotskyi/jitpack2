@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="h700_bold_caps_text_field" parent="@style/h700_bold_caps">
+    <style name="h600_medium_text_input" parent="@style/h600_medium">
         <item name="android:textColor">@color/selector_text_field_text_color</item>
-        <item name="android:textColorHint">@color/selector_text_field_hint_color</item>
+        <item name="android:textColorHint">@color/selector_text_inputs_hint_text_color</item>
     </style>
 
-    <style name="h700_bold_caps_text_field_distractive" parent="@style/h700_bold_caps">
+    <style name="h600_medium_text_area" parent="@style/h600_medium">
+        <item name="android:textColor">@color/selector_text_area_text_color</item>
+        <item name="android:textColorHint">@color/selector_text_inputs_hint_text_color</item>
+    </style>
+
+    <style name="h600_bold_caps_text_field_distractive" parent="@style/h600_bold_caps">
         <item name="android:textColor">@color/selector_text_field_distractive_text_color</item>
     </style>
 
     <style name="h600_bold_text_field_phone" parent="h600_bold">
-        <item name="android:textColorHint">@color/selector_text_field_hint_color</item>
+        <item name="android:textColorHint">?attr/brand_secondary</item>
         <item name="android:textColor">@color/selector_text_field_text_color</item>
     </style>
 </resources>

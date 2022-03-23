@@ -467,8 +467,10 @@ abstract class SPBaseView @JvmOverloads constructor(
     companion object {
         const val SIDE_RATIO = 2
         const val SQUARE_RATIO = 4
+        const val DEFAULT_INT = 0
 
         const val EMPTY_BORDER_VALUE = -1
+        const val NO_OBTAIN_VAL = -1
         const val DEFAULT_OBTAIN_VAL = 0
         private const val ALPHA_BASE = 1
         private const val ALPHA_SCALE = 2

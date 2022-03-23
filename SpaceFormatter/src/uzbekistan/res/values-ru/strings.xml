@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="formatter_validator_workplace_error">Необходимо указать работодателя</string>
+    <string name="formatter_validator_actual_region_error">Укажите регион</string>
+    <string name="formatter_validator_actual_locality_error">Выберите город</string>
+    <string name="formatter_validator_home_phone_error">Укажите номер домашнего телефона</string>
+    <string name="formatter_validator_missing_region_empty">Введите адрес прописки</string>
+    <string name="formatter_validator_missing_city_empty">Введите адрес прописки, Город</string>
+    <string name="formatter_validator_missing_street_empty">Введите адрес прописки, улица</string>
+    <string name="formatter_validator_temp_locality_error">Введите адрес временной регистрации, город</string>
+    <string name="formatter_validator_actual_street_error">Укажите точный адрес, улицу и номер дома</string>
+    <string name="formatter_validator_temp_address_error">Введите свой адрес временной регистрации</string>
+    <string name="formatter_validator_temp_region_error">Введите адрес временной регистрации, регион</string>
+    <string name="formatter_validator_email_error">Введите электронную почту в правильном формате</string>
+</resources>

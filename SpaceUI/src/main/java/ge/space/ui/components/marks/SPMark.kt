@@ -10,7 +10,7 @@ import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
@@ -43,7 +43,7 @@ class SPMark @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var textAppearance: Int = DEFAULT_INT
 
     /**
      * Changes the sizes of the add image view
@@ -95,9 +95,14 @@ class SPMark @JvmOverloads constructor(
         is SPViewData.SPImageResourcesData -> {
             viewData.apply {
                 tintColor = context.getColorFromAttribute(R.attr.brand_primary)
-                height = imageSize
-                width = imageSize
-                padding = paddings
+                params = SPViewData.SPViewDataParams().apply {
+                    height = imageSize
+                    width = imageSize
+                    paddingStart = paddings
+                    paddingEnd = paddings
+                    paddingTop = paddings
+                    paddingBottom = paddings
+                }
             }
         }
         else -> viewData

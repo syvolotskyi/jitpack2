@@ -18,7 +18,7 @@ import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonVerticalBubbleLayoutBinding
 import ge.space.spaceui.databinding.SpButtonVerticalLayoutBinding
-import ge.space.ui.base.OnDistractiveInterface
+import ge.space.ui.base.SPDistractiveMode
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
@@ -37,7 +37,7 @@ open class SPButtonVertical @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Vertical_Size48
 ) : SPButtonBaseView<SpButtonVerticalLayoutBinding>(context, attrs, defStyleAttr, defStyleRes),
-    OnDistractiveInterface {
+    SPDistractiveMode {
 
     /**
      * Inflates and returns [SpButtonVerticalLayoutBinding] value

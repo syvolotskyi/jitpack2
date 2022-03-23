@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,11 +12,159 @@
         android:layout_weight="1">
 
         <LinearLayout
-            android:id="@+id/fieldsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+                android:id="@+id/simpleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_p_16"
+                android:hint="@string/enter_you_details_here"
+                android:imeOptions="actionNext"
+                app:descriptionText="Description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneInput"
+                app:titleText="@string/enter_you_details_here" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cbMandatory"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="true"
+                        android:text="mandatory"
+                        android:textColor="?attr/themeTextColor" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cbDisable"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="true"
+                        android:text="disable"
+                        android:textColor="?attr/themeTextColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cbEnableDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/description"
+                        android:textColor="?attr/themeTextColor" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/cbDistractive"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Distractive (error)"
+                        android:textColor="?attr/themeTextColor" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_p_16"
+                        android:layout_marginTop="10dp"
+                        android:text="Type Of Input:" />
+
+                    <ge.space.ui.components.controls.radio.SPRadioGroup
+                        android:id="@+id/typeOfInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ge.space.ui.components.controls.radio.SPRadioButton
+                            android:id="@+id/primarySimple"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:checked="true"
+                            android:enabled="true"
+                            android:text="Primary input"
+                            android:textColor="?attr/themeTextColor" />
+
+                        <ge.space.ui.components.controls.radio.SPRadioButton
+                            android:id="@+id/primarySimpleHint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:enabled="true"
+                            android:text="Primary input with hint"
+                            android:textColor="?attr/themeTextColor" />
+
+                        <ge.space.ui.components.controls.radio.SPRadioButton
+                            android:id="@+id/primaryRemovableSimple"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:enabled="true"
+                            android:text="Primary input removable"
+                            android:textColor="?attr/themeTextColor" />
+
+                        <ge.space.ui.components.controls.radio.SPRadioButton
+                            android:id="@+id/primaryIconSimple"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:enabled="true"
+                            android:text="Primary with message icon and removable"
+                            android:textColor="?attr/themeTextColor" />
+
+                        <ge.space.ui.components.controls.radio.SPRadioButton
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:enabled="true"
+                            android:text="Email"
+                            android:textColor="?attr/themeTextColor" />
+
+                    </ge.space.ui.components.controls.radio.SPRadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
     </ScrollView>
 
@@ -23,10 +173,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:inputType="textVisiblePassword"
-        android:hint="Input button text"
-        android:textSize="16sp"
         android:background="@color/light_greyscale_gray_5"
-        android:padding="10dp" />
+        android:hint="Input button text"
+        android:inputType="textVisiblePassword"
+        android:padding="10dp"
+        android:textSize="16sp" />
 
 </LinearLayout>

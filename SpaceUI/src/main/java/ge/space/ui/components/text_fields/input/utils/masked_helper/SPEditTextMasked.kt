@@ -45,6 +45,11 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
             cleanUp()
         }
 
+    constructor(context: Context) :
+            super(context) {
+        init(context, null)
+    }
+
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) :
             super(context, attrs, defStyle) {
         init(context, attrs)
@@ -166,7 +171,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         super.onSelectionChanged(selStart, selEnd)
     }
 
-    private fun cleanUp() {
+    fun cleanUp() {
         initialized = false
         if (mask.isEmpty()) {
             return
@@ -202,8 +207,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
         }
         throw RuntimeException("Mask must contain at least one representation char")
     }
-
-    private fun hasHint(): Boolean = hint != null
 
     /**
      * Generates positions for values characters. For instance:
@@ -323,7 +326,6 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     private fun String.removeAllSymbols(symbol: String) = replace(symbol, "")
 
-
     private fun calculateRange(start: Int, end: Int): Range {
         val range = Range()
         var i = start
@@ -363,7 +365,7 @@ open class SPEditTextMasked : AppCompatEditText, TextWatcher {
 
     companion object {
         const val SPACE = " "
-        const val ALLOWED_CHARS = "1234567890 X"
+        const val ALLOWED_CHARS = "1234567890"
         const val CHAR_REPRESENTATION = "#"
         const val MASK_SYMBOL = "X"
     }

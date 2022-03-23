@@ -1,7 +1,6 @@
 package ge.space.design.ui_components.dialogs
 
 import android.content.Context
-import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
@@ -13,7 +12,7 @@ import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.dialogs.*
 import ge.space.ui.components.dialogs.data.*
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
-import ge.space.ui.components.text_fields.input.text_input.SPTextFieldInput
+import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 
 class SPDialogComponent : ShowCaseComponent {
 

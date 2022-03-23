@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="formatter_validator_workplace_error">Ish beruvchini ko\'rsatishingiz kerak</string>
+    <string name="formatter_validator_actual_region_error">>Hududni kiriting</string>
+    <string name="formatter_validator_actual_locality_error">Shaharni tanlang</string>
+    <string name="formatter_validator_home_phone_error">Uy telefon raqamingizni kiriting</string>
+    <string name="formatter_validator_missing_region_empty">Doimiy ro\'yxatdan o\'tish manzilini kiriting</string>
+    <string name="formatter_validator_missing_city_empty">Doimiy ro\'yxatdan o\'tish manzilini kiriting, Shahar</string>
+    <string name="formatter_validator_missing_street_empty">Doimiy ro\'yxatdan o\'tilgan manzilini kiriting, ko\'cha nomi</string>
+    <string name="formatter_validator_temp_locality_error">Qo\'shimcha yashash manzilini, shaharni kiriting</string>
+    <string name="formatter_validator_actual_street_error">Aniq manzilni, ko\'chani nomi va uy raqamni kiriting</string>
+    <string name="formatter_validator_temp_address_error">Sizning vaqtinchalik ro\'yxatdan o\'tish manzilingizni kiriting</string>
+    <string name="formatter_validator_temp_region_error">Qo\'shimcha yashash manzilini, hududni kiriting</string>
+    <string name="formatter_validator_email_error">Elektron pochtangizni to\'g\'ri formatda kiriting</string>
+</resources>

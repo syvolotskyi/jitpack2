@@ -2,8 +2,12 @@
 <resources>
 
     <style name="SPTextField.Dropdown" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h700_bold_caps_text_field</item>
+        <item name="android:textAppearance">@style/h600_medium_text_input</item>
         <item name="inflateType">none</item>
+        <item name="showInfoView">true</item>
+        <item name="endView">image</item>
+        <item name="contentInputView">text</item>
+        <item name="endViewIcon">@drawable/ic_chevron_down_24_regular</item>
         <item name="android:background">@null</item>
     </style>
 

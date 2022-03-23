@@ -14,9 +14,8 @@ import ge.space.extensions.setHeight
 import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
-import ge.space.ui.base.OnDistractiveInterface
+import ge.space.ui.base.SPDistractiveMode
 import ge.space.ui.components.buttons.base.SPButtonBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldBaseView
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 
@@ -31,7 +30,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Horizontal_Size48
-) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr, defStyleRes), OnDistractiveInterface {
+) : SPButtonBaseView<SpButtonHorizontalLayoutBinding>(context, attrs, defStyleAttr, defStyleRes), SPDistractiveMode {
 
     /**
      * Inflates and returns [SpButtonHorizontalLayoutBinding] value
@@ -54,7 +53,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var textAppearance: Int = DEFAULT_INT
 
 
     override var isDistractive: Boolean = false
@@ -71,7 +70,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
      *  and in our case "decline" buttons is with distractive = true attribute
      */
     @StyleRes
-    private var distractiveTextAppearance: Int = SPTextFieldBaseView.DEFAULT_INT
+    private var distractiveTextAppearance: Int = DEFAULT_INT
 
     /**
      *  it is a distractive color for image color filter.

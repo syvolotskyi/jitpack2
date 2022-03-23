@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/buttonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_p_34"
+                android:textColor="?attr/static_black"
+                android:text="@string/withXml"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Button" />
+
+            <ge.space.ui.components.text_fields.input.text_area.SPTextAreaView
+                android:id="@+id/textArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_16"
+                app:titleText="@string/textArea"
+                android:hint="@string/enter_you_details_here"
+                android:layout_marginEnd="@dimen/dimen_p_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonName" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbMandatory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:layout_marginTop="@dimen/dimen_p_16"
+                android:enabled="true"
+                android:text="Mandatory"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textArea" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbEnableDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:checked="false"
+                android:text="@string/description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbMandatory" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbInfoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:checked="false"
+                android:text="@string/information_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbEnableDescription" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbDisable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_p_32"
+                android:text="disable"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cbInfoButton" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/textInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textVisiblePassword"
+        android:hint="Input button text"
+        android:textSize="16sp"
+        android:background="@color/light_greyscale_gray_5"
+        android:padding="10dp" />
+
+</LinearLayout>
