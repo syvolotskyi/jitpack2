@@ -21,7 +21,6 @@ import androidx.core.view.setPadding
 import com.space.formatter.extensions.addFormattingTextWatcher
 import com.space.formatter.format.SPDefaultFormatterFactory
 import com.space.formatter.format.StringFormatter
-import ge.space.extensions.*
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -29,8 +28,7 @@ import ge.space.ui.base.SPDistractiveMode
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.text_fields.input.utils.extension.setTextLength
 import ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked
-import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.*
 import java.lang.NullPointerException
 
 /**

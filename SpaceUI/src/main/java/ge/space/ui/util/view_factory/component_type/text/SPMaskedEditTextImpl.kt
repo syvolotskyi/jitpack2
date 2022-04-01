@@ -3,11 +3,11 @@ package ge.space.ui.util.view_factory.component_type.text
 import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTextFieldPhoneLayoutBinding
 import ge.space.ui.components.text_fields.input.utils.masked_helper.SPEditTextMasked
 import ge.space.ui.util.extension.getColorFromAttribute
+import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 

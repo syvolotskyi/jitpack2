@@ -1,8 +1,8 @@
 package ge.space.design.ui_components.bank_cards.card
 
 import android.graphics.Color
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.ui.components.bank_cards.data.*
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 data class SPBankCardSupport(
     val cardModel: SPBankCardModel,

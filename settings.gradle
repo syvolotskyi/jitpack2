@@ -1,4 +1,3 @@
-include ':SpaceExtensions'
 include ':SpaceUI'
 include ':SpaceFormatter'
 include ':app'

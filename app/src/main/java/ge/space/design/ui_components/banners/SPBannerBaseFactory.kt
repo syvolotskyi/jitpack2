@@ -8,7 +8,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.banners.full_screen.SPBannerData
 import ge.space.design.ui_components.banners.full_screen.SPBannerFullScreenActivity
-import ge.space.extensions.onTextChanged
+import ge.space.ui.util.extension.onTextChanged
 import ge.space.ui.util.view_factory.SPViewData
 
 abstract class SPBannerBaseFactory : SPComponentFactory {

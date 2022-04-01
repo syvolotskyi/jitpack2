@@ -2,10 +2,10 @@ package ge.space.ui.util.view_factory.component_type.image
 
 import android.content.Context
 import android.widget.ImageView
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
-import ge.space.extensions.tintColor
 import ge.space.ui.util.extension.fromResource
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
+import ge.space.ui.util.extension.tintColor
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 

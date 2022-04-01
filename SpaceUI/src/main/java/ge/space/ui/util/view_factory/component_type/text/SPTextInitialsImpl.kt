@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
-import ge.space.extensions.setTextStyle
+import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 

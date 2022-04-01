@@ -11,15 +11,12 @@ import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import ge.space.extensions.resolveColorByAttr
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
-import ge.space.ui.util.extension.loadImageUrl
+import ge.space.ui.util.extension.*
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -132,7 +129,7 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun handleIconAppearance() {
         val colorAttr = getColorAttr()
-        val color = context.resolveColorByAttr(colorAttr)
+        val color = context.getColorFromAttribute(colorAttr)
         with(binding) {
             ivIcon.setColorFilter(
                 color, PorterDuff.Mode.SRC_IN

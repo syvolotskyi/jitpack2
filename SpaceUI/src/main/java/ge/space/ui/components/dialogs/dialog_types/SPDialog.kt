@@ -7,18 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
-import ge.space.extensions.onClick
-import ge.space.extensions.resolveColorByAttr
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
-import ge.space.ui.util.extension.argument
-import ge.space.ui.util.extension.nonNullArgument
-import ge.space.ui.util.extension.visibleOrGone
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
+import ge.space.ui.util.extension.*
 
 /**
  * Dialog for info show which allows to manipulate next parameters:
@@ -116,7 +112,7 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
     }
 
     private fun resolveColor(): Int =
-        requireContext().resolveColorByAttr(dialogIcon.colorAttr)
+        requireContext().getColorFromAttribute(dialogIcon.colorAttr)
 
     override fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
         SPDialogBottomButtonLayout.SPDialogBottomButtonModel(

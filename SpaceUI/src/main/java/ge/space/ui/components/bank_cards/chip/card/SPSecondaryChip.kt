@@ -8,15 +8,11 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSecondaryChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
-import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.extension.loadImageUrl
+import ge.space.ui.util.extension.*
 import ge.space.ui.util.view_factory.SPViewData
 
 

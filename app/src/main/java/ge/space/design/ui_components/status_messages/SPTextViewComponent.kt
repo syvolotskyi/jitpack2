@@ -6,8 +6,8 @@ import com.example.spacedesignsystem.databinding.SpLayoutButtonsShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.extensions.onTextChanged
 import ge.space.ui.components.statusmessage.SPTextView
+import ge.space.ui.util.extension.onTextChanged
 
 class SPTextViewComponent : ShowCaseComponent {
     override fun getNameResId(): Int = R.string.status_textview

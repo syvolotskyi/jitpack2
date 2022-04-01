@@ -1,4 +1,4 @@
-package ge.space.extensions
+package ge.space.ui.util.extension
 
 import android.os.Handler
 import java.util.concurrent.TimeUnit
@@ -8,10 +8,4 @@ import java.util.concurrent.TimeUnit
  */
 fun runDelayed(delay: Long, timeUnit: TimeUnit = TimeUnit.MILLISECONDS, action: () -> Unit) {
     Handler().postDelayed(action, timeUnit.toMillis(delay))
-}
-
-fun runDelayedWithTag(delay: Long, timeUnit: TimeUnit = TimeUnit.MILLISECONDS, tag: String? = null, action: (String?) -> Unit) {
-    Handler().postDelayed({
-        action.invoke(tag!!)
-    }, timeUnit.toMillis(delay))
 }

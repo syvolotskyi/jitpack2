@@ -8,16 +8,16 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import ge.space.extensions.getTimeLabel
-import ge.space.extensions.makeVibration
-import ge.space.extensions.onTextChanged
-import ge.space.extensions.setTextStyle
+import  ge.space.ui.util.extension.onTextChanged
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPinEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
 import ge.space.ui.util.extension.getColorFromAttribute
+import ge.space.ui.util.extension.getTimeLabel
+import ge.space.ui.util.extension.makeVibration
+import ge.space.ui.util.extension.setTextStyle
 import java.util.concurrent.TimeUnit
 
 /**

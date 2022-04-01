@@ -7,13 +7,13 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import com.google.android.material.textview.MaterialTextView
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.getColorFromTextAppearance
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setCompoundDrawablesTint
+import ge.space.ui.util.extension.setTextStyle
 
 
 /**

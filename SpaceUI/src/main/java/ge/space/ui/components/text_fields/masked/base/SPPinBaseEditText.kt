@@ -8,10 +8,10 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.handleAttributeAction
 
 
