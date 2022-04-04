@@ -11,18 +11,13 @@ import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setTextStyle
-import ge.space.extensions.setWidth
-import ge.space.extensions.tintColor
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonInlineLayoutBinding
 import ge.space.ui.components.buttons.SPButtonInline.ButtonGravity.Center
 import ge.space.ui.components.buttons.SPButtonInline.ButtonGravity.Left
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-import ge.space.ui.util.extension.getColorFromTextAppearance
-import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.*
 
 class SPButtonInline @JvmOverloads constructor(
     context: Context,

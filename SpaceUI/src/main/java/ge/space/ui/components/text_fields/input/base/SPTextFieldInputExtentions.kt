@@ -4,10 +4,10 @@ import android.content.Context
 import android.text.InputType
 import android.view.Gravity
 import android.widget.EditText
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.SPACE
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.SPACE
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData.Companion.getSmallChipData

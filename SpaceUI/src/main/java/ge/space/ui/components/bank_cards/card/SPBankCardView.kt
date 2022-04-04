@@ -7,17 +7,12 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.getColorRes
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.*
-import ge.space.ui.util.extension.loadImageUrl
-import ge.space.ui.util.extension.loadRoundImageUrlWithPlaceholder
-import ge.space.ui.util.extension.visibleOrGone
 import ge.space.spaceui.databinding.SpBankCardLayoutBinding
 import ge.space.spaceui.databinding.SpBankCardNonAvailableBinding
+import ge.space.ui.util.extension.*
 import ge.space.ui.util.view_factory.SPViewData
 
 /**

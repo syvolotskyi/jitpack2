@@ -1,7 +1,7 @@
 package ge.space.ui.components.text_fields.input.base
 
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 /**
  * Sealed class helps to handle start view type for SPTextFieldInput.

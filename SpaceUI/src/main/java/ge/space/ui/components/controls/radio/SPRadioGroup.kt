@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.core.view.children
-import ge.space.extensions.onClick
+import ge.space.ui.util.extension.onClick
 
 /**
  *  Extended view from [RadioGroup] and add the possibility to work with SPRadioButton.

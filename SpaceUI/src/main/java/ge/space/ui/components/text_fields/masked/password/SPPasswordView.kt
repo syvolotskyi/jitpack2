@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.makeVibration
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPasswordEntryViewLayoutBinding
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.makeVibration
+import ge.space.ui.util.extension.setTextStyle
 
 /**
  * Field view extended from [SPPinBaseEditText] that allows to change its configuration.

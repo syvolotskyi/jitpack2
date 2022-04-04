@@ -3,7 +3,7 @@ package ge.space.ui.util.view_factory.component_type.text
 import android.content.Context
 import android.view.Gravity
 import android.widget.EditText
-import ge.space.extensions.setTextStyle
+import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 

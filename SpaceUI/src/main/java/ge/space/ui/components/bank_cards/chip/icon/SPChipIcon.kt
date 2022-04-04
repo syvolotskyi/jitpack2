@@ -11,15 +11,15 @@ import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import ge.space.extensions.resolveColorByAttr
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 import ge.space.ui.util.extension.loadImageUrl
+import ge.space.ui.util.extension.resolveColorByAttr
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
