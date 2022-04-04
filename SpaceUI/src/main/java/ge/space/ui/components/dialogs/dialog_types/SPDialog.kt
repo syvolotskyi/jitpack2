@@ -112,7 +112,7 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
     }
 
     private fun resolveColor(): Int =
-        requireContext().resolveColorByAttr(dialogIcon.colorAttr)
+        requireContext().getColorFromAttribute(dialogIcon.colorAttr)
 
     override fun createDialogButtonModel(buttonObj: SPDialogInfoHolder) =
         SPDialogBottomButtonLayout.SPDialogBottomButtonModel(

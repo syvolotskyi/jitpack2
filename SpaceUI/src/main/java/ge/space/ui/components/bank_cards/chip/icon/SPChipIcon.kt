@@ -16,10 +16,7 @@ import ge.space.spaceui.databinding.SpChipIconLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
-import ge.space.ui.util.extension.loadImageUrl
-import ge.space.ui.util.extension.resolveColorByAttr
-import ge.space.ui.util.extension.setHeight
-import ge.space.ui.util.extension.setWidth
+import ge.space.ui.util.extension.*
 import ge.space.ui.util.view_factory.SPViewData
 
 /**
@@ -132,7 +129,7 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun handleIconAppearance() {
         val colorAttr = getColorAttr()
-        val color = context.resolveColorByAttr(colorAttr)
+        val color = context.getColorFromAttribute(colorAttr)
         with(binding) {
             ivIcon.setColorFilter(
                 color, PorterDuff.Mode.SRC_IN

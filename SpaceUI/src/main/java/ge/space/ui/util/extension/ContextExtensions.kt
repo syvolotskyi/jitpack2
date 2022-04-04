@@ -46,23 +46,5 @@ fun Context.getColorRes(@ColorRes color: Int): Int {
     return ContextCompat.getColor(this, color)
 }
 
-fun Context.getDrawableRes(@DrawableRes drawableRes: Int) : Drawable? {
-    return ContextCompat.getDrawable(this, drawableRes)
-}
-
 fun Context.dpToPx(dp: Float): Int =
     TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
-
-fun Context.hideKeyboard(view: View) {
-    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-}
-
-fun Context.resolveColorByAttr(@AttrRes attr: Int) : Int {
-    val typedValue = TypedValue()
-    theme.resolveAttribute(
-        attr, typedValue, true
-    )
-
-    return typedValue.data
-}
