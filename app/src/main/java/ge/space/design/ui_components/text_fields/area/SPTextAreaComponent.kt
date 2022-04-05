@@ -7,7 +7,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextAreaShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.extensions.EMPTY_TEXT
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 class SPTextAreaComponent : ShowCaseComponent {
 

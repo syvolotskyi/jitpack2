@@ -3,11 +3,10 @@ package ge.space.design.ui_components.text_fields.number
 import android.util.Log
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldNumberXmlShowcaseBinding
-import com.space.formatter.format.SPDefaultFormatterFactory
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.extensions.onChange
+import ge.space.ui.util.extension.onChange
 
 class SPNumberXMLComponent: ShowCaseComponent {
 
