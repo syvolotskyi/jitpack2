@@ -2,7 +2,7 @@ package com.space.formatter.format
 
 
 object SPDefaultFormatterFactory :
-    SPFormatterFactory<String> {
+    SPFormatterFactory{
 
     override fun produceLabelAmountFormatter(grouping: Boolean): LongFormatter =
         SPLabelAmountFormatter(SPFractioningStrategies.DontTrimZerosUnlessWhole)
@@ -23,9 +23,6 @@ object SPDefaultFormatterFactory :
         SPCardNumberFormatter()
 
     override fun getInputMaxIntDigits() = MAX_INTEGER_DIGITS
-
-    override val defaultCurrency: String
-        get() = "SPCurrencyType.GEL"
 
     private const val FRACTION_PRECISION = 2
     private const val MAX_INTEGER_DIGITS = 5

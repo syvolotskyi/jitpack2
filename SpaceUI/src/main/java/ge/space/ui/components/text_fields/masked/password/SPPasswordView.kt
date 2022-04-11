@@ -13,6 +13,7 @@ import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText
 import ge.space.ui.components.text_fields.masked.base.SPPinState
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.makeVibration
+import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setTextStyle
 
 /**
