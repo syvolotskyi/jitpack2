@@ -1,25 +1,24 @@
 package ge.space.ui.components.controls.radio.standart
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setBackgroundTint
-import ge.space.extensions.setTextStyle
-import ge.space.extensions.visibleIf
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpRadioButtonBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
-import ge.space.ui.util.extension.getColorFromAttribute
+import ge.space.ui.util.extension.*
+import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.visibleIf
 
 /**
  *  Extended view from [SpBaseRadioButton] contains radio button and description label.
@@ -60,11 +59,15 @@ class SPRadioButton @JvmOverloads constructor(
         set(value) {
             field = value
 
-            value?.let { binding.radioButton.setButtonDrawable(it) }
-            binding.radioButton.setBackgroundTint(
-                context.getColorFromAttribute(R.attr.brand_primary),
-            )
+            handleButtonColor(value)
         }
+
+    private fun handleButtonColor(value: Int?) {
+        value?.let { binding.radioButton.setButtonDrawable(it) }
+        binding.radioButton.backgroundTintList = ColorStateList.valueOf(
+            context.getColorFromAttribute(R.attr.brand_primary)
+        )
+    }
 
     private val binding =
         SpRadioButtonBinding.inflate(LayoutInflater.from(context), this, true)

@@ -10,13 +10,13 @@ import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.onClick
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDigitalChipItemLayoutBinding
 import ge.space.ui.components.bank_cards.card_list.base.SPBaseCardList
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.onClick
+import ge.space.ui.util.extension.setTextStyle
 
 /**
  * A chip item view which is used inside a list and can be selectable

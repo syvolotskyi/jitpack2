@@ -7,10 +7,10 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import ge.space.extensions.goAway
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.getColorFromAttribute
+import ge.space.ui.util.extension.goAway
 
 /**
  * Button view extended from [SPButtonVertical] that allows to change its configuration.

@@ -1,9 +1,9 @@
 package ge.space.ui.util.view_factory.component_type.chip.empty
 
 import android.content.Context
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.ui.components.bank_cards.chip.empty.SPEmptyChip
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.component_type.SPViewComponentType
 import ge.space.ui.util.view_factory.SPViewData
 

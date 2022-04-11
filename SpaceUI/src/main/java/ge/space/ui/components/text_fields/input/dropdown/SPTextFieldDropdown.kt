@@ -8,14 +8,14 @@ import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.onClick
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.onClick
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
 
 /**
  * Dropdown view which allows to manipulate next parameters:
@@ -96,7 +96,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         super.handleContentInputView()
 
         contentInputView.isFocusableInTouchMode = false
-        contentInputView.setOnClickListener { onClickListener(this) }
+        contentInputView.onClick { onClickListener(this) }
     }
 
     /**

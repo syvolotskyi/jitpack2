@@ -7,9 +7,9 @@ import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import ge.space.extensions.onClick
 import ge.space.ui.util.extension.bottomType
 import ge.space.spaceui.databinding.SpDialogBottomButtonLayoutBinding
+import ge.space.ui.util.extension.onClick
 
 /**
  * Helper custom view which allows to manipulate a group of bottom buttons

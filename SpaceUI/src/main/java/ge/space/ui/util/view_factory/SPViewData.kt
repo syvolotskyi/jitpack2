@@ -6,12 +6,12 @@ import android.text.InputType
 import android.view.Gravity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.buttons.SPButton.IconDirection.Right
+import ge.space.ui.util.extension.EMPTY_TEXT
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 

@@ -15,10 +15,10 @@ import androidx.annotation.StyleRes
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.masked.base.OnPinEnteredListener
 import ge.space.ui.components.text_fields.masked.base.SPPinBaseEditText.Companion.DEFAULT_LENGTH
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 internal class SPPasswordEditText @JvmOverloads constructor(
     context: Context,

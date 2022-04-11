@@ -9,13 +9,13 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.ColorUtils
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setTextStyle
-import ge.space.extensions.tintColor
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTabNavigationChildViewLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.tab_navigation.data.SPTabNavigationModel
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.tintColor
 
 /**
  * Child view extended from [FrameLayout] that allows to set view each Tab navigation item.

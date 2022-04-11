@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.core.view.children
-import ge.space.extensions.onClick
+import ge.space.ui.util.extension.onClick
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.components.controls.radio.standart.SPRadioButton
 import ge.space.ui.components.controls.radio.list_item.SPListItemButton

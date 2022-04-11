@@ -10,11 +10,11 @@ import android.view.Gravity
 import android.widget.*
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import ge.space.extensions.onChange
-import ge.space.extensions.onClick
 import ge.space.spaceui.R
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.base.SPTextInputViewType
+import ge.space.ui.util.extension.onChange
+import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.showKeyboard
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView

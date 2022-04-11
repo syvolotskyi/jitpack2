@@ -8,7 +8,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowc
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.dialogs.data.SPDialogIcon
@@ -21,6 +20,7 @@ import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
 

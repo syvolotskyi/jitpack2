@@ -9,11 +9,11 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isInvisible
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDefaultChipItemLayoutBinding
 import ge.space.ui.components.bank_cards.card_list.base.SPBaseCardList
 import ge.space.ui.components.bank_cards.data.SPDefaultChipData
+import ge.space.ui.util.extension.setTextStyle
 
 /**
  * A default chip item view which is used inside a list

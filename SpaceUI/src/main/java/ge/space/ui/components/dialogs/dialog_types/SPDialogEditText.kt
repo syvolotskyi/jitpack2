@@ -3,8 +3,6 @@ package ge.space.ui.components.dialogs.dialog_types
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.widget.addTextChangedListener
-import ge.space.extensions.onClick
 import ge.space.spaceui.databinding.SpDialogEditTextLayoutBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
@@ -15,6 +13,7 @@ import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomButtonLayout
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.text_fields.input.utils.extension.doBeforeTextChanged
+import ge.space.ui.util.extension.onClick
 
 /**
  * Dialog with EditText which allows to manipulate next parameters:

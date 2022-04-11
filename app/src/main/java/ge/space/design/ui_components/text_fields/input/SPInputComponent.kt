@@ -12,9 +12,9 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsListShowcaseB
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.ui.components.text_fields.input.base.*
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 class SPInputComponent : ShowCaseComponent {
 

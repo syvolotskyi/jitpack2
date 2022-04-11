@@ -8,11 +8,11 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.setSize
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSmallEmptyChipLayoutBinding
 import ge.space.ui.components.bank_cards.chip.base.SPBaseChip
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
+import ge.space.ui.util.extension.setSize
 import ge.space.ui.util.view_factory.SPViewData
 
 /**

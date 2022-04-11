@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPlaceholderBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bank_cards.data.SPPlaceholderSize
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewData
 
 /**

@@ -3,11 +3,11 @@ package ge.space.ui.util.view_factory.component_type.image
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
-import ge.space.extensions.setHeight
-import ge.space.extensions.setWidth
 import ge.space.spaceui.R
 import ge.space.ui.components.layout.SPFrameLayout
 import ge.space.ui.util.extension.loadImageUrl
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 

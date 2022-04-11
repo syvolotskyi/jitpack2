@@ -9,15 +9,11 @@ import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setHeight
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonHorizontalLayoutBinding
 import ge.space.ui.base.SPDistractiveMode
 import ge.space.ui.components.buttons.base.SPButtonBaseView
-import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.*
 
 /**
  * Button view extended from [SPButtonBaseView] that allows to change its configuration.
