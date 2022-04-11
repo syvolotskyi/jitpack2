@@ -15,6 +15,10 @@ import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.util.extension.*
+import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.visibleIf
 
 /**
  *  Extended view from [SpBaseRadioButton] contains radio button and description label.
