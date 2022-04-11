@@ -110,7 +110,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cbDisable">
 
-            <ge.space.ui.components.controls.radio.SPRadioButton
+            <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/eur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                 android:textColor="?attr/themeTextColor"
                 tools:ignore="HardcodedText" />
 
-            <ge.space.ui.components.controls.radio.SPRadioButton
+            <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/gel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 android:textColor="?attr/themeTextColor"
                 tools:ignore="HardcodedText" />
 
-            <ge.space.ui.components.controls.radio.SPRadioButton
+            <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/uzs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

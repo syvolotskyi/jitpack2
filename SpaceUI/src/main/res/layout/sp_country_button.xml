@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/dimen_p_16"
-    android:layout_marginVertical="@dimen/dimen_p_16"
+    android:foreground="?android:selectableItemBackgroundBorderless"
+    android:layout_margin="@dimen/dimen_p_0"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -14,8 +14,7 @@
         android:layout_width="@dimen/dimen_p_24"
         android:layout_height="@dimen/dimen_p_24"
         android:layout_gravity="center"
-        android:background="@null"
-        android:foreground="@null"
+        android:button="?selectableItemBackgroundBorderless"
         android:buttonTint="?attr/brand_primary"
         android:clickable="false"
         android:focusable="false"
@@ -23,33 +22,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <FrameLayout
+        android:id="@+id/startView"
+        android:layout_width="wrap_content"
+        android:button="?selectableItemBackgroundBorderless"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/radioButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_10"
-        android:button="?selectableItemBackgroundBorderless"
         android:clickable="false"
         android:focusable="false"
+        android:button="?selectableItemBackgroundBorderless"
         android:visibility="visible"
+        tools:text="@string/enter_you_details_here"
         app:layout_constraintBottom_toBottomOf="@id/radioButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/enter_you_details_here" />
+        app:layout_constraintStart_toEndOf="@+id/startView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_p_10"
-        android:layout_marginTop="@dimen/dimen_p_4"
-        android:button="?selectableItemBackgroundBorderless"
         android:clickable="false"
+        android:button="?selectableItemBackgroundBorderless"
         android:focusable="false"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
+        app:layout_constraintStart_toEndOf="@+id/startView"
         app:layout_constraintTop_toBottomOf="@id/titleText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

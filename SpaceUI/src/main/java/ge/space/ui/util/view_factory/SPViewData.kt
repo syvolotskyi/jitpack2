@@ -1,5 +1,6 @@
 package ge.space.ui.util.view_factory
 
+import android.graphics.Color
 import android.os.Parcelable
 import android.text.InputType
 import android.view.Gravity
@@ -48,6 +49,15 @@ sealed class SPViewData : Parcelable {
      * @property params helps to setup view params for view
      * @property styleRes applies a style for view
      */
+    @Parcelize
+    data class SPCircleImageUrlData(
+        var height: Int? = null,
+        var width: Int? = null,
+        val url: String,
+        var borderSize: Int = 0,
+        var borderColor: Int = Color.WHITE
+    ) : SPViewData()
+
     @Parcelize
     data class SPTextData(
         val initials: String = EMPTY_TEXT,
