@@ -1,5 +1,6 @@
 package ge.space.design.ui_components.controls.radio_buttons.list_icon
 
+import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutListItemButtonsViewShowcaseBinding
 import ge.space.design.main.SPComponentFactory
@@ -41,6 +42,21 @@ class SPListItemButtonComponent : ShowCaseComponent {
                     url
                 )
             }
+
+            layoutBinding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                when(checkedId){
+                    layoutBinding.radio1.id -> {
+                        Toast.makeText(environment.context, "Pressed 1", Toast.LENGTH_SHORT).show()
+                    }
+                    layoutBinding.radio2.id -> {
+                        Toast.makeText(environment.context, "Pressed 2", Toast.LENGTH_SHORT).show()
+                    }
+                    layoutBinding.radio3.id -> {
+                        Toast.makeText(environment.context, "Pressed 3", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
 
             return layoutBinding.root
         }
