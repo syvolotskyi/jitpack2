@@ -11,6 +11,7 @@ import ge.space.spaceui.databinding.SpDialogBottomVerticalButtonLayoutBinding
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.bottomType
+import ge.space.ui.util.extension.onClick
 
 /**
  * Helper view which allows to manipulate [SPBaseDialog] bottom buttons easily. The view

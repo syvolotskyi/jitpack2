@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import ge.space.extensions.EMPTY_TEXT
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 /**
  * Abstract base RadioButton view extended from [LinearLayout] that allows to change its configuration.

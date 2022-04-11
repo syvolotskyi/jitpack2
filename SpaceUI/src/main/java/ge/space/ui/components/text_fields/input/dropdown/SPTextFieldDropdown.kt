@@ -96,7 +96,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         super.handleContentInputView()
 
         contentInputView.isFocusableInTouchMode = false
-        contentInputView.setOnClickListener { onClickListener(this) }
+        contentInputView.onClick { onClickListener(this) }
     }
 
     /**

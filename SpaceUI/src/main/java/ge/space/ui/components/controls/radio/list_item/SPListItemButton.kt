@@ -5,18 +5,16 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import ge.space.extensions.EMPTY_TEXT
-import ge.space.extensions.setTextStyle
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpListItemButtonBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setTextStyle
 
 /**
  *  Extended view from [SpBaseRadioButton] contains radio button, startView and title label.
