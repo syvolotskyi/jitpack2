@@ -115,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ge.space.ui.components.controls.radio.SPRadioButton
+                        <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primarySimple"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                             android:text="Primary input"
                             android:textColor="?attr/themeTextColor" />
 
-                        <ge.space.ui.components.controls.radio.SPRadioButton
+                        <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primarySimpleHint"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                             android:text="Primary input with hint"
                             android:textColor="?attr/themeTextColor" />
 
-                        <ge.space.ui.components.controls.radio.SPRadioButton
+                        <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primaryRemovableSimple"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                             android:text="Primary input removable"
                             android:textColor="?attr/themeTextColor" />
 
-                        <ge.space.ui.components.controls.radio.SPRadioButton
+                        <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primaryIconSimple"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                             android:text="Primary with message icon and removable"
                             android:textColor="?attr/themeTextColor" />
 
-                        <ge.space.ui.components.controls.radio.SPRadioButton
+                        <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

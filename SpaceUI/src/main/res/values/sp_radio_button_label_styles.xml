@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="h700_medium_currency_button" parent="@style/h700_medium">
+        <item name="android:textColor">@color/selector_currency_button_text_color</item>
+    </style>
+</resources>

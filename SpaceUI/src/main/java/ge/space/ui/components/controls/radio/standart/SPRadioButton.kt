@@ -1,4 +1,4 @@
-package ge.space.ui.components.controls.radio
+package ge.space.ui.components.controls.radio.standart
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -8,8 +8,8 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.isVisible
 import ge.space.extensions.EMPTY_TEXT
+import ge.space.extensions.setBackgroundTint
 import ge.space.extensions.setTextStyle
 import ge.space.extensions.visibleIf
 import ge.space.spaceui.R
@@ -17,17 +17,19 @@ import ge.space.spaceui.databinding.SpRadioButtonBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 
 /**
- *  Extended view from [LinearLayout] contains radio button and description label.
+ *  Extended view from [SpBaseRadioButton] contains radio button and description label.
  */
 class SPRadioButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPRadioButton_Standard
-) : LinearLayout(context, attrs, defStyleAttr), SPViewStyling {
+) : SpBaseRadioButton(context, attrs, defStyleAttr), SPViewStyling {
 
     /**
      * Sets a description text
@@ -40,22 +42,6 @@ class SPRadioButton @JvmOverloads constructor(
         }
 
     /**
-     * Sets a isChecked state to radio button
-     */
-    var isChecked: Boolean = false
-        set(value) {
-            field = value
-
-            binding.textView.isChecked = value
-        }
-
-    /**
-     * Sets a text appearance
-     */
-    @StyleRes
-    private var titleTextAppearance: Int = DEFAULT_INT
-
-    /**
      * Sets a text appearance in case if view description isn't empty
      */
     @StyleRes
@@ -66,6 +52,19 @@ class SPRadioButton @JvmOverloads constructor(
      */
     @StyleRes
     private var descriptionTextAppearance: Int = DEFAULT_INT
+
+    /**
+     * Sets a button resource
+     */
+    var button: Int? = null
+        set(value) {
+            field = value
+
+            value?.let { binding.radioButton.setButtonDrawable(it) }
+            binding.radioButton.setBackgroundTint(
+                context.getColorFromAttribute(R.attr.brand_primary),
+            )
+        }
 
     private val binding =
         SpRadioButtonBinding.inflate(LayoutInflater.from(context), this, true)
@@ -99,6 +98,15 @@ class SPRadioButton @JvmOverloads constructor(
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             titleTextAppearanceWithDesc = it
+
+            updateTextAppearance(titleTextAppearance)
+        }
+
+        getResourceId(
+            R.styleable.SPRadioButton_android_button,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            button = it
         }
 
         getResourceId(
@@ -106,8 +114,9 @@ class SPRadioButton @JvmOverloads constructor(
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             descriptionTextAppearance = it
+
+            updateDescTextAppearance(descriptionTextAppearance)
         }
-        updateTextAppearance(titleTextAppearance, descriptionTextAppearance)
 
         getString(
             R.styleable.SPRadioButton_descriptionText
@@ -116,22 +125,27 @@ class SPRadioButton @JvmOverloads constructor(
                 description = it
             }
 
-        binding.textView.text = text
+        binding.titleText.text = text
     }
 
     /**
-     * Sets a textAppearance and descriptionTextAppearance to view
+     * Sets a description textAppearance to view
      */
-    fun updateTextAppearance(
-        textAppearance: Int,
-        descriptionTextAppearance: Int? = null
+    fun updateDescTextAppearance(descriptionTextAppearance: Int) {
+        binding.descriptionText.setTextStyle(descriptionTextAppearance)
+    }
+
+    /**
+     * Sets a textAppearance to view
+     */
+    override fun updateTextAppearance(
+        textAppearance: Int
     ) {
-        binding.textView.setTextStyle(textAppearance)
-        descriptionTextAppearance?.let {
-            binding.descriptionText.setTextStyle(
-                descriptionTextAppearance
-            )
-        }
+        binding.titleText.setTextStyle(textAppearance)
+    }
+
+    override fun handleTitle(value: String) {
+        binding.titleText.text = value
     }
 
     override fun setViewStyle(newStyle: Int) {
@@ -143,15 +157,20 @@ class SPRadioButton @JvmOverloads constructor(
         }
     }
 
+    override fun handleCheckingState() {
+        binding.radioButton.isChecked = isChecked
+    }
 
     private fun handleDesc() {
         binding.descriptionText.text = description
         binding.descriptionText.visibleIf(description.isNotEmpty())
 
         updateTextAppearance(
-           textAppearance =  if (description.isEmpty())
+            textAppearance = if (description.isEmpty())
                 titleTextAppearance
-            else titleTextAppearanceWithDesc, descriptionTextAppearance
+            else titleTextAppearanceWithDesc
         )
+
+        updateDescTextAppearance(descriptionTextAppearance)
     }
 }

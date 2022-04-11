@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <ge.space.ui.components.controls.radio.SPRadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ge.space.ui.components.controls.radio.list_item.SPListItemButton
+            android:id="@+id/radio1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dimen_p_10"
+            tools:text="dollar"/>
+
+        <ge.space.ui.components.controls.radio.list_item.SPListItemButton
+            android:id="@+id/radio2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dimen_p_10"
+            tools:text="lari"/>
+
+        <ge.space.ui.components.controls.radio.list_item.SPListItemButton
+            android:id="@+id/radio3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dimen_p_10"
+            tools:text="euro" />
+
+    </ge.space.ui.components.controls.radio.SPRadioGroup>
+
+
+</LinearLayout>

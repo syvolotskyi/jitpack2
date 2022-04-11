@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPRadioButton.Standard" parent="Widget.AppCompat.CompoundButton.RadioButton">
+    <style name="SPRadioButton.Base" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="titleTextAppearance">@style/h700_medium_caps_label_secondary</item>
         <item name="titleTextAppearanceWithDesc">@style/h700_bold_caps_secondary</item>
         <item name="android:background">@null</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:button">@drawable/selector_radio_button</item>
-        <item name="android:buttonTint">?attr/brand_primary</item>
         <item name="descriptionTextAppearance">@style/h800_medium_label_secondary</item>
+    </style>
+
+    <style name="SPRadioButton.Standard" parent="SPRadioButton.Base">
+        <item name="android:button">@drawable/selector_radio_button</item>
+    </style>
+
+    <style name="SPListItemButton" parent="SPRadioButton.Base">
+        <item name="titleTextAppearance">@style/h700_medium_currency_button</item>
+    </style>
+
+    <style name="SPListItemButton.Oval" parent="shadow_empty">
+        <item name="isCircle">true</item>
+        <item name="borderColor">?attr/separator_opaque</item>
+        <item name="borderWidth">@dimen/dimen_p_0_5</item>
     </style>
 </resources>
