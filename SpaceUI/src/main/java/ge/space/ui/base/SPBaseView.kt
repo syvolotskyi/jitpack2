@@ -308,7 +308,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     private fun TypedArray.withApplyResource() {
-        color = getColor(R.styleable.sp_view_style_backgroundColor, Color.WHITE)
+        color = getColor(R.styleable.sp_view_style_ui_backgroundColor, Color.WHITE)
         shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
         shadowAlpha = getFraction(
             R.styleable.sp_view_style_shadowAlpha,

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="backgroundColor" format="color|reference" />
+    <attr name="ui_backgroundColor" format="color|reference" />
     <attr name="shadowAlpha" format="fraction" />
     <attr name="shadowColor" format="color|reference" />
     <attr name="shadowRadius" format="dimension|reference" />
@@ -33,7 +33,7 @@
     </attr>
 
     <declare-styleable name="sp_view_style">
-        <attr name="backgroundColor" />
+        <attr name="ui_backgroundColor" />
         <attr name="shadowAlpha" />
         <attr name="shadowColor" />
         <attr name="shadowRadius" />
@@ -49,7 +49,7 @@
         <attr name="borderWidth" />
     </declare-styleable>
 
-    <declare-styleable name="SPBaseView">
+    <declare-styleable name="SPBaseViewUI">
         <attr name="style" />
     </declare-styleable>
 

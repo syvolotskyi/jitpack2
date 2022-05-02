@@ -108,7 +108,7 @@ class SPDialogComponent : ShowCaseComponent {
                     infoInput.text,
                     multipleButtonConfigs
                 ),
-                SPDialogIcon.Alert(R.attr.accent_magenta)
+                SPDialogIcon.Alert(R.attr.accent_magenta_ui)
             ) {
                 Toast.makeText(fragmentActivity, "dismissed", Toast.LENGTH_SHORT).show()
             }

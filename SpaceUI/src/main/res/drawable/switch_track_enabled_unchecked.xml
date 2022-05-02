@@ -7,5 +7,5 @@
     <size
         android:width="@dimen/dimen_p_40"
         android:height="@dimen/dimen_p_24" />
-    <solid android:color="?attr/greyscale_gray_4" />
+    <solid android:color="?attr/greyscale_gray_4_ui" />
 </shape>

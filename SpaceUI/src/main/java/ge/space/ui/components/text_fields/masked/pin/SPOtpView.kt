@@ -37,12 +37,12 @@ class SPOtpView @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.SPBaseViewUI,
             defStyleAttr
         ) {
             setViewStyle(
                 getResourceId(
-                    R.styleable.SPBaseView_style,
+                    R.styleable.SPBaseViewUI_style,
                     defStyleRes
                 )
             )
@@ -104,18 +104,18 @@ class SPOtpView @JvmOverloads constructor(
         when (state) {
             SPPinState.SUCCESSFUL -> {
                 counter?.onFinish()
-                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary),
+                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.brand_primary_ui),
                     resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
             }
             SPPinState.ERROR -> {
                 showErrorAnimation()
                 context.makeVibration()
-                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.accent_magenta),
+                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.accent_magenta_ui),
                     resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
             }
             else -> {
                 binding.pinEntryContainer.changeBorder(
-                    context.getColorFromAttribute(R.attr.brand_primary),
+                    context.getColorFromAttribute(R.attr.brand_primary_ui),
                     resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat()
                 )
             }
@@ -148,7 +148,7 @@ class SPOtpView @JvmOverloads constructor(
         with(binding) {
             buttonDescription.isEnabled = false
             buttonCounter.isVisible = true
-            buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_secondary))
+            buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_secondary_ui))
         }
         counter =
             getCounter(TimeUnit.SECONDS.toMillis(seconds), onFinishListener).start()
@@ -180,7 +180,7 @@ class SPOtpView @JvmOverloads constructor(
                 context.getColorFromAttribute(R.attr.colorSecondary),
                 resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat()
             )
-            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_tertiary))
+            binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.label_tertiary_ui))
         }
     }
 
@@ -202,7 +202,7 @@ class SPOtpView @JvmOverloads constructor(
 
     private fun setPossibilityToSendSms() {
         binding.buttonDescription.isEnabled = true
-        binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_primary))
+        binding.buttonDescription.setTextColor(context.getColorFromAttribute(R.attr.brand_primary_ui))
         binding.buttonCounter.isVisible = false
     }
 

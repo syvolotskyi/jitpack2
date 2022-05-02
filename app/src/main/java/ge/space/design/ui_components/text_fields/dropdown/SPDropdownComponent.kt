@@ -8,7 +8,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowc
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.spaceui.databinding.SpTextFieldDropdownBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfo
@@ -113,7 +112,7 @@ class SPDropdownComponent : ShowCaseComponent {
                                 it
                             )
                         ),
-                        SPDialogIcon.Alert(R.attr.accent_magenta)
+                        SPDialogIcon.Alert(R.attr.accent_magenta_ui)
                     )
                 }
                 .build(fragmentActivity)
@@ -144,7 +143,7 @@ class SPDropdownComponent : ShowCaseComponent {
                                 it
                             )
                         ),
-                        SPDialogIcon.Alert(R.attr.accent_magenta)
+                        SPDialogIcon.Alert(R.attr.accent_magenta_ui)
                     )
                 }
                 .build(fragmentActivity)

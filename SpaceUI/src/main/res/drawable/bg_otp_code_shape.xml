@@ -18,8 +18,8 @@
     <item android:state_enabled="true">
         <shape>
             <stroke android:width="@dimen/dimen_p_1"
-                android:color="?attr/brand_primary" />
-            <solid android:color="?attr/static_white" />
+                android:color="?attr/brand_primary_ui" />
+            <solid android:color="?attr/static_white_ui" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>
     </item>

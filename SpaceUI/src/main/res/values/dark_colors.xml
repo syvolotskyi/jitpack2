@@ -2,40 +2,40 @@
 <resources>
 
     // accent
-    <color name="dark_accent_red">#ff453a</color>
-    <color name="dark_accent_orange">#ffb232</color>
-    <color name="dark_accent_yellow">#ffce00</color>
-    <color name="dark_accent_green">#63cb00</color>
-    <color name="dark_accent_pink">#f9b3dd</color>
-    <color name="dark_accent_magenta">#ec008c</color>
+    <color name="dark_accent_red_ui">#ff453a</color>
+    <color name="dark_accent_orange_ui">#ffb232</color>
+    <color name="dark_accent_yellow_ui">#ffce00</color>
+    <color name="dark_accent_green_ui">#63cb00</color>
+    <color name="dark_accent_pink_ui">#f9b3dd</color>
+    <color name="dark_accent_magenta_ui">#ec008c</color>
 
     // gray scale
-    <color name="dark_greyscale_gray_1">#8e8e93</color>
-    <color name="dark_greyscale_gray_2">#636366</color>
-    <color name="dark_greyscale_gray_3">#48484a</color>
-    <color name="dark_greyscale_gray_4">#3a3a3c</color>
-    <color name="dark_greyscale_gray_5">#2c2c2e</color>
-    <color name="dark_greyscale_gray_6">#1c1c1e</color>
+    <color name="dark_greyscale_gray_1_ui">#8e8e93</color>
+    <color name="dark_greyscale_gray_2_ui">#636366</color>
+    <color name="dark_greyscale_gray_3_ui">#48484a</color>
+    <color name="dark_greyscale_gray_4_ui">#3a3a3c</color>
+    <color name="dark_greyscale_gray_5_ui">#2c2c2e</color>
+    <color name="dark_greyscale_gray_6_ui">#1c1c1e</color>
 
     // background
-    <color name="dark_background_primary">#000000</color>
-    <color name="dark_background_secondary">#1c1c1e</color>
-    <color name="dark_background_tertiary">#2c2c2e</color>
+    <color name="dark_background_primary_ui">#000000</color>
+    <color name="dark_background_secondary_ui">#1c1c1e</color>
+    <color name="dark_background_tertiary_ui">#2c2c2e</color>
 
     //label
-    <color name="dark_label_primary">#ffffff</color>
-    <color name="dark_label_secondary">#99EBEBF5</color>
-    <color name="dark_label_tertiary">#4DEBEBF5</color>
-    <color name="dark_label_quaternary">#2EEBEBF5</color>
+    <color name="dark_label_primary_ui">#ffffff</color>
+    <color name="dark_label_secondary_ui">#99EBEBF5</color>
+    <color name="dark_label_tertiary_ui">#4DEBEBF5</color>
+    <color name="dark_label_quaternary_ui">#2EEBEBF5</color>
 
     //separator
-    <color name="dark_separator_opaque">#38383a</color>
-    <color name="dark_separator_non_opaque">#A6545458</color>
+    <color name="dark_separator_opaque_ui">#38383a</color>
+    <color name="dark_separator_non_opaque_ui">#A6545458</color>
 
     //fill
-    <color name="dark_fill_primary">#5C787880</color>
-    <color name="dark_fill_secondary">#52787880</color>
-    <color name="dark_fill_tertiary">#3D767680</color>
-    <color name="dark_fill_quaternary">#2E747480</color>
+    <color name="dark_fill_primary_ui">#5C787880</color>
+    <color name="dark_fill_secondary_ui">#52787880</color>
+    <color name="dark_fill_tertiary_ui">#3D767680</color>
+    <color name="dark_fill_quaternary_ui">#2E747480</color>
 
 </resources>

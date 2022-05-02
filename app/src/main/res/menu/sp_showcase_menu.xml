@@ -4,13 +4,13 @@
         android:id="@+id/action_search"
         android:icon="@drawable/sp_ic_search_24"
         android:title="Search"
-        android:iconTint="@color/dark_accent_green"
+        android:iconTint="@color/dark_accent_green_ui"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_theme"
         android:icon="@android:drawable/ic_menu_view"
         android:title="Themes"
-        android:iconTint="@color/dark_accent_green"
+        android:iconTint="@color/dark_accent_green_ui"
         app:showAsAction="always" />
 </menu>

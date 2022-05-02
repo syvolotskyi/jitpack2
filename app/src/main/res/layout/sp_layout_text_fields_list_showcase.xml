@@ -51,7 +51,7 @@
                         android:layout_weight="1"
                         android:enabled="true"
                         android:text="mandatory"
-                        android:textColor="?attr/themeTextColor" />
+                        android:textColor="?attr/themeTextColor_ui" />
 
                     <androidx.appcompat.widget.AppCompatCheckBox
                         android:id="@+id/cbDisable"
@@ -60,7 +60,7 @@
                         android:layout_weight="1"
                         android:enabled="true"
                         android:text="disable"
-                        android:textColor="?attr/themeTextColor" />
+                        android:textColor="?attr/themeTextColor_ui" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/description"
-                        android:textColor="?attr/themeTextColor" />
+                        android:textColor="?attr/themeTextColor_ui" />
 
                     <androidx.appcompat.widget.AppCompatCheckBox
                         android:id="@+id/cbDistractive"
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Distractive (error)"
-                        android:textColor="?attr/themeTextColor" />
+                        android:textColor="?attr/themeTextColor_ui" />
 
                 </LinearLayout>
 
@@ -123,7 +123,7 @@
                             android:checked="true"
                             android:enabled="true"
                             android:text="Primary input"
-                            android:textColor="?attr/themeTextColor" />
+                            android:textColor="?attr/themeTextColor_ui" />
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primarySimpleHint"
@@ -132,7 +132,7 @@
                             android:layout_marginStart="10dp"
                             android:enabled="true"
                             android:text="Primary input with hint"
-                            android:textColor="?attr/themeTextColor" />
+                            android:textColor="?attr/themeTextColor_ui" />
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primaryRemovableSimple"
@@ -141,7 +141,7 @@
                             android:layout_marginStart="10dp"
                             android:enabled="true"
                             android:text="Primary input removable"
-                            android:textColor="?attr/themeTextColor" />
+                            android:textColor="?attr/themeTextColor_ui" />
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primaryIconSimple"
@@ -150,7 +150,7 @@
                             android:layout_marginStart="10dp"
                             android:enabled="true"
                             android:text="Primary with message icon and removable"
-                            android:textColor="?attr/themeTextColor" />
+                            android:textColor="?attr/themeTextColor_ui" />
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/email"
@@ -159,7 +159,7 @@
                             android:layout_marginStart="10dp"
                             android:enabled="true"
                             android:text="Email"
-                            android:textColor="?attr/themeTextColor" />
+                            android:textColor="?attr/themeTextColor_ui" />
 
                     </ge.space.ui.components.controls.radio.SPRadioGroup>
                 </LinearLayout>
@@ -173,7 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/light_greyscale_gray_5"
+        android:background="@color/light_greyscale_gray_5_ui"
         android:hint="Input button text"
         android:inputType="textVisiblePassword"
         android:padding="10dp"

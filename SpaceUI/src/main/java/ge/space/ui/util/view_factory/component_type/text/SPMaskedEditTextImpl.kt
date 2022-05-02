@@ -16,7 +16,7 @@ class SPMaskedEditTextImpl(context: Context) : SPViewImpl<SPViewData.SPMaskedEdi
        val  editText  = SpTextFieldPhoneLayoutBinding.inflate(LayoutInflater.from(context))
         return  editText.etInputField.apply {
             type.textAppearance?.let { setTextStyle(it) }
-            setHintTextColor(context.getColorFromAttribute(R.attr.brand_secondary))
+            setHintTextColor(context.getColorFromAttribute(R.attr.brand_secondary_ui))
             mask = type.mask
             gravity = type.params?.gravity ?: Gravity.LEFT
             type.hint?.let { hint = it }

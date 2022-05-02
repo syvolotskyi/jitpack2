@@ -13,7 +13,7 @@
         android:id="@+id/lytCredit"
         android:layout_width="0dp"
         android:layout_height="@dimen/sp_bank_card_credit_layout_height"
-        android:background="?attr/static_slate"
+        android:background="?attr/static_slate_ui"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPBaseView" parent="AppTheme">
-        <item name="backgroundColor">?attr/background_tertiary</item>
+    <style name="SPBaseViewUI" parent="AppThemeUI">
+        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
         <item name="roundedCorners">0dp</item>
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">0dp</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
         <item name="shadowAlpha">0%</item>
         <item name="shadowRadius">0dp</item>
     </style>

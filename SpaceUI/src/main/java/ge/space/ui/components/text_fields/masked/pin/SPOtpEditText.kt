@@ -66,7 +66,7 @@ class SPOtpEditText @JvmOverloads constructor(
             setTextColor(
                 getColor(
                     R.styleable.SPPinEntryEditText_android_textColor,
-                    context.getColorFromAttribute(R.attr.brand_primary)
+                    context.getColorFromAttribute(R.attr.brand_primary_ui)
                 )
             )
             pinBackground =
@@ -77,9 +77,9 @@ class SPOtpEditText @JvmOverloads constructor(
     var isError: Boolean = false
     fun setError(
         isError: Boolean,
-        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_magenta)
+        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_magenta_ui)
     ) {
-        setTextColor(if (isError) errorColor else context.getColorFromAttribute(R.attr.brand_primary))
+        setTextColor(if (isError) errorColor else context.getColorFromAttribute(R.attr.brand_primary_ui))
     }
 
     fun setMaxLength(maxLength: Int) {

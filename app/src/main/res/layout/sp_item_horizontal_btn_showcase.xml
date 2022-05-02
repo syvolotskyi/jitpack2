@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:textColor="?attr/static_black"
+        android:textColor="?attr/static_black_ui"
         tools:text="Button" />
 
     <ge.space.ui.components.buttons.SPButtonHorizontal

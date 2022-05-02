@@ -7,10 +7,10 @@
         android:width="@dimen/dimen_p_40"
         android:height="@dimen/dimen_p_24" />
 
-    <solid android:color="?attr/background_secondary" />
+    <solid android:color="?attr/background_secondary_ui" />
 
     <stroke
         android:width="@dimen/dimen_p_2"
-        android:color="?attr/greyscale_gray_4" />
+        android:color="?attr/greyscale_gray_4_ui" />
 
 </shape>

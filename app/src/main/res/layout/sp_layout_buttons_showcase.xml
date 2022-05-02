@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_10"
-        android:background="@color/light_greyscale_gray_5"
+        android:background="@color/light_greyscale_gray_5_ui"
         android:hint="Input button text"
         android:inputType="textVisiblePassword"
         android:padding="@dimen/dimen_p_10"

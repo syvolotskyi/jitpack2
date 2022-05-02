@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="loading_transparent_black">#D9000000</color>
-    <color name="loading_transparent_black_half">@color/transparent_black_half</color>
+    <color name="loading_transparent_black_ui">#D9000000</color>
+    <color name="loading_transparent_black_half_ui">@color/transparent_black_half_ui</color>
 
-    <color name="transparent_black_half">#80000000</color>
-    <color name="transparent_black_65">#A6000000</color>
-    <color name="transparent_white_half">#80ffffff</color>
+    <color name="transparent_black_half_ui">#80000000</color>
+    <color name="transparent_black_65_ui">#A6000000</color>
+    <color name="transparent_white_half_ui">#80ffffff</color>
 </resources>

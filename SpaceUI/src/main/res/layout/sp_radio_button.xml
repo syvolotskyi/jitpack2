@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:background="@null"
         android:foreground="@null"
-        android:buttonTint="?attr/brand_primary"
+        android:buttonTint="?attr/brand_primary_ui"
         android:clickable="false"
         android:focusable="false"
         android:gravity="center_vertical"
