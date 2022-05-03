@@ -5,7 +5,7 @@
     </style>
 
     <style name="h600_medium_currency" parent="h600_medium">
-        <item name="android:textColor">?attr/label_quaternary</item>
+        <item name="android:textColor">?attr/label_quaternary_ui</item>
         <item name="android:background">@drawable/bg_currency</item>
         <item name="android:maxLength">1</item>
         <item name="android:maxLines">1</item>

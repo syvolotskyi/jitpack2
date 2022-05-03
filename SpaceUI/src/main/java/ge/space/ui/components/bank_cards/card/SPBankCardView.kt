@@ -370,8 +370,8 @@ class SPBankCardView @JvmOverloads constructor(
     }
 
     private fun getPayWaveColor() = when (payWaveType) {
-        SPPayWaveType.Light -> R.color.transparent_white_half
-        SPPayWaveType.Dark -> R.color.transparent_black_half
+        SPPayWaveType.Light -> R.color.transparent_white_half_ui
+        SPPayWaveType.Dark -> R.color.transparent_black_half_ui
     }
 
     // These strings are temporary and needed to wait for comments from Backend side

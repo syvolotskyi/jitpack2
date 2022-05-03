@@ -30,8 +30,8 @@ abstract class SPBaseActivity : AppCompatActivity() {
 
     private fun setProperTheme() {
         val theme = when (preferencesManager.getInt(PREFERENCES_THEME, 0)) {
-            DARK_THEMES_INDEX -> R.style.AppThemeDark
-            WHITE_THEMES_INDEX -> R.style.AppThemeWhite
+            DARK_THEMES_INDEX -> R.style.AppThemeDarkUI
+            WHITE_THEMES_INDEX -> R.style.AppThemeWhiteUI
             else -> null
         }
         theme?.let { setTheme(it) }

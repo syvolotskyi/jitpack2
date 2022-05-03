@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="h800_medium_bank_card_status" parent="@style/h800_medium">
-        <item name="android:textColor">?attr/static_white</item>
+        <item name="android:textColor">?attr/static_white_ui</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h700_bold_caps_bank_card_amount" parent="@style/h700_bold_caps">
-        <item name="android:textColor">?attr/accent_green</item>
+        <item name="android:textColor">?attr/accent_green_ui</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h700_bold_card_bank_name" parent="@style/h700_bold">
-        <item name="android:textColor">?attr/greyscale_gray_1</item>
+        <item name="android:textColor">?attr/greyscale_gray_1_ui</item>
         <item name="android:maxLines">2</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h900_medium_card_bank_type" parent="@style/h900_medium">
-        <item name="android:textColor">?attr/greyscale_gray_1</item>
+        <item name="android:textColor">?attr/greyscale_gray_1_ui</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h900_medium_card_bank_credit_title" parent="@style/h900_medium">
-        <item name="android:textColor">?attr/static_white</item>
+        <item name="android:textColor">?attr/static_white_ui</item>
     </style>
 
     <style name="h900_medium_bank_card_balance" parent="@style/h900_medium">
-        <item name="android:textColor">?attr/greyscale_gray_1</item>
+        <item name="android:textColor">?attr/greyscale_gray_1_ui</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h400_medium_bank_card_account_number" parent="@style/h400_medium">
         <item name="android:textSize">@dimen/dimen_sp_12</item>
-        <item name="android:textColor">?attr/static_white</item>
+        <item name="android:textColor">?attr/static_white_ui</item>
     </style>
 </resources>

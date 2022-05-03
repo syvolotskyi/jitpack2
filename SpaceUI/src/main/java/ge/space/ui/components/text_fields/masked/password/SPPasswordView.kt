@@ -32,12 +32,12 @@ class SPPasswordView @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPBaseView,
+            R.styleable.SPBaseViewUI,
             defStyleAttr
         ) {
             setViewStyle(
                 getResourceId(
-                    R.styleable.SPBaseView_style,
+                    R.styleable.SPBaseViewUI_style,
                     defStyleRes
                 )
             )

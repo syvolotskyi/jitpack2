@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:layout_margin="@dimen/dimen_p_0"
         android:background="@null"
-        android:buttonTint="?attr/brand_primary"
+        android:buttonTint="?attr/brand_primary_ui"
         android:clickable="false"
         android:focusable="false"
         android:gravity="center_vertical"

@@ -167,6 +167,6 @@ class SPChipIcon @JvmOverloads constructor(
 
     private fun getColorAttr() = when (iconStyle) {
         SPChipIconStyle.Accent -> R.attr.colorAccent
-        else -> R.attr.static_black
+        else -> R.attr.static_black_ui
     }
 }

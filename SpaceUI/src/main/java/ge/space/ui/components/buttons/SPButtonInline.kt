@@ -16,7 +16,6 @@ import ge.space.spaceui.databinding.SpButtonInlineLayoutBinding
 import ge.space.ui.components.buttons.SPButtonInline.ButtonGravity.Center
 import ge.space.ui.components.buttons.SPButtonInline.ButtonGravity.Left
 import ge.space.ui.components.buttons.base.SPButtonBaseView
-import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.*
 
 class SPButtonInline @JvmOverloads constructor(

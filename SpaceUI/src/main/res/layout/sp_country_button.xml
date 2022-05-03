@@ -15,7 +15,7 @@
         android:layout_height="@dimen/dimen_p_24"
         android:layout_gravity="center"
         android:button="?selectableItemBackgroundBorderless"
-        android:buttonTint="?attr/brand_primary"
+        android:buttonTint="?attr/brand_primary_ui"
         android:clickable="false"
         android:focusable="false"
         android:gravity="center_vertical"

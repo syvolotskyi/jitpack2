@@ -1,82 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="BaseTheme.Core" parent="Theme.MaterialComponents.Light.NoActionBar">
+//Theme.MaterialComponents.Light.NoActionBar
+    <style name="BaseTheme.CoreUI" parent="Theme.MaterialComponents.Light.NoActionBar">
         //brand
-        <item name="brand_primary">@color/light_brand_primary</item>
-        <item name="brand_secondary">@color/light_brand_secondary</item>
+        <item name="brand_primary_ui">@color/light_brand_primary_ui</item>
+        <item name="brand_secondary_ui">@color/light_brand_secondary_ui</item>
 
         //accent
-        <item name="accent_red">@color/light_accent_red</item>
-        <item name="accent_orange">@color/light_accent_orange</item>
-        <item name="accent_yellow">@color/light_accent_yellow</item>
-        <item name="accent_green">@color/light_accent_green</item>
-        <item name="accent_pink">@color/light_accent_pink</item>
-        <item name="accent_magenta">@color/light_accent_magenta</item>
+        <item name="accent_red_ui">@color/light_accent_red_ui</item>
+        <item name="accent_orange_ui">@color/light_accent_orange_ui</item>
+        <item name="accent_yellow_ui">@color/light_accent_yellow_ui</item>
+        <item name="accent_green_ui">@color/light_accent_green_ui</item>
+        <item name="accent_pink_ui">@color/light_accent_pink_ui</item>
+        <item name="accent_magenta_ui">@color/light_accent_magenta_ui</item>
 
         //gray scale
-        <item name="greyscale_gray_1">@color/light_greyscale_gray_1</item>
-        <item name="greyscale_gray_2">@color/light_greyscale_gray_2</item>
-        <item name="greyscale_gray_3">@color/light_greyscale_gray_3</item>
-        <item name="greyscale_gray_4">@color/light_greyscale_gray_4</item>
-        <item name="greyscale_gray_5">@color/light_greyscale_gray_5</item>
-        <item name="greyscale_gray_6">@color/light_greyscale_gray_6</item>
+        <item name="greyscale_gray_1_ui">@color/light_greyscale_gray_1_ui</item>
+        <item name="greyscale_gray_2_ui">@color/light_greyscale_gray_2_ui</item>
+        <item name="greyscale_gray_3_ui">@color/light_greyscale_gray_3_ui</item>
+        <item name="greyscale_gray_4_ui">@color/light_greyscale_gray_4_ui</item>
+        <item name="greyscale_gray_5_ui">@color/light_greyscale_gray_5_ui</item>
+        <item name="greyscale_gray_6_ui">@color/light_greyscale_gray_6_ui</item>
 
         // background
-        <item name="background_primary">@color/light_background_primary</item>
-        <item name="background_secondary">@color/light_background_secondary</item>
-        <item name="background_tertiary">@color/light_background_tertiary</item>
+        <item name="background_primary_ui">@color/light_background_primary_ui</item>
+        <item name="background_secondary_ui">@color/light_background_secondary_ui</item>
+        <item name="background_tertiary_ui">@color/light_background_tertiary_ui</item>
 
         //label
-        <item name="label_primary">@color/light_label_primary</item>
-        <item name="label_secondary">@color/light_label_secondary</item>
-        <item name="label_tertiary">@color/light_label_tertiary</item>
-        <item name="label_quaternary">@color/light_label_quaternary</item>
+        <item name="label_primary_ui">@color/light_label_primary_ui</item>
+        <item name="label_secondary_ui">@color/light_label_secondary_ui</item>
+        <item name="label_tertiary_ui">@color/light_label_tertiary_ui</item>
+        <item name="label_quaternary_ui">@color/light_label_quaternary_ui</item>
 
         //separator
-        <item name="separator_opaque">@color/light_separator_opaque</item>
-        <item name="separator_non_opaque">@color/light_separator_non_opaque</item>
+        <item name="separator_opaque_ui">@color/light_separator_opaque_ui</item>
+        <item name="separator_non_opaque_ui">@color/light_separator_non_opaque_ui</item>
 
         //fill
-        <item name="fill_primary">@color/light_fill_primary</item>
-        <item name="fill_secondary">@color/light_fill_secondary</item>
-        <item name="fill_tertiary">@color/light_fill_tertiary</item>
-        <item name="fill_quaternary">@color/light_fill_quaternary</item>
+        <item name="fill_primary_ui">@color/light_fill_primary_ui</item>
+        <item name="fill_secondary_ui">@color/light_fill_secondary_ui</item>
+        <item name="fill_tertiary_ui">@color/light_fill_tertiary_ui</item>
+        <item name="fill_quaternary_ui">@color/light_fill_quaternary_ui</item>
     </style>
 
-    <style name="BaseTheme" parent="BaseTheme.Core">
-        <item name="static_white">@color/static_primary_white</item>
-        <item name="static_black">@color/static_primary_black</item>
-        <item name="static_blue">@color/static_secondary_blue</item>
-        <item name="static_teal">@color/static_secondary_teal</item>
-        <item name="static_pink">@color/static_secondary_pink</item>
-        <item name="static_plum">@color/static_secondary_plum</item>
-        <item name="static_jade">@color/static_secondary_jade</item>
-        <item name="static_purple">@color/static_secondary_purple</item>
-        <item name="static_maroon">@color/static_secondary_maroon</item>
-        <item name="static_green">@color/static_secondary_green</item>
-        <item name="static_slate">@color/static_secondary_slate</item>
-        <item name="static_grey">@color/static_secondary_green</item>
-        <item name="static_lead">@color/static_secondary_lead</item>
-        <item name="static_barry">@color/static_secondary_secondary_barry</item>
-        <item name="static_spruce">@color/static_secondary_spruce</item>
-        <item name="static_tomato">@color/static_secondary_tomato</item>
+    <style name="BaseThemeUI" parent="BaseTheme.CoreUI">
+        <item name="static_white_ui">@color/static_primary_white</item>
+        <item name="static_black_ui">@color/static_primary_black</item>
+        <item name="static_blue_ui">@color/static_secondary_blue</item>
+        <item name="static_teal_ui">@color/static_secondary_teal</item>
+        <item name="static_pink_ui">@color/static_secondary_pink</item>
+        <item name="static_plum_ui">@color/static_secondary_plum</item>
+        <item name="static_jade_ui">@color/static_secondary_jade</item>
+        <item name="static_purple_ui">@color/static_secondary_purple</item>
+        <item name="static_maroon_ui">@color/static_secondary_maroon</item>
+        <item name="static_green_ui">@color/static_secondary_green</item>
+        <item name="static_slate_ui">@color/static_secondary_slate</item>
+        <item name="static_grey_ui">@color/static_secondary_green</item>
+        <item name="static_lead_ui">@color/static_secondary_lead</item>
+        <item name="static_barry_ui">@color/static_secondary_secondary_barry</item>
+        <item name="static_spruce_ui">@color/static_secondary_spruce</item>
+        <item name="static_tomato_ui">@color/static_secondary_tomato</item>
     </style>
 
-    <style name="SPCoreTheme" parent="BaseTheme">
+    <style name="SPCoreThemeUI" parent="BaseThemeUI">
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground">?attr/static_black</item>
+        <item name="android:windowBackground">?attr/static_black_ui</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
     </style>
 
-    <style name="AppTheme" parent="SPCoreTheme">
-        <item name="colorPrimary">?attr/static_black</item>
-        <item name="colorPrimaryDark">?attr/static_black</item>
-        <item name="colorAccent">?attr/brand_primary</item>
-        <item name="android:windowBackground">?attr/static_black</item>
+    <style name="AppThemeUI" parent="SPCoreThemeUI">
+        <item name="colorPrimary">?attr/static_black_ui</item>
+        <item name="colorPrimaryDark">?attr/static_black_ui</item>
+        <item name="colorAccent">?attr/brand_primary_ui</item>
+        <item name="cardTitleBackground">?attr/greyscale_gray_6_ui</item>
+        <item name="android:windowBackground">?attr/static_black_ui</item>
         <item name="android:windowEnableSplitTouch">false</item>
         <item name="android:splitMotionEvents">false</item>
-
+        <item name="android:windowEnterTransition">@transition/fade</item>
+        <item name="android:windowExitTransition">@transition/fade</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -88,126 +90,131 @@
         <item name="spToggleIconStyle">@style/SPToggleIcon.Standard</item>
     </style>
 
-    <style name="AppThemeDark" parent="AppTheme">
-        <item name="colorPrimary">?attr/static_black</item>
-        <item name="colorPrimaryDark">?attr/static_black</item>
-        <item name="colorAccent">?attr/brand_primary</item>
-        <item name="android:windowBackground">?attr/static_black</item>
-        <item name="cardBackground">?attr/static_black</item>
-        <item name="cardTitleBackground">?attr/greyscale_gray_6</item>
+    <style name="AppThemeDarkUI" parent="AppThemeUI">
+
+        <item name="colorPrimary">?attr/static_black_ui</item>
+        <item name="colorPrimaryDark">?attr/static_black_ui</item>
+        <item name="colorAccent">?attr/brand_primary_ui</item>
+        <item name="android:windowBackground">?attr/static_black_ui</item>
+        <item name="cardTitleBackground">@color/light_greyscale_gray_6_ui</item>
+        <item name="cardBackgroundShadow">@drawable/card_background_dark</item>
+        <item name="cardBackground">?attr/static_black_ui</item>
         <item name="cardTitleBackgroundLineHeight">0dp</item>
-        <item name="themeMySpaceBackgroundColor">?attr/static_black</item>
+        <item name="themeMySpaceBackgroundColor">?attr/static_black_ui</item>
         <item name="themeMySpaceTitleColor">@android:color/transparent</item>
-        <item name="themeLoadingBackgroundColor">@color/loading_transparent_black</item>
-        <item name="themeMistColorLight">?attr/static_white</item>
-        <item name="themeMistColorDark">?attr/static_black</item>
+        <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_ui</item>
+        <item name="themeMistColorLight">?attr/static_white_ui</item>
+        <item name="themeMistColorDark">?attr/static_black_ui</item>
+        <item name="shimmer_background">?attr/static_white_ui</item>
+        <item name="shimmer_text_background">@color/light_greyscale_gray_6_ui</item>
 
         //brand
-        <item name="brand_primary">@color/dark_brand_primary</item>
-        <item name="brand_secondary">@color/dark_brand_secondary</item>
+        <item name="brand_primary_ui">@color/dark_brand_primary_ui</item>
+        <item name="brand_secondary_ui">@color/dark_brand_secondary_ui</item>
 
         //accent
-        <item name="accent_red">@color/dark_accent_red</item>
-        <item name="accent_orange">@color/dark_accent_orange</item>
-        <item name="accent_yellow">@color/dark_accent_yellow</item>
-        <item name="accent_green">@color/dark_accent_green</item>
-        <item name="accent_pink">@color/dark_accent_pink</item>
-        <item name="accent_magenta">@color/dark_accent_magenta</item>
+        <item name="accent_red_ui">@color/dark_accent_red_ui</item>
+        <item name="accent_orange_ui">@color/dark_accent_orange_ui</item>
+        <item name="accent_yellow_ui">@color/dark_accent_yellow_ui</item>
+        <item name="accent_green_ui">@color/dark_accent_green_ui</item>
+        <item name="accent_pink_ui">@color/dark_accent_pink_ui</item>
+        <item name="accent_magenta_ui">@color/dark_accent_magenta_ui</item>
 
         //gray scale
-        <item name="greyscale_gray_1">@color/dark_greyscale_gray_1</item>
-        <item name="greyscale_gray_2">@color/dark_greyscale_gray_2</item>
-        <item name="greyscale_gray_3">@color/dark_greyscale_gray_3</item>
-        <item name="greyscale_gray_4">@color/dark_greyscale_gray_4</item>
-        <item name="greyscale_gray_5">@color/dark_greyscale_gray_5</item>
-        <item name="greyscale_gray_6">@color/dark_greyscale_gray_6</item>
+        <item name="greyscale_gray_1_ui">@color/dark_greyscale_gray_1_ui</item>
+        <item name="greyscale_gray_2_ui">@color/dark_greyscale_gray_2_ui</item>
+        <item name="greyscale_gray_3_ui">@color/dark_greyscale_gray_3_ui</item>
+        <item name="greyscale_gray_4_ui">@color/dark_greyscale_gray_4_ui</item>
+        <item name="greyscale_gray_5_ui">@color/dark_greyscale_gray_5_ui</item>
+        <item name="greyscale_gray_6_ui">@color/dark_greyscale_gray_6_ui</item>
 
         //label
-        <item name="label_primary">@color/dark_label_primary</item>
-        <item name="label_secondary">@color/dark_label_secondary</item>
-        <item name="label_tertiary">@color/dark_label_tertiary</item>
-        <item name="label_quaternary">@color/dark_label_quaternary</item>
+        <item name="label_primary_ui">@color/dark_label_primary_ui</item>
+        <item name="label_secondary_ui">@color/dark_label_secondary_ui</item>
+        <item name="label_tertiary_ui">@color/dark_label_tertiary_ui</item>
+        <item name="label_quaternary_ui">@color/dark_label_quaternary_ui</item>
 
         //separator
-        <item name="separator_opaque">@color/dark_separator_opaque</item>
-        <item name="separator_non_opaque">@color/dark_separator_non_opaque</item>
+        <item name="separator_opaque_ui">@color/dark_separator_opaque_ui</item>
+        <item name="separator_non_opaque_ui">@color/dark_separator_non_opaque_ui</item>
 
         //fill
-        <item name="fill_primary">@color/dark_fill_primary</item>
-        <item name="fill_secondary">@color/dark_fill_secondary</item>
-        <item name="fill_tertiary">@color/dark_fill_tertiary</item>
-        <item name="fill_quaternary">@color/dark_fill_quaternary</item>
+        <item name="fill_primary_ui">@color/dark_fill_primary_ui</item>
+        <item name="fill_secondary_ui">@color/dark_fill_secondary_ui</item>
+        <item name="fill_tertiary_ui">@color/dark_fill_tertiary_ui</item>
+        <item name="fill_quaternary_ui">@color/dark_fill_quaternary_ui</item>
 
         // background
-        <item name="background_primary">@color/dark_background_primary</item>
-        <item name="background_secondary">@color/dark_background_secondary</item>
-        <item name="background_tertiary">@color/dark_background_tertiary</item>
+        <item name="background_primary_ui">@color/dark_background_primary_ui</item>
+        <item name="background_secondary_ui">@color/dark_background_secondary_ui</item>
+        <item name="background_tertiary_ui">@color/dark_background_tertiary_ui</item>
 
-        <item name="themeTextColor">?attr/static_white</item>
-        <item name="themeCheckBoxButtonTint">?attr/static_white</item>
+        <item name="themeTextColor_ui">?attr/static_white_ui</item>
+        <item name="themeCheckBoxButtonTint_ui">?attr/static_white_ui</item>
 
         <item name="android:checkboxStyle">@style/SPCheckbox.DefaultStyle</item>
     </style>
 
 
-    <style name="AppThemeWhite" parent="AppTheme">
-        <item name="colorPrimary">?attr/static_white</item>
-        <item name="colorPrimaryDark">?attr/brand_primary</item>
-        <item name="colorAccent">?attr/brand_primary</item>
-        <item name="android:windowBackground">?attr/static_white</item>
-
-        <item name="cardBackground">?attr/static_white</item>
-        <item name="cardTitleBackground">?attr/static_white</item>
+    <style name="AppThemeWhiteUI" parent="AppThemeUI">
+        <item name="colorPrimary">?attr/static_white_ui</item>
+        <item name="colorPrimaryDark">?attr/brand_primary_ui</item>
+        <item name="colorAccent">?attr/brand_primary_ui</item>
+        <item name="cardBackgroundShadow">@drawable/card_background</item>
+        <item name="android:windowBackground">?attr/static_white_ui</item>
+        <item name="cardTitleBackground">@color/light_greyscale_gray_6_ui</item>
+        <item name="cardBackground">?attr/static_white_ui</item>
         <item name="cardTitleBackgroundLineHeight">0.5dp</item>
-        <item name="themeMySpaceBackgroundColor">?attr/static_white</item>
-        <item name="themeMySpaceTitleColor">?attr/static_white</item>
-        <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half</item>
-        <item name="themeMistColorLight">?attr/static_white</item>
-        <item name="themeMistColorDark">?attr/static_white</item>
-
+        <item name="themeMySpaceBackgroundColor">?attr/static_white_ui</item>
+        <item name="themeMySpaceTitleColor">?attr/static_white_ui</item>
+        <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half_ui</item>
+        <item name="themeMistColorLight">?attr/static_white_ui</item>
+        <item name="themeMistColorDark">?attr/static_white_ui</item>
+        <item name="shimmer_background">@color/light_greyscale_gray_6_ui</item>
+        <item name="shimmer_text_background">?attr/static_white_ui</item>
         //brand
-        <item name="brand_primary">@color/light_brand_primary</item>
-        <item name="brand_secondary">@color/light_brand_secondary</item>
+        <item name="brand_primary_ui">@color/light_brand_primary_ui</item>
+        <item name="brand_secondary_ui">@color/light_brand_secondary_ui</item>
 
         //accent
-        <item name="accent_red">@color/light_accent_red</item>
-        <item name="accent_orange">@color/light_accent_orange</item>
-        <item name="accent_yellow">@color/light_accent_yellow</item>
-        <item name="accent_green">@color/light_accent_green</item>
-        <item name="accent_pink">@color/light_accent_pink</item>
-        <item name="accent_magenta">@color/light_accent_magenta</item>
+        <item name="accent_red_ui">@color/light_accent_red_ui</item>
+        <item name="accent_orange_ui">@color/light_accent_orange_ui</item>
+        <item name="accent_yellow_ui">@color/light_accent_yellow_ui</item>
+        <item name="accent_green_ui">@color/light_accent_green_ui</item>
+        <item name="accent_pink_ui">@color/light_accent_pink_ui</item>
+        <item name="accent_magenta_ui">@color/light_accent_magenta_ui</item>
 
         //gray scale
-        <item name="greyscale_gray_1">@color/light_greyscale_gray_1</item>
-        <item name="greyscale_gray_2">@color/light_greyscale_gray_2</item>
-        <item name="greyscale_gray_3">@color/light_greyscale_gray_3</item>
-        <item name="greyscale_gray_4">@color/light_greyscale_gray_4</item>
-        <item name="greyscale_gray_5">@color/light_greyscale_gray_5</item>
-        <item name="greyscale_gray_6">@color/light_greyscale_gray_6</item>
+        <item name="greyscale_gray_1_ui">@color/light_greyscale_gray_1_ui</item>
+        <item name="greyscale_gray_2_ui">@color/light_greyscale_gray_2_ui</item>
+        <item name="greyscale_gray_3_ui">@color/light_greyscale_gray_3_ui</item>
+        <item name="greyscale_gray_4_ui">@color/light_greyscale_gray_4_ui</item>
+        <item name="greyscale_gray_5_ui">@color/light_greyscale_gray_5_ui</item>
+        <item name="greyscale_gray_6_ui">@color/light_greyscale_gray_6_ui</item>
 
         // background
-        <item name="background_primary">@color/light_background_primary</item>
-        <item name="background_secondary">@color/light_background_secondary</item>
-        <item name="background_tertiary">@color/light_background_tertiary</item>
+        <item name="background_primary_ui">@color/light_background_primary_ui</item>
+        <item name="background_secondary_ui">@color/light_background_secondary_ui</item>
+        <item name="background_tertiary_ui">@color/light_background_tertiary_ui</item>
 
         //label
-        <item name="label_primary">@color/light_label_primary</item>
-        <item name="label_secondary">@color/light_label_secondary</item>
-        <item name="label_tertiary">@color/light_label_tertiary</item>
-        <item name="label_quaternary">@color/light_label_quaternary</item>
+        <item name="label_primary_ui">@color/light_label_primary_ui</item>
+        <item name="label_secondary_ui">@color/light_label_secondary_ui</item>
+        <item name="label_tertiary_ui">@color/light_label_tertiary_ui</item>
+        <item name="label_quaternary_ui">@color/light_label_quaternary_ui</item>
 
         //separator
-        <item name="separator_opaque">@color/light_separator_opaque</item>
-        <item name="separator_non_opaque">@color/light_separator_non_opaque</item>
+        <item name="separator_opaque_ui">@color/light_separator_opaque_ui</item>
+        <item name="separator_non_opaque_ui">@color/light_separator_non_opaque_ui</item>
 
         //fill
-        <item name="fill_primary">@color/light_fill_primary</item>
-        <item name="fill_secondary">@color/light_fill_secondary</item>
-        <item name="fill_tertiary">@color/light_fill_tertiary</item>
-        <item name="fill_quaternary">@color/light_fill_quaternary</item>
+        <item name="fill_primary_ui">@color/light_fill_primary_ui</item>
+        <item name="fill_secondary_ui">@color/light_fill_secondary_ui</item>
+        <item name="fill_tertiary_ui">@color/light_fill_tertiary_ui</item>
+        <item name="fill_quaternary_ui">@color/light_fill_quaternary_ui</item>
 
-        <item name="themeTextColor">?attr/static_black</item>
-        <item name="themeCheckBoxButtonTint">?attr/static_black</item>
+        <item name="themeTextColor_ui">?attr/static_black_ui</item>
+        <item name="themeCheckBoxButtonTint_ui">?attr/static_black_ui</item>
 
         <item name="android:checkboxStyle">@style/SPCheckbox.DefaultStyle</item>
     </style>

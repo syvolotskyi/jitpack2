@@ -148,7 +148,7 @@ class SPButtonHorizontal @JvmOverloads constructor(
         binding.ivRight.setColorFilter(
             if (isDistractive) distractiveColor
             else
-                context.getColorFromAttribute(R.attr.brand_primary),
+                context.getColorFromAttribute(R.attr.brand_primary_ui),
             android.graphics.PorterDuff.Mode.SRC_IN
         )
     }

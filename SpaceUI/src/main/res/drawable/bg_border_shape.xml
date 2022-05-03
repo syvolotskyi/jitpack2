@@ -3,7 +3,7 @@
     android:shape="rectangle">
     <stroke
         android:width="10dp"
-        android:color="@color/dark_fill_secondary" />
+        android:color="@color/dark_fill_secondary_ui" />
     <corners
         android:radius="@dimen/sp_bank_round_radius" />
 </shape>

@@ -19,43 +19,43 @@
     </style>
 
     <style name="SPButton.Primary_Size40" parent="SPButton.BaseView.Size40">
-        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="ui_backgroundColor">?attr/brand_primary_ui</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
-        <item name="distractiveBackground">?attr/accent_magenta</item>
+        <item name="distractiveBackground">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="SPButton.Primary_Size48" parent="SPButton.BaseView.Size48">
-        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="ui_backgroundColor">?attr/brand_primary_ui</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
-        <item name="distractiveBackground">?attr/accent_magenta</item>
+        <item name="distractiveBackground">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="SPButton.Primary_Size56" parent="SPButton.BaseView.Size56">
-        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="ui_backgroundColor">?attr/brand_primary_ui</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
-        <item name="distractiveBackground">?attr/accent_magenta</item>
+        <item name="distractiveBackground">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="SPButton.Secondary_Size40" parent="SPButton.BaseView.Size40">
-        <item name="backgroundColor">?attr/background_tertiary</item>
-        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
+        <item name="distractiveBackground">?attr/background_tertiary_ui</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
     <style name="SPButton.Secondary_Size48" parent="SPButton.BaseView.Size48">
-        <item name="backgroundColor">?attr/background_tertiary</item>
-        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
+        <item name="distractiveBackground">?attr/background_tertiary_ui</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
     <style name="SPButton.Secondary_Size56" parent="SPButton.BaseView.Size56">
-        <item name="backgroundColor">?attr/background_tertiary</item>
-        <item name="distractiveBackground">?attr/background_tertiary</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
+        <item name="distractiveBackground">?attr/background_tertiary_ui</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
@@ -65,7 +65,7 @@
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
         <item name="distractiveBackground">@android:color/transparent</item>
-        <item name="backgroundColor">@android:color/transparent</item>
+        <item name="ui_backgroundColor">@android:color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
@@ -75,7 +75,7 @@
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
-        <item name="backgroundColor">@android:color/transparent</item>
+        <item name="ui_backgroundColor">@android:color/transparent</item>
         <item name="distractiveBackground">@android:color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
@@ -87,7 +87,7 @@
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">100%</item>
         <item name="distractiveBackground">@android:color/transparent</item>
-        <item name="backgroundColor">@android:color/transparent</item>
+        <item name="ui_backgroundColor">@android:color/transparent</item>
         <item name="shadowRadius">0dp</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>

@@ -7,7 +7,7 @@
         android:id="@+id/vButtonTwiceDivider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/sp_dialog_divider_height"
-        android:background="?attr/separator_non_opaque"
+        android:background="?attr/separator_non_opaque_ui"
         android:visibility="gone"
         tools:visibility="visible" />
 
@@ -31,7 +31,7 @@
             android:id="@+id/vDivider"
             android:layout_width="@dimen/sp_dialog_divider_height"
             android:layout_height="@dimen/sp_dialog_button_height"
-            android:background="?attr/separator_non_opaque" />
+            android:background="?attr/separator_non_opaque_ui" />
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/btnDialogRight"

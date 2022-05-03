@@ -19,7 +19,7 @@
             android:layout_marginEnd="@dimen/dimen_p_16"
             android:layout_weight="1"
             android:text="Decimal input"
-            android:textColor="?attr/themeTextColor"
+            android:textColor="?attr/themeTextColor_ui"
             app:layout_constraintBottom_toBottomOf="@+id/tfNumber"
             app:layout_constraintEnd_toStartOf="@+id/tfNumber"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             android:layout_marginEnd="@dimen/dimen_p_16"
             android:layout_weight="1"
             android:text="Integer input"
-            android:textColor="?attr/themeTextColor"
+            android:textColor="?attr/themeTextColor_ui"
             app:layout_constraintBottom_toBottomOf="@id/tfNumberSecond"
             app:layout_constraintEnd_toStartOf="@+id/tfNumberSecond"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
             android:layout_marginEnd="@dimen/dimen_p_16"
             android:layout_weight="1"
             android:text="Decimal number input"
-            android:textColor="?attr/themeTextColor"
+            android:textColor="?attr/themeTextColor_ui"
             app:layout_constraintBottom_toBottomOf="@id/tfNumberThird"
             app:layout_constraintEnd_toStartOf="@+id/tfNumberThird"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/disable"
-            android:textColor="?attr/label_primary"
+            android:textColor="?attr/label_primary_ui"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSettings" />
 
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="EUR"
-                android:textColor="?attr/themeTextColor"
+                android:textColor="?attr/themeTextColor_ui"
                 tools:ignore="HardcodedText" />
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GEL"
-                android:textColor="?attr/themeTextColor"
+                android:textColor="?attr/themeTextColor_ui"
                 tools:ignore="HardcodedText" />
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="UZS"
-                android:textColor="?attr/themeTextColor"
+                android:textColor="?attr/themeTextColor_ui"
                 tools:ignore="HardcodedText" />
         </ge.space.ui.components.controls.radio.SPRadioGroup>
 

@@ -11,4 +11,6 @@
     <attr name="themeMySpaceBackgroundColor" format="color|reference"/>
     <attr name="themeMySpaceTitleColor" format="color|reference"/>
     <attr name="themeStoryTextColor" format="color"/>
+    <attr name="shimmer_background" format="color|reference"/>
+    <attr name="shimmer_text_background" format="color|reference"/>
 </resources>

@@ -2,7 +2,7 @@
 <resources>
 
     <style name="SPChip.PlaceHolder" parent="SPBankCardView.EmptySmall.Base">
-        <item name="backgroundColor">?attr/static_white</item>
+        <item name="ui_backgroundColor">?attr/static_white_ui</item>
     </style>
 
     <style name="SPChip.PlaceHolder.Small" parent="SPChip.PlaceHolder">

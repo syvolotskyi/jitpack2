@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"
-        app:tint="?attr/brand_primary" />
+        app:tint="?attr/brand_primary_ui" />
 
     <TextView
         android:id="@+id/textLabel"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@id/textLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:style="@style/SPInputField">
+        style="@style/SPInputField">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

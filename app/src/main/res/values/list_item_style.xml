@@ -6,6 +6,6 @@
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowAlpha">20%</item>
         <item name="shadowRadius">@dimen/dimen_p_12</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
     </style>
 </resources>

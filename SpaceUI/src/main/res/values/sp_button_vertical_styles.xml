@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="SPButton.Vertical.BubbleView" parent="shadow_300_primary">
-        <item name="backgroundColor">?attr/colorAccent</item>
+        <item name="ui_backgroundColor">?attr/colorAccent</item>
         <item name="isCircle">true</item>
     </style>
 
     <style name="SPButton.Vertical_Size40" parent="shadow_empty">
-        <item name="backgroundColor">@android:color/transparent</item>
-        <item name="distractiveColor">?attr/accent_magenta</item>
+        <item name="ui_backgroundColor">@android:color/transparent</item>
+        <item name="distractiveColor">?attr/accent_magenta_ui</item>
         <item name="buttonHeight">@dimen/dimen_p_16</item>
         <item name="btnIconPadding">@dimen/dimen_p_12</item>
         <item name="android:textAppearance">@style/h700_medium_caps_label_primary</item>

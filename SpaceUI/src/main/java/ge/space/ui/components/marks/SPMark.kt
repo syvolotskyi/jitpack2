@@ -94,7 +94,7 @@ class SPMark @JvmOverloads constructor(
         }
         is SPViewData.SPImageResourcesData -> {
             viewData.apply {
-                tintColor = context.getColorFromAttribute(R.attr.brand_primary)
+                tintColor = context.getColorFromAttribute(R.attr.brand_primary_ui)
                 params = SPViewData.SPViewDataParams().apply {
                     height = imageSize
                     width = imageSize
@@ -141,7 +141,7 @@ class SPMark @JvmOverloads constructor(
 
             setPadding(padding, padding, padding, padding)
             changeBorder(
-                context.getColorFromAttribute(R.attr.separator_non_opaque),
+                context.getColorFromAttribute(R.attr.separator_non_opaque_ui),
                 borderSize.toFloat()
             )
         } else {

@@ -1,87 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="shadow_100_primary" parent="SPBaseView">
+    <style name="shadow_100_primary" parent="SPBaseViewUI">
         <item name="shadowOffsetX">@dimen/dimen_p_1</item>
         <item name="shadowOffsetY">@dimen/dimen_p_1</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_1</item>
     </style>
 
-    <style name="shadow_empty" parent="SPBaseView">
+    <style name="shadow_empty" parent="SPBaseViewUI">
         <item name="shadowColor">@android:color/transparent</item>
         <item name="shadowAlpha">0%</item>
     </style>
 
-    <style name="shadow_100_brand" parent="SPBaseView">
+    <style name="shadow_100_brand" parent="SPBaseViewUI">
         <item name="shadowOffsetX">@dimen/dimen_p_1</item>
         <item name="shadowOffsetY">@dimen/dimen_p_1</item>
-        <item name="shadowColor">?attr/brand_primary</item>
+        <item name="shadowColor">?attr/brand_primary_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_1</item>
     </style>
 
-    <style name="shadow_200_primary" parent="SPBaseView">
+    <style name="shadow_200_primary" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_1</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_2</item>
     </style>
 
-    <style name="shadow_200_brand" parent="SPBaseView">
+    <style name="shadow_200_brand" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_1</item>
-        <item name="shadowColor">?attr/brand_primary</item>
+        <item name="shadowColor">?attr/brand_primary_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_2</item>
     </style>
 
-    <style name="shadow_300_primary" parent="SPBaseView">
+    <style name="shadow_300_primary" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_2</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_4</item>
     </style>
 
-    <style name="shadow_300_brand" parent="SPBaseView">
+    <style name="shadow_300_brand" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_2</item>
-        <item name="shadowColor">?attr/brand_primary</item>
+        <item name="shadowColor">?attr/brand_primary_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_4</item>
     </style>
 
-    <style name="shadow_400_primary" parent="SPBaseView">
+    <style name="shadow_400_primary" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_8</item>
     </style>
 
-    <style name="shadow_400_brand" parent="SPBaseView">
+    <style name="shadow_400_brand" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="shadowColor">?attr/brand_primary</item>
+        <item name="shadowColor">?attr/brand_primary_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_8</item>
     </style>
 
-    <style name="shadow_500_primary" parent="SPBaseView">
+    <style name="shadow_500_primary" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="shadowColor">?attr/static_black</item>
+        <item name="shadowColor">?attr/static_black_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_12</item>
     </style>
 
-    <style name="shadow_500_brand" parent="SPBaseView">
+    <style name="shadow_500_brand" parent="SPBaseViewUI">
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_4</item>
-        <item name="shadowColor">?attr/brand_primary</item>
+        <item name="shadowColor">?attr/brand_primary_ui</item>
         <item name="shadowAlpha">12%</item>
         <item name="shadowRadius">@dimen/dimen_p_12</item>
     </style>

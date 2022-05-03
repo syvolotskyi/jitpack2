@@ -22,7 +22,7 @@ fun SPListItemButton.setData(title: String, url: String) {
             size,
             url,
             context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5),
-            context.getColorFromAttribute(R.attr.separator_opaque)
+            context.getColorFromAttribute(R.attr.separator_opaque_ui)
         ).createView(context)
     )
 }

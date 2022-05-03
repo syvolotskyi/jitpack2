@@ -3,68 +3,68 @@
 
     <style name="label_primary">
         <item name="android:textAppearance">@style/h100_medium</item>
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="label_secondary">
         <item name="android:textAppearance">@style/h300_bold_caps</item>
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="label_tertiary">
         <item name="android:textAppearance">@style/h400_medium_caps</item>
-        <item name="android:textColor">?attr/label_tertiary</item>
+        <item name="android:textColor">?attr/label_tertiary_ui</item>
     </style>
 
     <style name="label_quaternary">
         <item name="android:textAppearance">@style/h900_medium</item>
-        <item name="android:textColor">?attr/label_quaternary</item>
+        <item name="android:textColor">?attr/label_quaternary_ui</item>
     </style>
 
     <!-- 900 -->
     <style name="h900_medium_label_secondary" parent="h900_medium">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h900_bold_caps_label_secondary" parent="h900_bold_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <!-- 800 -->
     <style name="h800_bold_label_primary" parent="h800_bold">
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="h800_bold_label_secondary" parent="h800_bold">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h800_medium_label_tertiary" parent="h800_medium">
-        <item name="android:textColor">?attr/label_tertiary</item>
+        <item name="android:textColor">?attr/label_tertiary_ui</item>
     </style>
 
     <style name="h800_medium_label_secondary" parent="h800_medium">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h800_medium_brand_primary" parent="h800_medium">
-        <item name="android:textColor">?attr/brand_primary</item>
+        <item name="android:textColor">?attr/brand_primary_ui</item>
     </style>
 
     <style name="h800_medium_accent_magenta" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_magenta</item>
+        <item name="android:textColor">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="h800_medium_accent_orange" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_orange</item>
+        <item name="android:textColor">?attr/accent_orange_ui</item>
     </style>
 
     <style name="h800_medium_accent_green" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_green</item>
+        <item name="android:textColor">?attr/accent_green_ui</item>
     </style>
 
     <style name="h800_bold_caps_secondary" parent="h800_bold_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <!-- 700 -->
@@ -73,64 +73,64 @@
     </style>
 
     <style name="h700_bold_caps_brand_primary" parent="h700_bold_caps">
-        <item name="android:textColor">?attr/brand_primary</item>
+        <item name="android:textColor">?attr/brand_primary_ui</item>
     </style>
 
     <style name="h700_bold_secondary" parent="h700_bold">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h700_bold_caps_secondary" parent="h700_bold_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h700_bold_magenta" parent="h700_bold">
-        <item name="android:textColor">?attr/accent_magenta</item>
+        <item name="android:textColor">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="h700_bold_caps_primary" parent="h700_medium">
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="h700_medium_secondary" parent="h700_medium">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h700_medium_accent_magenta" parent="h700_medium">
-        <item name="android:textColor">?attr/accent_magenta</item>
+        <item name="android:textColor">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="h700_medium_brand_primary" parent="h700_medium">
-        <item name="android:textColor">?attr/brand_primary</item>
+        <item name="android:textColor">?attr/brand_primary_ui</item>
     </style>
 
     <style name="h700_medium_label_primary" parent="h700_medium">
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="h700_medium_caps_label_primary" parent="h700_medium_caps">
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="h700_medium_caps_label_secondary" parent="h700_medium_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <!-- 600 -->
     <style name="h600_medium_caps_label_primary" parent="h600_medium_caps">
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="h600_medium_label_primary" parent="h600_medium">
-        <item name="android:textColor">?attr/label_primary</item>
+        <item name="android:textColor">?attr/label_primary_ui</item>
     </style>
 
     <style name="h600_bold_caps_label_secondary" parent="h600_bold_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h600_medium_label_secondary" parent="h600_medium">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h600_bold_caps_primary_white" parent="h600_bold_caps">
@@ -138,23 +138,23 @@
     </style>
 
     <style name="h600_bold_caps_brand_primary" parent="h600_bold_caps">
-        <item name="android:textColor">?attr/brand_primary</item>
+        <item name="android:textColor">?attr/brand_primary_ui</item>
     </style>
 
     <style name="h600_bold_caps_accent_magenta" parent="h600_bold_caps">
-        <item name="android:textColor">?attr/accent_magenta</item>
+        <item name="android:textColor">?attr/accent_magenta_ui</item>
     </style>
 
     <style name="h600_bold_caps_secondary" parent="h600_bold_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <!-- 400 -->
     <style name="h400_bold_caps_secondary" parent="h400_bold_caps">
-        <item name="android:textColor">?attr/label_secondary</item>
+        <item name="android:textColor">?attr/label_secondary_ui</item>
     </style>
 
     <style name="h400_bold_caps_primary" parent="h400_bold_caps">
-        <item name="android:textColor">?attr/brand_primary</item>
+        <item name="android:textColor">?attr/brand_primary_ui</item>
     </style>
 </resources>

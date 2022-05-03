@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/light_greyscale_gray_5"
+        android:background="@color/light_greyscale_gray_5_ui"
         android:fitsSystemWindows="false"
         android:inputType="textVisiblePassword"
         android:padding="10dp"
