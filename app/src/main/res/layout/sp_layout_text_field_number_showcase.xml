@@ -105,35 +105,29 @@
 
         <ge.space.ui.components.controls.radio.SPRadioGroup
             android:id="@+id/radio_group"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cbDisable">
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/eur"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="EUR"
-                android:textColor="?attr/themeTextColor_ui"
-                tools:ignore="HardcodedText" />
+                android:layout_marginTop="@dimen/dimen_p_16"
+                android:text="EUR" />
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/gel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GEL"
-                android:textColor="?attr/themeTextColor_ui"
-                tools:ignore="HardcodedText" />
+                android:text="GEL" />
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/uzs"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="UZS"
-                android:textColor="?attr/themeTextColor_ui"
-                tools:ignore="HardcodedText" />
+                android:text="UZS" />
         </ge.space.ui.components.controls.radio.SPRadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

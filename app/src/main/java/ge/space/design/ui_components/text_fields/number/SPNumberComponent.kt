@@ -70,6 +70,7 @@ class SPNumberComponent : ShowCaseComponent {
         private fun SpLayoutTextFieldNumberShowcaseBinding.selectCurrency(currency: String) {
             tfNumber.setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
             tfNumberSecond.setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
+            tfNumberThird.setupEndViewByType(SPEndViewType.SPCurrencyViewType(currency))
         }
     }
 
