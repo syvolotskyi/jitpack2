@@ -4,39 +4,39 @@
     <!-- PinEntryEditText has error set -->
     <item android:state_active="true">
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="?attr/accent_magenta_ui" />
-            <solid android:color="?attr/accent_magenta_ui" />
+            <stroke android:width="1dp" android:color="?attr/accent_primary_magenta" />
+            <solid android:color="?attr/accent_primary_magenta" />
         </shape>
     </item>
 
     <item android:state_checked="true" android:state_focused="true">
         <shape android:shape="oval">
-            <solid android:color="?attr/brand_primary_ui" />
+            <solid android:color="?attr/brand_primary" />
         </shape>
     </item>
     <item android:state_checked="true">
         <shape android:shape="oval">
-            <solid android:color="?attr/brand_primary_ui" />
+            <solid android:color="?attr/brand_primary" />
         </shape>
     </item>
     <!--Space is the next space for character input -->
     <item android:state_focused="true" android:state_selected="true">
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="?attr/brand_primary_ui" />
+            <stroke android:width="1dp" android:color="?attr/brand_primary" />
             <solid android:color="?attr/static_white_ui" />
         </shape>
     </item>
     <!--Space is the next space for character input -->
     <item android:state_selected="true">
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="?attr/brand_primary_ui" />
+            <stroke android:width="1dp" android:color="?attr/brand_primary" />
             <solid android:color="?attr/static_white_ui" />
         </shape>
     </item>
     <!-- PinEntryEditText is focused -->
     <item android:state_focused="true">
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="?attr/brand_primary_ui" />
+            <stroke android:width="1dp" android:color="?attr/brand_primary" />
             <solid android:color="?attr/static_white_ui" />
         </shape>
     </item>
@@ -44,7 +44,7 @@
     <!-- PinEntryEditText is not focused -->
     <item >
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="?attr/brand_primary_ui" />
+            <stroke android:width="1dp" android:color="?attr/brand_primary" />
             <solid android:color="?attr/static_white_ui" />
         </shape>
     </item>

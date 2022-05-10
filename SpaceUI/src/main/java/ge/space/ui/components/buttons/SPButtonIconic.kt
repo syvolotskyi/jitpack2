@@ -24,15 +24,15 @@ open class SPButtonIconic @JvmOverloads constructor(
 ) : SPButtonVertical(context, attrs, defStyleAttr, defStyleRes) {
 
     private var bubbleColor: Int =
-        context.getColorFromAttribute(R.attr.brand_primary_ui)
+        context.getColorFromAttribute(R.attr.brand_primary)
     private var iconColor: Int = Color.WHITE
     private var distractiveBackgroundColor: Int =
-        context.getColorFromAttribute(R.attr.accent_magenta_ui)
+        context.getColorFromAttribute(R.attr.accent_primary_magenta)
     private var distractiveIconColor: Int = Color.WHITE
     private var borderWidth: Int = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
 
     private var borderColor: Int =
-        context.getColorFromAttribute(R.attr.brand_primary_ui)
+        context.getColorFromAttribute(R.attr.brand_primary)
         set(value) {
             field = value
             bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth.toFloat())
@@ -72,12 +72,12 @@ open class SPButtonIconic @JvmOverloads constructor(
         bubbleColor =
             getColor(
                 R.styleable.SPButtonIconic_iconBackgroundColor,
-                context.getColorFromAttribute(R.attr.brand_primary_ui)
+                context.getColorFromAttribute(R.attr.brand_primary)
             )
         borderColor =
             getColor(
                 R.styleable.SPButtonIconic_borderColor,
-                context.getColorFromAttribute(R.attr.brand_primary_ui)
+                context.getColorFromAttribute(R.attr.brand_primary)
             )
 
         distractiveIconColor =
@@ -89,7 +89,7 @@ open class SPButtonIconic @JvmOverloads constructor(
         distractiveBackgroundColor =
             getColor(
                 R.styleable.SPButtonIconic_distractiveBorderColor,
-                context.getColorFromAttribute(R.attr.accent_magenta_ui)
+                context.getColorFromAttribute(R.attr.accent_primary_magenta)
             )
 
         bubbleLayoutBinding.btnContainer.color = bubbleColor

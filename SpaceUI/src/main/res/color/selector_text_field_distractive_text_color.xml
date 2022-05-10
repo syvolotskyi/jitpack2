@@ -2,5 +2,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- disabled state -->
     <item android:color="@color/light_label_secondary_ui" android:state_enabled="false" />
-    <item android:color="@color/light_accent_magenta_ui" />
+    <item android:color="@color/magenta_80" />
 </selector>

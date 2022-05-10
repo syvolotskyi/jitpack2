@@ -15,7 +15,7 @@
     </style>
 
     <style name="h600_bold_text_field_phone" parent="h600_bold">
-        <item name="android:textColorHint">?attr/brand_secondary_ui</item>
+        <item name="android:textColorHint">?attr/brand_secondary</item>
         <item name="android:textColor">@color/selector_text_field_text_color</item>
     </style>
 </resources>

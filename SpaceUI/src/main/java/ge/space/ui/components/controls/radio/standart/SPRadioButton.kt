@@ -65,7 +65,7 @@ class SPRadioButton @JvmOverloads constructor(
     private fun handleButtonColor(value: Int?) {
         value?.let { binding.radioButton.setButtonDrawable(it) }
         binding.radioButton.backgroundTintList = ColorStateList.valueOf(
-            context.getColorFromAttribute(R.attr.brand_primary_ui)
+            context.getColorFromAttribute(R.attr.brand_primary)
         )
     }
 

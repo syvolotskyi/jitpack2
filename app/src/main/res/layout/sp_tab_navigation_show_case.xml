@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_30"
         android:text="Tab With Two Elements"
-        android:textColor="?attr/brand_primary_ui" />
+        android:textColor="?attr/brand_primary" />
 
     <ge.space.ui.components.tab_navigation.SPTabNavigationView
         android:id="@+id/twoTabNavigationView"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_p_30"
         android:text="Tab With Three Elements"
-        android:textColor="?attr/brand_primary_ui" />
+        android:textColor="?attr/brand_primary" />
 
     <ge.space.ui.components.tab_navigation.SPTabNavigationView
         android:id="@+id/threeTabNavigationView"

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    // accent
-    <color name="dark_accent_red_ui">#ff453a</color>
-    <color name="dark_accent_orange_ui">#ffb232</color>
-    <color name="dark_accent_yellow_ui">#ffce00</color>
-    <color name="dark_accent_green_ui">#63cb00</color>
-    <color name="dark_accent_pink_ui">#f9b3dd</color>
-    <color name="dark_accent_magenta_ui">#ec008c</color>
-
     // gray scale
     <color name="dark_greyscale_gray_1_ui">#8e8e93</color>
     <color name="dark_greyscale_gray_2_ui">#636366</color>

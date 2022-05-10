@@ -174,7 +174,7 @@ open class SPButtonVertical @JvmOverloads constructor(
             if (isDistractive)
                 distractiveColor
             else
-                context.getColorFromAttribute(R.attr.brand_primary_ui)
+                context.getColorFromAttribute(R.attr.brand_primary)
         bubbleLayoutBinding.btnContainer.invalidate()
     }
 

@@ -129,7 +129,7 @@ class SPSecondaryChip @JvmOverloads constructor(
     private fun handleBorder() {
         if (hasBorder) {
             changeBorder(
-                context.getColorFromAttribute(R.attr.separator_non_opaque_ui),
+                context.getColorFromAttribute(R.attr.separator_non_opaque),
                 resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
             )
         } else {

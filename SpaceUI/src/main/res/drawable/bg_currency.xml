@@ -7,6 +7,6 @@
 
     <stroke
         android:width="@dimen/dimen_p_0_5"
-        android:color="?attr/separator_non_opaque_ui" />
+        android:color="?attr/separator_non_opaque" />
 
 </shape>
