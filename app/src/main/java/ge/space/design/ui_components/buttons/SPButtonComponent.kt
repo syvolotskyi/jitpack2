@@ -7,6 +7,7 @@ import ge.space.design.ui_components.buttons.fullwidth.SPFullWidthButtonsCompone
 import ge.space.design.ui_components.buttons.horizontal_button.SPHorizontalButtonsComponent
 import ge.space.design.ui_components.buttons.iconic_button.SPIconicButtonsComponent
 import ge.space.design.ui_components.buttons.inline.SPInlineButtonComponent
+import ge.space.design.ui_components.buttons.pill.SPButtonPillComponent
 import ge.space.design.ui_components.buttons.vertical_button.SPVerticalButtonsComponent
 
 class SPButtonComponent: ShowCaseComponent{
@@ -22,7 +23,8 @@ class SPButtonComponent: ShowCaseComponent{
             SPIconicButtonsComponent(),
             SPHorizontalButtonsComponent(),
             SPFullWidthButtonsComponent(),
-            SPInlineButtonComponent()
+            SPInlineButtonComponent(),
+            SPButtonPillComponent()
         )
     }
 }

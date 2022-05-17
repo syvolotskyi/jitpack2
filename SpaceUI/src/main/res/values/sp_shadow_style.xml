@@ -51,7 +51,7 @@
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">@dimen/dimen_p_6</item>
         <item name="shadowColor">?attr/brand_primary</item>
-        <item name="shadowAlpha">12%</item>
+        <item name="shadowAlpha">16%</item>
         <item name="shadowRadius">@dimen/dimen_p_4</item>
     </style>
 

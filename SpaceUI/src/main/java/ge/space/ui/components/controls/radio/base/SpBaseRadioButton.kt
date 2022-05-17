@@ -5,22 +5,24 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.components.layout.SPFrameLayout
 import ge.space.ui.util.extension.EMPTY_TEXT
 
 /**
  * Abstract base RadioButton view extended from [LinearLayout] that allows to change its configuration.
  * It has to be extended to apply styled properties.
  *
- * @property text [String] value which applies a button label text
+ * @property title [String] value which applies a button label text
  */
 abstract class SpBaseRadioButton  @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
+) : SPBaseView(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     /**
      * Sets a title string

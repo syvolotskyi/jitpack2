@@ -220,6 +220,7 @@ abstract class SPBaseView @JvmOverloads constructor(
             defStyleRes
         ) {
             withApplyResource()
+            withApplyShadowResource()
         }
     }
 
@@ -304,27 +305,28 @@ abstract class SPBaseView @JvmOverloads constructor(
     open fun setBaseViewStyle(@StyleRes defStyleRes: Int) {
         context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style){
             withApplyResource()
+            withApplyShadowResource()
+        }
+    }
+
+    /**
+     * Sets a shadow style for the view.
+     *
+     * <p>
+     * Default style theme is SBBaseView style. A style has to implement SPView styleable
+     * attributes. Separate SPBaseView styleable attributes have higher priority han styles.
+     * <p>
+     *
+     * @param defStyleRes [Int] style resource id
+     */
+    open fun setBaseViewShadowStyle(@StyleRes defStyleRes: Int) {
+        context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style){
+            withApplyShadowResource()
         }
     }
 
     private fun TypedArray.withApplyResource() {
         color = getColor(R.styleable.sp_view_style_ui_backgroundColor, Color.WHITE)
-        shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
-        shadowAlpha = getFraction(
-            R.styleable.sp_view_style_shadowAlpha,
-            ALPHA_BASE,
-            ALPHA_BASE,
-            DEFAULT_ALPHA
-        ).scaleTo(ALPHA_SCALE)
-        shadowRadius = getDimensionPixelSize(
-            R.styleable.sp_view_style_shadowRadius, DEFAULT_OBTAIN_VAL
-        ).toFloat()
-        shadowOffsetX = getDimensionPixelSize(
-            R.styleable.sp_view_style_shadowOffsetX, DEFAULT_OBTAIN_VAL
-        ).toFloat()
-        shadowOffsetY = getDimensionPixelSize(
-            R.styleable.sp_view_style_shadowOffsetY, DEFAULT_OBTAIN_VAL
-        ).toFloat()
         topLeftCornerRadius = getDimensionPixelSize(
             R.styleable.sp_view_style_topLeftCornerRadius,
             DEFAULT_OBTAIN_VAL
@@ -347,6 +349,25 @@ abstract class SPBaseView @JvmOverloads constructor(
         isCircle = getBoolean(
             R.styleable.sp_view_style_isCircle, DEFAULT_IS_CIRCLE
         )
+    }
+
+    private fun TypedArray.withApplyShadowResource() {
+        shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
+        shadowAlpha = getFraction(
+            R.styleable.sp_view_style_shadowAlpha,
+            ALPHA_BASE,
+            ALPHA_BASE,
+            DEFAULT_ALPHA
+        ).scaleTo(ALPHA_SCALE)
+        shadowRadius = getDimensionPixelSize(
+            R.styleable.sp_view_style_shadowRadius, DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        shadowOffsetX = getDimensionPixelSize(
+            R.styleable.sp_view_style_shadowOffsetX, DEFAULT_OBTAIN_VAL
+        ).toFloat()
+        shadowOffsetY = getDimensionPixelSize(
+            R.styleable.sp_view_style_shadowOffsetY, DEFAULT_OBTAIN_VAL
+        ).toFloat()
     }
 
     private fun getAlpha(shadowAlpha: Float) =
