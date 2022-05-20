@@ -27,32 +27,32 @@
     </style>
 
     <style name="SPButton.Iconic.Secondary.Size24" parent="SPButton.Iconic.Size24">
-        <item name="iconBackgroundColor">?attr/static_white_ui</item>
-        <item name="distractiveColor">?attr/static_white_ui</item>
+        <item name="iconBackgroundColor">?attr/white</item>
+        <item name="distractiveColor">?attr/white</item>
         <item name="distractiveBorderColor">?attr/accent_primary_magenta</item>
         <item name="distractiveIconColor">?attr/accent_primary_magenta</item>
         <item name="iconColor">?attr/brand_primary</item>
     </style>
 
     <style name="SPButton.Iconic.Secondary.Size32" parent="SPButton.Iconic.Size32">
-        <item name="iconBackgroundColor">?attr/static_white_ui</item>
-        <item name="distractiveColor">?attr/static_white_ui</item>
+        <item name="iconBackgroundColor">?attr/white</item>
+        <item name="distractiveColor">?attr/white</item>
         <item name="distractiveBorderColor">?attr/accent_primary_magenta</item>
         <item name="distractiveIconColor">?attr/accent_primary_magenta</item>
         <item name="iconColor">?attr/brand_primary</item>
     </style>
 
     <style name="SPButton.Iconic.Secondary.Size40" parent="SPButton.Iconic.Size40">
-        <item name="iconBackgroundColor">?attr/static_white_ui</item>
-        <item name="distractiveColor">?attr/static_white_ui</item>
+        <item name="iconBackgroundColor">?attr/white</item>
+        <item name="distractiveColor">?attr/white</item>
         <item name="distractiveBorderColor">?attr/accent_primary_magenta</item>
         <item name="distractiveIconColor">?attr/accent_primary_magenta</item>
         <item name="iconColor">?attr/brand_primary</item>
     </style>
 
     <style name="SPButton.Iconic.Secondary.Size48" parent="SPButton.Iconic.Size48">
-        <item name="iconBackgroundColor">?attr/static_white_ui</item>
-        <item name="distractiveColor">?attr/static_white_ui</item>
+        <item name="iconBackgroundColor">?attr/white</item>
+        <item name="distractiveColor">?attr/white</item>
         <item name="distractiveIconColor">?attr/accent_primary_magenta</item>
         <item name="distractiveBorderColor">?attr/accent_primary_magenta</item>
         <item name="iconColor">?attr/brand_primary</item>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="UISplashScreenBackground">
-        <item name="android:background">?attr/static_white_ui</item>
+        <item name="android:background">?attr/white</item>
     </style>
 </resources>

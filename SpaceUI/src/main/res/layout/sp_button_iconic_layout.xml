@@ -16,7 +16,7 @@
             android:layout_width="@dimen/dimen_p_24"
             android:layout_height="@dimen/dimen_p_24"
             android:layout_gravity="center"
-            app:tint="?attr/static_white_ui"
+            app:tint="?attr/white"
             tools:src="@drawable/ic_plus_16_regular" />
     </ge.space.ui.components.layout.SPFrameLayout>
 </merge>
