@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPBottomSheet.Base" parent="shadow_500_primary">
+        <item name="topLeftCornerRadius">@dimen/dimen_p_16</item>
+        <item name="topRightCornerRadius">@dimen/dimen_p_16</item>
+        <item name="ui_backgroundColor">?attr/background_primary_ui</item>
+    </style>
+
+    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MYBottomSheetStyle</item>
+    </style>
+
+    <style name="MYBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+</resources>

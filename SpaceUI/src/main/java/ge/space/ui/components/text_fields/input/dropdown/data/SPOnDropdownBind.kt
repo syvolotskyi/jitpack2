@@ -7,7 +7,7 @@ import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
  *
  * @param T keeps Item type
  */
-interface SPOnBindInterface<T> {
+interface SPOnDropdownBind<T> {
 
     /**
      * Function to throw binding selected item to dropdown

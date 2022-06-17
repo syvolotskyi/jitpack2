@@ -20,6 +20,12 @@ class SPCircleImageUrlImpl(context: Context) :
             type.width?.let { this.setWidth(it) }
             isCircle = true
             changeBorder(type.borderColor, type.borderSize.toFloat())
+            setPadding(
+                 0,
+                0,
+                 0,
+                0
+            )
         }.also {
             val iView = ImageView(context)
             iView.scaleType = ImageView.ScaleType.CENTER_CROP

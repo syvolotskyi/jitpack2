@@ -2,7 +2,6 @@ package ge.space.ui.components.text_fields.input.dropdown
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
@@ -11,7 +10,7 @@ import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-import ge.space.ui.components.text_fields.input.dropdown.data.SPOnBindInterface
+import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setHeight
@@ -137,7 +136,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         private var view: SPTextFieldDropdown<T>? = null
         private var items: List<T> = emptyList()
         private var style: Int = R.style.SPTextField_Dropdown
-        private var onBind: SPOnBindInterface<T>? = null
+        private var onBind: SPOnDropdownBind<T>? = null
 
         /**
          * Sets a style resource
@@ -197,7 +196,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Binding a item view after selecting
          */
-        fun setOnBindItem(onBindInterface: SPOnBindInterface<T>): SPTextFieldDropdownBuilder<T> {
+        fun setOnBindItem(onBindInterface: SPOnDropdownBind<T>): SPTextFieldDropdownBuilder<T> {
             onBind = onBindInterface
 
             return this

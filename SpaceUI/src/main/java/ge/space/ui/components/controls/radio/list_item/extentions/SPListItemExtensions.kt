@@ -1,5 +1,6 @@
 package ge.space.ui.components.controls.radio.list_item.extentions
 
+import android.view.View
 import ge.space.spaceui.R
 import ge.space.ui.components.controls.radio.list_item.SPListItemButton
 import ge.space.ui.util.extension.getColorFromAttribute
@@ -25,4 +26,15 @@ fun SPListItemButton.setData(title: String, url: String) {
             context.getColorFromAttribute(R.attr.separator_opaque)
         ).createView(context)
     )
+}
+
+/**
+ * Setup data to list item view
+ *
+ * @param title [String] sets a title to list item.
+ * @param url [String] sets a default circle SPFrameLayout with uploaded image in start view
+ */
+fun SPListItemButton.setData(title: String, view: View?) {
+    this.title = title
+    view?.let {this.setStartView(view)}
 }
