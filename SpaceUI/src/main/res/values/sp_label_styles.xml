@@ -69,7 +69,7 @@
 
     <!-- 700 -->
     <style name="h700_bold_caps_primary_white" parent="h700_bold_caps">
-        <item name="android:textColor">@color/static_primary_white</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="h700_bold_caps_brand_primary" parent="h700_bold_caps">
@@ -134,7 +134,7 @@
     </style>
 
     <style name="h600_bold_caps_primary_white" parent="h600_bold_caps">
-        <item name="android:textColor">@color/static_primary_white</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="h600_bold_caps_brand_primary" parent="h600_bold_caps">

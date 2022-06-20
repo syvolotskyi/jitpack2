@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    // gray scale
-    <color name="dark_greyscale_gray_1_ui">#8e8e93</color>
-    <color name="dark_greyscale_gray_2_ui">#636366</color>
-    <color name="dark_greyscale_gray_3_ui">#48484a</color>
-    <color name="dark_greyscale_gray_4_ui">#3a3a3c</color>
-    <color name="dark_greyscale_gray_5_ui">#2c2c2e</color>
-    <color name="dark_greyscale_gray_6_ui">#1c1c1e</color>
 
     // background
     <color name="dark_background_primary_ui">#000000</color>

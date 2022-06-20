@@ -17,8 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"
+        android:background="?attr/accent_secondary_violet"
         tools:visibility="visible">
-        <!--        android:background="?attr/static_slate_ui"-->
         <TextView
             android:id="@+id/tvCreditTitle"
             android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_pay_wave"
-        tools:tint="@color/static_primary_black" />
+        tools:tint="@color/black" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAccountNumber"

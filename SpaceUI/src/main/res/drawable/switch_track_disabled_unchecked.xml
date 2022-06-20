@@ -11,6 +11,6 @@
 
     <stroke
         android:width="@dimen/dimen_p_2"
-        android:color="?attr/greyscale_gray_4_ui" />
+        android:color="?attr/fill_tertiary" />
 
 </shape>

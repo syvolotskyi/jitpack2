@@ -103,7 +103,6 @@
         android:inputType="textVisiblePassword"
         android:hint="Input button text"
         android:textSize="16sp"
-        android:background="@color/light_greyscale_gray_5_ui"
         android:padding="10dp" />
 
 </LinearLayout>

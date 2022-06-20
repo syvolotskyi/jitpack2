@@ -2,7 +2,7 @@
 <resources>
 
     <style name="SPBankCardView.Chip.Base" parent="SPBankCardView.EmptySmall.Base">
-        <item name="ui_backgroundColor">?attr/greyscale_gray_5_ui</item>
+        <item name="ui_backgroundColor">?attr/fill_primary</item>
     </style>
 
     <style name="SPBankCardView.Chip" parent="SPBankCardView.Chip.Base">

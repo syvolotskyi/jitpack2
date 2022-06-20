@@ -322,8 +322,8 @@ class SPBankCardView @JvmOverloads constructor(
     }
 
     private fun colorByAccountNumberStyle() = when (accountNumberStyle) {
-        SPAccountNumberStyle.Dark -> R.color.static_primary_black
-        else -> R.color.static_primary_white
+        SPAccountNumberStyle.Dark -> R.color.black
+        else -> R.color.white
     }
 
     private fun handleBlockingView() {

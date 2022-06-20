@@ -109,13 +109,4 @@
     // black and white
     <attr name="black" format="color"/>
     <attr name="white" format="color"/>
-
-    // old ones
-    //gray scale
-    <attr name="greyscale_gray_1_ui" format="color"/>
-    <attr name="greyscale_gray_2_ui" format="color"/>
-    <attr name="greyscale_gray_3_ui" format="color"/>
-    <attr name="greyscale_gray_4_ui" format="color"/>
-    <attr name="greyscale_gray_5_ui" format="color"/>
-    <attr name="greyscale_gray_6_ui" format="color"/>
 </resources>

@@ -2,14 +2,6 @@
 <resources>
 
 
-    // gray scale
-    <color name="light_greyscale_gray_1_ui">#626262</color>
-    <color name="light_greyscale_gray_2_ui">#929292</color>
-    <color name="light_greyscale_gray_3_ui">#cfcfcf</color>
-    <color name="light_greyscale_gray_4_ui">#d8d8d8</color>
-    <color name="light_greyscale_gray_5_ui">#ecf1f8</color>
-    <color name="light_greyscale_gray_6_ui">#f5f5f5</color>
-
     // background
     <color name="light_background_primary_ui">#ffffff</color>
     <color name="light_background_secondary_ui">#f5f5f5</color>
