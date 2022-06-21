@@ -3,16 +3,8 @@
 //Theme.MaterialComponents.Light.NoActionBar
     <style name="BaseTheme.CoreUI" parent="Theme.MaterialComponents.Light.NoActionBar">
         //brand
-        <item name="brand_primary_ui">@color/light_brand_primary_ui</item>
-        <item name="brand_secondary_ui">@color/light_brand_secondary_ui</item>
-
-        //accent
-        <item name="accent_red_ui">@color/light_accent_red_ui</item>
-        <item name="accent_orange_ui">@color/light_accent_orange_ui</item>
-        <item name="accent_yellow_ui">@color/light_accent_yellow_ui</item>
-        <item name="accent_green_ui">@color/light_accent_green_ui</item>
-        <item name="accent_pink_ui">@color/light_accent_pink_ui</item>
-        <item name="accent_magenta_ui">@color/light_accent_magenta_ui</item>
+        <item name="brand_primary">@color/light_brand_primary</item>
+        <item name="brand_secondary">@color/light_brand_secondary</item>
 
         //gray scale
         <item name="greyscale_gray_1_ui">@color/light_greyscale_gray_1_ui</item>
@@ -22,27 +14,8 @@
         <item name="greyscale_gray_5_ui">@color/light_greyscale_gray_5_ui</item>
         <item name="greyscale_gray_6_ui">@color/light_greyscale_gray_6_ui</item>
 
-        // background
-        <item name="background_primary_ui">@color/light_background_primary_ui</item>
-        <item name="background_secondary_ui">@color/light_background_secondary_ui</item>
-        <item name="background_tertiary_ui">@color/light_background_tertiary_ui</item>
 
-        //label
-        <item name="label_primary_ui">@color/light_label_primary_ui</item>
-        <item name="label_secondary_ui">@color/light_label_secondary_ui</item>
-        <item name="label_tertiary_ui">@color/light_label_tertiary_ui</item>
-        <item name="label_quaternary_ui">@color/light_label_quaternary_ui</item>
-
-        //separator
-        <item name="separator_opaque_ui">@color/light_separator_opaque_ui</item>
-        <item name="separator_non_opaque_ui">@color/light_separator_non_opaque_ui</item>
-
-        //fill
-        <item name="fill_primary_ui">@color/light_fill_primary_ui</item>
-        <item name="fill_secondary_ui">@color/light_fill_secondary_ui</item>
-        <item name="fill_tertiary_ui">@color/light_fill_tertiary_ui</item>
-        <item name="fill_quaternary_ui">@color/light_fill_quaternary_ui</item>
-    </style>
+          </style>
 
     <style name="BaseThemeUI" parent="BaseTheme.CoreUI">
         <item name="static_white_ui">@color/static_primary_white</item>
@@ -72,7 +45,7 @@
     <style name="AppThemeUI" parent="SPCoreThemeUI">
         <item name="colorPrimary">?attr/static_black_ui</item>
         <item name="colorPrimaryDark">?attr/static_black_ui</item>
-        <item name="colorAccent">?attr/brand_primary_ui</item>
+        <item name="colorAccent">?attr/brand_primary</item>
         <item name="cardTitleBackground">?attr/greyscale_gray_6_ui</item>
         <item name="android:windowBackground">?attr/static_black_ui</item>
         <item name="android:windowEnableSplitTouch">false</item>
@@ -94,7 +67,7 @@
 
         <item name="colorPrimary">?attr/static_black_ui</item>
         <item name="colorPrimaryDark">?attr/static_black_ui</item>
-        <item name="colorAccent">?attr/brand_primary_ui</item>
+        <item name="colorAccent">?attr/brand_primary</item>
         <item name="android:windowBackground">?attr/static_black_ui</item>
         <item name="cardTitleBackground">@color/light_greyscale_gray_6_ui</item>
         <item name="cardBackgroundShadow">@drawable/card_background_dark</item>
@@ -109,17 +82,109 @@
         <item name="shimmer_text_background">@color/light_greyscale_gray_6_ui</item>
 
         //brand
-        <item name="brand_primary_ui">@color/dark_brand_primary_ui</item>
-        <item name="brand_secondary_ui">@color/dark_brand_secondary_ui</item>
+        <item name="brand_primary">@color/dark_brand_primary</item>
+        <item name="brand_secondary">@color/dark_brand_secondary</item>
+
+        // background
+        <item name="background_primary">@color/black</item>
+        <item name="background_secondary">@color/gray_90</item>
+        <item name="background_tertiary">@color/gray_80</item>
+
+        //label
+        <item name="label_primary">@color/white</item>
+        <item name="label_secondary">@color/gray_30</item>
+        <item name="label_tertiary">@color/gray_50</item>
+        <item name="label_quaternary">@color/gray_70</item>
+
+        //label contrast
+        <item name="label_contrast_primary">@color/white</item>
+        <item name="label_contrast_secondary">@color/white_alpha_70</item>
+        <item name="label_contrast_tertiary">@color/white_alpha_50</item>
+        <item name="label_contrast_quaternary">@color/white_alpha_30</item>
+
+        //separator
+        <item name="separator_opaque">@color/gray_80</item>
+        <item name="separator_non_opaque">@color/white_alpha_30</item>
+
+        //icon
+        <item name="icon_primary">@color/gray_10</item>
+        <item name="icon_secondary">@color/gray_40</item>
+        <item name="icon_contrast">@color/white</item> // dont have in dark in github
+
+        //status
+        <item name="status_primary_distractive">@color/magenta_50</item>
+        <item name="status_primary_alert">@color/yellow_50</item>
+        <item name="status_primary_success">@color/lime_50</item>
+        <item name="status_secondary_distractive">@color/magenta_80</item>
+        <item name="status_secondary_alert">@color/yellow_80</item>
+        <item name="status_secondary_success">@color/lime_80</item>
+        <item name="status_tertiary_distractive">@color/magenta_100</item>
+        <item name="status_tertiary_alert">@color/yellow_100</item>
+        <item name="status_tertiary_success">@color/lime_100</item>
 
         //accent
-        <item name="accent_red_ui">@color/dark_accent_red_ui</item>
-        <item name="accent_orange_ui">@color/dark_accent_orange_ui</item>
-        <item name="accent_yellow_ui">@color/dark_accent_yellow_ui</item>
-        <item name="accent_green_ui">@color/dark_accent_green_ui</item>
-        <item name="accent_pink_ui">@color/dark_accent_pink_ui</item>
-        <item name="accent_magenta_ui">@color/dark_accent_magenta_ui</item>
+        <item name="accent_primary_gray">@color/gray_20</item>
+        <item name="accent_primary_cool_gray">@color/cool_gray_20</item>
+        <item name="accent_primary_purple">@color/purple_20</item>
+        <item name="accent_primary_violet">@color/violet_20</item>
+        <item name="accent_primary_blue">@color/blue_20</item>
+        <item name="accent_primary_light_blue">@color/light_blue_20</item>
+        <item name="accent_primary_cyan">@color/cyan_20</item>
+        <item name="accent_primary_green">@color/green_20</item>
+        <item name="accent_primary_lime">@color/lime_20</item>
+        <item name="accent_primary_yellow">@color/yellow_20</item>
+        <item name="accent_primary_orange">@color/orange_20</item>
+        <item name="accent_primary_red">@color/red_20</item>
+        <item name="accent_primary_magenta">@color/magenta_20</item>
 
+        <item name="accent_secondary_gray">@color/gray_50</item>
+        <item name="accent_secondary_cool_gray">@color/cool_gray_50</item>
+        <item name="accent_secondary_purple">@color/purple_50</item>
+        <item name="accent_secondary_violet">@color/violet_50</item>
+        <item name="accent_secondary_blue">@color/blue_50</item>
+        <item name="accent_secondary_light_blue">@color/light_blue_50</item>
+        <item name="accent_secondary_cyan">@color/cyan_50</item>
+        <item name="accent_secondary_green">@color/green_50</item>
+        <item name="accent_secondary_lime">@color/lime_50</item>
+        <item name="accent_secondary_yellow">@color/yellow_50</item>
+        <item name="accent_secondary_orange">@color/orange_50</item>
+        <item name="accent_secondary_red">@color/red_50</item>
+        <item name="accent_secondary_magenta">@color/magenta_50</item>
+
+        <item name="accent_tertiary_gray">@color/gray_80</item>
+        <item name="accent_tertiary_cool_gray">@color/cool_gray_80</item>
+        <item name="accent_tertiary_purple">@color/purple_80</item>
+        <item name="accent_tertiary_violet">@color/violet_80</item>
+        <item name="accent_tertiary_blue">@color/blue_80</item>
+        <item name="accent_tertiary_light_blue">@color/light_blue_80</item>
+        <item name="accent_tertiary_cyan">@color/cyan_80</item>
+        <item name="accent_tertiary_green">@color/green_80</item>
+        <item name="accent_tertiary_lime">@color/lime_80</item>
+        <item name="accent_tertiary_yellow">@color/yellow_80</item>
+        <item name="accent_tertiary_orange">@color/orange_80</item>
+        <item name="accent_tertiary_red">@color/red_80</item>
+        <item name="accent_tertiary_magenta">@color/magenta_80</item>
+
+        <item name="accent_quaternary_gray">@color/gray_100</item>
+        <item name="accent_quaternary_cool_gray">@color/cool_gray_100</item>
+        <item name="accent_quaternary_purple">@color/purple_100</item>
+        <item name="accent_quaternary_violet">@color/violet_100</item>
+        <item name="accent_quaternary_blue">@color/blue_100</item>
+        <item name="accent_quaternary_light_blue">@color/light_blue_100</item>
+        <item name="accent_quaternary_cyan">@color/cyan_100</item>
+        <item name="accent_quaternary_green">@color/green_100</item>
+        <item name="accent_quaternary_lime">@color/lime_100</item>
+        <item name="accent_quaternary_yellow">@color/yellow_100</item>
+        <item name="accent_quaternary_orange">@color/orange_100</item>
+        <item name="accent_quaternary_red">@color/red_100</item>
+        <item name="accent_quaternary_magenta">@color/magenta_100</item>
+
+        //fill
+        <item name="fill_primary">@color/cool_gray_80</item>
+        <item name="fill_secondary">@color/cool_gray_90</item>
+        <item name="fill_tertiary">@color/cool_gray_100</item>
+
+        // old ones
         //gray scale
         <item name="greyscale_gray_1_ui">@color/dark_greyscale_gray_1_ui</item>
         <item name="greyscale_gray_2_ui">@color/dark_greyscale_gray_2_ui</item>
@@ -127,27 +192,6 @@
         <item name="greyscale_gray_4_ui">@color/dark_greyscale_gray_4_ui</item>
         <item name="greyscale_gray_5_ui">@color/dark_greyscale_gray_5_ui</item>
         <item name="greyscale_gray_6_ui">@color/dark_greyscale_gray_6_ui</item>
-
-        //label
-        <item name="label_primary_ui">@color/dark_label_primary_ui</item>
-        <item name="label_secondary_ui">@color/dark_label_secondary_ui</item>
-        <item name="label_tertiary_ui">@color/dark_label_tertiary_ui</item>
-        <item name="label_quaternary_ui">@color/dark_label_quaternary_ui</item>
-
-        //separator
-        <item name="separator_opaque_ui">@color/dark_separator_opaque_ui</item>
-        <item name="separator_non_opaque_ui">@color/dark_separator_non_opaque_ui</item>
-
-        //fill
-        <item name="fill_primary_ui">@color/dark_fill_primary_ui</item>
-        <item name="fill_secondary_ui">@color/dark_fill_secondary_ui</item>
-        <item name="fill_tertiary_ui">@color/dark_fill_tertiary_ui</item>
-        <item name="fill_quaternary_ui">@color/dark_fill_quaternary_ui</item>
-
-        // background
-        <item name="background_primary_ui">@color/dark_background_primary_ui</item>
-        <item name="background_secondary_ui">@color/dark_background_secondary_ui</item>
-        <item name="background_tertiary_ui">@color/dark_background_tertiary_ui</item>
 
         <item name="themeTextColor_ui">?attr/static_white_ui</item>
         <item name="themeCheckBoxButtonTint_ui">?attr/static_white_ui</item>
@@ -157,32 +201,126 @@
 
 
     <style name="AppThemeWhiteUI" parent="AppThemeUI">
-        <item name="colorPrimary">?attr/static_white_ui</item>
-        <item name="colorPrimaryDark">?attr/brand_primary_ui</item>
-        <item name="colorAccent">?attr/brand_primary_ui</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">?attr/brand_primary</item>
+        <item name="colorAccent">?attr/brand_primary</item>
         <item name="cardBackgroundShadow">@drawable/card_background</item>
-        <item name="android:windowBackground">?attr/static_white_ui</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="cardTitleBackground">@color/light_greyscale_gray_6_ui</item>
-        <item name="cardBackground">?attr/static_white_ui</item>
+        <item name="cardBackground">@color/white</item>
         <item name="cardTitleBackgroundLineHeight">0.5dp</item>
-        <item name="themeMySpaceBackgroundColor">?attr/static_white_ui</item>
-        <item name="themeMySpaceTitleColor">?attr/static_white_ui</item>
+        <item name="themeMySpaceBackgroundColor">@color/white</item>
+        <item name="themeMySpaceTitleColor">@color/white</item>
         <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half_ui</item>
-        <item name="themeMistColorLight">?attr/static_white_ui</item>
-        <item name="themeMistColorDark">?attr/static_white_ui</item>
+        <item name="themeMistColorLight">@color/white</item>
+        <item name="themeMistColorDark">@color/white</item>
         <item name="shimmer_background">@color/light_greyscale_gray_6_ui</item>
-        <item name="shimmer_text_background">?attr/static_white_ui</item>
+        <item name="shimmer_text_background">@color/white</item>
+
         //brand
-        <item name="brand_primary_ui">@color/light_brand_primary_ui</item>
-        <item name="brand_secondary_ui">@color/light_brand_secondary_ui</item>
+        <item name="brand_primary">@color/light_brand_primary</item>
+        <item name="brand_secondary">@color/light_brand_secondary</item>
+
+        // background
+        <item name="background_primary">@color/white</item>
+        <item name="background_secondary">@color/gray_5</item>
+        <item name="background_tertiary">@color/white</item>
+
+        //label
+        <item name="label_primary">@color/gray_100</item>
+        <item name="label_secondary">@color/gray_70</item>
+        <item name="label_tertiary">@color/gray_50</item>
+        <item name="label_quaternary">@color/gray_30</item>
+
+        //label contrast
+        <item name="label_contrast_primary">@color/white</item>
+        <item name="label_contrast_secondary">@color/white_alpha_70</item>
+        <item name="label_contrast_tertiary">@color/white_alpha_50</item>
+        <item name="label_contrast_quaternary">@color/white_alpha_30</item>
+
+        //separator
+        <item name="separator_opaque">@color/gray_20</item>
+        <item name="separator_non_opaque">@color/gray_100_alpha_20</item>
+
+        //icon
+        <item name="icon_primary">@color/gray_90</item>
+        <item name="icon_secondary">@color/gray_60</item>
+        <item name="icon_contrast">@color/white</item>
+
+        //status
+        <item name="status_primary_distractive">@color/magenta_50</item>
+        <item name="status_primary_alert">@color/yellow_50</item>
+        <item name="status_primary_success">@color/lime_50</item>
+        <item name="status_secondary_distractive">@color/magenta_20</item>
+        <item name="status_secondary_alert">@color/yellow_20</item>
+        <item name="status_secondary_success">@color/lime_20</item>
+        <item name="status_tertiary_distractive">@color/magenta_5</item>
+        <item name="status_tertiary_alert">@color/yellow_5</item>
+        <item name="status_tertiary_success">@color/lime_5</item>
 
         //accent
-        <item name="accent_red_ui">@color/light_accent_red_ui</item>
-        <item name="accent_orange_ui">@color/light_accent_orange_ui</item>
-        <item name="accent_yellow_ui">@color/light_accent_yellow_ui</item>
-        <item name="accent_green_ui">@color/light_accent_green_ui</item>
-        <item name="accent_pink_ui">@color/light_accent_pink_ui</item>
-        <item name="accent_magenta_ui">@color/light_accent_magenta_ui</item>
+        <item name="accent_primary_gray">@color/gray_80</item>
+        <item name="accent_primary_cool_gray">@color/cool_gray_80</item>
+        <item name="accent_primary_purple">@color/purple_80</item>
+        <item name="accent_primary_violet">@color/violet_80</item>
+        <item name="accent_primary_blue">@color/blue_80</item>
+        <item name="accent_primary_light_blue">@color/light_blue_80</item>
+        <item name="accent_primary_cyan">@color/cyan_80</item>
+        <item name="accent_primary_green">@color/green_80</item>
+        <item name="accent_primary_lime">@color/lime_80</item>
+        <item name="accent_primary_yellow">@color/yellow_80</item>
+        <item name="accent_primary_orange">@color/orange_80</item>
+        <item name="accent_primary_red">@color/red_80</item>
+        <item name="accent_primary_magenta">@color/magenta_80</item>
+
+        <item name="accent_secondary_gray">@color/gray_50</item>
+        <item name="accent_secondary_cool_gray">@color/cool_gray_50</item>
+        <item name="accent_secondary_purple">@color/purple_50</item>
+        <item name="accent_secondary_violet">@color/violet_50</item>
+        <item name="accent_secondary_blue">@color/blue_50</item>
+        <item name="accent_secondary_light_blue">@color/light_blue_50</item>
+        <item name="accent_secondary_cyan">@color/cyan_50</item>
+        <item name="accent_secondary_green">@color/green_50</item>
+        <item name="accent_secondary_lime">@color/lime_50</item>
+        <item name="accent_secondary_yellow">@color/yellow_50</item>
+        <item name="accent_secondary_orange">@color/orange_50</item>
+        <item name="accent_secondary_red">@color/red_50</item>
+        <item name="accent_secondary_magenta">@color/magenta_50</item>
+
+        <item name="accent_tertiary_gray">@color/gray_20</item>
+        <item name="accent_tertiary_cool_gray">@color/cool_gray_20</item>
+        <item name="accent_tertiary_purple">@color/purple_20</item>
+        <item name="accent_tertiary_violet">@color/violet_20</item>
+        <item name="accent_tertiary_blue">@color/blue_20</item>
+        <item name="accent_tertiary_light_blue">@color/light_blue_20</item>
+        <item name="accent_tertiary_cyan">@color/cyan_20</item>
+        <item name="accent_tertiary_green">@color/green_20</item>
+        <item name="accent_tertiary_lime">@color/lime_20</item>
+        <item name="accent_tertiary_yellow">@color/yellow_20</item>
+        <item name="accent_tertiary_orange">@color/orange_20</item>
+        <item name="accent_tertiary_red">@color/red_20</item>
+        <item name="accent_tertiary_magenta">@color/magenta_20</item>
+
+        <item name="accent_quaternary_gray">@color/gray_5</item>
+        <item name="accent_quaternary_cool_gray">@color/cool_gray_5</item>
+        <item name="accent_quaternary_purple">@color/purple_5</item>
+        <item name="accent_quaternary_violet">@color/violet_5</item>
+        <item name="accent_quaternary_blue">@color/blue_5</item>
+        <item name="accent_quaternary_light_blue">@color/light_blue_5</item>
+        <item name="accent_quaternary_cyan">@color/cyan_5</item>
+        <item name="accent_quaternary_green">@color/green_5</item>
+        <item name="accent_quaternary_lime">@color/lime_5</item>
+        <item name="accent_quaternary_yellow">@color/yellow_5</item>
+        <item name="accent_quaternary_orange">@color/orange_5</item>
+        <item name="accent_quaternary_red">@color/red_5</item>
+        <item name="accent_quaternary_magenta">@color/magenta_5</item>
+
+        //fill
+        <item name="fill_primary">@color/cool_gray_20</item>
+        <item name="fill_secondary">@color/cool_gray_10</item>
+        <item name="fill_tertiary">@color/cool_gray_5</item>
+
+        ////// old ones
 
         //gray scale
         <item name="greyscale_gray_1_ui">@color/light_greyscale_gray_1_ui</item>
@@ -192,26 +330,8 @@
         <item name="greyscale_gray_5_ui">@color/light_greyscale_gray_5_ui</item>
         <item name="greyscale_gray_6_ui">@color/light_greyscale_gray_6_ui</item>
 
-        // background
-        <item name="background_primary_ui">@color/light_background_primary_ui</item>
-        <item name="background_secondary_ui">@color/light_background_secondary_ui</item>
-        <item name="background_tertiary_ui">@color/light_background_tertiary_ui</item>
 
-        //label
-        <item name="label_primary_ui">@color/light_label_primary_ui</item>
-        <item name="label_secondary_ui">@color/light_label_secondary_ui</item>
-        <item name="label_tertiary_ui">@color/light_label_tertiary_ui</item>
-        <item name="label_quaternary_ui">@color/light_label_quaternary_ui</item>
 
-        //separator
-        <item name="separator_opaque_ui">@color/light_separator_opaque_ui</item>
-        <item name="separator_non_opaque_ui">@color/light_separator_non_opaque_ui</item>
-
-        //fill
-        <item name="fill_primary_ui">@color/light_fill_primary_ui</item>
-        <item name="fill_secondary_ui">@color/light_fill_secondary_ui</item>
-        <item name="fill_tertiary_ui">@color/light_fill_tertiary_ui</item>
-        <item name="fill_quaternary_ui">@color/light_fill_quaternary_ui</item>
 
         <item name="themeTextColor_ui">?attr/static_black_ui</item>
         <item name="themeCheckBoxButtonTint_ui">?attr/static_black_ui</item>

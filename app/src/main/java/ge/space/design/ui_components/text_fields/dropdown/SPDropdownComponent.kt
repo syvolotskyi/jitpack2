@@ -112,7 +112,7 @@ class SPDropdownComponent : ShowCaseComponent {
                                 it
                             )
                         ),
-                        SPDialogIcon.Alert(R.attr.accent_magenta_ui)
+                        SPDialogIcon.Alert(R.attr.accent_primary_magenta)
                     )
                 }
                 .build(fragmentActivity)
@@ -143,7 +143,7 @@ class SPDropdownComponent : ShowCaseComponent {
                                 it
                             )
                         ),
-                        SPDialogIcon.Alert(R.attr.accent_magenta_ui)
+                        SPDialogIcon.Alert(R.attr.accent_primary_magenta)
                     )
                 }
                 .build(fragmentActivity)

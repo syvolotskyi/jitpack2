@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    // accent
-    <color name="light_accent_red_ui">#ff3b30</color>
-    <color name="light_accent_orange_ui">#ffb232</color>
-    <color name="light_accent_yellow_ui">#ffce00</color>
-    <color name="light_accent_green_ui">#63cb00</color>
-    <color name="light_accent_pink_ui">#f9b3dd</color>
-    <color name="light_accent_magenta_ui">#ec008c</color>
 
     // gray scale
     <color name="light_greyscale_gray_1_ui">#626262</color>

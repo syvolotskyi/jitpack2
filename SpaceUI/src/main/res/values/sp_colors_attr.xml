@@ -1,21 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //pallete
+
+    // background
+    <attr name="background_primary" format="color"/>
+    <attr name="background_secondary" format="color"/>
+    <attr name="background_tertiary" format="color"/>
+
+    //label
+    <attr name="label_primary" format="color"/>
+    <attr name="label_secondary" format="color"/>
+    <attr name="label_tertiary" format="color"/>
+    <attr name="label_quaternary" format="color"/>
+
+    //label contrast
+    <attr name="label_contrast_primary" format="color"/>
+    <attr name="label_contrast_secondary" format="color"/>
+    <attr name="label_contrast_tertiary" format="color"/>
+    <attr name="label_contrast_quaternary" format="color"/>
+
+    //separator
+    <attr name="separator_opaque" format="color"/>
+    <attr name="separator_non_opaque" format="color"/>
+
+    //icon
+    <attr name="icon_primary" format="color"/>
+    <attr name="icon_secondary" format="color"/>
+    <attr name="icon_contrast" format="color"/>
+
+    //status
+    <attr name="status_primary_distractive" format="color"/>
+    <attr name="status_primary_alert" format="color"/>
+    <attr name="status_primary_success" format="color"/>
+    <attr name="status_secondary_distractive" format="color"/>
+    <attr name="status_secondary_alert" format="color"/>
+    <attr name="status_secondary_success" format="color"/>
+    <attr name="status_tertiary_distractive" format="color"/>
+    <attr name="status_tertiary_alert" format="color"/>
+    <attr name="status_tertiary_success" format="color"/>
+
+    //accent
+    <attr name="accent_primary_gray" format="color"/>
+    <attr name="accent_primary_cool_gray" format="color"/>
+    <attr name="accent_primary_purple" format="color"/>
+    <attr name="accent_primary_violet" format="color"/>
+    <attr name="accent_primary_blue" format="color"/>
+    <attr name="accent_primary_light_blue" format="color"/>
+    <attr name="accent_primary_cyan" format="color"/>
+    <attr name="accent_primary_green" format="color"/>
+    <attr name="accent_primary_lime" format="color"/>
+    <attr name="accent_primary_yellow" format="color"/>
+    <attr name="accent_primary_orange" format="color"/>
+    <attr name="accent_primary_red" format="color"/>
+    <attr name="accent_primary_magenta" format="color"/>
+    <attr name="accent_secondary_gray" format="color"/>
+    <attr name="accent_secondary_cool_gray" format="color"/>
+    <attr name="accent_secondary_purple" format="color"/>
+    <attr name="accent_secondary_violet" format="color"/>
+    <attr name="accent_secondary_blue" format="color"/>
+    <attr name="accent_secondary_light_blue" format="color"/>
+    <attr name="accent_secondary_cyan" format="color"/>
+    <attr name="accent_secondary_green" format="color"/>
+    <attr name="accent_secondary_lime" format="color"/>
+    <attr name="accent_secondary_yellow" format="color"/>
+    <attr name="accent_secondary_orange" format="color"/>
+    <attr name="accent_secondary_red" format="color"/>
+    <attr name="accent_secondary_magenta" format="color"/>
+    <attr name="accent_tertiary_gray" format="color"/>
+    <attr name="accent_tertiary_cool_gray" format="color"/>
+    <attr name="accent_tertiary_purple" format="color"/>
+    <attr name="accent_tertiary_violet" format="color"/>
+    <attr name="accent_tertiary_blue" format="color"/>
+    <attr name="accent_tertiary_light_blue" format="color"/>
+    <attr name="accent_tertiary_cyan" format="color"/>
+    <attr name="accent_tertiary_green" format="color"/>
+    <attr name="accent_tertiary_lime" format="color"/>
+    <attr name="accent_tertiary_yellow" format="color"/>
+    <attr name="accent_tertiary_orange" format="color"/>
+    <attr name="accent_tertiary_red" format="color"/>
+    <attr name="accent_tertiary_magenta" format="color"/>
+    <attr name="accent_quaternary_gray" format="color"/>
+    <attr name="accent_quaternary_cool_gray" format="color"/>
+    <attr name="accent_quaternary_purple" format="color"/>
+    <attr name="accent_quaternary_violet" format="color"/>
+    <attr name="accent_quaternary_blue" format="color"/>
+    <attr name="accent_quaternary_light_blue" format="color"/>
+    <attr name="accent_quaternary_cyan" format="color"/>
+    <attr name="accent_quaternary_green" format="color"/>
+    <attr name="accent_quaternary_lime" format="color"/>
+    <attr name="accent_quaternary_yellow" format="color"/>
+    <attr name="accent_quaternary_orange" format="color"/>
+    <attr name="accent_quaternary_red" format="color"/>
+    <attr name="accent_quaternary_magenta" format="color"/>
+
+    //fill
+    <attr name="fill_primary" format="color"/>
+    <attr name="fill_secondary" format="color"/>
+    <attr name="fill_tertiary" format="color"/>
+
+    //brand
+    <attr name="brand_primary" format="color"/>
+    <attr name="brand_secondary" format="color"/>
+
     // for show case app
     <attr name="themeTextColor_ui" format="color"/>
     <attr name="themeCheckBoxButtonTint_ui" format="color"/>
 
-    //brand
-    <attr name="brand_primary_ui" format="color"/>
-    <attr name="brand_secondary_ui" format="color"/>
 
-    //accent
-    <attr name="accent_red_ui" format="color"/>
-    <attr name="accent_orange_ui" format="color"/>
-    <attr name="accent_yellow_ui" format="color"/>
-    <attr name="accent_green_ui" format="color"/>
-    <attr name="accent_pink_ui" format="color"/>
-    <attr name="accent_magenta_ui" format="color"/>
-
+    // old ones
     //gray scale
     <attr name="greyscale_gray_1_ui" format="color"/>
     <attr name="greyscale_gray_2_ui" format="color"/>
@@ -23,27 +115,6 @@
     <attr name="greyscale_gray_4_ui" format="color"/>
     <attr name="greyscale_gray_5_ui" format="color"/>
     <attr name="greyscale_gray_6_ui" format="color"/>
-
-    // background
-    <attr name="background_primary_ui" format="color"/>
-    <attr name="background_secondary_ui" format="color"/>
-    <attr name="background_tertiary_ui" format="color"/>
-
-    //label
-    <attr name="label_primary_ui" format="color"/>
-    <attr name="label_secondary_ui" format="color"/>
-    <attr name="label_tertiary_ui" format="color"/>
-    <attr name="label_quaternary_ui" format="color"/>
-
-    //separator
-    <attr name="separator_opaque_ui" format="color"/>
-    <attr name="separator_non_opaque_ui" format="color"/>
-
-    //fill
-    <attr name="fill_primary_ui" format="color"/>
-    <attr name="fill_secondary_ui" format="color"/>
-    <attr name="fill_tertiary_ui" format="color"/>
-    <attr name="fill_quaternary_ui" format="color"/>
 
     //static
     <attr name="static_white_ui" format="color"/>

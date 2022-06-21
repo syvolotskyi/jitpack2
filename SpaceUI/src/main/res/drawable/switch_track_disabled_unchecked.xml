@@ -7,7 +7,7 @@
         android:width="@dimen/dimen_p_40"
         android:height="@dimen/dimen_p_24" />
 
-    <solid android:color="?attr/background_secondary_ui" />
+    <solid android:color="?attr/background_secondary" />
 
     <stroke
         android:width="@dimen/dimen_p_2"

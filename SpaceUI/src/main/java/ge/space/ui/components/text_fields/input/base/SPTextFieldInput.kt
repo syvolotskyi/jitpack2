@@ -675,13 +675,13 @@ open class SPTextFieldInput @JvmOverloads constructor(
             binding.flContainer.changeBorder(
                 when {
                     !isEnabled ->
-                        context.getColorFromAttribute(R.attr.separator_opaque_ui)
+                        context.getColorFromAttribute(R.attr.separator_opaque)
                     isDistractive ->
-                        context.getColorFromAttribute(R.attr.accent_magenta_ui)
+                        context.getColorFromAttribute(R.attr.accent_primary_magenta)
                     contentInputView.isFocused ->
-                        context.getColorFromAttribute(R.attr.brand_primary_ui)
+                        context.getColorFromAttribute(R.attr.brand_primary)
                     else ->
-                        context.getColorFromAttribute(R.attr.separator_opaque_ui)
+                        context.getColorFromAttribute(R.attr.separator_opaque)
                 }, borderWidth
             )
         }

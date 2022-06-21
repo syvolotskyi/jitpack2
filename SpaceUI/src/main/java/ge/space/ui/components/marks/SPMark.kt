@@ -9,7 +9,6 @@ import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.setSize
 import ge.space.ui.util.view_factory.SPViewData
@@ -94,7 +93,7 @@ class SPMark @JvmOverloads constructor(
         }
         is SPViewData.SPImageResourcesData -> {
             viewData.apply {
-                tintColor = context.getColorFromAttribute(R.attr.brand_primary_ui)
+                tintColor = context.getColorFromAttribute(R.attr.brand_primary)
                 params = SPViewData.SPViewDataParams().apply {
                     height = imageSize
                     width = imageSize
@@ -141,7 +140,7 @@ class SPMark @JvmOverloads constructor(
 
             setPadding(padding, padding, padding, padding)
             changeBorder(
-                context.getColorFromAttribute(R.attr.separator_non_opaque_ui),
+                context.getColorFromAttribute(R.attr.separator_non_opaque),
                 borderSize.toFloat()
             )
         } else {

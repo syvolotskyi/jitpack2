@@ -19,43 +19,43 @@
     </style>
 
     <style name="SPButton.Primary_Size40" parent="SPButton.BaseView.Size40">
-        <item name="ui_backgroundColor">?attr/brand_primary_ui</item>
+        <item name="ui_backgroundColor">?attr/brand_primary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
-        <item name="distractiveBackground">?attr/accent_magenta_ui</item>
+        <item name="distractiveBackground">?attr/accent_primary_magenta</item>
     </style>
 
     <style name="SPButton.Primary_Size48" parent="SPButton.BaseView.Size48">
-        <item name="ui_backgroundColor">?attr/brand_primary_ui</item>
+        <item name="ui_backgroundColor">?attr/brand_primary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
-        <item name="distractiveBackground">?attr/accent_magenta_ui</item>
+        <item name="distractiveBackground">?attr/accent_primary_magenta</item>
     </style>
 
     <style name="SPButton.Primary_Size56" parent="SPButton.BaseView.Size56">
-        <item name="ui_backgroundColor">?attr/brand_primary_ui</item>
+        <item name="ui_backgroundColor">?attr/brand_primary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
-        <item name="distractiveBackground">?attr/accent_magenta_ui</item>
+        <item name="distractiveBackground">?attr/accent_primary_magenta</item>
     </style>
 
     <style name="SPButton.Secondary_Size40" parent="SPButton.BaseView.Size40">
-        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
-        <item name="distractiveBackground">?attr/background_tertiary_ui</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
     <style name="SPButton.Secondary_Size48" parent="SPButton.BaseView.Size48">
-        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
-        <item name="distractiveBackground">?attr/background_tertiary_ui</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>
 
     <style name="SPButton.Secondary_Size56" parent="SPButton.BaseView.Size56">
-        <item name="ui_backgroundColor">?attr/background_tertiary_ui</item>
-        <item name="distractiveBackground">?attr/background_tertiary_ui</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="distractiveBackground">?attr/background_tertiary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
     </style>

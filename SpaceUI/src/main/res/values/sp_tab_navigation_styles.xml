@@ -2,9 +2,9 @@
 <resources>
 
     <style name="SPTabChildNavigation" parent="SPBaseViewUI">
-        <item name="defaultBackgroundColor">?attr/background_secondary_ui</item>
-        <item name="activeColor">?attr/brand_primary_ui</item>
-        <item name="inActiveColor">?attr/label_secondary_ui</item>
+        <item name="defaultBackgroundColor">?attr/background_secondary</item>
+        <item name="activeColor">?attr/brand_primary</item>
+        <item name="inActiveColor">?attr/label_secondary</item>
         <item name="activeTextAppearance">@style/h700_medium_caps_navigation_active_tab_field</item>
         <item name="inActiveTextAppearance">@style/h700_medium_caps_navigation_inActive_tab_field</item>
     </style>
