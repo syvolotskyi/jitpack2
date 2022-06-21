@@ -38,6 +38,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonName" />
 
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/buttonLanguageName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_p_34"
+                android:textColor="?attr/static_black_ui"
+                android:text="@string/selectLanguage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textFieldDropdown"
+                tools:text="Button" />
+
+            <ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
+                android:id="@+id/textFieldDropdownLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_p_16"
+                android:layout_marginHorizontal="@dimen/dimen_p_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonLanguageName" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/createdProgrammaticallyText"
                 android:layout_width="wrap_content"
@@ -49,7 +73,7 @@
                 android:text="@string/created_programmatically"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textFieldDropdown"
+                app:layout_constraintTop_toBottomOf="@+id/textFieldDropdownLanguage"
                 tools:text="Button" />
 
             <FrameLayout
@@ -90,13 +114,6 @@
                 android:text="disable"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cbEnableDescription" />
-
-            <FrameLayout
-                android:id="@+id/fl"
-                android:layout_width="@dimen/dimen_p_34"
-                android:layout_height="@dimen/dimen_p_34"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cbDisable" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

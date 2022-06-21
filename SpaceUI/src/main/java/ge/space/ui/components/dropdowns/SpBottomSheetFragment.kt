@@ -10,12 +10,12 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.ui.components.dropdowns.strategy.SpBottomSheetStrategy
 import ge.space.ui.util.extension.argument
+import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.extension.show
 
 class SpBottomSheetFragment : BottomSheetDialogFragment() {
 
-    val dismissOnItemClick: Boolean? by argument(KEY_DISMISS_ON_ITEM, false)
     val titleStyle: Int? by argument(KEY_TITLE_STYLE, null)
     val descriptionStyle: Int? by argument(KEY_DESCRIPTION_STYLE, null)
     val dialogTitleIcon: Int? by argument(KEY_ICON, null)
@@ -56,7 +56,7 @@ class SpBottomSheetFragment : BottomSheetDialogFragment() {
             descriptionStyle?.let { descViewMessage.setTextStyle(it) }
         }
 
-        bottomStrategy?.onAddCreate(linearLayout)
+        bottomStrategy?.onAddCreate(linearLayout) { dismiss() }
 
     }
 
@@ -66,8 +66,6 @@ class SpBottomSheetFragment : BottomSheetDialogFragment() {
         const val KEY_DESCRIPTION_STYLE = "KEY_DESCRIPTION_STYLE"
         const val KEY_ICON = "KEY_ICON"
         const val KEY_TITLE_STYLE = "KEY_TITLE_STYLE"
-        const val KEY_DISMISS_ON_ITEM = "KEY_DISMISS_ON_ITEM"
-        const val KEY_STRATEGY = "KEY_STRATEGY"
 
 
         const val DIALOG_FRAGMENT_TAG: String = "DIALOG_FRAGMENT_TAG"

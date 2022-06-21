@@ -7,22 +7,26 @@ import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.databinding.SpBankCardBodyBinding
 import ge.space.ui.components.buttons.SPButtonInline
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
+import ge.space.ui.util.extension.runDelayed
 
 typealias OnCreate<B> = (parent: ViewGroup) -> B
 typealias OnBind<B, T> = (binding: B, item: T, position: Int) -> Unit
 typealias OnClick<B, T> = (binding: B, item: T, position: Int) -> Unit
+
 /**
  * SPOnBottomSheetBind help to handle dropdown the binding after selecting an item
  */
 open class SPOnBottomSheetAdapter<B : ViewBinding, T>(
-    private var items: List<T>
-): RecyclerView.Adapter<SPOnBottomSheetAdapter.ListViewHolder>() {
+    private var items: List<T>,
+    var delayTime: Long = 300
+) : RecyclerView.Adapter<SPOnBottomSheetAdapter.ListViewHolder>() {
 
+    var onDismiss: () -> Unit = {}
     private var _onCreate: OnCreate<B> = { throw IllegalStateException() }
     private var _onBind: OnBind<B, T> = { _, _, _ -> }
     private var _onClick: OnClick<B, T> = { _, _, _ -> }
 
-   fun setup(block: SPOnBottomSheetAdapter<B, T>.() -> Unit): SPOnBottomSheetAdapter<B, T> {
+    fun setup(block: SPOnBottomSheetAdapter<B, T>.() -> Unit): SPOnBottomSheetAdapter<B, T> {
         block()
         return this
     }
@@ -61,6 +65,7 @@ open class SPOnBottomSheetAdapter<B : ViewBinding, T>(
                     holder.item as T,
                     holder.adapterPosition
                 )
+                runDelayed(delayTime, action = { onDismiss() })
             }
         }
     }

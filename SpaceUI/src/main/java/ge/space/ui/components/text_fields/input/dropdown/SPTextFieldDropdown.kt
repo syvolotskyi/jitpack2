@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewTreeObserver
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
@@ -63,8 +64,19 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      */
     fun setImage(view: View) {
         if (inflateType == InflateType.WithIcon) {
-            view.setHeight(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
-            view.setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
+            startView = view
+        }
+    }
+
+
+    /**
+     * Sets a left image and specify a container size, if inflate type is withImage
+     */
+    fun setImage(view: View, width: Int, height: Int) {
+        if (inflateType == InflateType.WithIcon) {
+            binding.flStart.setWidth(width)
+            binding.flStart.setHeight(height)
+
             startView = view
         }
     }
@@ -196,7 +208,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Binding a item view after selecting
          */
-        fun setOnBindItem(onBindInterface: SPOnDropdownBind<T>): SPTextFieldDropdownBuilder<T> {
+        fun setOnBindDropdownItem(onBindInterface: SPOnDropdownBind<T>): SPTextFieldDropdownBuilder<T> {
             onBind = onBindInterface
 
             return this

@@ -1,46 +1,38 @@
 package ge.space.design.ui_components.text_fields.dropdown
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
-import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.ItemColorBinding
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
-import ge.space.design.main.ui.SimpleListAdapter
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.colors.Colors
+import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getLanguagesList
 import ge.space.spaceui.databinding.SpLangItemLayoutBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
-import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.components.controls.radio.list_item.extentions.setData
-import ge.space.ui.components.controls.radio.standart.SPRadioButton
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfo
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
 import ge.space.ui.components.dropdowns.SpBottomSheetFragment.Companion.DIALOG_FRAGMENT_TAG
-import ge.space.ui.components.dropdowns.strategy.SpListSheetStrategy
 import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
 import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
+import ge.space.ui.components.dropdowns.strategy.SpListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
-import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownItemModelBind
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
+import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownItemModelBind
 import ge.space.ui.util.extension.EMPTY_TEXT
-import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.view_factory.SPViewData
+import ge.space.ui.util.extension.setHeight
+import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
-import kotlin.math.roundToInt
 
 class SPDropdownComponent : ShowCaseComponent {
 
@@ -67,6 +59,13 @@ class SPDropdownComponent : ShowCaseComponent {
                 createDropdownFromXml(
                     layoutBinding,
                     layoutBinding.textFieldDropdown,
+                    environment.requireFragmentActivity()
+                )
+            )
+
+            dropdowns.add(
+                createLanguageDropdownFromXml(
+                    layoutBinding.textFieldDropdownLanguage,
                     environment.requireFragmentActivity()
                 )
             )
@@ -103,31 +102,34 @@ class SPDropdownComponent : ShowCaseComponent {
         }
 
         private fun createDropdownFromXml(
-            layoutBinding : SpLayoutTextFieldsDropdownShowcaseBinding,
+            layoutBinding: SpLayoutTextFieldsDropdownShowcaseBinding,
             view: SPTextFieldDropdown<*>,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
-                .setStyle(R.style.SPTextField_Dropdown)
+                .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
                 .setDefault(
                     SPDropdownItemModel(
                         0,
-                        view.context.getString(R.string.georgian),
-                        SPViewData.SPCircleImageUrlData(
-                            view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_38),
-                            view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_38),
-                            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/2560px-Flag_of_England.svg.png",
-                            view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_0_5),
-                            view.context.getColorFromAttribute(ge.space.spaceui.R.attr.separator_opaque_ui)
+                        view.context.getString(R.string.enter_you_details_here),
+                        SPDefaultEmptyChipData.getSmallEmptyChipData(
+                            view.context,
+                            SPEmptyChipStyle.Dark
                         )
                     )
                 )
-                .setTitle(view.context.getString(R.string.selectLanguage))
-                .setOnBindItem(SPOnDropdownItemModelBind())
+                .setTitle(view.context.getString(R.string.enter_you_details_here))
+                .setOnBindDropdownItem(SPOnDropdownItemModelBind())
                 .setItems(SPTextFieldsDropdownItems.getList(view.context))
                 .setOnClickListener {
-                    val list = SPTextFieldsDropdownItems.getLanguagesList(view.context)
+
+                    val list = SPTextFieldsDropdownItems.getList(view.context)
+                    val dialog = SPBottomSheetBuilder(fragmentActivity)
+                        .setDismissOnItemClicked(true)
+                        .setTitle(view.resources.getString(R.string.selectLanguage))
+                        .setIcon(R.drawable.ic_cake_24_regular)
+                        .build()
                     val adapter =
                         SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>(
                             list
@@ -144,19 +146,80 @@ class SPDropdownComponent : ShowCaseComponent {
                             onClick { binding, item, position ->
                                 binding.radio2.isChecked = true
                                 it.onSelectedItem(list[position])
-                                list[position].iconData?.createView(view.context)?.let{ image ->
-                                    it.startView  = image
-                                }
-                                layoutBinding.fl.addView(list[position].iconData?.createView(view.context))
+                                dialog.dismiss()
                             }
                         }
 
-                    SPBottomSheetBuilder(fragmentActivity)
+                    dialog.bottomStrategy = SpListSheetStrategy(adapter)
+                    dialog.show(fragmentActivity.supportFragmentManager, DIALOG_FRAGMENT_TAG)
+                }
+                .build(fragmentActivity)
+        }
+
+
+        private fun createLanguageDropdownFromXml(
+            view: SPTextFieldDropdown<*>,
+            fragmentActivity: FragmentActivity
+        ): SPTextFieldDropdown<*> {
+            val default = getLanguagesList(view.context)[0]
+
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
+                .setStyle(R.style.SPTextField_DropdownWithIcon)
+                .withView(view)
+                .setDefault(default)
+                .setTitle(view.context.getString(R.string.selectLanguage))
+                .setOnBindDropdownItem(object : SPOnDropdownBind<SPDropdownItemModel> {
+                    override fun getBindItemModel(): (SPTextFieldDropdown<SPDropdownItemModel>, SPDropdownItemModel) -> Unit =
+                        { dropdown, item ->
+                            item.iconData?.let {
+                                val image = it.createView(view.context).apply {
+                                    setHeight(context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small))
+                                    setWidth(context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small))
+                                    setPadding(
+                                        view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_6),
+                                        0,
+                                        view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_6),
+                                        0
+                                    )
+                                }
+                                view.setImage(
+                                    image,
+                                    view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_40),
+                                    view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small)
+                                )
+                            }
+                            view.text = item.value
+                        }
+                })
+                .setItems(SPTextFieldsDropdownItems.getList(view.context))
+                .setOnClickListener {
+                    val dialog = SPBottomSheetBuilder(fragmentActivity)
                         .setDismissOnItemClicked(true)
                         .setTitle(view.resources.getString(R.string.selectLanguage))
                         .setIcon(R.drawable.ic_cake_24_regular)
-                        .setStrategy(SpListSheetStrategy(adapter))
-                        .show(DIALOG_FRAGMENT_TAG)
+                        .build()
+
+                    val list = getLanguagesList(view.context)
+                    val adapter =
+                        SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>(
+                            list
+                        ).setup {
+                            onCreate { parent ->
+                                SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
+                            }
+                            onBind { binding, resId, position ->
+                                binding.radio2.setData(
+                                    list[position].value,
+                                    list[position].iconData?.createView(view.context)
+                                )
+                            }
+                            onClick { binding, item, position ->
+                                binding.radio2.isChecked = true
+                                it.onSelectedItem(list[position])
+                            }
+                        }
+                    dialog.bottomStrategy = SpListSheetStrategy(adapter)
+                    dialog.show(fragmentActivity.supportFragmentManager, DIALOG_FRAGMENT_TAG)
                 }
                 .build(fragmentActivity)
         }
@@ -170,7 +233,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 .setStyle(R.style.SPTextField_Dropdown)
                 .setDefault(view.context.getString(R.string.enter_you_details_here))
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
-                .setOnBindItem(object : SPOnDropdownBind<String> {
+                .setOnBindDropdownItem(object : SPOnDropdownBind<String> {
                     override fun getBindItemModel(): (SPTextFieldDropdown<String>, String) -> Unit =
                         { dropdown, item -> dropdown.text = item }
                 })
@@ -190,19 +253,6 @@ class SPDropdownComponent : ShowCaseComponent {
                 }
                 .build(fragmentActivity)
         }
-
-        private fun createMultipleButtonsConfigs(
-            items: List<SPDropdownItemModel>,
-            view: SPTextFieldDropdown<SPDropdownItemModel>
-        ) =
-            items.map {
-                SPDialogInfoHolder(
-                    it.value,
-                    SPDialogBottomVerticalButton.BottomButtonType.Default
-                ) {
-                    view.onSelectedItem(it)
-                }
-            } as ArrayList<SPDialogInfoHolder>
 
         private fun createMultipleStringsButtonsConfigs(
             items: List<String>,

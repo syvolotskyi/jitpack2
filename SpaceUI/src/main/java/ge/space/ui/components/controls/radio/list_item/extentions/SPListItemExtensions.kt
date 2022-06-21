@@ -19,11 +19,13 @@ fun SPListItemButton.setData(title: String, url: String) {
     this.title = title
     this.setStartView(
         SPViewData.SPCircleImageUrlData(
-            size,
-            size,
             url,
             context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5),
-            context.getColorFromAttribute(R.attr.separator_opaque)
+            context.getColorFromAttribute(R.attr.separator_opaque),
+            SPViewData.SPViewDataParams(
+                size,
+                size
+            )
         ).createView(context)
     )
 }
@@ -32,7 +34,7 @@ fun SPListItemButton.setData(title: String, url: String) {
  * Setup data to list item view
  *
  * @param title [String] sets a title to list item.
- * @param url [String] sets a default circle SPFrameLayout with uploaded image in start view
+ * @param view [View?] sets a view in start view
  */
 fun SPListItemButton.setData(title: String, view: View?) {
     this.title = title

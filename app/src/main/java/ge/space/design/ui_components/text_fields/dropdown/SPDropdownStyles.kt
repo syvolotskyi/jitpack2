@@ -9,17 +9,18 @@ import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChi
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 
 object SPTextFieldsDropdownItems {
+
     fun getList(context: Context) = listOf(
         SPDropdownItemModel(
             1,
             "Default chip",
-            getSmallEmptyChipData(context)
+            iconData = getSmallEmptyChipData(context)
 
         ),
         SPDropdownItemModel(
             2,
             "Primary chip",
-            SPDefaultPrimaryChipData.getSmallChipData(
+            iconData = SPDefaultPrimaryChipData.getSmallChipData(
                 context, params = SPViewData.SPViewDataParams(
                     paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
                     paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
@@ -33,11 +34,13 @@ object SPTextFieldsDropdownItems {
             1,
             "English",
             SPViewData.SPCircleImageUrlData(
-                context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
-                context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/2560px-Flag_of_England.svg.png",
                 context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5),
-                context.getColorFromAttribute(R.attr.separator_opaque_ui)
+                context.getColorFromAttribute(R.attr.separator_opaque_ui),
+                SPViewData.SPViewDataParams(
+                    context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
+                    context.resources.getDimensionPixelSize(R.dimen.dimen_p_38)
+                )
 
             )
         ),
@@ -45,23 +48,28 @@ object SPTextFieldsDropdownItems {
             2,
             "Georgian",
             SPViewData.SPCircleImageUrlData(
-                context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
-                context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Flag_of_Georgia_rounded.svg/1200px-Flag_of_Georgia_rounded.svg.png",
                 context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5),
-                context.getColorFromAttribute(R.attr.separator_opaque_ui)
-
+                context.getColorFromAttribute(R.attr.separator_opaque_ui),
+                SPViewData.SPViewDataParams(
+                    context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
+                    context.resources.getDimensionPixelSize(R.dimen.dimen_p_38)
+                )
             )
+
+
         ),
         SPDropdownItemModel(
             3,
             "Ukraine",
             SPViewData.SPCircleImageUrlData(
-                context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
-                context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png",
                 context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5),
-                context.getColorFromAttribute(R.attr.separator_opaque_ui)
+                context.getColorFromAttribute(R.attr.separator_opaque_ui),
+                SPViewData.SPViewDataParams(
+                    context.resources.getDimensionPixelSize(R.dimen.dimen_p_38),
+                    context.resources.getDimensionPixelSize(R.dimen.dimen_p_38)
+                )
             )
         )
     )

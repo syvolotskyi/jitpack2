@@ -16,12 +16,6 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
     private var description: String? = null
     private var descriptionStyle: Int? = null
     private var strategy: SpBottomSheetStrategy? = null
-    private var dismissOnItemClick: Boolean = false
-
-    fun setDismissOnItemClicked(dismiss: Boolean): SPBottomSheetBuilder {
-        dismissOnItemClick =  dismiss
-        return this
-    }
 
     fun setIcon(icon: Int?): SPBottomSheetBuilder {
         this.icon = icon
@@ -60,8 +54,7 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
                 SpBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
                 SpBottomSheetFragment.KEY_ICON to icon,
                 SpBottomSheetFragment.KEY_DESCRIPTION to description,
-                SpBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
-                SpBottomSheetFragment.KEY_DISMISS_ON_ITEM to dismissOnItemClick
+                SpBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle
             )
            bottomStrategy =  strategy
     }

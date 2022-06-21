@@ -172,7 +172,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
             field = value
 
             binding.flStart.addContentView(startView, emptyStartView)
-            binding.flStart.requestLayout()
+
         }
 
     /**

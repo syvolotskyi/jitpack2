@@ -5,6 +5,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.databinding.SpBottomsheetListBinding
+import ge.space.ui.components.dropdowns.SpBottomSheetFragment
 import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
 
 /**
@@ -19,12 +20,13 @@ open class SpListSheetStrategy<B : ViewBinding, T>(
     /**
      * Binding a item view
      */
-    override fun onAddCreate(parent: LinearLayout) {
-        val listBinding = SpBottomsheetListBinding.inflate(LayoutInflater.from(parent.context))
+    override fun onAddCreate(container: LinearLayout, dissmisEvent : ()->Unit) {
+        val listBinding = SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context))
+        adapter.onDismiss= {dissmisEvent()}
         listBinding.apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
             recyclerView.adapter = adapter
         }
-        parent.addView(listBinding.root)
+        container.addView(listBinding.root)
     }
 }

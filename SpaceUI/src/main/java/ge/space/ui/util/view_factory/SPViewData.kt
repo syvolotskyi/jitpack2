@@ -51,11 +51,10 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPCircleImageUrlData(
-        var height: Int? = null,
-        var width: Int? = null,
         val url: String,
         var borderSize: Int = 0,
-        var borderColor: Int = Color.WHITE
+        var borderColor: Int = Color.WHITE,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     @Parcelize
