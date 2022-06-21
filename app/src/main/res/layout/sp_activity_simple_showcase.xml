@@ -21,7 +21,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
-        android:textColor="?attr/themeTextColor_ui"
+        android:textColor="?attr/themeTextColor"
         android:layout_marginHorizontal="16dp"
         android:layout_height="wrap_content" />
 

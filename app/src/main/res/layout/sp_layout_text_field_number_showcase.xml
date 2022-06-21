@@ -19,7 +19,7 @@
             android:layout_marginEnd="@dimen/dimen_p_16"
             android:layout_weight="1"
             android:text="Decimal input"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             app:layout_constraintBottom_toBottomOf="@+id/tfNumber"
             app:layout_constraintEnd_toStartOf="@+id/tfNumber"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             android:layout_marginEnd="@dimen/dimen_p_16"
             android:layout_weight="1"
             android:text="Integer input"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             app:layout_constraintBottom_toBottomOf="@id/tfNumberSecond"
             app:layout_constraintEnd_toStartOf="@+id/tfNumberSecond"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
             android:layout_marginEnd="@dimen/dimen_p_16"
             android:layout_weight="1"
             android:text="Decimal number input"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             app:layout_constraintBottom_toBottomOf="@id/tfNumberThird"
             app:layout_constraintEnd_toStartOf="@+id/tfNumberThird"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,20 +114,26 @@
                 android:id="@+id/eur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_p_16"
-                android:text="EUR" />
+                android:checked="true"
+                android:text="EUR"
+                android:textColor="?attr/themeTextColor"
+                tools:ignore="HardcodedText" />
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/gel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GEL" />
+                android:text="GEL"
+                android:textColor="?attr/themeTextColor"
+                tools:ignore="HardcodedText" />
 
             <ge.space.ui.components.controls.radio.standart.SPRadioButton
                 android:id="@+id/uzs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="UZS" />
+                android:text="UZS"
+                android:textColor="?attr/themeTextColor"
+                tools:ignore="HardcodedText" />
         </ge.space.ui.components.controls.radio.SPRadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

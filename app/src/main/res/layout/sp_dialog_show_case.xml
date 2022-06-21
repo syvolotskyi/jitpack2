@@ -22,7 +22,7 @@
             android:layout_marginVertical="8dp"
             android:checked="true"
             android:text="Title"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:text="Label"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:text="Title with label"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:text="Title, label, and twice buttons"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:text="Title, Label, and multiple buttons"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
 
         <RadioButton
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
             android:text="Dialog with EditText"
-            android:textColor="?attr/themeTextColor_ui"
+            android:textColor="?attr/themeTextColor"
             tools:ignore="HardcodedText" />
     </RadioGroup>
 
@@ -79,8 +79,8 @@
         android:layout_marginTop="@dimen/dimen_p_32"
         android:text="@string/dialog_title"
         android:hint="@string/dialog_title"
-        android:textColor="?attr/themeTextColor_ui"
-        android:textColorHint="?attr/themeTextColor_ui"
+        android:textColor="?attr/themeTextColor"
+        android:textColorHint="?attr/themeTextColor"
         app:layout_constraintBottom_toTopOf="@id/info_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,8 +97,8 @@
         android:layout_marginBottom="@dimen/dimen_p_16"
         android:text="@string/dialog_label"
         android:hint="@string/dialog_label"
-        android:textColor="?attr/themeTextColor_ui"
-        android:textColorHint="?attr/themeTextColor_ui"
+        android:textColor="?attr/themeTextColor"
+        android:textColorHint="?attr/themeTextColor"
         app:layout_constraintBottom_toTopOf="@id/show_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

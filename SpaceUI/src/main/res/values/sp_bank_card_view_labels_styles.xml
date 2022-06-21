@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="h800_medium_bank_card_status" parent="@style/h800_medium">
-        <item name="android:textColor">?attr/static_white_ui</item>
+        <item name="android:textColor">?attr/white</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -11,27 +11,27 @@
     </style>
 
     <style name="h700_bold_card_bank_name" parent="@style/h700_bold">
-        <item name="android:textColor">?attr/greyscale_gray_1_ui</item>
+        <item name="android:textColor">?attr/label_secondary</item>
         <item name="android:maxLines">2</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h900_medium_card_bank_type" parent="@style/h900_medium">
-        <item name="android:textColor">?attr/greyscale_gray_1_ui</item>
+        <item name="android:textColor">?attr/label_secondary</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h900_medium_card_bank_credit_title" parent="@style/h900_medium">
-        <item name="android:textColor">?attr/static_white_ui</item>
+        <item name="android:textColor">?attr/white</item>
     </style>
 
     <style name="h900_medium_bank_card_balance" parent="@style/h900_medium">
-        <item name="android:textColor">?attr/greyscale_gray_1_ui</item>
+        <item name="android:textColor">?attr/label_secondary</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="h400_medium_bank_card_account_number" parent="@style/h400_medium">
         <item name="android:textSize">@dimen/dimen_sp_12</item>
-        <item name="android:textColor">?attr/static_white_ui</item>
+        <item name="android:textColor">?attr/white</item>
     </style>
 </resources>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="titleTextAppearance" format="reference" />
     <declare-styleable name="SPRadioButton">
-        <attr name="titleTextAppearance" format="reference" />
+        <attr name="titleTextAppearance" />
         <attr name="titleTextAppearanceWithDesc" format="reference" />
         <attr name="android:text" format="string" localization="suggested" />
         <attr name="android:button" format="string"/>

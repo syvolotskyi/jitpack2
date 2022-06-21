@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/dimen_p_34"
-                android:textColor="?attr/static_black_ui"
+                android:textColor="?attr/black"
                 android:text="@string/withXml"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,6 @@
         android:inputType="textVisiblePassword"
         android:hint="Input button text"
         android:textSize="16sp"
-        android:background="@color/light_greyscale_gray_5_ui"
         android:padding="10dp" />
 
 </LinearLayout>

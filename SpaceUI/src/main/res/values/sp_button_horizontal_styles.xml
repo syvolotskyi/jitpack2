@@ -4,7 +4,7 @@
     <style name="SPButton.BaseHorizontal" parent="shadow_400_primary">
         <item name="ui_backgroundColor">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
-        <item name="distractiveColor">?attr/accent_primary_magenta</item>
+        <item name="distractiveColor">?attr/status_primary_distractive</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_accent_magenta</item>
         <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
     </style>

@@ -7,7 +7,7 @@
         <item name="shadowOffsetY">0dp</item>
         <item name="shadowRadius">0dp</item>
         <item name="background">@android:color/transparent</item>
-        <item name="ui_backgroundColor">?attr/static_white_ui</item>
+        <item name="ui_backgroundColor">?attr/white</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 

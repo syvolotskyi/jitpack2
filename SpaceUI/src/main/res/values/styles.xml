@@ -1,53 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-//Theme.MaterialComponents.Light.NoActionBar
+    //Theme.MaterialComponents.Light.NoActionBar
+
     <style name="BaseTheme.CoreUI" parent="Theme.MaterialComponents.Light.NoActionBar">
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
         <item name="brand_secondary">@color/light_brand_secondary</item>
-
-        //gray scale
-        <item name="greyscale_gray_1_ui">@color/light_greyscale_gray_1_ui</item>
-        <item name="greyscale_gray_2_ui">@color/light_greyscale_gray_2_ui</item>
-        <item name="greyscale_gray_3_ui">@color/light_greyscale_gray_3_ui</item>
-        <item name="greyscale_gray_4_ui">@color/light_greyscale_gray_4_ui</item>
-        <item name="greyscale_gray_5_ui">@color/light_greyscale_gray_5_ui</item>
-        <item name="greyscale_gray_6_ui">@color/light_greyscale_gray_6_ui</item>
-
-
-          </style>
-
-    <style name="BaseThemeUI" parent="BaseTheme.CoreUI">
-        <item name="static_white_ui">@color/static_primary_white</item>
-        <item name="static_black_ui">@color/static_primary_black</item>
-        <item name="static_blue_ui">@color/static_secondary_blue</item>
-        <item name="static_teal_ui">@color/static_secondary_teal</item>
-        <item name="static_pink_ui">@color/static_secondary_pink</item>
-        <item name="static_plum_ui">@color/static_secondary_plum</item>
-        <item name="static_jade_ui">@color/static_secondary_jade</item>
-        <item name="static_purple_ui">@color/static_secondary_purple</item>
-        <item name="static_maroon_ui">@color/static_secondary_maroon</item>
-        <item name="static_green_ui">@color/static_secondary_green</item>
-        <item name="static_slate_ui">@color/static_secondary_slate</item>
-        <item name="static_grey_ui">@color/static_secondary_green</item>
-        <item name="static_lead_ui">@color/static_secondary_lead</item>
-        <item name="static_barry_ui">@color/static_secondary_secondary_barry</item>
-        <item name="static_spruce_ui">@color/static_secondary_spruce</item>
-        <item name="static_tomato_ui">@color/static_secondary_tomato</item>
     </style>
 
-    <style name="SPCoreThemeUI" parent="BaseThemeUI">
+    <style name="SPCoreThemeUI" parent="BaseTheme.CoreUI">
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground">?attr/static_black_ui</item>
+        <item name="android:windowBackground">?attr/black</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
     </style>
 
     <style name="AppThemeUI" parent="SPCoreThemeUI">
-        <item name="colorPrimary">?attr/static_black_ui</item>
-        <item name="colorPrimaryDark">?attr/static_black_ui</item>
+        <item name="colorPrimary">?attr/black</item>
+        <item name="colorPrimaryDark">?attr/black</item>
         <item name="colorAccent">?attr/brand_primary</item>
-        <item name="cardTitleBackground">?attr/greyscale_gray_6_ui</item>
-        <item name="android:windowBackground">?attr/static_black_ui</item>
+        <item name="cardTitleBackground">?attr/accent_secondary_violet</item>
+        <item name="android:windowBackground">?attr/black</item>
         <item name="android:windowEnableSplitTouch">false</item>
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowEnterTransition">@transition/fade</item>
@@ -65,21 +37,21 @@
 
     <style name="AppThemeDarkUI" parent="AppThemeUI">
 
-        <item name="colorPrimary">?attr/static_black_ui</item>
-        <item name="colorPrimaryDark">?attr/static_black_ui</item>
+        <item name="colorPrimary">?attr/black</item>
+        <item name="colorPrimaryDark">?attr/black</item>
         <item name="colorAccent">?attr/brand_primary</item>
-        <item name="android:windowBackground">?attr/static_black_ui</item>
-        <item name="cardTitleBackground">@color/light_greyscale_gray_6_ui</item>
+        <item name="android:windowBackground">?attr/black</item>
+        <item name="cardTitleBackground">?attr/background_tertiary</item>
         <item name="cardBackgroundShadow">@drawable/card_background_dark</item>
-        <item name="cardBackground">?attr/static_black_ui</item>
+        <item name="cardBackground">?attr/black</item>
         <item name="cardTitleBackgroundLineHeight">0dp</item>
-        <item name="themeMySpaceBackgroundColor">?attr/static_black_ui</item>
+        <item name="themeMySpaceBackgroundColor">?attr/black</item>
         <item name="themeMySpaceTitleColor">@android:color/transparent</item>
         <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_ui</item>
-        <item name="themeMistColorLight">?attr/static_white_ui</item>
-        <item name="themeMistColorDark">?attr/static_black_ui</item>
-        <item name="shimmer_background">?attr/static_white_ui</item>
-        <item name="shimmer_text_background">@color/light_greyscale_gray_6_ui</item>
+        <item name="themeMistColorLight">?attr/white</item>
+        <item name="themeMistColorDark">?attr/black</item>
+        <item name="shimmer_background">?attr/black</item>
+        <item name="shimmer_text_background">?attr/background_tertiary</item>
 
         //brand
         <item name="brand_primary">@color/dark_brand_primary</item>
@@ -109,7 +81,8 @@
         //icon
         <item name="icon_primary">@color/gray_10</item>
         <item name="icon_secondary">@color/gray_40</item>
-        <item name="icon_contrast">@color/white</item> // dont have in dark in github
+        <item name="icon_contrast">@color/white</item>
+        // dont have in dark in github
 
         //status
         <item name="status_primary_distractive">@color/magenta_50</item>
@@ -184,17 +157,11 @@
         <item name="fill_secondary">@color/cool_gray_90</item>
         <item name="fill_tertiary">@color/cool_gray_100</item>
 
-        // old ones
-        //gray scale
-        <item name="greyscale_gray_1_ui">@color/dark_greyscale_gray_1_ui</item>
-        <item name="greyscale_gray_2_ui">@color/dark_greyscale_gray_2_ui</item>
-        <item name="greyscale_gray_3_ui">@color/dark_greyscale_gray_3_ui</item>
-        <item name="greyscale_gray_4_ui">@color/dark_greyscale_gray_4_ui</item>
-        <item name="greyscale_gray_5_ui">@color/dark_greyscale_gray_5_ui</item>
-        <item name="greyscale_gray_6_ui">@color/dark_greyscale_gray_6_ui</item>
+        <item name="black">@color/black</item>
+        <item name="white">@color/white</item>
 
-        <item name="themeTextColor_ui">?attr/static_white_ui</item>
-        <item name="themeCheckBoxButtonTint_ui">?attr/static_white_ui</item>
+        <item name="themeTextColor">?attr/white</item>
+        <item name="themeCheckBoxButtonTint">?attr/white</item>
 
         <item name="android:checkboxStyle">@style/SPCheckbox.DefaultStyle</item>
     </style>
@@ -206,7 +173,7 @@
         <item name="colorAccent">?attr/brand_primary</item>
         <item name="cardBackgroundShadow">@drawable/card_background</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="cardTitleBackground">@color/light_greyscale_gray_6_ui</item>
+        <item name="cardTitleBackground">?attr/accent_secondary_violet</item>
         <item name="cardBackground">@color/white</item>
         <item name="cardTitleBackgroundLineHeight">0.5dp</item>
         <item name="themeMySpaceBackgroundColor">@color/white</item>
@@ -214,7 +181,7 @@
         <item name="themeLoadingBackgroundColor">@color/loading_transparent_black_half_ui</item>
         <item name="themeMistColorLight">@color/white</item>
         <item name="themeMistColorDark">@color/white</item>
-        <item name="shimmer_background">@color/light_greyscale_gray_6_ui</item>
+        <item name="shimmer_background">?attr/background_tertiary</item>
         <item name="shimmer_text_background">@color/white</item>
 
         //brand
@@ -316,25 +283,15 @@
         <item name="accent_quaternary_magenta">@color/magenta_5</item>
 
         //fill
-        <item name="fill_primary">@color/cool_gray_20</item>
+        <item name="fill_primary">@color/cool_gray_5</item>
         <item name="fill_secondary">@color/cool_gray_10</item>
-        <item name="fill_tertiary">@color/cool_gray_5</item>
+        <item name="fill_tertiary">@color/cool_gray_20</item>
 
-        ////// old ones
+        <item name="black">@color/black</item>
+        <item name="white">@color/white</item>
 
-        //gray scale
-        <item name="greyscale_gray_1_ui">@color/light_greyscale_gray_1_ui</item>
-        <item name="greyscale_gray_2_ui">@color/light_greyscale_gray_2_ui</item>
-        <item name="greyscale_gray_3_ui">@color/light_greyscale_gray_3_ui</item>
-        <item name="greyscale_gray_4_ui">@color/light_greyscale_gray_4_ui</item>
-        <item name="greyscale_gray_5_ui">@color/light_greyscale_gray_5_ui</item>
-        <item name="greyscale_gray_6_ui">@color/light_greyscale_gray_6_ui</item>
-
-
-
-
-        <item name="themeTextColor_ui">?attr/static_black_ui</item>
-        <item name="themeCheckBoxButtonTint_ui">?attr/static_black_ui</item>
+        <item name="themeTextColor">?attr/black</item>
+        <item name="themeCheckBoxButtonTint">?attr/black</item>
 
         <item name="android:checkboxStyle">@style/SPCheckbox.DefaultStyle</item>
     </style>

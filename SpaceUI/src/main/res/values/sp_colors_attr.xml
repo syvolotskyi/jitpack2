@@ -103,34 +103,10 @@
     <attr name="brand_secondary" format="color"/>
 
     // for show case app
-    <attr name="themeTextColor_ui" format="color"/>
-    <attr name="themeCheckBoxButtonTint_ui" format="color"/>
+    <attr name="themeTextColor" format="color"/>
+    <attr name="themeCheckBoxButtonTint" format="color"/>
 
-
-    // old ones
-    //gray scale
-    <attr name="greyscale_gray_1_ui" format="color"/>
-    <attr name="greyscale_gray_2_ui" format="color"/>
-    <attr name="greyscale_gray_3_ui" format="color"/>
-    <attr name="greyscale_gray_4_ui" format="color"/>
-    <attr name="greyscale_gray_5_ui" format="color"/>
-    <attr name="greyscale_gray_6_ui" format="color"/>
-
-    //static
-    <attr name="static_white_ui" format="color"/>
-    <attr name="static_black_ui" format="color"/>
-    <attr name="static_blue_ui" format="color"/>
-    <attr name="static_teal_ui" format="color"/>
-    <attr name="static_pink_ui" format="color"/>
-    <attr name="static_plum_ui" format="color"/>
-    <attr name="static_jade_ui" format="color"/>
-    <attr name="static_purple_ui" format="color"/>
-    <attr name="static_maroon_ui" format="color"/>
-    <attr name="static_green_ui" format="color"/>
-    <attr name="static_slate_ui" format="color"/>
-    <attr name="static_grey_ui" format="color"/>
-    <attr name="static_lead_ui" format="color"/>
-    <attr name="static_barry_ui" format="color"/>
-    <attr name="static_spruce_ui" format="color"/>
-    <attr name="static_tomato_ui" format="color"/>
+    // black and white
+    <attr name="black" format="color"/>
+    <attr name="white" format="color"/>
 </resources>

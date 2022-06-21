@@ -5,7 +5,7 @@
     android:id="@+id/lytMainHeader"
     android:layout_width="match_parent"
     android:layout_height="@dimen/sp_header_height"
-    android:background="?attr/static_white_ui"
+    android:background="?attr/white"
     tools:ignore="HardcodedText">
 
     <ge.space.ui.components.marks.SPMark

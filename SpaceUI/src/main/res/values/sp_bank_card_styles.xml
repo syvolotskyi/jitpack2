@@ -19,12 +19,12 @@
     </style>
 
     <style name="SPBankCardView.Favorite" parent="SPBankCardView.EmptySmall.Base">
-        <item name="ui_backgroundColor">?attr/static_white_ui</item>
+        <item name="ui_backgroundColor">?attr/white</item>
         <item name="isCircle">true</item>
         <item name="shadowOffsetX">@dimen/sp_favorite_shadow</item>
         <item name="shadowOffsetY">@dimen/sp_favorite_shadow</item>
         <item name="shadowRadius">@dimen/sp_favorite_shadow</item>
         <item name="shadowAlpha">8%</item>
-        <item name="shadowColor">?attr/static_black_ui</item>
+        <item name="shadowColor">?attr/black</item>
     </style>
 </resources>
