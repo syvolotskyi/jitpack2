@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-//Theme.MaterialComponents.Light.NoActionBar
+    //Theme.MaterialComponents.Light.NoActionBar
+
     <style name="BaseTheme.CoreUI" parent="Theme.MaterialComponents.Light.NoActionBar">
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
         <item name="brand_secondary">@color/light_brand_secondary</item>
-
-
-
-          </style>
+    </style>
 
     <style name="SPCoreThemeUI" parent="BaseTheme.CoreUI">
         <!-- Customize your theme here. -->
@@ -83,7 +81,8 @@
         //icon
         <item name="icon_primary">@color/gray_10</item>
         <item name="icon_secondary">@color/gray_40</item>
-        <item name="icon_contrast">@color/white</item> // dont have in dark in github
+        <item name="icon_contrast">@color/white</item>
+        // dont have in dark in github
 
         //status
         <item name="status_primary_distractive">@color/magenta_50</item>
