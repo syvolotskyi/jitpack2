@@ -7,44 +7,41 @@ import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.databinding.SpBankCardBodyBinding
 import ge.space.ui.components.buttons.SPButtonInline
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
+import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.runDelayed
-
-typealias OnCreate<B> = (parent: ViewGroup) -> B
-typealias OnBind<B, T> = (binding: B, item: T, position: Int) -> Unit
-typealias OnClick<B, T> = (binding: B, item: T, position: Int) -> Unit
 
 /**
  * SPOnBottomSheetBind help to handle dropdown the binding after selecting an item
  */
-open class SPOnBottomSheetAdapter<B : ViewBinding, T>(
-    private var items: List<T>,
+open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
+    private var items: List<Item>,
     var delayTime: Long = 300
 ) : RecyclerView.Adapter<SPOnBottomSheetAdapter.ListViewHolder>() {
 
     var onDismiss: () -> Unit = {}
-    private var _onCreate: OnCreate<B> = { throw IllegalStateException() }
-    private var _onBind: OnBind<B, T> = { _, _, _ -> }
-    private var _onClick: OnClick<B, T> = { _, _, _ -> }
+    private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
+    private var _onBind: OnBind<VB, Item> = { _, _, _ -> }
+    private var _onClick: OnClick<VB, Item> = { _, _, _ -> }
 
-    fun setup(block: SPOnBottomSheetAdapter<B, T>.() -> Unit): SPOnBottomSheetAdapter<B, T> {
+    fun setup(block: SPOnBottomSheetAdapter<VB, Item>.() -> Unit): SPOnBottomSheetAdapter<VB, Item> {
         block()
         return this
     }
 
-    fun setItems(items: List<T>) {
+    fun setItems(items: List<Item>) {
         this.items = items
         notifyDataSetChanged()
     }
 
-    fun onCreate(block: SPOnBottomSheetAdapter<B, T>.(parent: ViewGroup) -> B) {
+    fun onCreate(block: SPOnBottomSheetAdapter<VB, Item>.(parent: ViewGroup) -> VB) {
         _onCreate = { block(it) }
     }
 
-    fun onBind(block: SPOnBottomSheetAdapter<B, T>.(binding: B, item: T, position: Int) -> Unit) {
+    fun onBind(block: SPOnBottomSheetAdapter<VB, Item>.(binding: VB, item: Item, position: Int) -> Unit) {
         _onBind = { binding, item, position -> block(binding, item, position) }
     }
 
-    fun onClick(block: SPOnBottomSheetAdapter<B, T>.(binding: B, item: T, position: Int) -> Unit) {
+    fun onClick(block: SPOnBottomSheetAdapter<VB, Item>.(binding: VB, item: Item, position: Int) -> Unit) {
         _onClick = { binding, item, position -> block(binding, item, position) }
     }
 
@@ -59,10 +56,10 @@ open class SPOnBottomSheetAdapter<B : ViewBinding, T>(
             binding.root
         ).also { holder ->
             holder.binding = binding
-            holder.itemView.setOnClickListener {
+            holder.itemView.onClick {
                 _onClick(
-                    holder.binding as B,
-                    holder.item as T,
+                    holder.binding as VB,
+                    holder.item as Item,
                     holder.adapterPosition
                 )
                 runDelayed(delayTime, action = { onDismiss() })
@@ -79,7 +76,7 @@ open class SPOnBottomSheetAdapter<B : ViewBinding, T>(
     ) {
         val item = items[position]
         holder.item = item
-        _onBind(holder.binding as B, item, position)
+        _onBind(holder.binding as VB, item, position)
     }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -87,3 +84,18 @@ open class SPOnBottomSheetAdapter<B : ViewBinding, T>(
         var binding: Any? = null
     }
 }
+
+/**
+ * OnCreate calls for creating View and return binding of it
+ */
+typealias OnCreate<B> = (parent: ViewGroup) -> B
+
+/**
+ * OnBind calls when item should be created and throw binding of it, item and position
+ */
+typealias OnBind<B, T> = (binding: B, item: T, position: Int) -> Unit
+
+/**
+ * OnClick calls when item was clicked
+ */
+typealias OnClick<B, T> = (binding: B, item: T, position: Int) -> Unit

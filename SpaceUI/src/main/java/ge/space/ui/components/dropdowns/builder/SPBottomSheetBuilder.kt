@@ -4,18 +4,18 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
-import ge.space.ui.components.dropdowns.SpBottomSheetFragment
-import ge.space.ui.components.dropdowns.strategy.SpBottomSheetStrategy
+import ge.space.ui.components.dropdowns.SPBottomSheetFragment
+import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 
 class SPBottomSheetBuilder(activity: FragmentActivity) :
-    SPBaseDialogBuilder<SpBottomSheetFragment>(activity) {
+    SPBaseDialogBuilder<SPBottomSheetFragment>(activity) {
 
     private var title: String? = null
     private var titleStyle: Int? = null
     private var icon: Int? = null
     private var description: String? = null
     private var descriptionStyle: Int? = null
-    private var strategy: SpBottomSheetStrategy? = null
+    private var strategy: SPBottomSheetStrategy? = null
 
     fun setIcon(icon: Int?): SPBottomSheetBuilder {
         this.icon = icon
@@ -23,7 +23,7 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
         return this
     }
 
-    fun setStrategy(strategy: SpBottomSheetStrategy?): SPBottomSheetBuilder {
+    fun setStrategy(strategy: SPBottomSheetStrategy?): SPBottomSheetBuilder {
         this.strategy = strategy
 
         return this
@@ -47,15 +47,15 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
         return this
     }
 
-    override fun build(): SpBottomSheetFragment =
-        SpBottomSheetFragment().apply {
+    override fun build(): SPBottomSheetFragment =
+        SPBottomSheetFragment().apply {
             arguments = bundleOf(
-                SpBottomSheetFragment.KEY_TITLE to title,
-                SpBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
-                SpBottomSheetFragment.KEY_ICON to icon,
-                SpBottomSheetFragment.KEY_DESCRIPTION to description,
-                SpBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle
+                SPBottomSheetFragment.KEY_TITLE to title,
+                SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
+                SPBottomSheetFragment.KEY_ICON to icon,
+                SPBottomSheetFragment.KEY_DESCRIPTION to description,
+                SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle
             )
-           bottomStrategy =  strategy
-    }
+            strategy?.let { setBottomStrategy(it) }
+        }
 }

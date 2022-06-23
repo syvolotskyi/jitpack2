@@ -18,10 +18,10 @@ import ge.space.ui.components.dialogs.data.SPDialogInfo
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
-import ge.space.ui.components.dropdowns.SpBottomSheetFragment.Companion.DIALOG_FRAGMENT_TAG
+import ge.space.ui.components.dropdowns.SPBottomSheetFragment.Companion.DIALOG_FRAGMENT_TAG
 import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
 import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
-import ge.space.ui.components.dropdowns.strategy.SpListSheetStrategy
+import ge.space.ui.components.dropdowns.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
@@ -126,7 +126,6 @@ class SPDropdownComponent : ShowCaseComponent {
 
                     val list = SPTextFieldsDropdownItems.getList(view.context)
                     val dialog = SPBottomSheetBuilder(fragmentActivity)
-                        .setDismissOnItemClicked(true)
                         .setTitle(view.resources.getString(R.string.selectLanguage))
                         .setIcon(R.drawable.ic_cake_24_regular)
                         .build()
@@ -150,7 +149,7 @@ class SPDropdownComponent : ShowCaseComponent {
                             }
                         }
 
-                    dialog.bottomStrategy = SpListSheetStrategy(adapter)
+                    dialog.setBottomStrategy(SPListSheetStrategy(adapter))
                     dialog.show(fragmentActivity.supportFragmentManager, DIALOG_FRAGMENT_TAG)
                 }
                 .build(fragmentActivity)
@@ -194,7 +193,6 @@ class SPDropdownComponent : ShowCaseComponent {
                 .setItems(SPTextFieldsDropdownItems.getList(view.context))
                 .setOnClickListener {
                     val dialog = SPBottomSheetBuilder(fragmentActivity)
-                        .setDismissOnItemClicked(true)
                         .setTitle(view.resources.getString(R.string.selectLanguage))
                         .setIcon(R.drawable.ic_cake_24_regular)
                         .build()
@@ -204,21 +202,21 @@ class SPDropdownComponent : ShowCaseComponent {
                         SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>(
                             list
                         ).setup {
-                            onCreate { parent ->
+                            onCreate { _ ->
                                 SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                             }
-                            onBind { binding, resId, position ->
+                            onBind { binding, item, position ->
                                 binding.radio2.setData(
-                                    list[position].value,
-                                    list[position].iconData?.createView(view.context)
+                                    item.value,
+                                    item.iconData?.createView(view.context)
                                 )
                             }
-                            onClick { binding, item, position ->
+                            onClick { binding, item, _ ->
                                 binding.radio2.isChecked = true
-                                it.onSelectedItem(list[position])
+                                it.onSelectedItem(item)
                             }
                         }
-                    dialog.bottomStrategy = SpListSheetStrategy(adapter)
+                    dialog.setBottomStrategy(SPListSheetStrategy(adapter))
                     dialog.show(fragmentActivity.supportFragmentManager, DIALOG_FRAGMENT_TAG)
                 }
                 .build(fragmentActivity)

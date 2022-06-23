@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/SPBottomSheet.Base"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,7 +23,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dimen_p_8"
             android:layout_marginBottom="@dimen/dimen_p_16"
-            android:background="@drawable/menu_line_view" />
+            android:background="@drawable/menu_line_view"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/titleMessageLabel"
