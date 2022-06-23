@@ -7,11 +7,11 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 
-class SPButtonPillComponent  : ShowCaseComponent {
+class SPPillItemComponent  : ShowCaseComponent {
 
-    override fun getNameResId() = R.string.button_pill
+    override fun getNameResId() = R.string.drawer_pill
 
-    override fun getDescriptionResId() = R.string.button_pill_description
+    override fun getDescriptionResId() = R.string.drawer_pill_description
 
     override fun getComponentClass(): Class<*> = SPFactory::class.java
 

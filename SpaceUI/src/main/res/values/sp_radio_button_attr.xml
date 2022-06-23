@@ -10,7 +10,7 @@
         <attr name="descriptionText" />
     </declare-styleable>
 
-    <declare-styleable name="SPPillButton">
+    <declare-styleable name="SPPillItem">
         <attr name="selectedTextAppearance" format="reference"/>
         <attr name="unselectedTextAppearance" format="reference"/>
         <attr name="isChecked" format="reference"/>

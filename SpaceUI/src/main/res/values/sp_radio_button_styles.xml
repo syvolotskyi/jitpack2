@@ -23,14 +23,14 @@
     </style>
 
 
-    <style name="SPPillButtonStandard" >
+    <style name="SPPillItemStandard" >
         <item name="android:button">@null</item>
         <item name="roundedCorners">@dimen/dimen_p_6</item>
         <item name="android:foreground">@drawable/toggle_icon_ripple</item>
-        <item name="selectedBackgroundColor">?attr/brand_primary_ui</item>
+        <item name="selectedBackgroundColor">?attr/brand_primary</item>
         <item name="selectedShadowStyle">@style/shadow_300_brand</item>
         <item name="unselectedShadowStyle">@style/shadow_300_primary</item>
-        <item name="unselectedBackgroundColor">?attr/static_white_ui</item>
+        <item name="unselectedBackgroundColor">@color/white</item>
         <item name="selectedTextAppearance">@style/h700_bold_caps_primary_white</item>
         <item name="unselectedTextAppearance">@style/h700_bold_caps_brand_primary</item>
     </style>

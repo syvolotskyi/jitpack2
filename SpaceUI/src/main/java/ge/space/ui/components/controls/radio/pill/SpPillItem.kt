@@ -5,14 +5,11 @@ import android.content.res.TypedArray
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPillLayoutBinding
-import ge.space.spaceui.databinding.SpRadioButtonBinding
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.util.extension.getColorFromAttribute
@@ -21,20 +18,20 @@ import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setTextStyle
 
 /**
- *  SPPillButtonView view extended from [SpBaseRadioButton] that allows to change its configuration.
+ *  SpPillItem view extended from [SpBaseRadioButton] that allows to change its configuration.
  * It has to be extended to apply styled properties.
  *
  * @property title [String] value which applies a button label text
  */
-class SpPillButton @JvmOverloads constructor(
+class SpPillItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPPillButtonStandard
+    @StyleRes defStyleRes: Int = R.style.SPPillItemStandard
 ) : SpBaseRadioButton(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     private var selectedBackgroundColor: Int =
-        context.getColorFromAttribute(R.attr.brand_primary_ui)
+        context.getColorFromAttribute(R.attr.brand_primary)
     private var unselectedBackgroundColor: Int = Color.WHITE
 
     private var selectedShadowStyle: Int =
@@ -50,7 +47,7 @@ class SpPillButton @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPPillButton,
+            R.styleable.SPPillItem,
             defStyleAttr,
             defStyleRes
         ) {
@@ -60,40 +57,40 @@ class SpPillButton @JvmOverloads constructor(
 
     private fun TypedArray.applyStyledAttributes() {
         val text = getString(
-            R.styleable.SPPillButton_android_text
+            R.styleable.SPPillItem_android_text
         ).orEmpty()
 
         getResourceId(
-            R.styleable.SPPillButton_selectedTextAppearance,
+            R.styleable.SPPillItem_selectedTextAppearance,
             DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
             titleTextAppearance = it
         }
         unselectedTitleTextAppearance = getResourceId(
-            R.styleable.SPPillButton_unselectedTextAppearance,
+            R.styleable.SPPillItem_unselectedTextAppearance,
             DEFAULT_OBTAIN_VAL
         )
 
         selectedShadowStyle = getResourceId(
-            R.styleable.SPPillButton_selectedShadowStyle,
+            R.styleable.SPPillItem_selectedShadowStyle,
             DEFAULT_OBTAIN_VAL
         )
 
         unselectedShadowStyle = getResourceId(
-            R.styleable.SPPillButton_unselectedShadowStyle,
+            R.styleable.SPPillItem_unselectedShadowStyle,
             DEFAULT_OBTAIN_VAL
         )
 
         selectedBackgroundColor = getColor(
-            R.styleable.SPPillButton_selectedBackgroundColor,
-            context.getColorFromAttribute(R.attr.brand_primary_ui)
+            R.styleable.SPPillItem_selectedBackgroundColor,
+            context.getColorFromAttribute(R.attr.brand_primary)
         )
         unselectedBackgroundColor = getColor(
-            R.styleable.SPPillButton_unselectedBackgroundColor,
+            R.styleable.SPPillItem_unselectedBackgroundColor,
             Color.WHITE
         )
         isChecked = getBoolean(
-            R.styleable.SPPillButton_isChecked,
+            R.styleable.SPPillItem_isChecked,
             false
         )
 
