@@ -53,7 +53,6 @@ class SPDropdownComponent : ShowCaseComponent {
 
             dropdowns.add(
                 createDropdownFromXml(
-                    layoutBinding,
                     layoutBinding.textFieldDropdown,
                     environment.requireFragmentActivity()
                 )
@@ -98,7 +97,6 @@ class SPDropdownComponent : ShowCaseComponent {
         }
 
         private fun createDropdownFromXml(
-            layoutBinding: SpLayoutTextFieldsDropdownShowcaseBinding,
             view: SPTextFieldDropdown<*>,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
