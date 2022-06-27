@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
-import android.view.ViewTreeObserver
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import androidx.fragment.app.FragmentActivity
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.components.dropdowns.SPBottomSheetFragment
+import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
+import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
+import ge.space.ui.components.dropdowns.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
 import ge.space.ui.util.extension.EMPTY_TEXT
@@ -26,32 +30,43 @@ import ge.space.ui.util.extension.setWidth
  * @property listItems sets a list of items
  * @property defaultItem sets a default item
  */
-class SPTextFieldDropdown<T> @JvmOverloads constructor(
+class SPTextFieldDropdown<Item> @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPTextField_Dropdown
 ) : SPTextFieldInput(context, attrs, defStyleAttr, defStyleRes) {
 
+    var activity: FragmentActivity? = null
+
     /**
      * Binding a item view after selecting
      */
-    var bindViewValue: (view: SPTextFieldDropdown<T>, item: T) -> Unit = { _, _ -> }
+    var bindViewValue: (view: SPTextFieldDropdown<Item>, item: Item) -> Unit = { _, _ -> }
 
     /**
      * On dropdown click listener
      */
-    var onClickListener: (SPTextFieldDropdown<T>) -> Unit = { }
+    var onClickListener: (SPTextFieldDropdown<Item>) -> Unit = { }
 
     /**
      * Sets items
      */
-    var listItems: List<T> = emptyList()
+    var listItems: List<Item> = emptyList()
 
     /**
      * Sets a default item
      */
-    private var defaultItem: T? = null
+    private var defaultItem: Item? = null
+
+    /**
+     * An selected item
+     */
+    private var selectedItem: Item? = null
+    /**
+     * Sets an adapter for bottom sheet
+     */
+    private var adapter: SPOnBottomSheetAdapter<*, Item>? = null
 
     /**
      * Sets a inflate Type
@@ -84,7 +99,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
     /**
      * Sets a default Item and bind it
      */
-    fun setDefault(type: T) {
+    fun setDefault(type: Item) {
         defaultItem = type
 
         defaultItem?.let { bindViewValue(this, it) }
@@ -100,21 +115,46 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             applyStyledAttrs()
         }
 
-        onClick { onClickListener(this) }
+        onClick { handleOnClick() }
     }
 
     override fun handleContentInputView() {
         super.handleContentInputView()
 
         contentInputView.isFocusableInTouchMode = false
-        contentInputView.onClick { onClickListener(this) }
+        contentInputView.onClick { handleOnClick() }
+    }
+
+    private fun handleOnClick() {
+        if (adapter != null) {
+            activity?.let { activity ->
+                val dialog = SPBottomSheetBuilder(activity)
+                    .setTitle(labelText)
+                    .build()
+
+                adapter?.let { dialog.setBottomStrategy(SPListSheetStrategy(it)) }
+                dialog.show(
+                    activity.supportFragmentManager,
+                    SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
+                )
+            }
+        } else {
+            onClickListener(this)
+        }
     }
 
     /**
      * Bind selected Item
      */
-    fun onSelectedItem(item: T) =
+    fun selectItem(item: Item) {
+
         bindViewValue(this, item)
+    }
+
+    /**
+     * Returns an selected item if it exists
+     */
+    fun getSelectedItem() = selectedItem
 
     override fun setViewStyle(newStyle: Int) {
         super.setViewStyle(newStyle)
@@ -129,6 +169,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
         inflateType = InflateType.values()[inflateId]
+
     }
 
     enum class InflateType {
@@ -140,20 +181,21 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
      * Builder class which allows to create [SPTextFieldDropdown]
      */
     companion object
-    class SPTextFieldDropdownBuilder<T> {
+    class SPTextFieldDropdownBuilder<Item>(val fragmentActivity: FragmentActivity) {
         private var title: String = EMPTY_TEXT
         private var description: String = EMPTY_TEXT
-        private var listener: (SPTextFieldDropdown<T>) -> Unit = { }
-        private var default: T? = null
-        private var view: SPTextFieldDropdown<T>? = null
-        private var items: List<T> = emptyList()
+        private var listener: (SPTextFieldDropdown<Item>) -> Unit = { }
+        private var default: Item? = null
+        private var view: SPTextFieldDropdown<Item>? = null
+        private var items: List<Item> = emptyList()
+        private var bottomSheetAdapter: SPOnBottomSheetAdapter<*, Item>? = null
         private var style: Int = R.style.SPTextField_Dropdown
-        private var onBind: SPOnDropdownBind<T>? = null
+        private var onBind: SPOnDropdownBind<Item>? = null
 
         /**
          * Sets a style resource
          */
-        fun setStyle(@StyleRes newStyle: Int = R.style.SPTextField_Dropdown): SPTextFieldDropdownBuilder<T> {
+        fun setStyle(@StyleRes newStyle: Int = R.style.SPTextField_Dropdown): SPTextFieldDropdownBuilder<Item> {
             style = newStyle
 
             return this
@@ -163,8 +205,8 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
          * Sets a view from xml
          */
         @Suppress("UNCHECKED_CAST")
-        fun withView(view: SPTextFieldDropdown<*>): SPTextFieldDropdownBuilder<T> {
-            this.view = view as SPTextFieldDropdown<T>
+        fun withView(view: SPTextFieldDropdown<*>): SPTextFieldDropdownBuilder<Item> {
+            this.view = view as SPTextFieldDropdown<Item>
 
             return this
         }
@@ -172,7 +214,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Sets a label text.
          */
-        fun setTitle(string: String): SPTextFieldDropdownBuilder<T> {
+        fun setTitle(string: String): SPTextFieldDropdownBuilder<Item> {
             this.title = string
 
             return this
@@ -181,7 +223,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Sets a description text.
          */
-        fun setDescription(string: String): SPTextFieldDropdownBuilder<T> {
+        fun setDescription(string: String): SPTextFieldDropdownBuilder<Item> {
             this.description = string
 
             return this
@@ -190,8 +232,18 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Sets a list of item with witch will work dropdown
          */
-        fun setItems(items: List<T>): SPTextFieldDropdownBuilder<T> {
+        fun setItems(items: List<Item>): SPTextFieldDropdownBuilder<Item> {
             this.items = items
+
+            return this
+        }
+
+        /**
+         * Sets a adapter for bottom sheet
+         */
+        fun setBottomSheetAdapter(adapter: SPOnBottomSheetAdapter<*, Item>): SPTextFieldDropdownBuilder<Item> {
+
+            this.bottomSheetAdapter = adapter
 
             return this
         }
@@ -199,7 +251,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Sets a on click listener for dropdown
          */
-        fun setOnClickListener(function: (SPTextFieldDropdown<T>) -> Unit): SPTextFieldDropdownBuilder<T> {
+        fun setOnClickListener(function: (SPTextFieldDropdown<Item>) -> Unit): SPTextFieldDropdownBuilder<Item> {
             listener = function
 
             return this
@@ -208,7 +260,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Binding a item view after selecting
          */
-        fun setOnBindDropdownItem(onBindInterface: SPOnDropdownBind<T>): SPTextFieldDropdownBuilder<T> {
+        fun setOnBindDropdownItem(onBindInterface: SPOnDropdownBind<Item>): SPTextFieldDropdownBuilder<Item> {
             onBind = onBindInterface
 
             return this
@@ -217,7 +269,7 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         /**
          * Sets a default item
          */
-        fun setDefault(default: T): SPTextFieldDropdownBuilder<T> {
+        fun setDefault(default: Item): SPTextFieldDropdownBuilder<Item> {
             this.default = default
 
             return this
@@ -231,10 +283,15 @@ class SPTextFieldDropdown<T> @JvmOverloads constructor(
         fun build(context: Context): SPTextFieldDropdown<*> =
             (view ?: SPTextFieldDropdown(context)).apply {
                 setViewStyle(style)
+                adapter = bottomSheetAdapter
+                adapter?.setItems(items)
+                adapter?.addOnClick { _, item, _ ->
+                    selectItem(item)
+                }
 
                 labelText = title
                 descriptionText = description
-
+                activity = fragmentActivity
                 onClickListener = listener
                 onBind?.let { bindViewValue = it.getBindItemModel() }
                 listItems = items

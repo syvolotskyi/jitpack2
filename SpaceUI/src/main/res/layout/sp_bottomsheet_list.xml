@@ -6,18 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <!-- Search view -->
-    <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_p_8"
-        android:hint="Search"
-        app:startView="icon"
-        android:visibility="visible"
-        tools:visibility="visible"
-        app:startViewIcon="@drawable/ic_search_24_regular" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

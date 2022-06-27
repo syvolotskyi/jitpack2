@@ -1,12 +1,10 @@
 package ge.space.ui.components.dropdowns.data
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import ge.space.spaceui.databinding.SpBankCardBodyBinding
-import ge.space.ui.components.buttons.SPButtonInline
-import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.runDelayed
 
@@ -14,7 +12,7 @@ import ge.space.ui.util.extension.runDelayed
  * SPOnBottomSheetBind help to handle dropdown the binding after selecting an item
  */
 open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
-    private var items: List<Item>,
+    private var items: List<Item> = emptyList(),
     var delayTime: Long = 300
 ) : RecyclerView.Adapter<SPOnBottomSheetAdapter.ListViewHolder>() {
 
@@ -28,6 +26,7 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
         return this
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: List<Item>) {
         this.items = items
         notifyDataSetChanged()
@@ -45,6 +44,17 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
         _onClick = { binding, item, position -> block(binding, item, position) }
     }
 
+    fun addOnClick(block: SPOnBottomSheetAdapter<VB, Item>.(binding: VB, item: Item, position: Int) -> Unit) {
+        val previusAction = _onClick
+        _onClick = { binding, item, position ->
+            previusAction(
+                binding,
+                item,
+                position
+            )
+            block(binding, item, position)
+        }
+    }
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateViewHolder(

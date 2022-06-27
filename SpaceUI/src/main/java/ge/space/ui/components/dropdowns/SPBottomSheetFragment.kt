@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetBinding
@@ -39,8 +40,7 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.titleMessageLabel.text = dialogTitleMessage
-        titleStyle?.let { binding.titleMessageLabel.setTextStyle(it) }
-
+        handleTitleStyle()
 
         dialogDescriptionMessage?.let {
             binding.descriptionMessageLabel.show()
@@ -48,13 +48,20 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
             descriptionStyle?.let { binding.descriptionMessageLabel.setTextStyle(it) }
         }
 
-        bottomStrategy?.let { setBottomStrategy(it) }
-    }
-
-    fun setBottomStrategy(value: SPBottomSheetStrategy) {
-        bottomStrategy = value
+        dialogTitleIcon?.let {
+            binding.titleImage.setImageResource(it)
+            binding.titleImage.show()
+        }
 
         bottomStrategy?.onCreate(binding.standardBottomSheet) { dismiss() }
+    }
+
+    fun setBottomStrategy(value: SPBottomSheetStrategy?) {
+        bottomStrategy = value
+    }
+
+    private fun handleTitleStyle() {
+        titleStyle?.let { binding.titleMessageLabel.setTextStyle(it) }
     }
 
     companion object {

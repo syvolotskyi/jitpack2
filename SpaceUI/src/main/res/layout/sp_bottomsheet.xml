@@ -5,13 +5,13 @@
     style="@style/SPBottomSheet.Base"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/menu_background"
     android:fitsSystemWindows="true"
     app:behavior_hideable="true"
-    android:background="@drawable/menu_background"
     app:behavior_peekHeight="80dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -24,15 +24,35 @@
             android:layout_marginTop="@dimen/dimen_p_8"
             android:layout_marginBottom="@dimen/dimen_p_16"
             android:background="@drawable/menu_line_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/titleImage"
+            android:layout_width="@dimen/dimen_p_24"
+            android:layout_height="@dimen/dimen_p_24"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/dimen_p_8"
+            android:layout_marginStart="@dimen/dimen_p_16"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menuTitleImage"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_search_24_regular"/>
 
         <TextView
             android:id="@+id/titleMessageLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/titleImage"
             android:layout_marginHorizontal="@dimen/dimen_p_30"
+            android:gravity="center"
             android:text="@string/enter_you_details_here"
-            android:visibility="gone" />
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@+id/titleImage"
+            app:layout_constraintTop_toTopOf="@id/titleImage" />
 
         <TextView
             android:id="@+id/descriptionMessageLabel"
@@ -41,18 +61,23 @@
             android:layout_marginHorizontal="@dimen/dimen_p_30"
             android:layout_marginBottom="@dimen/dimen_p_15"
             android:text="@string/enter_you_details_here"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleMessageLabel" />
 
         <LinearLayout
             android:id="@+id/standard_bottom_sheet"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleMessageLabel">
 
             <!-- Bottom sheet contents. -->
 
         </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
 

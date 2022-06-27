@@ -9,6 +9,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowc
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getDefaultLangItem
 import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getLanguagesList
 import ge.space.spaceui.databinding.SpLangItemLayoutBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
@@ -28,8 +29,6 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemMode
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownItemModelBind
 import ge.space.ui.util.extension.EMPTY_TEXT
-import ge.space.ui.util.extension.setHeight
-import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
 import java.util.*
@@ -106,7 +105,27 @@ class SPDropdownComponent : ShowCaseComponent {
             view: SPTextFieldDropdown<*>,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
+
+            val adapter =
+                SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
+                    .setup {
+                        onCreate { _ ->
+                            SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
+                        }
+                        onBind { binding, item, _ ->
+                            binding.radio2.setData(
+                                item.value,
+                                item.iconData?.createView(view.context)
+                            )
+                        }
+                        onClick { binding, _, _ ->
+                            binding.radio2.isChecked = true
+                        }
+                    }
+
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
+                fragmentActivity
+            )
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
                 .setDefault(
@@ -122,36 +141,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
                 .setOnBindDropdownItem(SPOnDropdownItemModelBind())
                 .setItems(SPTextFieldsDropdownItems.getList(view.context))
-                .setOnClickListener {
-
-                    val list = SPTextFieldsDropdownItems.getList(view.context)
-                    val dialog = SPBottomSheetBuilder(fragmentActivity)
-                        .setTitle(view.resources.getString(R.string.selectLanguage))
-                        .setIcon(R.drawable.ic_cake_24_regular)
-                        .build()
-                    val adapter =
-                        SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>(
-                            list
-                        ).setup {
-                            onCreate { parent ->
-                                SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
-                            }
-                            onBind { binding, resId, position ->
-                                binding.radio2.setData(
-                                    list[position].value,
-                                    list[position].iconData?.createView(view.context)
-                                )
-                            }
-                            onClick { binding, item, position ->
-                                binding.radio2.isChecked = true
-                                it.onSelectedItem(list[position])
-                                dialog.dismiss()
-                            }
-                        }
-
-                    dialog.setBottomStrategy(SPListSheetStrategy(adapter))
-                    dialog.show(fragmentActivity.supportFragmentManager, DIALOG_FRAGMENT_TAG)
-                }
+                .setBottomSheetAdapter(adapter)
                 .build(fragmentActivity)
         }
 
@@ -160,65 +150,33 @@ class SPDropdownComponent : ShowCaseComponent {
             view: SPTextFieldDropdown<*>,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
-            val default = getLanguagesList(view.context)[0]
 
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>()
+            val adapter =
+                SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
+                    onCreate { _ ->
+                        SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
+                    }
+                    onBind { binding, item, position ->
+                        binding.radio2.setData(
+                            item.value,
+                            item.iconData?.createView(view.context)
+                        )
+                    }
+                    onClick { binding, item, _ ->
+                        binding.radio2.isChecked = true
+                    }
+                }
+
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
+                fragmentActivity
+            )
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
-                .setDefault(default)
+                .setDefault(getDefaultLangItem(view.context))
                 .setTitle(view.context.getString(R.string.selectLanguage))
-                .setOnBindDropdownItem(object : SPOnDropdownBind<SPDropdownItemModel> {
-                    override fun getBindItemModel(): (SPTextFieldDropdown<SPDropdownItemModel>, SPDropdownItemModel) -> Unit =
-                        { dropdown, item ->
-                            item.iconData?.let {
-                                val image = it.createView(view.context).apply {
-                                    setHeight(context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small))
-                                    setWidth(context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small))
-                                    setPadding(
-                                        view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_6),
-                                        0,
-                                        view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_6),
-                                        0
-                                    )
-                                }
-                                view.setImage(
-                                    image,
-                                    view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_40),
-                                    view.context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small)
-                                )
-                            }
-                            view.text = item.value
-                        }
-                })
-                .setItems(SPTextFieldsDropdownItems.getList(view.context))
-                .setOnClickListener {
-                    val dialog = SPBottomSheetBuilder(fragmentActivity)
-                        .setTitle(view.resources.getString(R.string.selectLanguage))
-                        .setIcon(R.drawable.ic_cake_24_regular)
-                        .build()
-
-                    val list = getLanguagesList(view.context)
-                    val adapter =
-                        SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>(
-                            list
-                        ).setup {
-                            onCreate { _ ->
-                                SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
-                            }
-                            onBind { binding, item, position ->
-                                binding.radio2.setData(
-                                    item.value,
-                                    item.iconData?.createView(view.context)
-                                )
-                            }
-                            onClick { binding, item, _ ->
-                                binding.radio2.isChecked = true
-                                it.onSelectedItem(item)
-                            }
-                        }
-                    dialog.setBottomStrategy(SPListSheetStrategy(adapter))
-                    dialog.show(fragmentActivity.supportFragmentManager, DIALOG_FRAGMENT_TAG)
-                }
+                .setOnBindDropdownItem(SPOnLangItemModelBind())
+                .setItems(getLanguagesList(view.context))
+                .setBottomSheetAdapter(adapter)
                 .build(fragmentActivity)
         }
 
@@ -227,7 +185,7 @@ class SPDropdownComponent : ShowCaseComponent {
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
             val items = SPTextFieldsDropdownItems.getList(view.context).map { it.value }
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<String>()
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<String>(fragmentActivity)
                 .setStyle(R.style.SPTextField_Dropdown)
                 .setDefault(view.context.getString(R.string.enter_you_details_here))
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
@@ -261,7 +219,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     it,
                     SPDialogBottomVerticalButton.BottomButtonType.Default
                 ) {
-                    view.onSelectedItem(it)
+                    view.selectItem(it)
                 }
             } as ArrayList<SPDialogInfoHolder>
     }

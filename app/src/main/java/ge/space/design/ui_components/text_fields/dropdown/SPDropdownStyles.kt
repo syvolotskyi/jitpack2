@@ -29,6 +29,8 @@ object SPTextFieldsDropdownItems {
         )
     )
 
+    fun getDefaultLangItem(context: Context) = getLanguagesList(context)[0]
+
     fun getLanguagesList(context: Context) = listOf(
         SPDropdownItemModel(
             1,
