@@ -303,7 +303,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     open fun setBaseViewStyle(@StyleRes defStyleRes: Int) {
-        context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style){
+        context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style) {
             withApplyResource()
             withApplyShadowResource()
         }
@@ -320,7 +320,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      * @param defStyleRes [Int] style resource id
      */
     open fun setBaseViewShadowStyle(@StyleRes defStyleRes: Int) {
-        context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style){
+        context.withStyledAttributes(defStyleRes, R.styleable.sp_view_style) {
             withApplyShadowResource()
         }
     }
@@ -351,14 +351,17 @@ abstract class SPBaseView @JvmOverloads constructor(
         )
     }
 
+
+    /**
+     * get a shadow attributes from TypedArray and implement it.
+     *
+     */
     private fun TypedArray.withApplyShadowResource() {
         shadowColor = getColor(R.styleable.sp_view_style_shadowColor, Color.BLACK)
         shadowAlpha = getFraction(
-            R.styleable.sp_view_style_shadowAlpha,
-            ALPHA_BASE,
-            ALPHA_BASE,
-            DEFAULT_ALPHA
-        ).scaleTo(ALPHA_SCALE)
+            R.styleable.sp_view_style_shadowAlpha, ALPHA_BASE, ALPHA_BASE, DEFAULT_ALPHA
+        )
+            .scaleTo(ALPHA_SCALE)
         shadowRadius = getDimensionPixelSize(
             R.styleable.sp_view_style_shadowRadius, DEFAULT_OBTAIN_VAL
         ).toFloat()
@@ -485,6 +488,7 @@ abstract class SPBaseView @JvmOverloads constructor(
             radius
         }
     }
+
     companion object {
         const val SIDE_RATIO = 2
         const val SQUARE_RATIO = 4

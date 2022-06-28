@@ -23,7 +23,7 @@ import ge.space.ui.util.extension.setTextStyle
  *
  * @property title [String] value which applies a button label text
  */
-class SpPillItem @JvmOverloads constructor(
+class SPPillItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     @AttrRes defStyleAttr: Int = 0,

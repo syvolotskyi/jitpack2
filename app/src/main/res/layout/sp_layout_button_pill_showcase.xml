@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ge.space.ui.components.controls.radio.pill.SpPillItem
+        <ge.space.ui.components.controls.radio.pill.SPPillItem
             android:id="@+id/toggleSwitch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:layout_marginStart="@dimen/dimen_p_16"
             android:text="1x" />
 
-        <ge.space.ui.components.controls.radio.pill.SpPillItem
+        <ge.space.ui.components.controls.radio.pill.SPPillItem
             android:id="@+id/toggleSwitch2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_marginStart="@dimen/dimen_p_16"
             android:text="2x" />
 
-        <ge.space.ui.components.controls.radio.pill.SpPillItem
+        <ge.space.ui.components.controls.radio.pill.SPPillItem
             android:id="@+id/toggleSwitch3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
