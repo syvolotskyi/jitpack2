@@ -1,0 +1,6 @@
+<fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="ge.space.ui.components.dropdowns.strategy.SPBottomMenuHelperFragment"
+        android:id="@+id/fragBag"
+        android:layout_width="match_parent"
+        android:orientation="vertical" android:layout_height="match_parent"/>
