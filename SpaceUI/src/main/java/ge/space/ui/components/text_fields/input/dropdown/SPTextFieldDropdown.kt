@@ -40,7 +40,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
     var activity: FragmentActivity? = null
 
     /**
-     * Binding a item view after selecting
+     * Binding an item view after selecting
      */
     var bindViewValue: (view: SPTextFieldDropdown<Item>, item: Item) -> Unit = { _, _ -> }
 
@@ -63,6 +63,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
      * An selected item
      */
     private var selectedItem: Item? = null
+
     /**
      * Sets an adapter for bottom sheet
      */
@@ -125,28 +126,24 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         contentInputView.onClick { handleOnClick() }
     }
 
-    private fun handleOnClick() {
-        if (adapter != null) {
-            activity?.let { activity ->
-                val dialog = SPBottomSheetBuilder(activity)
-                    .setTitle(labelText)
-                    .build()
-
-                adapter?.let { dialog.setBottomStrategy(SPListSheetStrategy(it)) }
-                dialog.show(
-                    activity.supportFragmentManager,
-                    SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
-                )
-            }
-        } else {
-            onClickListener(this)
-        }
-    }
+    private fun handleOnClick() =
+        activity?.let { activity ->
+            SPBottomSheetBuilder(activity)
+                .setTitle(labelText)
+                .build()
+                .apply {
+                    setBottomStrategy(SPListSheetStrategy(adapter!!))
+                    show(
+                        activity.supportFragmentManager,
+                        SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
+                    )
+                }
+        } ?: onClickListener(this)
 
     /**
-     * Bind selected Item
+     * Bind Item
      */
-    fun selectItem(item: Item) {
+    fun bindItem(item: Item) {
 
         bindViewValue(this, item)
     }
@@ -258,7 +255,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         }
 
         /**
-         * Binding a item view after selecting
+         * Binding an item view after selecting
          */
         fun setOnBindDropdownItem(onBindInterface: SPOnDropdownBind<Item>): SPTextFieldDropdownBuilder<Item> {
             onBind = onBindInterface
@@ -286,7 +283,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
                 adapter = bottomSheetAdapter
                 adapter?.setItems(items)
                 adapter?.addOnClick { _, item, _ ->
-                    selectItem(item)
+                    bindItem(item)
                 }
 
                 labelText = title

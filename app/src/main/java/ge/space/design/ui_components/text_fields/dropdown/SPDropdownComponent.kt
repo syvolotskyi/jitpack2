@@ -19,10 +19,7 @@ import ge.space.ui.components.dialogs.data.SPDialogInfo
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
-import ge.space.ui.components.dropdowns.SPBottomSheetFragment.Companion.DIALOG_FRAGMENT_TAG
-import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
 import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
-import ge.space.ui.components.dropdowns.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
@@ -112,15 +109,16 @@ class SPDropdownComponent : ShowCaseComponent {
                         onCreate { _ ->
                             SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                         }
-                        onBind { binding, item, _ ->
+                        onBind { binding, item, position ->
                             binding.radio2.setData(
                                 item.value,
                                 item.iconData?.createView(view.context)
                             )
+                            binding.radio2.isChecked = getSelectedItem() == position
                         }
-                        onClick { binding, _, _ ->
-                            binding.radio2.isChecked = true
-                        }
+
+                        //added first selected item
+                        setSelectedItem(0)
                     }
 
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
@@ -161,10 +159,11 @@ class SPDropdownComponent : ShowCaseComponent {
                             item.value,
                             item.iconData?.createView(view.context)
                         )
+                        binding.radio2.isChecked = getSelectedItem() == position
                     }
-                    onClick { binding, item, _ ->
-                        binding.radio2.isChecked = true
-                    }
+
+                    //added first selected item
+                    setSelectedItem(0)
                 }
 
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
@@ -219,7 +218,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     it,
                     SPDialogBottomVerticalButton.BottomButtonType.Default
                 ) {
-                    view.selectItem(it)
+                    view.bindItem(it)
                 }
             } as ArrayList<SPDialogInfoHolder>
     }

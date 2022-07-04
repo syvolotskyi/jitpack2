@@ -7,6 +7,9 @@ import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.dropdowns.SPBottomSheetFragment
 import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 
+/**
+ * Builder class which allows to create [SPBottomSheetFragment]
+ */
 class SPBottomSheetBuilder(activity: FragmentActivity) :
     SPBaseDialogBuilder<SPBottomSheetFragment>(activity) {
 
@@ -17,18 +20,34 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
     private var descriptionStyle: Int? = null
     private var strategy: SPBottomSheetStrategy? = null
 
+    /**
+     * Setting an icon
+     *
+     * @param icon applies a resInt icon to title text view
+     */
     fun setIcon(icon: Int?): SPBottomSheetBuilder {
         this.icon = icon
 
         return this
     }
 
+    /**
+     * Sets a strategy for adding content in bottom sheet container
+     *
+     * @param strategy [SPBottomSheetStrategy] applies strategy
+     */
     fun setStrategy(strategy: SPBottomSheetStrategy?): SPBottomSheetBuilder {
         this.strategy = strategy
 
         return this
     }
 
+    /**
+     * BottomSheet initializing by passing text and style
+     *
+     * @param message adding a text message
+     * @param style applies a text style for title TextView
+     */
     fun setTitle(
         message: String,
         style: Int = R.style.h700_bold_caps_primary
@@ -38,6 +57,12 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
         return this
     }
 
+    /**
+     * Adding description by passing text and style
+     *
+     * @param message adding a text message
+     * @param style applies a text style for title TextView
+     */
     fun setDialogDesc(
         message: String,
         style: Int = R.style.h800_medium_label_secondary
@@ -47,6 +72,9 @@ class SPBottomSheetBuilder(activity: FragmentActivity) :
         return this
     }
 
+    /**
+     * Builds [SPBottomSheetFragment] by using properties with keys
+     */
     override fun build(): SPBottomSheetFragment =
         SPBottomSheetFragment().apply {
             arguments = bundleOf(

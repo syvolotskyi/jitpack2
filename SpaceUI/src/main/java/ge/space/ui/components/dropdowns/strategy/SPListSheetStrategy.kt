@@ -11,13 +11,13 @@ import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
  * List strategy realization of [SPBottomSheetStrategy]
  */
 
-open class SPListSheetStrategy<B : ViewBinding, T>(
-    private val adapter: SPOnBottomSheetAdapter<B, T>,
+open class SPListSheetStrategy<VB : ViewBinding, Item>(
+    private val adapter: SPOnBottomSheetAdapter<VB, Item>,
     private val decorator: ItemDecoration? = null
 ) : SPBottomSheetStrategy {
 
     /**
-     * Binding a item view
+     * Binding an item view
      */
     override fun onCreate(container: LinearLayout, dismissEvent: () -> Unit) {
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {

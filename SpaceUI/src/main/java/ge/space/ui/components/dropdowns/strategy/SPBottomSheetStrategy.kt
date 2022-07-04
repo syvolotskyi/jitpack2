@@ -8,7 +8,13 @@ import ge.space.ui.components.dropdowns.SPBottomSheetFragment
  */
 
 interface SPBottomSheetStrategy {
-    fun onCreate(container: LinearLayout, dismissEvent: () -> Unit)
 
+    /**
+     * Calls for creation a content in bottom sheet fragment
+     *
+     * @param container [LinearLayout] for content view
+     * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
+     */
+    fun onCreate(container: LinearLayout, dismissEvent: () -> Unit)
 }
 

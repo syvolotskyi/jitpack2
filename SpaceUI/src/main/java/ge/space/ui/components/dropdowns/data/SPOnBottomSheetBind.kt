@@ -16,6 +16,7 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
     var delayTime: Long = 300
 ) : RecyclerView.Adapter<SPOnBottomSheetAdapter.ListViewHolder>() {
 
+    private var selectedItemPosition: Int = -1
     var onDismiss: () -> Unit = {}
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Item> = { _, _, _ -> }
@@ -31,6 +32,15 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
         this.items = items
         notifyDataSetChanged()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setSelectedItem(position: Int) {
+        this.selectedItemPosition = position
+
+        notifyDataSetChanged()
+    }
+
+    fun getSelectedItem() = selectedItemPosition
 
     fun onCreate(block: SPOnBottomSheetAdapter<VB, Item>.(parent: ViewGroup) -> VB) {
         _onCreate = { block(it) }
@@ -67,6 +77,7 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
         ).also { holder ->
             holder.binding = binding
             holder.itemView.onClick {
+                setSelectedItem(holder.adapterPosition)
                 _onClick(
                     holder.binding as VB,
                     holder.item as Item,
