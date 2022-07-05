@@ -37,8 +37,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
     @StyleRes defStyleRes: Int = R.style.SPTextField_Dropdown
 ) : SPTextFieldInput(context, attrs, defStyleAttr, defStyleRes) {
 
-    var activity: FragmentActivity? = null
-
+    lateinit var activity: FragmentActivity
     /**
      * Binding an item view after selecting
      */
@@ -127,14 +126,14 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
     }
 
     private fun handleOnClick() =
-        activity?.let { activity ->
+        adapter?.let { adapter ->
             SPBottomSheetBuilder(activity)
                 .setTitle(labelText)
                 .build()
                 .apply {
-                    setBottomStrategy(SPListSheetStrategy(adapter!!))
+                    setBottomStrategy(SPListSheetStrategy(adapter))
                     show(
-                        activity.supportFragmentManager,
+                        this@SPTextFieldDropdown.activity.supportFragmentManager,
                         SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
                     )
                 }

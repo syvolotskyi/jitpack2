@@ -149,6 +149,7 @@ class SPRadioButton @JvmOverloads constructor(
 
     override fun handleTitle(value: String) {
         binding.titleText.text = value
+        requestLayout()
     }
 
     override fun setViewStyle(newStyle: Int) {

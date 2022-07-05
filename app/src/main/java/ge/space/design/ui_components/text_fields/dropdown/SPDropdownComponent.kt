@@ -110,11 +110,11 @@ class SPDropdownComponent : ShowCaseComponent {
                             SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                         }
                         onBind { binding, item, position ->
-                            binding.radio2.setData(
+                            binding.radio.isChecked = getSelectedItem() == position
+                            binding.radio.setData(
                                 item.value,
                                 item.iconData?.createView(view.context)
                             )
-                            binding.radio2.isChecked = getSelectedItem() == position
                         }
 
                         //added first selected item
@@ -155,11 +155,11 @@ class SPDropdownComponent : ShowCaseComponent {
                         SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                     }
                     onBind { binding, item, position ->
-                        binding.radio2.setData(
+                        binding.radio.isChecked = getSelectedItem() == position
+                        binding.radio.setData(
                             item.value,
                             item.iconData?.createView(view.context)
                         )
-                        binding.radio2.isChecked = getSelectedItem() == position
                     }
 
                     //added first selected item

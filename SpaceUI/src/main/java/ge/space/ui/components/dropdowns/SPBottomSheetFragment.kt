@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpBottomsheetBinding
+import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
 import ge.space.ui.components.controls.SPToggleIcon
 import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 import ge.space.ui.util.extension.*
@@ -26,7 +26,7 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var bottomStrategy: SPBottomSheetStrategy
 
     private val binding by lazy {
-        SpBottomsheetBinding.inflate(LayoutInflater.from(context))
+        SpBottomsheetLayoutBinding.inflate(LayoutInflater.from(context))
     }
 
     override fun onCreateView(
