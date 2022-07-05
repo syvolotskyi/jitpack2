@@ -217,18 +217,5 @@ class SPDropdownComponent : ShowCaseComponent {
                 }
                 .build(fragmentActivity)
         }
-
-        private fun createMultipleStringsButtonsConfigs(
-            items: List<String>,
-            view: SPTextFieldDropdown<String>
-        ) =
-            items.map {
-                SPDialogInfoHolder(
-                    it,
-                    SPDialogBottomVerticalButton.BottomButtonType.Default
-                ) {
-                    view.bindItem(it)
-                }
-            } as ArrayList<SPDialogInfoHolder>
     }
 }
