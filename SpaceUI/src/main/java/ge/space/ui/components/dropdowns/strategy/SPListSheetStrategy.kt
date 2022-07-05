@@ -2,6 +2,7 @@ package ge.space.ui.components.dropdowns.strategy
 
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.databinding.SpBottomsheetListBinding
@@ -19,7 +20,7 @@ open class SPListSheetStrategy<VB : ViewBinding, Item>(
     /**
      * Binding an item view
      */
-    override fun onCreate(container: LinearLayout, dismissEvent: () -> Unit) {
+    override fun onCreate(fm: FragmentManager, container: LinearLayout, dismissEvent: () -> Unit) {
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
             adapter.onDismiss = { dismissEvent() }

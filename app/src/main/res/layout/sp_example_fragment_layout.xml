@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ge.space.ui.components.bank_cards.card.SPBankCardView
+            android:id="@+id/bankCard"
+            style="@style/SPBankCardView.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
+            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
+
+        <ge.space.ui.components.bank_cards.card.SPBankCardView
+            android:id="@+id/bankCard2"
+            style="@style/SPBankCardView.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
+            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
+
+        <ge.space.ui.components.bank_cards.card.SPBankCardView
+            android:id="@+id/bankCard3"
+            style="@style/SPBankCardView.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
+            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
+
+        <ge.space.ui.components.bank_cards.card.SPBankCardView
+            android:id="@+id/bankCard4"
+            style="@style/SPBankCardView.Base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
+            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
+
+        <include layout="@layout/sp_layout_divider" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -10,16 +10,15 @@ import ge.space.ui.util.extension.inflate
  * Fragment strategy realization of [SPBottomSheetStrategy]
  */
 
-class SPFragmentSheetStrategy(
+class SPFragmentSheetStrategy<Data>(
     private val fragment: Fragment,
-    private val fm: FragmentManager
+    private val onResult: (Data) -> Unit
 ) : SPBottomSheetStrategy {
 
     private var helperFragment: SPBottomMenuHelperFragment? = null
     private var childFragmentManager: FragmentManager? = null
 
-    private fun initFragmentState(container: LinearLayout): Boolean {
-
+ /*   private fun initFragmentState(container: LinearLayout): Boolean {
         if (helperFragment == null) {
             val frag = container.inflate(R.layout.sp_bottom_menu_dialog_fragment_hepler)
             container.addView(frag)
@@ -29,49 +28,20 @@ class SPFragmentSheetStrategy(
         }
         if (helperFragment == null) return false
         return true
-    }
+    }*/
 
-    override fun onCreate(container: LinearLayout, dismissEvent: () -> Unit) {
+    override fun onCreate(
+         fm: FragmentManager,container: LinearLayout, dismissEvent: () -> Unit) {
 
 //            startState = SPSlidingUpPanelLayout.PanelState.EXPANDED
-        if (!initFragmentState(container)) return
-        val helperViewId = helperFragment?.view?.id ?: return
 
-        if (fragment is SPBottomMenuHelperFragment.SPBottomMenuNavFragment) {
-            fragment.setBottomMenuNavInterface(fragmentHandler)
-        }
-        helperFragment?.childFragmentManager?.beginTransaction()?.add(helperViewId, fragment)
-            ?.commitNow()
-//        willslideAfterShow = true
-    }
-
-    private val fragmentHandler = object : SPBottomMenuHelperFragment.SPBottomMenuListener {
-
-        override fun dismissDialog(isDataChanged: Boolean) {
-            /*  if (isDataChanged) {
-                  menuListener?.let { it(resultPosition, isDataChanged) }
-              }
-              hideBottomMenuDialog()*/
-        }
-
-
-        override fun showFragment(fragment: Fragment) {
-            if (fragment is SPBottomMenuHelperFragment.SPBottomMenuNavFragment) {
-                fragment.setBottomMenuNavInterface(this)
+        if (fragment is SPBottomSheetResultListener<*>) {
+            fragment.setBottomSheetResult { data ->
+                (data as? Data)?.let { onResult(it) }
+                dismissEvent()
             }
-            val helperViewId = helperFragment?.view?.id ?: return
-            childFragmentManager?.beginTransaction()?.setCustomAnimations(
-                R.anim.enter_from_right,
-                R.anim.fade_out,
-                R.anim.fade_in,
-                R.anim.exit_to_right
-            )?.add(helperViewId, fragment)?.addToBackStack(fragment::class.java.simpleName)
-                ?.commit()
         }
-
-        override fun popBackStack() {
-            childFragmentManager?.popBackStack()
-        }
+        fm?.beginTransaction()?.add(container.id, fragment)
+            ?.commitNow()
     }
-
 }

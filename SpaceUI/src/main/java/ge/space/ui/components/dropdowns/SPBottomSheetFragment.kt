@@ -55,7 +55,7 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
                 titleImage.show()
             }
 
-            bottomStrategy.onCreate(standardBottomSheet) { dismiss() }
+            bottomStrategy.onCreate(childFragmentManager, standardBottomSheet) { dismiss() }
         }
         handleTitleStyle()
     }

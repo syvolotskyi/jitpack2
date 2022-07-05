@@ -2,6 +2,7 @@ package ge.space.design.ui_components.text_fields.dropdown
 
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
@@ -19,7 +20,11 @@ import ge.space.ui.components.dialogs.data.SPDialogInfo
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
 import ge.space.ui.components.dialogs.showMultipleButtonDialog
+import ge.space.ui.components.dropdowns.SPBottomSheetFragment
+import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
 import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
+import ge.space.ui.components.dropdowns.strategy.SPFragmentSheetStrategy
+import ge.space.ui.components.dropdowns.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
@@ -192,17 +197,23 @@ class SPDropdownComponent : ShowCaseComponent {
                 })
                 .setItems(items)
                 .setOnClickListener {
-                    fragmentActivity.showMultipleButtonDialog(
-                        SPDialogInfo(
-                            view.resources.getString(R.string.selectIcon),
-                            EMPTY_TEXT,
-                            createMultipleStringsButtonsConfigs(
-                                items,
-                                it
+                    SPBottomSheetBuilder(fragmentActivity)
+                        .setTitle(view.context.getString(R.string.enter_you_details_here))
+                        .build()
+                        .apply {
+                            setBottomStrategy(
+                                SPFragmentSheetStrategy<Nothing>(
+                                    SPExampleFragment()
+                                ) {
+                                    Toast.makeText(context, "result", Toast.LENGTH_SHORT).show()
+                                }
                             )
-                        ),
-                        SPDialogIcon.Alert(R.attr.accent_primary_magenta)
-                    )
+                            show(
+                                fragmentActivity.supportFragmentManager,
+                                SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
+                            )
+                        }
+
                 }
                 .build(fragmentActivity)
         }

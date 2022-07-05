@@ -8,6 +8,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.fragment.app.FragmentActivity
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.dropdowns.SPBottomSheetFragment
@@ -72,6 +73,18 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
      * Sets a inflate Type
      */
     private var inflateType: InflateType = InflateType.None
+
+    /**
+     * Sets a inflate Type
+     */
+    private val bottomSheet: BottomSheetDialogFragment by lazy {
+        SPBottomSheetBuilder(activity)
+            .setTitle(labelText)
+            .build()
+            .apply {
+                adapter?.let { setBottomStrategy(SPListSheetStrategy(it)) }
+            }
+    }
 
 
     /**
