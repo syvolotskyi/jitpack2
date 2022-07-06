@@ -75,19 +75,6 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
     private var inflateType: InflateType = InflateType.None
 
     /**
-     * Sets a inflate Type
-     */
-    private val bottomSheet: BottomSheetDialogFragment by lazy {
-        SPBottomSheetBuilder(activity)
-            .setTitle(labelText)
-            .build()
-            .apply {
-                adapter?.let { setBottomStrategy(SPListSheetStrategy(it)) }
-            }
-    }
-
-
-    /**
      * Sets a left image, if inflate type is withImage
      */
     fun setImage(view: View) {

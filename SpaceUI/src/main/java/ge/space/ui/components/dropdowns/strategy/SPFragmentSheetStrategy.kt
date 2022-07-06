@@ -15,25 +15,17 @@ class SPFragmentSheetStrategy<Data>(
     private val onResult: (Data) -> Unit
 ) : SPBottomSheetStrategy {
 
-    private var helperFragment: SPBottomMenuHelperFragment? = null
-    private var childFragmentManager: FragmentManager? = null
-
- /*   private fun initFragmentState(container: LinearLayout): Boolean {
-        if (helperFragment == null) {
-            val frag = container.inflate(R.layout.sp_bottom_menu_dialog_fragment_hepler)
-            container.addView(frag)
-            helperFragment =
-                fm.fragments.find { it is SPBottomMenuHelperFragment } as? SPBottomMenuHelperFragment
-            childFragmentManager = helperFragment?.childFragmentManager
-        }
-        if (helperFragment == null) return false
-        return true
-    }*/
-
+    /**
+     * Calls for creation a content in bottom sheet fragment
+     *
+     * @param container [LinearLayout] for content view
+     * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
+     */
     override fun onCreate(
-         fm: FragmentManager,container: LinearLayout, dismissEvent: () -> Unit) {
-
-//            startState = SPSlidingUpPanelLayout.PanelState.EXPANDED
+        fm: FragmentManager,
+        container: LinearLayout,
+        dismissEvent: () -> Unit
+    ) {
 
         if (fragment is SPBottomSheetResultListener<*>) {
             fragment.setBottomSheetResult { data ->
@@ -41,7 +33,7 @@ class SPFragmentSheetStrategy<Data>(
                 dismissEvent()
             }
         }
-        fm?.beginTransaction()?.add(container.id, fragment)
-            ?.commitNow()
+        fm.beginTransaction().add(container.id, fragment)
+            .commitNow()
     }
 }

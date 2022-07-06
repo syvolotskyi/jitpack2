@@ -18,7 +18,11 @@ open class SPListSheetStrategy<VB : ViewBinding, Item>(
 ) : SPBottomSheetStrategy {
 
     /**
-     * Binding an item view
+     * Calls for creation a content in bottom sheet fragment
+     *
+     * @param fm [FragmentManager] Child Fragment Manager of bottom sheet fragment
+     * @param container [LinearLayout] for content view
+     * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
     override fun onCreate(fm: FragmentManager, container: LinearLayout, dismissEvent: () -> Unit) {
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {

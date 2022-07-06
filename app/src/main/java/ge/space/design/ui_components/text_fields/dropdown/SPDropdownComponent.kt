@@ -202,7 +202,7 @@ class SPDropdownComponent : ShowCaseComponent {
                         .build()
                         .apply {
                             setBottomStrategy(
-                                SPFragmentSheetStrategy<Nothing>(
+                                SPFragmentSheetStrategy<String>(
                                     SPExampleFragment()
                                 ) {
                                     Toast.makeText(context, "result", Toast.LENGTH_SHORT).show()
