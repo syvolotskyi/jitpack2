@@ -41,6 +41,10 @@ private fun View.onSafeClick(duration: Long, click: (() -> Unit)) {
     }
 }
 
+fun ViewGroup.inflate(layoutRes: Int): View {
+    return LayoutInflater.from(context).inflate(layoutRes, this, false)
+}
+
 fun View.goAway() {
     this.visibility = View.GONE
 }
