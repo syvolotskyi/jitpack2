@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.button.MaterialButton
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
-import ge.space.ui.components.controls.SPToggleIcon
 import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 import ge.space.ui.util.extension.*
 
@@ -50,7 +46,7 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
             dialogDescriptionMessage?.let {
                 descriptionMessageLabel.show()
                 descriptionMessageLabel.text = it
-                descriptionStyle?.let { binding.descriptionMessageLabel.setTextStyle(it) }
+                descriptionStyle?.let { style -> binding.descriptionMessageLabel.setTextStyle(style) }
             }
 
             dialogTitleIcon?.let {
