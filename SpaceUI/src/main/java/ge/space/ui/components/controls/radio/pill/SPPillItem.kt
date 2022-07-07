@@ -35,8 +35,8 @@ class SPPillItem @JvmOverloads constructor(
     private var unselectedBackgroundColor: Int = Color.WHITE
 
     private var selectedShadowStyle: Int =
-       R.style.shadow_300_brand
-    private var unselectedShadowStyle: Int = R.style.shadow_300_primary
+        R.style.shadow_300_brand
+    private var unselectedShadowStyle: Int = R.style.shadow_300_primary_pills
 
     @StyleRes
     private var unselectedTitleTextAppearance: Int = DEFAULT_INT
@@ -51,11 +51,11 @@ class SPPillItem @JvmOverloads constructor(
             defStyleAttr,
             defStyleRes
         ) {
-            applyStyledAttributes()
+            applyPillStyledAttributes()
         }
     }
 
-    private fun TypedArray.applyStyledAttributes() {
+    private fun TypedArray.applyPillStyledAttributes() {
         val text = getString(
             R.styleable.SPPillItem_android_text
         ).orEmpty()
@@ -114,7 +114,7 @@ class SPPillItem @JvmOverloads constructor(
     /**
      * Sets a selectedTextAppearance and unselectedTextAppearance to view
      */
-    fun updateStatesTextAppearances(selectedTextAppearance: Int, unselectedTextAppearance: Int) {
+    private fun updateStatesTextAppearances(selectedTextAppearance: Int, unselectedTextAppearance: Int) {
         when (isChecked) {
             true -> binding.radioButton.setTextStyle(selectedTextAppearance)
             false -> binding.radioButton.setTextStyle(unselectedTextAppearance)
@@ -122,17 +122,10 @@ class SPPillItem @JvmOverloads constructor(
     }
 
     override fun handleCheckingState() {
-        color = if (isChecked) {
-            selectedBackgroundColor
-        } else {
-            unselectedBackgroundColor
-        }
+        color = if (isChecked) selectedBackgroundColor else unselectedBackgroundColor
+
         updateStatesTextAppearances(titleTextAppearance, unselectedTitleTextAppearance)
-        setBaseViewShadowStyle( if (isChecked) {
-            selectedShadowStyle
-        } else {
-            unselectedShadowStyle
-        })
+        setBaseViewShadowStyle(if (isChecked) selectedShadowStyle else unselectedShadowStyle)
     }
 
 
@@ -141,7 +134,7 @@ class SPPillItem @JvmOverloads constructor(
             newStyle,
             R.styleable.SPRadioButton
         ) {
-            applyStyledAttributes()
+            applyPillStyledAttributes()
         }
     }
 

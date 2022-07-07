@@ -29,7 +29,7 @@
         <item name="android:foreground">@drawable/toggle_icon_ripple</item>
         <item name="selectedBackgroundColor">?attr/brand_primary</item>
         <item name="selectedShadowStyle">@style/shadow_300_brand</item>
-        <item name="unselectedShadowStyle">@style/shadow_300_primary</item>
+        <item name="unselectedShadowStyle">@style/shadow_300_primary_pills</item>
         <item name="unselectedBackgroundColor">@color/white</item>
         <item name="selectedTextAppearance">@style/h700_bold_caps_primary_white</item>
         <item name="unselectedTextAppearance">@style/h700_bold_caps_brand_primary</item>
