@@ -60,11 +60,6 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     /**
-     * Shows a bottom sheet fragment with predefined TAG
-     */
-    fun show(manager: FragmentManager) = show(manager, DIALOG_FRAGMENT_TAG)
-
-    /**
      * Sets a strategy for adding content in bottom sheet container
      *
      * @param value [SPBottomSheetStrategy] applies strategy

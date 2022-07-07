@@ -203,11 +203,7 @@ class SPDropdownComponent : ShowCaseComponent {
                                 ).show()
                             }
                         )
-                        .build()
-                        .show(
-                            it.activity.supportFragmentManager
-                        )
-
+                        .show(SPBottomSheetFragment.DIALOG_FRAGMENT_TAG)
                 }
                 .build(fragmentActivity)
         }
