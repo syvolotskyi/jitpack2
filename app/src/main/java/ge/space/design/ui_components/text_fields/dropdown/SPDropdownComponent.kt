@@ -197,23 +197,23 @@ class SPDropdownComponent : ShowCaseComponent {
                 })
                 .setItems(items)
                 .setOnClickListener {
-                    SPBottomSheetBuilder(fragmentActivity)
+                    SPBottomSheetBuilder<String>(fragmentActivity)
                         .setTitle(view.context.getString(R.string.enter_you_details_here))
+                        .setStrategy(
+                            SPFragmentSheetStrategy<String>(
+                                SPExampleFragment()
+                            )
+                        )
+                        .setResultListener {
+                            Toast.makeText(view.context, "result", Toast.LENGTH_SHORT).show()
+                        }
                         .build()
                         .apply {
-                            setBottomStrategy(
-                                SPFragmentSheetStrategy<String>(
-                                    SPExampleFragment()
-                                ) {
-                                    Toast.makeText(context, "result", Toast.LENGTH_SHORT).show()
-                                }
-                            )
                             show(
                                 fragmentActivity.supportFragmentManager,
                                 SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
                             )
                         }
-
                 }
                 .build(fragmentActivity)
         }

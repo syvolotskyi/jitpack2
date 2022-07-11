@@ -11,9 +11,8 @@ import ge.space.ui.util.extension.inflate
  */
 
 class SPFragmentSheetStrategy<Data>(
-    private val fragment: Fragment,
-    private val onResult: (Data) -> Unit
-) : SPBottomSheetStrategy {
+    private val fragment: Fragment
+) : SPBottomSheetStrategy<Data> {
 
     /**
      * Calls for creation a content in bottom sheet fragment
@@ -24,13 +23,12 @@ class SPFragmentSheetStrategy<Data>(
     override fun onCreate(
         fm: FragmentManager,
         container: LinearLayout,
-        dismissEvent: () -> Unit
+        dismissEvent: (Data?) -> Unit
     ) {
 
         if (fragment is SPBottomSheetResultListener<*>) {
             fragment.setBottomSheetResult { data ->
-                (data as? Data)?.let { onResult(it) }
-                dismissEvent()
+                (data as? Data)?.let { dismissEvent(it) }
             }
         }
         fm.beginTransaction().add(container.id, fragment)

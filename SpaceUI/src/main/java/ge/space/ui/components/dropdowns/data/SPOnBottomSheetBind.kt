@@ -3,7 +3,6 @@ package ge.space.ui.components.dropdowns.data
 import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.runDelayed
@@ -11,13 +10,9 @@ import ge.space.ui.util.extension.runDelayed
 /**
  * SPOnBottomSheetBind help to handle dropdown the binding after selecting an item
  */
-open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
-    private var items: List<Item> = emptyList(),
-    var delayTime: Long = 300
-) : RecyclerView.Adapter<SPOnBottomSheetAdapter.ListViewHolder>() {
+open class SPOnBottomSheetAdapter<VB : ViewBinding, Item> : SPMenuAdapter<SPOnBottomSheetAdapter.ListViewHolder, Item>() {
 
     private var selectedItemPosition: Int = -1
-    var onDismiss: () -> Unit = {}
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Item> = { _, _, _ -> }
     private var _onClick: OnClick<VB, Item> = { _, _, _ -> }
@@ -25,12 +20,6 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
     fun setup(block: SPOnBottomSheetAdapter<VB, Item>.() -> Unit): SPOnBottomSheetAdapter<VB, Item> {
         block()
         return this
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setItems(items: List<Item>) {
-        this.items = items
-        notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -78,12 +67,8 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
             holder.binding = binding
             holder.itemView.onClick {
                 setSelectedItem(holder.adapterPosition)
-                _onClick(
-                    holder.binding as VB,
-                    holder.item as Item,
-                    holder.adapterPosition
-                )
-                runDelayed(delayTime, action = { onDismiss() })
+                _onClick(holder.binding as VB, holder.item as Item, holder.adapterPosition)
+                adapterListener?.onItemClickListener(holder.adapterPosition, holder.item as Item)
             }
         }
     }
@@ -100,7 +85,7 @@ open class SPOnBottomSheetAdapter<VB : ViewBinding, Item>(
         _onBind(holder.binding as VB, item, position)
     }
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ListViewHolder(itemView: View) : SPMenuViewHolder(itemView) {
         var item: Any? = null
         var binding: Any? = null
     }
