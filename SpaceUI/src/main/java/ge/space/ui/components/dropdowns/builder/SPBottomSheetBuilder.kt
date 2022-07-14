@@ -33,7 +33,7 @@ class SPBottomSheetBuilder<Item>(activity: FragmentActivity) :
     }
 
     /**
-     * Sets a strategy for adding content in bottom sheet container
+     * Sets a bottom sheet strategy
      *
      * @param strategy [SPBottomSheetStrategy] applies strategy
      */
@@ -44,9 +44,9 @@ class SPBottomSheetBuilder<Item>(activity: FragmentActivity) :
     }
 
     /**
-     * Sets a strategy for adding content in bottom sheet container
+     * Sets a Result listener
      *
-     * @param strategy [SPBottomSheetStrategy] applies strategy
+     * @param listener [Data] calls when bottom sheet is dismissed
      */
     fun setResultListener(listener: (Item?) -> Unit): SPBottomSheetBuilder<Item> {
         this.resultListener = listener

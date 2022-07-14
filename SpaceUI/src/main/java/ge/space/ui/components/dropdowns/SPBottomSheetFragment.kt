@@ -68,7 +68,7 @@ class SPBottomSheetFragment<Item> : BottomSheetDialogFragment() {
     }
 
     /**
-     * Sets a strategy for adding content in bottom sheet container
+     * Sets a bottom sheet strategy
      *
      * @param value [SPBottomSheetStrategy] applies strategy
      */
@@ -77,10 +77,10 @@ class SPBottomSheetFragment<Item> : BottomSheetDialogFragment() {
     }
 
     /**
-     * Sets a strategy for adding content in bottom sheet container
+     * Sets a Result listener
      *
-     * @param value [SPBottomSheetStrategy] applies strategy
-     */
+     * @param listener [Data] calls when bottom sheet is dismissed
+    */
     fun setResultListener(onResult: (Item?) -> Unit) {
         this.onResult = onResult
     }
