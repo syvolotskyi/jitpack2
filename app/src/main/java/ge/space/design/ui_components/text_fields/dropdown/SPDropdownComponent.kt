@@ -154,21 +154,16 @@ class SPDropdownComponent : ShowCaseComponent {
                     onCreate { _ ->
                         SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                     }
-                    onBind { binding, item, position ->
-                        binding.radio.isChecked = getSelectedItem() == position
+                    onBind { binding, item, _ ->
+                        binding.radio.isChecked = item.isSelected
                         binding.radio.setData(
-                            item.value,
-                            item.iconData?.createView(view.context)
+                            item.item.value,
+                            item.item.iconData?.createView(view.context)
                         )
                     }
-
-                    //added first selected item
-                    setSelectedItem(0)
                 }
 
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
-                fragmentActivity
-            )
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(fragmentActivity)
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
                 .setDefault(getDefaultLangItem(view.context))

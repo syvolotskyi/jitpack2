@@ -179,7 +179,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
      * Builder class which allows to create [SPTextFieldDropdown]
      */
     companion object
-    class SPTextFieldDropdownBuilder<Item>(val fragmentActivity: FragmentActivity) {
+    class SPTextFieldDropdownBuilder<Item>(private val fragmentActivity: FragmentActivity) {
         private var title: String = EMPTY_TEXT
         private var description: String = EMPTY_TEXT
         private var listener: (SPTextFieldDropdown<Item>) -> Unit = { }
