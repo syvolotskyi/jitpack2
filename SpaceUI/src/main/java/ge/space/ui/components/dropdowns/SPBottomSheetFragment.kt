@@ -58,12 +58,10 @@ class SPBottomSheetFragment<Item> : BottomSheetDialogFragment() {
             }
 
             bottomStrategy.onCreate(childFragmentManager, standardBottomSheet) {
-                runDelayed(
-                    300,
-                    action = {
-                        onResult(it)
-                        dismiss()
-                    })
+                runDelayed(300, action = {
+                    onResult(it)
+                    dismiss()
+                })
             }
         }
         handleTitleStyle()

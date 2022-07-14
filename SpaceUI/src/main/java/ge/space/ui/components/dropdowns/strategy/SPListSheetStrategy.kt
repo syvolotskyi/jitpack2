@@ -18,10 +18,10 @@ open class SPListSheetStrategy<Item>(
 ) : SPBottomSheetStrategy<Item> {
 
     /**
-     * Calls for creation a content in bottom sheet fragment
+     * Calls for initializing strategy
      *
-     * @param fm [FragmentManager] Child Fragment Manager of bottom sheet fragment
-     * @param container [LinearLayout] for content view
+     * @param fm [FragmentManager] is supportFragmentManager
+     * @param container [LinearLayout] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
     override fun onCreate(
