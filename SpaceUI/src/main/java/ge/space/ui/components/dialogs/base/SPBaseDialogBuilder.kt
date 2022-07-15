@@ -18,7 +18,7 @@ abstract class SPBaseDialogBuilder<T : DialogFragment>(
     /**
      * Initialize [SPBaseDialogBuilder] object and than show popup dialog
      */
-    fun show(tag: String) {
+    fun show(tag: String = DIALOG_FRAGMENT_TAG) {
         try {
             if (activity.supportFragmentManager.findFragmentByTag(tag) == null) {
                 build().show(activity.supportFragmentManager, tag)
@@ -26,5 +26,9 @@ abstract class SPBaseDialogBuilder<T : DialogFragment>(
         } catch (ignored: IllegalStateException) {
             ignored.printStackTrace()
         }
+    }
+
+    companion object {
+        const val DIALOG_FRAGMENT_TAG: String = "DIALOG_FRAGMENT_TAG"
     }
 }

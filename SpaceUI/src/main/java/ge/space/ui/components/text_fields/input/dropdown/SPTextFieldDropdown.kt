@@ -130,7 +130,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
             SPBottomSheetBuilder(activity)
                 .setTitle(labelText)
                 .setStrategy(SPListSheetStrategy(adapter))
-                .show(SPBottomSheetFragment.DIALOG_FRAGMENT_TAG)
+                .show()
         } ?: onClickListener(this)
 
     /**
