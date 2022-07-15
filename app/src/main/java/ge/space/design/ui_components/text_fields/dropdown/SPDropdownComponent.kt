@@ -156,7 +156,9 @@ class SPDropdownComponent : ShowCaseComponent {
                     }
                 }
 
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(fragmentActivity)
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
+                fragmentActivity
+            )
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
                 .setDefault(getDefaultLangItem(view.context))
@@ -182,25 +184,28 @@ class SPDropdownComponent : ShowCaseComponent {
                 })
                 .setItems(items)
                 .setOnClickListener {
-                    SPBottomSheetBuilder<String>(fragmentActivity)
-                        .setTitle(view.context.getString(R.string.enter_you_details_here))
-                        .setStrategy(
-                            SPFragmentSheetStrategy(
-                                SPExampleFragment()
-                            )
+                    getBottomSheetFragment(fragmentActivity, view)
+                        .show(
+                            fragmentActivity.supportFragmentManager,
+                            SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
                         )
-                        .setResultListener {
-                            Toast.makeText(view.context, "result", Toast.LENGTH_SHORT).show()
-                        }
-                        .build()
-                        .apply {
-                            show(
-                                fragmentActivity.supportFragmentManager,
-                                SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
-                            )
-                        }
                 }
                 .build(fragmentActivity)
         }
+
+        private fun getBottomSheetFragment(
+            fragmentActivity: FragmentActivity,
+            view: FrameLayout
+        ) = SPBottomSheetBuilder<String>(fragmentActivity)
+            .setTitle(view.context.getString(R.string.enter_you_details_here))
+            .setStrategy(
+                SPFragmentSheetStrategy(
+                    SPExampleFragment()
+                )
+            )
+            .setResultListener {
+                Toast.makeText(view.context, "result", Toast.LENGTH_SHORT).show()
+            }
+            .build()
     }
 }
