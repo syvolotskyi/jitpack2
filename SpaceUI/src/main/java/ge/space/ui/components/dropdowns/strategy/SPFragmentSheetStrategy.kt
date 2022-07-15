@@ -1,13 +1,14 @@
 package ge.space.ui.components.dropdowns.strategy
 
-import android.widget.LinearLayout
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import ge.space.spaceui.R
-import ge.space.ui.util.extension.inflate
 
 /**
  * Fragment strategy realization of [SPBottomSheetStrategy]
+ *
+ * @param fragment [Fragment] which should be inflated in container
+ * @param onResult: [(Data) -> Unit] calls when dialog is dismissed
  */
 
 class SPFragmentSheetStrategy<Data>(
@@ -18,17 +19,15 @@ class SPFragmentSheetStrategy<Data>(
     /**
      * Calls for creation a content in bottom sheet fragment
      *
-     * @param container [LinearLayout] for content view
-     * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
     override fun onCreate(
         fm: FragmentManager,
-        container: LinearLayout,
+        container: ViewGroup,
         dismissEvent: () -> Unit
     ) {
 
         if (fragment is SPBottomSheetResultListener<*>) {
-            fragment.setBottomSheetResult { data ->
+            fragment.onResult { data ->
                 (data as? Data)?.let { onResult(it) }
                 dismissEvent()
             }

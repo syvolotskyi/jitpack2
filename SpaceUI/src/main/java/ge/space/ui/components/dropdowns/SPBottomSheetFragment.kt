@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.button.MaterialButton
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
-import ge.space.ui.components.controls.SPToggleIcon
+import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 import ge.space.ui.util.extension.*
+
 /**
  * [SPBottomSheetFragment] is a custom implementation of [BottomSheetDialogFragment]
  * Sets a strategy [setBottomStrategy] for adding content in bottom sheet container
@@ -47,7 +48,7 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
             dialogDescriptionMessage?.let {
                 descriptionMessageLabel.show()
                 descriptionMessageLabel.text = it
-                descriptionStyle?.let { binding.descriptionMessageLabel.setTextStyle(it) }
+                descriptionStyle?.let { style -> binding.descriptionMessageLabel.setTextStyle(style) }
             }
 
             dialogTitleIcon?.let {
@@ -67,6 +68,19 @@ class SPBottomSheetFragment : BottomSheetDialogFragment() {
      */
     fun setBottomStrategy(value: SPBottomSheetStrategy) {
         bottomStrategy = value
+    }
+
+    /**
+     * Show popup dialog
+     */
+    fun show(fragmentActivity: FragmentActivity, tag: String = SPBaseDialog.DIALOG_FRAGMENT_TAG) {
+        try {
+            if (fragmentActivity.supportFragmentManager.findFragmentByTag(tag) == null) {
+                show(fragmentActivity.supportFragmentManager, tag)
+            }
+        } catch (ignored: IllegalStateException) {
+            ignored.printStackTrace()
+        }
     }
 
     private fun handleTitleStyle() {

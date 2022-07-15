@@ -15,9 +15,7 @@ import ge.space.ui.components.dialogs.data.*
 /**
  * Builder class which allows to create [SPDialogEditText]
  */
-class SPEditTextDialogBuilder(
-    activity: FragmentActivity
-) : SPBaseDialogBuilder<SPDialogEditText>(activity) {
+class SPEditTextDialogBuilder : SPBaseDialogBuilder<SPDialogEditText>() {
 
     private var title: String? = null
     private var buttons: Array<SPEditTextDialogInfoHolder> = arrayOf()

@@ -8,7 +8,6 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.fragment.app.FragmentActivity
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.dropdowns.SPBottomSheetFragment
@@ -39,6 +38,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
 ) : SPTextFieldInput(context, attrs, defStyleAttr, defStyleRes) {
 
     lateinit var activity: FragmentActivity
+
     /**
      * Binding an item view after selecting
      */
@@ -127,16 +127,11 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
 
     private fun handleOnClick() =
         adapter?.let { adapter ->
-            SPBottomSheetBuilder(activity)
+            SPBottomSheetBuilder()
                 .setTitle(labelText)
+                .setStrategy(SPListSheetStrategy(adapter))
                 .build()
-                .apply {
-                    setBottomStrategy(SPListSheetStrategy(adapter))
-                    show(
-                        this@SPTextFieldDropdown.activity.supportFragmentManager,
-                        SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
-                    )
-                }
+                .show(activity)
         } ?: onClickListener(this)
 
     /**
@@ -177,7 +172,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
      * Builder class which allows to create [SPTextFieldDropdown]
      */
     companion object
-    class SPTextFieldDropdownBuilder<Item>(val fragmentActivity: FragmentActivity) {
+    class SPTextFieldDropdownBuilder<Item>(private val fragmentActivity: FragmentActivity) {
         private var title: String = EMPTY_TEXT
         private var description: String = EMPTY_TEXT
         private var listener: (SPTextFieldDropdown<Item>) -> Unit = { }
