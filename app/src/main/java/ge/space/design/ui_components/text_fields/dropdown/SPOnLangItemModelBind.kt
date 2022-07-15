@@ -7,7 +7,7 @@ import ge.space.ui.util.extension.setHeight
 import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
-class SPOnLangItemModelBind() : SPOnDropdownBind<SPDropdownItemModel> {
+class SPOnLangItemModelBind : SPOnDropdownBind<SPDropdownItemModel> {
     override fun getBindItemModel(): (SPTextFieldDropdown<SPDropdownItemModel>, SPDropdownItemModel) -> Unit =
         { dropdown, item ->
             item.iconData?.let {

@@ -10,7 +10,6 @@ import ge.space.ui.components.dropdowns.core.SPBottomSheetResultListener
  * Data is onResult return type
  *
  * @param fragment [Fragment] which should be inflated in container
- * @param onResult: [(Data) -> Unit] calls when dialog is dismissed
  */
 
 class SPFragmentSheetStrategy<Data>(
@@ -31,7 +30,7 @@ class SPFragmentSheetStrategy<Data>(
     ) {
 
         if (fragment is SPBottomSheetResultListener<*>) {
-            fragment.onResult { data ->
+            fragment.setBottomSheetResult { data ->
                 (data as? Data)?.let { dismissEvent(it) }
             }
         }

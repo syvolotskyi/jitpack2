@@ -19,6 +19,7 @@ import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
 import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
 import ge.space.ui.components.dropdowns.core.SPBottomSheetAdapter
 import ge.space.ui.components.dropdowns.strategy.SPFragmentSheetStrategy
+import ge.space.ui.components.list_adapter.SPSelectedItem
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
@@ -184,19 +185,15 @@ class SPDropdownComponent : ShowCaseComponent {
                 })
                 .setItems(items)
                 .setOnClickListener {
-                    getBottomSheetFragment(fragmentActivity, view)
-                        .show(
-                            fragmentActivity.supportFragmentManager,
-                            SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
-                        )
+                    getBottomSheetFragment(view)
+                        .show(fragmentActivity)
                 }
                 .build(fragmentActivity)
         }
 
         private fun getBottomSheetFragment(
-            fragmentActivity: FragmentActivity,
             view: FrameLayout
-        ) = SPBottomSheetBuilder<String>(fragmentActivity)
+        ) = SPBottomSheetBuilder<String>()
             .setTitle(view.context.getString(R.string.enter_you_details_here))
             .setStrategy(
                 SPFragmentSheetStrategy(

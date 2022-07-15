@@ -3,6 +3,7 @@ package ge.space.design.ui_components.text_fields.dropdown
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import ge.space.ui.util.extension.onClick
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.spacedesignsystem.databinding.SpExampleFragmentLayoutBinding
@@ -32,7 +33,7 @@ class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
         }
     }
 
-    override fun onResult(listener: (String) -> Unit) {
+    override fun setBottomSheetResult(listener: (String) -> Unit) {
         dismiss = listener
     }
 }

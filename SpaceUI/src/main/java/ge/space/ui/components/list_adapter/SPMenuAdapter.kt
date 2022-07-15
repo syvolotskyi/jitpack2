@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
  * SPMenuAdapter is base adapter
  *
  * @params items [List<List<SPSelectedItem<Data><Data>] is list of List<SPSelectedItem<Data>
+ * Data is onResult return type
  */
 abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
     protected var items: List<SPSelectedItem<Data>> = emptyList()
@@ -59,10 +60,10 @@ open class SPMenuViewHolder(view: View) : RecyclerView.ViewHolder(view)
 /**
  * SPSelectedItem contains
  *
- * @params item [T] is model
+ * @params item [Data] is model
  * @params isSelected [Boolean] is true when item is selectable
  */
-data class SPSelectedItem<T>(
-    val item: T,
+data class SPSelectedItem<Data>(
+    val item: Data,
     var isSelected: Boolean
 )
