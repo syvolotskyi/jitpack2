@@ -10,8 +10,8 @@ import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 /**
  * Builder class which allows to create [SPBottomSheetFragment]. Data is onResult return type
  */
-class SPBottomSheetBuilder<Data>(activity: FragmentActivity) :
-    SPBaseDialogBuilder<SPBottomSheetFragment<Data>>(activity) {
+class SPBottomSheetBuilder<Data> :
+    SPBaseDialogBuilder<SPBottomSheetFragment<Data>>() {
 
     private var title: String? = null
     private var titleStyle: Int? = null

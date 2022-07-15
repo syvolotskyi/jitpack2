@@ -32,7 +32,7 @@ class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
         }
     }
 
-    override fun setBottomSheetResult(listener: (String) -> Unit) {
+    override fun onResult(listener: (String) -> Unit) {
         dismiss = listener
     }
 }

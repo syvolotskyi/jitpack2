@@ -1,5 +1,6 @@
 package ge.space.ui.components.dropdowns.strategy
 
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.FragmentManager
 import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
@@ -18,6 +19,6 @@ interface SPBottomSheetStrategy<Data> {
      * @param container [LinearLayout] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
-    fun onCreate(fm: FragmentManager, container: LinearLayout, dismissEvent: (Data?) -> Unit)
+    fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: (Data?) -> Unit)
 }
 

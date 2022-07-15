@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
+import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
 import ge.space.ui.util.extension.*
 
@@ -47,7 +50,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
             dialogDescriptionMessage?.let {
                 descriptionMessageLabel.show()
                 descriptionMessageLabel.text = it
-                descriptionStyle?.let { binding.descriptionMessageLabel.setTextStyle(it) }
+                descriptionStyle?.let { style -> binding.descriptionMessageLabel.setTextStyle(style) }
             }
 
             dialogTitleIcon?.let {
@@ -81,6 +84,19 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     */
     fun setResultListener(onResult: (Data?) -> Unit) {
         this.onResult = onResult
+    }
+
+    /**
+     * Show popup dialog
+     */
+    fun show(fragmentActivity: FragmentActivity, tag: String = SPBaseDialog.DIALOG_FRAGMENT_TAG) {
+        try {
+            if (fragmentActivity.supportFragmentManager.findFragmentByTag(tag) == null) {
+                show(fragmentActivity.supportFragmentManager, tag)
+            }
+        } catch (ignored: IllegalStateException) {
+            ignored.printStackTrace()
+        }
     }
 
     private fun handleTitleStyle() {

@@ -128,17 +128,12 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
 
     private fun handleOnClick() =
         adapter?.let { adapter ->
-            SPBottomSheetBuilder<Item>(activity)
+            SPBottomSheetBuilder<Item>()
                 .setTitle(labelText)
                 .setResultListener { result ->  result?.let { bindItem(it) } }
                 .setStrategy(SPListSheetStrategy(adapter))
                 .build()
-                .apply {
-                    show(
-                        this@SPTextFieldDropdown.activity.supportFragmentManager,
-                        SPBottomSheetFragment.DIALOG_FRAGMENT_TAG
-                    )
-                }
+                .show(activity)
         } ?: onClickListener(this)
 
     /**

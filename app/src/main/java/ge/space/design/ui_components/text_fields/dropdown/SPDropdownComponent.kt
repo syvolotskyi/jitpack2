@@ -102,7 +102,7 @@ class SPDropdownComponent : ShowCaseComponent {
             val adapter =
                 SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
                     .setup {
-                        onCreate { _ ->
+                        onCreate {
                             SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                         }
                         onBind { binding, item, _ ->
@@ -144,7 +144,7 @@ class SPDropdownComponent : ShowCaseComponent {
 
             val adapter =
                 SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
-                    onCreate { _ ->
+                    onCreate {
                         SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                     }
                     onBind { binding, item, _ ->
