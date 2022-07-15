@@ -1,4 +1,4 @@
-package ge.space.ui.components.dropdowns.data
+package ge.space.ui.components.list_adapter
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -34,7 +34,6 @@ abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
         items.forEach { it.isSelected = item == it.item }
     }
 }
-
 
 /**
  * SPMenuAdapterListener contains on Item Click Listener. <Data> is item used in SPMenuAdapter

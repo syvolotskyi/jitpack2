@@ -15,16 +15,10 @@ import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownIt
 import ge.space.spaceui.databinding.SpLangItemLayoutBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.controls.radio.list_item.extentions.setData
-import ge.space.ui.components.dialogs.data.SPDialogIcon
-import ge.space.ui.components.dialogs.data.SPDialogInfo
-import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
-import ge.space.ui.components.dialogs.dialog_buttons.SPDialogBottomVerticalButton
-import ge.space.ui.components.dialogs.showMultipleButtonDialog
-import ge.space.ui.components.dropdowns.SPBottomSheetFragment
+import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
 import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
-import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
+import ge.space.ui.components.dropdowns.core.SPBottomSheetAdapter
 import ge.space.ui.components.dropdowns.strategy.SPFragmentSheetStrategy
-import ge.space.ui.components.dropdowns.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
@@ -33,7 +27,6 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownItemMo
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
-import java.util.*
 
 class SPDropdownComponent : ShowCaseComponent {
 
@@ -107,7 +100,7 @@ class SPDropdownComponent : ShowCaseComponent {
         ): SPTextFieldDropdown<*> {
 
             val adapter =
-                SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
+                SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
                     .setup {
                         onCreate { _ ->
                             SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
@@ -150,7 +143,7 @@ class SPDropdownComponent : ShowCaseComponent {
         ): SPTextFieldDropdown<*> {
 
             val adapter =
-                SPOnBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
+                SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
                     onCreate { _ ->
                         SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                     }

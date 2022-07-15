@@ -5,17 +5,18 @@ import android.widget.LinearLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ge.space.spaceui.databinding.SpBottomsheetListBinding
-import ge.space.ui.components.dropdowns.data.SPMenuAdapter
-import ge.space.ui.components.dropdowns.data.SPMenuAdapterListener
+import ge.space.ui.components.list_adapter.SPMenuAdapter
+import ge.space.ui.components.list_adapter.SPMenuAdapterListener
 
 /**
  * List strategy realization of [SPBottomSheetStrategy]
+ * Data is onResult return type
  */
 
-open class SPListSheetStrategy<Item>(
-    private val adapter: SPMenuAdapter<*, Item>,
+open class SPListSheetStrategy<Data>(
+    private val adapter: SPMenuAdapter<*, Data>,
     private val decorator: ItemDecoration? = null
-) : SPBottomSheetStrategy<Item> {
+) : SPBottomSheetStrategy<Data> {
 
     /**
      * Calls for initializing strategy
@@ -27,12 +28,12 @@ open class SPListSheetStrategy<Item>(
     override fun onCreate(
         fm: FragmentManager,
         container: LinearLayout,
-        dismissEvent: (Item?) -> Unit
+        dismissEvent: (Data?) -> Unit
     ) {
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
-            adapter.adapterListener = object : SPMenuAdapterListener<Item> {
-                override fun onItemClickListener(position: Int, data: Item?) {
+            adapter.adapterListener = object : SPMenuAdapterListener<Data> {
+                override fun onItemClickListener(position: Int, data: Data?) {
                     dismissEvent(data)
                 }
             }

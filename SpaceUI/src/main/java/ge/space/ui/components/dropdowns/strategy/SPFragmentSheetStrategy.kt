@@ -3,11 +3,11 @@ package ge.space.ui.components.dropdowns.strategy
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import ge.space.spaceui.R
-import ge.space.ui.util.extension.inflate
+import ge.space.ui.components.dropdowns.core.SPBottomSheetResultListener
 
 /**
  * Fragment strategy realization of [SPBottomSheetStrategy]
+ * Data is onResult return type
  */
 
 class SPFragmentSheetStrategy<Data>(

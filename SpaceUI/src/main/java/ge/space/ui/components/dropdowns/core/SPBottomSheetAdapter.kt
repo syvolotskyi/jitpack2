@@ -1,33 +1,36 @@
-package ge.space.ui.components.dropdowns.data
+package ge.space.ui.components.dropdowns.core
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import ge.space.ui.components.list_adapter.SPMenuAdapter
+import ge.space.ui.components.list_adapter.SPMenuViewHolder
+import ge.space.ui.components.list_adapter.SPSelectedItem
 import ge.space.ui.util.extension.onClick
 
 /**
- * SPOnBottomSheetBind help to handle dropdown the binding after selecting an item
+ * SPOnBottomSheetAdapter help to handle dropdown the binding after selecting an item
  */
-open class SPOnBottomSheetAdapter<VB : ViewBinding, Item> : SPMenuAdapter<SPOnBottomSheetAdapter.ListViewHolder, Item>() {
+open class SPBottomSheetAdapter<VB : ViewBinding, Item> : SPMenuAdapter<SPBottomSheetAdapter.ListViewHolder, Item>() {
 
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Item> = { _, _, _ -> }
     private var _onClick: OnClick<VB, Item> = { _, _, _ -> }
 
-    fun setup(block: SPOnBottomSheetAdapter<VB, Item>.() -> Unit): SPOnBottomSheetAdapter<VB, Item> {
+    fun setup(block: SPBottomSheetAdapter<VB, Item>.() -> Unit): SPBottomSheetAdapter<VB, Item> {
         block()
         return this
     }
 
-    fun onCreate(block: SPOnBottomSheetAdapter<VB, Item>.(parent: ViewGroup) -> VB) {
+    fun onCreate(block: SPBottomSheetAdapter<VB, Item>.(parent: ViewGroup) -> VB) {
         _onCreate = { block(it) }
     }
 
-    fun onBind(block: SPOnBottomSheetAdapter<VB, Item>.(binding: VB, item: SPSelectedItem<Item>, position: Int) -> Unit) {
+    fun onBind(block: SPBottomSheetAdapter<VB, Item>.(binding: VB, item: SPSelectedItem<Item>, position: Int) -> Unit) {
         _onBind = { binding, item, position -> block(binding, item, position) }
     }
 
-    fun onClick(block: SPOnBottomSheetAdapter<VB, Item>.(binding: VB, item: Item, position: Int) -> Unit) {
+    fun onClick(block: SPBottomSheetAdapter<VB, Item>.(binding: VB, item: Item, position: Int) -> Unit) {
         _onClick = { binding, item, position -> block(binding, item, position) }
     }
 

@@ -5,11 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ge.space.ui.util.extension.onClick
-import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpExampleFragmentLayoutBinding
-import ge.space.spaceui.databinding.SpTabNavigationChildViewLayoutBinding
-import ge.space.ui.components.dropdowns.strategy.SPBottomSheetResultListener
+import ge.space.ui.components.dropdowns.core.SPBottomSheetResultListener
 
 class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
 

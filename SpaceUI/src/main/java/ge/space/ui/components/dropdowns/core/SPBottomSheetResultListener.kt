@@ -1,6 +1,4 @@
-package ge.space.ui.components.dropdowns.strategy
-
-import ge.space.ui.components.dropdowns.SPBottomSheetFragment
+package ge.space.ui.components.dropdowns.core
 
 /**
  * Result listener where [Data] is type of item
