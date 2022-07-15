@@ -6,29 +6,10 @@ import androidx.fragment.app.FragmentActivity
 /**
  * Base implementation of popup dialog builder
  */
-abstract class SPBaseDialogBuilder<T : DialogFragment>(
-    private val activity: FragmentActivity
-) {
+abstract class SPBaseDialogBuilder<T : DialogFragment>{
 
     /**
      * Builds target popup fragment for showing
      */
     abstract fun build(): T
-
-    /**
-     * Initialize [SPBaseDialogBuilder] object and than show popup dialog
-     */
-    fun show(tag: String = DIALOG_FRAGMENT_TAG) {
-        try {
-            if (activity.supportFragmentManager.findFragmentByTag(tag) == null) {
-                build().show(activity.supportFragmentManager, tag)
-            }
-        } catch (ignored: IllegalStateException) {
-            ignored.printStackTrace()
-        }
-    }
-
-    companion object {
-        const val DIALOG_FRAGMENT_TAG: String = "DIALOG_FRAGMENT_TAG"
-    }
 }

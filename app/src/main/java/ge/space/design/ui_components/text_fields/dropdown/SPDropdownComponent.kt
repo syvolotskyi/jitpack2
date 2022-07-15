@@ -190,7 +190,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 })
                 .setItems(items)
                 .setOnClickListener {
-                    SPBottomSheetBuilder(fragmentActivity)
+                    SPBottomSheetBuilder()
                         .setTitle(view.context.getString(R.string.enter_you_details_here))
                         .setStrategy(
                             SPFragmentSheetStrategy<String>(
@@ -203,7 +203,8 @@ class SPDropdownComponent : ShowCaseComponent {
                                 ).show()
                             }
                         )
-                        .show()
+                        .build()
+                        .show(fragmentActivity)
                 }
                 .build(fragmentActivity)
         }

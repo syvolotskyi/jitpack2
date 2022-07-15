@@ -127,10 +127,11 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
 
     private fun handleOnClick() =
         adapter?.let { adapter ->
-            SPBottomSheetBuilder(activity)
+            SPBottomSheetBuilder()
                 .setTitle(labelText)
                 .setStrategy(SPListSheetStrategy(adapter))
-                .show()
+                .build()
+                .show(activity)
         } ?: onClickListener(this)
 
     /**

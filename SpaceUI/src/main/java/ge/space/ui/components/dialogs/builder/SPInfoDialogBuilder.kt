@@ -24,9 +24,7 @@ import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 /**
  * Builder class which allows to create [SPDialog]
  */
-class SPInfoDialogBuilder(
-    activity: FragmentActivity
-) : SPBaseDialogBuilder<SPDialog>(activity) {
+class SPInfoDialogBuilder : SPBaseDialogBuilder<SPDialog>() {
 
     private var title: String? = null
     private var label: String? = null
