@@ -37,7 +37,9 @@ abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
 }
 
 /**
- * SPMenuAdapterListener contains on Item Click Listener. <Data> is item used in SPMenuAdapter
+ * SPMenuAdapterListener is interface which allow to set listener on click item in adapter,
+ *  contains on Item Click Listener.
+ * <Data> is item used in SPMenuAdapter
  *
  */
 interface SPMenuAdapterListener<Data> {
@@ -53,15 +55,15 @@ interface SPMenuAdapterListener<Data> {
 /**
  * SPMenuViewHolder is base ViewHolder for SPMenuAdapter
  *
- * @params view [View] is model
+ * @params view [View] is item View
  */
 open class SPMenuViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 /**
  * SPSelectedItem contains
  *
- * @params item [Data] is model
- * @params isSelected [Boolean] is true when item is selectable
+ * @params item [Data] is a model type
+ * @params isSelected [Boolean] is true when item is selected
  */
 data class SPSelectedItem<Data>(
     val item: Data,

@@ -1,7 +1,7 @@
 package ge.space.ui.components.dropdowns.core
 
 /**
- * Result listener where [Data] is type of item
+ * Bottomsheet Result listener, where [Data] is an item return type
  */
 interface SPBottomSheetResultListener<Data> {
     /**

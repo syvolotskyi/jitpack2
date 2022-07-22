@@ -18,8 +18,8 @@ class SPBottomSheetBuilder<Data> :
     private var icon: Int? = null
     private var description: String? = null
     private var descriptionStyle: Int? = null
-    private var strategy: SPBottomSheetStrategy<Data>? = null
     private var resultListener : (Data?) -> Unit = {}
+    private lateinit var strategy: SPBottomSheetStrategy<Data>
 
     /**
      * Setting an icon
@@ -37,7 +37,7 @@ class SPBottomSheetBuilder<Data> :
      *
      * @param strategy [SPBottomSheetStrategy] applies strategy
      */
-    fun setStrategy(strategy: SPBottomSheetStrategy<Data>?): SPBottomSheetBuilder<Data> {
+    fun setStrategy(strategy: SPBottomSheetStrategy<Data>): SPBottomSheetBuilder<Data> {
         this.strategy = strategy
 
         return this
@@ -96,7 +96,7 @@ class SPBottomSheetBuilder<Data> :
                 SPBottomSheetFragment.KEY_DESCRIPTION to description,
                 SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle
             )
-            strategy?.let { setBottomStrategy(it) }
+            setBottomStrategy(strategy)
             this.setResultListener(resultListener)
         }
 }

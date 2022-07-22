@@ -15,7 +15,8 @@ import ge.space.ui.util.extension.*
 
 /**
  * [SPBottomSheetFragment] is a custom implementation of [BottomSheetDialogFragment]
- * Sets a strategy [setBottomStrategy] for adding content in bottom sheet container
+ * Sets a strategy [setBottomStrategy] Bottomsheet always need to has strategy,
+ * and currently it support two type of strategy ([SPFragmentSheetStrategy<Data>] and [SPListSheetStrategy<Data>])
  * Data is onResult return type
  */
 class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {

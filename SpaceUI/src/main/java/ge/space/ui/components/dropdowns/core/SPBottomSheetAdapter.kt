@@ -18,15 +18,24 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Data> = { _, _, _ -> }
 
+    /**
+     * Calls for initializing blocks OnCreate and OnBind
+     */
     fun setup(block: SPBottomSheetAdapter<VB, Data>.() -> Unit): SPBottomSheetAdapter<VB, Data> {
         block()
         return this
     }
 
+    /**
+     * OnCreate calls for creating View and return binding of it
+     */
     fun onCreate(block: SPBottomSheetAdapter<VB, Data>.(parent: ViewGroup) -> VB) {
         _onCreate = { block(it) }
     }
 
+    /**
+     * OnBind calls when item should be created and throw binding of it, item and position
+     */
     fun onBind(block: SPBottomSheetAdapter<VB, Data>.(binding: VB, item: SPSelectedItem<Data>, position: Int) -> Unit) {
         _onBind = { binding, item, position -> block(binding, item, position) }
     }
@@ -44,6 +53,9 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
         }
     }
 
+    /**
+     * Returns items list size
+     */
     override fun getItemCount(): Int = items.size
 
     @Suppress("UNCHECKED_CAST")
@@ -64,6 +76,9 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
         }
     }
 
+    /**
+     * Child of SPMenuViewHolder, contains binding of item layout
+     */
     class ListViewHolder(itemView: View) : SPMenuViewHolder(itemView) {
         var binding: Any? = null
     }

@@ -16,7 +16,7 @@ interface SPBottomSheetStrategy<Data> {
      * Calls for initializing strategy
      *
      * @param fm [FragmentManager] is supportFragmentManager
-     * @param container [LinearLayout] is parent container
+     * @param container [ViewGroup] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
     fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: (Data?) -> Unit)
