@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPSearchViewBase" />
+
+    <style name="SPSearchViewDefault" parent="SPSearchViewBase">
+        <item name="showCancelButton">true</item>
+        <item name="showClearButton">true</item>
+        <item name="showSettingButton">false</item>
+    </style>
+
+    <style name="SPSearchVieGiphy" parent="SPSearchViewBase">
+        <item name="showCancelButton">false</item>
+        <item name="showClearButton">false</item>
+        <item name="showSettingButton">false</item>
+    </style>
+
+    <style name="SPSearchViewElevated" parent="SPSearchViewBase">
+        <item name="showCancelButton">false</item>
+        <item name="showClearButton">false</item>
+        <item name="showSettingButton">false</item>
+    </style>
+
+    <style name="SPSearchViewFilter" parent="SPSearchViewBase">
+        <item name="showCancelButton">false</item>
+        <item name="showClearButton">true</item>
+        <item name="showSettingButton">true</item>
+    </style>
+
+</resources>
