@@ -5,30 +5,39 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.databinding.SpBottomsheetListBinding
-import ge.space.ui.components.dropdowns.data.SPOnBottomSheetAdapter
+import ge.space.ui.components.list_adapter.SPMenuAdapter
+import ge.space.ui.components.list_adapter.SPMenuAdapterListener
 
 /**
  * List strategy realization of [SPBottomSheetStrategy]
+ * Data is onResult return type
  */
 
-open class SPListSheetStrategy<VB : ViewBinding, Item>(
-    private val adapter: SPOnBottomSheetAdapter<VB, Item>,
+open class SPListSheetStrategy<Data>(
+    private val adapter: SPMenuAdapter<*, Data>,
     private val decorator: ItemDecoration? = null
-) : SPBottomSheetStrategy {
+) : SPBottomSheetStrategy<Data> {
 
     /**
-     * Calls for creation a content in bottom sheet fragment
+     * Calls for initializing strategy
      *
-     * @param fm [FragmentManager] Child Fragment Manager of bottom sheet fragment
-     * @param container [LinearLayout] for content view
+     * @param fm [FragmentManager] is supportFragmentManager
+     * @param container [ViewGroup] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
-    override fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: () -> Unit) {
+    override fun onCreate(
+        fm: FragmentManager,
+        container: ViewGroup,
+        dismissEvent: (Data?) -> Unit
+    ) {
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
-            adapter.onDismiss = { dismissEvent() }
+            adapter.adapterListener = object : SPMenuAdapterListener<Data> {
+                override fun onItemClickListener(position: Int, data: Data?) {
+                    dismissEvent(data)
+                }
+            }
             recyclerView.adapter = adapter
             container.addView(this.root)
         }

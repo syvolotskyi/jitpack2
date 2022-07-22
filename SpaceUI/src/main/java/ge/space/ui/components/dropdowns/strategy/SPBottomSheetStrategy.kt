@@ -3,20 +3,22 @@ package ge.space.ui.components.dropdowns.strategy
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.FragmentManager
-import ge.space.ui.components.dropdowns.SPBottomSheetFragment
+import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
 
 /**
- * Strategy realization for [SPBottomSheetFragment]
+ * Strategy realization for [SPBottomSheetFragment].
+ * Data is onResult return type
  */
 
-interface SPBottomSheetStrategy {
+interface SPBottomSheetStrategy<Data> {
 
     /**
-     * Calls for creation a content in bottom sheet fragment
+     * Calls for initializing strategy
      *
-     * @param container [LinearLayout] for content view
+     * @param fm [FragmentManager] is supportFragmentManager
+     * @param container [ViewGroup] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
-    fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: () -> Unit)
+    fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: (Data?) -> Unit)
 }
 
