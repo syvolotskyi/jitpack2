@@ -33,6 +33,7 @@ abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
      */
     fun setSelectedItem(item: Data) {
         items.forEach { it.isSelected = item == it.item }
+        notifyDataSetChanged()
     }
 }
 

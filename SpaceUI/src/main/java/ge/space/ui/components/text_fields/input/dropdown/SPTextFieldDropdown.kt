@@ -10,11 +10,10 @@ import androidx.core.content.withStyledAttributes
 import androidx.fragment.app.FragmentActivity
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
-import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
-import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
+import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
 import ge.space.ui.components.list_adapter.SPMenuAdapter
 import ge.space.ui.components.list_adapter.SPMenuAdapterListener
-import ge.space.ui.components.dropdowns.strategy.SPListSheetStrategy
+import ge.space.ui.components.bottomsheet.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
 import ge.space.ui.util.extension.EMPTY_TEXT

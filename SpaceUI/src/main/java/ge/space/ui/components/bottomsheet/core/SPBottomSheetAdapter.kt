@@ -1,4 +1,4 @@
-package ge.space.ui.components.dropdowns.core
+package ge.space.ui.components.bottomsheet.core
 
 import android.view.View
 import android.view.ViewGroup

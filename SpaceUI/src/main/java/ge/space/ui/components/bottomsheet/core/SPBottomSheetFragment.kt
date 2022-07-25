@@ -1,16 +1,15 @@
-package ge.space.ui.components.dropdowns.core
+package ge.space.ui.components.bottomsheet.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
 import ge.space.ui.components.dialogs.base.SPBaseDialog
-import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
+import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.util.extension.*
 
 /**
@@ -28,6 +27,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     private val dialogDescriptionMessage: String? by argument(KEY_DESCRIPTION, null)
     private lateinit var bottomStrategy: SPBottomSheetStrategy<Data>
     private var onResult: (Data?) -> Unit = {}
+    private val dismissDelayTime : Long by nonNullArgument(KEY_DELAY_TIME, 500L)
 
     private val binding by lazy {
         SpBottomsheetLayoutBinding.inflate(LayoutInflater.from(context))
@@ -60,10 +60,10 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
             }
 
             bottomStrategy.onCreate(childFragmentManager, standardBottomSheet) {
-                runDelayed(300, action = {
-                    onResult(it)
+                onResult(it)
+                runDelayed(dismissDelayTime) {
                     dismiss()
-                })
+                }
             }
         }
         handleTitleStyle()
@@ -108,6 +108,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
         const val KEY_TITLE = "KEY_TITLE"
         const val KEY_DESCRIPTION = "KEY_DESCRIPTION"
         const val KEY_DESCRIPTION_STYLE = "KEY_DESCRIPTION_STYLE"
+        const val KEY_DELAY_TIME = "KEY_DELAY_TIME"
         const val KEY_ICON = "KEY_ICON"
         const val KEY_TITLE_STYLE = "KEY_TITLE_STYLE"
 

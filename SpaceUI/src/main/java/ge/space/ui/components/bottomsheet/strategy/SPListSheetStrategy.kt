@@ -1,8 +1,7 @@
-package ge.space.ui.components.dropdowns.strategy
+package ge.space.ui.components.bottomsheet.strategy
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ge.space.spaceui.databinding.SpBottomsheetListBinding

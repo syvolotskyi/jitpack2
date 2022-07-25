@@ -162,7 +162,11 @@ class SPRadioButton @JvmOverloads constructor(
     }
 
     override fun handleCheckingState() {
-        binding.radioButton.isChecked = isChecked
+        binding.radioButton.apply {
+            post {
+                isChecked = this@SPRadioButton.isChecked
+            }
+        }
     }
 
     private fun handleDesc() {

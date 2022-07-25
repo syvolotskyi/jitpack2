@@ -7,7 +7,7 @@ import ge.space.ui.util.extension.onClick
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.spacedesignsystem.databinding.SpExampleFragmentLayoutBinding
-import ge.space.ui.components.dropdowns.core.SPBottomSheetResultListener
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetResultListener
 
 class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
 

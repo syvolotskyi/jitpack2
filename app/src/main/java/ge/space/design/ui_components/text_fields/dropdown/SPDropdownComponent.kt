@@ -7,19 +7,17 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.FragmentActivity
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTextFieldsDropdownShowcaseBinding
+import com.example.spacedesignsystem.databinding.SpLangItemLayoutBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getDefaultLangItem
 import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getLanguagesList
-import ge.space.spaceui.databinding.SpLangItemLayoutBinding
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.controls.radio.list_item.extentions.setData
-import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
-import ge.space.ui.components.dropdowns.builder.SPBottomSheetBuilder
-import ge.space.ui.components.dropdowns.core.SPBottomSheetAdapter
-import ge.space.ui.components.dropdowns.strategy.SPFragmentSheetStrategy
-import ge.space.ui.components.list_adapter.SPSelectedItem
+import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetAdapter
+import ge.space.ui.components.bottomsheet.strategy.SPFragmentSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
@@ -149,11 +147,14 @@ class SPDropdownComponent : ShowCaseComponent {
                         SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
                     }
                     onBind { binding, item, _ ->
-                        binding.radio.isChecked = item.isSelected
+
                         binding.radio.setData(
                             item.item.value,
                             item.item.iconData?.createView(view.context)
                         )
+                        binding.radio.isChecked = item.isSelected
+
+
                     }
                 }
 

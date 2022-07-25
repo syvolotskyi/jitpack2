@@ -82,9 +82,14 @@ class SPListItemButton @JvmOverloads constructor(
         binding.titleText.setTextStyle(textAppearance)
     }
 
-    override fun handleCheckingState(){
-        binding.radioButton.isChecked = isChecked
+    override fun handleCheckingState() {
+        binding.radioButton.apply {
+            post {
+                isChecked = this@SPListItemButton.isChecked
+            }
+        }
     }
+
 
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(

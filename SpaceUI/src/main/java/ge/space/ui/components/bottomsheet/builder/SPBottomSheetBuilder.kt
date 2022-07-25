@@ -1,11 +1,10 @@
-package ge.space.ui.components.dropdowns.builder
+package ge.space.ui.components.bottomsheet.builder
 
 import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentActivity
 import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
-import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
-import ge.space.ui.components.dropdowns.strategy.SPBottomSheetStrategy
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
+import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 
 /**
  * Builder class which allows to create [SPBottomSheetFragment]. Data is onResult return type
@@ -18,7 +17,8 @@ class SPBottomSheetBuilder<Data> :
     private var icon: Int? = null
     private var description: String? = null
     private var descriptionStyle: Int? = null
-    private var resultListener : (Data?) -> Unit = {}
+    private var resultListener: (Data?) -> Unit = {}
+    private var dismissDelayTime: Long = 500L
     private lateinit var strategy: SPBottomSheetStrategy<Data>
 
     /**
@@ -39,6 +39,17 @@ class SPBottomSheetBuilder<Data> :
      */
     fun setStrategy(strategy: SPBottomSheetStrategy<Data>): SPBottomSheetBuilder<Data> {
         this.strategy = strategy
+
+        return this
+    }
+
+    /**
+     * Sets a dismiss delay time
+     *
+     * @param millis [Long] millis to delay a bottom sheet
+     */
+    fun setDismissDelayTime(millis: Long): SPBottomSheetBuilder<Data> {
+        this.dismissDelayTime = millis
 
         return this
     }
@@ -94,7 +105,8 @@ class SPBottomSheetBuilder<Data> :
                 SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
                 SPBottomSheetFragment.KEY_ICON to icon,
                 SPBottomSheetFragment.KEY_DESCRIPTION to description,
-                SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle
+                SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
+                SPBottomSheetFragment.KEY_DELAY_TIME to dismissDelayTime,
             )
             setBottomStrategy(strategy)
             this.setResultListener(resultListener)

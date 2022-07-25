@@ -1,9 +1,8 @@
-package ge.space.ui.components.dropdowns.strategy
+package ge.space.ui.components.bottomsheet.strategy
 
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.FragmentManager
-import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
 
 /**
  * Strategy realization for [SPBottomSheetFragment].

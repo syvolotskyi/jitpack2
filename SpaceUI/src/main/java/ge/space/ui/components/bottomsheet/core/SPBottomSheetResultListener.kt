@@ -1,4 +1,4 @@
-package ge.space.ui.components.dropdowns.core
+package ge.space.ui.components.bottomsheet.core
 
 /**
  * Bottomsheet Result listener, where [Data] is an item return type
