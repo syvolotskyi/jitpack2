@@ -7,6 +7,7 @@ import ge.space.ui.components.dropdowns.core.SPBottomSheetFragment
 
 /**
  * Strategy realization for [SPBottomSheetFragment].
+ *  if you want to use bottomsheet you must override SPBottomSheetResultListener in your fragment
  * Data is onResult return type
  */
 

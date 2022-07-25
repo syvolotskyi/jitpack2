@@ -12,6 +12,9 @@ import ge.space.ui.components.list_adapter.SPMenuAdapterListener
 /**
  * List strategy realization of [SPBottomSheetStrategy]
  * Data is onResult return type
+ *
+ * @param adapter [SPMenuAdapter] is child of SPMenuAdapter recycler adaprer
+ * @param decorator [ItemDecoration] is nullable recycler item decorator
  */
 
 open class SPListSheetStrategy<Data>(
