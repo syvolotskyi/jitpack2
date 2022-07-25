@@ -14,7 +14,9 @@ import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setHeight
 import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.setWidth
 
 /**
  *  Extended view from [SpBaseRadioButton] contains radio button, startView and title label.
@@ -68,6 +70,15 @@ class SPListItemButton @JvmOverloads constructor(
     fun setStartView(view: View) {
         binding.startView.removeView(view)
         binding.startView.addView(view)
+        invalidate()
+    }
+
+    /**
+     * Sets a Start View size height and width. Use height is WRAP_CONTENT if put image non from url
+     */
+    fun setStartViewSize(height: Int, width: Int) {
+        binding.startView.setHeight(height)
+        binding.startView.setWidth(width)
         invalidate()
     }
 

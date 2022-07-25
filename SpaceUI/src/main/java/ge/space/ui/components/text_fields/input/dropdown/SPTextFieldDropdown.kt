@@ -83,6 +83,26 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Sets a left image and horizontal paddings, if inflate type is withImage
+     *
+     * @param view [View] is startView
+     * @param left [Int] is left padding
+     * @param top [Int] is top padding
+     * @param bottom [Int] is bottom padding
+     */
+    fun setImageWithPadding(view: View, left: Int = 0,top: Int = 0, right: Int = 0, bottom: Int = 0) {
+        if (inflateType == InflateType.WithIcon) {
+            binding.flStart.setPadding(
+                left,
+                top,
+                right,
+                bottom
+            )
+            startView = view
+        }
+    }
+
 
     /**
      * Sets a left image and specify a container size, if inflate type is withImage
@@ -129,7 +149,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         adapter?.let { adapter ->
             SPBottomSheetBuilder<Item>()
                 .setTitle(labelText)
-                .setResultListener { result ->  result?.let { bindItem(it) } }
+                .setResultListener { result -> result?.let { bindItem(it) } }
                 .setStrategy(SPListSheetStrategy(adapter))
                 .build()
                 .show(activity)

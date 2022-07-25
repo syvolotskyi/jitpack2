@@ -38,5 +38,5 @@ fun SPListItemButton.setData(title: String, url: String) {
  */
 fun SPListItemButton.setData(title: String, view: View?) {
     this.title = title
-    view?.let {this.setStartView(view)}
+    view?.let { this.setStartView(view) }
 }

@@ -10,11 +10,15 @@ class SPSecondaryChipIconImpl(context: Context) :
 
     override fun create(type: SPViewData.SPSecondaryChipData): SPSecondaryChip {
         return SPSecondaryChip(context).apply {
+            setViewStyle(type.styleRes)
             chipHeight = type.chipHeight
             chipWidth = type.chipWidth
             bankLogoUrl = type.bankLogoUrl
             paymentSystemUrl = type.paymentSystemUrl
             hasBorder = type.hasBorder
+            type.params?.let {
+                setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)
+            }
         }
     }
 }

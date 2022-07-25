@@ -86,6 +86,7 @@
     <string name="selectLanguage">Select Language</string>
     <string name="disable">Disable</string>
     <string name="chooseSettings">Choose settings</string>
+    <string name="chooseCard">Choose card</string>
     <string name="description">Description</string>
     <string name="information_icon">Information icon</string>
     <string name="active">Active</string>

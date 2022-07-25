@@ -1,6 +1,7 @@
 package ge.space.design.ui_components.text_fields.dropdown
 
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
@@ -22,7 +23,6 @@ import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
 import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemModel
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
-import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownItemModelBind
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData
@@ -97,7 +97,7 @@ class SPDropdownComponent : ShowCaseComponent {
             view: SPTextFieldDropdown<*>,
             fragmentActivity: FragmentActivity
         ): SPTextFieldDropdown<*> {
-
+            val context = view.context
             val adapter =
                 SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
                     .setup {
@@ -106,6 +106,7 @@ class SPDropdownComponent : ShowCaseComponent {
                         }
                         onBind { binding, item, _ ->
                             binding.radio.isChecked = item.isSelected
+                            binding.radio.setStartViewSize(ViewGroup.LayoutParams.WRAP_CONTENT, context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_38))
                             binding.radio.setData(
                                 item.item.value,
                                 item.item.iconData?.createView(view.context)
@@ -129,7 +130,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     )
                 )
                 .setTitle(view.context.getString(R.string.enter_you_details_here))
-                .setOnBindDropdownItem(SPOnDropdownItemModelBind())
+                .setOnBindDropdownItem(SPOnChipItemModelBind())
                 .setItems(SPTextFieldsDropdownItems.getList(view.context))
                 .setBottomSheetAdapter(adapter)
                 .build(fragmentActivity)
@@ -178,8 +179,8 @@ class SPDropdownComponent : ShowCaseComponent {
             val items = SPTextFieldsDropdownItems.getList(view.context).map { it.value }
             return SPTextFieldDropdown.SPTextFieldDropdownBuilder<String>(fragmentActivity)
                 .setStyle(R.style.SPTextField_Dropdown)
-                .setDefault(view.context.getString(R.string.enter_you_details_here))
-                .setTitle(view.context.getString(R.string.enter_you_details_here))
+                .setDefault(view.context.getString(R.string.chooseCard))
+                .setTitle(view.context.getString(R.string.chooseCard))
                 .setOnBindDropdownItem(object : SPOnDropdownBind<String> {
                     override fun getBindItemModel(): (SPTextFieldDropdown<String>, String) -> Unit =
                         { dropdown, item -> dropdown.text = item }
@@ -195,14 +196,14 @@ class SPDropdownComponent : ShowCaseComponent {
         private fun getBottomSheetFragment(
             view: FrameLayout
         ) = SPBottomSheetBuilder<String>()
-            .setTitle(view.context.getString(R.string.enter_you_details_here))
+            .setTitle(view.context.getString(R.string.component_bank_card))
             .setStrategy(
                 SPFragmentSheetStrategy(
                     SPExampleFragment()
                 )
             )
             .setResultListener {
-                Toast.makeText(view.context, "result", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
             }
             .build()
     }

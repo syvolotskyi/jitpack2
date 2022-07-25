@@ -5,8 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import ge.space.ui.util.extension.onClick
 import android.view.ViewGroup
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
+import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpExampleFragmentLayoutBinding
+import com.example.spacedesignsystem.databinding.SpItemBankCardShowcaseBinding
+import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bottomsheet.core.SPBottomSheetResultListener
 
 class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
@@ -27,7 +31,31 @@ class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        SPButtonStyles.list.forEach { bankCardSample ->
+            val itemBinding = SpItemBankCardShowcaseBinding.inflate(
+                LayoutInflater.from(context).cloneInContext(ContextThemeWrapper(context, R.style.SPBankCardView_Base)),
+                binding.bankCardsLayout,
+                true
+            )
 
+            with(itemBinding.bankCard) {
+                model = bankCardSample.cardModel
+                accountNumber = bankCardSample.accountNumber
+                bankLogo = bankCardSample.bankLogo
+                amount = bankCardSample.amount
+                paySystemUrl = bankCardSample.paySystemUrl
+                cardBackground = bankCardSample.cardBackground
+                payWaveType = bankCardSample.payWaveType
+                status = bankCardSample.bankCardStatus
+                accountNumberStyle = bankCardSample.accountNumberStyle
+                balanceVisible = bankCardSample.balanceVisible
+                isCredit = bankCardSample.isCredit
+                hasChip = bankCardSample.hasChip
+                hasPayWave = bankCardSample.hasPayWave
+                isFavorite = bankCardSample.isFavorite
+                accountVisible = bankCardSample.accountVisible
+            }
+        }
         binding.saveButton.onClick {
             dismiss("Closed")
         }

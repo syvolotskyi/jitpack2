@@ -10,40 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:paddingBottom="@dimen/dimen_p_32"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dimen_p_40">
 
-        <ge.space.ui.components.bank_cards.card.SPBankCardView
-            android:id="@+id/bankCard"
-            style="@style/SPBankCardView.Base"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/bankCardsLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
-
-        <ge.space.ui.components.bank_cards.card.SPBankCardView
-            android:id="@+id/bankCard2"
-            style="@style/SPBankCardView.Base"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
-
-        <ge.space.ui.components.bank_cards.card.SPBankCardView
-            android:id="@+id/bankCard3"
-            style="@style/SPBankCardView.Base"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
-
-        <ge.space.ui.components.bank_cards.card.SPBankCardView
-            android:id="@+id/bankCard4"
-            style="@style/SPBankCardView.Base"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-            android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical" />
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/saveButton"
@@ -51,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimen_p_16"
-            android:text="Save and close"/>
-
+            android:text="Save and close" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

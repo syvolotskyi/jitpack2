@@ -151,7 +151,8 @@ sealed class SPViewData : Parcelable {
         val bankLogoUrl: String,
         val paymentSystemUrl: String,
         val hasBorder: Boolean,
-        @StyleRes val styleRes: Int
+        @StyleRes val styleRes: Int,
+        var params: SPViewDataParams? = null
     ) :
         SPViewData()
 
