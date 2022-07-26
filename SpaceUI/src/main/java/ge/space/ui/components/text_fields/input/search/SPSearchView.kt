@@ -9,14 +9,19 @@ import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
+import com.space.components.animations.motion.awaitTransitionComplete
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpSearchViewLayoutBinding
+import ge.space.spaceui.databinding.SpSearchViewMotionLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.text_fields.input.base.SPEndViewType
 import ge.space.ui.components.text_fields.input.base.setupEndViewByType
 import ge.space.ui.components.text_fields.input.utils.extension.doOnTextChanged
 import ge.space.ui.util.extension.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 class SPSearchView @JvmOverloads constructor(
     context: Context,
@@ -24,6 +29,8 @@ class SPSearchView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPSearchViewDefault,
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
+
+    private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     /**
      * Sets a text appearance.
@@ -43,7 +50,7 @@ class SPSearchView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.toggleSettings.isVisible = field
+//            binding.toggleSettings.isVisible = field
         }
 
     /**
@@ -58,7 +65,7 @@ class SPSearchView @JvmOverloads constructor(
     private var settingListener: () -> Unit = {}
 
     private val binding =
-        SpSearchViewLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+        SpSearchViewMotionLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         getContext().withStyledAttributes(
@@ -74,7 +81,7 @@ class SPSearchView @JvmOverloads constructor(
     private fun TypedArray.applyStyledAttributes() {
         getString(
             R.styleable.SPSearchView_android_text
-        ).orEmpty().apply { binding.searchInputView.text = this }
+        ).orEmpty().apply { binding.searchInputView.setText(this) }
 
         getResourceId(
             R.styleable.SPSearchView_titleTextAppearance,
@@ -111,37 +118,57 @@ class SPSearchView @JvmOverloads constructor(
     }
 
     private fun setupCancelButton() {
-        binding.cancelButton.onClick {
-            binding.searchInputView.removeAllText()
-            binding.searchInputView.clearFocus()
-            binding.searchInputView.hideKeyboard()
+        with(binding) {
+
+            searchInputView.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) {
+                    if (!transferCancel.isVisible) {
+                        searchViewRoot.setTransition(R.id.startState, R.id.endState)
+                        searchViewRoot.transitionToEnd()
+                    }
+                }
+            }
+            transferCancel.onClick {
+                cancelAnimation()
+            }
         }
-        binding.searchInputView.onFocusChangeListener = { focused ->
-            binding.cancelButton.isVisible = focused && showCancelButton
+
+    }
+
+    private fun cancelAnimation() {
+        with(binding) {
+            uiScope.launch {
+                searchInputView.setText(EMPTY_TEXT)
+                searchViewRoot.transitionToStart()
+                searchViewRoot.awaitTransitionComplete(R.id.startState)
+            }
+//            cancelButtonClickListener?.invoke()invoke
+            clearFocus()
+            hideKeyboard()
         }
     }
 
     private fun setupClearButton() {
-        binding.searchInputView.doOnTextChanged { text, _, _, _ ->
-            binding.searchInputView.setupEndViewByType(
-                if (!text.isNullOrEmpty() && showClearButton) SPEndViewType.SPRemovableViewType
-                else SPEndViewType.SPNoneViewType
-            )
-        }
+        /* binding.searchInputView.doOnTextChanged { text, _, _, _ ->
+             binding.searchInputView.setupEndViewByType(
+                 if (!text.isNullOrEmpty() && showClearButton) SPEndViewType.SPRemovableViewType
+                 else SPEndViewType.SPNoneViewType
+             )
+         }*/
     }
 
     private fun setupSettingButton() {
-        binding.toggleSettings.onClick {
-            settingListener()
-        }
-        binding.toggleSettings.isVisible = showSettingButton
+        /* binding.toggleSettings.onClick {
+             settingListener()
+         }*/
+//        binding.toggleSettings.isVisible = showSettingButton
     }
 
     /**
      * Sets a textAppearance and descriptionTextAppearance to view
      */
     fun updateTextAppearance(textAppearance: Int) {
-        binding.searchInputView.textAppearance = textAppearance
+//        binding.searchInputView.textAppearance = textAppearance
     }
 
     override fun setViewStyle(newStyle: Int) {

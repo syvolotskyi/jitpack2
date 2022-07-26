@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
+    android:background="?attr/background_secondary"
     tools:ignore="MissingDefaultResource">
 
     <LinearLayout
@@ -24,6 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneInput"
             app:titleText="@string/enter_you_details_here" />
+
         <ge.space.ui.components.text_fields.input.search.SPSearchView
             android:id="@+id/simpleGiphy"
             android:layout_width="match_parent"
@@ -36,6 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneInput"
             app:titleText="@string/enter_you_details_here" />
+
         <ge.space.ui.components.text_fields.input.search.SPSearchView
             android:id="@+id/simpleInputElevated"
             android:layout_width="match_parent"
@@ -48,6 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneInput"
             app:titleText="@string/enter_you_details_here" />
+
         <ge.space.ui.components.text_fields.input.search.SPSearchView
             android:id="@+id/simpleInputFiltered"
             android:layout_width="match_parent"

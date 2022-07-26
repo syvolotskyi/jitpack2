@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.space.components.animations.motion.MultiListenerMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchViewRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:currentState="@id/startState"
+    app:layoutDescription="@xml/sp_transfer_template_search_view_scene"
+    tools:parentTag="androidx.constraintlayout.motion.widget.MotionLayout">
+
+    <!--    android:background="@drawable/bkg_transfer_search_view"-->
+
+
+    <ge.space.ui.components.layout.SPFrameLayout
+        android:id="@+id/templateSearchView"
+        style="@style/SPInputField"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_p_40"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/transferCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="@dimen/dimen_p_24"
+        android:layout_height="@dimen/dimen_p_24"
+        android:src="@drawable/ic_search_24_regular"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/searchInputView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/searchInputView"
+        style="@style/h600_bold_caps_brand_primary"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dimen_p_10"
+        android:layout_marginEnd="@dimen/dimen_p_40"
+        android:background="@android:color/transparent"
+        android:ellipsize="end"
+        android:hint="@string/title_default_chip_item_add_title"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/templateSearchView"
+        app:layout_constraintStart_toEndOf="@+id/searchIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/transferCancel"
+        style="@style/h600_bold_caps_brand_primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_p_6"
+        android:text="@string/cancel"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/templateSearchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/templateSearchView"
+        app:layout_constraintTop_toTopOf="@+id/templateSearchView" />
+
+    <FrameLayout
+        android:id="@+id/clearImageContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingHorizontal="@dimen/dimen_p_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/templateSearchView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/clearImage"
+            android:layout_width="@dimen/dimen_p_14"
+            android:layout_height="@dimen/dimen_p_14"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_search_24_regular"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+</com.space.components.animations.motion.MultiListenerMotionLayout>
