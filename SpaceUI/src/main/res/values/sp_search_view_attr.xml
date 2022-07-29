@@ -3,7 +3,9 @@
     <declare-styleable name="SPSearchView">
         <attr name="titleTextAppearance" />
         <attr name="showCancelButton" format="boolean"/>
+        <attr name="icon" format="reference"/>
         <attr name="showClearButton" format="boolean"/>
+        <attr name="shadowStyle" format="reference"/>
         <attr name="showSettingButton" format="boolean"/>
         <attr name="android:text" format="string" localization="suggested" />
     </declare-styleable>
