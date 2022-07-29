@@ -88,7 +88,7 @@ class SPSearchView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            updateShadowStyle(value)
+            binding.templateSearchView.setBaseViewShadowStyle(shadowStyle)
         }
 
     /**
@@ -207,7 +207,7 @@ class SPSearchView @JvmOverloads constructor(
         searchViewRoot.transitionToEnd()
     }
 
-    private fun cancelAnimation() {
+    private fun cancelAnimation() =
         with(binding) {
             uiScope.launch {
                 searchInputView.setText(EMPTY_TEXT)
@@ -218,9 +218,9 @@ class SPSearchView @JvmOverloads constructor(
             clearFocus()
             hideKeyboard()
         }
-    }
 
-    private fun setupClearButton() {
+
+    private fun setupClearButton() =
         with(binding) {
             searchInputView.onChange {
                 clearImage.visibleIf(showClearButton && it.isNotEmpty())
@@ -232,19 +232,18 @@ class SPSearchView @JvmOverloads constructor(
                 focus()
             }
         }
-    }
 
 
     /**
      * remove focus from
      */
-    fun clearEditTextFocus() {
+    fun clearEditTextFocus() =
         with(binding) {
             if (transferCancel.isVisible) {
                 cancelAnimation()
             }
         }
-    }
+
 
     private fun focus() {
         binding.searchInputView.requestFocus()
@@ -252,12 +251,12 @@ class SPSearchView @JvmOverloads constructor(
             .showSoftInput(binding.searchInputView, InputMethodManager.SHOW_IMPLICIT)
     }
 
-    private fun clearInput() {
+    private fun clearInput() =
         with(binding) {
             searchInputView.text.clear()
             onSearchClickListener("")
         }
-    }
+
 
     private fun setupSettingButton() {
         /* binding.toggleSettings.onClick {
@@ -269,16 +268,8 @@ class SPSearchView @JvmOverloads constructor(
     /**
      * Sets a textAppearance and descriptionTextAppearance to view
      */
-    fun updateTextAppearance(textAppearance: Int) {
+    fun updateTextAppearance(textAppearance: Int) =
         binding.searchInputView.setTextStyle(textAppearance)
-    }
-
-    /**
-     * Sets a search box shadow style.
-     */
-    fun updateShadowStyle(shadowStyle: Int) {
-        binding.templateSearchView.setBaseViewStyle(shadowStyle)
-    }
 
     /**
      * Allows to update search view style and BaseViewStyle programmatically
