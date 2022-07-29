@@ -13,6 +13,7 @@
     <attr name="shadowOffsetY" format="dimension|reference" />
     <attr name="chipWidth" format="dimension|reference"/>
     <attr name="chipHeight" format="dimension|reference"/>
+    <attr name="chipStyleRes" format="reference"/>
     <attr name="iconRadius" format="dimension|reference"/>
     <attr name="isCircle" format="boolean" />
     <attr name="borderColor" format="color|reference" />

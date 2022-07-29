@@ -133,8 +133,6 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPrimaryChipData(
-        val chipHeight: Int,
-        val chipWidth: Int,
         @StyleRes val styleRes: Int = R.style.SPBankCardView_Chip_Base,
         var params: SPViewDataParams? = null,
     ) : SPViewData()
@@ -146,8 +144,6 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPSecondaryChipData(
-        val chipHeight: Int,
-        val chipWidth: Int,
         val bankLogoUrl: String,
         val paymentSystemUrl: String,
         val hasBorder: Boolean,
@@ -163,8 +159,6 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPDigitalChipData(
-        val chipHeight: Int,
-        val chipWidth: Int,
         val gradient: @RawValue SPBankCardGradient,
         @StyleRes val styleRes: Int
     ) :

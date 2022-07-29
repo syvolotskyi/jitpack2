@@ -9,29 +9,36 @@
         <item name="background">@android:color/transparent</item>
         <item name="ui_backgroundColor">?attr/white</item>
         <item name="android:background">@android:color/transparent</item>
+        <item name="chipStyleRes">@style/SPBankCardView.EmptySmall.Base</item>
     </style>
 
     <style name="SPBankCardView_ChipEmpty.Small.White" parent="SPBankCardView.Chip.Small">
         <item name="emptyChipAppearance">white</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipEmpty.Small.White</item>
     </style>
 
     <style name="SPBankCardView_ChipEmpty.Small.Dark" parent="SPBankCardView.Chip.Small">
         <item name="emptyChipAppearance">dark</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipEmpty.Small.Dark</item>
     </style>
 
     <style name="SPBankCardView_ChipEmpty.Medium.White" parent="SPBankCardView.Chip.Medium">
         <item name="emptyChipAppearance">white</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipEmpty.Medium.White</item>
     </style>
 
     <style name="SPBankCardView_ChipEmpty.Medium.Dark" parent="SPBankCardView.Chip.Medium">
         <item name="emptyChipAppearance">dark</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipEmpty.Medium.Dark</item>
     </style>
 
     <style name="SPBankCardView_ChipEmpty.White" parent="SPBankCardView.Chip">
         <item name="emptyChipAppearance">white</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipEmpty.White</item>
     </style>
 
     <style name="SPBankCardView_ChipEmpty.Dark" parent="SPBankCardView.Chip">
         <item name="emptyChipAppearance">dark</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipEmpty.Dark</item>
     </style>
 </resources>

@@ -29,8 +29,6 @@ object SPTextFieldsDropdownItems {
             3,
             "Digital chip",
             iconData = SPViewData.SPDigitalChipData(
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
                 SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_BLUE_1,
@@ -44,8 +42,6 @@ object SPTextFieldsDropdownItems {
             4,
             "Digital chip 2",
             iconData = SPViewData.SPDigitalChipData(
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
                 SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_GREEN_1,
@@ -59,8 +55,6 @@ object SPTextFieldsDropdownItems {
             5,
             "Digital chip 3",
             iconData = SPViewData.SPDigitalChipData(
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
                 SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_VIOLET_1,

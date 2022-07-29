@@ -11,8 +11,6 @@ class SPDefaultPrimaryChipData {
             params: SPViewData.SPViewDataParams? = null,
         ): SPViewData.SPrimaryChipData {
             return SPViewData.SPrimaryChipData(
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
                 R.style.SPBankCardView_ChipPrimary_Small,
                 params
             )
@@ -22,8 +20,6 @@ class SPDefaultPrimaryChipData {
             context: Context
         ): SPViewData.SPrimaryChipData {
             return SPViewData.SPrimaryChipData(
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_medium),
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_medium),
                 R.style.SPBankCardView_ChipPrimary_Medium
             )
         }
@@ -32,8 +28,6 @@ class SPDefaultPrimaryChipData {
             context: Context
         ): SPViewData.SPrimaryChipData {
             return SPViewData.SPrimaryChipData(
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height),
-                context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width),
                 R.style.SPBankCardView_ChipPrimary
             )
         }

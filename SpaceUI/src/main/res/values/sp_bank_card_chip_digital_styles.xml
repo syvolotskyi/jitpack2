@@ -4,18 +4,21 @@
         <item name="paymentLogoMargin">@dimen/sp_digital_chip_payment_system_margin_small</item>
         <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height_small</item>
         <item name="paymentSystemHeight">@dimen/sp_digital_chip_payment_system_height_small</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipDigital.Small</item>
     </style>
 
     <style name="SPBankCardView_ChipDigital.Medium" parent="SPBankCardView.Chip.Medium">
         <item name="paymentLogoMargin">@dimen/sp_digital_chip_payment_system_margin_small</item>
         <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height_medium</item>
         <item name="paymentSystemHeight">@dimen/sp_digital_chip_payment_system_height_medium</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipDigital.Medium</item>
     </style>
 
     <style name="SPBankCardView_ChipDigital" parent="SPBankCardView.Chip">
         <item name="paymentLogoMargin">@dimen/sp_digital_chip_payment_system_margin</item>
         <item name="brandLogoHeight">@dimen/sp_digital_chip_bank_logo_height</item>
         <item name="paymentSystemHeight">@dimen/sp_digital_chip_payment_system_height</item>
+        <item name="chipStyleRes">@style/SPBankCardView_ChipDigital</item>
     </style>
 
 </resources>
