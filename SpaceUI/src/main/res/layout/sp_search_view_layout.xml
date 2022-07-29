@@ -31,14 +31,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <ge.space.ui.components.controls.SPToggleIcon
-        android:id="@+id/toggleSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:checked="true"
-        app:icon="@drawable/ic_settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

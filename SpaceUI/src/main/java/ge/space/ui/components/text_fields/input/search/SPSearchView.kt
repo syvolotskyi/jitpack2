@@ -98,18 +98,28 @@ class SPSearchView @JvmOverloads constructor(
         set(value) {
             field = value
 
-//            binding.toggleSettings.isVisible = field
+            binding.toggleSettings.isVisible = field
         }
 
     /**
      * Sets a visibility for cancel button
      */
     var showCancelButton = false
+        set(value) {
+            field = value
+
+            setupCancelButton()
+        }
 
     /**
      * Sets a visibility for clear button
      */
     var showClearButton = false
+        set(value) {
+            field = value
+
+            setupClearButton()
+        }
 
 
     private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
@@ -168,9 +178,6 @@ class SPSearchView @JvmOverloads constructor(
         ).apply {
             showSettingButton = this
         }
-
-        setupCancelButton()
-        setupClearButton()
     }
 
     private fun setupCancelButton() {
@@ -259,10 +266,10 @@ class SPSearchView @JvmOverloads constructor(
 
 
     private fun setupSettingButton() {
-        /* binding.toggleSettings.onClick {
-             settingListener()
-         }*/
-//        binding.toggleSettings.isVisible = showSettingButton
+        binding.toggleSettings.onClick {
+            settingClickListener()
+        }
+        binding.toggleSettings.isVisible = showSettingButton
     }
 
     /**

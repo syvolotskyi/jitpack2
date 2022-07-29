@@ -40,13 +40,13 @@
         android:ellipsize="end"
         android:hint="@string/title_default_chip_item_add_title"
         android:imeOptions="actionDone"
+        android:importantForAutofill="no"
         android:inputType="textVisiblePassword"
         android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/templateSearchView"
         app:layout_constraintStart_toEndOf="@+id/searchIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/transferCancel"
@@ -57,7 +57,7 @@
         android:text="@string/cancel"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/templateSearchView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/toggleSettings"
         app:layout_constraintStart_toEndOf="@+id/templateSearchView"
         app:layout_constraintTop_toTopOf="@+id/templateSearchView" />
 
@@ -79,4 +79,17 @@
             android:visibility="invisible" />
 
     </FrameLayout>
+
+    <ge.space.ui.components.controls.SPToggleIcon
+        android:id="@+id/toggleSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        android:visibility="gone"
+        app:icon="@drawable/ic_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 </com.space.components.animations.motion.MultiListenerMotionLayout>
