@@ -297,7 +297,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      *
      * <p>
      * Default style theme is SBBaseView style. A style has to implement SPView styleable
-     * attributes. Separate SPBaseView styleable attributes have higher priority han styles.
+     * attributes. Separate SPBaseView styleable attributes have higher priority than styles.
      * <p>
      *
      * @param defStyleRes [Int] style resource id
@@ -314,7 +314,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      *
      * <p>
      * Default style theme is SBBaseView style. A style has to implement SPView styleable
-     * attributes. Separate SPBaseView styleable attributes have higher priority han styles.
+     * attributes. Separate SPBaseView styleable attributes have higher priority than styles.
      * <p>
      *
      * @param defStyleRes [Int] style resource id

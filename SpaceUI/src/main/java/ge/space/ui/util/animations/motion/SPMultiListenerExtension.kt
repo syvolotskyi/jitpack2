@@ -1,4 +1,4 @@
-package com.space.components.animations.motion
+package ge.space.ui.util.animations.motion
 
 import android.util.Log
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -10,9 +10,6 @@ import kotlinx.coroutines.withTimeout
 import kotlin.coroutines.resume
 
 suspend fun MultiListenerMotionLayout.awaitTransitionComplete(transitionId: Int, timeout: Long = 10000L) {
-    // If we're already at the specified state, return now
-//    if (currentState == transitionId) return
-
     var listener: MotionLayout.TransitionListener? = null
 
     try {

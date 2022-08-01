@@ -1,4 +1,4 @@
-package com.space.components.animations.motion
+package ge.space.ui.util.animations.motion
 
 import android.content.Context
 import android.util.AttributeSet

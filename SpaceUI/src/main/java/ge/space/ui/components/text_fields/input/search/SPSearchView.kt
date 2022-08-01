@@ -10,7 +10,7 @@ import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import com.space.components.animations.motion.awaitTransitionComplete
+import ge.space.ui.util.animations.motion.awaitTransitionComplete
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSearchViewMotionLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -27,10 +27,9 @@ import kotlinx.coroutines.launch
  *
  * <p>
  *     1. SPSearchViewDefault
- *     2. SPSearchView.Giphy
- *     3. SPSearchView.Elevated
- *     4. SPSearchView.Filtered
- *
+ *     2. SPSearchView.Giphy - without cancel button
+ *     3. SPSearchView.Elevated - with box shadow
+ *     4. SPSearchView.Filtered - without cancel button but with filter button
  * <p>
  *
  * @property cancelButtonClickListener [(() -> Unit)] listener calls after cancel button was clicked
@@ -52,17 +51,17 @@ class SPSearchView @JvmOverloads constructor(
     /**
      * Listener calls after cancel button was clicked
      */
-    var cancelButtonClickListener: (() -> Unit) = { }
+    var cancelButtonClickListener: (() -> Unit) = {}
 
     /**
      * On text change listener
      */
-    var onSearchClickListener: ((String) -> Unit) = { }
+    var onSearchClickListener: ((String) -> Unit) = {}
 
     /**
      * On focus change listener
      */
-    var focusChangeListener: (() -> Unit) = { }
+    var focusChangeListener: (() -> Unit) = {}
 
     /**
      * Listener calls after setting button was clicked
@@ -98,7 +97,7 @@ class SPSearchView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.toggleSettings.isVisible = field
+            setupSettingButton()
         }
 
     /**
@@ -121,10 +120,7 @@ class SPSearchView @JvmOverloads constructor(
             setupClearButton()
         }
 
-
     private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-    private var isAlreadyAnimated = false
-
     private val binding =
         SpSearchViewMotionLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -140,43 +136,59 @@ class SPSearchView @JvmOverloads constructor(
     }
 
     private fun TypedArray.applyStyledAttributes() {
-        getString(
-            R.styleable.SPSearchView_android_text
-        ).orEmpty().apply { binding.searchInputView.setText(this) }
+        getString(R.styleable.SPSearchView_android_text).orEmpty()
+            .apply { binding.searchInputView.setText(this) }
 
-        getResourceId(
-            R.styleable.SPSearchView_titleTextAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-            titleTextAppearance = it
+        getResourceId(R.styleable.SPSearchView_titleTextAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { titleTextAppearance = it }
+
+        getResourceId(R.styleable.SPSearchView_shadowStyle, R.style.shadow_empty)
+            .handleAttributeAction(R.style.shadow_empty) { shadowStyle = it }
+
+        getBoolean(R.styleable.SPSearchView_showCancelButton, false)
+            .apply { showCancelButton = this }
+
+        getBoolean(R.styleable.SPSearchView_showClearButton, false)
+            .apply { showClearButton = this }
+
+        getBoolean(R.styleable.SPSearchView_showSettingButton, false)
+            .apply { showSettingButton = this }
+    }
+
+    /**
+     * remove focus
+     */
+    fun clearEditTextFocus() =
+        with(binding) {
+            if (transferCancel.isVisible) {
+                cancelAnimation()
+            }
         }
 
-        getResourceId(
-            R.styleable.SPSearchView_shadowStyle,
-            R.style.shadow_empty
-        ).handleAttributeAction(
-            R.style.shadow_empty
+    /**
+     * request focus
+     */
+    fun focus() {
+        binding.searchInputView.requestFocus()
+        (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .showSoftInput(binding.searchInputView, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    /**
+     * Sets a textAppearance and descriptionTextAppearance to view
+     */
+    fun updateTextAppearance(textAppearance: Int) =
+        binding.searchInputView.setTextStyle(textAppearance)
+
+    /**
+     * Allows to update search view style and BaseViewStyle programmatically
+     */
+    override fun setViewStyle(newStyle: Int) {
+        context.withStyledAttributes(
+            newStyle,
+            R.styleable.SPSearchView
         ) {
-            shadowStyle = it
-        }
-
-        getBoolean(
-            R.styleable.SPSearchView_showCancelButton,
-            false
-        ).apply {
-            showCancelButton = this
-        }
-        getBoolean(
-            R.styleable.SPSearchView_showClearButton,
-            false
-        ).apply {
-            showClearButton = this
-        }
-        getBoolean(
-            R.styleable.SPSearchView_showSettingButton,
-            false
-        ).apply {
-            showSettingButton = this
+            applyStyledAttributes()
         }
     }
 
@@ -198,17 +210,9 @@ class SPSearchView @JvmOverloads constructor(
 
     private fun SpSearchViewMotionLayoutBinding.handleViewTransaction() {
         if (!transferCancel.isVisible && showCancelButton) {
-            searchViewRoot.setTransition(
-                R.id.startState,
-                R.id.endStateWithCancel
-            )
-
-        } else if (!showCancelButton && !isAlreadyAnimated) {
-            searchViewRoot.setTransition(
-                R.id.startState,
-                R.id.endState
-            )
-            isAlreadyAnimated = true
+            searchViewRoot.setTransition(R.id.startState, R.id.endStateWithCancel)
+        } else if (!showCancelButton && searchViewRoot.currentState == R.id.endState) {
+            searchViewRoot.setTransition(R.id.startState, R.id.endState)
         }
 
         searchViewRoot.transitionToEnd()
@@ -240,53 +244,16 @@ class SPSearchView @JvmOverloads constructor(
             }
         }
 
-
-    /**
-     * remove focus from
-     */
-    fun clearEditTextFocus() =
-        with(binding) {
-            if (transferCancel.isVisible) {
-                cancelAnimation()
-            }
-        }
-
-
-    private fun focus() {
-        binding.searchInputView.requestFocus()
-        (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-            .showSoftInput(binding.searchInputView, InputMethodManager.SHOW_IMPLICIT)
-    }
-
     private fun clearInput() =
         with(binding) {
             searchInputView.text.clear()
             onSearchClickListener("")
         }
 
-
     private fun setupSettingButton() {
         binding.toggleSettings.onClick {
             settingClickListener()
         }
         binding.toggleSettings.isVisible = showSettingButton
-    }
-
-    /**
-     * Sets a textAppearance and descriptionTextAppearance to view
-     */
-    fun updateTextAppearance(textAppearance: Int) =
-        binding.searchInputView.setTextStyle(textAppearance)
-
-    /**
-     * Allows to update search view style and BaseViewStyle programmatically
-     */
-    override fun setViewStyle(newStyle: Int) {
-        context.withStyledAttributes(
-            newStyle,
-            R.styleable.SPSearchView
-        ) {
-            applyStyledAttributes()
-        }
     }
 }
