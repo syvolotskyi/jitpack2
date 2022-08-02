@@ -25,7 +25,7 @@ import ge.space.ui.util.extension.setTextStyle
  */
 class SPPillItem @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet?,
+    attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPPillItemStandard
 ) : SpBaseRadioButton(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
