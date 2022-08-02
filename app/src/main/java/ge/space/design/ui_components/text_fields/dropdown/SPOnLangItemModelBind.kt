@@ -10,7 +10,7 @@ import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 class SPOnLangItemModelBind : SPOnDropdownBind<SPDropdownItemModel> {
     override fun getBindItemModel(): (SPTextFieldDropdown<SPDropdownItemModel>, SPDropdownItemModel) -> Unit =
         { dropdown, item ->
-            item.iconData?.let {
+            item.viewData?.let {
                 val image = it.createView(dropdown.context).apply {
                     setHeight(context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small))
                     setWidth(context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.sp_bank_chip_height_small))

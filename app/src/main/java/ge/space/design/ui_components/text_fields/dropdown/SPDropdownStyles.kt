@@ -8,27 +8,23 @@ import ge.space.ui.components.text_fields.input.dropdown.data.SPDropdownItemMode
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.component_type.chip.empty.SPDefaultEmptyChipData.Companion.getSmallEmptyChipData
-import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData
 import ge.space.ui.util.view_factory.component_type.chip.primary.SPDefaultPrimaryChipData.Companion.getSmallChipData
 
 object SPTextFieldsDropdownItems {
 
     fun getList(context: Context) = listOf(
         SPDropdownItemModel(
-            1,
             "Default chip",
-            iconData = getSmallEmptyChipData(context)
+            viewData = getSmallEmptyChipData(context)
 
         ),
         SPDropdownItemModel(
-            2,
             "Primary chip",
-            iconData = getSmallChipData(context)
+            viewData = getSmallChipData(context)
         ),
         SPDropdownItemModel(
-            3,
             "Digital chip",
-            iconData = SPViewData.SPDigitalChipData(
+            viewData = SPViewData.SPDigitalChipData(
                 SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_BLUE_1,
@@ -39,9 +35,8 @@ object SPTextFieldsDropdownItems {
             )
         ),
         SPDropdownItemModel(
-            4,
             "Digital chip 2",
-            iconData = SPViewData.SPDigitalChipData(
+            viewData = SPViewData.SPDigitalChipData(
                 SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_GREEN_1,
@@ -52,9 +47,8 @@ object SPTextFieldsDropdownItems {
             )
         ),
         SPDropdownItemModel(
-            5,
             "Digital chip 3",
-            iconData = SPViewData.SPDigitalChipData(
+            viewData = SPViewData.SPDigitalChipData(
                 SPBankCardGradient.SPRadial(
                     colors = arrayListOf(
                         SPButtonStyles.GRADIENT_VIOLET_1,
@@ -70,7 +64,6 @@ object SPTextFieldsDropdownItems {
 
     fun getLanguagesList(context: Context) = listOf(
         SPDropdownItemModel(
-            1,
             "English",
             SPViewData.SPCircleImageUrlData(
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/2560px-Flag_of_England.svg.png",
@@ -84,7 +77,6 @@ object SPTextFieldsDropdownItems {
             )
         ),
         SPDropdownItemModel(
-            2,
             "Georgian",
             SPViewData.SPCircleImageUrlData(
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Flag_of_Georgia_rounded.svg/1200px-Flag_of_Georgia_rounded.svg.png",
@@ -99,7 +91,6 @@ object SPTextFieldsDropdownItems {
 
         ),
         SPDropdownItemModel(
-            3,
             "Ukraine",
             SPViewData.SPCircleImageUrlData(
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png",

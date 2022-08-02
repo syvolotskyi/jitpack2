@@ -6,15 +6,13 @@ import ge.space.ui.util.view_factory.SPViewData
 /**
  * Simple item model for dropdown.
  *
- * @param id
  * @param value
- * @param iconData
+ * @param viewData
  */
 
 data class SPDropdownItemModel(
-    val id: Int,
     val value: String,
-    val iconData: SPViewData? = null,
+    val viewData: SPViewData? = null,
 )
 
 

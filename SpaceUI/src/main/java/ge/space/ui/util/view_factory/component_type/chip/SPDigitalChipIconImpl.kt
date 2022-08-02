@@ -11,7 +11,6 @@ class SPDigitalChipIconImpl(context: Context) :
     override fun create(type: SPViewData.SPDigitalChipData): SPDigitalChip {
         return SPDigitalChip(context).apply {
             setViewStyle(type.styleRes)
-            setViewStyle(type.styleRes)
             cardBackground = type.gradient
         }
     }

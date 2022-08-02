@@ -11,7 +11,7 @@ import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 class SPOnChipItemModelBind : SPOnDropdownBind<SPDropdownItemModel> {
     override fun getBindItemModel(): (view: SPTextFieldDropdown<SPDropdownItemModel>, item: SPDropdownItemModel) -> Unit =
         { view, item ->
-            item.iconData?.let {
+            item.viewData?.let {
                 val image = it.createView(view.context).apply {
                     setHeight(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))
                     setWidth(context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small))

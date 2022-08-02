@@ -114,14 +114,11 @@ class SPDropdownComponent : ShowCaseComponent {
                         }
                     }
 
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
-                fragmentActivity
-            )
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(fragmentActivity)
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
                 .setDefault(
                     SPDropdownItemModel(
-                        0,
                         view.context.getString(R.string.enter_you_details_here),
                         SPDefaultEmptyChipData.getSmallEmptyChipData(
                             view.context,
@@ -133,7 +130,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 .setOnBindDropdownItem(SPOnChipItemModelBind())
                 .setItems(SPTextFieldsDropdownItems.getList(view.context))
                 .setBottomSheetAdapter(adapter)
-                .build(fragmentActivity)
+                .build()
         }
 
 
@@ -159,9 +156,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     }
                 }
 
-            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(
-                fragmentActivity
-            )
+            return SPTextFieldDropdown.SPTextFieldDropdownBuilder<SPDropdownItemModel>(fragmentActivity)
                 .setStyle(R.style.SPTextField_DropdownWithIcon)
                 .withView(view)
                 .setDefault(getDefaultLangItem(view.context))
@@ -169,7 +164,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 .setOnBindDropdownItem(SPOnLangItemModelBind())
                 .setItems(getLanguagesList(view.context))
                 .setBottomSheetAdapter(adapter)
-                .build(fragmentActivity)
+                .build()
         }
 
         private fun createDropdownProgrammatically(
@@ -190,7 +185,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     getBottomSheetFragment(view)
                         .show(fragmentActivity)
                 }
-                .build(fragmentActivity)
+                .build()
         }
 
         private fun getBottomSheetFragment(

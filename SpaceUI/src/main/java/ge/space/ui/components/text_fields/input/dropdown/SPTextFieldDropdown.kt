@@ -20,6 +20,7 @@ import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setHeight
 import ge.space.ui.util.extension.setWidth
+import kotlin.math.acos
 
 /**
  * Dropdown view which allows to manipulate next parameters:
@@ -292,8 +293,8 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
          *
          * @return an instance of SPTextFieldDropdown<*>
          */
-        fun build(context: Context): SPTextFieldDropdown<Item> =
-            (view ?: SPTextFieldDropdown(context)).apply {
+        fun build(): SPTextFieldDropdown<Item> =
+            (view ?: SPTextFieldDropdown(fragmentActivity)).apply {
                 setViewStyle(style)
                 adapter = bottomSheetAdapter
                 adapter?.setAdapterItems(items)
