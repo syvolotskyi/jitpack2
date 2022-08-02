@@ -109,7 +109,7 @@ class SPDropdownComponent : ShowCaseComponent {
                             binding.radio.setStartViewSize(ViewGroup.LayoutParams.WRAP_CONTENT, context.resources.getDimensionPixelSize(ge.space.spaceui.R.dimen.dimen_p_38))
                             binding.radio.setData(
                                 item.item.value,
-                                item.item.iconData?.createView(view.context)
+                                item.item.viewData?.createView(view.context)
                             )
                         }
                     }
@@ -148,7 +148,7 @@ class SPDropdownComponent : ShowCaseComponent {
 
                         binding.radio.setData(
                             item.item.value,
-                            item.item.iconData?.createView(view.context)
+                            item.item.viewData?.createView(view.context)
                         )
                         binding.radio.isChecked = item.isSelected
 
