@@ -4,22 +4,18 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import ge.space.ui.util.animations.motion.awaitTransitionComplete
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSearchViewMotionLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 
 /**
  * SPSearchView view extended from [ConstraintLayout] generic that allows to change its configuration.
@@ -27,7 +23,6 @@ import kotlinx.coroutines.launch
  *
  * <p>
  *     1. SPSearchViewDefault
- *     2. SPSearchView.Giphy - without cancel button
  *     3. SPSearchView.Elevated - with box shadow
  *     4. SPSearchView.Filtered - without cancel button but with filter button
  * <p>
@@ -36,7 +31,7 @@ import kotlinx.coroutines.launch
  * @property onSearchClickListener [((String) -> Unit)] on text change listener
  * @property focusChangeListener [(() -> Unit)] on focus change listener
  * @property titleTextAppearance [Int] sets a text appearance.
- * @property shadowStyle [Int] sets a search box shadow style.
+ * @property searchBoxStyle [Int] sets a search box shadow style.
  * @property showSettingButton [Boolean] sets a visibility for setting toggle button
  * @property showCancelButton [Boolean] sets a visibility for cancel button
  */
@@ -59,7 +54,7 @@ class SPSearchView @JvmOverloads constructor(
     var onSearchClickListener: ((String) -> Unit) = {}
 
     /**
-     * On focus change listener
+     * Calls when view is focused
      */
     var focusChangeListener: (() -> Unit) = {}
 
@@ -83,11 +78,12 @@ class SPSearchView @JvmOverloads constructor(
      * Sets a search box shadow style.
      */
     @StyleRes
-    var shadowStyle: Int = R.style.shadow_empty
+    var searchBoxStyle: Int = R.style.SPSearchBoxDefault
         set(value) {
             field = value
 
-            binding.templateSearchView.setBaseViewShadowStyle(shadowStyle)
+            binding.searchView.setBaseViewStyle(searchBoxStyle)
+            binding.searchView.requestLayout()
         }
 
     /**
@@ -120,7 +116,6 @@ class SPSearchView @JvmOverloads constructor(
             setupClearButton()
         }
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private val binding =
         SpSearchViewMotionLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -139,11 +134,14 @@ class SPSearchView @JvmOverloads constructor(
         getString(R.styleable.SPSearchView_android_text).orEmpty()
             .apply { binding.searchInputView.setText(this) }
 
-        getResourceId(R.styleable.SPSearchView_titleTextAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPSearchView_textAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { titleTextAppearance = it }
 
-        getResourceId(R.styleable.SPSearchView_shadowStyle, R.style.shadow_empty)
-            .handleAttributeAction(R.style.shadow_empty) { shadowStyle = it }
+        getResourceId(R.styleable.SPSearchView_searchBoxStyle, R.style.shadow_empty)
+            .handleAttributeAction(R.style.shadow_empty) { searchBoxStyle = it }
+
+        getDimensionPixelSize(R.styleable.SPSearchView_contentHeight, WRAP_CONTENT)
+            .handleAttributeAction(WRAP_CONTENT) { binding.searchViewRoot.setHeight(it) }
 
         getBoolean(R.styleable.SPSearchView_showCancelButton, false)
             .apply { showCancelButton = this }
@@ -160,7 +158,7 @@ class SPSearchView @JvmOverloads constructor(
      */
     fun clearEditTextFocus() =
         with(binding) {
-            if (transferCancel.isVisible) {
+            if (cancelView.isVisible) {
                 cancelAnimation()
             }
         }
@@ -192,24 +190,25 @@ class SPSearchView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Setup cancel button click and focus change
+     */
     private fun setupCancelButton() {
         with(binding) {
-            searchInputView.onClick {
-                focusChangeListener.invoke()
-            }
             searchInputView.setOnFocusChangeListener { _, hasFocus ->
                 if (hasFocus) {
                     handleViewTransaction()
+                    focusChangeListener()
                 }
             }
-            transferCancel.onClick {
+            cancelView.onClick {
                 cancelAnimation()
             }
         }
     }
 
     private fun SpSearchViewMotionLayoutBinding.handleViewTransaction() {
-        if (!transferCancel.isVisible && showCancelButton) {
+        if (!cancelView.isVisible && showCancelButton) {
             searchViewRoot.setTransition(R.id.startState, R.id.endStateWithCancel)
         } else if (!showCancelButton && searchViewRoot.currentState == R.id.endState) {
             searchViewRoot.setTransition(R.id.startState, R.id.endState)
@@ -218,24 +217,26 @@ class SPSearchView @JvmOverloads constructor(
         searchViewRoot.transitionToEnd()
     }
 
+    /**
+     * Cancel animation and return to start position, remove focus from input field and hide keyboard
+     */
     private fun cancelAnimation() =
         with(binding) {
-            uiScope.launch {
-                searchInputView.setText(EMPTY_TEXT)
-                searchViewRoot.transitionToStart()
-                searchViewRoot.awaitTransitionComplete(R.id.startState)
-            }
+            searchInputView.setText(EMPTY_TEXT)
+            searchViewRoot.transitionToStart()
             cancelButtonClickListener()
             clearFocus()
             hideKeyboard()
         }
 
-
+    /**
+     * Show clear button if showClearButton is true and input isn't empty
+     */
     private fun setupClearButton() =
         with(binding) {
             searchInputView.onChange {
                 clearImage.visibleIf(showClearButton && it.isNotEmpty())
-                onSearchClickListener.invoke(it)
+                onSearchClickListener(it)
             }
 
             clearImageContainer.onClick {
@@ -244,16 +245,26 @@ class SPSearchView @JvmOverloads constructor(
             }
         }
 
+    /**
+     * Clear entered text and call onSearchClickListener
+     */
     private fun clearInput() =
         with(binding) {
             searchInputView.text.clear()
-            onSearchClickListener("")
+            onSearchClickListener(EMPTY_TEXT)
         }
 
+    /**
+     * Show setting button if showSettingButton is true and init click listener on it
+     */
     private fun setupSettingButton() {
         binding.toggleSettings.onClick {
             settingClickListener()
         }
-        binding.toggleSettings.isVisible = showSettingButton
+        if (showSettingButton) {
+            binding.toggleSettings.isVisible = true
+            binding.toggleSettingsStub.inflate()
+        }
+
     }
 }

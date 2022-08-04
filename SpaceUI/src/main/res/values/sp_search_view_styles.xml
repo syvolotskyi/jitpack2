@@ -2,20 +2,15 @@
 <resources>
 
     <style name="SPSearchViewBase">
-        <item name="icon" >@drawable/ic_search_24_regular</item>
-        <item name="shadowStyle">@style/shadow_empty</item>
+        <item name="icon">@drawable/ic_search_24_regular</item>
+        <item name="searchBoxStyle">@style/SPSearchBoxDefault</item>
+        <item name="textAppearance">@style/h600_medium_search</item>
     </style>
 
     <style name="SPSearchViewDefault" parent="SPSearchViewBase">
         <item name="showCancelButton">true</item>
         <item name="showClearButton">true</item>
-        <item name="showSettingButton">false</item>
-    </style>
-
-    <style name="SPSearchViewGiphy" parent="SPSearchViewBase">
-        <item name="showCancelButton">false</item>
-        <item name="showClearButton">false</item>
-        <item name="icon">@drawable/ic_search_24_regular</item>
+        <item name="contentHeight">@dimen/dimen_p_40</item>
         <item name="showSettingButton">false</item>
     </style>
 
@@ -23,13 +18,35 @@
         <item name="showCancelButton">false</item>
         <item name="showClearButton">true</item>
         <item name="showSettingButton">false</item>
-        <item name="shadowStyle">@style/shadow_300_primary</item>
+        <item name="contentHeight">@dimen/dimen_p_44</item>
+        <item name="searchBoxStyle">@style/SPSearchBoxElevated</item>
     </style>
 
     <style name="SPSearchViewFilter" parent="SPSearchViewBase">
         <item name="showCancelButton">false</item>
         <item name="showClearButton">true</item>
         <item name="showSettingButton">true</item>
+        <item name="contentHeight">@dimen/dimen_p_40</item>
     </style>
 
+    <style name="SPSearchBoxElevated" parent="@style/shadow_300_primary">
+        <item name="android:layout_height">@dimen/dimen_p_44</item>
+        <item name="contentHeight">@dimen/dimen_p_44</item>
+        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="background">?attr/background_tertiary</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
+    </style>
+
+    <style name="SPSearchBoxDefault" parent="@style/shadow_empty">
+        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="background">?attr/background_tertiary</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
+        <item name="android:layout_height">@dimen/dimen_p_40</item>
+        <item name="contentHeight">@dimen/dimen_p_40</item>
+    </style>
+
+    <style name="SPToggleIcon.Filter" parent="SPToggleIcon.Standard">
+        <item name="android:maxWidth">@dimen/dimen_p_40</item>
+        <item name="android:minWidth">@dimen/dimen_p_40</item>
+    </style>
 </resources>

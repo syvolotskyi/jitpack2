@@ -1,10 +1,14 @@
 package ge.space.ui.util.animations.motion
 
 import android.content.Context
+import android.text.TextWatcher
 import android.util.AttributeSet
 import androidx.constraintlayout.motion.widget.MotionLayout
 import java.util.concurrent.CopyOnWriteArrayList
 
+/**
+ *Custom implementation of MotionLayout allows to store TransitionListeners
+ */
 class MultiListenerMotionLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

@@ -83,7 +83,7 @@
     <string name="text_input_desc">Enter \"Space\" to check TextWatcher</string>
 
     <string name="search_text_input">Search input</string>
-    <string name="search_text_input_desc">Search descr</string>
+    <string name="search_text_input_desc">Enter 8888 to check change text listener</string>
 
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>

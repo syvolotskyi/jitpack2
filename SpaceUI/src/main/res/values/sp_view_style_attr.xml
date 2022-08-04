@@ -38,6 +38,7 @@
         <attr name="shadowColor" />
         <attr name="shadowRadius" />
         <attr name="topLeftCornerRadius" />
+        <attr name="contentHeight" />
         <attr name="topRightCornerRadius" />
         <attr name="bottomRightCornerRadius" />
         <attr name="bottomLeftCornerRadius" />

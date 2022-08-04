@@ -13,9 +13,7 @@ import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.children
 import ge.space.spaceui.R
-import ge.space.ui.util.extension.drawBorder
-import ge.space.ui.util.extension.scaleTo
-import ge.space.ui.util.extension.withSideRatio
+import ge.space.ui.util.extension.*
 import ge.space.ui.util.path.SPMaskPath
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
 import kotlin.math.abs
@@ -331,6 +329,14 @@ abstract class SPBaseView @JvmOverloads constructor(
             R.styleable.sp_view_style_topLeftCornerRadius,
             DEFAULT_OBTAIN_VAL
         ).toFloat()
+        getDimensionPixelSize(
+            R.styleable.sp_view_style_contentHeight,
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(DEFAULT_OBTAIN_VAL){
+            setHeight(it)
+        }
+
+
         topRightCornerRadius = getDimensionPixelSize(
             R.styleable.sp_view_style_topRightCornerRadius,
             DEFAULT_OBTAIN_VAL

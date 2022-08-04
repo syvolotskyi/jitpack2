@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ge.space.ui.components.controls.SPToggleIcon xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toggleSettings"
+    style="@style/SPToggleIcon.Filter"
+    android:layout_width="@dimen/dimen_p_40"
+    android:layout_height="@dimen/dimen_p_40"
+    android:layout_gravity="center_horizontal"
+    android:checked="true"
+    app:icon="@drawable/ic_settings"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingDefaultResource" />
