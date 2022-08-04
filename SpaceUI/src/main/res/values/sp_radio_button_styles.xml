@@ -25,7 +25,7 @@
 
     <style name="SPPillItemStandard" >
         <item name="android:button">@null</item>
-        <item name="roundedCorners">@dimen/dimen_p_6</item>
+        <item name="roundedCorners">@dimen/dimen_p_10</item>
         <item name="android:foreground">@drawable/toggle_icon_ripple</item>
         <item name="selectedBackgroundColor">?attr/brand_primary</item>
         <item name="selectedShadowStyle">@style/shadow_300_brand</item>

@@ -41,8 +41,8 @@
     <ge.space.ui.components.controls.radio.SPRadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/dimen_p_16"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_16"
         android:orientation="horizontal">
 
     </ge.space.ui.components.controls.radio.SPRadioGroup>
