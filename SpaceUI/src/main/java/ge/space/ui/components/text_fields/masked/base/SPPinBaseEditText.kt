@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
-import com.space.components.animations.AnimationEndListener
+import com.space.components.animations.SPAnimationEndListener
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
@@ -115,7 +115,7 @@ abstract class SPPinBaseEditText<VB : ViewBinding> @JvmOverloads constructor(
             context,
             R.anim.sp_shake_anim
         ).apply {
-            setAnimationListener(AnimationEndListener {
+            setAnimationListener(SPAnimationEndListener {
                     resetPin()
                 })
         }

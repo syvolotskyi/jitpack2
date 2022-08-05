@@ -9,7 +9,7 @@ import javax.security.auth.callback.Callback
  *
  * @param onEnd [(animation: Animation?) -> Unit] calls when animation ended
  */
-open class AnimationEndListener(val onEnd: (animation: Animation?) -> Unit) :
+open class SPAnimationEndListener(val onEnd: (animation: Animation?) -> Unit) :
     Animation.AnimationListener {
     override fun onAnimationRepeat(animation: Animation?) = Unit
     override fun onAnimationStart(animation: Animation?) = Unit

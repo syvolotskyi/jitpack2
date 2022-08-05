@@ -17,8 +17,5 @@ dependencies {
     implementation Libraries.glide
     kapt Libraries.glideCompiler
 
-    implementation Coroutines.coroutinesCore
-    implementation Coroutines.coroutinesAndroid
-
     implementation project(':SpaceFormatter')
 }
