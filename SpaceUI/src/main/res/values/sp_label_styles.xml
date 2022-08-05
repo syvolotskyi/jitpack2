@@ -52,7 +52,7 @@
     </style>
 
     <style name="h800_medium_accent_magenta" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_primary_magenta</item>
+        <item name="android:textColor">?attr/status_primary_distractive</item>
     </style>
 
     <style name="h800_medium_accent_orange" parent="h800_medium">
