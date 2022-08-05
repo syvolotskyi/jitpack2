@@ -5,8 +5,19 @@
         <attr name="titleTextAppearance" />
         <attr name="titleTextAppearanceWithDesc" format="reference" />
         <attr name="android:text" format="string" localization="suggested" />
-        <attr name="android:button" format="string"/>
+        <attr name="android:button" format="string" />
         <attr name="descriptionTextAppearance" />
         <attr name="descriptionText" />
+    </declare-styleable>
+
+    <declare-styleable name="SPPillItem">
+        <attr name="selectedTextAppearance" format="reference"/>
+        <attr name="unselectedTextAppearance" format="reference"/>
+        <attr name="isChecked" format="reference"/>
+        <attr name="android:text" format="string" localization="suggested" />
+        <attr name="selectedBackgroundColor" format="reference|color" />
+        <attr name="unselectedBackgroundColor" format="reference|color" />
+        <attr name="selectedShadowStyle" format="reference" />
+        <attr name="unselectedShadowStyle" format="reference" />
     </declare-styleable>
 </resources>

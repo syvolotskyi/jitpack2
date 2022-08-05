@@ -8,8 +8,6 @@ import android.widget.RadioGroup
 import androidx.core.view.children
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
-import ge.space.ui.components.controls.radio.standart.SPRadioButton
-import ge.space.ui.components.controls.radio.list_item.SPListItemButton
 
 /**
  *  Extended view from [RadioGroup] and add the possibility to work with SPRadioButton.
