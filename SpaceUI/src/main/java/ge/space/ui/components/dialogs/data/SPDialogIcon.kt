@@ -29,7 +29,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class Alert(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.status_primary_distractive
     ) : SPDialogIcon() {
 
         override val icon: Int =
@@ -43,7 +43,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class Biometric(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.status_primary_alert
     ) : SPDialogIcon() {
 
         override val icon: Int =
@@ -57,7 +57,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class Checkmark(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.status_primary_alert
     ) : SPDialogIcon() {
 
         override val icon: Int =
@@ -71,7 +71,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class Info(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.brand_primary
     ) : SPDialogIcon() {
 
         override val icon: Int =
@@ -85,7 +85,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class TrophyWinner(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.brand_primary
     ) : SPDialogIcon() {
 
         override val icon: Int =
@@ -99,7 +99,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class StarBroken(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.brand_primary
     ) : SPDialogIcon() {
 
         override val icon: Int =
@@ -113,7 +113,7 @@ sealed class SPDialogIcon(
      */
     @Parcelize
     data class Picture(
-        @AttrRes override val colorAttr: Int = R.attr.colorAccent
+        @AttrRes override val colorAttr: Int = R.attr.brand_primary
     ) : SPDialogIcon() {
 
         override val icon: Int =

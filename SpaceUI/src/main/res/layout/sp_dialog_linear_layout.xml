@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/sp_dialog_icon_margin_top"
         android:scaleType="centerInside"
         android:src="@drawable/ic_info_circle_24_regular"
-        app:tint="?attr/colorAccent" />
+        app:tint="?attr/status_primary_distractive" />
 
     <View
         android:id="@+id/vIconDivider"

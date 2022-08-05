@@ -677,7 +677,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     !isEnabled ->
                         context.getColorFromAttribute(R.attr.separator_opaque)
                     isDistractive ->
-                        context.getColorFromAttribute(R.attr.accent_primary_magenta)
+                        context.getColorFromAttribute(R.attr.status_primary_distractive)
                     contentInputView.isFocused ->
                         context.getColorFromAttribute(R.attr.brand_primary)
                     else ->

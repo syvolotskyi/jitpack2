@@ -34,5 +34,5 @@ fun SPBaseActivity.showThemeCustomDialog() {
                     updateTheme(AppTheme.LIGHT)
                 }
             )
-        ), SPDialogIcon.Alert(R.attr.accent_primary_magenta))
+        ), SPDialogIcon.Alert())
 }
