@@ -1,17 +1,15 @@
 package ge.space.design.ui_components.buttons.pill
 
-import android.text.Editable
-import android.text.TextWatcher
+import android.content.Context
 import android.view.View
 import android.widget.Toast
 import com.example.spacedesignsystem.R
-import com.example.spacedesignsystem.databinding.SpItemHorizontalBtnShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutButtonPillShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.buttons.horizontal_button.SPHorizontalButtonStyles
 import ge.space.ui.components.controls.radio.pill.SPPillItem
+import io.mockk.InternalPlatformDsl.toStr
 
 class SPPillItemComponent : ShowCaseComponent {
 
@@ -23,38 +21,51 @@ class SPPillItemComponent : ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val layoutBinding = SpLayoutButtonPillShowcaseBinding.inflate(
+            SpLayoutButtonPillShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
-            )
-            layoutBinding.radioGroup.setOnCheckedChangeListener { _, id ->
-                when (id) {
-                    layoutBinding.toggleSwitch1.id -> {
-                        Toast.makeText(environment.context, "Press 1", Toast.LENGTH_SHORT).show()
-                    }
-                    layoutBinding.toggleSwitch2.id -> {
-                        Toast.makeText(environment.context, "Press 2", Toast.LENGTH_SHORT).show()
-                    }
-                    layoutBinding.toggleSwitch3.id -> {
-                        Toast.makeText(environment.context, "Press 3", Toast.LENGTH_SHORT).show()
+            ).apply {
+
+                radioGroup.setOnCheckedChangeListener { _, id ->
+                    when (id) {
+                        toggleSwitch1.id -> {
+                            Toast.makeText(environment.context, "Press 1", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        toggleSwitch2.id -> {
+                            Toast.makeText(environment.context, "Press 2", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        toggleSwitch3.id -> {
+                            Toast.makeText(environment.context, "Press 3", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
                 }
-            }
 
+                createRadioButtonsProgrammatically(environment.context, this)
+
+                return root
+            }
+        }
+
+        private fun createRadioButtonsProgrammatically(
+            context: Context,
+            binding: SpLayoutButtonPillShowcaseBinding
+        ) {
             SPPillButtonStyles.list.onEach { buttonSample ->
                 val resId = buttonSample.resId
-                val itemBinding = SPPillItem(environment.context, defStyleRes = resId).apply {
-                    title = buttonSample.title
+                val itemBinding = SPPillItem(context, defStyleRes = resId).apply {
                     id = View.generateViewId()
+                    title = buttonSample.title
                 }
 
-                layoutBinding.radioGroup2.addView(itemBinding)
-
-                layoutBinding.radioGroup2.setOnCheckedChangeListener { _, id ->
-                    val view = layoutBinding.radioGroup2.findViewById<SPPillItem>(id)
-                    Toast.makeText(environment.context, view.title, Toast.LENGTH_SHORT).show()
-                }
+                binding.radioGroup2.addView(itemBinding)
             }
-            return layoutBinding.root
+
+            binding.radioGroup2.setOnCheckedChangeListener { group, checkedId ->
+                Toast.makeText(context, checkedId.toStr(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
+
 }
