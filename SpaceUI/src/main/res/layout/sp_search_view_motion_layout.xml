@@ -58,7 +58,7 @@
         android:text="@string/cancel"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/searchView"
-        app:layout_constraintEnd_toStartOf="@id/toggleSettings"
+        app:layout_constraintEnd_toStartOf="@id/toggleSettingsView"
         app:layout_constraintStart_toEndOf="@+id/searchView"
         app:layout_constraintTop_toTopOf="@+id/searchView" />
 
@@ -81,11 +81,10 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/toggleSettings"
+        android:id="@+id/toggleSettingsView"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dimen_p_40"
         android:paddingStart="@dimen/dimen_p_8"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -94,6 +93,7 @@
             android:id="@+id/toggleSettingsStub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_gravity="bottom"
             android:inflatedId="@+id/inflate"
             android:layout="@layout/sp_search_filter_layout"/>

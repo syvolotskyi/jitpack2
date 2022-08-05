@@ -52,8 +52,8 @@ class SPSearchComponent : ShowCaseComponent {
                 if (it == "8888")
                     makeText(context, "Entered 8888  $key", LENGTH_SHORT).show()
             }
-            settingClickListener = {
-                makeText(context, "Settings clicked  $key", LENGTH_SHORT).show()
+            settingClickListener = { isChecked ->
+                makeText(context, "Settings clicked $isChecked $key", LENGTH_SHORT).show()
             }
         }
     }

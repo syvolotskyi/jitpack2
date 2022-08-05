@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AttrRes
@@ -15,6 +16,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpSearchViewMotionLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.components.controls.SPToggleIcon
 import ge.space.ui.util.extension.*
 
 /**
@@ -61,7 +63,7 @@ class SPSearchView @JvmOverloads constructor(
     /**
      * Listener calls after setting button was clicked
      */
-    var settingClickListener: () -> Unit = {}
+    var settingClickListener: (Boolean) -> Unit = {}
 
     /**
      * Sets a text appearance.
@@ -258,13 +260,12 @@ class SPSearchView @JvmOverloads constructor(
      * Show setting button if showSettingButton is true and init click listener on it
      */
     private fun setupSettingButton() {
-        binding.toggleSettings.onClick {
-            settingClickListener()
-        }
         if (showSettingButton) {
-            binding.toggleSettings.isVisible = true
-            binding.toggleSettingsStub.inflate()
+            binding.toggleSettingsStub.inflate().apply {
+                (this as SPToggleIcon).addOnCheckedChangeListener { _, isChecked ->
+                    settingClickListener(isChecked)
+                }
+            }
         }
-
     }
 }
