@@ -16,6 +16,7 @@ class SPBottomSheetBuilder<Data> :
     private var titleStyle: Int? = null
     private var icon: Int? = null
     private var description: String? = null
+    private var showFullScreen: Boolean = false
     private var descriptionStyle: Int? = null
     private var resultListener: (Data?) -> Unit = {}
     private var dismissDelayTime: Long = 500L
@@ -50,6 +51,17 @@ class SPBottomSheetBuilder<Data> :
      */
     fun setDismissDelayTime(millis: Long): SPBottomSheetBuilder<Data> {
         this.dismissDelayTime = millis
+
+        return this
+    }
+
+    /**
+     * Sets start state expanded and scip peekHeight
+     *
+     * @param show [Boolean] sets start state expanded to bottom sheet
+     */
+    fun setShowFullScreen(show: Boolean): SPBottomSheetBuilder<Data> {
+        this.showFullScreen = show
 
         return this
     }
@@ -105,6 +117,7 @@ class SPBottomSheetBuilder<Data> :
                 SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
                 SPBottomSheetFragment.KEY_ICON to icon,
                 SPBottomSheetFragment.KEY_DESCRIPTION to description,
+                SPBottomSheetFragment.KEY_SHOW_FULLSCREEN to showFullScreen,
                 SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
                 SPBottomSheetFragment.KEY_DELAY_TIME to dismissDelayTime,
             )

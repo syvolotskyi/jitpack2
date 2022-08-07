@@ -197,6 +197,7 @@ class SPDropdownComponent : ShowCaseComponent {
                     SPExampleFragment()
                 )
             )
+            .setShowFullScreen(true)
             .setResultListener {
                 Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
             }
