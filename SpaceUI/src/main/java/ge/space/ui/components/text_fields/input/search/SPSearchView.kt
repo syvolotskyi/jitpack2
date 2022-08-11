@@ -156,16 +156,6 @@ class SPSearchView @JvmOverloads constructor(
     }
 
     /**
-     * remove focus
-     */
-    fun clearEditTextFocus() =
-        with(binding) {
-            if (cancelView.isVisible) {
-                cancelAnimation()
-            }
-        }
-
-    /**
      * request focus
      */
     fun focus() {
@@ -203,14 +193,14 @@ class SPSearchView @JvmOverloads constructor(
                     focusChangeListener()
                 }
             }
-            cancelView.onClick {
+            cancelBtn.onClick {
                 cancelAnimation()
             }
         }
     }
 
     private fun SpSearchViewMotionLayoutBinding.handleViewTransaction() {
-        if (!cancelView.isVisible && showCancelButton) {
+        if (!cancelBtn.isVisible && showCancelButton) {
             searchViewRoot.setTransition(R.id.startState, R.id.endStateWithCancel)
         } else if (!showCancelButton && searchViewRoot.currentState == R.id.endState) {
             searchViewRoot.setTransition(R.id.startState, R.id.endState)

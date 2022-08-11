@@ -36,7 +36,7 @@
             <PropertySet android:visibility="visible" />
         </Constraint>
 
-        <Constraint android:id="@id/cancelView">
+        <Constraint android:id="@id/cancelBtn">
             <PropertySet android:visibility="visible" />
         </Constraint>
 
@@ -65,7 +65,7 @@
             <PropertySet android:visibility="visible" />
         </Constraint>
 
-        <Constraint android:id="@id/cancelView">
+        <Constraint android:id="@id/cancelBtn">
             <PropertySet android:visibility="gone" />
         </Constraint>
 

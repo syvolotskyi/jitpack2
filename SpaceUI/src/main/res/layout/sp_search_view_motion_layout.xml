@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ge.space.ui.util.animations.motion.MultiListenerMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ge.space.ui.util.animations.motion.SPMultiListenerMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/searchViewRoot"
@@ -14,7 +14,7 @@
         style="@style/SPSearchBoxDefault"
         android:layout_width="0dp"
         android:visibility="visible"
-        app:layout_constraintEnd_toStartOf="@+id/cancelView"
+        app:layout_constraintEnd_toStartOf="@+id/cancelBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/cancelView"
+        android:id="@+id/cancelBtn"
         style="@style/h600_bold_caps_brand_primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,4 +99,4 @@
             android:layout="@layout/sp_search_filter_layout"/>
     </FrameLayout>
 
-</ge.space.ui.util.animations.motion.MultiListenerMotionLayout>
+</ge.space.ui.util.animations.motion.SPMultiListenerMotionLayout>

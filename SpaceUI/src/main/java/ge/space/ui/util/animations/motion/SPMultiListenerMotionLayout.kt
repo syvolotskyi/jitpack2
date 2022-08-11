@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 /**
  *Custom implementation of MotionLayout allows to store TransitionListeners
  */
-class MultiListenerMotionLayout @JvmOverloads constructor(
+class SPMultiListenerMotionLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
