@@ -3,17 +3,15 @@ package ge.space.design.ui_components.text_fields.dropdown
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import ge.space.ui.util.extension.onClick
 import android.view.ViewGroup
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.fragment.app.Fragment
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpExampleFragmentLayoutBinding
 import com.example.spacedesignsystem.databinding.SpItemBankCardShowcaseBinding
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
-import ge.space.ui.components.bottomsheet.core.SPBottomSheetResultListener
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetBaseFragment
 
-class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
+class SPExampleFragment : SPBottomSheetBaseFragment<String>() {
 
     private var dismiss: (String) -> Unit = {}
 
@@ -57,11 +55,8 @@ class SPExampleFragment : Fragment(), SPBottomSheetResultListener<String> {
             }
         }
         binding.saveButton.onClick {
-            dismiss("Closed")
+            onDismiss("Closed")
         }
     }
 
-    override fun setBottomSheetResult(listener: (String) -> Unit) {
-        dismiss = listener
-    }
 }

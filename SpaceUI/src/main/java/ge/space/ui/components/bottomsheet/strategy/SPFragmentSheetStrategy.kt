@@ -3,7 +3,7 @@ package ge.space.ui.components.bottomsheet.strategy
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import ge.space.ui.components.bottomsheet.core.SPBottomSheetResultListener
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetBaseFragment
 
 /**
  * Fragment strategy realization of [SPBottomSheetStrategy]
@@ -29,7 +29,7 @@ class SPFragmentSheetStrategy<Data>(
         dismissEvent: (Data?) -> Unit
     ) {
 
-        if (fragment is SPBottomSheetResultListener<*>) {
+        if (fragment is SPBottomSheetBaseFragment<*>) {
             fragment.setBottomSheetResult { data ->
                 (data as? Data)?.let { dismissEvent(it) }
             }
