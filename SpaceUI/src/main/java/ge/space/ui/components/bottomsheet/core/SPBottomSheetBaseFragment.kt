@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
  */
 abstract class SPBottomSheetBaseFragment<Data> : Fragment() {
     /**
-     * Calls when the bottom sheet was closed and returs a [Data]
+     * Calls when the bottom sheet was closed and returns a [Data]
      */
     protected var onDismiss: (Data) -> Unit = {}
 

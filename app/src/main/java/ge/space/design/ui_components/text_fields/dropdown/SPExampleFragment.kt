@@ -10,10 +10,10 @@ import com.example.spacedesignsystem.databinding.SpExampleFragmentLayoutBinding
 import com.example.spacedesignsystem.databinding.SpItemBankCardShowcaseBinding
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bottomsheet.core.SPBottomSheetBaseFragment
+import ge.space.ui.util.extension.onClick
 
 class SPExampleFragment : SPBottomSheetBaseFragment<String>() {
 
-    private var dismiss: (String) -> Unit = {}
 
     private val binding by lazy {
         SpExampleFragmentLayoutBinding.inflate(LayoutInflater.from(context))
