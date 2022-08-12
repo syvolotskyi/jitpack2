@@ -112,12 +112,11 @@
                     <ge.space.ui.components.controls.radio.SPRadioGroup
                         android:id="@+id/typeOfInput"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content">
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primarySimple"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:checked="true"
@@ -127,7 +126,7 @@
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primarySimpleHint"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:enabled="true"
@@ -136,7 +135,7 @@
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primaryRemovableSimple"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:enabled="true"
@@ -145,7 +144,7 @@
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/primaryIconSimple"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:enabled="true"
@@ -154,7 +153,7 @@
 
                         <ge.space.ui.components.controls.radio.standart.SPRadioButton
                             android:id="@+id/email"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:enabled="true"

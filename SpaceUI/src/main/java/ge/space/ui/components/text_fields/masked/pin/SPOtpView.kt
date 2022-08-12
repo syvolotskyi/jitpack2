@@ -110,7 +110,7 @@ class SPOtpView @JvmOverloads constructor(
             SPPinState.ERROR -> {
                 showErrorAnimation()
                 context.makeVibration()
-                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.accent_primary_magenta),
+                binding.pinEntryContainer.changeBorder(context.getColorFromAttribute(R.attr.status_primary_distractive),
                     resources.getDimensionPixelSize(R.dimen.dimen_p_1).toFloat())
             }
             else -> {

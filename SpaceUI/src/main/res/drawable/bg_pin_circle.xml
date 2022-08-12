@@ -4,8 +4,8 @@
     <!-- PinEntryEditText has error set -->
     <item android:state_active="true">
         <shape android:shape="oval">
-            <stroke android:width="1dp" android:color="?attr/accent_primary_magenta" />
-            <solid android:color="?attr/accent_primary_magenta" />
+            <stroke android:width="1dp" android:color="?attr/status_primary_distractive" />
+            <solid android:color="?attr/status_primary_distractive" />
         </shape>
     </item>
 
