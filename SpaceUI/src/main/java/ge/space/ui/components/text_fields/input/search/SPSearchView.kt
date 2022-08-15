@@ -183,6 +183,15 @@ class SPSearchView @JvmOverloads constructor(
     }
 
     /**
+     * remove focus
+     */
+    fun clearEditTextFocus() {
+        if (binding.cancelBtn.isVisible) {
+            cancelAnimation()
+        }
+    }
+
+    /**
      * Setup cancel button click and focus change
      */
     private fun setupCancelButton() {
