@@ -3,6 +3,7 @@
     <string name="day_mask">##/##/####</string>
     <string name="card_mask">#### #### #### ####</string>
     <string name="default_currency">$</string>
+    <string name="cancel">Cancel</string>
     <string name="default_phone_prefix">+995</string>
     <string name="enter_you_details_here">Enter your details here</string>
     <string name="component_tab_navigation_by_card">By Card</string>

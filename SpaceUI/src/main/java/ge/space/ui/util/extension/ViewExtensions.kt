@@ -1,6 +1,5 @@
 package ge.space.ui.util.extension
 
-import android.graphics.Rect
 import android.text.*
 import android.view.*
 import android.widget.ImageView
@@ -62,6 +61,7 @@ fun View.setHeight(value: Int) {
         lp.height = value
         layoutParams = lp
     }
+    this.requestLayout()
 }
 
 /**
