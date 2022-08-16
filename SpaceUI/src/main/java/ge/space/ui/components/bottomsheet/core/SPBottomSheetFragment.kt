@@ -1,18 +1,16 @@
 package ge.space.ui.components.bottomsheet.core
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import androidx.annotation.NonNull
-import androidx.core.view.doOnLayout
+import android.view.Window
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_SETTLING
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
@@ -20,6 +18,7 @@ import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.util.extension.*
+
 
 /**
  * [SPBottomSheetFragment] is a custom implementation of [BottomSheetDialogFragment]
@@ -33,7 +32,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     private val descriptionStyle: Int? by argument(KEY_DESCRIPTION_STYLE, null)
     private val dialogTitleIcon: Int? by argument(KEY_ICON, null)
     private val dialogTitleMessage: String by nonNullArgument(KEY_TITLE, EMPTY_TEXT)
-    private val showFullScreen: Boolean by nonNullArgument(KEY_SHOW_FULLSCREEN, false)
+    private val startState: Int by nonNullArgument(KEY_START_STATE, STATE_COLLAPSED)
     private val dialogDescriptionMessage: String? by argument(KEY_DESCRIPTION, null)
     private lateinit var bottomStrategy: SPBottomSheetStrategy<Data>
     private var onResult: (Data?) -> Unit = {}
@@ -76,32 +75,32 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
                 }
             }
 
-            handleSkipCollapsedState()
-            handleBottomSheetSize()
+            handleStartState()
+            handleTitleStyle()
         }
-        handleTitleStyle()
     }
 
-    private fun handleBottomSheetSize() {
-        with(binding) {
-            standardBottomSheet.doOnLayout {
-                val displayMetrics = DisplayMetrics()
-                activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
-                if (standardBottomSheet.measuredHeight > displayMetrics.heightPixels - titleImage.measuredHeight) {
-                    getBehavior()?.state = STATE_EXPANDED
+    private fun handleStartState() {
+        getBehavior()?.state = startState
+        when (startState) {
+            STATE_EXPANDED ->
+                getBehavior()?.skipCollapsed = true
+            STATE_COLLAPSED -> binding.standardBottomSheet.viewTreeObserver
+                .addOnGlobalLayoutListener {
+                    val displayMetrics = DisplayMetrics()
+                    requireActivity().windowManager?.defaultDisplay?.getMetrics(displayMetrics)
+                    if (binding.standardBottomSheet.measuredHeight > displayMetrics.heightPixels - getTitleHeight()) {
+                        getBehavior()?.state = STATE_EXPANDED
+                    }
                 }
-            }
         }
     }
 
-    private fun handleSkipCollapsedState() {
-        if (showFullScreen) {
-            getBehavior()?.apply {
-                state = STATE_EXPANDED
-                skipCollapsed = true
-            }
-        }
-    }
+    /**
+     * Returns a sum of status bar heights and title
+     */
+    private fun getTitleHeight() =
+        getStatusBarHeight(requireActivity()) + resources.getDimensionPixelSize(R.dimen.dimen_p_24)
 
     /**
      * Sets a bottom sheet strategy
@@ -144,7 +143,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
 
     companion object {
         const val KEY_TITLE = "KEY_TITLE"
-        const val KEY_SHOW_FULLSCREEN = "KEY_SHOW_FULLSCREEN"
+        const val KEY_START_STATE = "KEY_SHOW_FULLSCREEN"
         const val KEY_DESCRIPTION = "KEY_DESCRIPTION"
         const val KEY_DESCRIPTION_STYLE = "KEY_DESCRIPTION_STYLE"
         const val KEY_DELAY_TIME = "KEY_DELAY_TIME"

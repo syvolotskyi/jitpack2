@@ -1,6 +1,7 @@
 package ge.space.ui.components.bottomsheet.builder
 
 import androidx.core.os.bundleOf
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
@@ -16,7 +17,7 @@ class SPBottomSheetBuilder<Data> :
     private var titleStyle: Int? = null
     private var icon: Int? = null
     private var description: String? = null
-    private var showFullScreen: Boolean = false
+    private var startState: Int = STATE_COLLAPSED
     private var descriptionStyle: Int? = null
     private var resultListener: (Data?) -> Unit = {}
     private var dismissDelayTime: Long = 500L
@@ -56,12 +57,12 @@ class SPBottomSheetBuilder<Data> :
     }
 
     /**
-     * Sets start state expanded and scip peekHeight
+     * Sets start state
      *
-     * @param show [Boolean] sets start state expanded to bottom sheet
+     * @param startState [Int] sets start state int to bottom sheet
      */
-    fun setShowFullScreen(show: Boolean): SPBottomSheetBuilder<Data> {
-        this.showFullScreen = show
+    fun setStartState(startState: Int): SPBottomSheetBuilder<Data> {
+        this.startState = startState
 
         return this
     }
@@ -117,7 +118,7 @@ class SPBottomSheetBuilder<Data> :
                 SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
                 SPBottomSheetFragment.KEY_ICON to icon,
                 SPBottomSheetFragment.KEY_DESCRIPTION to description,
-                SPBottomSheetFragment.KEY_SHOW_FULLSCREEN to showFullScreen,
+                SPBottomSheetFragment.KEY_START_STATE to startState,
                 SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
                 SPBottomSheetFragment.KEY_DELAY_TIME to dismissDelayTime,
             )
