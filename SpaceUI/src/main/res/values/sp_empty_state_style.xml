@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPEmptyStateBase">
+        <item name="titleTextAppearance">@style/h600_bold_secondary</item>
+        <item name="descriptionTextAppearance">@style/h700_medium_secondary</item>
+        <item name="buttonVisibility">false</item>
+    </style>
+
+    <style name="SPEmptyStateBase.WithButton" parent="SPEmptyStateBase">
+        <item name="buttonVisibility">true</item>
+    </style>
+
+</resources>
