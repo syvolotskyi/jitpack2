@@ -24,13 +24,7 @@ class SPEmptyStateView @JvmOverloads constructor(
     @StyleRes defStyleRes: Int = R.style.SPEmptyStateBase
 ) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
 
-    private val binding by lazy {
-        SpEmptyStateLayoutBinding.inflate(
-            LayoutInflater.from(context),
-            this,
-            true
-        )
-    }
+    private val binding by lazy { SpEmptyStateLayoutBinding.inflate(LayoutInflater.from(context), this, true) }
 
     /**
      * Sets a image resource
@@ -111,21 +105,22 @@ class SPEmptyStateView @JvmOverloads constructor(
     private fun TypedArray.applyEmptyStateStyledAttrs() {
         getResourceId(R.styleable.SPEmptyStyleView_android_src, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { src = it }
-        getResourceId(
-            R.styleable.SPEmptyStyleView_titleTextAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
+
+        getResourceId(R.styleable.SPEmptyStyleView_titleTextAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { textAppearance = it }
-        getResourceId(
-            R.styleable.SPEmptyStyleView_descriptionTextAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { descriptionTextAppearance = it }
+
+        getResourceId(R.styleable.SPEmptyStyleView_descriptionTextAppearance, SPBaseView.DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { descriptionTextAppearance = it }
+
         getString(R.styleable.SPEmptyStyleView_title).orEmpty()
             .handleAttributeAction(EMPTY_TEXT) { textTitle = it }
+
         getString(R.styleable.SPEmptyStyleView_descriptionText).orEmpty()
             .handleAttributeAction(EMPTY_TEXT) { textDesc = it }
+
         getString(R.styleable.SPEmptyStyleView_buttonText).orEmpty()
             .handleAttributeAction(EMPTY_TEXT) { textButton = it }
+
         getBoolean(R.styleable.SPEmptyStyleView_showButton, false)
             .handleAttributeAction(false) { showButton = it }
 
@@ -152,8 +147,8 @@ class SPEmptyStateView @JvmOverloads constructor(
         binding.descriptionText.setTextStyle(descAppearance)
     }
 
-    private fun handleTitleText(value: String) {
-        binding.titleTV.text = value
-        binding.titleTV.isVisible = value.isNotEmpty()
+    private fun handleTitleText(text: String) {
+        binding.titleTV.text = text
+        binding.titleTV.isVisible = text.isNotEmpty()
     }
 }
