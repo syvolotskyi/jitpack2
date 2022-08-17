@@ -117,10 +117,9 @@ class SPEmptyStateView @JvmOverloads constructor(
         )
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { textAppearance = it }
         getResourceId(
-            R.styleable.SPEmptyStyleView_descTextAppearance,
+            R.styleable.SPEmptyStyleView_descriptionTextAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-            .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { descriptionTextAppearance = it }
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { descriptionTextAppearance = it }
         getString(R.styleable.SPEmptyStyleView_title).orEmpty()
             .handleAttributeAction(EMPTY_TEXT) { textTitle = it }
         getString(R.styleable.SPEmptyStyleView_descriptionText).orEmpty()
