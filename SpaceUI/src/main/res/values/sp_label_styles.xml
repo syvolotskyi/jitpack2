@@ -52,15 +52,15 @@
     </style>
 
     <style name="h800_medium_accent_magenta" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_primary_magenta</item>
+        <item name="android:textColor">?attr/status_primary_distractive</item>
     </style>
 
     <style name="h800_medium_accent_orange" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_primary_green</item>
+        <item name="android:textColor">?attr/status_primary_alert</item>
     </style>
 
     <style name="h800_medium_accent_green" parent="h800_medium">
-        <item name="android:textColor">?attr/accent_primary_green</item>
+        <item name="android:textColor">?attr/status_primary_success</item>
     </style>
 
     <style name="h800_bold_caps_secondary" parent="h800_bold_caps">
