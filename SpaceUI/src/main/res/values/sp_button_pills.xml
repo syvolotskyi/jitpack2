@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="shadow_300_primary_pills" parent="shadow_300_brand">
+        <item name="shadowColor">@color/gray_100</item>
+    </style>
+</resources>

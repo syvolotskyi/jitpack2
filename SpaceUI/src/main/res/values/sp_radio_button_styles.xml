@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPRadioButton.Base" parent="Widget.AppCompat.CompoundButton.RadioButton">
+    <style name="SPRadioButton.Base" parent="SPBaseViewUI">
         <item name="titleTextAppearance">@style/h700_medium_caps_label_secondary</item>
         <item name="titleTextAppearanceWithDesc">@style/h700_bold_caps_secondary</item>
         <item name="android:background">@null</item>
@@ -20,5 +20,18 @@
         <item name="isCircle">true</item>
         <item name="borderColor">?attr/separator_opaque</item>
         <item name="borderWidth">@dimen/dimen_p_0_5</item>
+    </style>
+
+
+    <style name="SPPillItemStandard" >
+        <item name="android:button">@null</item>
+        <item name="roundedCorners">@dimen/dimen_p_10</item>
+        <item name="android:foreground">@drawable/toggle_icon_ripple</item>
+        <item name="selectedBackgroundColor">?attr/brand_primary</item>
+        <item name="selectedShadowStyle">@style/shadow_300_brand</item>
+        <item name="unselectedShadowStyle">@style/shadow_300_primary_pills</item>
+        <item name="unselectedBackgroundColor">@color/white</item>
+        <item name="selectedTextAppearance">@style/h700_bold_caps_primary_white</item>
+        <item name="unselectedTextAppearance">@style/h700_bold_caps_brand_primary</item>
     </style>
 </resources>

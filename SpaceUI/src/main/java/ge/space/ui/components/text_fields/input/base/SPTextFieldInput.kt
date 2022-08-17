@@ -239,7 +239,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
      *
      * <p>
      * Default style theme is SBBaseView style. A style has to implement SPView styleable
-     * attributes. Separate SPBaseView styleable attributes have higher priority han styles.
+     * attributes. Separate SPBaseView styleable attributes have higher priority than styles.
      * <p>
      *
      * @param defStyleRes [Int] style resource id
@@ -678,7 +678,7 @@ open class SPTextFieldInput @JvmOverloads constructor(
                     !isEnabled ->
                         context.getColorFromAttribute(R.attr.separator_opaque)
                     isDistractive ->
-                        context.getColorFromAttribute(R.attr.accent_primary_magenta)
+                        context.getColorFromAttribute(R.attr.status_primary_distractive)
                     contentInputView.isFocused ->
                         context.getColorFromAttribute(R.attr.brand_primary)
                     else ->

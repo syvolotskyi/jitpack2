@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_p_40"
+        android:button="@null"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_p_16"
+        android:paddingBottom="@dimen/dimen_p_2"
+        tools:text="1x" />
+</merge>

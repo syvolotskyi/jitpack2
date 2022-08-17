@@ -32,6 +32,9 @@
     <string name="toggle_switch_description">Toggle Switch description</string>
     <string name="toggle_switch">Toggle Switch</string>
 
+    <string name="drawer_pill_description">Drawer pill description</string>
+    <string name="drawer_pill">Drawer pill</string>
+
     <string name="list_item_button">List item button</string>
     <string name="list_item_button_desc">List item button Description</string>
 
@@ -78,6 +81,9 @@
 
     <string name="text_input">Text input</string>
     <string name="text_input_desc">Enter \"Space\" to check TextWatcher</string>
+
+    <string name="search_text_input">Search input</string>
+    <string name="search_text_input_desc">Enter 8888 to check change text listener</string>
 
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>

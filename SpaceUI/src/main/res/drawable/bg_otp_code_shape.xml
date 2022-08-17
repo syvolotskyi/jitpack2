@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_active="true">
         <shape>
-            <stroke android:width="@dimen/dimen_p_1" android:color="?attr/accent_primary_magenta" />
+            <stroke android:width="@dimen/dimen_p_1" android:color="?attr/status_primary_distractive" />
             <solid android:color="?attr/white" />
             <corners android:radius="@dimen/dimen_p_10" />
         </shape>
