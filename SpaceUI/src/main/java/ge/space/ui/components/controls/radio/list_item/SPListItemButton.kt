@@ -14,7 +14,9 @@ import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.controls.radio.base.SpBaseRadioButton
 import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.setHeight
 import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.setWidth
 
 /**
  *  Extended view from [SpBaseRadioButton] contains radio button, startView and title label.
@@ -71,6 +73,15 @@ class SPListItemButton @JvmOverloads constructor(
         invalidate()
     }
 
+    /**
+     * Sets a Start View size height and width. Use height is WRAP_CONTENT if put image non from url
+     */
+    fun setStartViewSize(height: Int, width: Int) {
+        binding.startView.setHeight(height)
+        binding.startView.setWidth(width)
+        invalidate()
+    }
+
     override fun handleTitle(value: String) {
         binding.titleText.text = value
     }
@@ -82,9 +93,14 @@ class SPListItemButton @JvmOverloads constructor(
         binding.titleText.setTextStyle(textAppearance)
     }
 
-    override fun handleCheckingState(){
-        binding.radioButton.isChecked = isChecked
+    override fun handleCheckingState() {
+        binding.radioButton.apply {
+            post {
+                isChecked = this@SPListItemButton.isChecked
+            }
+        }
     }
+
 
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(

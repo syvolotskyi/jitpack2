@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
 import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.data.SPButtonsDialogHolder
@@ -101,7 +102,7 @@ abstract class SPBaseDialog<VB : ViewBinding, BT : SPButtonsDialogHolder> : Dial
      * Creates a specific button model
      */
     protected abstract fun createDialogButtonModel(buttonObj: BT)
-        : SPDialogBottomButtonLayout.SPDialogBottomButtonModel
+            : SPDialogBottomButtonLayout.SPDialogBottomButtonModel
 
     /**
      * Allows to set a dialog dismiss action
@@ -112,6 +113,19 @@ abstract class SPBaseDialog<VB : ViewBinding, BT : SPButtonsDialogHolder> : Dial
      * Allows to init ViewBinding
      */
     protected abstract fun getViewBinding(): VB
+
+    /**
+     * Show popup dialog
+     */
+    fun show(fragmentActivity: FragmentActivity, tag: String = DIALOG_FRAGMENT_TAG) {
+        try {
+            if (fragmentActivity.supportFragmentManager.findFragmentByTag(tag) == null) {
+                show(fragmentActivity.supportFragmentManager, tag)
+            }
+        } catch (ignored: IllegalStateException) {
+            ignored.printStackTrace()
+        }
+    }
 
     companion object {
         const val KEY_TITLE = "KEY_TITLE"
@@ -130,5 +144,6 @@ abstract class SPBaseDialog<VB : ViewBinding, BT : SPButtonsDialogHolder> : Dial
 
         const val MIN_TWICE_BUTTONS = 2
         const val MAX_TWICE_BUTTONS = 5
+        const val DIALOG_FRAGMENT_TAG: String = "DIALOG_FRAGMENT_TAG"
     }
 }

@@ -28,6 +28,7 @@
     <declare-styleable name="SPBaseChip">
         <attr name="chipWidth" />
         <attr name="chipHeight" />
+        <attr name="chipStyleRes"/>
     </declare-styleable>
 
     <declare-styleable name="SPPrimaryChip">

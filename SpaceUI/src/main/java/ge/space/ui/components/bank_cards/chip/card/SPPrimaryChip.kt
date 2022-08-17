@@ -71,7 +71,7 @@ class SPPrimaryChip @JvmOverloads constructor(
     }
 
     override fun getViewData(): SPViewData {
-        return SPViewData.SPrimaryChipData(chipHeight, chipWidth, 0)
+        return SPViewData.SPrimaryChipData( chipStyleRes)
     }
 
     private fun handleImageBackground() {

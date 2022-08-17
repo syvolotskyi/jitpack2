@@ -110,7 +110,7 @@ fun FragmentActivity.showLabelDialog(label: String, dismiss: () -> Unit = { }) {
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPInfoDialogData]
  */
-private fun FragmentActivity.buildInfoDialog(
+private fun buildInfoDialog(
     title: String?,
     label: String?,
     multiple: Boolean = true,
@@ -118,7 +118,7 @@ private fun FragmentActivity.buildInfoDialog(
     icon: SPDialogIcon = SPDialogIcon.Info(),
     dismiss: () -> Unit = { }
 ) =
-    SPInfoDialogBuilder(this)
+    SPInfoDialogBuilder()
         .initDialog(
             SPDialogData.SPInfoDialogData(
                 title = title,
@@ -136,12 +136,12 @@ private fun FragmentActivity.buildInfoDialog(
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPTitleLabelDialogData]
  */
-private fun FragmentActivity.buildRichTitleDialog(
+private fun buildRichTitleDialog(
     title: String?,
     label: String?,
     dismiss: () -> Unit = { }
 ) =
-    SPInfoDialogBuilder(this)
+    SPInfoDialogBuilder()
         .initDialog(
             SPDialogData.SPTitleLabelDialogData(
                 title = title,
@@ -156,11 +156,11 @@ private fun FragmentActivity.buildRichTitleDialog(
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPTitleDialogData]
  */
-private fun FragmentActivity.buildTitleDialog(
+private fun buildTitleDialog(
     title: String,
     dismiss: () -> Unit = { }
 ) =
-    SPInfoDialogBuilder(this)
+    SPInfoDialogBuilder()
         .initDialog(
             SPDialogData.SPTitleDialogData(
                 title = title
@@ -174,11 +174,11 @@ private fun FragmentActivity.buildTitleDialog(
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPLabelDialogData]
  */
-private fun FragmentActivity.buildLabelDialog(
+private fun buildLabelDialog(
     label: String,
     dismiss: () -> Unit = { }
 ) =
-    SPInfoDialogBuilder(this)
+    SPInfoDialogBuilder()
         .initDialog(
             SPDialogData.SPLabelDialogData(
                 label = label
@@ -192,12 +192,12 @@ private fun FragmentActivity.buildLabelDialog(
 /**
  * Helper extension which helps to build [SPDialogEditText] using [SPEditTextDialogData]
  */
-private fun FragmentActivity.buildEditTextDialog(
+private fun buildEditTextDialog(
     title: String,
     buttons: ArrayList<SPEditTextDialogInfoHolder>,
     dismiss: () -> Unit = { }
 ) =
-    SPEditTextDialogBuilder(this)
+    SPEditTextDialogBuilder()
         .initDialog(
             SPEditTextDialogData(
                 title = title,

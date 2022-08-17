@@ -26,7 +26,7 @@
     </style>
 
     <style name="SPButton.Primary_Size48" parent="SPButton.BaseView.Size48">
-        <item name="ui_backgroundColor">?attr/brand_primary</item>
+        <item name="backgroundColor">?attr/brand_primary</item>
         <item name="android:textAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveTextAppearance">@style/h600_bold_caps_primary_white</item>
         <item name="distractiveBackground">?attr/status_primary_distractive</item>
