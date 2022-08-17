@@ -4,8 +4,8 @@
     <!-- PinEntryEditText has error set -->
     <item android:state_active="true">
         <shape android:shape="rectangle">
-            <stroke android:width="2dp" android:color="@android:color/holo_red_dark" />
-            <solid android:color="@android:color/holo_red_dark" />
+            <stroke android:width="2dp" android:color="?attr/status_primary_distractive" />
+            <solid android:color="?attr/status_primary_distractive" />
         </shape>
     </item>
     <item android:state_checked="true" android:state_focused="true">

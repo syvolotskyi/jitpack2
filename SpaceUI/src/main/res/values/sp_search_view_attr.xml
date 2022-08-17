@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPSearchView">
+        <attr name="textAppearance" />
+        <attr name="showCancelButton" format="boolean"/>
+        <attr name="icon" format="reference"/>
+        <attr name="contentHeight"/>
+        <attr name="showClearButton" format="boolean"/>
+        <attr name="searchBoxStyle" format="reference"/>
+        <attr name="showSettingButton" format="boolean"/>
+        <attr name="android:text" format="string" localization="suggested" />
+    </declare-styleable>
+</resources>

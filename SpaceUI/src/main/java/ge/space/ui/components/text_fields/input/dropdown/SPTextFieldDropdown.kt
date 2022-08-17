@@ -2,7 +2,6 @@ package ge.space.ui.components.text_fields.input.dropdown
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes

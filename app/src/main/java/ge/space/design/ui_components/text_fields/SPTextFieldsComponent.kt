@@ -10,6 +10,7 @@ import ge.space.design.ui_components.text_fields.number.SPNumberComponentParent
 import ge.space.design.ui_components.text_fields.otp.SPOtpComponent
 import ge.space.design.ui_components.text_fields.password.SPPasswordComponent
 import ge.space.design.ui_components.text_fields.phone.SPMaskedComponent
+import ge.space.design.ui_components.text_fields.search.SPSearchComponent
 
 class SPTextFieldsComponent : ShowCaseComponent {
 
@@ -25,7 +26,8 @@ class SPTextFieldsComponent : ShowCaseComponent {
             SPNumberComponentParent(),
             SPMaskedComponent(),
             SPTextAreaComponent(),
-            SPDropdownComponent()
+            SPDropdownComponent(),
+            SPSearchComponent()
         )
     }
 }

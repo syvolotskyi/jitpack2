@@ -77,7 +77,7 @@ class SPOtpEditText @JvmOverloads constructor(
     var isError: Boolean = false
     fun setError(
         isError: Boolean,
-        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.accent_primary_magenta)
+        @AttrRes errorColor: Int = context.getColorFromAttribute(R.attr.status_primary_distractive)
     ) {
         setTextColor(if (isError) errorColor else context.getColorFromAttribute(R.attr.brand_primary))
     }
