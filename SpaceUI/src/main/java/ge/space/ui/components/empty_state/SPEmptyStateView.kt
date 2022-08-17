@@ -2,19 +2,18 @@ package ge.space.ui.components.empty_state
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpEmptyStateLayoutBinding
 import ge.space.ui.base.SPBaseView
+import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.*
 
 class SPEmptyStateView @JvmOverloads constructor(
@@ -22,7 +21,7 @@ class SPEmptyStateView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPEmptyStateBase
-) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
+) : LinearLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     private val binding by lazy { SpEmptyStateLayoutBinding.inflate(LayoutInflater.from(context), this, true) }
 
@@ -40,7 +39,7 @@ class SPEmptyStateView @JvmOverloads constructor(
     /**
      * Sets a component title.
      */
-    var textTitle: String = EMPTY_TEXT
+    var titleText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -50,7 +49,7 @@ class SPEmptyStateView @JvmOverloads constructor(
     /**
      * Sets a description title.
      */
-    var textDesc: String = EMPTY_TEXT
+    var descText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -60,7 +59,7 @@ class SPEmptyStateView @JvmOverloads constructor(
     /**
      * Sets a button title.
      */
-    var textButton: String = EMPTY_TEXT
+    var buttonText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -70,14 +69,12 @@ class SPEmptyStateView @JvmOverloads constructor(
     /**
      * Set true if button should have been shown.
      */
-    var showButton: Boolean = false
+    var buttonVisibility: Boolean = false
         set(value) {
             field = value
 
             binding.buttonView.isVisible = value
         }
-
-    private var buttonClickListener: () -> Unit = {}
 
     /**
      * Sets a text appearance
@@ -113,16 +110,16 @@ class SPEmptyStateView @JvmOverloads constructor(
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { descriptionTextAppearance = it }
 
         getString(R.styleable.SPEmptyStyleView_title).orEmpty()
-            .handleAttributeAction(EMPTY_TEXT) { textTitle = it }
+            .handleAttributeAction(EMPTY_TEXT) { titleText = it }
 
         getString(R.styleable.SPEmptyStyleView_descriptionText).orEmpty()
-            .handleAttributeAction(EMPTY_TEXT) { textDesc = it }
+            .handleAttributeAction(EMPTY_TEXT) { descText = it }
 
         getString(R.styleable.SPEmptyStyleView_buttonText).orEmpty()
-            .handleAttributeAction(EMPTY_TEXT) { textButton = it }
+            .handleAttributeAction(EMPTY_TEXT) { buttonText = it }
 
-        getBoolean(R.styleable.SPEmptyStyleView_showButton, false)
-            .handleAttributeAction(false) { showButton = it }
+        getBoolean(R.styleable.SPEmptyStyleView_buttonVisibility, false)
+            .handleAttributeAction(false) { buttonVisibility = it }
 
         updateTextAppearance(textAppearance)
     }
@@ -131,9 +128,7 @@ class SPEmptyStateView @JvmOverloads constructor(
      * Sets a listener to button
      */
     fun setOnButtonClickListener(listener: () -> Unit) {
-        buttonClickListener = listener
-
-        binding.buttonView.onClick { buttonClickListener() }
+        binding.buttonView.onClick { listener() }
     }
 
     /**
@@ -150,5 +145,14 @@ class SPEmptyStateView @JvmOverloads constructor(
     private fun handleTitleText(text: String) {
         binding.titleTV.text = text
         binding.titleTV.isVisible = text.isNotEmpty()
+    }
+
+    override fun setViewStyle(newStyle: Int) {
+        context.withStyledAttributes(
+            newStyle,
+            R.styleable.SPEmptyStyleView
+        ) {
+            applyEmptyStateStyledAttrs()
+        }
     }
 }

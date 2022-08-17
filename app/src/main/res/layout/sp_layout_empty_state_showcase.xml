@@ -20,9 +20,9 @@
             app:descriptionText="@string/example_text" />
 
         <ge.space.ui.components.empty_state.SPEmptyStateView
+            android:id="@+id/emptyStateWithButtonView"
             style="@style/SPEmptyStateBase.WithButton"
             android:layout_width="match_parent"
-            android:id="@+id/emptyStateWithButtonView"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimen_p_32"
             android:src="@drawable/ic_flight_32_regular"
@@ -32,10 +32,24 @@
         <ge.space.ui.components.empty_state.SPEmptyStateView
             style="@style/SPEmptyStateBase"
             android:layout_width="match_parent"
-            android:layout_marginVertical="@dimen/dimen_p_32"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_p_32"
             android:src="@drawable/ic_gift_32_regular"
             app:descriptionText="@string/example_text"
             app:title="Info" />
+
+        <TextView
+            style="@style/h700_medium_secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_32"
+            android:text="Empty States from code" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/containerViews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:ignore="MissingDefaultResource" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>

@@ -6,6 +6,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutEmptyStateShowcaseBindi
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
+import ge.space.ui.components.empty_state.SPEmptyStateView
 
 class SPEmptyStateComponent : ShowCaseComponent {
 
@@ -21,6 +22,16 @@ class SPEmptyStateComponent : ShowCaseComponent {
                 SpLayoutEmptyStateShowcaseBinding.inflate(environment.requireLayoutInflater())
             binding.emptyStateWithButtonView.setOnButtonClickListener {
                 Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+            SPEmptyStateStyles.list.forEach { emptyStyle ->
+                SPEmptyStateView(environment.context).apply {
+                    setViewStyle(emptyStyle.resId)
+                    titleText = environment.context.getString(emptyStyle.title)
+                    descText = environment.context.getString(emptyStyle.description)
+                    buttonText = environment.context.getString(emptyStyle.button)
+                }.also {
+                    binding.containerViews.addView(it)
+                }
             }
             return binding.root
         }

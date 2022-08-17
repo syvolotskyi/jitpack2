@@ -7,6 +7,6 @@
         <attr name="descriptionText"/>
         <attr name="descriptionTextAppearance"/>
         <attr name="buttonText" format="string|reference" />
-        <attr name="showButton" format="boolean" />
+        <attr name="buttonVisibility" format="boolean" />
     </declare-styleable>
 </resources>

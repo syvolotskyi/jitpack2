@@ -4,11 +4,11 @@
     <style name="SPEmptyStateBase">
         <item name="titleTextAppearance">@style/h600_bold_secondary</item>
         <item name="descriptionTextAppearance">@style/h700_medium_secondary</item>
-        <item name="showButton">false</item>
+        <item name="buttonVisibility">false</item>
     </style>
 
     <style name="SPEmptyStateBase.WithButton" parent="SPEmptyStateBase">
-        <item name="showButton">true</item>
+        <item name="buttonVisibility">true</item>
     </style>
 
 </resources>
