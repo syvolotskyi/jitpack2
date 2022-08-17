@@ -17,7 +17,7 @@ class SPBottomSheetBuilder<Data> :
     private var titleStyle: Int? = null
     private var icon: Int? = null
     private var description: String? = null
-    private var startState: Int = STATE_COLLAPSED
+    private var initialState: Int = STATE_COLLAPSED
     private var descriptionStyle: Int? = null
     private var resultListener: (Data?) -> Unit = {}
     private var dismissDelayTime: Long = 500L
@@ -57,12 +57,12 @@ class SPBottomSheetBuilder<Data> :
     }
 
     /**
-     * Sets start state
+     * Sets Initial bottomSheet state
      *
-     * @param startState [Int] sets start state int to bottom sheet
+     * @param initialState [Int] sets start state int to bottom sheet
      */
-    fun setStartState(startState: Int): SPBottomSheetBuilder<Data> {
-        this.startState = startState
+    fun setInitialState(initialState: Int): SPBottomSheetBuilder<Data> {
+        this.initialState = initialState
 
         return this
     }
@@ -118,7 +118,7 @@ class SPBottomSheetBuilder<Data> :
                 SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
                 SPBottomSheetFragment.KEY_ICON to icon,
                 SPBottomSheetFragment.KEY_DESCRIPTION to description,
-                SPBottomSheetFragment.KEY_START_STATE to startState,
+                SPBottomSheetFragment.KEY_INITIAL_STATE to initialState,
                 SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
                 SPBottomSheetFragment.KEY_DELAY_TIME to dismissDelayTime,
             )
