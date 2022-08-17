@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:ignore="MissingDefaultResource">
-
-    <ge.space.ui.components.empty_state.SPEmptyStateView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_diagram_circle_24_regular"
-        app:buttonText="@string/show_btn"
-        app:descriptionText="Style by default"
-        app:title="Empty State from xml" />
-
-    <ge.space.ui.components.empty_state.SPEmptyStateView
-        style="@style/SPEmptyStateIcon.WithButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_diagram_circle_24_regular"
-        app:buttonText="@string/show_btn"
-        app:descriptionText="SPEmptyStateIcon.WithButton"
-        app:title="Empty State from xml" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_p_16"
-        android:text="Empty States from code" />
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/containerViews"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:ignore="MissingDefaultResource" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+        tools:ignore="MissingDefaultResource">
+
+        <ge.space.ui.components.empty_state.SPEmptyStateView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_p_32"
+            android:src="@drawable/ic_bill_transfer_32_regular"
+            app:buttonText="@string/show_btn"
+            app:descriptionText="@string/example_text" />
+
+        <ge.space.ui.components.empty_state.SPEmptyStateView
+            style="@style/SPEmptyStateBase.WithButton"
+            android:layout_width="match_parent"
+            android:id="@+id/emptyStateWithButtonView"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_p_32"
+            android:src="@drawable/ic_flight_32_regular"
+            app:buttonText="@string/show_btn"
+            app:descriptionText="@string/example_text" />
+
+        <ge.space.ui.components.empty_state.SPEmptyStateView
+            style="@style/SPEmptyStateBase"
+            android:layout_width="match_parent"
+            android:layout_marginVertical="@dimen/dimen_p_32"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_gift_32_regular"
+            app:descriptionText="@string/example_text"
+            app:title="Info" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

@@ -21,7 +21,7 @@ class SPEmptyStateView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPEmptyStateIcon
+    @StyleRes defStyleRes: Int = R.style.SPEmptyStateBase
 ) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     private val binding by lazy {
@@ -44,17 +44,17 @@ class SPEmptyStateView @JvmOverloads constructor(
         }
 
     /**
-     * Sets a button title.
+     * Sets a component title.
      */
     var textTitle: String = EMPTY_TEXT
         set(value) {
             field = value
 
-            binding.titleTV.text = value
+            handleTitleText(value)
         }
 
     /**
-     * Sets a button title.
+     * Sets a description title.
      */
     var textDesc: String = EMPTY_TEXT
         set(value) {
@@ -74,7 +74,7 @@ class SPEmptyStateView @JvmOverloads constructor(
         }
 
     /**
-     * Sets a button title.
+     * Set true if button should have been shown.
      */
     var showButton: Boolean = false
         set(value) {
@@ -153,4 +153,8 @@ class SPEmptyStateView @JvmOverloads constructor(
         binding.descriptionText.setTextStyle(descAppearance)
     }
 
+    private fun handleTitleText(value: String) {
+        binding.titleTV.text = value
+        binding.titleTV.isVisible = value.isNotEmpty()
+    }
 }

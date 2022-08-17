@@ -1,16 +1,13 @@
 package ge.space.design.ui_components.empty_state
 
+import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutEmptyStateShowcaseBinding
-import com.example.spacedesignsystem.databinding.SpLayoutMarksShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.design.ui_components.marks.SPMarkStyles
-import ge.space.design.ui_components.marks.SPMarksComponent
-import ge.space.ui.util.view_factory.SPViewData
 
-class SPEmptyStateComponent  : ShowCaseComponent {
+class SPEmptyStateComponent : ShowCaseComponent {
 
     override fun getNameResId(): Int = R.string.empty_state
 
@@ -20,9 +17,12 @@ class SPEmptyStateComponent  : ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            val binding = SpLayoutEmptyStateShowcaseBinding.inflate(environment.requireLayoutInflater())
-
+            val binding =
+                SpLayoutEmptyStateShowcaseBinding.inflate(environment.requireLayoutInflater())
+            binding.emptyStateWithButtonView.setOnButtonClickListener {
+                Toast.makeText(environment.context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
             return binding.root
         }
-        }
+    }
 }

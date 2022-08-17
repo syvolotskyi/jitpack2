@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPEmptyStateIcon">
-        <item name="titleTextAppearance">@style/h600_medium</item>
-        <item name="descriptionTextAppearance">@style/h600_medium</item>
+    <style name="SPEmptyStateBase">
+        <item name="titleTextAppearance">@style/h600_bold_secondary</item>
+        <item name="descriptionTextAppearance">@style/h700_medium_secondary</item>
         <item name="showButton">false</item>
     </style>
 
-    <style name="SPEmptyStateIcon.WithButton" parent="SPEmptyStateIcon">
+    <style name="SPEmptyStateBase.WithButton" parent="SPEmptyStateBase">
         <item name="showButton">true</item>
     </style>
+
 </resources>

@@ -149,6 +149,10 @@
         <item name="android:textColor">?attr/label_secondary</item>
     </style>
 
+    <style name="h600_bold_secondary" parent="h600_bold">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
     <!-- 400 -->
     <style name="h400_bold_caps_secondary" parent="h400_bold_caps">
         <item name="android:textColor">?attr/label_secondary</item>
