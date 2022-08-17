@@ -20,7 +20,7 @@
             android:focusable="false"
             android:gravity="center_vertical"
             android:paddingHorizontal="@dimen/dimen_p_10"
-            tools:text="dollar"/>
+            tools:text="dollar" />
 
         <ge.space.ui.components.controls.radio.list_item.SPListItemButton
             android:id="@+id/radio2"

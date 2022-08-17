@@ -10,8 +10,7 @@ class SPDigitalChipIconImpl(context: Context) :
 
     override fun create(type: SPViewData.SPDigitalChipData): SPDigitalChip {
         return SPDigitalChip(context).apply {
-            chipHeight = type.chipHeight
-            chipWidth = type.chipWidth
+            setViewStyle(type.styleRes)
             cardBackground = type.gradient
         }
     }

@@ -149,6 +149,7 @@ class SPRadioButton @JvmOverloads constructor(
 
     override fun handleTitle(value: String) {
         binding.titleText.text = value
+        requestLayout()
     }
 
     override fun setViewStyle(newStyle: Int) {
@@ -161,7 +162,11 @@ class SPRadioButton @JvmOverloads constructor(
     }
 
     override fun handleCheckingState() {
-        binding.radioButton.isChecked = isChecked
+        binding.radioButton.apply {
+            post {
+                isChecked = this@SPRadioButton.isChecked
+            }
+        }
     }
 
     private fun handleDesc() {

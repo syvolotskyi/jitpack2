@@ -56,6 +56,12 @@ abstract class SPBaseChip @JvmOverloads constructor(
             setWidth(chipWidth)
         }
 
+    /**
+     * Name of style res, needs for getViewData to store chip data
+     */
+    protected var chipStyleRes: Int = defStyleRes
+
+
     init {
         context.withStyledAttributes(
             attrs,
@@ -64,12 +70,16 @@ abstract class SPBaseChip @JvmOverloads constructor(
             defStyleRes
         ) {
             withStyledResource()
+            chipStyleRes = getResourceId(
+                R.styleable.SPBaseChip_chipStyleRes, defStyleRes
+            )
         }
     }
 
-    override fun setBaseViewStyle(styleRes: Int) {
-        super.setBaseViewStyle(styleRes)
-        context.withStyledAttributes(styleRes, R.styleable.SPBaseChip) { withStyledResource() }
+    override fun setBaseViewStyle(defStyleRes: Int) {
+        super.setBaseViewStyle(defStyleRes)
+        chipStyleRes = defStyleRes
+        context.withStyledAttributes(defStyleRes, R.styleable.SPBaseChip) { withStyledResource() }
     }
 
     private fun TypedArray.withStyledResource() {

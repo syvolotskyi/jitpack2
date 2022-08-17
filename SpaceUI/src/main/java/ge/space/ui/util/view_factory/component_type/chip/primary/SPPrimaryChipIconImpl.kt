@@ -12,8 +12,6 @@ class SPPrimaryChipIconImpl(context: Context) :
     override fun create(type: SPViewData.SPrimaryChipData): SPPrimaryChip {
         return SPPrimaryChip(context).apply {
             setViewStyle(type.styleRes)
-            chipHeight = type.chipHeight
-            chipWidth = type.chipWidth
             color = ContextCompat.getColor(context, android.R.color.transparent)
             type.params?.let {
                 setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)

@@ -1,8 +1,10 @@
 package ge.space.ui.util.extension
 
+import android.graphics.Rect
 import android.text.*
 import android.view.*
 import android.widget.ImageView
+import androidx.fragment.app.FragmentActivity
 
 fun View.visibleIf(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
@@ -38,6 +40,10 @@ private fun View.onSafeClick(duration: Long, click: (() -> Unit)) {
             clickPermissible = true
         }
     }
+}
+
+fun ViewGroup.inflate(layoutRes: Int): View {
+    return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
 fun View.goAway() {
@@ -98,3 +104,13 @@ var ImageView.tintColor: Int
     set(value) {
         setColorFilter(value, android.graphics.PorterDuff.Mode.SRC_IN)
     }
+
+/**
+ * Extension method returns height of status bar
+ */
+ fun getStatusBarHeight(activity: FragmentActivity): Int {
+    val rectangle = Rect()
+    val window: Window = activity.window
+    window.decorView.getWindowVisibleDisplayFrame(rectangle)
+    return rectangle.top
+}

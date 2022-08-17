@@ -9,17 +9,15 @@ class SPDefaultEmptyChipData {
     companion object {
         fun getSmallEmptyChipData(
             context: Context,
-            chipStyle: SPEmptyChipStyle = SPEmptyChipStyle.White
+            chipStyle: SPEmptyChipStyle = SPEmptyChipStyle.White,
+            params: SPViewData.SPViewDataParams? = null,
         ): SPViewData.SPEmptyChipData {
             return SPViewData.SPEmptyChipData(
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_height_small),
                 context.resources.getDimensionPixelSize(R.dimen.sp_bank_chip_width_small),
                 chipStyle,
                 R.style.SPBankCardView_ChipEmpty_Small_White,
-                SPViewData.SPViewDataParams(
-                    paddingStart = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12),
-                    paddingEnd = context.resources.getDimensionPixelSize(R.dimen.dimen_p_12)
-                )
+                params
             )
         }
 
