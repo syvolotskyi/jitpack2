@@ -211,11 +211,6 @@ abstract class SPBaseView @JvmOverloads constructor(
     private var contentHeight: Int = DEFAULT_OBTAIN_VAL
 
     /**
-     * Border color value
-     */
-    private var boxHeight: Int = DEFAULT_OBTAIN_VAL
-
-    /**
      * Border width value
      */
     private var borderWidth: Float = DEFAULT_OBTAIN_VAL.toFloat()
@@ -253,62 +248,31 @@ abstract class SPBaseView @JvmOverloads constructor(
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec)
                 viewTreeObserver.addOnGlobalLayoutListener {
                     if (contentHeight == 0 && shadowOffsetY != 0f) {
-                        boxHeight = measuredHeight
                         contentHeight = measuredHeight + shadowOffsetY.toInt()
-
                         setHeight(contentHeight)
                     }
                 }
             }
             contentHeight == 0 && shadowOffsetY != 0f -> {
-                boxHeight = MeasureSpec.getSize(heightMeasureSpec)
                 contentHeight = MeasureSpec.getSize(heightMeasureSpec) + shadowOffsetY.toInt()
-                setMeasuredDimension(
-                    widthMeasureSpec,
-                    measureDimension(
-                        contentHeight,
-                        MeasureSpec.EXACTLY
-                    )
-                )
+                setMeasuredDimension(widthMeasureSpec, measureDimension(contentHeight))
                 setHeight(contentHeight)
             }
             else -> super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
     }
 
-    private fun handleContentHeight(heightSize: Int, widthMeasureSpec: Int) {
-        if (contentHeight == 0 && shadowOffsetY != 0f) {
-            boxHeight = heightSize
-            contentHeight = heightSize + shadowOffsetY.toInt()
-            setMeasuredDimension(
-                widthMeasureSpec,
-                measureDimension(
-                    contentHeight,
-                    MeasureSpec.EXACTLY
-                )
-            )
-            setHeight(contentHeight)
-        }
-    }
+    private fun measureDimension(desiredSize: Int): Int {
+        val measureSpec = MeasureSpec.makeMeasureSpec(contentHeight, MeasureSpec.EXACTLY)
 
-    fun measureDimension(desiredSize: Int, spec: Int): Int {
-        val measureSpec = MeasureSpec.makeMeasureSpec(contentHeight, spec)
-        var result: Int
         val specMode = MeasureSpec.getMode(measureSpec)
         val specSize = MeasureSpec.getSize(measureSpec)
 
-        if (specMode == MeasureSpec.EXACTLY) {
-            result = specSize
-        } else {
-            result = desiredSize
-            if (specMode == MeasureSpec.AT_MOST) {
-                result = Math.min(result, specSize)
-            }
+        return when (specMode) {
+            MeasureSpec.EXACTLY -> specSize
+            MeasureSpec.AT_MOST -> desiredSize.coerceAtMost(specSize)
+            else -> desiredSize
         }
-        if (result < desiredSize) {
-            Log.e("ChartView", "The view is too small, the content might get cut")
-        }
-        return result
     }
 
     fun changeBorder(borderColor: Int, borderWidth: Float) {

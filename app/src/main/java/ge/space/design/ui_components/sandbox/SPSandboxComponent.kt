@@ -12,7 +12,6 @@ class SPSandboxComponent : ShowCaseComponent {
 
     override fun getDescriptionResId(): Int = R.string.sandbox_desc
 
-
     override fun getComponentClass(): Class<*> = SPFactory::class.java
 
     class SPFactory : SPComponentFactory {
