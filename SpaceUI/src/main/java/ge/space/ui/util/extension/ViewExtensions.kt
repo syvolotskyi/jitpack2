@@ -71,6 +71,13 @@ fun View.setHeight(value: Int) {
 }
 
 /**
+ * Extension method returns true if height is wrap content
+ */
+fun View.isHeightWrapContent() =
+  layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT
+
+
+/**
  * Extension method to set View's height and width.
  */
 fun View.setSize(width: Int, height: Int) {

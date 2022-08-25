@@ -4,7 +4,6 @@
         <attr name="textAppearance" />
         <attr name="showCancelButton" format="boolean"/>
         <attr name="icon" format="reference"/>
-        <attr name="contentHeight"/>
         <attr name="showClearButton" format="boolean"/>
         <attr name="searchBoxStyle" format="reference"/>
         <attr name="showSettingButton" format="boolean"/>

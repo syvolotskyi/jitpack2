@@ -30,8 +30,6 @@
     </style>
 
     <style name="SPSearchBoxElevated" parent="@style/shadow_300_primary">
-        <item name="android:layout_height">@dimen/dimen_p_44</item>
-        <item name="contentHeight">@dimen/dimen_p_44</item>
         <item name="ui_backgroundColor">?attr/background_tertiary</item>
         <item name="background">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
@@ -41,8 +39,6 @@
         <item name="ui_backgroundColor">?attr/background_tertiary</item>
         <item name="background">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
-        <item name="android:layout_height">@dimen/dimen_p_40</item>
-        <item name="contentHeight">@dimen/dimen_p_40</item>
     </style>
 
     <style name="SPToggleIcon.Filter" parent="SPToggleIcon.Standard">

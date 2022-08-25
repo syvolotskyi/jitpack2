@@ -85,7 +85,6 @@ class SPSearchView @JvmOverloads constructor(
             field = value
 
             binding.searchView.setBaseViewStyle(searchBoxStyle)
-            binding.searchView.requestLayout()
         }
 
     /**
@@ -141,9 +140,6 @@ class SPSearchView @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPSearchView_searchBoxStyle, R.style.shadow_empty)
             .handleAttributeAction(R.style.shadow_empty) { searchBoxStyle = it }
-
-        getDimensionPixelSize(R.styleable.SPSearchView_contentHeight, WRAP_CONTENT)
-            .handleAttributeAction(WRAP_CONTENT) { binding.searchViewRoot.setHeight(it) }
 
         getBoolean(R.styleable.SPSearchView_showCancelButton, false)
             .apply { showCancelButton = this }

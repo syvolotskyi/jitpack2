@@ -6,7 +6,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.*
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
@@ -203,6 +206,16 @@ abstract class SPBaseView @JvmOverloads constructor(
     private var borderColor: Int = Color.TRANSPARENT
 
     /**
+     * Border color value
+     */
+    private var contentHeight: Int = DEFAULT_OBTAIN_VAL
+
+    /**
+     * Border color value
+     */
+    private var boxHeight: Int = DEFAULT_OBTAIN_VAL
+
+    /**
      * Border width value
      */
     private var borderWidth: Float = DEFAULT_OBTAIN_VAL.toFloat()
@@ -235,9 +248,67 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        when {
+            isHeightWrapContent() -> {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+                viewTreeObserver.addOnGlobalLayoutListener {
+                    if (contentHeight == 0 && shadowOffsetY != 0f) {
+                        boxHeight = measuredHeight
+                        contentHeight = measuredHeight + shadowOffsetY.toInt()
 
-        checkShadowMarginContent()
+                        setHeight(contentHeight)
+                    }
+                }
+            }
+            contentHeight == 0 && shadowOffsetY != 0f -> {
+                boxHeight = MeasureSpec.getSize(heightMeasureSpec)
+                contentHeight = MeasureSpec.getSize(heightMeasureSpec) + shadowOffsetY.toInt()
+                setMeasuredDimension(
+                    widthMeasureSpec,
+                    measureDimension(
+                        contentHeight,
+                        MeasureSpec.EXACTLY
+                    )
+                )
+                setHeight(contentHeight)
+            }
+            else -> super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        }
+    }
+
+    private fun handleContentHeight(heightSize: Int, widthMeasureSpec: Int) {
+        if (contentHeight == 0 && shadowOffsetY != 0f) {
+            boxHeight = heightSize
+            contentHeight = heightSize + shadowOffsetY.toInt()
+            setMeasuredDimension(
+                widthMeasureSpec,
+                measureDimension(
+                    contentHeight,
+                    MeasureSpec.EXACTLY
+                )
+            )
+            setHeight(contentHeight)
+        }
+    }
+
+    fun measureDimension(desiredSize: Int, spec: Int): Int {
+        val measureSpec = MeasureSpec.makeMeasureSpec(contentHeight, spec)
+        var result: Int
+        val specMode = MeasureSpec.getMode(measureSpec)
+        val specSize = MeasureSpec.getSize(measureSpec)
+
+        if (specMode == MeasureSpec.EXACTLY) {
+            result = specSize
+        } else {
+            result = desiredSize
+            if (specMode == MeasureSpec.AT_MOST) {
+                result = Math.min(result, specSize)
+            }
+        }
+        if (result < desiredSize) {
+            Log.e("ChartView", "The view is too small, the content might get cut")
+        }
+        return result
     }
 
     fun changeBorder(borderColor: Int, borderWidth: Float) {
@@ -329,12 +400,6 @@ abstract class SPBaseView @JvmOverloads constructor(
             R.styleable.sp_view_style_topLeftCornerRadius,
             DEFAULT_OBTAIN_VAL
         ).toFloat()
-        getDimensionPixelSize(
-            R.styleable.sp_view_style_contentHeight,
-            DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(DEFAULT_OBTAIN_VAL){
-            setHeight(it)
-        }
 
 
         topRightCornerRadius = getDimensionPixelSize(
