@@ -206,7 +206,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     private var borderColor: Int = Color.TRANSPARENT
 
     /**
-     * Border color value
+     * Height contains box height + shadow height
      */
     private var contentHeight: Int = DEFAULT_OBTAIN_VAL
 
@@ -263,7 +263,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     private fun measureDimension(desiredSize: Int): Int {
-        val measureSpec = MeasureSpec.makeMeasureSpec(contentHeight, MeasureSpec.EXACTLY)
+        val measureSpec = MeasureSpec.makeMeasureSpec(desiredSize, MeasureSpec.EXACTLY)
 
         val specMode = MeasureSpec.getMode(measureSpec)
         val specSize = MeasureSpec.getSize(measureSpec)
