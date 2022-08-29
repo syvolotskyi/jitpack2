@@ -291,7 +291,7 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     /** Calculate additional bottom margin if we have shadow y offset **/
     private fun checkShadowMarginContent() {
-        if (measuredHeight > 0 && measuredWidth > 0 && !isCircle) {
+        if (measuredHeight > 0 && measuredWidth > 0 ) {
             children.forEach { childView ->
                 handleShadowOffset(childView)
             }
@@ -317,7 +317,7 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     private fun handleShadowOffsetY(viewParams: LayoutParams) {
-        val ratioOffsetY = shadowOffsetY.withSideRatio()
+        val ratioOffsetY = if (isCircle) shadowOffsetY else shadowOffsetY.withSideRatio()
         if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
             viewParams.topMargin = abs(ratioOffsetY.toInt())
         } else {
