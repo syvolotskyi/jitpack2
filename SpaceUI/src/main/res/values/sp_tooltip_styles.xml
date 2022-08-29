@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPTooltipBase" >
+        <item name="android:textAppearance">@style/h600_bold_caps_brand_primary</item>
+        <item name="backgroundBoxColor">?attr/status_tertiary_success</item>
+    </style>
+</resources>
