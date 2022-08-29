@@ -7,7 +7,7 @@
         <item name="shadowAlpha">10%</item>
         <item name="shadowRadius">@dimen/dimen_p_20</item>
         <item name="shadowColor">@color/black</item>
-        <item name="ui_backgroundColor">@color/white</item>
+        <item name="backgroundColor">@color/white</item>
     </style>
 
     <style name="SPChip.SPSelectableChipItem.Digital" parent="SPChip.SPSelectableChipItem.Base">

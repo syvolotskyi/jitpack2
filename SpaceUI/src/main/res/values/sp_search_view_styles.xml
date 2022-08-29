@@ -27,13 +27,13 @@
     </style>
 
     <style name="SPSearchBoxElevated" parent="@style/shadow_300_primary">
-        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="backgroundColor">?attr/background_tertiary</item>
         <item name="background">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
     </style>
 
     <style name="SPSearchBoxDefault" parent="@style/shadow_empty">
-        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="backgroundColor">?attr/background_tertiary</item>
         <item name="background">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
     </style>

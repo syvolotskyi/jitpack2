@@ -2,13 +2,13 @@
 <resources>
 
     <style name="SPButtonInline.Primary" parent="shadow_empty">
-        <item name="ui_backgroundColor">@android:color/transparent</item>
+        <item name="backgroundColor">@android:color/transparent</item>
         <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>
         <item name="descriptionTextAppearance">@style/h700_medium_brand_primary</item>
     </style>
 
     <style name="SPButtonInline.Secondary" parent="shadow_empty">
-        <item name="ui_backgroundColor">@android:color/transparent</item>
+        <item name="backgroundColor">@android:color/transparent</item>
         <item name="android:textAppearance">@style/h700_bold_caps_secondary</item>
         <item name="descriptionTextAppearance">@style/h700_medium_secondary</item>
     </style>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="SPBaseViewUI" parent="AppThemeUI">
-        <item name="ui_backgroundColor">?attr/background_tertiary</item>
+        <item name="backgroundColor">?attr/background_tertiary</item>
         <item name="roundedCorners">0dp</item>
         <item name="shadowOffsetX">0dp</item>
         <item name="shadowOffsetY">0dp</item>
