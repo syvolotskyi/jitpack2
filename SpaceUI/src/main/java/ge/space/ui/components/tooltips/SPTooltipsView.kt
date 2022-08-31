@@ -20,11 +20,11 @@ class SPTooltipsView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPTooltipBase
+    @StyleRes defStyleRes: Int = R.style.SPTooltipDefault
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     private val binding by lazy {
-        SpTooltipLayoutBinding.inflate(LayoutInflater.from(context), this,true)
+        SpTooltipLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
     /**
@@ -53,15 +53,19 @@ class SPTooltipsView @JvmOverloads constructor(
         }
 
     /**
-     * Sets a box background color.
-     */
-    private var backgroundBoxColor: Int = 0
-
-    /**
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = R.style.h700_bold_caps_brand_primary
+    private var textAppearance: Int = 0
+        set(value) {
+            field = value
+            updateTextAppearance()
+        }
+
+    /**
+     * Sets a box background color.
+     */
+    private var backgroundBoxColor: Int = 0
 
     init {
         getContext().withStyledAttributes(
@@ -114,15 +118,16 @@ class SPTooltipsView @JvmOverloads constructor(
 
     private fun getBackgroundDrawable() =
         when (arrowDirection) {
-            ArrowDirection.None -> R.drawable.bg_tooltip_
+            ArrowDirection.None -> R.drawable.bg_tooltip
             ArrowDirection.TopLeft -> R.drawable.bg_tooltip_top_left
             ArrowDirection.TopRight -> R.drawable.bg_tooltip_top_right
+            ArrowDirection.TopCenter -> R.drawable.bg_tooltip_top_center
             ArrowDirection.Left -> R.drawable.bg_tooltip_left
             ArrowDirection.Right -> R.drawable.bg_tooltip_right
             ArrowDirection.BottomLeft -> R.drawable.bg_tooltip_bottom_left
             ArrowDirection.BottomCenter -> R.drawable.bg_tooltip_bottom_center
             ArrowDirection.BottomRight -> R.drawable.bg_tooltip_bottom_right
-            else -> R.drawable.bg_tooltip_
+            else -> R.drawable.bg_tooltip
         }
 
     /**
