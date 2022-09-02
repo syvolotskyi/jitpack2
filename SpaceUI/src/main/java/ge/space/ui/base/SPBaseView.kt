@@ -240,8 +240,7 @@ abstract class SPBaseView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         when {
-            /** when the height is wrap_content we should wait when view is build to get height and
-                calculate a content height **/
+            // when the height is wrap_content we should wait when view is build to get height and calculate a content height
             isHeightWrapContent() -> {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec)
                 viewTreeObserver.addOnGlobalLayoutListener {
@@ -251,7 +250,7 @@ abstract class SPBaseView @JvmOverloads constructor(
                     }
                 }
             }
-            /** if height is specific check if content height wasn't calculated, if not do it**/
+            // if height is specific check if content height wasn't calculated, if not do it
             canCalculateContentHeight() -> {
                 contentHeight = MeasureSpec.getSize(heightMeasureSpec) + shadowOffsetY.toInt()
                 setMeasuredDimension(widthMeasureSpec, measureDimension(contentHeight))
@@ -260,7 +259,7 @@ abstract class SPBaseView @JvmOverloads constructor(
             else -> super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
 
-        /** calculate additional bottom margin if we have shadow y offset**/
+        // calculate additional bottom margin if we have shadow y offset**/
         checkShadowMarginContent()
     }
 
