@@ -259,7 +259,7 @@ abstract class SPBaseView @JvmOverloads constructor(
             else -> super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         }
 
-        // calculate additional bottom margin if we have shadow y offset**/
+        // calculate additional bottom margin if we have shadow y offset
         checkShadowMarginContent()
     }
 
