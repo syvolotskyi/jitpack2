@@ -8,8 +8,8 @@
         android:layout_height="@dimen/dimen_p_40"
         android:button="@null"
         android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/dimen_p_16"
-        android:paddingBottom="@dimen/dimen_p_2"
         tools:text="1x" />
 </merge>

@@ -14,5 +14,5 @@ open class SPFrameLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPInputField
+    @StyleRes defStyleRes: Int = R.style.SPView_FrameLayout
 ) : SPBaseView(context, attrs, defStyleAttr, defStyleRes)

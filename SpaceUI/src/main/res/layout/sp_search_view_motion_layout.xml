@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ge.space.ui.util.animations.motion.SPMultiListenerMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ge.space.ui.util.animations.motion.SPMultiListenerMotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/searchViewRoot"
@@ -9,23 +10,29 @@
     app:layoutDescription="@xml/sp_search_view_scene"
     tools:parentTag="androidx.constraintlayout.motion.widget.MotionLayout">
 
-    <ge.space.ui.components.layout.SPFrameLayout
-        android:id="@+id/searchView"
-        style="@style/SPSearchBoxDefault"
+    <FrameLayout
+        android:id="@+id/searchViewBox"
         android:layout_width="0dp"
-        android:visibility="visible"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cancelBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ge.space.ui.components.layout.SPFrameLayout
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_p_40"
+            android:visibility="visible" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/searchIcon"
         android:layout_width="@dimen/dimen_p_24"
         android:layout_height="@dimen/dimen_p_24"
+        android:gravity="center_vertical"
         android:src="@drawable/ic_search_24_regular"
         android:visibility="visible"
-        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="@id/clearImageContainer"
         app:layout_constraintEnd_toStartOf="@+id/searchInputView"
         app:layout_constraintTop_toTopOf="@id/clearImageContainer" />
@@ -37,15 +44,15 @@
         android:layout_height="@dimen/dimen_p_40"
         android:layout_marginStart="@dimen/dimen_p_10"
         android:layout_marginEnd="@dimen/dimen_p_40"
-        android:gravity="center_vertical"
         android:background="@android:color/transparent"
         android:ellipsize="end"
+        android:gravity="center_vertical"
         android:hint="@string/title_default_chip_item_add_title"
         android:imeOptions="actionDone"
         android:importantForAutofill="no"
         android:inputType="textVisiblePassword"
         android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="@+id/searchViewBox"
         app:layout_constraintStart_toEndOf="@+id/searchIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,17 +64,17 @@
         android:layout_marginStart="@dimen/dimen_p_6"
         android:text="@string/cancel"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/searchView"
+        app:layout_constraintBottom_toBottomOf="@+id/searchViewBox"
         app:layout_constraintEnd_toStartOf="@id/toggleSettingsView"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="@+id/searchView" />
+        app:layout_constraintStart_toEndOf="@+id/searchViewBox"
+        app:layout_constraintTop_toTopOf="@+id/searchViewBox" />
 
     <FrameLayout
         android:id="@+id/clearImageContainer"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dimen_p_40"
         android:paddingHorizontal="@dimen/dimen_p_10"
-        app:layout_constraintEnd_toEndOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="@+id/searchViewBox"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -93,10 +100,10 @@
             android:id="@+id/toggleSettingsStub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_gravity="bottom"
             android:inflatedId="@+id/inflate"
-            android:layout="@layout/sp_search_filter_layout"/>
+            android:layout="@layout/sp_search_filter_layout"
+            android:visibility="gone" />
     </FrameLayout>
 
 </ge.space.ui.util.animations.motion.SPMultiListenerMotionLayout>

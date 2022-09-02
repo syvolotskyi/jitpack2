@@ -16,8 +16,8 @@
             app:layout_constraintBottom_toBottomOf="@id/clearImageContainer"
             app:layout_constraintEnd_toStartOf="@+id/searchInputView"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/searchView"
-            app:layout_constraintStart_toStartOf="@+id/searchView"
+            app:layout_constraintStart_toEndOf="@+id/searchViewBox"
+            app:layout_constraintStart_toStartOf="@+id/searchViewBox"
             app:layout_constraintTop_toTopOf="@id/clearImageContainer">
             <PropertySet android:visibility="visible" />
         </Constraint>

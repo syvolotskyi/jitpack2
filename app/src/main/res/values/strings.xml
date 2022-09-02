@@ -87,6 +87,8 @@
 
     <string name="search_text_input">Search input</string>
     <string name="search_text_input_desc">Enter 8888 to check change text listener</string>
+    <string name="sandbox_showcase">Sandbox showcase</string>
+    <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>

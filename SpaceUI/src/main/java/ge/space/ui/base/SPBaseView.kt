@@ -17,7 +17,6 @@ import ge.space.ui.util.extension.*
 import ge.space.ui.util.path.SPMaskPath
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
 import kotlin.math.abs
-import kotlin.math.roundToInt
 
 /**
  * Abstract base view which has to be extended. This view allows to change corners radius,
@@ -203,6 +202,11 @@ abstract class SPBaseView @JvmOverloads constructor(
     private var borderColor: Int = Color.TRANSPARENT
 
     /**
+     * Height contains box height + shadow height
+     */
+    private var contentHeight: Int = DEFAULT_OBTAIN_VAL
+
+    /**
      * Border width value
      */
     private var borderWidth: Float = DEFAULT_OBTAIN_VAL.toFloat()
@@ -235,9 +239,47 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        when {
+            // when the height is wrap_content we should wait when view is build to get height and calculate a content height
+            isHeightWrapContent() -> {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+                viewTreeObserver.addOnGlobalLayoutListener {
+                    if (canCalculateContentHeight()) {
+                        contentHeight = measuredHeight + shadowOffsetY.toInt()
+                        setHeight(contentHeight)
+                    }
+                }
+            }
+            // if height is specific check if content height wasn't calculated, if not do it
+            canCalculateContentHeight() -> {
+                contentHeight = MeasureSpec.getSize(heightMeasureSpec) + shadowOffsetY.toInt()
+                setMeasuredDimension(widthMeasureSpec, measureDimension(contentHeight))
+                setHeight(contentHeight)
+            }
+            else -> super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        }
 
+        // calculate additional bottom margin if we have shadow y offset
         checkShadowMarginContent()
+    }
+
+    private fun canCalculateContentHeight(): Boolean = contentHeight == 0 && shadowOffsetY != 0f
+
+    /**
+     * Measure desiredSize in pixels compare to MeasureSpec.EXACTLY mode.
+     * Returns a MeasureSpec [int]
+     */
+    private fun measureDimension(desiredSize: Int): Int {
+        val measureSpec = MeasureSpec.makeMeasureSpec(desiredSize, MeasureSpec.EXACTLY)
+
+        val specMode = MeasureSpec.getMode(measureSpec)
+        val specSize = MeasureSpec.getSize(measureSpec)
+
+        return when (specMode) {
+            MeasureSpec.EXACTLY -> specSize
+            MeasureSpec.AT_MOST -> desiredSize.coerceAtMost(specSize)
+            else -> desiredSize
+        }
     }
 
     fun changeBorder(borderColor: Int, borderWidth: Float) {
@@ -246,8 +288,9 @@ abstract class SPBaseView @JvmOverloads constructor(
         invalidate()
     }
 
+    /** Calculate additional bottom margin if we have shadow y offset **/
     private fun checkShadowMarginContent() {
-        if (measuredHeight > 0 && measuredWidth > 0 && !isCircle) {
+        if (measuredHeight > 0 && measuredWidth > 0 ) {
             children.forEach { childView ->
                 handleShadowOffset(childView)
             }
@@ -273,15 +316,12 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     private fun handleShadowOffsetY(viewParams: LayoutParams) {
-        val ratioOffsetY = shadowOffsetY.withSideRatio()
+        val ratioOffsetY = if (isCircle) shadowOffsetY else shadowOffsetY.withSideRatio()
         if (ratioOffsetY < DEFAULT_OBTAIN_VAL) {
             viewParams.topMargin = abs(ratioOffsetY.toInt())
         } else {
             viewParams.bottomMargin = ratioOffsetY.toInt()
         }
-
-        viewParams.marginStart = abs(ratioOffsetY.withSideRatio().roundToInt())
-        viewParams.marginEnd = abs(ratioOffsetY.withSideRatio().roundToInt())
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -324,17 +364,11 @@ abstract class SPBaseView @JvmOverloads constructor(
     }
 
     private fun TypedArray.withApplyResource() {
-        color = getColor(R.styleable.sp_view_style_ui_backgroundColor, Color.WHITE)
+        color = getColor(R.styleable.sp_view_style_backgroundColor, Color.WHITE)
         topLeftCornerRadius = getDimensionPixelSize(
             R.styleable.sp_view_style_topLeftCornerRadius,
             DEFAULT_OBTAIN_VAL
         ).toFloat()
-        getDimensionPixelSize(
-            R.styleable.sp_view_style_contentHeight,
-            DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(DEFAULT_OBTAIN_VAL){
-            setHeight(it)
-        }
 
 
         topRightCornerRadius = getDimensionPixelSize(
