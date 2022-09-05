@@ -208,7 +208,6 @@ class SPDropdownComponent : ShowCaseComponent {
                 .setDescription(context.getString(R.string.example_text))
                 .setBottomButton(context.getString(R.string.show_btn)) {
                     Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-                    it.dismiss()
                 }
                 .build()
                 .show(context)

@@ -15,6 +15,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
+import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.util.extension.*
 
@@ -36,7 +37,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     private val dialogDescriptionMessage: String? by argument(KEY_DESCRIPTION, null)
     private var bottomStrategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy()
     private var onResult: (Data?) -> Unit = {}
-    private var onBottomClickListenerResult: (SPBottomSheetFragment<Data>) -> Unit = {}
+    private var onBottomClickListenerResult: () -> Unit = {}
     private val dismissDelayTime: Long by nonNullArgument(KEY_DELAY_TIME, 500L)
 
     private val binding by lazy {
@@ -122,9 +123,9 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     /**
      * Sets a bottom button click listener
      *
-     * @param listener [Data] calls when button is clicked
+     * @param listener [() -> Unit] calls when button is clicked
      */
-    fun setButtonClickListener(listener: (SPBottomSheetFragment<Data>) -> Unit) {
+    fun setButtonClickListener(listener: () -> Unit) {
         onBottomClickListenerResult = listener
     }
 
@@ -156,16 +157,17 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
 
     private fun handleBottomButton() {
         if (dialogButtonMessage.isNotEmpty())
-            with(binding.bottomButton) {
-                show()
-                onClick { onBottomClickListenerResult(this@SPBottomSheetFragment) }
+            with(binding.bottomButtonStub.inflate() as SPButton) {
+                onClick {
+                    onBottomClickListenerResult()
+                    dismiss()
+                }
                 this.text = dialogButtonMessage
             }
     }
 
     private fun getBehavior(): BottomSheetBehavior<*>? =
         (dialog as? BottomSheetDialog)?.behavior
-
 
     companion object {
         const val KEY_TITLE = "KEY_TITLE"

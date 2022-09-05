@@ -61,7 +61,6 @@
         android:paddingHorizontal="@dimen/dimen_p_16"
         android:text="@string/enter_you_details_here"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleMessageLabel" />
 
@@ -71,20 +70,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_p_16"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionMessageLabel" />
 
-    <ge.space.ui.components.buttons.SPButton
-        android:id="@+id/bottomButton"
+    <ViewStub
+        android:id="@+id/bottomButtonStub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_p_16"
-        android:layout_marginTop="@dimen/dimen_p_24"
+        android:layout_gravity="bottom"
+        android:inflatedId="@+id/inflateButton"
+        android:layout="@layout/sp_bottom_sheet_button_layout"
         android:visibility="gone"
+        android:layout_marginTop="@dimen/dimen_p_24"
+        android:layout_marginHorizontal="@dimen/dimen_p_12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/standard_bottom_sheet" />
+        app:layout_constraintTop_toBottomOf="@+id/standard_bottom_sheet"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,7 +23,7 @@ class SPBottomSheetBuilder<Data> :
     private var descriptionStyle: Int? = null
     private var resultListener: (Data?) -> Unit = {}
     private var buttonText: String = EMPTY_TEXT
-    private var buttonClickListener: (SPBottomSheetFragment<Data>) -> Unit = {}
+    private var buttonClickListener: () -> Unit = {}
     private var dismissDelayTime: Long = 500L
     private var strategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy()
 
@@ -86,9 +86,9 @@ class SPBottomSheetBuilder<Data> :
      * Sets a bottom button visibility
      *
      * @param text [String] is text of the button
-     * @param listener [Data] calls when button is clicked
+     * @param listener [() -> Unit] calls when button is clicked
      */
-    fun setBottomButton(text: String, listener: (SPBottomSheetFragment<Data>) -> Unit): SPBottomSheetBuilder<Data> {
+    fun setBottomButton(text: String, listener: () -> Unit): SPBottomSheetBuilder<Data> {
         this.buttonText = text
         this.buttonClickListener = listener
 
