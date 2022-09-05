@@ -1,15 +1,15 @@
 package ge.space.design.ui_components.tooltip
 
 import android.content.Context
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.LinearLayout.*
+import androidx.core.content.ContextCompat
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTooltipShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.tooltips.SPTooltipsView
+import ge.space.ui.components.tooltips.SPTooltipView
+import ge.space.ui.util.extension.getColorFromAttribute
 
 class SPTooltipComponent : ShowCaseComponent {
 
@@ -24,10 +24,11 @@ class SPTooltipComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutTooltipShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            SPTooltipsStyles.list.forEach { supportsLoading ->
-                SPTooltipsView(environment.context).apply {
+            SPTooltipStyles.list.forEach { supportsLoading ->
+                SPTooltipView(environment.context).apply {
                     setViewStyle(supportsLoading.resId)
-                    text = environment.context.getString(supportsLoading.title)
+                    backgroundBoxColor = context.getColorFromAttribute(supportsLoading.backColorAttr)
+                    text = context.getString(supportsLoading.title)
                     arrowDirection = supportsLoading.arrowDirection
                 }.also { tooltipView ->
                     wrapWithBottomMargin(tooltipView, environment.context)
@@ -39,7 +40,7 @@ class SPTooltipComponent : ShowCaseComponent {
         }
 
         private fun wrapWithBottomMargin(
-            tooltipView: SPTooltipsView,
+            tooltipView: SPTooltipView,
             context: Context
         ) {
             tooltipView.layoutParams = LayoutParams(

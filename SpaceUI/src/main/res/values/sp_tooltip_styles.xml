@@ -2,6 +2,5 @@
 <resources>
     <style name="SPTooltipDefault" >
         <item name="android:textAppearance">@style/h700_medium_status_success</item>
-        <item name="backgroundBoxColor">?attr/status_tertiary_success</item>
     </style>
 </resources>

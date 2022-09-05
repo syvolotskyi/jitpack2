@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SPTooltipsView">
+    <declare-styleable name="SPTooltipView">
         <attr name="android:text" format="string|reference" />
         <attr name="android:textAppearance" />
         <attr name="backgroundBoxColor" format="reference"/>

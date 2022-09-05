@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTooltipLayoutBinding
@@ -16,7 +17,7 @@ import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.*
 
-class SPTooltipsView @JvmOverloads constructor(
+class SPTooltipView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
@@ -43,13 +44,9 @@ class SPTooltipsView @JvmOverloads constructor(
     var arrowDirection: ArrowDirection = ArrowDirection.None
         set(value) {
             field = value
-            binding.titleTV.setBackgroundResource(getBackgroundDrawable().apply {
-                PorterDuffColorFilter(
-                    backgroundBoxColor,
-                    PorterDuff.Mode.LIGHTEN
-                )
-            })
+            binding.titleTV.setBackgroundResource(getBackgroundRes())
 
+            handleBackgroundColor()
         }
 
     /**
@@ -65,12 +62,16 @@ class SPTooltipsView @JvmOverloads constructor(
     /**
      * Sets a box background color.
      */
-    private var backgroundBoxColor: Int = 0
+    var backgroundBoxColor: Int = 0
+        set(value) {
+            field = value
+            handleBackgroundColor()
+        }
 
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPTooltipsView,
+            R.styleable.SPTooltipView,
             defStyleAttr,
             defStyleRes
         ) {
@@ -79,22 +80,22 @@ class SPTooltipsView @JvmOverloads constructor(
     }
 
     private fun TypedArray.applyTooltipStyledAttrs() {
-        text = getString(R.styleable.SPTooltipsView_android_text).orEmpty()
+        text = getString(R.styleable.SPTooltipView_android_text).orEmpty()
 
         getResourceId(
-            R.styleable.SPTooltipsView_android_textAppearance,
+            R.styleable.SPTooltipView_android_textAppearance,
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
             textAppearance = it
         }
 
-        getResourceId(
-            R.styleable.SPTooltipsView_backgroundBoxColor,
+        getColor(
+            R.styleable.SPTooltipView_backgroundBoxColor,
             SPBaseView.DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { backgroundBoxColor = it }
 
         val direction = getInt(
-            R.styleable.SPTooltipsView_directionArrow,
+            R.styleable.SPTooltipView_directionArrow,
             SPBaseView.DEFAULT_OBTAIN_VAL
         )
 
@@ -116,7 +117,18 @@ class SPTooltipsView @JvmOverloads constructor(
         }
     }
 
-    private fun getBackgroundDrawable() =
+    /**
+     * Sets background color to the drawable if user specified it
+     */
+    private fun handleBackgroundColor() {
+        if (backgroundBoxColor != 0)
+            binding.titleTV.background?.colorFilter = PorterDuffColorFilter(
+                backgroundBoxColor,
+                PorterDuff.Mode.SRC_IN
+            )
+    }
+
+    private fun getBackgroundRes() =
         when (arrowDirection) {
             ArrowDirection.None -> R.drawable.bg_tooltip
             ArrowDirection.TopLeft -> R.drawable.bg_tooltip_top_left
@@ -127,8 +139,8 @@ class SPTooltipsView @JvmOverloads constructor(
             ArrowDirection.BottomLeft -> R.drawable.bg_tooltip_bottom_left
             ArrowDirection.BottomCenter -> R.drawable.bg_tooltip_bottom_center
             ArrowDirection.BottomRight -> R.drawable.bg_tooltip_bottom_right
-            else -> R.drawable.bg_tooltip
         }
+
 
     /**
      * Enum class which is for arrow direction.
