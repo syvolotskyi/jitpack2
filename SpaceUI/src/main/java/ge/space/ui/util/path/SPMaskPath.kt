@@ -37,9 +37,9 @@ interface SPMaskPath {
     fun rebuildPath(
         containerWidthPx: Int,
         containerHeightPx: Int,
-        radiusShadow: Float,
-        offsetX: Float,
-        offsetY: Float
+        radiusShadow: Float = 0f,
+        offsetX: Float = 0f,
+        offsetY: Float = 0f
     ): Path
 
     /**

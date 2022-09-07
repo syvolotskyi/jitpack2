@@ -23,28 +23,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_p_8"
-            app:backgroundBoxColor="?attr/status_tertiary_alert"
-            android:text="@string/example_text"
-            app:directionArrow="top_center" />
-
-        <ge.space.ui.components.tooltips.SPTooltipView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_p_8"
-            android:text="@string/example_text"
-            app:directionArrow="bottom_center" />
-
-        <ge.space.ui.components.tooltips.SPTooltipView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_p_8"
-            android:text="@string/example_text"
-            app:directionArrow="left" />
-
-        <ge.space.ui.components.tooltips.SPTooltipView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_p_8"
             android:text="@string/example_text"
             app:directionArrow="top_left" />
 
@@ -52,8 +30,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_p_8"
+            app:backgroundBoxColor="?attr/status_tertiary_alert"
             android:text="@string/example_text"
-            app:directionArrow="right" />
+            app:directionArrow="top_center" />
 
         <ge.space.ui.components.tooltips.SPTooltipView
             android:layout_width="wrap_content"
@@ -74,7 +53,28 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_p_8"
             android:text="@string/example_text"
+            app:directionArrow="bottom_center" />
+
+        <ge.space.ui.components.tooltips.SPTooltipView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_p_8"
+            android:text="@string/example_text"
             app:directionArrow="bottom_right" />
+
+        <ge.space.ui.components.tooltips.SPTooltipView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_p_8"
+            android:text="@string/example_text"
+            app:directionArrow="left" />
+
+        <ge.space.ui.components.tooltips.SPTooltipView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_p_8"
+            android:text="@string/example_text"
+            app:directionArrow="right" />
 
 
     <LinearLayout

@@ -537,6 +537,7 @@ abstract class SPBaseView @JvmOverloads constructor(
         const val EMPTY_BORDER_VALUE = -1
         const val NO_OBTAIN_VAL = -1
         const val DEFAULT_OBTAIN_VAL = 0
+        const val DEFAULT_FLOAT = 0f
         private const val ALPHA_BASE = 1
         private const val ALPHA_SCALE = 2
         private const val DEFAULT_ALPHA = 1f

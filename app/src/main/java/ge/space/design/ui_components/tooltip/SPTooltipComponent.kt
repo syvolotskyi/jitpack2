@@ -27,7 +27,7 @@ class SPTooltipComponent : ShowCaseComponent {
             SPTooltipStyles.list.forEach { supportsLoading ->
                 SPTooltipView(environment.context).apply {
                     setViewStyle(supportsLoading.resId)
-                    backgroundBoxColor = context.getColorFromAttribute(supportsLoading.backColorAttr)
+//                    setBackgroundBoxColor( context.getColorFromAttribute(supportsLoading.backColorAttr))
                     text = context.getString(supportsLoading.title)
                     arrowDirection = supportsLoading.arrowDirection
                 }.also { tooltipView ->
