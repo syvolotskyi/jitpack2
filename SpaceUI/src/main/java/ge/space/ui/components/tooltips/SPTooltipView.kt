@@ -147,6 +147,13 @@ class SPTooltipView @JvmOverloads constructor(
     fun updateTextAppearance() =
         binding.titleTV.setTextStyle(textAppearance)
 
+    /**
+     * Sets color for shape
+     */
+    fun setShapeColor(color: Int) {
+        paint.color = color
+    }
+
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(
             newStyle,

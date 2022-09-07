@@ -2,7 +2,6 @@ package ge.space.design.ui_components.tooltip
 
 import android.content.Context
 import android.widget.LinearLayout.*
-import androidx.core.content.ContextCompat
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutTooltipShowcaseBinding
 import ge.space.design.main.SPComponentFactory
@@ -27,7 +26,7 @@ class SPTooltipComponent : ShowCaseComponent {
             SPTooltipStyles.list.forEach { supportsLoading ->
                 SPTooltipView(environment.context).apply {
                     setViewStyle(supportsLoading.resId)
-//                    setBackgroundBoxColor( context.getColorFromAttribute(supportsLoading.backColorAttr))
+                    setShapeColor( context.getColorFromAttribute(supportsLoading.backColorAttr))
                     text = context.getString(supportsLoading.title)
                     arrowDirection = supportsLoading.arrowDirection
                 }.also { tooltipView ->
