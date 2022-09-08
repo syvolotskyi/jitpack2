@@ -88,6 +88,10 @@
         <item name="android:textColor">?attr/status_primary_distractive</item>
     </style>
 
+    <style name="h700_medium_status_success" parent="h700_medium">
+        <item name="android:textColor">?attr/status_primary_success</item>
+    </style>
+
     <style name="h700_bold_caps_primary" parent="h700_medium">
         <item name="android:textColor">?attr/label_primary</item>
     </style>

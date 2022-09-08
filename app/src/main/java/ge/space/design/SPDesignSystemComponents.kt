@@ -14,6 +14,7 @@ import ge.space.design.ui_components.marks.SPMarksComponent
 import ge.space.design.ui_components.status_messages.SPTextViewComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
+import ge.space.design.ui_components.tooltip.SPTooltipComponent
 
 object DesignSystemComponents : ShowCaseComponent {
 
@@ -32,11 +33,12 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPTextViewComponent() },
             new { SPEmptyStateComponent() },
             new { SPControlsComponent() },
+            new { SPTooltipComponent() },
             new { SPTextFieldsComponent() },
             new { SPBannerComponent() },
             new { SPBankCardComponent() },
             new { SPMarksComponent() },
-            new { SPTabNavigationComponent() }
+            new { SPTabNavigationComponent() },
         )
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPTooltipDefault" >
+        <item name="android:textAppearance">@style/h700_medium_status_success</item>
+        <item name="backgroundBoxColor">?attr/status_tertiary_success</item>
+    </style>
+</resources>
