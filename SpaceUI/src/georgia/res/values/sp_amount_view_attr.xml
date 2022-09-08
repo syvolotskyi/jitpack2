@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPAmountView">
-        <attr name="title" format="string|reference" />
+        <attr name="title"/>
         <attr name="titleTextAppearance" />
         <attr name="descriptionText"/>
         <attr name="descriptionTextAppearance"/>
-        <attr name="buttonText" format="string|reference" />
-        <attr name="buttonVisibility" format="boolean" />
+        <attr name="amount" format="reference|string"/>
+        <attr name="amountStyle" format="enum">
+            <enum name="positive" value="0" />
+            <enum name="negative" value="1" />
+            <enum name="brand" value="2" />
+        </attr>
+        <attr name="currency" format="reference|string"/>
     </declare-styleable>
 </resources>
