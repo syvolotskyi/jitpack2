@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /**
  * [DisposableTask] manages to execute task only one time
+ * TODO After implementation into the main project move this class to appropriate package
  */
 class DisposableTask {
 
