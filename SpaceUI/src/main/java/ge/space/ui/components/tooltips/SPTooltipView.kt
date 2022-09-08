@@ -14,6 +14,11 @@ import ge.space.spaceui.databinding.SpTooltipLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.*
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.Companion.isArrowHorizontal
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.Companion.isArrowOnLeft
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.Companion.isArrowOnRight
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.Companion.isArrowOnTop
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.Companion.isArrowVertical
 import ge.space.ui.util.DisposableTask
 import ge.space.ui.util.extension.*
 import ge.space.ui.util.path.SPMaskPath
@@ -123,6 +128,10 @@ class SPTooltipView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        applyAdditionPadding()
+    }
+
+    private fun applyAdditionPadding() {
         viewTreeObserver.addOnGlobalLayoutListener {
             paddingTask {
                 binding.titleTV.setPadding(
@@ -176,7 +185,7 @@ class SPTooltipView @JvmOverloads constructor(
             rebuildPath(pathWidth, pathHeight)
 
             getPath().offset(
-                if (arrowDirection == Left) arrowHeight else SPBaseView.DEFAULT_FLOAT,
+                if (isArrowOnLeft()) arrowHeight else SPBaseView.DEFAULT_FLOAT,
                 if (isArrowOnTop()) arrowHeight else SPBaseView.DEFAULT_FLOAT
             )
         }
@@ -217,27 +226,14 @@ class SPTooltipView @JvmOverloads constructor(
             TopRight -> arrowHeight
         }
 
-    private fun getCentralY(): Float = height.toFloat().withSideRatio()
-
-    private fun getCentralX(): Float = width.toFloat().withSideRatio()
-
-    private fun isArrowHorizontal(): Boolean =
-        arrowDirection == Left || arrowDirection == Right
-
-    private fun isArrowVertical(): Boolean =
-        arrowDirection != Left && arrowDirection != Right && arrowDirection != None
-
-    private fun isArrowOnTop(): Boolean =
-        arrowDirection == TopCenter || arrowDirection == TopLeft || arrowDirection == TopRight
-
     private fun getStartContentPadding(): Int =
-        if (arrowDirection == Left) binding.titleTV.paddingStart + arrowHeight.toInt() else binding.titleTV.paddingStart
+        if (isArrowOnLeft()) binding.titleTV.paddingStart + arrowHeight.toInt() else binding.titleTV.paddingStart
 
     private fun getTopContentPadding(): Int =
         if (isArrowOnTop()) binding.titleTV.paddingTop + arrowHeight.toInt() else binding.titleTV.paddingTop
 
     private fun getEndContentPadding(): Int =
-        if (arrowDirection == Right) binding.titleTV.paddingEnd + arrowHeight.toInt() else binding.titleTV.paddingEnd
+        if (isArrowOnRight()) binding.titleTV.paddingEnd + arrowHeight.toInt() else binding.titleTV.paddingEnd
 
     private fun getBottomContentPadding(): Int =
         if (isArrowVertical() && !isArrowOnTop()) binding.titleTV.paddingBottom + arrowHeight.toInt() else binding.titleTV.paddingTop
@@ -300,6 +296,20 @@ class SPTooltipView @JvmOverloads constructor(
         BottomLeft,
         BottomRight,
         Left,
-        Right,
+        Right;
+
+        companion object {
+
+            internal fun SPTooltipView.isArrowHorizontal() = arrowDirection == Left || arrowDirection == Right
+
+            internal fun SPTooltipView.isArrowVertical() = !this.isArrowHorizontal() && arrowDirection != None
+
+            internal fun SPTooltipView.isArrowOnTop() = arrowDirection == TopCenter || arrowDirection == TopLeft || arrowDirection == TopRight
+
+            internal fun SPTooltipView.isArrowOnLeft() = arrowDirection == Left
+
+            internal fun SPTooltipView.isArrowOnRight() = arrowDirection == Right
+
+        }
     }
 }

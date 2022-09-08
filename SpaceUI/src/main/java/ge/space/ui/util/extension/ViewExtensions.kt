@@ -90,6 +90,15 @@ fun View.setSize(width: Int, height: Int) {
     this.requestLayout()
 }
 
+/**
+ * Extension method returns central Y by view height.
+ */
+ fun View.getCentralY(): Float = height.toFloat().withSideRatio()
+
+/**
+ * Extension method returns central X by view width.
+ */
+ fun View.getCentralX(): Float = width.toFloat().withSideRatio()
 
 /**
  * Extension method to set View's width.
