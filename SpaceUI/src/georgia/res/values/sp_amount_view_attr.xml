@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPAmountView">
+        <attr name="title" format="string|reference" />
+        <attr name="titleTextAppearance" />
+        <attr name="descriptionText"/>
+        <attr name="descriptionTextAppearance"/>
+        <attr name="buttonText" format="string|reference" />
+        <attr name="buttonVisibility" format="boolean" />
+    </declare-styleable>
+</resources>

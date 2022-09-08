@@ -2,6 +2,7 @@ package ge.space.design
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
+import ge.space.design.ui_components.amount.SPAmountComponent
 import ge.space.design.ui_components.sandbox.SPSandboxComponent
 import ge.space.design.ui_components.bank_cards.SPBankCardComponent
 import ge.space.design.ui_components.banners.SPBannerComponent
@@ -31,6 +32,7 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPButtonComponent() },
             new { SPDialogComponent() },
             new { SPTextViewComponent() },
+            new { SPAmountComponent() },
             new { SPEmptyStateComponent() },
             new { SPControlsComponent() },
             new { SPTooltipComponent() },
