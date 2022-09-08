@@ -14,6 +14,7 @@ import ge.space.spaceui.databinding.SpTooltipLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.*
+import ge.space.ui.util.DisposableTask
 import ge.space.ui.util.extension.*
 import ge.space.ui.util.path.SPMaskPath
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
@@ -81,7 +82,7 @@ class SPTooltipView @JvmOverloads constructor(
     private var borderArrowMargin: Float =
         resources.getDimensionPixelSize(R.dimen.dimen_p_27).toFloat()
     private var arrowWidth: Float = resources.getDimensionPixelSize(R.dimen.dimen_p_18).toFloat()
-    private var addedPaddings: Boolean = false
+    private var paddingTask = DisposableTask()
 
     init {
         this.setWillNotDraw(false)
@@ -123,14 +124,14 @@ class SPTooltipView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         viewTreeObserver.addOnGlobalLayoutListener {
-            if (!addedPaddings)
+            paddingTask {
                 binding.titleTV.setPadding(
                     getStartContentPadding(),
                     getTopContentPadding(),
                     getEndContentPadding(),
                     getBottomContentPadding()
                 )
-            addedPaddings = true
+            }
         }
     }
 
