@@ -28,6 +28,7 @@ class SPFragmentSheetStrategy<Data>(
         container: ViewGroup,
         dismissEvent: (Data?) -> Unit
     ) {
+        super.onCreate(fm, container, dismissEvent)
         when (fragment) {
             is SPBottomSheetBaseFragment<*> -> fragment.setBottomSheetResult { data ->
                 (data as? Data)?.let { dismissEvent(it) }

@@ -6,6 +6,8 @@ import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
+import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
+import ge.space.ui.util.extension.EMPTY_TEXT
 
 /**
  * Builder class which allows to create [SPBottomSheetFragment]. Data is onResult return type
@@ -20,8 +22,10 @@ class SPBottomSheetBuilder<Data> :
     private var initialState: Int = STATE_COLLAPSED
     private var descriptionStyle: Int? = null
     private var resultListener: (Data?) -> Unit = {}
+    private var buttonText: String = EMPTY_TEXT
+    private var buttonClickListener: () -> Unit = {}
     private var dismissDelayTime: Long = 500L
-    private lateinit var strategy: SPBottomSheetStrategy<Data>
+    private var strategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy()
 
     /**
      * Setting an icon
@@ -79,6 +83,19 @@ class SPBottomSheetBuilder<Data> :
     }
 
     /**
+     * Sets a bottom button visibility
+     *
+     * @param text [String] is text of the button
+     * @param listener [() -> Unit] calls when button is clicked
+     */
+    fun setBottomButton(text: String, listener: () -> Unit): SPBottomSheetBuilder<Data> {
+        this.buttonText = text
+        this.buttonClickListener = listener
+
+        return this
+    }
+
+    /**
      * BottomSheet initializing by passing text and style
      *
      * @param message adding a text message
@@ -99,7 +116,7 @@ class SPBottomSheetBuilder<Data> :
      * @param message adding a text message
      * @param style applies a text style for title TextView
      */
-    fun setDialogDesc(
+    fun setDescription(
         message: String,
         style: Int = R.style.h800_medium_label_secondary
     ): SPBottomSheetBuilder<Data> {
@@ -118,11 +135,14 @@ class SPBottomSheetBuilder<Data> :
                 SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
                 SPBottomSheetFragment.KEY_ICON to icon,
                 SPBottomSheetFragment.KEY_DESCRIPTION to description,
+                SPBottomSheetFragment.KEY_BUTTON_TITLE to buttonText,
                 SPBottomSheetFragment.KEY_INITIAL_STATE to initialState,
                 SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
                 SPBottomSheetFragment.KEY_DELAY_TIME to dismissDelayTime,
             )
+
             setBottomStrategy(strategy)
+            setButtonClickListener(buttonClickListener)
             this.setResultListener(resultListener)
         }
 }

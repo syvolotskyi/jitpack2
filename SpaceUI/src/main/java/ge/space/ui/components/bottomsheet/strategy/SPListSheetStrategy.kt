@@ -33,6 +33,7 @@ open class SPListSheetStrategy<Data>(
         container: ViewGroup,
         dismissEvent: (Data?) -> Unit
     ) {
+        super.onCreate(fm, container, dismissEvent)
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
             adapter.adapterListener = object : SPMenuAdapterListener<Data> {

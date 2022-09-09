@@ -14,6 +14,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
+import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
+import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.util.extension.*
 
@@ -30,10 +32,12 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     private val descriptionStyle: Int? by argument(KEY_DESCRIPTION_STYLE, null)
     private val dialogTitleIcon: Int? by argument(KEY_ICON, null)
     private val dialogTitleMessage: String by nonNullArgument(KEY_TITLE, EMPTY_TEXT)
+    private val dialogButtonMessage: String by nonNullArgument(KEY_BUTTON_TITLE, EMPTY_TEXT)
     private val initialState: Int by nonNullArgument(KEY_INITIAL_STATE, STATE_COLLAPSED)
     private val dialogDescriptionMessage: String? by argument(KEY_DESCRIPTION, null)
-    private lateinit var bottomStrategy: SPBottomSheetStrategy<Data>
+    private var bottomStrategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy()
     private var onResult: (Data?) -> Unit = {}
+    private var onBottomClickListenerResult: () -> Unit = {}
     private val dismissDelayTime: Long by nonNullArgument(KEY_DELAY_TIME, 500L)
 
     private val binding by lazy {
@@ -75,6 +79,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
 
             handleStartState()
             handleTitleStyle()
+            handleBottomButton()
         }
     }
 
@@ -116,6 +121,15 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
     }
 
     /**
+     * Sets a bottom button click listener
+     *
+     * @param listener [() -> Unit] calls when button is clicked
+     */
+    fun setButtonClickListener(listener: () -> Unit) {
+        onBottomClickListenerResult = listener
+    }
+
+    /**
      * Sets a Result listener
      *
      * @param listener [Data] calls when bottom sheet is dismissed
@@ -141,9 +155,19 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
         titleStyle?.let { binding.titleMessageLabel.setTextStyle(it) }
     }
 
+    private fun handleBottomButton() {
+        if (dialogButtonMessage.isNotEmpty())
+            with(binding.bottomButtonStub.inflate() as SPButton) {
+                onClick {
+                    onBottomClickListenerResult()
+                    dismiss()
+                }
+                this.text = dialogButtonMessage
+            }
+    }
+
     private fun getBehavior(): BottomSheetBehavior<*>? =
         (dialog as? BottomSheetDialog)?.behavior
-
 
     companion object {
         const val KEY_TITLE = "KEY_TITLE"
@@ -152,6 +176,7 @@ class SPBottomSheetFragment<Data> : BottomSheetDialogFragment() {
         const val KEY_DESCRIPTION_STYLE = "KEY_DESCRIPTION_STYLE"
         const val KEY_DELAY_TIME = "KEY_DELAY_TIME"
         const val KEY_ICON = "KEY_ICON"
+        const val KEY_BUTTON_TITLE = "KEY_BUTTON_TITLE"
         const val KEY_TITLE_STYLE = "KEY_TITLE_STYLE"
     }
 }
