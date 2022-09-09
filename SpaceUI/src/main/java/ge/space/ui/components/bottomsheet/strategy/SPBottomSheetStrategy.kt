@@ -12,6 +12,7 @@ import ge.space.ui.util.extension.show
  */
 
 interface SPBottomSheetStrategy<Data> {
+
     /**
      * Calls for initializing strategy.
      *
@@ -19,10 +20,7 @@ interface SPBottomSheetStrategy<Data> {
      * @param container [ViewGroup] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
-    fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: (Data?) -> Unit) {
-        // We need to show the container because of root view is view stub
-        container.show()
-    }
+    fun onCreate(fm: FragmentManager, container: ViewGroup, dismissEvent: (Data?) -> Unit) = container.show()
 
 }
 
