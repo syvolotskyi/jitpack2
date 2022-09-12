@@ -11,6 +11,7 @@ import ge.space.ui.util.view_factory.component_type.chip.primary.SPPrimaryChipIc
 import ge.space.ui.util.view_factory.component_type.image.SPCircleImageUrlImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageResImpl
 import ge.space.ui.util.view_factory.component_type.image.SPImageUrlImpl
+import ge.space.ui.util.view_factory.component_type.statusmessage.SPInfoTextDataImpl
 import ge.space.ui.util.view_factory.component_type.text.SPEditTextImpl
 import ge.space.ui.util.view_factory.component_type.text.SPMaskedEditTextImpl
 import ge.space.ui.util.view_factory.component_type.text.SPTextInitialsImpl
@@ -34,6 +35,7 @@ interface SPViewFactory {
                 is SPViewData.SPCircleImageUrlData -> SPCircleImageUrlImpl(context).create(this)
                 is SPViewData.SPEditTextData -> SPEditTextImpl(context).create(this)
                 is SPViewData.SPMaskedEditTextData -> SPMaskedEditTextImpl(context).create(this)
+                is SPViewData.SPInfoTextData -> SPInfoTextDataImpl(context).create(this)
             }
         }
     }

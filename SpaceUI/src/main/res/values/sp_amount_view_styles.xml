@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPAmountViewBase">
-        <item name="titleTextAppearance">@style/h600_bold_secondary</item>
-        <item name="descriptionTextAppearance">@style/h700_medium_secondary</item>
+
+    <style name="SPAmountView">
+        <item name="titleTextAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="descriptionTextAppearance">@style/h700_medium_caps_label_secondary</item>
+    </style>
+
+
+    <style name="SPAmountView.Brand" parent="SPAmountView">
+        <item name="amountTextAppearance">@style/h100_medium_brand</item>
+        <item name="currencyTextAppearance">@style/h500_medium_brand</item>
+    </style>
+
+    <style name="SPAmountView.Success" parent="SPAmountView">
+        <item name="amountTextAppearance">@style/h100_medium_accent_green</item>
+        <item name="currencyTextAppearance">@style/h500_medium_accent_green</item>
+    </style>
+
+    <style name="SPAmountView.Error" parent="SPAmountView">
+        <item name="amountTextAppearance">@style/h100_medium_accent_magenta</item>
+        <item name="currencyTextAppearance">@style/h500_medium_magenta</item>
     </style>
 </resources>

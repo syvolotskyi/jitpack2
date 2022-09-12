@@ -99,6 +99,32 @@ sealed class SPViewData : Parcelable {
         SPViewData()
 
     /**
+     * Create a info text view
+     *
+     * @property text add text to view
+     * @property textAppearance applies a style for view
+     */
+    @Parcelize
+    data class SPInfoTextData(
+        var text: String,
+        @StyleRes var textAppearance: Int? = null,
+    ) :
+        SPViewData()
+
+    /**
+     * Create a info text view
+     *
+     * @property text add text to view
+     * @property textAppearance applies a style for view
+     */
+    @Parcelize
+    data class SPTooltipData(
+        var text: String,
+        var arrowDirection: SPTooltip? = null,
+    ) :
+        SPViewData()
+
+    /**
      * Create an empty chip
      *
      * @property styleRes applies a style for view, default is R.style.SPBankCardView_Chip_Base

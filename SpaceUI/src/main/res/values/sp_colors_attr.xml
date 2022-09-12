@@ -101,6 +101,7 @@
     //brand
     <attr name="brand_primary" format="color"/>
     <attr name="brand_secondary" format="color"/>
+    <attr name="brand_tertiary" format="color"/>
 
     // for show case app
     <attr name="themeTextColor" format="color"/>

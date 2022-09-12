@@ -157,6 +157,19 @@
         <item name="android:textColor">?attr/label_secondary</item>
     </style>
 
+    <!-- 500 -->
+    <style name="h500_medium_brand" parent="h500_medium">
+        <item name="android:textColor">?attr/brand_primary</item>
+    </style>
+
+    <style name="h500_medium_magenta" parent="h500_medium">
+        <item name="android:textColor">?attr/status_primary_distractive</item>
+    </style>
+
+    <style name="h500_medium_accent_green" parent="h500_medium">
+        <item name="android:textColor">?attr/status_primary_success</item>
+    </style>
+
     <!-- 400 -->
     <style name="h400_bold_caps_secondary" parent="h400_bold_caps">
         <item name="android:textColor">?attr/label_secondary</item>
@@ -165,4 +178,18 @@
     <style name="h400_bold_caps_primary" parent="h400_bold_caps">
         <item name="android:textColor">?attr/brand_primary</item>
     </style>
+
+    <!-- 100 -->
+    <style name="h100_medium_accent_magenta" parent="h100_medium">
+        <item name="android:textColor">?attr/status_primary_distractive</item>
+    </style>
+
+    <style name="h100_medium_accent_green" parent="h100_medium">
+        <item name="android:textColor">?attr/status_primary_success</item>
+    </style>
+
+    <style name="h100_medium_brand" parent="h100_medium">
+        <item name="android:textColor">?attr/brand_primary</item>
+    </style>
+
 </resources>
