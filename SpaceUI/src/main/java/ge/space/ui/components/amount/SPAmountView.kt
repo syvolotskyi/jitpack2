@@ -2,6 +2,7 @@ package ge.space.ui.components.amount
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.text.InputFilter
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
@@ -9,6 +10,9 @@ import android.widget.ViewSwitcher
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
+import com.space.formatter.extensions.addFormattingTextWatcher
+import com.space.formatter.format.SPDefaultFormatterFactory
+import com.space.formatter.format.StringFormatter
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpAmountLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -96,7 +100,7 @@ class SPAmountView @JvmOverloads constructor(
         set(value) {
             field = value
 
-            binding.amountTV.text = amount
+            binding.amountTV.setText(amount)
         }
 
     /**
@@ -187,6 +191,7 @@ class SPAmountView @JvmOverloads constructor(
 
         updateTextAppearances()
         handleAddOnView()
+        setFormatter(SPDefaultFormatterFactory.produceInputAmountFormatter())
     }
 
     override fun setViewStyle(newStyle: Int) {
@@ -215,6 +220,16 @@ class SPAmountView @JvmOverloads constructor(
         binding.descriptionText.setTextStyle(descriptionTextAppearance)
         binding.amountTV.setTextStyle(amountTextAppearance)
         binding.currencyTV.setTextStyle(currencyTextAppearance)
+    }
+    /**
+     * Add own formatter
+     */
+    private fun setFormatter(inputAmountFormatter: StringFormatter) {
+        binding.amountTV.apply {
+            addFormattingTextWatcher(inputAmountFormatter)
+            // reset length filter because the filter is already added in formatter
+            filters = arrayOf<InputFilter>()
+        }
     }
 
     private fun handleAddOnView() {
