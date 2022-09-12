@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.digital_chip
+package ge.space.design.ui_components.chip.digital_chip
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemDigitalChipShowcaseBinding

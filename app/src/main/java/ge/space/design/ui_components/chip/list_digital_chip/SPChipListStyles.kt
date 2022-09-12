@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.list_digital_chip
+package ge.space.design.ui_components.chip.list_digital_chip
 
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient

@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.primary_chip
+package ge.space.design.ui_components.chip.primary_chip
 
 import com.example.spacedesignsystem.R
 

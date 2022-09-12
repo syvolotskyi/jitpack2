@@ -131,6 +131,9 @@
     <string name="component_bank_card">Bank cards</string>
     <string name="component_bank_card_description">Bank cards description</string>
 
+    <string name="chips_card">Chips cards</string>
+    <string name="chips_description">Chips description</string>
+
     <string name="component_tab_navigation">Tab Navigation</string>
     <string name="component_tab_navigation_description">Tab Navigation Description</string>
 
@@ -148,6 +151,9 @@
 
     <string name="component_digital_chip">Digital chip</string>
     <string name="component_digital_chip_description">Samples of digital chips using according to the selected flavor</string>
+
+    <string name="component_contry_chip">Country chip</string>
+    <string name="component_country_description">Samples of country chips using according to the selected flavor</string>
 
     <string name="component_secondary_chip">Secondary chip</string>
     <string name="component_secondary_chip_description">Samples of secondary chips</string>

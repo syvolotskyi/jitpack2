@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.secondary_chip
+package ge.space.design.ui_components.chip.secondary_chip
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemSecondaryChipShowcaseBinding

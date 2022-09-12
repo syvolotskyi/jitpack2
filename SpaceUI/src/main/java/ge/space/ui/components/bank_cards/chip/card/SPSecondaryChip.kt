@@ -40,16 +40,6 @@ class SPSecondaryChip @JvmOverloads constructor(
         )
 
     /**
-     * Allows to hide or show a border for the view
-     */
-    var hasBorder: Boolean = false
-        set(value) {
-            field = value
-
-            handleBorder()
-        }
-
-    /**
      * Allows to load a payment service icon by URL
      */
     var paymentSystemUrl: String = EMPTY_TEXT
@@ -117,24 +107,12 @@ class SPSecondaryChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withSecondaryChipStyledResource() {
-        hasBorder = getBoolean(R.styleable.SPSecondaryChip_hasBorder, false)
         placeholderSize =
             SPPlaceholderSize.values()[getInt(
                 R.styleable.SPSecondaryChip_placeholder_size,
                 DEFAULT_OBTAIN_VAL
             )]
 
-    }
-
-    private fun handleBorder() {
-        if (hasBorder) {
-            changeBorder(
-                context.getColorFromAttribute(R.attr.separator_non_opaque),
-                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
-            )
-        } else {
-            changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL.toFloat())
-        }
     }
 
     override fun getViewData(): SPViewData =

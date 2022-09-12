@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.small_empty
+package ge.space.design.ui_components.chip.small_empty
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemChipBankCardShowcaseBinding

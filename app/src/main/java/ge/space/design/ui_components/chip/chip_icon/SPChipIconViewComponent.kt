@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.chip_icon
+package ge.space.design.ui_components.chip.chip_icon
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemChipIconShowcaseBinding
