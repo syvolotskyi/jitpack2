@@ -14,12 +14,36 @@ import ge.space.spaceui.databinding.SpAmountLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.buttons.SPButton
+import ge.space.ui.components.buttons.SPButton.IconDirection
+import ge.space.ui.components.buttons.base.SPButtonBaseView
+import ge.space.ui.components.tooltips.SPTooltipView
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.*
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
 
+/**
+ * SPAmountView view extended from abstract [LinearLayout] generic that allows to change its configuration.
+ * There are 3 realized styles which can be applied to the view:
+ *
+ * <p>
+ *     1. SPAmountView_Brand
+ *     2. SPAmountView_Success
+ *     3. SPAmountView_Error
+ * <p>
+ *
+ * @property titleText [String] value which applies a component title.
+ * @property descText [String] value which applies a component description.
+ * @property amount [String] value which applies a amount.
+ * @property currency [String] value which applies a currency.
+ * @property addOnType [AddOnType] value which applies a addOn view
+ *  This property can have a value from [AddOnType.Tooltip], [AddOnType.Info],
+ *  [AddOnType.None].
+ * @property addOnText [String] value sets text if addOnType is [AddOnType.Tooltip] or [AddOnType.Info]
+ */
 class SPAmountView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -66,7 +90,7 @@ class SPAmountView @JvmOverloads constructor(
     private var addOnType: AddOnType = AddOnType.None
 
     /**
-     * Sets a component title.
+     * Sets a amount.
      */
     var amount: String = EMPTY_TEXT
         set(value) {
@@ -76,7 +100,7 @@ class SPAmountView @JvmOverloads constructor(
         }
 
     /**
-     * Sets a component title.
+     * Sets a currency.
      */
     var currency: String = EMPTY_TEXT
         set(value) {
@@ -104,7 +128,7 @@ class SPAmountView @JvmOverloads constructor(
     private var amountTextAppearance: Int = SPBaseView.DEFAULT_INT
 
     /**
-     * Sets a amount text appearance
+     * Sets a currency text appearance
      */
     @StyleRes
     private var currencyTextAppearance: Int = SPBaseView.DEFAULT_INT
@@ -165,13 +189,22 @@ class SPAmountView @JvmOverloads constructor(
         handleAddOnView()
     }
 
-    private fun handleAddOnView() {
-        when (addOnType) {
-            AddOnType.Info -> SPViewData.SPInfoTextData(addOnText)
-            AddOnType.Tooltip -> SPViewData.SPInfoTextData(addOnText)
-            else -> null
-        }?.createView(context)?.let { binding.addOnFL.addView(it) }
+    override fun setViewStyle(newStyle: Int) {
+        context.withStyledAttributes(
+            newStyle,
+            R.styleable.SPAmountView
+        ) {
+            applyAmountStyledAttrs()
+        }
+    }
 
+    /**
+     * Sets a addOnType and text if addOnType is [AddOnType.Tooltip] or [AddOnType.Info].
+     */
+    fun setAddOnView(addOnType: AddOnType, addOnText: String = EMPTY_TEXT) {
+        this.addOnType = addOnType
+        this.addOnText = addOnText
+        handleAddOnView()
     }
 
     /**
@@ -184,15 +217,21 @@ class SPAmountView @JvmOverloads constructor(
         binding.currencyTV.setTextStyle(currencyTextAppearance)
     }
 
-    override fun setViewStyle(newStyle: Int) {
-        context.withStyledAttributes(
-            newStyle,
-            R.styleable.SPAmountView
-        ) {
-            applyAmountStyledAttrs()
-        }
+    private fun handleAddOnView() {
+        when (addOnType) {
+            AddOnType.Info -> SPViewData.SPInfoTextData(addOnText)
+            AddOnType.Tooltip -> SPViewData.SPTooltipData(addOnText, ArrowDirection.TopCenter)
+            else -> null
+        }?.createView(context)?.let { binding.addOnFL.addView(it) }
     }
 
+    /**
+     * Enum class which is addOnView.
+     *
+     * @property None creates none view.
+     * @property Info creates SPTextView with InfoStyle
+     * @property Tooltip creates SPTooltipView with top_center arrow.
+     */
     enum class AddOnType {
         None, Info, Tooltip
     }

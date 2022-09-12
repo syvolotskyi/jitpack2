@@ -15,6 +15,7 @@ import ge.space.ui.util.view_factory.component_type.statusmessage.SPInfoTextData
 import ge.space.ui.util.view_factory.component_type.text.SPEditTextImpl
 import ge.space.ui.util.view_factory.component_type.text.SPMaskedEditTextImpl
 import ge.space.ui.util.view_factory.component_type.text.SPTextInitialsImpl
+import ge.space.ui.util.view_factory.component_type.tooltip.SPTooltipViewDataImpl
 
 interface SPViewFactory {
     companion object {
@@ -36,6 +37,7 @@ interface SPViewFactory {
                 is SPViewData.SPEditTextData -> SPEditTextImpl(context).create(this)
                 is SPViewData.SPMaskedEditTextData -> SPMaskedEditTextImpl(context).create(this)
                 is SPViewData.SPInfoTextData -> SPInfoTextDataImpl(context).create(this)
+                is SPViewData.SPTooltipData -> SPTooltipViewDataImpl(context).create(this)
             }
         }
     }

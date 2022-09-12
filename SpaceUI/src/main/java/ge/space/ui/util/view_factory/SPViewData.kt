@@ -11,6 +11,7 @@ import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.buttons.SPButton.IconDirection.Right
+import ge.space.ui.components.tooltips.SPTooltipView
 import ge.space.ui.util.extension.EMPTY_TEXT
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
@@ -99,7 +100,7 @@ sealed class SPViewData : Parcelable {
         SPViewData()
 
     /**
-     * Create a info text view
+     * Create a StatusTextView with info style info
      *
      * @property text add text to view
      * @property textAppearance applies a style for view
@@ -112,15 +113,16 @@ sealed class SPViewData : Parcelable {
         SPViewData()
 
     /**
-     * Create a info text view
+     * Create a tooltip view
      *
      * @property text add text to view
-     * @property textAppearance applies a style for view
+     * @property arrowDirection applies background.
+     * Default is SPTooltipView.ArrowDirection.None
      */
     @Parcelize
     data class SPTooltipData(
         var text: String,
-        var arrowDirection: SPTooltip? = null,
+        var arrowDirection: SPTooltipView.ArrowDirection = SPTooltipView.ArrowDirection.None,
     ) :
         SPViewData()
 
