@@ -10,11 +10,7 @@ data class SPCountryChipSupport(
 
 object SPCountryChipStyles {
     val list = listOf(
-
         SPCountryChipSupport(),
-
         SPCountryChipSupport(R.style.SPBankCardView_Chip_WithBorder),
-        SPCountryChipSupport(
-            R.style.SPBankCardView_Chip_Medium_WithBorder
-        ))
+        SPCountryChipSupport(R.style.SPBankCardView_Chip_Medium_WithBorder))
 }
