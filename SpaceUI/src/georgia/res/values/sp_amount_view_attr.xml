@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPAmountView">
+        <attr name="title"/>
+        <attr name="titleTextAppearance" />
+        <attr name="descriptionText"/>
+        <attr name="descriptionTextAppearance"/>
+        <attr name="amountTextAppearance"  format="reference"/>
+        <attr name="currencyTextAppearance"  format="reference"/>
+        <attr name="currency" format="reference|string"/>
+        <attr name="amount" format="reference|string"/>
+        <attr name="addOnText" format="reference|string"/>
+        <attr name="addOn" format="enum">
+            <enum name="none" value="0" />
+            <enum name="info" value="1" />
+            <enum name="tooltip" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
