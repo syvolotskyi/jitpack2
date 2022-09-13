@@ -55,7 +55,6 @@
     </declare-styleable>
 
     <declare-styleable name="SPChipIcon">
-        <attr name="cardSize" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>

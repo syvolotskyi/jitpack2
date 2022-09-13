@@ -6,7 +6,7 @@ import ge.space.ui.components.buttons.SPButton
 
 data class SPListIconSupportsLoading(
     val titleId: Int,
-    val url: String = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Flag_of_Georgia_rounded.svg/1200px-Flag_of_Georgia_rounded.svg.png",
+    val url: String =  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_Georgia.svg/2560px-Flag_of_Georgia.svg.png",
 )
 
 object SPListItemStyles {
@@ -14,11 +14,11 @@ object SPListItemStyles {
         SPListIconSupportsLoading(R.string.georgian)
     val english = SPListIconSupportsLoading(
         R.string.english,
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/2560px-Flag_of_England.svg.png"
+        "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
     )
     val ukraine = SPListIconSupportsLoading(
         R.string.ukraine,
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/800px-Flag_of_Ukraine.svg.png"
+        "https://dnmu.edu.ua/wp-content/uploads/2020/07/derzhavnyj-prapor-ukrayiny.jpg"
     )
 
 }

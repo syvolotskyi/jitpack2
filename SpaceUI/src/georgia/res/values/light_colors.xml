@@ -2,4 +2,5 @@
 <resources>
     <color name="light_brand_primary">@color/light_blue_50</color>
     <color name="light_brand_secondary">@color/light_blue_20</color>
+    <color name="light_brand_tertiary">@color/light_blue_5</color>
 </resources>

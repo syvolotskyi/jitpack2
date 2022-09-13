@@ -67,7 +67,6 @@ abstract class SPBaseChip @JvmOverloads constructor(
             handleBorder()
         }
 
-
     /**
      * Name of style res, needs for getViewData to store chip data
      */

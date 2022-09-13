@@ -119,10 +119,21 @@ sealed class SPViewData : Parcelable {
      */
     @Parcelize
     data class SPChipData(
-        val chipHeight: Int,
-        val chipWidth: Int,
         @DrawableRes val drawableRes: Int,
-        @StyleRes val styleRes: Int
+        @StyleRes val styleRes: Int,
+        var params: SPViewDataParams? = null,
+    ) : SPViewData()
+
+    /**
+     * Create an chip with url
+     *
+     * @property styleRes applies a style for view,
+     */
+    @Parcelize
+    data class SPChipUrlData(
+        @DrawableRes val url: String,
+        @StyleRes val styleRes: Int,
+        var params: SPViewDataParams? = null,
     ) : SPViewData()
 
     /**
