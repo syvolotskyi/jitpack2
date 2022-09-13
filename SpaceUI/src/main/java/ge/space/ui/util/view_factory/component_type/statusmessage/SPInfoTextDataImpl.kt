@@ -10,6 +10,12 @@ class SPInfoTextDataImpl(context: Context) : SPViewImpl<SPViewData.SPInfoTextDat
         return SPTextView(context).apply {
             text = type.text
             type.textAppearance?.let { updateTextAppearance(it) }
+            setPadding(
+                type.params?.paddingStart ?: 0,
+                type.params?.paddingTop ?: 0,
+                type.params?.paddingEnd ?: 0,
+                type.params?.paddingBottom ?: 0
+            )
         }
     }
 }

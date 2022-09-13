@@ -109,6 +109,7 @@ sealed class SPViewData : Parcelable {
     data class SPInfoTextData(
         var text: String,
         @StyleRes var textAppearance: Int? = null,
+        var params: SPViewDataParams? = null,
     ) :
         SPViewData()
 

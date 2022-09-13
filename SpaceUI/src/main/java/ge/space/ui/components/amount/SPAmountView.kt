@@ -221,6 +221,7 @@ class SPAmountView @JvmOverloads constructor(
         binding.amountTV.setTextStyle(amountTextAppearance)
         binding.currencyTV.setTextStyle(currencyTextAppearance)
     }
+
     /**
      * Add own formatter
      */
