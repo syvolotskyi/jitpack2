@@ -1,5 +1,6 @@
 package ge.space.design.ui_components.buttons.default_button
 
+import androidx.annotation.IdRes
 import com.example.spacedesignsystem.R
 import ge.space.ui.components.buttons.SPButton
 
@@ -13,7 +14,7 @@ data class SPButtonSupportsLoading(
 object SPButtonStyles {
     val list = listOf(
         SPButtonSupportsLoading(R.style.SPButton_Secondary_Size40),
-        SPButtonSupportsLoading(R.style.SPButton_Secondary_Size48, SPButton.IconDirection.Right),
+        SPButtonSupportsLoading(R.style.SPButton_Secondary_Size48,iconDirection =  SPButton.IconDirection.Right),
         SPButtonSupportsLoading(R.style.SPButton_Secondary_Size56, SPButton.IconDirection.Left),
         SPButtonSupportsLoading(R.style.SPButton_Primary_Size40),
         SPButtonSupportsLoading(R.style.SPButton_Primary_Size48, SPButton.IconDirection.Right),

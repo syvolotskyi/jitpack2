@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPButtonChip" parent="shadow_empty">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="roundedCorners">@dimen/dimen_p_100</item>
+        <item name="buttonHeight">@dimen/dimen_p_20</item>
+        <item name="directionIcon">left</item>
+        <item name="android:textAppearance">@style/h900_medium_caps_brand_primary</item>
+    </style>
+
+    <style name="SPButtonChip.Brand" parent="shadow_empty">
+        <item name="roundedCorners">@dimen/dimen_p_100</item>
+        <item name="backgroundColor">?attr/brand_primary</item>
+        <item name="buttonHeight">@dimen/dimen_p_20</item>
+        <item name="directionIcon">left</item>
+        <item name="android:textAppearance">@style/h900_medium_caps_label_primary</item>
+    </style>
+</resources>

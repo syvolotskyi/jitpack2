@@ -43,12 +43,7 @@ class SPButton @JvmOverloads constructor(
     /**
      * Makes a button icon direction.
      */
-    var directionIcon = None
-        set(value) {
-            field = value
-
-            handleDirectionArrow()
-        }
+    private var directionIcon = None
 
     override var isDistractive: Boolean = false
         set(value) {
@@ -60,13 +55,7 @@ class SPButton @JvmOverloads constructor(
     /**
      * Sets a image resource
      */
-    @IdRes
-    var src = DEFAULT_INT
-        set(value) {
-            field = value
-
-            handleDirectionArrow()
-        }
+    @IdRes private var src = DEFAULT_INT
 
     /**
      * Sets a text appearance
@@ -146,6 +135,7 @@ class SPButton @JvmOverloads constructor(
         )
         directionIcon = values()[directionIconInd]
         src = getResourceId(R.styleable.SPButton_android_src, DEFAULT_OBTAIN_VAL)
+        handleDirectionArrow()
     }
 
     private fun TypedArray.applyStyledResource() {
@@ -172,6 +162,12 @@ class SPButton @JvmOverloads constructor(
         background = color
         updateTextAppearance(textAppearance)
         binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
+    }
+
+    public fun setButtonIcon(icon:Int, direction:IconDirection){
+        src= icon
+        directionIcon = direction
+        handleDirectionArrow()
     }
 
     private fun updateTextAppearance(textAppearance: Int) {

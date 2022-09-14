@@ -15,6 +15,11 @@
         <attr name="android:text" format="string|reference" />
     </declare-styleable>
 
+    <declare-styleable name="SPButtonChip">
+        <attr name="android:src" format="reference" />
+        <attr name="android:text" format="string|reference" />
+    </declare-styleable>
+
     <declare-styleable name="SPButtonInline">
         <attr name="containerGravity" format="enum">
             <enum name="left" value="0" />

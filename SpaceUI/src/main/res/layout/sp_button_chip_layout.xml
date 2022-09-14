@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/buttonContentWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_p_24"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_p_12">
+
+        <ImageView
+            android:id="@+id/buttonIcon"
+            android:layout_width="@dimen/dimen_p_10"
+            android:layout_height="@dimen/dimen_p_10"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/dimen_p_4"
+            android:scaleType="centerInside"
+            tools:src="@drawable/ic_share_ios_24_regular" />
+
+        <TextView
+            android:id="@+id/buttonLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            tools:text="Title" />
+
+    </LinearLayout>
+</merge>

@@ -2,6 +2,7 @@ package ge.space.design.ui_components.buttons
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
+import ge.space.design.ui_components.buttons.chip.SPButtonChipComponent
 import ge.space.design.ui_components.buttons.default_button.SPDefaultButtonsComponent
 import ge.space.design.ui_components.buttons.fullwidth.SPFullWidthButtonsComponent
 import ge.space.design.ui_components.buttons.horizontal_button.SPHorizontalButtonsComponent
@@ -20,6 +21,7 @@ class SPButtonComponent: ShowCaseComponent{
         return listOf(
             SPDefaultButtonsComponent(),
             SPVerticalButtonsComponent(),
+            SPButtonChipComponent(),
             SPIconicButtonsComponent(),
             SPHorizontalButtonsComponent(),
             SPFullWidthButtonsComponent(),

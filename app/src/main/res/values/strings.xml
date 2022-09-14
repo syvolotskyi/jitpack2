@@ -91,6 +91,9 @@
     <string name="amount_showcase">Amount view showcase</string>
     <string name="amount_desc">Amount description</string>
 
+    <string name="button_chip_showcase">Button chip showcase</string>
+    <string name="button_chip_desc">Button chip description</string>
+
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
     <string name="tag_showcase">Tag showcase</string>

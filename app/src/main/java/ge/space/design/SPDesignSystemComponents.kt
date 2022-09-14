@@ -4,7 +4,6 @@ import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.ui_components.amount.SPAmountComponent
 import ge.space.design.ui_components.sandbox.SPSandboxComponent
-import ge.space.design.ui_components.bank_cards.SPBankCardComponent
 import ge.space.design.ui_components.bank_cards.SPChipsComponent
 import ge.space.design.ui_components.bank_cards.card.SPBankCardViewComponent
 import ge.space.design.ui_components.banners.SPBannerComponent
@@ -14,7 +13,6 @@ import ge.space.design.ui_components.controls.SPControlsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.empty_state.SPEmptyStateComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
-import ge.space.design.ui_components.status_messages.SPStatusViewComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 import ge.space.design.ui_components.text_view.SPTextViewComponent

@@ -29,6 +29,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
+                    app:directionIcon="left"
+                    android:src="@drawable/bg_arrow_left_inset"
                     android:text="title"
                     style="@style/SPButton.Primary_Size56"/>
 
