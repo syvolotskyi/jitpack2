@@ -15,6 +15,7 @@ import ge.space.design.ui_components.empty_state.SPEmptyStateComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
 import ge.space.design.ui_components.status_messages.SPTextViewComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
+import ge.space.design.ui_components.tag.SPTagComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 import ge.space.design.ui_components.tooltip.SPTooltipComponent
 
@@ -42,6 +43,7 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPChipsComponent() },
             new { SPBankCardViewComponent() },
             new { SPMarksComponent() },
+            new { SPTagComponent() },
             new { SPTabNavigationComponent() },
         )
     }
