@@ -5,6 +5,7 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.ui_components.amount.SPAmountComponent
 import ge.space.design.ui_components.sandbox.SPSandboxComponent
 import ge.space.design.ui_components.bank_cards.SPBankCardComponent
+import ge.space.design.ui_components.bank_cards.SPChipsComponent
 import ge.space.design.ui_components.bank_cards.card.SPBankCardViewComponent
 import ge.space.design.ui_components.banners.SPBannerComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
