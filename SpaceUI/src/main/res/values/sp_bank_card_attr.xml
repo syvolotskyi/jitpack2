@@ -29,6 +29,7 @@
         <attr name="chipWidth" />
         <attr name="chipHeight" />
         <attr name="chipStyleRes"/>
+        <attr name="hasBorder"/>
     </declare-styleable>
 
     <declare-styleable name="SPPrimaryChip">
@@ -51,11 +52,9 @@
 
     <declare-styleable name="SPSecondaryChip">
         <attr name="placeholder_size" />
-        <attr name="hasBorder"/>
     </declare-styleable>
 
     <declare-styleable name="SPChipIcon">
-        <attr name="cardSize" />
         <attr name="chipIcon" />
         <attr name="chipIconAppearance" />
     </declare-styleable>

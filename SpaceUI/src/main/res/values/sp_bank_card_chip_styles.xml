@@ -9,45 +9,70 @@
         <item name="roundedCorners">@dimen/sp_bank_round_radius</item>
         <item name="chipHeight">@dimen/sp_bank_chip_height</item>
         <item name="chipWidth">@dimen/sp_bank_chip_width</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip</item>
     </style>
 
     <style name="SPBankCardView.Chip.Small" parent="SPBankCardView.Chip.Base">
         <item name="roundedCorners">@dimen/sp_bank_round_radius</item>
         <item name="chipHeight">@dimen/sp_bank_chip_height_small</item>
         <item name="chipWidth">@dimen/sp_bank_chip_width_small</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.Small</item>
     </style>
 
     <style name="SPBankCardView.Chip.Medium" parent="SPBankCardView.Chip.Base">
         <item name="roundedCorners">@dimen/sp_bank_round_radius</item>
         <item name="chipHeight">@dimen/sp_bank_chip_height_medium</item>
         <item name="chipWidth">@dimen/sp_bank_chip_width_medium</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.Medium</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.WithBorder" parent="SPBankCardView.Chip">
+        <item name="hasBorder">true</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.WithBorder</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.Small.WithBorder" parent="SPBankCardView.Chip.Small">
+        <item name="hasBorder">true</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.Small.WithBorder</item>
+    </style>
+
+    <style name="SPBankCardView.Chip.Medium.WithBorder" parent="SPBankCardView.Chip.Medium">
+        <item name="hasBorder">true</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.Medium.WithBorder</item>
     </style>
 
     <style name="SPBankCardView.Chip.Icon.Dark" parent="">
         <item name="chipIconAppearance">dark</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.Icon.Dark</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon.Dark" parent="SPBankCardView.Chip.AddIcon">
         <item name="chipIconAppearance">dark</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.AddIcon.Dark</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon.Dark.Medium" parent="SPBankCardView.Chip.AddIcon.Medium">
         <item name="chipIconAppearance">dark</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.AddIcon.Dark.Medium</item>
     </style>
     <style name="SPBankCardView.Chip.AddIcon.Dark.Small" parent="SPBankCardView.Chip.AddIcon.Small">
         <item name="chipIconAppearance">dark</item>>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.AddIcon.Dark.Small</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon" parent="SPBankCardView.Chip">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.AddIcon</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon.Medium" parent="SPBankCardView.Chip.Medium">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.AddIcon.Medium</item>
     </style>
 
     <style name="SPBankCardView.Chip.AddIcon.Small" parent="SPBankCardView.Chip.Small">
         <item name="chipIcon">@drawable/ic_plus_24_regular</item>
+        <item name="chipStyleRes">@style/SPBankCardView.Chip.AddIcon.Small</item>
     </style>
 
 </resources>

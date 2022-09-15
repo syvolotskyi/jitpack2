@@ -4,26 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_p_56"
+    android:background="@drawable/bg_currency_button_selector"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-
-    <View
-        android:id="@+id/background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0.1"
-        android:background="@drawable/bg_currency_button_selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.radiobutton.MaterialRadioButton
         android:id="@+id/radioButton"
         android:layout_width="@dimen/dimen_p_32"
         android:layout_height="@dimen/dimen_p_32"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/dimen_p_0"
+        android:layout_marginHorizontal="@dimen/dimen_p_6"
         android:background="@null"
         android:buttonTint="?attr/brand_primary"
         android:clickable="false"
@@ -36,8 +26,8 @@
 
     <FrameLayout
         android:id="@+id/startView"
-        android:layout_width="@dimen/dimen_p_38"
-        android:layout_height="@dimen/dimen_p_38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/dimen_p_4"
         android:gravity="center_vertical"

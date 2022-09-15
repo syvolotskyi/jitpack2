@@ -117,15 +117,13 @@ class SPChipIcon @JvmOverloads constructor(
 
     override fun handleChipSize() {
         with(binding) {
-            frame.setWidth(chipWidth)
-            frame.setHeight(chipHeight)
-            ivBigImage.setWidth(chipWidth)
-            ivBigImage.setHeight(chipHeight)
+            frame.setSize(chipWidth,chipHeight)
+            ivBigImage.setSize(chipWidth, chipHeight)
         }
     }
 
     override fun getViewData(): SPViewData =
-        SPViewData.SPChipData(chipHeight, chipWidth, icon, 0)
+        SPViewData.SPChipData(icon, chipStyleRes)
 
     private fun handleIconAppearance() {
         val colorAttr = getColorAttr()

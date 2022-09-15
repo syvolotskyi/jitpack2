@@ -10,6 +10,7 @@ import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.bank_cards.data.SPChipSize
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.setHeight
 import ge.space.ui.util.extension.setWidth
 import ge.space.ui.util.view_factory.SPViewFactoryData
@@ -57,6 +58,16 @@ abstract class SPBaseChip @JvmOverloads constructor(
         }
 
     /**
+     * Allows to hide or show a border for the view
+     */
+    var hasBorder: Boolean = false
+        set(value) {
+            field = value
+
+            handleBorder()
+        }
+
+    /**
      * Name of style res, needs for getViewData to store chip data
      */
     protected var chipStyleRes: Int = defStyleRes
@@ -83,12 +94,25 @@ abstract class SPBaseChip @JvmOverloads constructor(
     }
 
     private fun TypedArray.withStyledResource() {
+        hasBorder = getBoolean(R.styleable.SPBaseChip_hasBorder, false)
+
         chipHeight = getDimensionPixelSize(
             R.styleable.SPBaseChip_chipHeight, DEFAULT_OBTAIN_VAL
         )
         chipWidth = getDimensionPixelSize(
             R.styleable.SPBaseChip_chipWidth, DEFAULT_OBTAIN_VAL
         )
+    }
+
+    private fun handleBorder() {
+        if (hasBorder) {
+            changeBorder(
+                context.getColorFromAttribute(R.attr.separator_non_opaque),
+                resources.getDimensionPixelSize(R.dimen.dimen_p_0_5).toFloat()
+            )
+        } else {
+            changeBorder(DEFAULT_OBTAIN_VAL, DEFAULT_OBTAIN_VAL.toFloat())
+        }
     }
 
     abstract fun handleChipSize()

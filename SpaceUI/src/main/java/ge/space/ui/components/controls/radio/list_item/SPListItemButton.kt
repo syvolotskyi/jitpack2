@@ -59,7 +59,7 @@ class SPListItemButton @JvmOverloads constructor(
         title = text
         binding.radioButton.setOnCheckedChangeListener { _, boolean ->
             isChecked = boolean
-            binding.background.isSelected = boolean
+            isSelected = boolean
             binding.titleText.isSelected = boolean
         }
     }

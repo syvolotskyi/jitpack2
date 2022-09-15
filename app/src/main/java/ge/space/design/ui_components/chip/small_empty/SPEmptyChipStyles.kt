@@ -1,7 +1,6 @@
-package ge.space.design.ui_components.bank_cards.chip.small_empty
+package ge.space.design.ui_components.chip.small_empty
 
 import com.example.spacedesignsystem.R
-import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 
 data class SPEmptyChipBankCardSupport(val resId: Int = R.style.SPBankCardView_ChipEmpty_Dark)
 

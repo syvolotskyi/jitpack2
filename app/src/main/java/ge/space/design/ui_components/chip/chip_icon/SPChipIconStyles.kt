@@ -1,8 +1,7 @@
-package ge.space.design.ui_components.bank_cards.chip.chip_icon
+package ge.space.design.ui_components.chip.chip_icon
 
-import ge.space.design.ui_components.bank_cards.chip.chip_icon.SPChipIconSupport.*
+import ge.space.design.ui_components.chip.chip_icon.SPChipIconSupport.*
 import ge.space.spaceui.R
-import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPChipIconStyle
 
 sealed class SPChipIconSupport {

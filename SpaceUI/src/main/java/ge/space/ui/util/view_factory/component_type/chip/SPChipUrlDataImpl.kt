@@ -5,13 +5,13 @@ import ge.space.ui.components.bank_cards.chip.icon.SPChipIcon
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.component_type.SPViewComponentType
 
-class SPChipIconImpl(context: Context) :
-    SPViewComponentType<SPViewData.SPChipData>(context) {
+class SPChipUrlDataImpl (context: Context) :
+    SPViewComponentType<SPViewData.SPChipUrlData>(context) {
 
-    override fun create(type: SPViewData.SPChipData): SPChipIcon =
+    override fun create(type: SPViewData.SPChipUrlData): SPChipIcon =
         SPChipIcon(context).apply {
             setViewStyle(type.styleRes)
-            icon = type.drawableRes
+            bigPhotoUrl = type.url
             type.params?.let {
                 setPadding(it.paddingStart, it.paddingTop, it.paddingEnd, it.paddingBottom)
             }

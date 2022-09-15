@@ -1,4 +1,4 @@
-package ge.space.design.ui_components.bank_cards.chip.new_credit_card
+package ge.space.design.ui_components.chip.new_credit_card
 
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemNewCreditCardShowcaseBinding

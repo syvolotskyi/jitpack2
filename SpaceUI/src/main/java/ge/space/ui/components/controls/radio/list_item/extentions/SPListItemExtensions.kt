@@ -15,17 +15,11 @@ import ge.space.ui.util.view_factory.SPViewFactory.Companion.createView
  * @param url [String] sets a default circle SPFrameLayout with uploaded image in start view
  */
 fun SPListItemButton.setData(title: String, url: String) {
-    val size = resources.getDimensionPixelSize(R.dimen.dimen_p_38)
     this.title = title
     this.setStartView(
-        SPViewData.SPCircleImageUrlData(
+        SPViewData.SPChipUrlData(
             url,
-            context.resources.getDimensionPixelSize(R.dimen.dimen_p_0_5),
-            context.getColorFromAttribute(R.attr.separator_opaque),
-            SPViewData.SPViewDataParams(
-                size,
-                size
-            )
+            R.style.SPBankCardView_Chip_Small_WithBorder
         ).createView(context)
     )
 }

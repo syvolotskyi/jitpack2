@@ -1,9 +1,8 @@
-package ge.space.design.ui_components.bank_cards.chip.digital_chip
+package ge.space.design.ui_components.chip.digital_chip
 
 import com.example.spacedesignsystem.R
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
-import ge.space.ui.components.bank_cards.data.SPChipSize
 
 data class SPDigitalChipSupport(
     val background: SPBankCardGradient = SPBankCardGradient.SPNoneGradient(),

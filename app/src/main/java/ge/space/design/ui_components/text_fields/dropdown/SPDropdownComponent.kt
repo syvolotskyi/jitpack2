@@ -161,7 +161,7 @@ class SPDropdownComponent : ShowCaseComponent {
                 .withView(view)
                 .setDefault(getDefaultLangItem(view.context))
                 .setTitle(view.context.getString(R.string.selectLanguage))
-                .setOnBindDropdownItem(SPOnLangItemModelBind())
+                .setOnBindDropdownItem(SPOnChipItemModelBind())
                 .setItems(getLanguagesList(view.context))
                 .setBottomSheetAdapter(adapter)
                 .build()

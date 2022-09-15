@@ -6,6 +6,7 @@
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
         <item name="brand_secondary">@color/light_brand_secondary</item>
+        <item name="brand_tertiary">@color/light_brand_tertiary</item>
     </style>
 
     <style name="SPCoreThemeUI" parent="BaseTheme.CoreUI">
@@ -56,6 +57,7 @@
         //brand
         <item name="brand_primary">@color/dark_brand_primary</item>
         <item name="brand_secondary">@color/dark_brand_secondary</item>
+        <item name="brand_tertiary">@color/dark_brand_secondary</item>
 
         // background
         <item name="background_primary">@color/black</item>
@@ -187,6 +189,7 @@
         //brand
         <item name="brand_primary">@color/light_brand_primary</item>
         <item name="brand_secondary">@color/light_brand_secondary</item>
+        <item name="brand_tertiary">@color/light_brand_tertiary</item>
 
         // background
         <item name="background_primary">@color/white</item>

@@ -4,7 +4,8 @@ import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.ui_components.amount.SPAmountComponent
 import ge.space.design.ui_components.sandbox.SPSandboxComponent
-import ge.space.design.ui_components.bank_cards.SPBankCardComponent
+import ge.space.design.ui_components.bank_cards.SPChipsComponent
+import ge.space.design.ui_components.bank_cards.card.SPBankCardViewComponent
 import ge.space.design.ui_components.banners.SPBannerComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
 import ge.space.design.ui_components.colors.SPColorsComponent
@@ -38,7 +39,8 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPTooltipComponent() },
             new { SPTextFieldsComponent() },
             new { SPBannerComponent() },
-            new { SPBankCardComponent() },
+            new { SPChipsComponent() },
+            new { SPBankCardViewComponent() },
             new { SPMarksComponent() },
             new { SPTabNavigationComponent() },
         )
