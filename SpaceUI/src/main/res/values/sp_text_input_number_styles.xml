@@ -15,8 +15,4 @@
         <item name="contentInputView">amountInteger</item>
     </style>
 
-    <style name="SPTextField.TextCurrency" parent="SPTextField.Base">
-        <item name="android:textAppearance">@style/h600_medium_label_secondary</item>
-    </style>
-
 </resources>

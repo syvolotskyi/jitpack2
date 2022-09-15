@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPTextView.Tag" parent="SPTextView.Base">
+        <item name="android:textAppearance">@style/h800_medium_label_secondary</item>
+        <item name="android:background">@drawable/bg_tag</item>
+        <item name="android:lines">1</item>
+        <item name="android:src">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingStart">@dimen/dimen_p_12</item>
+        <item name="android:paddingEnd">@dimen/dimen_p_12</item>
+        <item name="android:paddingTop">@dimen/dimen_p_3</item>
+        <item name="android:paddingBottom">@dimen/dimen_p_3</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_height">@dimen/dimen_p_24</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="SPTextView.Tag.Brand" parent="SPTextView.Tag">
+        <item name="android:textAppearance">@style/h800_medium_brand_primary</item>
+    </style>
+
+    <style name="SPTextView.Tag.WithBorder" parent="SPTextView.Tag">
+        <item name="android:background">@drawable/bg_tag_with_border</item>
+    </style>
+
+    <style name="SPTextView.Tag.Brand.WithBorder" parent="SPTextView.Tag.Brand">
+        <item name="android:background">@drawable/bg_tag_with_border</item>
+    </style>
+</resources>

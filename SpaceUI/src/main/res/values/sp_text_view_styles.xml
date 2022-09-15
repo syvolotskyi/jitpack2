@@ -7,22 +7,22 @@
     </style>
 
     <style name="SPTextView.Success" parent="SPTextView.Base">
-        <item name="textAppearance">@style/h800_medium_accent_green</item>
+        <item name="android:textAppearance">@style/h800_medium_accent_green</item>
         <item name="android:src">@drawable/ic_checkmark_circle_16_regular</item>
     </style>
 
     <style name="SPTextView.Error" parent="SPTextView.Base">
-        <item name="textAppearance">@style/h800_medium_accent_magenta</item>
+        <item name="android:textAppearance">@style/h800_medium_accent_magenta</item>
         <item name="android:src">@drawable/ic_alert_circle_16_regular</item>
     </style>
 
     <style name="SPTextView.Pending" parent="SPTextView.Base">
-        <item name="textAppearance">@style/h800_medium_accent_orange</item>
+        <item name="android:textAppearance">@style/h800_medium_accent_orange</item>
         <item name="android:src">@drawable/ic_clock_circle_16_regular</item>
     </style>
 
     <style name="SPTextView.Info" parent="SPTextView.Base">
-        <item name="textAppearance">@style/h800_medium_brand_primary</item>
+        <item name="android:textAppearance">@style/h800_medium_brand_primary</item>
         <item name="android:src">@drawable/ic_info_circle_16_regular</item>
     </style>
 </resources>

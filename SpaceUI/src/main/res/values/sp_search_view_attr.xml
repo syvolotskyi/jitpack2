@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SPSearchView">
-        <attr name="textAppearance" />
+        <attr name="textAppearance" format="reference"/>
         <attr name="showCancelButton" format="boolean"/>
         <attr name="icon" format="reference"/>
         <attr name="showClearButton" format="boolean"/>
