@@ -43,7 +43,6 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPTextFieldsComponent() },
             new { SPTextViewComponent() },
             new { SPTooltipComponent() },
-            new { SPControlsComponent() },
         )
     }
 }
