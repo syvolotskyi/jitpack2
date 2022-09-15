@@ -1,7 +1,7 @@
 package ge.space.ui.util.view_factory.component_type.statusmessage
 
 import android.content.Context
-import ge.space.ui.components.statusmessage.SPTextView
+import ge.space.ui.components.text_view.SPTextView
 import ge.space.ui.util.view_factory.SPViewData
 import ge.space.ui.util.view_factory.view.SPViewImpl
 

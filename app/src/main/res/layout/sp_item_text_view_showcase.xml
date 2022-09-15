@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ge.space.ui.components.statusmessage.SPTextView
+    <ge.space.ui.components.text_view.SPTextView
         android:id="@+id/tvSuccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

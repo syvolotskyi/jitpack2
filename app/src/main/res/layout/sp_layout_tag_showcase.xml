@@ -13,24 +13,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <ge.space.ui.components.text_view.SPTextView
             style="@style/SPTextView.Tag"
             android:layout_margin="@dimen/dimen_p_16"
             android:text="@string/tag_example_text" />
 
-        <TextView
+        <ge.space.ui.components.text_view.SPTextView
             style="@style/SPTextView.Tag.Brand"
             android:layout_margin="@dimen/dimen_p_16"
             android:text="@string/tag_example_text"
 
             />
 
-        <TextView
+        <ge.space.ui.components.text_view.SPTextView
             style="@style/SPTextView.Tag.WithBorder"
             android:layout_margin="@dimen/dimen_p_16"
             android:text="@string/tag_example_text" />
 
-        <TextView
+        <ge.space.ui.components.text_view.SPTextView
             style="@style/SPTextView.Tag.Brand.WithBorder"
             android:layout_margin="@dimen/dimen_p_16"
             android:text="@string/tag_example_text" />

@@ -1,4 +1,4 @@
-package ge.space.ui.components.statusmessage
+package ge.space.ui.components.text_view
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -17,8 +17,9 @@ import ge.space.ui.util.extension.setTextStyle
 
 
 /**
- * Custom MaterialTextView currently used for displaying status messages,
- * with 4 predefined styles: Success, Error, Pending and Info
+ * Custom MaterialTextView currently used for displaying status messages and tags,
+ * 4 predefined styles for status messages: Success, Error, Pending and Info
+ * Predefined styles for tags: SPTextView.Tag, Error, Pending and Info
  */
 class SPTextView @JvmOverloads constructor(
     context: Context,
@@ -61,7 +62,7 @@ class SPTextView @JvmOverloads constructor(
                 compoundDrawablePadding = resources.getDimensionPixelSize(it)
             }
 
-        getResourceId(R.styleable.SPTextView_textAppearance, DEFAULT_OBTAIN_VAL)
+        getResourceId(R.styleable.SPTextView_android_textAppearance, DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(DEFAULT_OBTAIN_VAL) {
                 updateTextAppearance(it)
             }

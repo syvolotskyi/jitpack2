@@ -5,6 +5,7 @@
         <item name="android:textAppearance">@style/h800_medium_label_secondary</item>
         <item name="android:background">@drawable/bg_tag</item>
         <item name="android:lines">1</item>
+        <item name="android:src">@null</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:paddingStart">@dimen/dimen_p_12</item>

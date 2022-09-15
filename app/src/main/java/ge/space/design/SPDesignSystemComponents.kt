@@ -4,7 +4,7 @@ import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.ui_components.amount.SPAmountComponent
 import ge.space.design.ui_components.sandbox.SPSandboxComponent
-import ge.space.design.ui_components.bank_cards.SPChipsComponent
+import ge.space.design.ui_components.bank_cards.SPBankCardComponent
 import ge.space.design.ui_components.bank_cards.card.SPBankCardViewComponent
 import ge.space.design.ui_components.banners.SPBannerComponent
 import ge.space.design.ui_components.buttons.SPButtonComponent
@@ -13,10 +13,10 @@ import ge.space.design.ui_components.controls.SPControlsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.empty_state.SPEmptyStateComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
-import ge.space.design.ui_components.status_messages.SPTextViewComponent
+import ge.space.design.ui_components.status_messages.SPStatusViewComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
-import ge.space.design.ui_components.tag.SPTagComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
+import ge.space.design.ui_components.text_view.SPTextViewComponent
 import ge.space.design.ui_components.tooltip.SPTooltipComponent
 
 object DesignSystemComponents : ShowCaseComponent {
@@ -30,21 +30,21 @@ object DesignSystemComponents : ShowCaseComponent {
     override fun getSubComponents(): List<ShowCaseComponent> {
         return listOf(
             new { SPSandboxComponent() },
-            new { SPColorsComponent() },
-            new { SPButtonComponent() },
-            new { SPDialogComponent() },
-            new { SPTextViewComponent() },
             new { SPAmountComponent() },
-            new { SPEmptyStateComponent() },
-            new { SPControlsComponent() },
-            new { SPTooltipComponent() },
-            new { SPTextFieldsComponent() },
-            new { SPBannerComponent() },
-            new { SPChipsComponent() },
             new { SPBankCardViewComponent() },
+            new { SPBannerComponent() },
+            new { SPButtonComponent() },
+            new { SPChipsComponent() },
+            new { SPColorsComponent() },
+            new { SPControlsComponent() },
+            new { SPDialogComponent() },
+            new { SPEmptyStateComponent() },
             new { SPMarksComponent() },
-            new { SPTagComponent() },
             new { SPTabNavigationComponent() },
+            new { SPTextFieldsComponent() },
+            new { SPTextViewComponent() },
+            new { SPTooltipComponent() },
+            new { SPControlsComponent() },
         )
     }
 }

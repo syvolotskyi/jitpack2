@@ -94,7 +94,7 @@
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
     <string name="tag_showcase">Tag showcase</string>
-    <string name="tag_desc">Just use tag styles for your TextView</string>
+    <string name="tag_desc">Just use tag styles for your SPTextView</string>
 
     <string name="otp_input">OTP input</string>
     <string name="otp_description">Correct passwords 888888 and 1010</string>
@@ -114,6 +114,9 @@
 
     <string name="text_fields">Text fields</string>
     <string name="text_fields_desc">Text fields desc</string>
+
+    <string name="text_views">Text views</string>
+    <string name="text_views_desc">Text views (status messages and tags)</string>
 
     <string name="correct_password">Correct password</string>
     <string name="incorrect_password">Incorrect password</string>
