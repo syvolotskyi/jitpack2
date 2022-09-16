@@ -10,7 +10,6 @@ import ge.space.spaceui.R
 import ge.space.ui.components.bank_cards.data.SPBankCardGradient
 import ge.space.ui.components.bank_cards.data.SPChipSize
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
-import ge.space.ui.components.buttons.SPButton.IconDirection.Right
 import ge.space.ui.components.tooltips.SPTooltipView
 import ge.space.ui.util.extension.EMPTY_TEXT
 import kotlinx.parcelize.Parcelize
