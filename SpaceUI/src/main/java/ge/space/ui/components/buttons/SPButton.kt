@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
-import androidx.annotation.IdRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
@@ -29,8 +29,8 @@ import ge.space.ui.util.extension.*
  * <p>
  *
  * @property directionIcon [IconDirection] value which applies a button icon direction.
- *  This property can have a value from [IconDirection.Right], [IconDirection.Left],
- *  [IconDirection.None].
+ *  This property can have a value from [IconDirection.RIGHT], [IconDirection.LEFT],
+ *  [IconDirection.NONE].
  * @property isDistractive [Boolean] value sets distractive state
  */
 class SPButton @JvmOverloads constructor(
@@ -43,7 +43,7 @@ class SPButton @JvmOverloads constructor(
     /**
      * Makes a button icon direction.
      */
-    private var directionIcon = None
+    private var directionIcon = NONE
 
     override var isDistractive: Boolean = false
         set(value) {
@@ -55,7 +55,7 @@ class SPButton @JvmOverloads constructor(
     /**
      * Sets a image resource
      */
-    @IdRes private var src = DEFAULT_INT
+     @DrawableRes private var src = DEFAULT_INT
 
     /**
      * Sets a text appearance
@@ -136,6 +136,7 @@ class SPButton @JvmOverloads constructor(
         directionIcon = values()[directionIconInd]
         src = getResourceId(R.styleable.SPButton_android_src, DEFAULT_OBTAIN_VAL)
         handleDirectionArrow()
+        updateTextAppearance(textAppearance)
     }
 
     private fun TypedArray.applyStyledResource() {
@@ -164,10 +165,11 @@ class SPButton @JvmOverloads constructor(
         binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
     }
 
-    public fun setButtonIcon(icon:Int, direction:IconDirection){
-        src= icon
+    fun setButtonIcon(icon: Int, direction: IconDirection = NONE) {
+        src = icon
         directionIcon = direction
         handleDirectionArrow()
+        updateTextAppearance(textAppearance)
     }
 
     private fun updateTextAppearance(textAppearance: Int) {
@@ -181,45 +183,11 @@ class SPButton @JvmOverloads constructor(
 
     private fun handleDirectionArrow() {
         if (src != DEFAULT_INT)
-            when (directionIcon) {
-                None -> directNone()
-                Left -> directLeft()
-                Right -> directRight()
-            }
-        updateTextAppearance(textAppearance)
+            binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
+                if (directionIcon == LEFT) ContextCompat.getDrawable(context, src) else null, null,
+                if (directionIcon == RIGHT) ContextCompat.getDrawable(context, src) else null, null
+            )
     }
-
-    /**
-     * remove all drawables
-     */
-    private fun directNone() {
-        binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
-    }
-
-    /**
-     * sets left drawable only
-     */
-    private fun directLeft() {
-        binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
-            ContextCompat.getDrawable(context, src),
-            null,
-            null,
-            null
-        )
-    }
-
-    /**
-     * sets right drawable only
-     */
-    private fun directRight() {
-        binding.buttonLabel.setCompoundDrawablesWithIntrinsicBounds(
-            null,
-            null,
-            ContextCompat.getDrawable(context, src),
-            null
-        )
-    }
-
 
     override fun handleDistractiveState() {
         color = if (isDistractive) distractiveBackground else background
@@ -229,13 +197,13 @@ class SPButton @JvmOverloads constructor(
     /**
      * Enum class which is for Button arrow direction.
      *
-     * @property None removes all arrows. Just to show only text.
-     * @property Left applies an arrow left from the text.
-     * @property Right applies an arrow right from the text.
+     * @property NONE removes all arrows. Just to show only text.
+     * @property LEFT applies an arrow left from the text.
+     * @property RIGHT applies an arrow right from the text.
      */
     enum class IconDirection {
-        None,
-        Left,
-        Right
+        NONE,
+        LEFT,
+        RIGHT
     }
 }

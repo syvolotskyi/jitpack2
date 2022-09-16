@@ -2,19 +2,14 @@ package ge.space.ui.components.buttons
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpButtonChipLayoutBinding
-import ge.space.spaceui.databinding.SpButtonInlineLayoutBinding
-import ge.space.spaceui.databinding.SpButtonLayoutBinding
 import ge.space.ui.components.buttons.base.SPButtonBaseView
 import ge.space.ui.util.extension.*
 
