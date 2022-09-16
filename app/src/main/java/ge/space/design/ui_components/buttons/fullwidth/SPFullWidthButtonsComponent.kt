@@ -41,8 +41,8 @@ class SPFullWidthButtonsComponent : ShowCaseComponent {
                         layoutBinding.buttonsLayout,
                         true
                 )
-                itemBinding.button.directionIcon = buttonSample.iconDirection
-                itemBinding.button.src = buttonSample.src
+                itemBinding.button.setButtonIcon(buttonSample.src,buttonSample.iconDirection)
+
                 itemBinding.disableCheck.visibility = View.GONE
 
                 with(itemBinding.buttonName) {

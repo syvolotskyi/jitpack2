@@ -39,8 +39,7 @@ class SPDefaultButtonsComponent : ShowCaseComponent {
                     layoutBinding.buttonsLayout,
                     true
                 )
-                itemBinding.button.directionIcon = buttonSample.iconDirection
-                itemBinding.button.src = buttonSample.src
+                itemBinding.button.setButtonIcon(buttonSample.src,buttonSample.iconDirection)
 
                 with(itemBinding.buttonName) {
                     val resName = resources.getResourceEntryName(resId)

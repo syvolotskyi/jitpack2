@@ -2,6 +2,7 @@ package ge.space.design.ui_components.text_view
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
+import ge.space.design.ui_components.status_messages.SPStatusViewComponent
 import ge.space.design.ui_components.tag.SPTagComponent
 
 class SPTextViewComponent : ShowCaseComponent {
@@ -12,7 +13,7 @@ class SPTextViewComponent : ShowCaseComponent {
 
     override fun getSubComponents(): List<ShowCaseComponent> {
         return listOf(
-            SPTextViewComponent(),
+            SPStatusViewComponent(),
             SPTagComponent(),
         )
     }
