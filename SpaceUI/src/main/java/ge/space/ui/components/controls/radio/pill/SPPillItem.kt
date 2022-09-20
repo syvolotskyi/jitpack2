@@ -132,7 +132,7 @@ class SPPillItem @JvmOverloads constructor(
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(
             newStyle,
-            R.styleable.SPRadioButton
+            R.styleable.SPPillItem
         ) {
             applyPillStyledAttributes()
         }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPTabSwitcher" parent="@style/SPPillItemStandard">
+        <item name="selectedTextAppearance">@style/h800_medium_primary_white</item>
+        <item name="unselectedTextAppearance">@style/h800_medium_label_secondary</item>
+        <item name="android:layout_marginStart">@dimen/dimen_p_8</item>
+        <item name="android:layout_height">@dimen/dimen_p_50</item>
+        <item name="android:padding">@dimen/dimen_p_16</item>
+    </style>
+</resources>

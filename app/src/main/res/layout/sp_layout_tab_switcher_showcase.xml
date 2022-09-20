@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_p_32"
+        android:scrollbars="none">
+
+        <ge.space.ui.components.controls.radio.SPRadioGroup
+            android:id="@+id/radioGroup5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ge.space.ui.components.controls.radio.pill.SPPillItem
+                android:id="@+id/toggleSwitch21"
+                style="@style/SPTabSwitcher"
+                app:isChecked="true"
+                android:layout_width="wrap_content"
+                android:text="@string/default_tab_text" />
+
+            <ge.space.ui.components.controls.radio.pill.SPPillItem
+                android:id="@+id/toggleSwitch22"
+                style="@style/SPTabSwitcher"
+                android:layout_width="wrap_content"
+                android:text="@string/default_tab_text" />
+
+            <ge.space.ui.components.controls.radio.pill.SPPillItem
+                android:id="@+id/toggleSwitch23"
+                style="@style/SPTabSwitcher"
+                android:layout_width="wrap_content"
+                android:text="@string/default_tab_text" />
+
+            <ge.space.ui.components.controls.radio.pill.SPPillItem
+                android:id="@+id/toggleSwitch24"
+                style="@style/SPTabSwitcher"
+                android:layout_width="wrap_content"
+                android:text="@string/default_tab_text" />
+
+            <ge.space.ui.components.controls.radio.pill.SPPillItem
+                android:id="@+id/toggleSwitch25"
+                style="@style/SPTabSwitcher"
+                android:layout_width="wrap_content"
+                android:text="@string/default_tab_text" />
+        </ge.space.ui.components.controls.radio.SPRadioGroup>
+    </HorizontalScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>
