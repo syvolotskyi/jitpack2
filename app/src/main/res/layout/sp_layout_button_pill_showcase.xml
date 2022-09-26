@@ -7,7 +7,6 @@
     android:padding="@dimen/dimen_p_16">
 
     <TextView
-        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_p_16"
@@ -47,7 +46,6 @@
 
 
     <TextView
-        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/dimen_p_16"

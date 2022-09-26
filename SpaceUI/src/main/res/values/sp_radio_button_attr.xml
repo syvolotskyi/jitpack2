@@ -14,6 +14,7 @@
         <attr name="selectedTextAppearance" format="reference"/>
         <attr name="unselectedTextAppearance" format="reference"/>
         <attr name="isChecked" format="boolean"/>
+        <attr name="android:padding" format="reference"/>
         <attr name="android:text" format="string" localization="suggested" />
         <attr name="selectedBackgroundColor" format="reference|color" />
         <attr name="unselectedBackgroundColor" format="reference|color" />

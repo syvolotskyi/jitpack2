@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.appcompat.widget.TintTypedArray.obtainStyledAttributes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpPillLayoutBinding
@@ -137,5 +138,4 @@ class SPPillItem @JvmOverloads constructor(
             applyPillStyledAttributes()
         }
     }
-
 }
