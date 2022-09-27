@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:background="?attr/background_secondary"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ge.space.ui.components.profile.SPProfileHeadingView
+            android:id="@+id/profile1"
+            style="@style/SPProfileHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:defaultProfileImage="@drawable/ic_human_24_regular"
+            app:descriptionText="@string/title_default_items"
+            app:icon="@drawable/ic_pencil_24_regular"
+            app:titleText="@string/title_default_items" />
+
+        <ge.space.ui.components.profile.SPProfileHeadingView
+            android:id="@+id/profile2"
+            style="@style/SPProfileHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:defaultProfileImage="@drawable/ic_human_24_regular"
+            app:descriptionText="@string/title_default_items"
+            app:icon="@drawable/ic_pencil_24_regular"
+            app:titleText="@string/title_default_items" />
+
+        <ge.space.ui.components.profile.SPProfileHeadingView
+            android:id="@+id/profile3"
+            style="@style/SPProfileHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:defaultProfileImage="@drawable/ic_human_24_regular"
+            app:descriptionText="@string/title_default_items"
+            app:icon="@drawable/ic_pencil_24_regular" />
+
+        <ge.space.ui.components.profile.SPProfileHeadingView
+            android:id="@+id/profile4"
+            style="@style/SPProfileHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:defaultProfileImage="@drawable/ic_human_24_regular"
+            app:descriptionText="@string/title_default_items"
+            app:icon="@drawable/ic_pencil_24_regular" />
+
+    <LinearLayout
+        android:id="@+id/profileProgLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"/>
+    </LinearLayout>
+</ScrollView>

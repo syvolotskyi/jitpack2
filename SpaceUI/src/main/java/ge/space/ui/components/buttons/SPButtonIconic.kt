@@ -35,7 +35,7 @@ open class SPButtonIconic @JvmOverloads constructor(
         context.getColorFromAttribute(R.attr.brand_primary)
         set(value) {
             field = value
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth.toFloat())
+            bubbleLayoutBinding.btnContainer.changeBorder(value, borderWidth.toFloat())
         }
 
     init {
@@ -77,7 +77,7 @@ open class SPButtonIconic @JvmOverloads constructor(
         borderColor =
             getColor(
                 R.styleable.SPButtonIconic_borderColor,
-                context.getColorFromAttribute(R.attr.brand_primary)
+                context.getColorFromAttribute(R.attr.white)
             )
 
         distractiveIconColor =

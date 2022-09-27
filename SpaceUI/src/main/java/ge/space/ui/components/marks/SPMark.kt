@@ -55,7 +55,6 @@ class SPMark @JvmOverloads constructor(
     var paddings: Int = 0
 
     init {
-
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPMark,
@@ -93,7 +92,6 @@ class SPMark @JvmOverloads constructor(
         }
         is SPViewData.SPImageResourcesData -> {
             viewData.apply {
-                tintColor = context.getColorFromAttribute(R.attr.brand_primary)
                 params = SPViewData.SPViewDataParams().apply {
                     height = imageSize
                     width = imageSize

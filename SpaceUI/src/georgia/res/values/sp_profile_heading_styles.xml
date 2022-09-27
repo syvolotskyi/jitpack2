@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPProfileHeading">
+        <item name="titleTextAppearance">@style/h600_bold_label_primary</item>
+        <item name="defaultProfileImage">@drawable/ic_human_24_regular</item>
+        <item name="descriptionTextAppearance">@style/h700_medium_caps_label_secondary</item>
+    </style>
+
+    <style name="SPButton.Iconic.Profile" parent="SPButton.Iconic.Size24">
+        <item name="iconBackgroundColor">?attr/brand_primary</item>
+        <item name="borderColor">?attr/white</item>
+        <item name="iconColor">?attr/white</item>
+        <item name="btnIconPadding">@dimen/dimen_p_6</item>
+        <item name="buttonHeight">@dimen/dimen_p_12</item>
+    </style>
+</resources>

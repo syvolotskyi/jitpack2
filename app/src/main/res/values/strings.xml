@@ -96,6 +96,10 @@
 
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
+
+    <string name="profile_showcase">Profile showcase</string>
+    <string name="profile_desc">Profile description</string>
+
     <string name="tag_showcase">Tag showcase</string>
     <string name="tag_desc">Just use tag styles for your SPTextView</string>
 

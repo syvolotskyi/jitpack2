@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPProfileHeadingView">
+        <attr name="titleTextAppearance" />
+        <attr name="descriptionTextAppearance" />
+        <attr name="titleText" />
+        <attr name="descriptionText" />
+        <attr name="icon" />
+        <attr name="defaultProfileImage" format="reference" />
+    </declare-styleable>
+</resources>
