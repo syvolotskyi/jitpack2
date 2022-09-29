@@ -7,10 +7,12 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.goAway
+import ge.space.ui.util.extension.handleAttributeAction
 
 /**
  * Button view extended from [SPButtonVertical] that allows to change its configuration.
@@ -32,10 +34,11 @@ open class SPButtonIconic @JvmOverloads constructor(
     private var borderWidth: Int = context.resources.getDimensionPixelSize(R.dimen.dimen_p_1)
 
     private var borderColor: Int =
-        context.getColorFromAttribute(R.attr.brand_primary)
+        ContextCompat.getColor(context,R.color.white)
         set(value) {
             field = value
-            bubbleLayoutBinding.btnContainer.changeBorder(value, borderWidth.toFloat())
+
+            handleBorder(value)
         }
 
     init {
@@ -58,12 +61,12 @@ open class SPButtonIconic @JvmOverloads constructor(
      * Default style theme is SPBaseView.SPBaseButton style.
      * <p>
      *
-     * @param defStyleRes [Int] style resource id
+     * @param styleRes [Int] style resource id
      */
-    override fun setButtonStyle(@StyleRes defStyleRes: Int) {
-        super.setButtonStyle(defStyleRes)
+    override fun setButtonStyle(@StyleRes styleRes: Int) {
+        super.setButtonStyle(styleRes)
 
-        context.withStyledAttributes(defStyleRes, R.styleable.SPButtonIconic) {
+        context.withStyledAttributes(styleRes, R.styleable.SPButtonIconic) {
             applyButtonStyledAttrs()
         }
     }
@@ -73,11 +76,6 @@ open class SPButtonIconic @JvmOverloads constructor(
             getColor(
                 R.styleable.SPButtonIconic_iconBackgroundColor,
                 context.getColorFromAttribute(R.attr.brand_primary)
-            )
-        borderColor =
-            getColor(
-                R.styleable.SPButtonIconic_borderColor,
-                context.getColorFromAttribute(R.attr.white)
             )
 
         distractiveIconColor =
@@ -95,6 +93,13 @@ open class SPButtonIconic @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.color = bubbleColor
         bubbleLayoutBinding.btnContainer.isCircle = true
 
+        getColor(
+            R.styleable.SPButtonIconic_borderButtonColor,
+            Color.WHITE
+        ).handleAttributeAction(Color.TRANSPARENT) {
+            borderColor = it
+        }
+
         iconColor = getColor(
             R.styleable.SPButtonIconic_iconColor,
             Color.WHITE
@@ -108,16 +113,18 @@ open class SPButtonIconic @JvmOverloads constructor(
     override fun handleDistractiveState() {
         if (isDistractive) {
             bubbleLayoutBinding.btnContainer.color = distractiveColor
-            bubbleLayoutBinding.btnContainer.changeBorder(
-                distractiveBackgroundColor,
-                borderWidth.toFloat()
-            )
+            handleBorder(distractiveBackgroundColor)
             bubbleLayoutBinding.image.setColorFilter(distractiveIconColor)
         } else {
-            bubbleLayoutBinding.btnContainer.changeBorder(borderColor, borderWidth.toFloat())
+            handleBorder(iconColor)
             bubbleLayoutBinding.btnContainer.color = bubbleColor
             bubbleLayoutBinding.image.setColorFilter(iconColor)
         }
         bubbleLayoutBinding.btnContainer.invalidate()
+    }
+
+    private fun handleBorder(value: Int) {
+        if (value != Color.TRANSPARENT)
+        bubbleLayoutBinding.btnContainer.changeBorder(value, borderWidth.toFloat())
     }
 }

@@ -5,9 +5,10 @@
         <item name="iconBackgroundColor">?attr/brand_primary</item>
         <item name="distractiveColor">?attr/status_primary_distractive</item>
         <item name="distractiveBorderColor">?attr/status_primary_distractive</item>
-        <item name="borderColor">?attr/brand_primary</item>
-        <item name="buttonHeight">@dimen/dimen_p_8</item>
-        <item name="btnIconPadding">@dimen/dimen_p_10</item>
+        <item name="buttonHeight">@dimen/dimen_p_24</item>
+        <item name="btnIconPadding">@dimen/dimen_p_8</item>
+        <item name="iconColor">?attr/white</item>
+        <item name="imgSize">@dimen/dimen_p_8</item>
         <item name="android:textAppearance">@style/h700_medium_caps_label_primary</item>
     </style>
 
@@ -29,6 +30,7 @@
     <style name="SPButton.Iconic.Secondary.Size24" parent="SPButton.Iconic.Size24">
         <item name="iconBackgroundColor">?attr/white</item>
         <item name="distractiveColor">?attr/white</item>
+        <item name="borderButtonColor">?attr/brand_primary</item>
         <item name="distractiveBorderColor">?attr/status_primary_distractive</item>
         <item name="distractiveIconColor">?attr/status_primary_distractive</item>
         <item name="iconColor">?attr/brand_primary</item>
@@ -37,6 +39,7 @@
     <style name="SPButton.Iconic.Secondary.Size32" parent="SPButton.Iconic.Size32">
         <item name="iconBackgroundColor">?attr/white</item>
         <item name="distractiveColor">?attr/white</item>
+        <item name="borderButtonColor">?attr/brand_primary</item>
         <item name="distractiveBorderColor">?attr/status_primary_distractive</item>
         <item name="distractiveIconColor">?attr/status_primary_distractive</item>
         <item name="iconColor">?attr/brand_primary</item>
@@ -45,6 +48,7 @@
     <style name="SPButton.Iconic.Secondary.Size40" parent="SPButton.Iconic.Size40">
         <item name="iconBackgroundColor">?attr/white</item>
         <item name="distractiveColor">?attr/white</item>
+        <item name="borderButtonColor">?attr/brand_primary</item>
         <item name="distractiveBorderColor">?attr/status_primary_distractive</item>
         <item name="distractiveIconColor">?attr/status_primary_distractive</item>
         <item name="iconColor">?attr/brand_primary</item>
@@ -53,6 +57,7 @@
     <style name="SPButton.Iconic.Secondary.Size48" parent="SPButton.Iconic.Size48">
         <item name="iconBackgroundColor">?attr/white</item>
         <item name="distractiveColor">?attr/white</item>
+        <item name="borderButtonColor">?attr/brand_primary</item>
         <item name="distractiveIconColor">?attr/status_primary_distractive</item>
         <item name="distractiveBorderColor">?attr/status_primary_distractive</item>
         <item name="iconColor">?attr/brand_primary</item>

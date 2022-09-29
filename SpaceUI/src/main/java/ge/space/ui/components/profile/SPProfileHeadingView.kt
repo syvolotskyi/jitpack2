@@ -20,6 +20,7 @@ import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.view_factory.SPViewData
 
 class SPProfileHeadingView @JvmOverloads constructor(
@@ -148,6 +149,10 @@ class SPProfileHeadingView @JvmOverloads constructor(
         binding.descriptionText.setTextStyle(descAppearance)
     }
 
+    fun setOnProfileClickListener(listener: () -> Unit) {
+        binding.mark.onClick { listener() }
+        binding.button.onClick { listener() }
+    }
 
     fun setViewData(viewData: SPViewData) =
         binding.mark.setViewData(viewData)

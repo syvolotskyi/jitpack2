@@ -8,10 +8,6 @@
     </style>
 
     <style name="SPButton.Iconic.Profile" parent="SPButton.Iconic.Size24">
-        <item name="iconBackgroundColor">?attr/brand_primary</item>
-        <item name="borderColor">?attr/white</item>
-        <item name="iconColor">?attr/white</item>
-        <item name="btnIconPadding">@dimen/dimen_p_6</item>
-        <item name="buttonHeight">@dimen/dimen_p_12</item>
+        <item name="borderButtonColor">?attr/white</item>
     </style>
 </resources>

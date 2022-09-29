@@ -61,6 +61,7 @@ abstract class SPBaseView @JvmOverloads constructor(
      */
     private val borderPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         isAntiAlias = true
+        color = borderColor
         style = Paint.Style.FILL
     }
 
