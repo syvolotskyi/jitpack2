@@ -150,7 +150,7 @@ class SPProfileHeadingView @JvmOverloads constructor(
     /**
      * Sets profile mark
      */
-    fun setViewData(viewData: SPViewData) =
+    fun setIconViewData(viewData: SPViewData) =
         binding.mark.setViewData(viewData)
 
     /**
