@@ -12,12 +12,10 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpProfileHeadingLayoutBinding
-import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_INT
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.EMPTY_TEXT
-import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.extension.onClick
@@ -42,18 +40,18 @@ class SPProfileHeadingView @JvmOverloads constructor(
      * Sets a image resource
      */
     @IdRes
-    var src = 0
+    var src = DEFAULT_INT
         set(value) {
             field = value
 
-            binding.button.src = src
+            handleButton()
         }
 
     /**
      * Sets a image resource
      */
     @IdRes
-    var defaultMarkImage = 0
+    var defaultMarkImage = DEFAULT_INT
         set(value) {
             field = value
 
@@ -63,7 +61,7 @@ class SPProfileHeadingView @JvmOverloads constructor(
     /**
      * Sets a component title.
      */
-    var titleText: String = EMPTY_TEXT
+    private var titleText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -73,7 +71,7 @@ class SPProfileHeadingView @JvmOverloads constructor(
     /**
      * Sets a description title.
      */
-    var descText: String = EMPTY_TEXT
+    private var descText: String = EMPTY_TEXT
         set(value) {
             field = value
 
@@ -85,12 +83,22 @@ class SPProfileHeadingView @JvmOverloads constructor(
      */
     @StyleRes
     private var textAppearance: Int = DEFAULT_INT
+        set(value) {
+            field = value
+
+            binding.titleTV.setTextStyle(value)
+        }
 
     /**
      * Sets a description text appearance
      */
     @StyleRes
     private var descriptionTextAppearance: Int = DEFAULT_INT
+        set(value) {
+            field = value
+
+            binding.descriptionText.setTextStyle(value)
+        }
 
 
     init {
@@ -126,37 +134,40 @@ class SPProfileHeadingView @JvmOverloads constructor(
         )
         defaultMarkImage = getResourceId(
             R.styleable.SPProfileHeadingView_defaultProfileImage,
-            0
+            DEFAULT_INT
         )
 
-        updateTextAppearance(textAppearance, descriptionTextAppearance)
-    }
-
-
-    private fun handleTitleText(text: String) {
-        binding.titleTV.text = text
-        binding.titleTV.isVisible = text.isNotEmpty()
     }
 
     /**
-     * Sets title and description text appearance
+     * Sets on click listener
      */
-    fun updateTextAppearance(
-        textAppearance: Int,
-        descAppearance: Int = descriptionTextAppearance
-    ) {
-        binding.titleTV.setTextStyle(textAppearance)
-        binding.descriptionText.setTextStyle(descAppearance)
-    }
-
     fun setOnProfileClickListener(listener: () -> Unit) {
         binding.mark.onClick { listener() }
         binding.button.onClick { listener() }
     }
 
+    /**
+     * Sets profile mark
+     */
     fun setViewData(viewData: SPViewData) =
         binding.mark.setViewData(viewData)
 
+    /**
+     * Sets title text and textAppearance
+     */
+    fun setTitle(title: String, titleAppearance: Int = textAppearance) {
+        this.titleText = title
+        this.textAppearance = titleAppearance
+    }
+
+    /**
+     * Sets desc text and textAppearance
+     */
+    fun setDescription(desc: String, appearance: Int = descriptionTextAppearance) {
+        this.descText = desc
+        this.descriptionTextAppearance = appearance
+    }
 
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(newStyle, R.styleable.SPProfileHeadingView) {
@@ -164,4 +175,13 @@ class SPProfileHeadingView @JvmOverloads constructor(
         }
     }
 
+    private fun handleTitleText(text: String) {
+        binding.titleTV.text = text
+        binding.titleTV.isVisible = text.isNotEmpty()
+    }
+
+    private fun handleButton() {
+        binding.button.isVisible = src != DEFAULT_INT
+        binding.button.src = src
+    }
 }

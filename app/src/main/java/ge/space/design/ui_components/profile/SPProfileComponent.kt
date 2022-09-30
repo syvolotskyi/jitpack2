@@ -41,8 +41,8 @@ class SPProfileComponent : ShowCaseComponent {
                    profileProgLayout.addView(  SPProfileHeadingView(environment.context).apply {
                         setViewStyle(markSample.resId)
                         markSample.profileUrl?.let { setViewData(SPViewData.SPImageUrlData(it)) }
-                        markSample.title?.let { titleText = context.getString(it) }
-                        markSample.description?.let { descText = context.getString(it) }
+                        markSample.title?.let { setTitle(context.getString(it)) }
+                        markSample.description?.let { setDescription(context.getString(it)) }
                         markSample.defaultIcon?.let { defaultMarkImage = it }
                        setOnProfileClickListener { Toast.makeText(context, markSample.resId.toString(), Toast.LENGTH_SHORT).show()  }
                     })
