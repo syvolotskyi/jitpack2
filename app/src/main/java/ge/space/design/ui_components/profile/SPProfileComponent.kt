@@ -23,24 +23,61 @@ class SPProfileComponent : ShowCaseComponent {
                 environment.requireLayoutInflater()
             ).apply {
                 val context = environment.context
-                profile1.setIconViewData(SPViewData.SPImageUrlData(SPProfileHeadingStyles.profileURL))
-                profile1.setOnProfileClickListener { Toast.makeText(context, "First Profile", Toast.LENGTH_SHORT).show() }
+                profile1.setIconViewData(SPViewData.SPImageUrlData(SPProfileHeadingStyles(context).profileURL))
+                profile1.setOnProfileClickListener {
+                    Toast.makeText(
+                        context,
+                        "First Profile",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-                profile2.setIconViewData(SPViewData.SPImageUrlData(SPProfileHeadingStyles.profileURL))
-                profile2.setOnProfileClickListener { Toast.makeText(context, "Second Profile", Toast.LENGTH_SHORT).show() }
+                profile2.setIconViewData(SPViewData.SPImageUrlData(SPProfileHeadingStyles(context).profileURL))
+                profile2.setOnProfileClickListener {
+                    Toast.makeText(
+                        context,
+                        "Second Profile",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
                 profile3.setIconViewData(SPViewData.SPTextData("VS"))
-                profile3.setOnProfileClickListener { Toast.makeText(context, "Third Profile", Toast.LENGTH_SHORT).show() }
-                profile4.setOnProfileClickListener { Toast.makeText(context, "Fourth Profile", Toast.LENGTH_SHORT).show() }
+                profile3.setOnProfileClickListener {
+                    Toast.makeText(
+                        context,
+                        "Third Profile",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                profile4.setOnProfileClickListener {
+                    Toast.makeText(
+                        context,
+                        "Fourth Profile",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-                SPProfileHeadingStyles.list.onEach { markSample ->
-                   profileProgLayout.addView(  SPProfileHeadingView(environment.context).apply {
+                SPProfileHeadingStyles(context).list.onEach { markSample ->
+                    profileProgLayout.addView(SPProfileHeadingView(environment.context).apply {
                         setViewStyle(markSample.resId)
-                        markSample.profileUrl?.let { setIconViewData(SPViewData.SPImageUrlData(it)) }
-                        markSample.title?.let { setTitle(context.getString(it)) }
-                        markSample.description?.let { setDescription(context.getString(it)) }
-                        markSample.defaultIcon?.let { defaultMarkImage = it }
-                       setOnProfileClickListener { Toast.makeText(context, markSample.resId.toString(), Toast.LENGTH_SHORT).show()  }
+                        val iconView =
+                            if (markSample.profileUrl != null) SPViewData.SPImageUrlData(markSample.profileUrl)
+                            else null
+
+                        setProfileData(
+                            markSample.title,
+                            markSample.description,
+                            markSample.defaultIcon,
+                            iconView
+                        )
+
+                        setOnProfileClickListener {
+                            Toast.makeText(
+                                context,
+                                markSample.resId.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     })
 
                 }

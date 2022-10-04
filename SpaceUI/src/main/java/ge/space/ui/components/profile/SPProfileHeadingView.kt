@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.IdRes
@@ -152,6 +153,27 @@ class SPProfileHeadingView @JvmOverloads constructor(
      */
     fun setIconViewData(viewData: SPViewData) =
         binding.mark.setViewData(viewData)
+
+    /**
+     * Sets profile data
+     *
+     *
+     * @param title [String] sets title text
+     * @param desc [String]  sets desc text
+     * @param defaultIcon [Int] sets a image resource
+     * @param viewData [SPViewData] sets profile mark
+     */
+    fun setProfileData(
+        title: String? = null,
+        desc: String? = null,
+        defaultIcon: Int? = null,
+        viewData: SPViewData? = null
+    ) {
+        title?.let { setTitle(it) }
+        desc?.let { setDescription(it) }
+        viewData?.let { setIconViewData(it) }
+        defaultIcon?.let { defaultMarkImage = it }
+    }
 
     /**
      * Sets title text and textAppearance
