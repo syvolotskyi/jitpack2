@@ -8,6 +8,7 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.marks.SPMarkStyles.bankURL
 import ge.space.design.ui_components.marks.SPMarkStyles.brandBankURL
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.view_factory.SPViewData
 
 class SPMarksComponent : ShowCaseComponent {
@@ -44,7 +45,9 @@ class SPMarksComponent : ShowCaseComponent {
                     mark3.setViewData(
                         SPViewData.SPImageUrlData(brandBankURL)
                     )
-                    mark4.setViewData(SPViewData.SPImageResourcesData(R.drawable.ic_plus_16_regular))
+                    mark4.setViewData(SPViewData.SPImageResourcesData(R.drawable.ic_plus_16_regular,
+                        tintColor =  environment.context.getColorFromAttribute(
+                        ge.space.spaceui.R.attr.brand_primary)))
                 }
 
             }

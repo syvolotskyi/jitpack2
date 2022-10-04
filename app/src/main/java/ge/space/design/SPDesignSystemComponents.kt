@@ -13,6 +13,7 @@ import ge.space.design.ui_components.controls.SPControlsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.empty_state.SPEmptyStateComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
+import ge.space.design.ui_components.profile.SPProfileComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 import ge.space.design.ui_components.text_view.SPTextViewComponent
@@ -39,6 +40,7 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPDialogComponent() },
             new { SPEmptyStateComponent() },
             new { SPMarksComponent() },
+            new { SPProfileComponent() },
             new { SPTabNavigationComponent() },
             new { SPTextFieldsComponent() },
             new { SPTextViewComponent() },

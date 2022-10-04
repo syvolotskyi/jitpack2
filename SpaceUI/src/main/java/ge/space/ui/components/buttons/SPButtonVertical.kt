@@ -75,6 +75,11 @@ open class SPButtonVertical @JvmOverloads constructor(
             )
         }
 
+    private var imageSize = resources.getDimensionPixelSize(R.dimen.dimen_p_12)
+
+    private var buttonSize = resources.getDimensionPixelSize(R.dimen.dimen_p_24)
+
+
     /**
      *  it is a distractive color for image color
      */
@@ -126,10 +131,18 @@ open class SPButtonVertical @JvmOverloads constructor(
                 text = it
             }
         isEnabled = getBoolean(R.styleable.SPButtonVertical_android_enabled, true)
+        imageSize = resources.getDimensionPixelSize(
+            getResourceId(
+                R.styleable.SPButtonVertical_imgSize,
+                R.dimen.dimen_p_12
+            )
+        )
         src = getResourceId(
             R.styleable.SPButtonVertical_android_src,
             R.drawable.ic_plus_16_regular
         )
+
+        handleImageSize()
     }
 
     private fun TypedArray.applyStyledResource() {
@@ -137,9 +150,11 @@ open class SPButtonVertical @JvmOverloads constructor(
             R.styleable.sp_button_view_style_android_textAppearance,
             DEFAULT_OBTAIN_VAL
         )
-        val buttonHeight = getResourceId(
-            R.styleable.sp_button_view_style_buttonHeight,
-            DEFAULT_OBTAIN_VAL
+        buttonSize = resources.getDimensionPixelSize(
+            getResourceId(
+                R.styleable.sp_button_view_style_buttonHeight,
+                DEFAULT_OBTAIN_VAL
+            )
         )
         iconPadding = resources.getDimensionPixelSize(
             getResourceId(
@@ -152,7 +167,6 @@ open class SPButtonVertical @JvmOverloads constructor(
         color = Color.TRANSPARENT
 
         updateTextAppearance(textAppearance)
-        handleImageSize(resources.getDimensionPixelSize(buttonHeight))
         bubbleLayoutBinding.btnContainer.isCircle = true
         handleDistractiveState()
     }
@@ -178,8 +192,15 @@ open class SPButtonVertical @JvmOverloads constructor(
         bubbleLayoutBinding.btnContainer.invalidate()
     }
 
-    private fun handleImageSize(iconPixelSize: Int) {
-        bubbleLayoutBinding.image.setHeight(iconPixelSize)
-        bubbleLayoutBinding.image.setWidth(iconPixelSize)
+    private fun handleImageSize() {
+        bubbleLayoutBinding.image.setSize(imageSize, imageSize)
+
+        bubbleLayoutBinding.btnContainer.setPadding(
+            iconPadding,
+            iconPadding,
+            iconPadding,
+            iconPadding
+        )
+
     }
 }

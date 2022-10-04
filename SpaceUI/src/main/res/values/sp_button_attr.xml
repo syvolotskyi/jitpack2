@@ -36,10 +36,11 @@
         <attr name="android:text" format="string|reference" />
         <attr name="android:src" format="reference" />
         <attr name="android:enabled" format="boolean" />
+        <attr name="imgSize" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="SPButtonIconic">
-        <attr name="borderColor" />
+        <attr name="borderButtonColor" format="reference|color"  />
         <attr name="iconBackgroundColor" format="reference" />
         <attr name="iconColor" format="reference" />
         <attr name="distractiveBorderColor" format="reference"/>

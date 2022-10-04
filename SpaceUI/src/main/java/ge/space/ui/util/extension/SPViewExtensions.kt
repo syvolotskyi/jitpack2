@@ -135,7 +135,7 @@ fun Canvas.drawBorder(
     borderWidth: Float,
     borderPaint: Paint
 ) {
-    if (borderColor != EMPTY_BORDER_VALUE && borderWidth != EMPTY_BORDER_VALUE.toFloat()) {
+    if (borderColor != Color.TRANSPARENT && borderWidth != EMPTY_BORDER_VALUE.toFloat()) {
         drawPath(path, borderPaint.apply {
             color = borderColor
             strokeWidth = borderWidth
