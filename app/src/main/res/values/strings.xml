@@ -97,6 +97,9 @@
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
+    <string name="accordion_showcase">Accordion showcase</string>
+    <string name="accordion_desc">Expanded layout</string>
+
     <string name="profile_showcase">Profile showcase</string>
     <string name="profile_desc">Profile description</string>
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:background="?attr/background_secondary"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ge.space.ui.components.accordion.SPAccordionLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandedText="@string/example_text"
+            app:titleText="@string/small_example_text" />
+        <ge.space.ui.components.accordion.SPAccordionLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandedText="@string/example_text"
+            app:titleText="@string/small_example_text" />
+        <ge.space.ui.components.accordion.SPAccordionLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandedText="@string/example_text"
+            app:titleText="@string/small_example_text" />
+        <ge.space.ui.components.accordion.SPAccordionLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandedText="@string/example_text"
+            app:titleText="@string/small_example_text" />
+
+        <ge.space.ui.components.accordion.SPAccordionLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:expandedText="@string/example_text"
+            app:titleText="@string/small_example_text" />
+
+
+    </LinearLayout>
+</ScrollView>

@@ -9,14 +9,17 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpAccordionLayoutBinding
 import ge.space.spaceui.databinding.SpEmptyStateLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.components.accordion.expansion.SPExpansionLayout
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.onClick
+import ge.space.ui.util.extension.setTextStyle
 
 class SPAccordionLayout @JvmOverloads constructor(
     context: Context,
@@ -25,11 +28,7 @@ class SPAccordionLayout @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
     private val binding by lazy {
-        SpAccordionLayoutBinding.inflate(
-            LayoutInflater.from(context),
-            this,
-            true
-        )
+        SpAccordionLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
     /**
@@ -50,6 +49,27 @@ class SPAccordionLayout @JvmOverloads constructor(
             field = value
 
             binding.expandedText.text = value
+        }
+
+    /**
+     * Sets a text appearance
+     */
+    @StyleRes
+    private var textAppearance: Int = SPBaseView.DEFAULT_INT
+
+    /**
+     * Sets a expanded text appearance
+     */
+    @StyleRes
+    private var expandedTextAppearance: Int = SPBaseView.DEFAULT_INT
+
+    /**
+     * Expand or hide expandedText
+     */
+    var isExpanded: Boolean
+        get() = binding.expandableLayout.isExpanded
+        set(expand) {
+            binding.expandableLayout.setExpanded(expand, true)
         }
 
     init {
@@ -74,9 +94,40 @@ class SPAccordionLayout @JvmOverloads constructor(
             .handleAttributeAction(EMPTY_TEXT) { titleText = it }
         getString(R.styleable.SPAccordionLayout_expandedText).orEmpty()
             .handleAttributeAction(EMPTY_TEXT) { expandedText = it }
+        getResourceId(
+            R.styleable.SPAccordionLayout_titleTextAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { textAppearance = it }
+        getBoolean(R.styleable.SPAccordionLayout_showDivider, true)
+            .handleAttributeAction(true) { setDividerVisibility(it) }
+        getBoolean(R.styleable.SPAccordionLayout_expanded, false)
+            .handleAttributeAction(false) { isExpanded = it }
+        getResourceId(
+            R.styleable.SPAccordionLayout_expandedTextAppearance,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { expandedTextAppearance = it }
 
+        updateTextAppearance()
         binding.expandableButton.onClick {
             binding.expandableLayout.toggle()
         }
+    }
+
+    /**
+     * Set true if it's needed to show a  divider
+     */
+    fun setDividerVisibility(isVisible: Boolean) {
+        binding.vDivider.isVisible = isVisible
+    }
+
+    /**
+     * Sets title and description text appearance
+     */
+    fun updateTextAppearance(
+        titleTextAppearance: Int = textAppearance,
+        expandedAppearance: Int = expandedTextAppearance
+    ) {
+        binding.expandableButton.setTextStyle(titleTextAppearance)
+        binding.expandedText.setTextStyle(expandedAppearance)
     }
 }

@@ -22,7 +22,6 @@
         <item name="borderWidth">@dimen/dimen_p_0_5</item>
     </style>
 
-
     <style name="SPPillItemStandard" >
         <item name="android:button">@null</item>
         <item name="roundedCorners">@dimen/dimen_p_10</item>
