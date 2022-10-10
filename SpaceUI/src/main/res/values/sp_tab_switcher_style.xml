@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--
-    <style name="SPTabSwitcher" parent="@style/SPPillItemStandard">
-        <item name="selectedTextAppearance">@style/h800_medium_primary_white</item>
-        <item name="unselectedTextAppearance">@style/h800_medium_label_secondary</item>
-        <item name="android:layout_marginStart">@dimen/dimen_p_8</item>
-        <item name="android:layout_height">@dimen/dimen_p_50</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:padding">@dimen/dimen_p_16</item>
-    </style>  -->
-
     <style name="SPTabSwitcher" parent="@style/SPPillItemStandard">
         <item name="selectedTextAppearance">@style/h800_medium_primary_white</item>
         <item name="unselectedTextAppearance">@style/h800_medium_label_secondary</item>
@@ -19,15 +9,4 @@
         <item name="android:padding">@dimen/dimen_p_16</item>
     </style>
 
-<!--    <style name="SPPillItemStandard" >
-        <item name="android:button">@null</item>
-        <item name="roundedCorners">@dimen/dimen_p_10</item>
-        <item name="android:foreground">@drawable/toggle_icon_ripple</item>
-        <item name="selectedBackgroundColor">?attr/brand_primary</item>
-        <item name="selectedShadowStyle">@style/shadow_300_brand</item>
-        <item name="unselectedShadowStyle">@style/shadow_300_primary_pills</item>
-        <item name="unselectedBackgroundColor">@color/white</item>
-        <item name="selectedTextAppearance">@style/h700_bold_caps_primary_white</item>
-        <item name="unselectedTextAppearance">@style/h700_bold_caps_brand_primary</item>
-    </style>-->
 </resources>
