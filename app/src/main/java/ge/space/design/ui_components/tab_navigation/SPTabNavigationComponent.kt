@@ -3,6 +3,7 @@ package ge.space.design.ui_components.tab_navigation
 import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.ui_components.tab_navigation.child.SPTabNavigationViewComponent
+import ge.space.design.ui_components.tab_navigation.tab_switcher.SPTabSwitcherComponent
 
 class SPTabNavigationComponent : ShowCaseComponent {
 
@@ -12,7 +13,8 @@ class SPTabNavigationComponent : ShowCaseComponent {
 
     override fun getSubComponents(): List<ShowCaseComponent> {
         return listOf(
-            SPTabNavigationViewComponent()
+            SPTabSwitcherComponent(),
+            SPTabNavigationViewComponent(),
         )
     }
 }

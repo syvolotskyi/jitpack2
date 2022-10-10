@@ -1,9 +1,13 @@
 package ge.space.ui.util.extension
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Rect
 import android.text.*
 import android.view.*
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.fragment.app.FragmentActivity
 
 fun View.visibleIf(visible: Boolean) {
@@ -39,6 +43,30 @@ private fun View.onSafeClick(duration: Long, click: (() -> Unit)) {
         runDelayed(duration) {
             clickPermissible = true
         }
+    }
+}
+
+/**
+ * Returns LinearLayout.LayoutParam from style (contains height, width and margin)
+ * @param context Context
+ * @param style [Int] is style id.
+ */
+@SuppressLint("ResourceType")
+fun getLayoutParamsFromStyle(context: Context, style: Int): LinearLayout.LayoutParams {
+    val a: TypedArray = context.theme.obtainStyledAttributes(
+        style, intArrayOf(
+            android.R.attr.layout_width,
+            android.R.attr.layout_height,
+            android.R.attr.layout_marginStart
+        )
+    )
+
+
+    val width: Int = a.getInt(0, LinearLayout.LayoutParams.WRAP_CONTENT)
+    val height: Int = a.getDimensionPixelSize(1, LinearLayout.LayoutParams.WRAP_CONTENT)
+    val marginStart: Int = a.getDimensionPixelSize(2, 0)
+    return LinearLayout.LayoutParams(width, height).apply {
+        setMarginStart(marginStart)
     }
 }
 

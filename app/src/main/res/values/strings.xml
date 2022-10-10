@@ -35,6 +35,9 @@
     <string name="drawer_pill_description">Drawer pill description</string>
     <string name="drawer_pill">Drawer pill</string>
 
+    <string name="tab_switcher_description">Tab Switcher is a pill drawer with specific style and covered with HorizontalScrollView</string>
+    <string name="tab_switcher">Tab Switcher</string>
+
     <string name="list_item_button">List item button</string>
     <string name="list_item_button_desc">List item button Description</string>
 
@@ -188,6 +191,7 @@
     <string name="enter_you_details_here">Enter your details here</string>
     <string name="enter_amount">Enter amount</string>
     <string name="title_default_items">Showcases for default items</string>
+    <string name="default_tab_text">14-21ივლისი 2018</string>
     <string name="component_otp_resend_sms">SMS-ის ხელმეორედ გაგზავნა</string>
     <string name="component_otp_label">შეიყვანე ვერიფიკაციის კოდი, რომელიც მიიღე ნომერზე:</string>
     <string name="text_sample">აჩუ-აჩუ ცხენო\nსაით გაგაჭენო,\nალაზანი დიდია\nშიგ ბებერი კიდია,\nპური ვთხოვე არ მაჭამა\nჩემი ცოდვა კიდია</string>

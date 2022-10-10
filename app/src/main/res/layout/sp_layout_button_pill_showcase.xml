@@ -9,10 +9,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="?attr/themeTextColor"
         android:layout_marginBottom="@dimen/dimen_p_16"
-        android:text="Radio Buttons from XML"/>
+        android:text="Radio Buttons from XML"
+        android:textColor="?attr/themeTextColor" />
 
     <ge.space.ui.components.controls.radio.SPRadioGroup
         android:id="@+id/radioGroup"
@@ -25,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-             android:text="1x" />
+            android:text="1x" />
 
         <ge.space.ui.components.controls.radio.pill.SPPillItem
             android:id="@+id/toggleSwitch2"
@@ -44,13 +43,14 @@
             android:text="3x" />
     </ge.space.ui.components.controls.radio.SPRadioGroup>
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="?attr/themeTextColor"
         android:layout_marginVertical="@dimen/dimen_p_16"
-        android:text="Radio Buttons programmatically"/>
+        android:text="Radio Buttons programmatically"
+        android:textColor="?attr/themeTextColor" />
 
     <ge.space.ui.components.controls.radio.SPRadioGroup
         android:id="@+id/radioGroup2"
