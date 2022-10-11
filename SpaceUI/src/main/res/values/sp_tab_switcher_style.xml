@@ -9,4 +9,17 @@
         <item name="android:padding">@dimen/dimen_p_16</item>
     </style>
 
+    <style name="SPSegmentControl" parent="shadow_empty">
+        <item name="backgroundColor">?attr/background_secondary</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
+        <item name="activeTextAppearance">@style/h700_bold_caps_brand_primary</item>
+        <item name="inActiveTextAppearance">@style/h700_medium_caps_label_secondary</item>
+    </style>
+
+    <style name="SPSelectedItem" parent="shadow_200_primary">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="roundedCorners">@dimen/dimen_p_10</item>
+        <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>
+    </style>
+
 </resources>

@@ -18,7 +18,8 @@ class SPSandboxComponent : ShowCaseComponent {
         override fun create(environment: SPShowCaseEnvironment): Any {
             val layoutBinding = SpLayoutSandboxShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
-            )
+            ).apply {
+            }
 
             return layoutBinding.root
         }

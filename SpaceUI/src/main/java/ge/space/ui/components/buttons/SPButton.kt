@@ -61,7 +61,7 @@ class SPButton @JvmOverloads constructor(
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = DEFAULT_INT
+    var textAppearance: Int = DEFAULT_INT
 
     /**
      * Sets a distractive text appearance
