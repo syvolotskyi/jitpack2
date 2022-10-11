@@ -4,28 +4,26 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpAccordionLayoutBinding
-import ge.space.spaceui.databinding.SpEmptyStateLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.accordion.expansion.SPExpansionLayout
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setTextStyle
 
-class SPAccordionLayout @JvmOverloads constructor(
+class SPAccordionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
+    defStyleRes: Int = R.style.SPAccordionView
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
     private val binding by lazy {
         SpAccordionLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -70,6 +68,7 @@ class SPAccordionLayout @JvmOverloads constructor(
         get() = binding.expandableLayout.isExpanded
         set(expand) {
             binding.expandableLayout.setExpanded(expand, true)
+            handleRightButton()
         }
 
     init {
@@ -110,6 +109,7 @@ class SPAccordionLayout @JvmOverloads constructor(
         updateTextAppearance()
         binding.expandableButton.onClick {
             binding.expandableLayout.toggle()
+            handleRightButton()
         }
     }
 
@@ -130,4 +130,16 @@ class SPAccordionLayout @JvmOverloads constructor(
         binding.expandableButton.setTextStyle(titleTextAppearance)
         binding.expandedText.setTextStyle(expandedAppearance)
     }
+
+    private fun handleRightButton() {
+        binding.expandableButton.setCompoundDrawablesWithIntrinsicBounds(
+            null,
+            null,
+            ContextCompat.getDrawable(context, getArrowDrawable()),
+            null
+        )
+    }
+
+    private fun getArrowDrawable() =
+        if (binding.expandableLayout.isExpanded) R.drawable.ic_chevron_up_16_regular else R.drawable.ic_chevron_down_16_regular
 }

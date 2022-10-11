@@ -14,32 +14,38 @@
         android:orientation="vertical">
 
 
-        <ge.space.ui.components.accordion.SPAccordionLayout
+        <ge.space.ui.components.accordion.SPAccordionView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:expandedText="@string/example_text"
             app:titleText="@string/small_example_text" />
-        <ge.space.ui.components.accordion.SPAccordionLayout
+        <ge.space.ui.components.accordion.SPAccordionView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:expandedText="@string/example_text"
             app:titleText="@string/small_example_text" />
-        <ge.space.ui.components.accordion.SPAccordionLayout
+        <ge.space.ui.components.accordion.SPAccordionView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:expandedText="@string/example_text"
             app:titleText="@string/small_example_text" />
-        <ge.space.ui.components.accordion.SPAccordionLayout
+        <ge.space.ui.components.accordion.SPAccordionView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:expandedText="@string/example_text"
             app:titleText="@string/small_example_text" />
 
-        <ge.space.ui.components.accordion.SPAccordionLayout
+        <ge.space.ui.components.accordion.SPAccordionView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:expandedText="@string/example_text"
             app:titleText="@string/small_example_text" />
+
+    <LinearLayout
+        android:id="@+id/layoutProgram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
 
 
     </LinearLayout>
