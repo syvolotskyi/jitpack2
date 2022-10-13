@@ -4,35 +4,42 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.transition.TransitionManager
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import ge.space.ui.util.extension.onClick
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.size
 import ge.space.spaceui.R
+import ge.space.spaceui.databinding.SpDividerLayoutBinding
 import ge.space.spaceui.databinding.SpSegmentControlLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.extension.handleAttributeAction
+import ge.space.ui.util.extension.*
 
 class SPSegmentControl @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPSegmentControl
-) : SPBaseView(context, attrs, defStyleAttr,defStyleRes), SPViewStyling {
+) : SPBaseView(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     private val binding by lazy {
         SpSegmentControlLayoutBinding.inflate(LayoutInflater.from(context), this)
     }
+
+    /**
+     * Sets a text appearance
+     */
+    @StyleRes
+    private var inactiveTextAppearance: Int = 0
+
     private var list = arrayListOf<SPSegmentNode>()
+    private var selectedNode: SPSegmentNode? = null
+    private var onTabChooseListener: (String, Int) -> Unit = { _, _ -> }
 
     init {
         getContext().withStyledAttributes(
@@ -51,70 +58,152 @@ class SPSegmentControl @JvmOverloads constructor(
         }
     }
 
-    fun addTab(title: String) {
-        val lastItem = if (size > 0) list[size - 1] else null
-        val view = TextView(context).apply {
-            id = View.generateViewId()
-            text = title
+    fun setOnTabSelectedListener(listener: (String, Int) -> Unit) {
+        onTabChooseListener = listener
+    }
+
+    fun setTabs(tabs: List<String>) {
+        if (tabs.size > MAX_SIZE) throw IllegalStateException("Max size is $MAX_SIZE")
+        tabs.forEachIndexed { index, view ->
+            addTab(view, index)
+        }
+    }
+
+    fun setSelectedTab(key: Int) {
+        tabClicked(list[key], key)
+        applyNewSelectedConstrains(list[key].data.id)
+    }
+
+    private fun addTab(title: String, key: Int) {
+        val currentTabView = getInactiveTabView(title)
+        val lastTabView = getLastTabItem()
+        val divider = if (lastTabView != null) {
+            createDivider()
+        } else null
+        val currentNode = SPSegmentNode(currentTabView).apply { this.title = title }
+        currentTabView.onClick { tabClicked(currentNode, key) }
+        divider?.let {
+            lastTabView?.nextDivider = it
+            currentNode.prevDivider = it
+            binding.parent.addView(it)
         }
 
-        binding.parent.addView(view)
+        binding.parent.addView(currentTabView)
+        list.add(currentNode)
 
+        resetConstrainsSet(divider, lastTabView, currentTabView)
+        applyNewSelectedConstrains(currentTabView.id)
+    }
+
+    private fun resetConstrainsSet(
+        divider: View?,
+        lastTabView: SPSegmentNode?,
+        currentTabView: TextView
+    ) {
         ConstraintSet().apply {
-            clone(binding.parent);
-            connect(view.id, ConstraintSet.START, lastItem?.data?.id ?: PARENT_ID, if (lastItem == null) ConstraintSet.START else ConstraintSet.END, 0)
-            connect(R.id.imageView, ConstraintSet.TOP, PARENT_ID, ConstraintSet.TOP, 0)
+            clone(binding.parent)
+            if (divider != null && lastTabView != null) {
+                connectDivider(divider, lastTabView.data, currentTabView)
+            }
+            connectTab(currentTabView, divider)
             applyTo(binding.parent)
         }
-        list.add(SPSegmentNode(view))
     }
+
+    private fun ConstraintSet.connectTab(currentTabView: TextView, divider: View?) {
+        connect(
+            currentTabView.id, ConstraintSet.START, divider?.id ?: PARENT_ID,
+            if (divider == null) ConstraintSet.START else ConstraintSet.END,
+            DEFAULT_INT
+        )
+        connect(currentTabView.id, ConstraintSet.TOP, PARENT_ID, ConstraintSet.TOP, DEFAULT_INT)
+        connect(
+            currentTabView.id,
+            ConstraintSet.BOTTOM,
+            PARENT_ID,
+            ConstraintSet.BOTTOM,
+            DEFAULT_INT
+        )
+        connect(currentTabView.id, ConstraintSet.END, PARENT_ID, ConstraintSet.END, DEFAULT_INT)
+    }
+
+    private fun ConstraintSet.connectDivider(divider: View, lastItem: View, tabView: TextView) {
+        connect(divider.id, ConstraintSet.START, lastItem.id, ConstraintSet.END, DEFAULT_INT)
+        connect(divider.id, ConstraintSet.END, tabView.id, ConstraintSet.START, DEFAULT_INT)
+        connect(divider.id, ConstraintSet.TOP, PARENT_ID, ConstraintSet.TOP, DEFAULT_INT)
+        connect(divider.id, ConstraintSet.BOTTOM, PARENT_ID, ConstraintSet.BOTTOM, DEFAULT_INT)
+        connect(lastItem.id, ConstraintSet.END, divider.id, ConstraintSet.START, DEFAULT_INT)
+    }
+
+    private fun getLastTabItem() = if (getTabsSize() > 0) list[getTabsSize() - 1] else null
+
+    private fun tabClicked(selectedTab: SPSegmentNode, key: Int) {
+        selectedNode?.prevDivider?.show()
+        selectedNode?.nextDivider?.show()
+        //            currentNode.prevDivider?.hide()
+        //            currentNode.nextDivider?.hide()
+        selectedNode = selectedTab
+        binding.selectedItem.text = selectedTab.title
+        applyNewSelectedConstrains(selectedTab.data.id)
+        onTabChooseListener(selectedTab.title, key)
+    }
+
+    private fun getInactiveTabView(title: String) =
+        TextView(context, null, R.style.SPSegmentControlUnselected).apply {
+            id = generateViewId()
+            text = title
+            gravity = Gravity.CENTER
+            setTextStyle(inactiveTextAppearance)
+            layoutParams = getLayoutParamsFromStyle(context, R.style.SPSegmentControlUnselected)
+        }
+
+
+    private fun createDivider(): View =
+        SpDividerLayoutBinding.inflate(LayoutInflater.from(context)).root
+            .apply {
+                id = View.generateViewId()
+                layoutParams = getLayoutParamsFromStyle(context, R.style.SPSegmentControlDivider)
+            }
+
+    private fun getTabsSize() = list.size
 
     private fun TypedArray.withStyledAttributes() {
 
- /*       getResourceId(
+        getResourceId(
             R.styleable.SPSegmentControl_activeTextAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        )
-            .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-                binding.selectedItem.textAppearance = it
-            }*/
-
-        binding.chip1.onClick{
-            ConstraintSet().apply {
-                clone(binding.parent);
-                binding.selectedItem.text = "tab1"
-                connect(binding.selectedItem.id, ConstraintSet.START, binding.chip1.id ,  ConstraintSet.START, 0)
-                connect(binding.selectedItem.id, ConstraintSet.END, binding.chip1.id ,  ConstraintSet.END, 0)
-                connect(binding.selectedItem.id, ConstraintSet.BOTTOM, PARENT_ID ,  ConstraintSet.BOTTOM, 0)
-
-
-                TransitionManager.beginDelayedTransition(binding.parent)
-                applyTo(binding.parent)
-            }
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+            binding.selectedItem.textAppearance = it
         }
-        binding.chip2.onClick{
-            ConstraintSet().apply {
-                clone(binding.parent);
-                binding.selectedItem.text = "tab2"
-                connect(binding.selectedItem.id, ConstraintSet.START, binding.chip2.id ,  ConstraintSet.START, 0)
-                connect(binding.selectedItem.id, ConstraintSet.END, binding.chip2.id ,  ConstraintSet.END, 0)
-                connect(binding.selectedItem.id, ConstraintSet.BOTTOM, PARENT_ID,  ConstraintSet.BOTTOM, 0)
 
-                TransitionManager.beginDelayedTransition(binding.parent)
-                applyTo(binding.parent)
-            }
+        getResourceId(
+            R.styleable.SPSegmentControl_inActiveTextAppearance,
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+            inactiveTextAppearance = it
         }
-        binding.chip3.onClick{
-            ConstraintSet().apply {
-                clone(binding.parent)
-                binding.selectedItem.text = "tab3"
-                connect(binding.selectedItem.id, ConstraintSet.START, binding.chip3.id ,  ConstraintSet.START, 0)
-                connect(binding.selectedItem.id, ConstraintSet.END, binding.chip3.id ,  ConstraintSet.END, 0)
-                connect(binding.selectedItem.id, ConstraintSet.BOTTOM, PARENT_ID ,  ConstraintSet.BOTTOM, 0)
+    }
 
-                TransitionManager.beginDelayedTransition(binding.parent)
-                applyTo(binding.parent)
-            }
+    private fun applyNewSelectedConstrains(selectedId: Int) {
+        ConstraintSet().apply {
+            clone(binding.parent)
+            connect(
+                binding.selectedItem.id,
+                ConstraintSet.START,
+                selectedId,
+                ConstraintSet.START,
+                0
+            )
+            connect(binding.selectedItem.id, ConstraintSet.END, selectedId, ConstraintSet.END, 0)
+            TransitionManager.beginDelayedTransition(binding.parent)
+            applyTo(binding.parent)
         }
+    }
+
+    companion object {
+        const val FIRST_TAB = 0
+        const val SECOND_TAB = 1
+        const val THIRD_TAB = 2
+        private const val MAX_SIZE = 3
     }
 }

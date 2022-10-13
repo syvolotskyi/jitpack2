@@ -57,12 +57,11 @@ fun getLayoutParamsFromStyle(context: Context, style: Int): LinearLayout.LayoutP
         style, intArrayOf(
             android.R.attr.layout_width,
             android.R.attr.layout_height,
-            android.R.attr.layout_marginStart
+            android.R.attr.layout_marginStart,
         )
     )
 
-
-    val width: Int = a.getInt(0, LinearLayout.LayoutParams.WRAP_CONTENT)
+    val width: Int = a.getDimensionPixelSize(0, LinearLayout.LayoutParams.WRAP_CONTENT)
     val height: Int = a.getDimensionPixelSize(1, LinearLayout.LayoutParams.WRAP_CONTENT)
     val marginStart: Int = a.getDimensionPixelSize(2, 0)
     return LinearLayout.LayoutParams(width, height).apply {

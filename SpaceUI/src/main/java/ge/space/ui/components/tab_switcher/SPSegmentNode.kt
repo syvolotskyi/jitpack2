@@ -6,6 +6,11 @@ import android.view.View
 // next and prev is by default initialized as null
 class SPSegmentNode(var data: View) {
 
+    var title :String = ""
+
     var prev: SPSegmentNode? = null
     var next: SPSegmentNode? = null
+
+    var prevDivider: View? = null
+    var nextDivider: View? = null
 }
