@@ -4,19 +4,16 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpAccordionLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setTextStyle
@@ -35,6 +32,7 @@ class SPAccordionView @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0,
     defStyleRes: Int = R.style.SPAccordionView
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
+
     private val binding by lazy {
         SpAccordionLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }

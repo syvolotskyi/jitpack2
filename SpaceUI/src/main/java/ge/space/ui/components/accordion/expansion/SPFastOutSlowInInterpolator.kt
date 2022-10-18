@@ -13,7 +13,7 @@ package ge.space.ui.components.accordion.expansion
  * 201 points.
  */
 
-object FastOutSlowInInterpolator : SPLookupTableInterpolator(
+object SPFastOutSlowInInterpolator : SPLookupTableInterpolator(
     floatArrayOf(
         0.0000f, 0.0001f, 0.0002f, 0.0005f, 0.0009f, 0.0014f, 0.0020f,
         0.0027f, 0.0036f, 0.0046f, 0.0058f, 0.0071f, 0.0085f, 0.0101f,

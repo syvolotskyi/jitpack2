@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.view.animation.Interpolator
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import ge.space.spaceui.R
@@ -30,7 +29,6 @@ class SPExpansionLayout @JvmOverloads constructor(
      */
     var state = COLLAPSED
         private set
-    private var interpolator: Interpolator = FastOutSlowInInterpolator
     private var animator: ValueAnimator? = null
     private var listener: OnExpansionUpdateListener? = null
 
@@ -155,7 +153,7 @@ class SPExpansionLayout @JvmOverloads constructor(
     fun setParallax(parallax: Float) {
         // Make sure parallax is between 0 and 1
         var parallax = parallax
-        parallax = Math.min(1f, Math.max(0f, parallax))
+        parallax = 1f.coerceAtMost(0f.coerceAtLeast(parallax))
         this.parallax = parallax
     }
 
