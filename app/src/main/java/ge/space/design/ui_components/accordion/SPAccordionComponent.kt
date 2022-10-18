@@ -6,6 +6,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.amount.SPAmountStyles
+import ge.space.ui.components.accordion.SPAccordionData
 import ge.space.ui.components.accordion.SPAccordionView
 import ge.space.ui.components.amount.SPAmountView
 
@@ -24,8 +25,7 @@ class SPAccordionComponent : ShowCaseComponent {
             )
             SPAccordionStyles(environment.context).list.onEach { sample ->
                 SPAccordionView(environment.context).apply {
-                    titleText = sample.textTitle
-                    expandedText = sample.textExpanded
+                    initAccordionData(SPAccordionData(sample.textTitle, sample.textExpanded))
                 }.also { layoutBinding.layoutProgram.addView(it) }
             }
             return layoutBinding.root

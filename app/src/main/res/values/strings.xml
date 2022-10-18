@@ -213,6 +213,15 @@
     <string name="status_message_pending">Pending</string>
     <string name="status_message_info">Info</string>
 
+    <string-array name="planets">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+    </string-array>
+    <string-array name="languages">
+        <item>@string/georgian</item>
+        <item>@string/ukraine</item>
+    </string-array>
     <string name="georgian">Georgian</string>
     <string name="english">English</string>
     <string name="uzbekistan">Uzbekistan</string>
