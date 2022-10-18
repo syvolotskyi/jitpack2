@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_p_0_5"
+        android:background="?attr/separator_non_opaque"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/expandable_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_p_16"
+        android:paddingVertical="@dimen/dimen_p_12"
+        app:drawableEndCompat="@drawable/ic_chevron_down_16_regular"
+        app:layout_constraintTop_toBottomOf="@id/vDivider"
+        tools:text="@string/cancel" />
+
+    <ge.space.ui.components.accordion.expansion.SPExpansionLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:duration="1000"
+        app:expanded="false"
+        app:layout_constraintTop_toBottomOf="@id/expandable_button"
+        app:parallax="0.5">
+
+        <TextView
+            android:id="@+id/expandedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_p_12"
+            android:paddingHorizontal="@dimen/dimen_p_16"
+            tools:text="Fixed height" />
+
+    </ge.space.ui.components.accordion.expansion.SPExpansionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPExpansionLayout">
+        <attr name="duration" format="integer" />
+        <attr name="expanded" format="boolean" />
+        <attr name="parallax" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="SPAccordionLayout">
+        <attr name="expanded" />
+        <attr name="titleText" />
+        <attr name="showDivider" format="boolean" />
+        <attr name="titleTextAppearance" />
+        <attr name="expandedText" format="string|reference" />
+        <attr name="expandedTextAppearance" format="reference" />
+    </declare-styleable>
+</resources>
