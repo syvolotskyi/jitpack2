@@ -69,10 +69,8 @@ class SPSegmentControl @JvmOverloads constructor(
         }
     }
 
-    fun setSelectedTab(key: Int) {
+    fun setSelectedTab(key: Int) =
         tabClicked(list[key], key)
-        applyNewSelectedConstrains(list[key].data.id)
-    }
 
     private fun addTab(title: String, key: Int) {
         val currentTabView = getInactiveTabView(title)
@@ -140,8 +138,6 @@ class SPSegmentControl @JvmOverloads constructor(
     private fun tabClicked(selectedTab: SPSegmentNode, key: Int) {
         selectedNode?.prevDivider?.show()
         selectedNode?.nextDivider?.show()
-        //            currentNode.prevDivider?.hide()
-        //            currentNode.nextDivider?.hide()
         selectedNode = selectedTab
         binding.selectedItem.text = selectedTab.title
         applyNewSelectedConstrains(selectedTab.data.id)

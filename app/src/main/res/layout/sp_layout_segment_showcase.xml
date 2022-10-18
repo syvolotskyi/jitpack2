@@ -15,5 +15,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+      <ge.space.ui.components.tab_switcher.SPSegmentControl
+          android:id="@+id/segmentControl"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </ScrollView>
