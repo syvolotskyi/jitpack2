@@ -4,21 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="0dp"
+    android:layout_margin="@dimen/dimen_p_16"
     android:layout_weight="1"
     android:background="#E5E5E5"
     tools:ignore="MissingDefaultResource">
 
     <LinearLayout
-        android:layout_width="match_parent"
         android:id="@+id/layout"
-        android:layout_marginTop="@dimen/dimen_p_32"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_32"
         android:orientation="vertical">
 
-      <ge.space.ui.components.tab_switcher.SPSegmentControl
-          android:id="@+id/segmentControl"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
+        <ge.space.ui.components.tab_switcher.SPSegmentControl
+            android:id="@+id/segmentControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ge.space.ui.components.tab_switcher.SPSegmentControl
+            android:id="@+id/segmentControl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:tabs="@array/languages" />
+
+        <ge.space.ui.components.tab_switcher.SPSegmentControl
+            android:id="@+id/segmentControl3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:tabs="@array/planets" />
 
     </LinearLayout>
 </ScrollView>

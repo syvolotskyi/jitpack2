@@ -7,12 +7,14 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.forEachIndexed
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDividerLayoutBinding
 import ge.space.spaceui.databinding.SpSegmentControlLayoutBinding
@@ -20,6 +22,11 @@ import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.*
 
+/**
+ * SPSegmentControl view extended from [SPBaseView] that allows to change its configuration.
+ * Max size is 4, list of tabs can be set from xml (use tabs="array/strings") or from code
+ *
+ */
 class SPSegmentControl @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -58,10 +65,16 @@ class SPSegmentControl @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Set tab selected listener
+     */
     fun setOnTabSelectedListener(listener: (String, Int) -> Unit) {
         onTabChooseListener = listener
     }
 
+    /**
+     * Set list of tabs. Max size is 3
+     */
     fun setTabs(tabs: List<String>) {
         if (tabs.size > MAX_SIZE) throw IllegalStateException("Max size is $MAX_SIZE")
         tabs.forEachIndexed { index, view ->
@@ -69,6 +82,9 @@ class SPSegmentControl @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Set selected tab by key
+     */
     fun setSelectedTab(key: Int) =
         tabClicked(list[key], key)
 
@@ -90,7 +106,9 @@ class SPSegmentControl @JvmOverloads constructor(
         list.add(currentNode)
 
         resetConstrainsSet(divider, lastTabView, currentTabView)
-        applyNewSelectedConstrains(currentTabView.id)
+        if (selectedNode == null) {
+            tabClicked(currentNode, key)
+        }
     }
 
     private fun resetConstrainsSet(
@@ -138,10 +156,12 @@ class SPSegmentControl @JvmOverloads constructor(
     private fun tabClicked(selectedTab: SPSegmentNode, key: Int) {
         selectedNode?.prevDivider?.show()
         selectedNode?.nextDivider?.show()
+        selectedTab.prevDivider?.hide()
+        selectedTab.nextDivider?.hide()
         selectedNode = selectedTab
         binding.selectedItem.text = selectedTab.title
         applyNewSelectedConstrains(selectedTab.data.id)
-        onTabChooseListener(selectedTab.title, key)
+        binding.parent.post { onTabChooseListener(selectedTab.title, key) }
     }
 
     private fun getInactiveTabView(title: String) =
@@ -177,6 +197,13 @@ class SPSegmentControl @JvmOverloads constructor(
             DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
             inactiveTextAppearance = it
+        }
+
+        getResourceId(
+            R.styleable.SPSegmentControl_tabs,
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
+            setTabs(resources.getStringArray(it).toList())
         }
     }
 

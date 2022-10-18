@@ -21,17 +21,7 @@ class SPSandboxComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutSandboxShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             ).apply {
-                segmentControl.apply {
-                    setTabs(listOf("Tab 1","Tab 2","Tab 3"))
-                    setSelectedTab(SPSegmentControl.FIRST_TAB)
-                    setOnTabSelectedListener { title, key ->
-                        Toast.makeText(
-                            environment.requireActivity(),
-                            "$title\nKey:$key",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
+              // do tests
             }
 
             return layoutBinding.root
