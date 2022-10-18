@@ -1,12 +1,10 @@
 package ge.space.design.ui_components.sandbox
 
-import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutSandboxShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.tab_switcher.SPSegmentControl
 
 class SPSandboxComponent : ShowCaseComponent {
 
@@ -23,7 +21,6 @@ class SPSandboxComponent : ShowCaseComponent {
             ).apply {
               // do tests
             }
-
             return layoutBinding.root
         }
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SPAccordionView">
+        <item name="titleTextAppearance">@style/h700_medium_label_primary</item>
+        <item name="descriptionTextAppearance">@style/h800_medium_label_secondary</item>
+    </style>
+
+</resources>

@@ -2,6 +2,7 @@ package ge.space.design
 
 import com.example.spacedesignsystem.R
 import ge.space.design.main.ShowCaseComponent
+import ge.space.design.ui_components.accordion.SPAccordionComponent
 import ge.space.design.ui_components.amount.SPAmountComponent
 import ge.space.design.ui_components.sandbox.SPSandboxComponent
 import ge.space.design.ui_components.bank_cards.SPChipsComponent
@@ -31,6 +32,7 @@ object DesignSystemComponents : ShowCaseComponent {
     override fun getSubComponents(): List<ShowCaseComponent> {
         return listOf(
             new { SPSandboxComponent() },
+            new { SPAccordionComponent() },
             new { SPAmountComponent() },
             new { SPBankCardViewComponent() },
             new { SPBannerComponent() },
