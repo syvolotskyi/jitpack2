@@ -19,7 +19,6 @@ class SPExpansionLayout @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-
     var duration = DEFAULT_DURATION
     private var parallax = 0f
     private var expansion = 0f
@@ -48,7 +47,6 @@ class SPExpansionLayout @JvmOverloads constructor(
             state = if (expansion == 0f) COLLAPSED else EXPANDED
             setParallax(parallax)
         }
-
     }
 
     override fun onSaveInstanceState(): Parcelable {
@@ -72,8 +70,7 @@ class SPExpansionLayout @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = measuredWidth
         val height = measuredHeight
-        visibility =
-            if (expansion == 0f && height == 0) GONE else VISIBLE
+        visibility = if (expansion == 0f && height == 0) GONE else VISIBLE
         val expansionDelta = height - Math.round(height * expansion)
         if (parallax > 0) {
             val parallaxDelta = expansionDelta * parallax
@@ -134,14 +131,6 @@ class SPExpansionLayout @JvmOverloads constructor(
         }
     }
 
-    fun setInterpolator(interpolator: Interpolator) {
-        this.interpolator = interpolator
-    }
-
-    fun getExpansion(): Float {
-        return expansion
-    }
-
     fun setExpansion(expansion: Float) {
         if (this.expansion == expansion) {
             return
@@ -150,18 +139,10 @@ class SPExpansionLayout @JvmOverloads constructor(
         // Infer state from previous value
         val delta = expansion - this.expansion
         when {
-            expansion == 0f -> {
-                state = COLLAPSED
-            }
-            expansion == 1f -> {
-                state = EXPANDED
-            }
-            delta < 0 -> {
-                state = COLLAPSING
-            }
-            delta > 0 -> {
-                state = EXPANDING
-            }
+            expansion == 0f -> { state = COLLAPSED }
+            expansion == 1f -> { state = EXPANDED }
+            delta < 0 -> { state = COLLAPSING }
+            delta > 0 -> { state = EXPANDING }
         }
         visibility = if (state == COLLAPSED) GONE else VISIBLE
         this.expansion = expansion
@@ -170,9 +151,6 @@ class SPExpansionLayout @JvmOverloads constructor(
             listener!!.onExpansionUpdate(expansion, state)
         }
     }
-
-    fun getParallax() = parallax
-
 
     fun setParallax(parallax: Float) {
         // Make sure parallax is between 0 and 1
@@ -244,5 +222,4 @@ class SPExpansionLayout @JvmOverloads constructor(
         EXPANDING,
         EXPANDED,
     }
-
 }
