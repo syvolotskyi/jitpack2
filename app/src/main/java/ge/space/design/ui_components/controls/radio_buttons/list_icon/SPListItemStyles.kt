@@ -11,7 +11,7 @@ data class SPListIconSupportsLoading(
 
 object SPListItemStyles {
     val georgian =
-        SPListIconSupportsLoading(R.string.georgian)
+        SPListIconSupportsLoading(R.string.georgia)
     val english = SPListIconSupportsLoading(
         R.string.english,
         "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"

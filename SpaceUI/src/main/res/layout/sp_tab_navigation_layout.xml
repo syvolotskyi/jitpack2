@@ -11,7 +11,7 @@
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/selectedItem"
-            style="@style/SPSelectedItem"
+            style="@style/SPSelectedTab"
             android:layout_width="0dp"
             android:layout_height="@dimen/dimen_p_36"
             android:layout_marginTop="@dimen/dimen_p_2"

@@ -9,27 +9,27 @@
         <item name="android:padding">@dimen/dimen_p_16</item>
     </style>
 
-    <style name="SPSegmentControl" parent="shadow_empty">
+    <style name="SPTabNavigation" parent="shadow_empty">
         <item name="backgroundColor">?attr/background_secondary</item>
         <item name="roundedCorners">@dimen/dimen_p_12</item>
         <item name="activeTextAppearance">@style/h700_bold_caps_brand_primary</item>
         <item name="inActiveTextAppearance">@style/h700_medium_caps_label_secondary</item>
     </style>
 
-    <style name="SPSegmentControlUnselected" >
+    <style name="SPTabNavigationUnselectedTab" >
         <item name="style">@style/h700_medium_caps_label_secondary</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_width">0dp</item>
     </style>
 
-    <style name="SPSegmentControlDivider" >
+    <style name="SPTabNavigationDivider" >
         <item name="android:background">?attr/separator_opaque</item>
         <item name="android:layout_height">@dimen/dimen_p_16</item>
         <item name="android:layout_width">@dimen/dimen_p_1</item>
     </style>
 
-    <style name="SPSelectedItem" parent="shadow_200_primary">
+    <style name="SPSelectedTab" parent="shadow_200_primary">
         <item name="backgroundColor">?attr/background_tertiary</item>
         <item name="roundedCorners">@dimen/dimen_p_10</item>
         <item name="android:textAppearance">@style/h700_bold_caps_brand_primary</item>

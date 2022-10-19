@@ -15,8 +15,8 @@ import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.empty_state.SPEmptyStateComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
 import ge.space.design.ui_components.profile.SPProfileComponent
-import ge.space.design.ui_components.segment_control.SPSegmentControlComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
+import ge.space.design.ui_components.tab_navigation.tab_switcher.SPTabSwitcherComponent
 import ge.space.design.ui_components.text_fields.SPTextFieldsComponent
 import ge.space.design.ui_components.text_view.SPTextViewComponent
 import ge.space.design.ui_components.tooltip.SPTooltipComponent
@@ -44,8 +44,8 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPEmptyStateComponent() },
             new { SPMarksComponent() },
             new { SPProfileComponent() },
-            new { SPSegmentControlComponent() },
             new { SPTabNavigationComponent() },
+            new { SPTabSwitcherComponent() },
             new { SPTextFieldsComponent() },
             new { SPTextViewComponent() },
             new { SPTooltipComponent() },

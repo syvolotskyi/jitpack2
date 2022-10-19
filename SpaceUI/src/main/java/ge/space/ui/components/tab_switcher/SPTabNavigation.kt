@@ -7,35 +7,33 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.core.content.withStyledAttributes
-import androidx.core.view.forEachIndexed
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpDividerLayoutBinding
-import ge.space.spaceui.databinding.SpSegmentControlLayoutBinding
+import ge.space.spaceui.databinding.SpTabNavigationLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.util.extension.*
 
 /**
- * SPSegmentControl view extended from [SPBaseView] that allows to change its configuration.
+ * SPTabNavigation view extended from [SPBaseView] that allows to change its configuration.
  * Max size is 4, list of tabs can be set from xml (use tabs="array/strings") or from code
  *
  */
-class SPSegmentControl @JvmOverloads constructor(
+class SPTabNavigation @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPSegmentControl
+    @StyleRes defStyleRes: Int = R.style.SPTabNavigation
 ) : SPBaseView(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     private val binding by lazy {
-        SpSegmentControlLayoutBinding.inflate(LayoutInflater.from(context), this)
+        SpTabNavigationLayoutBinding.inflate(LayoutInflater.from(context), this)
     }
 
     /**
@@ -44,14 +42,14 @@ class SPSegmentControl @JvmOverloads constructor(
     @StyleRes
     private var inactiveTextAppearance: Int = 0
 
-    private var list = arrayListOf<SPSegmentNode>()
-    private var selectedNode: SPSegmentNode? = null
-    private var onTabChooseListener: (String, Int) -> Unit = { _, _ -> }
+    private var list = arrayListOf<SPTabData>()
+    private var selectedNode: SPTabData? = null
+    private var onTabChooseListener: ((title: String, tabIndex: Int) -> Unit)? = null
 
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPSegmentControl,
+            R.styleable.SPTabNavigation,
             defStyleAttr,
             defStyleRes
         ) {
@@ -60,7 +58,7 @@ class SPSegmentControl @JvmOverloads constructor(
     }
 
     override fun setViewStyle(@StyleRes newStyle: Int) {
-        context.withStyledAttributes(newStyle, R.styleable.SPSegmentControl) {
+        context.withStyledAttributes(newStyle, R.styleable.SPTabNavigation) {
             withStyledAttributes()
         }
     }
@@ -68,7 +66,7 @@ class SPSegmentControl @JvmOverloads constructor(
     /**
      * Set tab selected listener
      */
-    fun setOnTabSelectedListener(listener: (String, Int) -> Unit) {
+    fun setOnTabSelectedListener(listener: (title: String, tabIndex: Int) -> Unit){
         onTabChooseListener = listener
     }
 
@@ -77,9 +75,8 @@ class SPSegmentControl @JvmOverloads constructor(
      */
     fun setTabs(tabs: List<String>) {
         if (tabs.size > MAX_SIZE) throw IllegalStateException("Max size is $MAX_SIZE")
-        tabs.forEachIndexed { index, view ->
-            addTab(view, index)
-        }
+        tabs.forEachIndexed { index, tabTitle -> addTab(tabTitle, index) }
+        if (selectedNode == null) { tabClicked(list[FIRST_TAB], FIRST_TAB) }
     }
 
     /**
@@ -94,7 +91,7 @@ class SPSegmentControl @JvmOverloads constructor(
         val divider = if (lastTabView != null) {
             createDivider()
         } else null
-        val currentNode = SPSegmentNode(currentTabView).apply { this.title = title }
+        val currentNode = SPTabData(currentTabView).apply { this.title = title }
         currentTabView.onClick { tabClicked(currentNode, key) }
         divider?.let {
             lastTabView?.nextDivider = it
@@ -106,14 +103,11 @@ class SPSegmentControl @JvmOverloads constructor(
         list.add(currentNode)
 
         resetConstrainsSet(divider, lastTabView, currentTabView)
-        if (selectedNode == null) {
-            tabClicked(currentNode, key)
-        }
     }
 
     private fun resetConstrainsSet(
         divider: View?,
-        lastTabView: SPSegmentNode?,
+        lastTabView: SPTabData?,
         currentTabView: TextView
     ) {
         ConstraintSet().apply {
@@ -153,7 +147,7 @@ class SPSegmentControl @JvmOverloads constructor(
 
     private fun getLastTabItem() = if (getTabsSize() > 0) list[getTabsSize() - 1] else null
 
-    private fun tabClicked(selectedTab: SPSegmentNode, key: Int) {
+    private fun tabClicked(selectedTab: SPTabData, key: Int) {
         selectedNode?.prevDivider?.show()
         selectedNode?.nextDivider?.show()
         selectedTab.prevDivider?.hide()
@@ -161,16 +155,16 @@ class SPSegmentControl @JvmOverloads constructor(
         selectedNode = selectedTab
         binding.selectedItem.text = selectedTab.title
         applyNewSelectedConstrains(selectedTab.data.id)
-        binding.parent.post { onTabChooseListener(selectedTab.title, key) }
+        binding.parent.post { onTabChooseListener?.invoke(selectedTab.title, key) }
     }
 
     private fun getInactiveTabView(title: String) =
-        TextView(context, null, R.style.SPSegmentControlUnselected).apply {
+        TextView(context, null, R.style.SPTabNavigationUnselectedTab).apply {
             id = generateViewId()
             text = title
             gravity = Gravity.CENTER
             setTextStyle(inactiveTextAppearance)
-            layoutParams = getLayoutParamsFromStyle(context, R.style.SPSegmentControlUnselected)
+            layoutParams = getLayoutParamsFromStyle(context, R.style.SPTabNavigationUnselectedTab)
         }
 
 
@@ -178,7 +172,7 @@ class SPSegmentControl @JvmOverloads constructor(
         SpDividerLayoutBinding.inflate(LayoutInflater.from(context)).root
             .apply {
                 id = View.generateViewId()
-                layoutParams = getLayoutParamsFromStyle(context, R.style.SPSegmentControlDivider)
+                layoutParams = getLayoutParamsFromStyle(context, R.style.SPTabNavigationDivider)
             }
 
     private fun getTabsSize() = list.size
@@ -186,21 +180,21 @@ class SPSegmentControl @JvmOverloads constructor(
     private fun TypedArray.withStyledAttributes() {
 
         getResourceId(
-            R.styleable.SPSegmentControl_activeTextAppearance,
+            R.styleable.SPTabNavigation_activeTextAppearance,
             DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
             binding.selectedItem.textAppearance = it
         }
 
         getResourceId(
-            R.styleable.SPSegmentControl_inActiveTextAppearance,
+            R.styleable.SPTabNavigation_inActiveTextAppearance,
             DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
             inactiveTextAppearance = it
         }
 
         getResourceId(
-            R.styleable.SPSegmentControl_tabs,
+            R.styleable.SPTabNavigation_tabs,
             DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
             setTabs(resources.getStringArray(it).toList())

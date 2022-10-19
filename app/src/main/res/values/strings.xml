@@ -100,8 +100,8 @@
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
-    <string name="segment_control_showcase">Segment control showcase</string>
-    <string name="segment_control_desc">Segment control desc</string>
+    <string name="tab_navigation_showcase">Tab navigation showcase</string>
+    <string name="tab_navigation_desc">Tab navigation (segment control) desc</string>
 
     <string name="accordion_showcase">Accordion showcase</string>
     <string name="accordion_desc">Expanded layout</string>
@@ -219,10 +219,10 @@
         <item>Earth</item>
     </string-array>
     <string-array name="languages">
-        <item>@string/georgian</item>
+        <item>@string/georgia</item>
         <item>@string/ukraine</item>
     </string-array>
-    <string name="georgian">Georgian</string>
+    <string name="georgia">Georgia</string>
     <string name="english">English</string>
     <string name="uzbekistan">Uzbekistan</string>
     <string name="ukraine">Ukraine</string>
