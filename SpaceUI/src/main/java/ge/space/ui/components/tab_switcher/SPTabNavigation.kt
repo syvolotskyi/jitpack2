@@ -14,7 +14,6 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpDividerLayoutBinding
 import ge.space.spaceui.databinding.SpTabNavigationLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
@@ -88,42 +87,35 @@ class SPTabNavigation @JvmOverloads constructor(
     private fun addTab(title: String, key: Int) {
         val currentTabView = getInactiveTabView(title)
         val lastTabView = getLastTabItem()
-        val divider = if (lastTabView != null) {
-            createDivider()
-        } else null
+
         val currentNode = SPTabData(currentTabView).apply { this.title = title }
         currentTabView.onClick { tabClicked(currentNode, key) }
-        divider?.let {
-            lastTabView?.nextDivider = it
-            currentNode.prevDivider = it
-            binding.parent.addView(it)
-        }
 
         binding.parent.addView(currentTabView)
         list.add(currentNode)
 
-        resetConstrainsSet(divider, lastTabView, currentTabView)
+        resetConstrainsSet(lastTabView?.data, currentTabView)
     }
 
     private fun resetConstrainsSet(
-        divider: View?,
-        lastTabView: SPTabData?,
+        lastTabView: View?,
         currentTabView: TextView
     ) {
         ConstraintSet().apply {
             clone(binding.parent)
-            if (divider != null && lastTabView != null) {
-                connectDivider(divider, lastTabView.data, currentTabView)
-            }
-            connectTab(currentTabView, divider)
+            connectTab(currentTabView, lastTabView)
             applyTo(binding.parent)
         }
     }
 
-    private fun ConstraintSet.connectTab(currentTabView: TextView, divider: View?) {
+    private fun ConstraintSet.connectTab(currentTabView: TextView, prevView: View?) {
+
+        prevView?.let {  connect(prevView.id, ConstraintSet.END,
+            currentTabView.id, ConstraintSet.START, DEFAULT_INT)}
+
         connect(
-            currentTabView.id, ConstraintSet.START, divider?.id ?: PARENT_ID,
-            if (divider == null) ConstraintSet.START else ConstraintSet.END,
+            currentTabView.id, ConstraintSet.START, prevView?.id ?: PARENT_ID,
+            if (prevView == null) ConstraintSet.START else ConstraintSet.END,
             DEFAULT_INT
         )
         connect(currentTabView.id, ConstraintSet.TOP, PARENT_ID, ConstraintSet.TOP, DEFAULT_INT)
@@ -137,21 +129,9 @@ class SPTabNavigation @JvmOverloads constructor(
         connect(currentTabView.id, ConstraintSet.END, PARENT_ID, ConstraintSet.END, DEFAULT_INT)
     }
 
-    private fun ConstraintSet.connectDivider(divider: View, lastItem: View, tabView: TextView) {
-        connect(divider.id, ConstraintSet.START, lastItem.id, ConstraintSet.END, DEFAULT_INT)
-        connect(divider.id, ConstraintSet.END, tabView.id, ConstraintSet.START, DEFAULT_INT)
-        connect(divider.id, ConstraintSet.TOP, PARENT_ID, ConstraintSet.TOP, DEFAULT_INT)
-        connect(divider.id, ConstraintSet.BOTTOM, PARENT_ID, ConstraintSet.BOTTOM, DEFAULT_INT)
-        connect(lastItem.id, ConstraintSet.END, divider.id, ConstraintSet.START, DEFAULT_INT)
-    }
-
     private fun getLastTabItem() = if (getTabsSize() > 0) list[getTabsSize() - 1] else null
 
     private fun tabClicked(selectedTab: SPTabData, key: Int) {
-        selectedNode?.prevDivider?.show()
-        selectedNode?.nextDivider?.show()
-        selectedTab.prevDivider?.hide()
-        selectedTab.nextDivider?.hide()
         selectedNode = selectedTab
         binding.selectedItem.text = selectedTab.title
         applyNewSelectedConstrains(selectedTab.data.id)
@@ -167,13 +147,6 @@ class SPTabNavigation @JvmOverloads constructor(
             layoutParams = getLayoutParamsFromStyle(context, R.style.SPTabNavigationUnselectedTab)
         }
 
-
-    private fun createDivider(): View =
-        SpDividerLayoutBinding.inflate(LayoutInflater.from(context)).root
-            .apply {
-                id = View.generateViewId()
-                layoutParams = getLayoutParamsFromStyle(context, R.style.SPTabNavigationDivider)
-            }
 
     private fun getTabsSize() = list.size
 

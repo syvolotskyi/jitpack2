@@ -27,7 +27,7 @@ class SPTabNavigationComponent : ShowCaseComponent {
                     setOnTabSelectedListener { title, key ->
                         Toast.makeText(
                             environment.requireActivity(),
-                            S"$title\nKey:$key",
+                            "$title\nKey:$key",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
