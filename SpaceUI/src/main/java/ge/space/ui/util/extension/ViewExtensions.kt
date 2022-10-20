@@ -8,6 +8,8 @@ import android.text.*
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.FragmentActivity
 
 fun View.visibleIf(visible: Boolean) {
@@ -85,6 +87,20 @@ fun View.show() {
     this.visibility = View.VISIBLE
 }
 
+
+/**
+ * Clone old constrain set and add to them a new block
+ */
+inline fun ConstraintLayout.applyConstrainChanges(
+    block: ConstraintSet.(Any?) -> Unit
+) {
+    ConstraintSet().apply {
+        clone(this@applyConstrainChanges)
+        block(this)
+        applyTo(this@applyConstrainChanges)
+    }
+}
+
 /**
  * Extension method to set View's height.
  */
@@ -101,7 +117,7 @@ fun View.setHeight(value: Int) {
  * Extension method returns true if height is wrap content
  */
 fun View.isHeightWrapContent() =
-  layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT
+    layoutParams.height == ViewGroup.LayoutParams.WRAP_CONTENT
 
 
 /**
@@ -120,12 +136,12 @@ fun View.setSize(width: Int, height: Int) {
 /**
  * Extension method returns central Y by view height.
  */
- fun View.getCentralY(): Float = height.toFloat().withSideRatio()
+fun View.getCentralY(): Float = height.toFloat().withSideRatio()
 
 /**
  * Extension method returns central X by view width.
  */
- fun View.getCentralX(): Float = width.toFloat().withSideRatio()
+fun View.getCentralX(): Float = width.toFloat().withSideRatio()
 
 /**
  * Extension method to set View's width.
@@ -151,7 +167,7 @@ var ImageView.tintColor: Int
 /**
  * Extension method returns height of status bar
  */
- fun getStatusBarHeight(activity: FragmentActivity): Int {
+fun getStatusBarHeight(activity: FragmentActivity): Int {
     val rectangle = Rect()
     val window: Window = activity.window
     window.decorView.getWindowVisibleDisplayFrame(rectangle)

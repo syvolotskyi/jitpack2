@@ -6,19 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:paddingHorizontal="@dimen/dimen_p_2"
-        android:layout_height="@dimen/dimen_p_40">
-
-        <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/selectedItem"
-            style="@style/SPSelectedTab"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dimen_p_36"
-            android:layout_marginTop="@dimen/dimen_p_2"
-            android:elevation="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="tab1" />
+        android:layout_height="@dimen/dimen_p_40"
+        android:paddingHorizontal="@dimen/dimen_p_2">
     </androidx.constraintlayout.widget.ConstraintLayout>
 </merge>

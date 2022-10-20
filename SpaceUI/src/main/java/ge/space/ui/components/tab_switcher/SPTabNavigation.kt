@@ -17,6 +17,7 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTabNavigationLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.util.extension.*
 
 /**
@@ -41,8 +42,15 @@ class SPTabNavigation @JvmOverloads constructor(
     @StyleRes
     private var inactiveTextAppearance: Int = 0
 
+    /**
+     * Sets a text appearance
+     */
+    @StyleRes
+    private var activeTextAppearance: Int = 0
+
     private var list = arrayListOf<SPTabData>()
     private var selectedNode: SPTabData? = null
+    private var selectedButton: SPButton? = null
     private var onTabChooseListener: ((title: String, tabIndex: Int) -> Unit)? = null
 
     init {
@@ -65,7 +73,7 @@ class SPTabNavigation @JvmOverloads constructor(
     /**
      * Set tab selected listener
      */
-    fun setOnTabSelectedListener(listener: (title: String, tabIndex: Int) -> Unit){
+    fun setOnTabSelectedListener(listener: (title: String, tabIndex: Int) -> Unit) {
         onTabChooseListener = listener
     }
 
@@ -75,7 +83,15 @@ class SPTabNavigation @JvmOverloads constructor(
     fun setTabs(tabs: List<String>) {
         if (tabs.size > MAX_SIZE) throw IllegalStateException("Max size is $MAX_SIZE")
         tabs.forEachIndexed { index, tabTitle -> addTab(tabTitle, index) }
-        if (selectedNode == null) { tabClicked(list[FIRST_TAB], FIRST_TAB) }
+        if (selectedNode == null) {
+            addSelectedTabView()
+        }
+    }
+
+    private fun addSelectedTabView() {
+        selectedButton = getActiveTabView(list[FIRST_TAB].title)
+        binding.parent.addView(selectedButton)
+        applyNewSelectedConstrains(list[FIRST_TAB].data.id)
     }
 
     /**
@@ -90,7 +106,6 @@ class SPTabNavigation @JvmOverloads constructor(
 
         val currentNode = SPTabData(currentTabView).apply { this.title = title }
         currentTabView.onClick { tabClicked(currentNode, key) }
-
         binding.parent.addView(currentTabView)
         list.add(currentNode)
 
@@ -100,18 +115,18 @@ class SPTabNavigation @JvmOverloads constructor(
     private fun resetConstrainsSet(
         lastTabView: View?,
         currentTabView: TextView
-    ) {
-        ConstraintSet().apply {
-            clone(binding.parent)
-            connectTab(currentTabView, lastTabView)
-            applyTo(binding.parent)
-        }
+    ) = binding.parent.applyConstrainChanges {
+        connectTab(currentTabView, lastTabView)
     }
 
     private fun ConstraintSet.connectTab(currentTabView: TextView, prevView: View?) {
 
-        prevView?.let {  connect(prevView.id, ConstraintSet.END,
-            currentTabView.id, ConstraintSet.START, DEFAULT_INT)}
+        prevView?.let {
+            connect(
+                prevView.id, ConstraintSet.END,
+                currentTabView.id, ConstraintSet.START, DEFAULT_INT
+            )
+        }
 
         connect(
             currentTabView.id, ConstraintSet.START, prevView?.id ?: PARENT_ID,
@@ -133,30 +148,38 @@ class SPTabNavigation @JvmOverloads constructor(
 
     private fun tabClicked(selectedTab: SPTabData, key: Int) {
         selectedNode = selectedTab
-        binding.selectedItem.text = selectedTab.title
+        selectedButton?.text = selectedTab.title
         applyNewSelectedConstrains(selectedTab.data.id)
         binding.parent.post { onTabChooseListener?.invoke(selectedTab.title, key) }
     }
 
     private fun getInactiveTabView(title: String) =
         TextView(context, null, R.style.SPTabNavigationUnselectedTab).apply {
+            layoutParams = getLayoutParamsFromStyle(context, R.style.SPTabNavigationUnselectedTab)
             id = generateViewId()
             text = title
             gravity = Gravity.CENTER
             setTextStyle(inactiveTextAppearance)
-            layoutParams = getLayoutParamsFromStyle(context, R.style.SPTabNavigationUnselectedTab)
         }
 
+
+    private fun getActiveTabView(title: String) =
+        SPButton(context, defStyleRes = R.style.SPSelectedTab).apply {
+            layoutParams = getLayoutParamsFromStyle(context, R.style.SPSelectedTab)
+            setViewStyle(R.style.SPSelectedTab)
+            id = generateViewId()
+            text = title
+            textAppearance = activeTextAppearance
+        }
 
     private fun getTabsSize() = list.size
 
     private fun TypedArray.withStyledAttributes() {
-
         getResourceId(
             R.styleable.SPTabNavigation_activeTextAppearance,
             DEFAULT_OBTAIN_VAL
         ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
-            binding.selectedItem.textAppearance = it
+            activeTextAppearance = it
         }
 
         getResourceId(
@@ -175,18 +198,25 @@ class SPTabNavigation @JvmOverloads constructor(
     }
 
     private fun applyNewSelectedConstrains(selectedId: Int) {
-        ConstraintSet().apply {
-            clone(binding.parent)
-            connect(
-                binding.selectedItem.id,
-                ConstraintSet.START,
-                selectedId,
-                ConstraintSet.START,
-                0
-            )
-            connect(binding.selectedItem.id, ConstraintSet.END, selectedId, ConstraintSet.END, 0)
-            TransitionManager.beginDelayedTransition(binding.parent)
-            applyTo(binding.parent)
+        binding.parent.applyConstrainChanges {
+            selectedButton?.let {
+                connect(
+                    it.id,
+                    ConstraintSet.START,
+                    selectedId,
+                    ConstraintSet.START,
+                    0
+                )
+                connect(it.id, ConstraintSet.END, selectedId, ConstraintSet.END, 0)
+                connect(
+                    it.id,
+                    ConstraintSet.TOP,
+                    PARENT_ID,
+                    ConstraintSet.TOP,
+                    resources.getDimensionPixelSize(R.dimen.dimen_p_2)
+                )
+                TransitionManager.beginDelayedTransition(binding.parent)
+            }
         }
     }
 
