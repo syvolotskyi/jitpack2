@@ -16,19 +16,19 @@
         android:layout_marginTop="@dimen/dimen_p_32"
         android:orientation="vertical">
 
-        <ge.space.ui.components.tab_switcher.SPTabNavigation
+        <ge.space.ui.components.tab_navigation.SPTabNavigation
             android:id="@+id/tabNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ge.space.ui.components.tab_switcher.SPTabNavigation
+        <ge.space.ui.components.tab_navigation.SPTabNavigation
             android:id="@+id/tabNavigation2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_p_16"
             app:tabs="@array/languages" />
 
-        <ge.space.ui.components.tab_switcher.SPTabNavigation
+        <ge.space.ui.components.tab_navigation.SPTabNavigation
             android:id="@+id/tabNavigation3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package ge.space.ui.components.tab_switcher
+package ge.space.ui.components.tab_navigation
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -37,21 +37,37 @@ class SPTabNavigation @JvmOverloads constructor(
     }
 
     /**
-     * Sets a text appearance
+     * Sets an inactive tab text appearance
      */
     @StyleRes
     private var inactiveTextAppearance: Int = 0
 
     /**
-     * Sets a text appearance
+     * Sets an active tab text appearance
      */
     @StyleRes
     private var activeTextAppearance: Int = 0
 
-    private var list = arrayListOf<SPTabData>()
-    private var selectedNode: SPTabData? = null
-    private var selectedButton: SPButton? = null
-    private var onTabChooseListener: ((title: String, tabIndex: Int) -> Unit)? = null
+    /**
+     * Store list of all inactive tabs
+     */
+    private var inactiveTabs = arrayListOf<SPTabNavigationData>()
+
+    /**
+     * Last selected tab
+     */
+    private var selectedTabData: SPTabNavigationData? = null
+
+
+    /**
+     * View of the selected tab
+     */
+    private var selectedTabView: SPButton? = null
+
+    /**
+     * Listener allows observing switching tabs
+     */
+    private var onTabChooseListener: ((title: String, tab: SPNavigationTabs) -> Unit)? = null
 
     init {
         getContext().withStyledAttributes(
@@ -73,7 +89,7 @@ class SPTabNavigation @JvmOverloads constructor(
     /**
      * Set tab selected listener
      */
-    fun setOnTabSelectedListener(listener: (title: String, tabIndex: Int) -> Unit) {
+    fun setOnTabSelectedListener(listener: (title: String, tab: SPNavigationTabs) -> Unit) {
         onTabChooseListener = listener
     }
 
@@ -82,34 +98,35 @@ class SPTabNavigation @JvmOverloads constructor(
      */
     fun setTabs(tabs: List<String>) {
         if (tabs.size > MAX_SIZE) throw IllegalStateException("Max size is $MAX_SIZE")
-        tabs.forEachIndexed { index, tabTitle -> addTab(tabTitle, index) }
-        if (selectedNode == null) {
+         tabs.forEachIndexed(::addTab)
+        if (selectedTabData == null) {
             addSelectedTabView()
         }
-    }
-
-    private fun addSelectedTabView() {
-        selectedButton = getActiveTabView(list[FIRST_TAB].title)
-        binding.parent.addView(selectedButton)
-        applyNewSelectedConstrains(list[FIRST_TAB].data.id)
     }
 
     /**
      * Set selected tab by key
      */
-    fun setSelectedTab(key: Int) =
-        tabClicked(list[key], key)
+    fun setSelectedTab(key: SPNavigationTabs) =
+        tabClicked(inactiveTabs[key.tabIndex], key)
 
-    private fun addTab(title: String, key: Int) {
+
+    private fun addSelectedTabView() {
+        selectedTabView = getActiveTabView(inactiveTabs[SPNavigationTabs.FIRST_TAB.tabIndex].title)
+        binding.parent.addView(selectedTabView)
+        applyNewSelectedConstrains(inactiveTabs[SPNavigationTabs.FIRST_TAB.tabIndex].tabView.id)
+    }
+
+    private fun addTab(key: Int, title: String,) {
         val currentTabView = getInactiveTabView(title)
         val lastTabView = getLastTabItem()
 
-        val currentNode = SPTabData(currentTabView).apply { this.title = title }
-        currentTabView.onClick { tabClicked(currentNode, key) }
+        val currentTabData = SPTabNavigationData(currentTabView, title)
+        currentTabView.onClick { tabClicked(currentTabData, getTabByIndex(key)) }
         binding.parent.addView(currentTabView)
-        list.add(currentNode)
+        inactiveTabs.add(currentTabData)
 
-        resetConstrainsSet(lastTabView?.data, currentTabView)
+        resetConstrainsSet(lastTabView?.tabView, currentTabView)
     }
 
     private fun resetConstrainsSet(
@@ -144,12 +161,12 @@ class SPTabNavigation @JvmOverloads constructor(
         connect(currentTabView.id, ConstraintSet.END, PARENT_ID, ConstraintSet.END, DEFAULT_INT)
     }
 
-    private fun getLastTabItem() = if (getTabsSize() > 0) list[getTabsSize() - 1] else null
+    private fun getLastTabItem() = if (getTabsSize() > 0) inactiveTabs[getTabsSize() - 1] else null
 
-    private fun tabClicked(selectedTab: SPTabData, key: Int) {
-        selectedNode = selectedTab
-        selectedButton?.text = selectedTab.title
-        applyNewSelectedConstrains(selectedTab.data.id)
+    private fun tabClicked(selectedTab: SPTabNavigationData, key: SPNavigationTabs) {
+        selectedTabData = selectedTab
+        selectedTabView?.text = selectedTab.title
+        applyNewSelectedConstrains(selectedTab.tabView.id)
         binding.parent.post { onTabChooseListener?.invoke(selectedTab.title, key) }
     }
 
@@ -172,7 +189,7 @@ class SPTabNavigation @JvmOverloads constructor(
             textAppearance = activeTextAppearance
         }
 
-    private fun getTabsSize() = list.size
+    private fun getTabsSize() = inactiveTabs.size
 
     private fun TypedArray.withStyledAttributes() {
         getResourceId(
@@ -199,7 +216,7 @@ class SPTabNavigation @JvmOverloads constructor(
 
     private fun applyNewSelectedConstrains(selectedId: Int) {
         binding.parent.applyConstrainChanges {
-            selectedButton?.let {
+            selectedTabView?.let {
                 connect(
                     it.id,
                     ConstraintSet.START,
@@ -220,10 +237,22 @@ class SPTabNavigation @JvmOverloads constructor(
         }
     }
 
+    private fun getTabByIndex(index :Int) = SPNavigationTabs.values().find { it.tabIndex == index } ?: throw java.lang.IllegalStateException()
+
+    /**
+     * Enum class store tab indexes for SPTabNavigation
+     */
+    enum class SPNavigationTabs(val tabIndex: Int) {
+        FIRST_TAB(0),
+        SECOND_TAB(1),
+
+        /**
+         * Optional tab
+         */
+        THIRD_TAB(2);
+    }
+
     companion object {
-        const val FIRST_TAB = 0
-        const val SECOND_TAB = 1
-        const val THIRD_TAB = 2
         private const val MAX_SIZE = 3
     }
 }

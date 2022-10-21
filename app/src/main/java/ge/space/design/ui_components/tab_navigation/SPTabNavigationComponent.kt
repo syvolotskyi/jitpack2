@@ -6,7 +6,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutTabNavigationShowcaseBi
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.tab_switcher.SPTabNavigation
+import ge.space.ui.components.tab_navigation.SPTabNavigation
 
 class SPTabNavigationComponent : ShowCaseComponent {
 
@@ -23,18 +23,21 @@ class SPTabNavigationComponent : ShowCaseComponent {
             ).apply {
                 tabNavigation.apply {
                     setTabs(listOf("Tab 1","Tab 2","Tab 3"))
-                    setSelectedTab(SPTabNavigation.FIRST_TAB)
+                    setSelectedTab(SPTabNavigation.SPNavigationTabs.FIRST_TAB)
                     setOnTabSelectedListener { title, key ->
-                        Toast.makeText(
-                            environment.requireActivity(),
-                            "$title\nKey:$key",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        when (key){
+                            SPTabNavigation.SPNavigationTabs.FIRST_TAB -> environment.showToast(title, key)
+                            SPTabNavigation.SPNavigationTabs.SECOND_TAB -> environment.showToast(title, key)
+                            SPTabNavigation.SPNavigationTabs.THIRD_TAB -> environment.showToast(title, key)
+                        }
                     }
                 }
             }
 
             return layoutBinding.root
         }
+
+        private fun SPShowCaseEnvironment.showToast(title: String,tab:SPTabNavigation.SPNavigationTabs ) =
+            Toast.makeText(requireActivity(), "$title\nKey:${tab.tabIndex}", Toast.LENGTH_SHORT).show()
     }
 }

@@ -168,7 +168,6 @@ class SPButton @JvmOverloads constructor(
         )
 
         background = color
-        updateTextAppearance(textAppearance)
         binding.buttonContentWrapper.setHeight(
             if (buttonHeight != DEFAULT_INT) resources.getDimensionPixelSize(
                 buttonHeight
