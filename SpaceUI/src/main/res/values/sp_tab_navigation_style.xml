@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPTabSwitcher" parent="@style/SPPillItemStandard">
+        <item name="selectedTextAppearance">@style/h800_medium_primary_white</item>
+        <item name="unselectedTextAppearance">@style/h800_medium_label_secondary</item>
+        <item name="android:layout_marginStart">@dimen/dimen_p_8</item>
+        <item name="android:layout_height">@dimen/dimen_p_50</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">@dimen/dimen_p_16</item>
+    </style>
+
+    <style name="SPTabNavigation" parent="shadow_empty">
+        <item name="backgroundColor">?attr/background_secondary</item>
+        <item name="roundedCorners">@dimen/dimen_p_12</item>
+        <item name="activeTextAppearance">@style/h700_medium_caps_brand_primary</item>
+        <item name="inActiveTextAppearance">@style/h700_medium_caps_label_secondary</item>
+    </style>
+
+    <style name="SPTabNavigationUnselectedTab" >
+        <item name="style">@style/h700_medium_caps_label_secondary</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textAppearance">@style/h700_medium_caps_label_secondary</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="SPSelectedTab" parent="shadow_200_primary">
+        <item name="backgroundColor">?attr/background_tertiary</item>
+        <item name="roundedCorners">@dimen/dimen_p_10</item>
+        <item name="buttonHeight">@dimen/dimen_p_36</item>
+        <item name="android:textAppearance">@style/h700_medium_caps_brand_primary</item>
+        <item name="android:layout_height">@dimen/dimen_p_36</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+</resources>

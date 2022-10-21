@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_margin="@dimen/dimen_p_16"
+    android:background="?attr/background_tertiary"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_p_16"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:orientation="vertical">
+
+        <ge.space.ui.components.tab_navigation.SPTabNavigation
+            android:id="@+id/tabNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ge.space.ui.components.tab_navigation.SPTabNavigation
+            android:id="@+id/tabNavigation2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:tabs="@array/languages" />
+
+        <ge.space.ui.components.tab_navigation.SPTabNavigation
+            android:id="@+id/tabNavigation3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_16"
+            app:tabs="@array/planets" />
+
+    </LinearLayout>
+</ScrollView>

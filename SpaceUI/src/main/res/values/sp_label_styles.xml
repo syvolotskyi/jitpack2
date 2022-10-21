@@ -128,6 +128,10 @@
         <item name="android:textColor">?attr/label_primary</item>
     </style>
 
+    <style name="h700_medium_caps_brand_primary" parent="h700_medium_caps">
+        <item name="android:textColor">?attr/brand_primary</item>
+    </style>
+
     <style name="h700_medium_caps_label_secondary" parent="h700_medium_caps">
         <item name="android:textColor">?attr/label_secondary</item>
     </style>

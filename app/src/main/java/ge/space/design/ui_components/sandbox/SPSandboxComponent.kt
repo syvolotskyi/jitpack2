@@ -5,7 +5,6 @@ import com.example.spacedesignsystem.databinding.SpLayoutSandboxShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.util.extension.onClick
 
 class SPSandboxComponent : ShowCaseComponent {
 
@@ -20,9 +19,7 @@ class SPSandboxComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutSandboxShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             )
-            layoutBinding.expandableButton.onClick {
-                layoutBinding.expandableLayout.toggle()
-            }
+
             return layoutBinding.root
         }
     }

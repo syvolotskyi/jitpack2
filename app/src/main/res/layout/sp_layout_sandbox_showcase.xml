@@ -10,63 +10,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/layout"
+        android:layout_marginTop="@dimen/dimen_p_32"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/expandable_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/cancel" />
-
-        <ge.space.ui.components.accordion.expansion.SPExpansionLayout
-            android:id="@+id/expandable_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:duration="1000"
-            app:expanded="false"
-            app:parallax="0.5">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Fixed height" />
-
-        </ge.space.ui.components.accordion.expansion.SPExpansionLayout>
-
-
-        <ge.space.ui.components.accordion.SPAccordionView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:expandedText="@string/example_text"
-            app:titleText="@string/small_example_text" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimen_p_16"
-            android:orientation="horizontal">
-
-            <ge.space.ui.components.layout.SPFrameLayout
-                style="@style/SPSearchBoxElevated"
-                android:layout_width="@dimen/dimen_p_200"
-                android:layout_height="wrap_content"
-                android:background="@color/purple_50">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dimen_p_40"
-                    android:text="wrap_content" />
-            </ge.space.ui.components.layout.SPFrameLayout>
-
-            <View
-                android:layout_width="@dimen/dimen_p_40"
-                android:layout_height="@dimen/dimen_p_40"
-                android:background="@color/cool_gray_50" />
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

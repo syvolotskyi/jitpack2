@@ -38,7 +38,8 @@ class SPButton @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPButton_Primary_Size48
-) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr, defStyleRes) , SPDistractiveMode{
+) : SPButtonBaseView<SpButtonLayoutBinding>(context, attrs, defStyleAttr, defStyleRes),
+    SPDistractiveMode {
 
     /**
      * Makes a button icon direction.
@@ -55,13 +56,19 @@ class SPButton @JvmOverloads constructor(
     /**
      * Sets a image resource
      */
-     @DrawableRes private var src = DEFAULT_INT
+    @DrawableRes
+    private var src = DEFAULT_INT
 
     /**
      * Sets a text appearance
      */
     @StyleRes
-    private var textAppearance: Int = DEFAULT_INT
+    var textAppearance: Int = DEFAULT_INT
+        set(value) {
+            field = value
+
+            updateTextAppearance(textAppearance)
+        }
 
     /**
      * Sets a distractive text appearance
@@ -118,7 +125,7 @@ class SPButton @JvmOverloads constructor(
         context.withStyledAttributes(styleRes, R.styleable.sp_button_view_style) {
             applyStyledResource()
         }
-        context.withStyledAttributes(styleRes,  R.styleable.SPButton) {
+        context.withStyledAttributes(styleRes, R.styleable.SPButton) {
             applyButtonStylesResource()
         }
     }
@@ -161,8 +168,11 @@ class SPButton @JvmOverloads constructor(
         )
 
         background = color
-        updateTextAppearance(textAppearance)
-        binding.buttonContentWrapper.setHeight(resources.getDimensionPixelSize(buttonHeight))
+        binding.buttonContentWrapper.setHeight(
+            if (buttonHeight != DEFAULT_INT) resources.getDimensionPixelSize(
+                buttonHeight
+            ) else DEFAULT_INT
+        )
     }
 
     fun setButtonIcon(icon: Int, direction: IconDirection = NONE) {

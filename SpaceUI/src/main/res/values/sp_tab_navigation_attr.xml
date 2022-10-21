@@ -10,4 +10,10 @@
         <attr name="activeTextAppearance" format="reference"/>
         <attr name="inActiveTextAppearance" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="SPTabNavigation">
+        <attr name="activeTextAppearance"/>
+        <attr name="inActiveTextAppearance" />
+        <attr name="tabs" format="reference"/>
+    </declare-styleable>
 </resources>
