@@ -65,13 +65,13 @@ fun getLayoutParamsFromStyle(context: Context, style: Int): LinearLayout.LayoutP
     )
     val width: Int = try {
         a.getDimensionPixelSizeOrThrow(0)
-    } catch (ex: NumberFormatException) {
+    } catch (ex: RuntimeException) {
         a.getInt(0, LinearLayout.LayoutParams.WRAP_CONTENT)
     }
 
     val height: Int = try {
         a.getDimensionPixelSizeOrThrow(1)
-    } catch (ex: NumberFormatException) {
+    } catch (ex: RuntimeException) {
         a.getInt(1, LinearLayout.LayoutParams.WRAP_CONTENT)
     }
 
