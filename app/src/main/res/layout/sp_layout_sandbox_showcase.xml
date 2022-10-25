@@ -10,10 +10,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/layout"
-        android:layout_marginTop="@dimen/dimen_p_32"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <ge.space.ui.components.feature_list.SPFeatureList
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:descriptionText="@string/example_text"
+            app:title="@string/small_example_text" />
+
+        <ge.space.ui.components.feature_list.SPFeatureList
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:descriptionText="@string/example_text"
+            app:title="@string/small_example_text" />
+
+        <ge.space.ui.components.feature_list.SPFeatureList
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:descriptionText="@string/example_text"
+            app:title="@string/small_example_text" />
 
     </LinearLayout>
 </ScrollView>

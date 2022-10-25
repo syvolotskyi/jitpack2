@@ -11,14 +11,17 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpFeatureListLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.tooltips.SPTooltipView
+import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.*
 import ge.space.ui.util.DisposableTask
 import ge.space.ui.util.extension.EMPTY_TEXT
+import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setTextStyle
 import ge.space.ui.util.path.SPMaskPath
@@ -28,7 +31,7 @@ class SPFeatureList @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPTooltipDefault
+    @StyleRes defStyleRes: Int = R.style.SPFeatureList
 ) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
     private val binding by lazy {
         SpFeatureListLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -41,7 +44,7 @@ class SPFeatureList @JvmOverloads constructor(
         set(value) {
             field = value
 
-//            binding.titleTV.text = value
+            binding.titleTV.text = value
         }
 
     /**
@@ -51,17 +54,19 @@ class SPFeatureList @JvmOverloads constructor(
         set(value) {
             field = value
 
-//            binding.titleTV.text = value
+            binding.descTV.text = value
         }
 
     /**
      * Sets a arrow direction.
      */
-    var arrowDirection: SPTooltipView.ArrowDirection = SPTooltipView.ArrowDirection.None
+    var orientation: Orientation = Orientation.Vertical
         set(value) {
             field = value
 
-            requestLayout()
+          if (orientation == Orientation.Horizontal)
+
+              binding.root.setConstraintSet( ConstraintSet().apply {  })
         }
 
     /**
@@ -71,7 +76,7 @@ class SPFeatureList @JvmOverloads constructor(
     private var textAppearance: Int = 0
         set(value) {
             field = value
-//            updateTextAppearance()
+            updateTextAppearance()
         }
 
 
@@ -82,7 +87,7 @@ class SPFeatureList @JvmOverloads constructor(
     private var descTextAppearance: Int = 0
         set(value) {
             field = value
-//            updateTextAppearance()
+            updateTextAppearance()
         }
 
 
@@ -90,7 +95,7 @@ class SPFeatureList @JvmOverloads constructor(
 
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPTooltipView,
+            R.styleable.SPFeatureList,
             defStyleAttr,
             defStyleRes
         ) {
@@ -117,22 +122,27 @@ class SPFeatureList @JvmOverloads constructor(
             descTextAppearance = it
         }
 
-        getColor(
+     /*   getColor(
             R.styleable.SPFeatureList_backgroundColor,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) { /*paint.color = it*/ }
+            context.getColorFromAttribute(R.attr.background_secondary)
+        ).handleAttributeAction(context.getColorFromAttribute(R.attr.background_secondary)) {
+            binding.root.setBackgroundColor(
+                it
+            )
+        }*/
 
     }
 
-/*
-    */
-/**
-     * Sets title text appearance
-     *//*
 
-    fun updateTextAppearance() =
+    /**
+     * Sets title text appearance
+     */
+
+    fun updateTextAppearance() {
         binding.titleTV.setTextStyle(textAppearance)
-*/
+        binding.descTV.setTextStyle(textAppearance)
+    }
+
 
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(
@@ -142,4 +152,14 @@ class SPFeatureList @JvmOverloads constructor(
             applyTooltipStyledAttrs()
         }
     }
+
+    /**
+     * Enum class which is for arrow direction.
+     *
+     * @property Vertical applies a box without an arrow.
+     * @property Horizontal applies an arrow top center from the view
+     */
+    enum class Orientation {
+        Vertical,
+        Horizontal}
 }
