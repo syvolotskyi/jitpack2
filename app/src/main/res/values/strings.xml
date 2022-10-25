@@ -100,6 +100,9 @@
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
+    <string name="feature_list">Feature list</string>
+    <string name="feature_list_desc">Feature list desc</string>
+
     <string name="tab_navigation_showcase">Tab navigation showcase</string>
     <string name="tab_navigation_desc">Tab navigation (segment control) desc</string>
 
@@ -201,6 +204,7 @@
     <string name="component_otp_resend_sms">SMS-ის ხელმეორედ გაგზავნა</string>
     <string name="component_otp_label">შეიყვანე ვერიფიკაციის კოდი, რომელიც მიიღე ნომერზე:</string>
     <string name="text_sample">აჩუ-აჩუ ცხენო\nსაით გაგაჭენო,\nალაზანი დიდია\nშიგ ბებერი კიდია,\nპური ვთხოვე არ მაჭამა\nჩემი ცოდვა კიდია</string>
+    <string name="small_text_sample">ბაყაყი წყალში ყიყინებს</string>
     <string name="component_otp_phone">+995 577 712021</string>
 
     <string name="component_new_credit_card">New credit card</string>
@@ -226,6 +230,7 @@
     <string name="english">English</string>
     <string name="uzbekistan">Uzbekistan</string>
     <string name="ukraine">Ukraine</string>
+    <string name="visa_gold">Visa Gold</string>
     <string name="example_text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</string>
     <string name="small_example_text">"Lorem ipsum"</string>
     <string name="tag_example_text">1 GEL = 0.3450 USD</string>

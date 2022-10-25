@@ -11,8 +11,10 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isVisible
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpFeatureListLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -20,10 +22,7 @@ import ge.space.ui.base.SPViewStyling
 import ge.space.ui.components.tooltips.SPTooltipView
 import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.*
 import ge.space.ui.util.DisposableTask
-import ge.space.ui.util.extension.EMPTY_TEXT
-import ge.space.ui.util.extension.getColorFromAttribute
-import ge.space.ui.util.extension.handleAttributeAction
-import ge.space.ui.util.extension.setTextStyle
+import ge.space.ui.util.extension.*
 import ge.space.ui.util.path.SPMaskPath
 import ge.space.ui.util.path.SPMaskPathRoundedCorners
 
@@ -32,7 +31,7 @@ class SPFeatureList @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPFeatureList
-) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
+) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
     private val binding by lazy {
         SpFeatureListLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
@@ -54,8 +53,22 @@ class SPFeatureList @JvmOverloads constructor(
         set(value) {
             field = value
 
+            binding.descTV.isVisible = value.isNotEmpty()
             binding.descTV.text = value
         }
+
+    /**
+     * Sets a component title.
+     */
+    var isZebraEffect: Boolean = false
+        set(value) {
+            field = value
+          setBackgroundColor(getBackgroundColor())
+        }
+
+    private fun getBackgroundColor() =
+        if (isZebraEffect) context.getColorFromAttribute(R.attr.background_secondary)
+        else context.getColorFromAttribute(R.attr.background_primary)
 
     /**
      * Sets a arrow direction.
@@ -64,9 +77,11 @@ class SPFeatureList @JvmOverloads constructor(
         set(value) {
             field = value
 
-          if (orientation == Orientation.Horizontal)
-
-              binding.root.setConstraintSet( ConstraintSet().apply {  })
+            if (orientation == Orientation.Horizontal)
+                ConstraintSet().apply {
+                    clone(context, R.layout.sp_feature_list_layout_horizontal)
+                    applyTo(binding.root)
+                }
         }
 
     /**
@@ -104,7 +119,22 @@ class SPFeatureList @JvmOverloads constructor(
     }
 
     private fun TypedArray.applyTooltipStyledAttrs() {
+
+        val orientationIndex = getInt(
+            R.styleable.SPFeatureList_orientation,
+            SPBaseView.DEFAULT_OBTAIN_VAL
+        )
+
+        orientation = Orientation.values()[orientationIndex]
+
         text = getString(R.styleable.SPFeatureList_title).orEmpty()
+
+        getResourceId(R.styleable.SPFeatureList_android_src, SPBaseView.DEFAULT_OBTAIN_VAL)
+            .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+                binding.imageView.show()
+                binding.imageView.setImageResource(it)
+
+            }
 
         getResourceId(
             R.styleable.SPFeatureList_titleTextAppearance,
@@ -113,7 +143,7 @@ class SPFeatureList @JvmOverloads constructor(
             textAppearance = it
         }
 
-        description = getString(R.styleable.SPFeatureList_title).orEmpty()
+        description = getString(R.styleable.SPFeatureList_descriptionText).orEmpty()
 
         getResourceId(
             R.styleable.SPFeatureList_descriptionTextAppearance,
@@ -122,14 +152,7 @@ class SPFeatureList @JvmOverloads constructor(
             descTextAppearance = it
         }
 
-     /*   getColor(
-            R.styleable.SPFeatureList_backgroundColor,
-            context.getColorFromAttribute(R.attr.background_secondary)
-        ).handleAttributeAction(context.getColorFromAttribute(R.attr.background_secondary)) {
-            binding.root.setBackgroundColor(
-                it
-            )
-        }*/
+        isZebraEffect = getBoolean(R.styleable.SPFeatureList_isZebraEffect, false)
 
     }
 
@@ -137,10 +160,9 @@ class SPFeatureList @JvmOverloads constructor(
     /**
      * Sets title text appearance
      */
-
-    fun updateTextAppearance() {
+   private fun updateTextAppearance() {
         binding.titleTV.setTextStyle(textAppearance)
-        binding.descTV.setTextStyle(textAppearance)
+        binding.descTV.setTextStyle(descTextAppearance)
     }
 
 
@@ -161,5 +183,6 @@ class SPFeatureList @JvmOverloads constructor(
      */
     enum class Orientation {
         Vertical,
-        Horizontal}
+        Horizontal
+    }
 }
