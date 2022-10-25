@@ -2,6 +2,7 @@ package ge.space.ui.components.tab_navigation
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.Gravity
@@ -13,6 +14,7 @@ import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
 import androidx.core.content.withStyledAttributes
+import androidx.core.transition.addListener
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpTabNavigationLayoutBinding
 import ge.space.ui.base.SPBaseView
@@ -166,8 +168,9 @@ class SPTabNavigation @JvmOverloads constructor(
     private fun tabClicked(selectedTab: SPTabNavigationData, key: SPNavigationTabs) {
         selectedTabData = selectedTab
         selectedTabView?.text = selectedTab.title
-        applyNewSelectedConstrains(selectedTab.tabView.id)
-        binding.parent.post { onTabChooseListener?.invoke(selectedTab.title, key) }
+        applyNewSelectedConstrains(selectedTab.tabView.id) {
+            binding.parent.post { onTabChooseListener?.invoke(selectedTab.title, key) }
+        }
     }
 
     private fun getInactiveTabView(title: String) =
@@ -214,7 +217,7 @@ class SPTabNavigation @JvmOverloads constructor(
         }
     }
 
-    private fun applyNewSelectedConstrains(selectedId: Int) {
+    private fun applyNewSelectedConstrains(selectedId: Int, onEndAnimationListener: () -> Unit = {}) {
         binding.parent.applyConstrainChanges {
             selectedTabView?.let {
                 connect(
@@ -232,7 +235,8 @@ class SPTabNavigation @JvmOverloads constructor(
                     ConstraintSet.TOP,
                     resources.getDimensionPixelSize(R.dimen.dimen_p_2)
                 )
-                TransitionManager.beginDelayedTransition(binding.parent)
+                val transition = ChangeBounds().apply { addListener(onEnd = { onEndAnimationListener()}) }
+                TransitionManager.beginDelayedTransition(binding.parent, transition)
             }
         }
     }
