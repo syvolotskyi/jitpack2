@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * SPMenuAdapter is base adapter
  *
- * @params items [List<List<SPSelectedItem<Data><Data>] is list of List<SPSelectedItem<Data>
- * Data is onResult return type
+ * @params items [List<SPSelectedItem<Data>>] is list of List<SPSelectedItem<Data>
  */
 abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
     protected var items: List<SPSelectedItem<Data>> = emptyList()
@@ -35,6 +34,11 @@ abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
         items.forEach { it.isSelected = item == it.item }
         notifyDataSetChanged()
     }
+
+    /**
+     * Returns items list size
+     */
+    override fun getItemCount(): Int = items.size
 }
 
 /**

@@ -2,38 +2,32 @@ package ge.space.ui.components.feature_list
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.LayoutInflater
-import android.widget.FrameLayout
 import androidx.annotation.AttrRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import ge.space.spaceui.R
-import ge.space.spaceui.databinding.SpFeatureListLayoutBinding
+import ge.space.spaceui.databinding.SpFeatureItemLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.tooltips.SPTooltipView
-import ge.space.ui.components.tooltips.SPTooltipView.ArrowDirection.*
-import ge.space.ui.util.DisposableTask
+import ge.space.ui.components.feature_list.SPFeatureItem.Orientation.Horizontal
+import ge.space.ui.components.feature_list.SPFeatureItem.Orientation.Vertical
 import ge.space.ui.util.extension.*
-import ge.space.ui.util.path.SPMaskPath
-import ge.space.ui.util.path.SPMaskPathRoundedCorners
 
-class SPFeatureList @JvmOverloads constructor(
+class SPFeatureItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPFeatureList
+    @StyleRes defStyleRes: Int = R.style.SPFeatureItem
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
     private val binding by lazy {
-        SpFeatureListLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+        SpFeatureItemLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
     /**
@@ -58,6 +52,17 @@ class SPFeatureList @JvmOverloads constructor(
         }
 
     /**
+     * Sets a title image
+     */
+    @DrawableRes
+    var image: Int = 0
+        set(value) {
+            field = value
+            binding.imageView.show()
+            binding.imageView.setImageResource(image)
+        }
+
+    /**
      * Sets a component title.
      */
     var isZebraEffect: Boolean = false
@@ -73,13 +78,14 @@ class SPFeatureList @JvmOverloads constructor(
     /**
      * Sets a arrow direction.
      */
-    var orientation: Orientation = Orientation.Vertical
+    var orientation: Orientation = Vertical
         set(value) {
             field = value
 
-            if (orientation == Orientation.Horizontal)
+            if (orientation == Horizontal)
                 ConstraintSet().apply {
                     clone(context, R.layout.sp_feature_list_layout_horizontal)
+                    binding.descTV.gravity = Gravity.END
                     applyTo(binding.root)
                 }
         }
@@ -94,7 +100,6 @@ class SPFeatureList @JvmOverloads constructor(
             updateTextAppearance()
         }
 
-
     /**
      * Sets a text appearance
      */
@@ -105,9 +110,7 @@ class SPFeatureList @JvmOverloads constructor(
             updateTextAppearance()
         }
 
-
     init {
-
         getContext().withStyledAttributes(
             attrs,
             R.styleable.SPFeatureList,
@@ -131,9 +134,7 @@ class SPFeatureList @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPFeatureList_android_src, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-                binding.imageView.show()
-                binding.imageView.setImageResource(it)
-
+                image = it
             }
 
         getResourceId(
@@ -153,9 +154,7 @@ class SPFeatureList @JvmOverloads constructor(
         }
 
         isZebraEffect = getBoolean(R.styleable.SPFeatureList_isZebraEffect, false)
-
     }
-
 
     /**
      * Sets title text appearance
@@ -164,7 +163,6 @@ class SPFeatureList @JvmOverloads constructor(
         binding.titleTV.setTextStyle(textAppearance)
         binding.descTV.setTextStyle(descTextAppearance)
     }
-
 
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(

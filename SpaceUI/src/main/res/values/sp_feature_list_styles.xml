@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="SPFeatureList">
+    <style name="SPFeatureItem">
         <item name="android:paddingTop">@dimen/dimen_p_12</item>
         <item name="android:paddingBottom">@dimen/dimen_p_12</item>
         <item name="titleTextAppearance">@style/h700_medium_label_secondary</item>
         <item name="descriptionTextAppearance">@style/h700_bold_label_primary</item>
     </style>
 
-    <style name="SPFeatureList.Title" parent="SPFeatureList">
+    <style name="SPFeatureItem.Title" parent="SPFeatureItem">
         <item name="android:paddingTop">@dimen/dimen_p_8</item>
         <item name="android:paddingBottom">@dimen/dimen_p_8</item>
         <item name="android:src">@drawable/ic_info_circle_16_regular</item>
@@ -16,7 +16,7 @@
         <item name="descriptionTextAppearance">@style/h700_bold_label_primary</item>
     </style>
 
-    <style name="SPFeatureList.Success" parent="SPFeatureList">
+    <style name="SPFeatureItem.Success" parent="SPFeatureItem">
         <item name="descriptionTextAppearance">@style/h700_bold_status_success</item>
     </style>
 </resources>

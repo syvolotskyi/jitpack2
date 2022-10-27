@@ -1,39 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
+    android:layout_height="match_parent"
     android:background="?attr/background_secondary"
-    tools:ignore="MissingDefaultResource">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ge.space.ui.components.feature_list.SPFeatureRecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content" />
 
-        <ge.space.ui.components.feature_list.SPFeatureList
-            android:layout_width="match_parent"
-            style="@style/SPFeatureList.Title"
-            app:isZebraEffect="true"
-            android:layout_height="wrap_content"
-            app:title="@string/app_name" />
 
-        <ge.space.ui.components.feature_list.SPFeatureList
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:orientation="horizontal"
-            app:descriptionText="@string/visa_gold"
-            app:title="@string/small_text_sample" />
-
-        <ge.space.ui.components.feature_list.SPFeatureList
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isZebraEffect="true"
-            style="@style/SPFeatureList.Success"
-            app:descriptionText="@string/description"
-            app:title="@string/small_text_sample" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>
