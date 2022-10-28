@@ -9,20 +9,31 @@ import ge.space.spaceui.databinding.SpFeatureListItemLayoutBinding
 import ge.space.ui.components.feature_list.SPFeatureAdapter.ViewTypes.Footer
 import ge.space.ui.components.feature_list.SPFeatureAdapter.ViewTypes.Header
 import ge.space.ui.components.feature_list.SPFeatureAdapter.ViewTypes.Normal
+import ge.space.ui.components.feature_list.SPFeatureItem.Orientation
 import ge.space.ui.components.list_adapter.SPMenuAdapter
 import ge.space.ui.components.list_adapter.SPMenuViewHolder
 
+/**
+ * SPFeatureAdapter help to handle feature list.
+ * @param useZebraPattern [Boolean] sets a sequence of light and dark backgrounds
+ */
 class SPFeatureAdapter(private val useZebraPattern: Boolean) :
     SPMenuAdapter<SPMenuViewHolder, SPFeatureData>() {
     private var title: String? = null
     private var footerView: View? = null
     private var titleSrc: Int? = null
 
+    /**
+     * Set title text and custom src
+     */
     fun setTitle(title: String, src: Int? = null) {
         this.title = title
         this.titleSrc = src
     }
 
+    /**
+     * Set a footer view
+     */
     fun setFooterView(view: View) {
         this.footerView = view
     }
@@ -64,7 +75,7 @@ class SPFeatureAdapter(private val useZebraPattern: Boolean) :
             }
             is TitleViewHolder -> holder.binding.featureItem.apply {
                 text = title.orEmpty()
-                titleSrc?.let { image = it }
+                titleSrc?.let { titleImage = it }
                 isZebraEffect = true
             }
             is FooterViewHolder -> holder.binding.vRoot.addView(footerView)
@@ -96,19 +107,19 @@ class SPFeatureAdapter(private val useZebraPattern: Boolean) :
     private fun hasFooter() = footerView != null
 
     /**
-     * Child of SPMenuViewHolder, contains binding of item layout
+     * Child of SPMenuViewHolder, contains binding of Normal layout
      */
     class ListViewHolder(var binding: SpFeatureListItemLayoutBinding) :
         SPMenuViewHolder(binding.featureItem)
 
     /**
-     * Child of SPMenuViewHolder, contains binding of item layout
+     * Child of SPMenuViewHolder, contains binding of title  layout
      */
     class TitleViewHolder(val binding: SpFeatureListItemLayoutBinding) :
         SPMenuViewHolder(binding.root)
 
     /**
-     * Child of SPMenuViewHolder, contains binding of item layout
+     * Child of SPMenuViewHolder, contains binding of footer layout
      */
     class FooterViewHolder(val binding: SpFeatureItemFooterLayoutBinding) :
         SPMenuViewHolder(binding.vRoot)

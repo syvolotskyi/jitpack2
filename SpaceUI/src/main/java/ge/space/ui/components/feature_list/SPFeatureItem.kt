@@ -16,10 +16,29 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpFeatureItemLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
+import ge.space.ui.components.buttons.SPButton.IconDirection
 import ge.space.ui.components.feature_list.SPFeatureItem.Orientation.Horizontal
 import ge.space.ui.components.feature_list.SPFeatureItem.Orientation.Vertical
 import ge.space.ui.util.extension.*
 
+/**
+ * SPFeatureItem view extended from ConstraintLayout generic that allows to change its configuration.
+ * There are 3 realized styles which can be applied to the view:
+ *
+ * <p>
+ *     1. SPFeatureItem
+ *     2. SPFeatureItem.Title
+ *     3. SPFeatureItem.Success
+ * <p>
+ *
+ *
+ * @property titleImage [Int] value which applies a button image using a resource ID.
+ * @property text [String] sets a component title.
+ * @property description [String] sets a component description.
+ * @property isZebraEffect [Boolean] sets light or dark background.
+ * @property orientation [Orientation] sets a description text position.
+ *  This property can have a value from [Orientation.Horizontal] or  [Orientation.Vertical],
+ */
 class SPFeatureItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -41,7 +60,7 @@ class SPFeatureItem @JvmOverloads constructor(
         }
 
     /**
-     * Sets a component title.
+     * Sets a component description.
      */
     var description: String = EMPTY_TEXT
         set(value) {
@@ -55,15 +74,15 @@ class SPFeatureItem @JvmOverloads constructor(
      * Sets a title image
      */
     @DrawableRes
-    var image: Int = 0
+    var titleImage: Int = 0
         set(value) {
             field = value
             binding.imageView.show()
-            binding.imageView.setImageResource(image)
+            binding.imageView.setImageResource(titleImage)
         }
 
     /**
-     * Sets a component title.
+     * Sets light or dark background.
      */
     var isZebraEffect: Boolean = false
         set(value) {
@@ -76,7 +95,7 @@ class SPFeatureItem @JvmOverloads constructor(
         else context.getColorFromAttribute(R.attr.background_primary)
 
     /**
-     * Sets a arrow direction.
+     * Sets a description text position.
      */
     var orientation: Orientation = Vertical
         set(value) {
@@ -101,7 +120,7 @@ class SPFeatureItem @JvmOverloads constructor(
         }
 
     /**
-     * Sets a text appearance
+     * Sets a description appearance
      */
     @StyleRes
     private var descTextAppearance: Int = 0
@@ -134,7 +153,7 @@ class SPFeatureItem @JvmOverloads constructor(
 
         getResourceId(R.styleable.SPFeatureList_android_src, SPBaseView.DEFAULT_OBTAIN_VAL)
             .handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
-                image = it
+                titleImage = it
             }
 
         getResourceId(
@@ -174,10 +193,10 @@ class SPFeatureItem @JvmOverloads constructor(
     }
 
     /**
-     * Enum class which is for arrow direction.
+     * Enum class which is for description text position
      *
-     * @property Vertical applies a box without an arrow.
-     * @property Horizontal applies an arrow top center from the view
+     * @property Vertical applies a description text under title view.
+     * @property Horizontal applies a description text on the right of title view.
      */
     enum class Orientation {
         Vertical,
