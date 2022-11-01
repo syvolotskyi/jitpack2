@@ -8,12 +8,11 @@ import ge.space.ui.components.list_adapter.SPBaseViewHolder
  */
 class SPTitleViewHolder(val binding: SpFeatureListItemLayoutBinding) :
     SPBaseViewHolder(binding.root) {
-    fun binUi(title: String, titleSrc: Int?) {
+    fun bindUI(title: String, titleSrc: Int?) {
         binding.featureItem.apply {
             text = title
             titleSrc?.let { titleImage = it }
             hasZebraEffect = true
-
         }
     }
 }

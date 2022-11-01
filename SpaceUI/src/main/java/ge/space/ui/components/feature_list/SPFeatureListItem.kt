@@ -21,7 +21,7 @@ import ge.space.ui.components.feature_list.SPFeatureListItem.Orientation.Vertica
 import ge.space.ui.util.extension.*
 
 /**
- * SPFeatureListItem view extended from ConstraintLayout generic that allows to change its configuration.
+ * [SPFeatureListItem] view extended from ConstraintLayout generic that allows to change its configuration.
  * There are 3 realized styles which can be applied to the view:
  *
  * <p>

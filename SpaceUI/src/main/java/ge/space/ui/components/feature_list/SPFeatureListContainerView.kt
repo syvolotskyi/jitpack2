@@ -27,9 +27,9 @@ class SPFeatureListContainerView @JvmOverloads constructor(
     }
 
     /**
-     * Set list of SPFeatureData items
+     * Set list of SPFeatureListItemData items
      */
-    fun setItems(items: List<SPFeatureData>) {
+    fun setItems(items: List<SPFeatureListItemData>) {
         adapter.setAdapterItems(items)
     }
 
@@ -39,9 +39,9 @@ class SPFeatureListContainerView @JvmOverloads constructor(
     fun setTitle(title: String, src: Int? = null) = adapter.setTitle(title, src)
 
     /**
-     * Set SPMenuAdapterListener<SPFeatureData> for adapter
+     * Set SPMenuAdapterListener<SPFeatureListItemData> for adapter
      */
-    fun setOnSelectListener(listener: SPAdapterListener<SPFeatureData>){
+    fun setOnSelectListener(listener: SPAdapterListener<SPFeatureListItemData>){
         adapter.adapterListener = listener
     }
 
@@ -56,13 +56,13 @@ class SPFeatureListContainerView @JvmOverloads constructor(
 /**
  * [setup] function setups and initializes feature list component
  *
- * @param items [List<SPFeatureData>] sets list of SPFeatureData items
+ * @param items [List<SPFeatureListItemData>] sets list of SPFeatureListItemData items
  * @param title [String?] is title text
  * @param titleSrc [Int?] is a title image, default is null
  * @param footer [View?] is footer view, default is null
  */
 fun SPFeatureListContainerView.setup(
-    items: List<SPFeatureData>,
+    items: List<SPFeatureListItemData>,
     title: String?,
     titleSrc: Int? = null,
     footer: View? = null

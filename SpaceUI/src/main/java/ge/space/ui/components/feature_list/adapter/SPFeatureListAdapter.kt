@@ -6,16 +6,17 @@ import android.view.ViewGroup
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpFeatureItemFooterLayoutBinding
 import ge.space.spaceui.databinding.SpFeatureListItemLayoutBinding
-import ge.space.ui.components.feature_list.SPFeatureData
+import ge.space.ui.components.feature_list.SPFeatureListItemData
 import ge.space.ui.components.list_adapter.SPBaseListAdapter
 import ge.space.ui.components.list_adapter.SPBaseViewHolder
 
 /**
- * SPFeatureListAdapter help to handle feature list.
+ * [SPFeatureListAdapter] help to handle feature list.
  * @param useZebraPattern [Boolean] sets a sequence of light and dark backgrounds,default is true
  */
 class SPFeatureListAdapter(private val useZebraPattern: Boolean = true) :
-    SPBaseListAdapter<SPBaseViewHolder, SPFeatureData>() {
+    SPBaseListAdapter<SPBaseViewHolder, SPFeatureListItemData>() {
+
     private var title: String? = null
     private var footerView: View? = null
     private var titleSrc: Int? = null
@@ -64,9 +65,12 @@ class SPFeatureListAdapter(private val useZebraPattern: Boolean = true) :
 
     override fun onBindViewHolder(holder: SPBaseViewHolder, position: Int) {
         when (holder) {
-            is SPListViewHolder -> holder.bindUI(getItemByPosition(position))
-            is SPTitleViewHolder -> holder.binUi(title.orEmpty(), titleSrc)
-            is SPFooterViewHolder -> footerView?.let { holder.binUi(it) }
+            is SPListViewHolder -> holder.bindUI(
+                getItemByPosition(position),
+                useZebraPattern && (position % 2) == 0
+            )
+            is SPTitleViewHolder -> holder.bindUI(title.orEmpty(), titleSrc)
+            is SPFooterViewHolder -> footerView?.let { holder.bindUI(it) }
         }
     }
 

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * SPBaseListAdapter is base adapter
+ * [SPBaseListAdapter] is base adapter
  *
  * @params items [List<SPSelectedItem<Data>>] is list of List<SPSelectedItem<Data>
  */
@@ -42,14 +42,14 @@ abstract class SPBaseListAdapter<T : SPBaseViewHolder?, Data>(
 }
 
 /**
- * SPAdapterListener is interface which allow to set listener on click item in adapter,
+ * [SPAdapterListener] is interface which allow to set listener on click item in adapter,
  *  contains on Item Click Listener.
- * <Data> is item used in SPBaseItemAdapter
+ * <Data> is item used in [SPBaseItemAdapter]
  *
  */
 interface SPAdapterListener<Data> {
     /**
-     * onItemClickListener calls when user clicked on item
+     * [onItemClick] calls when user clicked on item
      *
      * @params position [Int] is position in list
      * @params data [Data] is a clicked item
@@ -58,14 +58,14 @@ interface SPAdapterListener<Data> {
 }
 
 /**
- * SPBaseViewHolder is base ViewHolder for SPBaseItemAdapter
+ * [SPBaseViewHolder] is base ViewHolder for [SPBaseItemAdapter]
  *
  * @params view [View] is item View
  */
 open class SPBaseViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 /**
- * SPSelectedItem contains
+ * [SPSelectedItem] contains
  *
  * @params item [Data] is a model type
  * @params isSelected [Boolean] is true when item is selected

@@ -11,7 +11,7 @@ import ge.space.ui.components.feature_list.SPFeatureListItem.Orientation
  * @param orientation [String] sets a description text position.
  * @param style [String] is style of SPFeatureListItem.
  */
-data class SPFeatureData(
+data class SPFeatureListItemData(
     val title: String,
     val desc: String,
     var orientation: Orientation = Orientation.Horizontal,

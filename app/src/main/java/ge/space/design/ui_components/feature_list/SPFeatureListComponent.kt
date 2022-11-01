@@ -6,7 +6,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutFeatureListShowcaseBind
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.feature_list.SPFeatureData
+import ge.space.ui.components.feature_list.SPFeatureListItemData
 import ge.space.ui.components.feature_list.setup
 import ge.space.ui.components.list_adapter.SPAdapterListener
 
@@ -25,8 +25,8 @@ class SPFeatureListComponent : ShowCaseComponent {
             ).apply {
                 SPFeatureListStyles(environment.context).also {
                     recyclerView.setup(it.list, it.title, footer = it.footerView)
-                    recyclerView.setOnSelectListener(object : SPAdapterListener<SPFeatureData> {
-                        override fun onItemClick(position: Int, data: SPFeatureData?) {
+                    recyclerView.setOnSelectListener(object : SPAdapterListener<SPFeatureListItemData> {
+                        override fun onItemClick(position: Int, data: SPFeatureListItemData?) {
                             Toast.makeText(environment.context, data?.title, Toast.LENGTH_SHORT).show()
                         }
                     })
