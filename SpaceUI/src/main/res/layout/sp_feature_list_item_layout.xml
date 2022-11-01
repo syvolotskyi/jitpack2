@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ge.space.ui.components.feature_list.SPFeatureItem android:id="@+id/featureItem"
-    style="@style/SPFeatureItem"
+<ge.space.ui.components.feature_list.SPFeatureListItem android:id="@+id/featureItem"
+    style="@style/SPFeatureListItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:title="Test title"

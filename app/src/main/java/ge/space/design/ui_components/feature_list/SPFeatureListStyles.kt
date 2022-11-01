@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpFooterExampleLayoutBinding
 import ge.space.ui.components.feature_list.SPFeatureData
-import ge.space.ui.components.feature_list.SPFeatureItem
+import ge.space.ui.components.feature_list.SPFeatureListItem
 
 
 class SPFeatureListStyles(context: Context) {
@@ -19,13 +19,13 @@ class SPFeatureListStyles(context: Context) {
         SPFeatureData(
             context.getString(R.string.small_example_text),
             context.getString(R.string.small_text_sample),
-            style = R.style.SPFeatureItem_Success
+            style = R.style.SPFeatureListItem_Success
         ),
         SPFeatureData(
             context.getString(R.string.small_example_text),
             context.getString(R.string.small_text_sample),
-            SPFeatureItem.Orientation.Vertical,
-            style = R.style.SPFeatureItem_Success
+            SPFeatureListItem.Orientation.Vertical,
+            style = R.style.SPFeatureListItem_Success
         ),
         SPFeatureData(
             context.getString(R.string.small_example_text),
@@ -34,13 +34,13 @@ class SPFeatureListStyles(context: Context) {
         SPFeatureData(
             context.getString(R.string.small_example_text),
             context.getString(R.string.small_text_sample),
-            style = R.style.SPFeatureItem_Success
+            style = R.style.SPFeatureListItem_Success
         ),
         SPFeatureData(
             context.getString(R.string.small_example_text),
             context.getString(R.string.small_text_sample),
-            SPFeatureItem.Orientation.Vertical,
-            style = R.style.SPFeatureItem_Success
+            SPFeatureListItem.Orientation.Vertical,
+            style = R.style.SPFeatureListItem_Success
         ),
 
     )

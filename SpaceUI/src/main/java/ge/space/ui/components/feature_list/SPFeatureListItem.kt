@@ -16,35 +16,35 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpFeatureItemLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.buttons.SPButton.IconDirection
-import ge.space.ui.components.feature_list.SPFeatureItem.Orientation.Horizontal
-import ge.space.ui.components.feature_list.SPFeatureItem.Orientation.Vertical
+import ge.space.ui.components.feature_list.SPFeatureListItem.Orientation.Horizontal
+import ge.space.ui.components.feature_list.SPFeatureListItem.Orientation.Vertical
 import ge.space.ui.util.extension.*
 
 /**
- * SPFeatureItem view extended from ConstraintLayout generic that allows to change its configuration.
+ * SPFeatureListItem view extended from ConstraintLayout generic that allows to change its configuration.
  * There are 3 realized styles which can be applied to the view:
  *
  * <p>
- *     1. SPFeatureItem
- *     2. SPFeatureItem.Title
- *     3. SPFeatureItem.Success
+ *     1. SPFeatureListItem
+ *     2. SPFeatureListItem.Title
+ *     3. SPFeatureListItem.Success
  * <p>
  *
  *
  * @property titleImage [Int] value which applies a button image using a resource ID.
  * @property text [String] sets a component title.
  * @property description [String] sets a component description.
- * @property isZebraEffect [Boolean] sets light or dark background.
+ * @property hasZebraEffect [Boolean] sets light or dark background.
  * @property orientation [Orientation] sets a description text position.
  *  This property can have a value from [Orientation.Horizontal] or  [Orientation.Vertical],
  */
-class SPFeatureItem @JvmOverloads constructor(
+class SPFeatureListItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = R.style.SPFeatureItem
+    @StyleRes defStyleRes: Int = R.style.SPFeatureListItem
 ) : ConstraintLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
+
     private val binding by lazy {
         SpFeatureItemLayoutBinding.inflate(LayoutInflater.from(context), this, true)
     }
@@ -84,14 +84,14 @@ class SPFeatureItem @JvmOverloads constructor(
     /**
      * Sets light or dark background.
      */
-    var isZebraEffect: Boolean = false
+    var hasZebraEffect: Boolean = false
         set(value) {
             field = value
           setBackgroundColor(getBackgroundColor())
         }
 
     private fun getBackgroundColor() =
-        if (isZebraEffect) context.getColorFromAttribute(R.attr.background_secondary)
+        if (hasZebraEffect) context.getColorFromAttribute(R.attr.background_secondary)
         else context.getColorFromAttribute(R.attr.background_primary)
 
     /**
@@ -172,7 +172,7 @@ class SPFeatureItem @JvmOverloads constructor(
             descTextAppearance = it
         }
 
-        isZebraEffect = getBoolean(R.styleable.SPFeatureList_isZebraEffect, false)
+        hasZebraEffect = getBoolean(R.styleable.SPFeatureList_hasZebraEffect, false)
     }
 
     /**

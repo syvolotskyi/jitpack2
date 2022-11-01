@@ -3,8 +3,8 @@ package ge.space.ui.components.bottomsheet.core
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import ge.space.ui.components.list_adapter.SPMenuAdapter
-import ge.space.ui.components.list_adapter.SPMenuViewHolder
+import ge.space.ui.components.list_adapter.SPBaseListAdapter
+import ge.space.ui.components.list_adapter.SPBaseViewHolder
 import ge.space.ui.components.list_adapter.SPSelectedItem
 import ge.space.ui.util.extension.onClick
 
@@ -13,7 +13,7 @@ import ge.space.ui.util.extension.onClick
  * Data is onResult return type
  */
 open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
-    SPMenuAdapter<SPBottomSheetAdapter.ListViewHolder, Data>() {
+    SPBaseListAdapter<SPBottomSheetAdapter.ListViewHolder, Data>() {
 
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Data> = { _, _, _ -> }
@@ -68,7 +68,7 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
         holder.itemView.onClick {
             item.let {
                 setSelectedItem(it.item)
-                adapterListener?.onItemClickListener(
+                adapterListener?.onItemClick(
                     holder.adapterPosition,
                     it.item
                 )
@@ -79,7 +79,7 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
     /**
      * Child of SPMenuViewHolder, contains binding of item layout
      */
-    class ListViewHolder(itemView: View) : SPMenuViewHolder(itemView) {
+    class ListViewHolder(itemView: View) : SPBaseViewHolder(itemView) {
         var binding: Any? = null
     }
 }
