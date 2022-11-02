@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SPProgressNavigator">
+        <attr name="textAppearance" />
+        <attr name="successTextAppearance" format="reference"/>
+        <attr name="defaultText"  format="string|reference"/>
+        <attr name="successText" format="string|reference" />
+        <attr name="defaultIcon"  format="reference"/>
+        <attr name="state" format="enum">
+            <enum name="Normal" value="0" />
+            <enum name="Success" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

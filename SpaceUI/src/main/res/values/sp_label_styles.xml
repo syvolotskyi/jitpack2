@@ -136,6 +136,10 @@
         <item name="android:textColor">?attr/label_secondary</item>
     </style>
 
+    <style name="h700_medium_label_secondary" parent="h700_medium">
+        <item name="android:textColor">?attr/label_secondary</item>
+    </style>
+
     <!-- 600 -->
     <style name="h600_medium_caps_label_primary" parent="h600_medium_caps">
         <item name="android:textColor">?attr/label_primary</item>

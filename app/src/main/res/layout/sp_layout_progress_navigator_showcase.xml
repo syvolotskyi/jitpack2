@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:background="?attr/white"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:orientation="vertical">
+
+        <ge.space.ui.components.progress_navigator.SPProgressNavigatorView
+            android:layout_width="match_parent"
+            android:id="@+id/step1"
+            android:layout_height="wrap_content"
+            app:successText="Simple text - done"
+            app:defaultText="Simple text"
+            app:state="Success"
+            app:defaultIcon="@drawable/ic_circle_crossed_24_regular"/>
+        <ge.space.ui.components.progress_navigator.SPProgressNavigatorView
+            android:layout_width="match_parent"
+            android:id="@+id/step2"
+            android:layout_height="wrap_content"
+            app:defaultText="Simple text"
+            app:state="Success"
+            app:successText="Simple text - done"
+            app:defaultIcon="@drawable/ic_circle_crossed_24_regular"/>
+
+        <ge.space.ui.components.progress_navigator.SPProgressNavigatorView
+            android:layout_width="match_parent"
+            android:id="@+id/step3"
+            android:layout_height="wrap_content"
+            app:successText="Simple text - done"
+            app:defaultIcon="@drawable/ic_circle_crossed_24_regular"
+            app:defaultText="Simple text" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutProgram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_p_32"
+        android:orientation="vertical"/>
+    </LinearLayout>
+</ScrollView>
