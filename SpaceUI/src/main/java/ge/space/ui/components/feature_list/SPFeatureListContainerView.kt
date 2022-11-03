@@ -40,13 +40,6 @@ class SPFeatureListContainerView @JvmOverloads constructor(
     fun setTitle(title: String, src: Int? = null) = adapter.setTitle(title, src)
 
     /**
-     * Set SPMenuAdapterListener<SPFeatureListItemData> for adapter
-     */
-    fun setOnSelectListener(listener: SPAdapterListener<SPFeatureListItemData>){
-        adapter.adapterListener = listener
-    }
-
-    /**
      * Set a footer view
      */
     fun setFooterView(view: View) {

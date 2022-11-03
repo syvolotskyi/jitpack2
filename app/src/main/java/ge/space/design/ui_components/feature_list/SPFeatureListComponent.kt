@@ -24,11 +24,6 @@ class SPFeatureListComponent : ShowCaseComponent {
 
                 SPFeatureListStyles(environment.context).also {
                     featureListContainer.setup(it.list, it.title, footer = it.footerView)
-                    featureListContainer.setOnSelectListener(object : SPAdapterListener<SPFeatureListItemData> {
-                        override fun onItemClick(position: Int, data: SPFeatureListItemData?) {
-                            Toast.makeText(environment.context, data?.title, Toast.LENGTH_SHORT).show()
-                        }
-                    })
                 }
 
             }.root
