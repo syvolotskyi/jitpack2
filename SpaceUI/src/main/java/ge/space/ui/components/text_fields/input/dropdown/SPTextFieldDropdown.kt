@@ -11,8 +11,8 @@ import androidx.fragment.app.FragmentActivity
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
-import ge.space.ui.components.list_adapter.SPMenuAdapter
-import ge.space.ui.components.list_adapter.SPMenuAdapterListener
+import ge.space.ui.components.list_adapter.SPBaseListAdapter
+import ge.space.ui.components.list_adapter.SPAdapterListener
 import ge.space.ui.components.bottomsheet.strategy.SPListSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
@@ -20,7 +20,6 @@ import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.onClick
 import ge.space.ui.util.extension.setHeight
 import ge.space.ui.util.extension.setWidth
-import kotlin.math.acos
 
 /**
  * Dropdown view which allows to manipulate next parameters:
@@ -68,7 +67,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
     /**
      * Sets an adapter for bottom sheet
      */
-    private var adapter: SPMenuAdapter<*, Item>? = null
+    private var adapter: SPBaseListAdapter<*, Item>? = null
 
     /**
      * Sets a inflate Type
@@ -201,7 +200,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         private var default: Item? = null
         private var view: SPTextFieldDropdown<Item>? = null
         private var items: List<Item> = emptyList()
-        private var bottomSheetAdapter: SPMenuAdapter<*, Item>? = null
+        private var bottomSheetAdapter: SPBaseListAdapter<*, Item>? = null
         private var style: Int = R.style.SPTextField_Dropdown
         private var onBind: SPOnDropdownBind<Item>? = null
 
@@ -254,7 +253,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         /**
          * Sets a adapter for bottom sheet
          */
-        fun setBottomSheetAdapter(adapter: SPMenuAdapter<*, Item>): SPTextFieldDropdownBuilder<Item> {
+        fun setBottomSheetAdapter(adapter: SPBaseListAdapter<*, Item>): SPTextFieldDropdownBuilder<Item> {
 
             this.bottomSheetAdapter = adapter
 
@@ -298,8 +297,8 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
                 setViewStyle(style)
                 adapter = bottomSheetAdapter
                 adapter?.setAdapterItems(items)
-                adapter?.adapterListener = object : SPMenuAdapterListener<Item> {
-                    override fun onItemClickListener(position: Int, data: Item?) {
+                adapter?.adapterListener = object : SPAdapterListener<Item> {
+                    override fun onItemClick(position: Int, data: Item?) {
                         data?.let { bindItem(data) }
                     }
                 }

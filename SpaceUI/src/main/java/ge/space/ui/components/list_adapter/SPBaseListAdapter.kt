@@ -5,19 +5,18 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * SPMenuAdapter is base adapter
+ * [SPBaseListAdapter] is base adapter
  *
- * @params items [List<List<SPSelectedItem<Data><Data>] is list of List<SPSelectedItem<Data>
- * Data is onResult return type
+ * @params items [List<SPSelectedItem<Data>>] is list of List<SPSelectedItem<Data>
  */
-abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
+abstract class SPBaseListAdapter<T : SPBaseViewHolder?, Data>(
     protected var items: List<SPSelectedItem<Data>> = emptyList()
 ) : RecyclerView.Adapter<T>() {
 
     /**
      * Contains on Item Click Listener
      */
-    var adapterListener: SPMenuAdapterListener<Data>? = null
+    var adapterListener: SPAdapterListener<Data>? = null
 
     /**
      * Sets a list of Data items, which are mapped to list of SPSelectedItem
@@ -35,33 +34,38 @@ abstract class SPMenuAdapter<T : SPMenuViewHolder?, Data>(
         items.forEach { it.isSelected = item == it.item }
         notifyDataSetChanged()
     }
+
+    /**
+     * Returns items list size
+     */
+    override fun getItemCount(): Int = items.size
 }
 
 /**
- * SPMenuAdapterListener is interface which allow to set listener on click item in adapter,
+ * [SPAdapterListener] is interface which allow to set listener on click item in adapter,
  *  contains on Item Click Listener.
- * <Data> is item used in SPMenuAdapter
+ * <Data> is item used in [SPBaseItemAdapter]
  *
  */
-interface SPMenuAdapterListener<Data> {
+interface SPAdapterListener<Data> {
     /**
-     * onItemClickListener calls when user clicked on item
+     * [onItemClick] calls when user clicked on item
      *
      * @params position [Int] is position in list
      * @params data [Data] is a clicked item
      */
-    fun onItemClickListener(position: Int, data: Data?)
+    fun onItemClick(position: Int, data: Data?)
 }
 
 /**
- * SPMenuViewHolder is base ViewHolder for SPMenuAdapter
+ * [SPBaseViewHolder] is base ViewHolder for [SPBaseItemAdapter]
  *
  * @params view [View] is item View
  */
-open class SPMenuViewHolder(view: View) : RecyclerView.ViewHolder(view)
+open class SPBaseViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
 /**
- * SPSelectedItem contains
+ * [SPSelectedItem] contains
  *
  * @params item [Data] is a model type
  * @params isSelected [Boolean] is true when item is selected

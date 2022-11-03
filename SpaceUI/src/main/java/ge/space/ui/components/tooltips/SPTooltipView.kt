@@ -167,7 +167,7 @@ class SPTooltipView @JvmOverloads constructor(
     override fun setViewStyle(newStyle: Int) {
         context.withStyledAttributes(
             newStyle,
-            R.styleable.SPEmptyStyleView
+            R.styleable.SPTooltipView
         ) {
             applyTooltipStyledAttrs()
         }

@@ -13,6 +13,7 @@ import ge.space.design.ui_components.colors.SPColorsComponent
 import ge.space.design.ui_components.controls.SPControlsComponent
 import ge.space.design.ui_components.dialogs.SPDialogComponent
 import ge.space.design.ui_components.empty_state.SPEmptyStateComponent
+import ge.space.design.ui_components.feature_list.SPFeatureListComponent
 import ge.space.design.ui_components.marks.SPMarksComponent
 import ge.space.design.ui_components.profile.SPProfileComponent
 import ge.space.design.ui_components.tab_navigation.SPTabNavigationComponent
@@ -40,6 +41,7 @@ object DesignSystemComponents : ShowCaseComponent {
             new { SPChipsComponent() },
             new { SPColorsComponent() },
             new { SPControlsComponent() },
+            new { SPFeatureListComponent() },
             new { SPDialogComponent() },
             new { SPEmptyStateComponent() },
             new { SPMarksComponent() },
