@@ -19,6 +19,7 @@ class SPFeatureListContainerView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : RecyclerView(context, attrs, defStyleAttr) {
+
     private val adapter = SPFeatureListAdapter()
 
     init {

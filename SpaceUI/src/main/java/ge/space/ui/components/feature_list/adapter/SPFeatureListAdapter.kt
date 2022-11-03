@@ -64,11 +64,9 @@ class SPFeatureListAdapter :
 
     override fun onBindViewHolder(holder: SPBaseViewHolder, position: Int) {
         when (holder) {
-            is SPListViewHolder -> holder.bindUI(
-                getItemByPosition(position), (position % 2) == 0
-            )
+            is SPListViewHolder -> holder.bindUI(getItemByPosition(position), (position % 2) == 0)
             is SPTitleViewHolder -> holder.bindUI(title.orEmpty(), titleSrc)
-            is SPFooterViewHolder -> footerView?.let { holder.bindUI(it) }
+            is SPFooterViewHolder -> footerView?.let(holder::bindUI)
         }
     }
 

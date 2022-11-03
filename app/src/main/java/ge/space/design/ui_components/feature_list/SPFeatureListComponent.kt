@@ -20,17 +20,17 @@ class SPFeatureListComponent : ShowCaseComponent {
 
     class SPFactory : SPComponentFactory {
         override fun create(environment: SPShowCaseEnvironment): Any {
-            return SpLayoutFeatureListShowcaseBinding.inflate(
-                environment.requireLayoutInflater()
-            ).apply {
+            return SpLayoutFeatureListShowcaseBinding.inflate(environment.requireLayoutInflater()).apply {
+
                 SPFeatureListStyles(environment.context).also {
-                    recyclerView.setup(it.list, it.title, footer = it.footerView)
-                    recyclerView.setOnSelectListener(object : SPAdapterListener<SPFeatureListItemData> {
+                    featureListContainer.setup(it.list, it.title, footer = it.footerView)
+                    featureListContainer.setOnSelectListener(object : SPAdapterListener<SPFeatureListItemData> {
                         override fun onItemClick(position: Int, data: SPFeatureListItemData?) {
                             Toast.makeText(environment.context, data?.title, Toast.LENGTH_SHORT).show()
                         }
                     })
                 }
+
             }.root
         }
     }
