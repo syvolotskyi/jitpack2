@@ -6,8 +6,8 @@ import ge.space.ui.components.progress_navigator.SPProgressNavigatorData
 
 object SPProgressNavigationStyles {
       val list = listOf(
-        SPProgressNavigatorData("Visit Sakartvelo", R.drawable.ic_calendar_24_regular,"გამარჯობა!" ),
-        SPProgressNavigatorData("Eat Xinkali and drink lemonadi", R.drawable.ic_charity_24_regular,"ჭამე ჩემი სავსე" ),
-        SPProgressNavigatorData("Repeat", R.drawable.ic_clock_backward_24_regular,"დიდებულათ" ),
+        SPProgressNavigatorData("Step 1", R.drawable.ic_calendar_24_regular,"Step 1 - Done!" ),
+        SPProgressNavigatorData("Step 2", R.drawable.ic_charity_24_regular,"Step 2 - Done!" ),
+        SPProgressNavigatorData("Step 3", R.drawable.ic_clock_backward_24_regular,"Step 3 - Done!" ),
     )
 }
