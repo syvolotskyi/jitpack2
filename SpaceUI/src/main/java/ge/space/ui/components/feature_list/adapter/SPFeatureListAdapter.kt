@@ -12,9 +12,8 @@ import ge.space.ui.components.list_adapter.SPBaseViewHolder
 
 /**
  * [SPFeatureListAdapter] help to handle feature list.
- * @param useZebraPattern [Boolean] sets a sequence of light and dark backgrounds,default is true
  */
-class SPFeatureListAdapter(private val useZebraPattern: Boolean = true) :
+class SPFeatureListAdapter :
     SPBaseListAdapter<SPBaseViewHolder, SPFeatureListItemData>() {
 
     private var title: String? = null
@@ -66,8 +65,7 @@ class SPFeatureListAdapter(private val useZebraPattern: Boolean = true) :
     override fun onBindViewHolder(holder: SPBaseViewHolder, position: Int) {
         when (holder) {
             is SPListViewHolder -> holder.bindUI(
-                getItemByPosition(position),
-                useZebraPattern && (position % 2) == 0
+                getItemByPosition(position), (position % 2) == 0
             )
             is SPTitleViewHolder -> holder.bindUI(title.orEmpty(), titleSrc)
             is SPFooterViewHolder -> footerView?.let { holder.bindUI(it) }
