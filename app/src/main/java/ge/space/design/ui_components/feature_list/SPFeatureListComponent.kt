@@ -1,14 +1,11 @@
 package ge.space.design.ui_components.feature_list
 
-import android.widget.Toast
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpLayoutFeatureListShowcaseBinding
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.feature_list.SPFeatureListItemData
 import ge.space.ui.components.feature_list.setup
-import ge.space.ui.components.list_adapter.SPAdapterListener
 
 class SPFeatureListComponent : ShowCaseComponent {
 
