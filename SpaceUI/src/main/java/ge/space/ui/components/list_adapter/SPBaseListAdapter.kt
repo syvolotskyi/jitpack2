@@ -36,6 +36,14 @@ abstract class SPBaseListAdapter<T : SPBaseViewHolder?, Data>(
     }
 
     /**
+     * Select an Item by Position
+     */
+    fun selectedItemByPosition(position: Int) {
+        items[position].isSelected = true
+        notifyDataSetChanged()
+    }
+
+    /**
      * Returns items list size
      */
     override fun getItemCount(): Int = items.size

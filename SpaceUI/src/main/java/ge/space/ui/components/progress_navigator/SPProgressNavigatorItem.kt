@@ -13,21 +13,21 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpProgressNavigotorItemLayoutBinding
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.base.SPViewStyling
-import ge.space.ui.components.progress_navigator.SPProgressNavigatorView.ProgressState.*
+import ge.space.ui.components.progress_navigator.SPProgressNavigatorItem.ProgressState.*
 import ge.space.ui.util.extension.EMPTY_TEXT
 import ge.space.ui.util.extension.getColorFromAttribute
 import ge.space.ui.util.extension.handleAttributeAction
 import ge.space.ui.util.extension.setTextStyle
 
 /**
- * [SPProgressNavigatorView] view extended from [LinearLayout, uses for creating steps to do.
+ * [SPProgressNavigatorItem] view extended from [LinearLayout, uses for creating steps to do.
  *
  * @param defaultText [String] is a text when the state is [NORMAL_STATE]
  * @param src [Int] is an icon whe the state is [NORMAL_STATE]
  * @param successText [String]  is a text when the state is [SUCCESS_STATE]
  * @param state [ProgressState]  is a current state
  */
-class SPProgressNavigatorView @JvmOverloads constructor(
+class SPProgressNavigatorItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
@@ -137,9 +137,9 @@ class SPProgressNavigatorView @JvmOverloads constructor(
      */
     fun setupNavigationView(data: SPProgressNavigatorData) =
         with(data) {
-            this@SPProgressNavigatorView.defaultText = defaultText
+            this@SPProgressNavigatorItem.defaultText = defaultText
             src = defaultIcon
-            this@SPProgressNavigatorView.successText = successText
+            this@SPProgressNavigatorItem.successText = successText
         }
 
     /**

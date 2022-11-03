@@ -7,8 +7,7 @@ import com.example.spacedesignsystem.databinding.SpLayoutProgressNavigatorShowca
 import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
-import ge.space.ui.components.progress_navigator.SPProgressNavigatorData
-import ge.space.ui.components.progress_navigator.SPProgressNavigatorView
+import ge.space.ui.components.progress_navigator.SPProgressNavigatorItem
 import ge.space.ui.util.extension.onClick
 
 class SPProgressNavigatorComponent : ShowCaseComponent {
@@ -24,8 +23,9 @@ class SPProgressNavigatorComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutProgressNavigatorShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             ).apply {
-                step1.state = SPProgressNavigatorView.ProgressState.SUCCESS_STATE
-                step2.state = SPProgressNavigatorView.ProgressState.SUCCESS_STATE
+                progressNavigatorContainer.setItems(SPProgressNavigationStyles.list)
+                progressNavigatorContainer.selectItem(SPProgressNavigationStyles.list[0])
+                progressNavigatorContainer.selectItemByPosition(1)
 
                 SPProgressNavigationStyles.list.forEach {
                     val itemBinding = SpItemProgressNavigatorShowcaseBinding.inflate(
@@ -35,7 +35,7 @@ class SPProgressNavigatorComponent : ShowCaseComponent {
                     )
                     itemBinding.snStep.setupNavigationView(it)
                     itemBinding.successButton.onClick {
-                        itemBinding.snStep.state = SPProgressNavigatorView.ProgressState.SUCCESS_STATE
+                        itemBinding.snStep.state = SPProgressNavigatorItem.ProgressState.SUCCESS_STATE
                         Toast.makeText(
                             environment.context,
                             "შენ ხარ კარგი ბიჭი!",

@@ -15,37 +15,17 @@
         android:layout_marginTop="@dimen/dimen_p_32"
         android:orientation="vertical">
 
-        <ge.space.ui.components.progress_navigator.SPProgressNavigatorView
+        <ge.space.ui.components.progress_navigator.SPProgressNavigatorContainer
+            android:id="@+id/progressNavigatorContainer"
             android:layout_width="match_parent"
-            android:id="@+id/step1"
-            android:layout_height="wrap_content"
-            app:successText="Simple text - done"
-            app:defaultText="Simple text"
-            app:state="Success"
-            app:defaultIcon="@drawable/ic_circle_crossed_24_regular"/>
-        <ge.space.ui.components.progress_navigator.SPProgressNavigatorView
-            android:layout_width="match_parent"
-            android:id="@+id/step2"
-            android:layout_height="wrap_content"
-            app:defaultText="Simple text"
-            app:state="Success"
-            app:successText="Simple text - done"
-            app:defaultIcon="@drawable/ic_circle_crossed_24_regular"/>
-
-        <ge.space.ui.components.progress_navigator.SPProgressNavigatorView
-            android:layout_width="match_parent"
-            android:id="@+id/step3"
-            android:layout_height="wrap_content"
-            app:successText="Simple text - done"
-            app:defaultIcon="@drawable/ic_circle_crossed_24_regular"
-            app:defaultText="Simple text" />
+            android:layout_height="wrap_content" />
 
 
-    <LinearLayout
-        android:id="@+id/layoutProgram"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_p_32"
-        android:orientation="vertical"/>
+        <LinearLayout
+            android:id="@+id/layoutProgram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_p_32"
+            android:orientation="vertical" />
     </LinearLayout>
 </ScrollView>
