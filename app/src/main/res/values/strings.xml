@@ -100,6 +100,9 @@
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
+    <string name="progress_navigator_showcase">Progress Navigator</string>
+    <string name="progress_navigator_desc">Progress Navigator desc</string>
+
     <string name="feature_list">Feature list</string>
     <string name="feature_list_items">"Feature list items</string>
     <string name="feature_list_desc">Feature list desc</string>

@@ -17,7 +17,7 @@ import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownIt
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.controls.radio.list_item.extentions.setData
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
-import ge.space.ui.components.bottomsheet.core.SPBottomSheetAdapter
+import ge.space.ui.components.bottomsheet.core.SPListAdapter
 import ge.space.ui.components.bottomsheet.strategy.SPFragmentSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.SPTextFieldDropdown
@@ -104,7 +104,7 @@ class SPDropdownComponent : ShowCaseComponent {
         ): SPTextFieldDropdown<*> {
             val context = view.context
             val adapter =
-                SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
+                SPListAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
                     .setup {
                         onCreate {
                             SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
@@ -145,7 +145,7 @@ class SPDropdownComponent : ShowCaseComponent {
         ): SPTextFieldDropdown<*> {
 
             val adapter =
-                SPBottomSheetAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
+                SPListAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
                     onCreate { SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context)) }
                     onBind { binding, item, _ ->
                         binding.radio.setData(

@@ -9,11 +9,13 @@ import ge.space.ui.components.list_adapter.SPSelectedItem
 import ge.space.ui.util.extension.onClick
 
 /**
- * SPOnBottomSheetAdapter help to handle dropdown the binding after selecting an item
- * Data is onResult return type
+ * [SPListAdapter] is a base recycler adapter impl class, which handles [onBind] and [onCreate] processes
+ * [Data] is onClicking item return parameter type
+ * @param isItemSelectable enable/disable clicking actions
  */
-open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
-    SPBaseListAdapter<SPBottomSheetAdapter.ListViewHolder, Data>() {
+open class SPListAdapter<VB : ViewBinding, Data>(
+    private val isItemSelectable: Boolean = true
+): SPBaseListAdapter<SPListAdapter.ListViewHolder, Data>() {
 
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Data> = { _, _, _ -> }
@@ -21,7 +23,7 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
     /**
      * Calls for initializing blocks OnCreate and OnBind
      */
-    fun setup(block: SPBottomSheetAdapter<VB, Data>.() -> Unit): SPBottomSheetAdapter<VB, Data> {
+    fun setup(block: SPListAdapter<VB, Data>.() -> Unit): SPListAdapter<VB, Data> {
         block()
         return this
     }
@@ -29,14 +31,14 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
     /**
      * OnCreate calls for creating View and return binding of it
      */
-    fun onCreate(block: SPBottomSheetAdapter<VB, Data>.(parent: ViewGroup) -> VB) {
+    fun onCreate(block: SPListAdapter<VB, Data>.(parent: ViewGroup) -> VB) {
         _onCreate = { block(it) }
     }
 
     /**
      * OnBind calls when item should be created and throw binding of it, item and position
      */
-    fun onBind(block: SPBottomSheetAdapter<VB, Data>.(binding: VB, item: SPSelectedItem<Data>, position: Int) -> Unit) {
+    fun onBind(block: SPListAdapter<VB, Data>.(binding: VB, item: SPSelectedItem<Data>, position: Int) -> Unit) {
         _onBind = { binding, item, position -> block(binding, item, position) }
     }
 
@@ -65,14 +67,19 @@ open class SPBottomSheetAdapter<VB : ViewBinding, Data> :
     ) {
         val item = items[position]
         _onBind(holder.binding as VB, item, position)
-        holder.itemView.onClick {
-            item.let {
-                setSelectedItem(it.item)
-                adapterListener?.onItemClick(
-                    holder.adapterPosition,
-                    it.item
-                )
-            }
+        holder.setItemClickListener(item)
+    }
+
+    /**
+     * [setItemClickListener] init click listener if [isItemSelectable] is true
+     */
+    private fun ListViewHolder.setItemClickListener(item: SPSelectedItem<Data>){
+        if(!isItemSelectable)
+            return
+
+        itemView.onClick {
+            setSelectedItem(item.item)
+            adapterListener?.onItemClick(adapterPosition,item.item)
         }
     }
 

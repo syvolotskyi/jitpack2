@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ge.space.spaceui.databinding.SpBottomsheetListBinding
 import ge.space.ui.components.list_adapter.SPBaseListAdapter
-import ge.space.ui.components.list_adapter.SPAdapterListener
+import ge.space.ui.components.list_adapter.SPBaseAdapterListener
 
 /**
  * List strategy realization of [SPBottomSheetStrategy]
@@ -36,7 +36,7 @@ open class SPListSheetStrategy<Data>(
         super.onCreate(fm, container, dismissEvent)
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
-            adapter.adapterListener = object : SPAdapterListener<Data> {
+            adapter.adapterListener = object : SPBaseAdapterListener<Data> {
                 override fun onItemClick(position: Int, data: Data?) {
                     dismissEvent(data)
                 }
