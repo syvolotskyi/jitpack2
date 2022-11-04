@@ -23,7 +23,7 @@ class SPProgressNavigatorContainer @JvmOverloads constructor(
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
     private val adapter =
-        SPListAdapter<SpProgressNavigatorItemBinding, SPProgressNavigatorData>()
+        SPListAdapter<SpProgressNavigatorItemBinding, SPProgressNavigatorData>(false)
             .setup {
                 onCreate { parent ->
                     SpProgressNavigatorItemBinding.inflate(

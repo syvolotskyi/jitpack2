@@ -12,7 +12,7 @@ import ge.space.ui.util.extension.onClick
  * [SPListAdapter] help to handle dropdown the binding after selecting an item
  * [Data] is onResult return type
  */
-open class SPListAdapter<VB : ViewBinding, Data> :
+open class SPListAdapter<VB : ViewBinding, Data>(private val isItemSelectable: Boolean = true) :
     SPBaseListAdapter<SPListAdapter.ListViewHolder, Data>() {
 
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
@@ -67,7 +67,9 @@ open class SPListAdapter<VB : ViewBinding, Data> :
         _onBind(holder.binding as VB, item, position)
         holder.itemView.onClick {
             item.let {
-                setSelectedItem(it.item)
+                if (isItemSelectable) {
+                    setSelectedItem(it.item)
+                }
                 adapterListener?.onItemClick(
                     holder.adapterPosition,
                     it.item

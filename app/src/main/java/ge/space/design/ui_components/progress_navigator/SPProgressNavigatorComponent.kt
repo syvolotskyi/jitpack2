@@ -8,6 +8,7 @@ import ge.space.design.main.SPComponentFactory
 import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.ui.components.progress_navigator.SPProgressNavigatorItem
+import ge.space.ui.components.progress_navigator.SPProgressNavigatorItem.ProgressState
 import ge.space.ui.util.extension.onClick
 
 class SPProgressNavigatorComponent : ShowCaseComponent {
@@ -35,7 +36,9 @@ class SPProgressNavigatorComponent : ShowCaseComponent {
                     )
                     itemBinding.snStep.setupNavigationView(it)
                     itemBinding.successButton.onClick {
-                        itemBinding.snStep.state = SPProgressNavigatorItem.ProgressState.SUCCESS_STATE
+                        itemBinding.snStep.state =
+                            if (itemBinding.snStep.state == ProgressState.SUCCESS_STATE)
+                                ProgressState.NORMAL_STATE else ProgressState.SUCCESS_STATE
                         Toast.makeText(
                             environment.context,
                             "შენ ხარ კარგი ბიჭი!",
