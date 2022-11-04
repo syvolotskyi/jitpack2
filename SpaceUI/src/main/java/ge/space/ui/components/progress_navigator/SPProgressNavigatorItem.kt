@@ -136,7 +136,6 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
     /**
      * Sets a navigation data
      */
-    @SuppressLint("ResourceType")
     fun setupNavigationView(data: SPProgressNavigatorData) = with(data) {
         this@SPProgressNavigatorItem.defaultText = defaultText
         this@SPProgressNavigatorItem.successText = successText
