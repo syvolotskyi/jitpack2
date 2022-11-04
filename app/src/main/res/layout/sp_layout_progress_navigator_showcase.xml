@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
-    android:background="?attr/white"
+    android:background="?attr/background_secondary"
     tools:ignore="MissingDefaultResource">
 
     <LinearLayout
@@ -20,9 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
         <LinearLayout
-            android:id="@+id/layoutProgram"
+            android:id="@+id/linearLay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_p_32"

@@ -12,8 +12,8 @@ import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
 import ge.space.ui.components.list_adapter.SPBaseListAdapter
-import ge.space.ui.components.list_adapter.SPAdapterListener
 import ge.space.ui.components.bottomsheet.strategy.SPListSheetStrategy
+import ge.space.ui.components.list_adapter.SPBaseAdapterListener
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
 import ge.space.ui.components.text_fields.input.dropdown.data.SPOnDropdownBind
 import ge.space.ui.util.extension.EMPTY_TEXT
@@ -297,7 +297,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
                 setViewStyle(style)
                 adapter = bottomSheetAdapter
                 adapter?.setAdapterItems(items)
-                adapter?.adapterListener = object : SPAdapterListener<Item> {
+                adapter?.adapterListener = object : SPBaseAdapterListener<Item> {
                     override fun onItemClick(position: Int, data: Item?) {
                         data?.let { bindItem(data) }
                     }
