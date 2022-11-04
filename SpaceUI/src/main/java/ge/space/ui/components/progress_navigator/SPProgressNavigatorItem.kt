@@ -1,12 +1,13 @@
 package ge.space.ui.components.progress_navigator
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.annotation.AttrRes
-import androidx.annotation.IdRes
+import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import ge.space.spaceui.R
@@ -45,7 +46,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
     /**
      * Sets a image resource
      */
-    @IdRes
+    @DrawableRes
     var src = SPBaseView.DEFAULT_INT
         set(value) {
             field = value
@@ -60,7 +61,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
         set(value) {
             field = value
 
-            handleState()
+            updateState()
         }
 
     /**
@@ -70,7 +71,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
         set(value) {
             field = value
 
-            handleState()
+            updateState()
         }
 
 
@@ -78,7 +79,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
         set(value) {
             field = value
 
-            handleState()
+            updateState()
         }
 
 
@@ -135,42 +136,32 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
     /**
      * Sets a navigation data
      */
-    fun setupNavigationView(data: SPProgressNavigatorData) =
-        with(data) {
-            this@SPProgressNavigatorItem.defaultText = defaultText
-            src = defaultIcon
-            this@SPProgressNavigatorItem.successText = successText
-        }
-
-    /**
-     * Sets text appearance. if [state] == [NORMAL_STATE] uses [textAppearance] else [successTextAppearance]
-     */
-    private fun updateTextAppearance() =
-        binding.titleText.setTextStyle(if (state == NORMAL_STATE) textAppearance else successTextAppearance)
-
-    private fun handleState() {
-        updateTextAppearance()
-        if (state == NORMAL_STATE)
-            setupState(
-                defaultText,
-                src,
-                context.getColorFromAttribute(R.attr.label_secondary),
-                context.getColorFromAttribute(R.attr.background_secondary)
-            )
-        else
-            setupState(
-                successText,
-                R.drawable.ic_checkmark_24_regular,
-                context.getColorFromAttribute(R.attr.white),
-                context.getColorFromAttribute(R.attr.status_primary_success)
-            )
+    fun setupNavigationView(data: SPProgressNavigatorData) = with(data) {
+        this@SPProgressNavigatorItem.defaultText = defaultText
+        this@SPProgressNavigatorItem.successText = successText
+        src = defaultIcon
     }
 
-    private fun setupState(text: String, image: Int, imageColorFilter: Int, frameColor: Int) {
-        binding.titleText.text = text
-        binding.imageView.setImageResource(image)
-        binding.imageView.setColorFilter(imageColorFilter)
-        binding.navigationFrame.color = frameColor
+    /**
+     * [updateState] changes ui state by current [ProgressState]
+     */
+    private fun updateState() = binding.apply {
+        when (state) {
+            NORMAL_STATE -> {
+                titleText.text = defaultText
+                imageView.setImageResource(src)
+                titleText.setTextStyle(textAppearance)
+                imageView.setColorFilter(context.getColorFromAttribute(R.attr.label_secondary))
+                navigationFrame.color = context.getColorFromAttribute(R.attr.background_secondary)
+            }
+            SUCCESS_STATE -> {
+                titleText.text = successText
+                titleText.setTextStyle(successTextAppearance)
+                imageView.setImageResource(R.drawable.ic_checkmark_24_regular)
+                imageView.setColorFilter(context.getColorFromAttribute(R.attr.white))
+                navigationFrame.color = context.getColorFromAttribute(R.attr.status_primary_success)
+            }
+        }
     }
 
     override fun setViewStyle(newStyle: Int) {

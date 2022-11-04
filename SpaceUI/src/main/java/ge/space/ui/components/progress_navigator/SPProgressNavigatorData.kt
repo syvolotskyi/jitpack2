@@ -11,6 +11,6 @@ import androidx.annotation.DrawableRes
  */
 data class SPProgressNavigatorData(
     val defaultText: String,
-    @DrawableRes val defaultIcon: Int,
-    val successText: String
+    val successText: String,
+    @DrawableRes val defaultIcon: Int
 )
