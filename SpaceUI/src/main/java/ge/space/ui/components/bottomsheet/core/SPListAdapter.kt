@@ -9,11 +9,13 @@ import ge.space.ui.components.list_adapter.SPSelectedItem
 import ge.space.ui.util.extension.onClick
 
 /**
- * [SPListAdapter] help to handle dropdown the binding after selecting an item
- * [Data] is onResult return type
+ * [SPListAdapter] is a base recycler adapter impl class, which handles [onBind] and [onCreate] processes
+ * [Data] is onClicking item return parameter type
+ * @param isItemSelectable enable/disable clicking actions
  */
-open class SPListAdapter<VB : ViewBinding, Data>(private val isItemSelectable: Boolean = true) :
-    SPBaseListAdapter<SPListAdapter.ListViewHolder, Data>() {
+open class SPListAdapter<VB : ViewBinding, Data>(
+    private val isItemSelectable: Boolean = true
+): SPBaseListAdapter<SPListAdapter.ListViewHolder, Data>() {
 
     private var _onCreate: OnCreate<VB> = { throw IllegalStateException() }
     private var _onBind: OnBind<VB, Data> = { _, _, _ -> }
@@ -65,16 +67,19 @@ open class SPListAdapter<VB : ViewBinding, Data>(private val isItemSelectable: B
     ) {
         val item = items[position]
         _onBind(holder.binding as VB, item, position)
-        holder.itemView.onClick {
-            item.let {
-                if (isItemSelectable) {
-                    setSelectedItem(it.item)
-                }
-                adapterListener?.onItemClick(
-                    holder.adapterPosition,
-                    it.item
-                )
-            }
+        holder.setItemClickListener(item)
+    }
+
+    /**
+     * [setItemClickListener] init click listener if [isItemSelectable] is true
+     */
+    private fun ListViewHolder.setItemClickListener(item: SPSelectedItem<Data>){
+        if(!isItemSelectable)
+            return
+
+        itemView.onClick {
+            setSelectedItem(item.item)
+            adapterListener?.onItemClick(adapterPosition,item.item)
         }
     }
 

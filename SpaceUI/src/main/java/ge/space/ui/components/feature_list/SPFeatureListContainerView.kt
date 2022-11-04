@@ -7,7 +7,6 @@ import androidx.annotation.AttrRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ge.space.ui.components.feature_list.adapter.SPFeatureListAdapter
-import ge.space.ui.components.list_adapter.SPAdapterListener
 
 /**
  * SPFeatureListContainerView view extended from RecyclerView generic that allows to change its configuration.

@@ -24,26 +24,16 @@ class SPProgressNavigatorComponent : ShowCaseComponent {
             val layoutBinding = SpLayoutProgressNavigatorShowcaseBinding.inflate(
                 environment.requireLayoutInflater()
             ).apply {
+                // set list for drawing progress navigator component list
                 progressNavigatorContainer.setItems(SPProgressNavigationStyles.list)
-                progressNavigatorContainer.selectItem(SPProgressNavigationStyles.list[0])
-                progressNavigatorContainer.selectItemByPosition(1)
 
                 SPProgressNavigationStyles.list.forEach {
-                    val itemBinding = SpItemProgressNavigatorShowcaseBinding.inflate(
-                        environment.requireLayoutInflater(),
-                        this.layoutProgram,
-                        true
-                    )
-                    itemBinding.snStep.setupNavigationView(it)
-                    itemBinding.successButton.onClick {
-                        itemBinding.snStep.state =
-                            if (itemBinding.snStep.state == ProgressState.SUCCESS_STATE)
-                                ProgressState.NORMAL_STATE else ProgressState.SUCCESS_STATE
-                        Toast.makeText(
-                            environment.context,
-                            "შენ ხარ კარგი ბიჭი!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    SpItemProgressNavigatorShowcaseBinding.inflate(environment.requireLayoutInflater(), this.linearLay, true).apply {
+                        snStep.setupNavigationView(it)
+                        successButton.onClick {
+                            snStep.state = if (snStep.state == ProgressState.SUCCESS_STATE) ProgressState.NORMAL_STATE else ProgressState.SUCCESS_STATE
+                            Toast.makeText(environment.context, "შენ ხარ კარგი ბიჭი!", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }

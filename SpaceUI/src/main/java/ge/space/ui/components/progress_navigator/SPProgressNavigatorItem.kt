@@ -1,11 +1,10 @@
 package ge.space.ui.components.progress_navigator
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.LinearLayout
+import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
@@ -33,7 +32,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0,
     @StyleRes defStyleRes: Int = R.style.SPProgressNavigator
-) : LinearLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes), SPViewStyling {
 
     private val binding by lazy {
         SpProgressNavigotorItemLayoutBinding.inflate(
@@ -61,7 +60,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
         set(value) {
             field = value
 
-            updateState()
+            binding.titleText.text = defaultText
         }
 
     /**
@@ -71,7 +70,7 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
         set(value) {
             field = value
 
-            updateState()
+            binding.titleText.text = successText
         }
 
 
@@ -137,9 +136,10 @@ class SPProgressNavigatorItem @JvmOverloads constructor(
      * Sets a navigation data
      */
     fun setupNavigationView(data: SPProgressNavigatorData) = with(data) {
+        this@SPProgressNavigatorItem.src = iconSrc
         this@SPProgressNavigatorItem.defaultText = defaultText
         this@SPProgressNavigatorItem.successText = successText
-        src = defaultIcon
+        this@SPProgressNavigatorItem.state = state
     }
 
     /**

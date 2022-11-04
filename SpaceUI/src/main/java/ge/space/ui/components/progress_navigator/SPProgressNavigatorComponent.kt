@@ -22,20 +22,17 @@ class SPProgressNavigatorContainer @JvmOverloads constructor(
     @AttrRes defStyleAttr: Int = 0
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
+    /**
+     * [adapter] of SPProgressNavigator data list
+     */
     private val adapter =
         SPListAdapter<SpProgressNavigatorItemBinding, SPProgressNavigatorData>(false)
             .setup {
                 onCreate { parent ->
-                    SpProgressNavigatorItemBinding.inflate(
-                        LayoutInflater.from(context),
-                        parent,
-                        false
-                    )
+                    SpProgressNavigatorItemBinding.inflate(LayoutInflater.from(context), parent, false)
                 }
                 onBind { binding, item, _ ->
                     binding.navigationItem.setupNavigationView(item.item)
-                    binding.navigationItem.state =
-                        if (item.isSelected) SUCCESS_STATE else NORMAL_STATE
                 }
             }
 
@@ -51,17 +48,4 @@ class SPProgressNavigatorContainer @JvmOverloads constructor(
         adapter.setAdapterItems(items)
     }
 
-    /**
-     * Sets a selected Item
-     */
-    fun selectItem(item: SPProgressNavigatorData) {
-        adapter.setSelectedItem(item)
-    }
-
-    /**
-     * Select an Item by Position
-     */
-    fun selectItemByPosition(itemPosition: Int) {
-        adapter.selectedItemByPosition(itemPosition)
-    }
 }
