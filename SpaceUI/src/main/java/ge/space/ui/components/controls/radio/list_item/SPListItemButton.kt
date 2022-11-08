@@ -49,8 +49,8 @@ class SPListItemButton @JvmOverloads constructor(
 
         getResourceId(
             R.styleable.SPRadioButton_titleTextAppearance,
-            SPBaseView.DEFAULT_OBTAIN_VAL
-        ).handleAttributeAction(SPBaseView.DEFAULT_OBTAIN_VAL) {
+            DEFAULT_OBTAIN_VAL
+        ).handleAttributeAction(DEFAULT_OBTAIN_VAL) {
             titleTextAppearance = it
         }
 

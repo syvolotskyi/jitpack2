@@ -106,8 +106,8 @@ class SPDropdownComponent : ShowCaseComponent {
             val adapter =
                 SPListAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>()
                     .setup {
-                        onCreate {
-                            SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context))
+                        onCreate { parent ->
+                            SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context), parent , false)
                         }
                         onBind { binding, item, _ ->
                             binding.radio.isChecked = item.isSelected
@@ -146,7 +146,7 @@ class SPDropdownComponent : ShowCaseComponent {
 
             val adapter =
                 SPListAdapter<SpLangItemLayoutBinding, SPDropdownItemModel>().setup {
-                    onCreate { SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context)) }
+                    onCreate { parent -> SpLangItemLayoutBinding.inflate(LayoutInflater.from(view.context), parent , false)}
                     onBind { binding, item, _ ->
                         binding.radio.setData(
                             item.item.value,

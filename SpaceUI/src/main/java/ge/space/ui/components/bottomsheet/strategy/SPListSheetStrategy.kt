@@ -34,7 +34,7 @@ open class SPListSheetStrategy<Data>(
         dismissEvent: (Data?) -> Unit
     ) {
         super.onCreate(fm, container, dismissEvent)
-        SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context)).apply {
+        SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context),container, true ).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
             adapter.adapterListener = object : SPBaseAdapterListener<Data> {
                 override fun onItemClick(position: Int, data: Data?) {
@@ -42,7 +42,6 @@ open class SPListSheetStrategy<Data>(
                 }
             }
             recyclerView.adapter = adapter
-            container.addView(this.root)
         }
     }
 }
