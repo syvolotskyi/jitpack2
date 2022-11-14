@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SPStepper">
+        <item name="selectedDotRadius">@dimen/dimen_p_9</item>
+        <item name="dotRadius">@dimen/dimen_p_9</item>
+        <item name="dotSeparation">@dimen/dimen_p_8</item>
+        <item name="dotColor">?attr/accent_tertiary_gray</item>
+        <item name="selectedDotColor">?attr/accent_secondary_gray</item>
+    </style>
+
+    <style name="SPStepper.Into" parent="SPStepper">
+        <item name="selectedDotRadius">@dimen/dimen_p_10</item>
+        <item name="dotRadius">@dimen/dimen_p_10</item>
+        <item name="dotSeparation">@dimen/dimen_p_8</item>
+        <item name="dotColor">?attr/brand_secondary</item>
+        <item name="selectedDotColor">?attr/brand_primary</item>
+    </style>
+</resources>
