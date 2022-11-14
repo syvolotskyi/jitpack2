@@ -28,10 +28,7 @@ class SPStepper @JvmOverloads constructor(
     private val DEFAULT_DOT_COUNT = 5
     private val DEFAULT_FADING_DOT_COUNT = 1
 
-
-    private var recyclerView: RecyclerView? = null
-    private var viewPager: ViewPager? = null
-    private var viewPager2: ViewPager2? = null
+    private var strategy: SPStepperStrategy? = null
     private var internalRecyclerScrollListener: SPInternalRecyclerScrollListener? = null
     private var internalPageChangeCallback: SPInternalPageChangeCallback? = null
     private val interpolator = DecelerateInterpolator()
@@ -148,34 +145,35 @@ class SPStepper @JvmOverloads constructor(
     fun attachToRecyclerView(recyclerView: RecyclerView) {
         removeAllSources()
 
-        this.recyclerView = recyclerView
+        strategy = SPRecyclerViewStrategy(recyclerView)
 
         SPInternalRecyclerScrollListener(recyclerView, this).let { newScrollListener ->
             internalRecyclerScrollListener = newScrollListener
-            this.recyclerView?.addOnScrollListener(newScrollListener)
+            recyclerView.addOnScrollListener(newScrollListener)
         }
     }
 
-    fun attachToViewPager(viewPager: ViewPager?) {
+    fun attachToViewPager(viewPager: ViewPager) {
         removeAllSources()
 
-        this.viewPager = viewPager
-        this.viewPager?.addOnPageChangeListener(this)
+        strategy = SPViewPagerStrategy(viewPager)
 
-        selectedItemPosition = viewPager?.currentItem ?: 0
+        viewPager.addOnPageChangeListener(this)
+
+        selectedItemPosition = viewPager.currentItem
     }
 
     fun attachToViewPager2(viewPager2: ViewPager2) {
         removeAllSources()
 
-        this.viewPager2 = viewPager2
+        strategy = SPViewPager2Strategy(viewPager2)
 
         SPInternalPageChangeCallback(this).let {
             internalPageChangeCallback = it
-            this.viewPager2?.registerOnPageChangeCallback(it)
+            viewPager2?.registerOnPageChangeCallback(it)
         }
 
-        selectedItemPosition = this.viewPager2?.currentItem ?: 0
+        selectedItemPosition = viewPager2?.currentItem ?: 0
     }
 
     fun setDotCount(count: Int) {
@@ -301,27 +299,15 @@ class SPStepper @JvmOverloads constructor(
     }
 
     private fun removeAllSources() {
-        internalRecyclerScrollListener?.let {
-            recyclerView?.removeOnScrollListener(it)
+        when (val source = strategy){
+            is SPRecyclerViewStrategy -> source.removeListener(internalRecyclerScrollListener)
+            is SPViewPagerStrategy -> source.removeListener(this)
+            is SPViewPager2Strategy ->source.removeListener(internalPageChangeCallback)
         }
-
-        this.viewPager?.removeOnPageChangeListener(this)
-
-        internalPageChangeCallback?.let {
-            viewPager2?.unregisterOnPageChangeCallback(it)
-        }
-
-        recyclerView = null
-        viewPager = null
-        viewPager2 = null
+        strategy = null
     }
 
-    private fun getItemCount(): Int = when {
-        recyclerView != null -> recyclerView?.adapter?.itemCount ?: 0
-        viewPager != null -> viewPager?.adapter?.count ?: 0
-        viewPager2 != null -> viewPager2?.adapter?.itemCount ?: 0
-        else -> 0
-    }
+    private fun getItemCount(): Int = strategy?.getItemCount() ?: 0
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
