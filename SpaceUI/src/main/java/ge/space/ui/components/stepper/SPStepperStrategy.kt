@@ -18,8 +18,8 @@ class SPRecyclerViewStrategy(var recyclerView: RecyclerView? = null) : SPStepper
 
 class SPViewPagerStrategy(var viewPager: ViewPager) : SPStepperStrategy {
     override fun getItemCount(): Int = viewPager.adapter?.count ?: 0
-    fun removeListener(stepper: SPStepper) {
-        viewPager.removeOnPageChangeListener(stepper)
+    fun removeListener(listener: ViewPager.OnPageChangeListener) {
+        viewPager.removeOnPageChangeListener(listener)
     }
 }
 

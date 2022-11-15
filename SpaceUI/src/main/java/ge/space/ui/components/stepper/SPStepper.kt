@@ -170,10 +170,10 @@ class SPStepper @JvmOverloads constructor(
 
         SPInternalPageChangeCallback(this).let {
             internalPageChangeCallback = it
-            viewPager2?.registerOnPageChangeCallback(it)
+            viewPager2.registerOnPageChangeCallback(it)
         }
 
-        selectedItemPosition = viewPager2?.currentItem ?: 0
+        selectedItemPosition = viewPager2.currentItem
     }
 
     fun setDotCount(count: Int) {
