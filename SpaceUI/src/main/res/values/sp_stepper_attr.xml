@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SPStepper">
+    <declare-styleable name="SPPageIndicator">
         <attr name="dotCount" format="integer" />
         <attr name="fadingDotCount" format="integer" />
         <attr name="dotRadius" format="dimension" />

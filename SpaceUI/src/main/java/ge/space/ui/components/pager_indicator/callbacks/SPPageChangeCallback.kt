@@ -1,8 +1,9 @@
-package ge.space.ui.components.stepper
+package ge.space.ui.components.pager_indicator.callbacks
 
 import androidx.viewpager2.widget.ViewPager2
+import ge.space.ui.components.pager_indicator.SPPageIndicator
 
-class SPInternalPageChangeCallback(private val stepper: SPStepper) :
+internal class SPPageChangeCallback(private val pageIndicator: SPPageIndicator) :
     ViewPager2.OnPageChangeCallback() {
 
     override fun onPageScrolled(
@@ -10,14 +11,13 @@ class SPInternalPageChangeCallback(private val stepper: SPStepper) :
         positionOffset: Float,
         positionOffsetPixels: Int
     ) {
-        stepper.onPageScrolled(
+        pageIndicator.onPageScrolled(
             position,
-            positionOffset,
-            positionOffsetPixels
+            positionOffset
         )
     }
 
     override fun onPageSelected(position: Int) {
-        stepper.onPageSelected(position)
+        pageIndicator.onPageSelected(position)
     }
 }

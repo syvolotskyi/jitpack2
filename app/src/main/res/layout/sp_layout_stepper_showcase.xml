@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ge.space.ui.components.stepper.SPStepper
+    <ge.space.ui.components.pager_indicator.SPPageIndicator
         android:id="@+id/recyclerview_pager_indicator_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

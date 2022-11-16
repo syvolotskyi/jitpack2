@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="SPStepper">
+    <style name="SPPageIndicator">
         <item name="selectedDotRadius">@dimen/dimen_p_9</item>
         <item name="dotRadius">@dimen/dimen_p_9</item>
         <item name="dotSeparation">@dimen/dimen_p_8</item>
@@ -8,7 +8,7 @@
         <item name="selectedDotColor">?attr/accent_secondary_gray</item>
     </style>
 
-    <style name="SPStepper.Into" parent="SPStepper">
+    <style name="SPStepper.Into" parent="SPPageIndicator">
         <item name="selectedDotRadius">@dimen/dimen_p_10</item>
         <item name="dotRadius">@dimen/dimen_p_10</item>
         <item name="dotSeparation">@dimen/dimen_p_8</item>

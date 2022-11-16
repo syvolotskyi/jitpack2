@@ -1,10 +1,11 @@
-package ge.space.ui.components.stepper
+package ge.space.ui.components.pager_indicator.callbacks
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ge.space.ui.components.pager_indicator.SPPageIndicator
 
-class SPInternalRecyclerScrollListener(var recyclerView: RecyclerView, var stepper: SPStepper) :
+internal class SPRecyclerScrollListener(var recyclerView: RecyclerView, var pageIndicator: SPPageIndicator) :
     RecyclerView.OnScrollListener() {
 
     /**
@@ -29,7 +30,7 @@ class SPInternalRecyclerScrollListener(var recyclerView: RecyclerView, var stepp
             setIntermediateSelectedItemPosition(
                 mostVisibleChild = view
             )
-            stepper.offsetPercent = view.left.toFloat() / view.measuredWidth
+            pageIndicator.offsetPercent = view.left.toFloat() / view.measuredWidth
         }
 
         with(recyclerView.layoutManager as LinearLayoutManager) {
@@ -37,12 +38,12 @@ class SPInternalRecyclerScrollListener(var recyclerView: RecyclerView, var stepp
                 if (dx >= 0) findLastVisibleItemPosition() else findFirstVisibleItemPosition()
 
             if (previousMostVisibleChild !== findViewByPosition(visibleItemPosition)) {
-                stepper.selectedItemPosition = stepper.intermediateSelectedItemPosition
+                pageIndicator.selectedItemPosition = pageIndicator.intermediateSelectedItemPosition
             }
         }
 
         previousMostVisibleChild = view
-        stepper.invalidate()
+        pageIndicator.invalidate()
     }
 
     /**
@@ -77,7 +78,7 @@ class SPInternalRecyclerScrollListener(var recyclerView: RecyclerView, var stepp
 
         return when {
             left < 0 -> right / width.toFloat()
-            right > stepper.getWidth() -> (stepper.getWidth() - left) / width.toFloat()
+            right > pageIndicator.width -> (pageIndicator.width - left) / width.toFloat()
             else -> 1f
         }
     }
@@ -85,7 +86,7 @@ class SPInternalRecyclerScrollListener(var recyclerView: RecyclerView, var stepp
     private fun setIntermediateSelectedItemPosition(mostVisibleChild: View) {
         recyclerView.findContainingViewHolder(mostVisibleChild)?.adapterPosition
             ?.let { position ->
-                stepper.intermediateSelectedItemPosition = position
+                pageIndicator.intermediateSelectedItemPosition = position
 
             }
     }

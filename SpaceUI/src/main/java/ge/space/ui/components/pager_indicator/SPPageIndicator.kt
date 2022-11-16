@@ -1,4 +1,4 @@
-package ge.space.ui.components.stepper
+package ge.space.ui.components.pager_indicator
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -13,25 +13,24 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import ge.space.spaceui.R
+import ge.space.ui.components.pager_indicator.callbacks.SPPageChangeCallback
+import ge.space.ui.components.pager_indicator.callbacks.SPRecyclerScrollListener
+import ge.space.ui.components.pager_indicator.callbacks.SPOnPageChangeListener
 import ge.space.ui.util.extension.getColorFromAttribute
 import kotlin.math.abs
 
-class SPStepper @JvmOverloads constructor(
+class SPPageIndicator @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0,
-    defResStyle: Int = R.style.SPStepper
-) : View(context, attrs, defStyle), ViewPager.OnPageChangeListener {
+    defResStyle: Int = R.style.SPPageIndicator
+) : View(context, attrs, defStyle, defResStyle) {
 
-    // region Members
 
     private val DEFAULT_DOT_COUNT = 5
     private val DEFAULT_FADING_DOT_COUNT = 1
 
-    private var strategy: SPStepperStrategy? = null
-    private var internalRecyclerScrollListener: SPInternalRecyclerScrollListener? = null
-    private var internalPageChangeCallback: SPInternalPageChangeCallback? = null
-    private val interpolator = DecelerateInterpolator()
+    private var indicatorHelper: SPPagerIndicatorHelper? = null
 
     private var dotCount = DEFAULT_DOT_COUNT
     private var fadingDotCount = DEFAULT_FADING_DOT_COUNT
@@ -67,7 +66,7 @@ class SPStepper @JvmOverloads constructor(
     init {
         getContext().withStyledAttributes(
             attrs,
-            R.styleable.SPStepper,
+            R.styleable.SPPageIndicator,
             defStyle,
             defResStyle
         ) {
@@ -85,52 +84,49 @@ class SPStepper @JvmOverloads constructor(
 
     private fun TypedArray.applyStyledAttrs() {
         dotCount = getInteger(
-            R.styleable.SPStepper_dotCount,
+            R.styleable.SPPageIndicator_dotCount,
             DEFAULT_DOT_COUNT
         )
         fadingDotCount = getInt(
-            R.styleable.SPStepper_fadingDotCount,
+            R.styleable.SPPageIndicator_fadingDotCount,
             DEFAULT_FADING_DOT_COUNT
         )
         dotSizePx = getDimensionPixelSize(
-            R.styleable.SPStepper_dotRadius,
+            R.styleable.SPPageIndicator_dotRadius,
             dotSizePx
         )
         selectedDotSizePx = getDimensionPixelSize(
-            R.styleable.SPStepper_selectedDotRadius,
+            R.styleable.SPPageIndicator_selectedDotRadius,
             selectedDotSizePx
         )
         dotColor = getColor(
-            R.styleable.SPStepper_dotColor,
+            R.styleable.SPPageIndicator_dotColor,
             dotColor
         )
         selectedDotColor = getColor(
-            R.styleable.SPStepper_selectedDotColor,
+            R.styleable.SPPageIndicator_selectedDotColor,
             selectedDotColor
         )
         dotSeparationDistancePx = getDimensionPixelSize(
-            R.styleable.SPStepper_dotSeparation,
+            R.styleable.SPPageIndicator_dotSeparation,
             dotSeparationDistancePx
         )
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        //draw circles for each item
         (0 until getItemCount())
-            .map { position ->
-                getDotCoordinate(
-                    position = position
-                )
-            }
+            //transform position to coordinate
+            .map { position -> getDotCoordinate(position) }
             .forEach { coordinate ->
-                val (xPosition: Float, yPosition: Float) = getXYPositionsByCoordinate(
-                    coordinate = coordinate
-                )
+                //get x and y position and draw
+                val (xPosition: Float, yPosition: Float) = getXYPositionsByCoordinate(coordinate)
                 canvas.drawCircle(
                     xPosition,
                     yPosition,
-                    getRadius(coordinate = coordinate),
-                    getPaint(coordinate = coordinate)
+                    getRadius(coordinate),
+                    getPaint(coordinate)
                 )
             }
     }
@@ -139,39 +135,27 @@ class SPStepper @JvmOverloads constructor(
         val minimumViewSize = selectedDotSizePx
 
         setMeasuredDimension(getCalculatedWidth(), minimumViewSize)
-
     }
 
     fun attachToRecyclerView(recyclerView: RecyclerView) {
         removeAllSources()
 
-        strategy = SPRecyclerViewStrategy(recyclerView)
-
-        SPInternalRecyclerScrollListener(recyclerView, this).let { newScrollListener ->
-            internalRecyclerScrollListener = newScrollListener
-            recyclerView.addOnScrollListener(newScrollListener)
-        }
+        indicatorHelper = SPRecyclerViewHelper(
+            recyclerView,
+            SPRecyclerScrollListener(recyclerView, this)
+        )
     }
 
     fun attachToViewPager(viewPager: ViewPager) {
         removeAllSources()
-
-        strategy = SPViewPagerStrategy(viewPager)
-
-        viewPager.addOnPageChangeListener(this)
+        indicatorHelper = SPViewPagerHelper(viewPager, SPOnPageChangeListener(this))
 
         selectedItemPosition = viewPager.currentItem
     }
 
     fun attachToViewPager2(viewPager2: ViewPager2) {
         removeAllSources()
-
-        strategy = SPViewPager2Strategy(viewPager2)
-
-        SPInternalPageChangeCallback(this).let {
-            internalPageChangeCallback = it
-            viewPager2.registerOnPageChangeCallback(it)
-        }
+        indicatorHelper = SPViewPager2Strategy(viewPager2, SPPageChangeCallback(this))
 
         selectedItemPosition = viewPager2.currentItem
     }
@@ -210,6 +194,19 @@ class SPStepper @JvmOverloads constructor(
     fun setSelectedDotColor(@ColorInt newSelectedDotColor: Int) {
         selectedDotColor = newSelectedDotColor
         selectedDotPaint.color = selectedDotColor
+        invalidate()
+    }
+
+    internal fun onPageScrolled(position: Int, positionOffset: Float) {
+        selectedItemPosition = position
+        intermediateSelectedItemPosition = position
+        offsetPercent = positionOffset * -1
+        invalidate()
+    }
+
+    internal fun onPageSelected(position: Int) {
+        intermediateSelectedItemPosition = selectedItemPosition
+        selectedItemPosition = position
         invalidate()
     }
 
@@ -270,7 +267,7 @@ class SPStepper @JvmOverloads constructor(
                 // Determine how close the dot is to the edge of the view for scaling the size of the dot
                 val percentTowardsEdge = (coordinateAbs - largeDotThreshold) /
                         (getCalculatedWidth() / 2.01f - largeDotThreshold)
-                interpolator.getInterpolation(1 - percentTowardsEdge) * (dotSizePx / 2)
+                DecelerateInterpolator().getInterpolation(1 - percentTowardsEdge) * (dotSizePx / 2)
             }
         }
     }
@@ -299,34 +296,9 @@ class SPStepper @JvmOverloads constructor(
     }
 
     private fun removeAllSources() {
-        when (val source = strategy){
-            is SPRecyclerViewStrategy -> source.removeListener(internalRecyclerScrollListener)
-            is SPViewPagerStrategy -> source.removeListener(this)
-            is SPViewPager2Strategy ->source.removeListener(internalPageChangeCallback)
-        }
-        strategy = null
+        indicatorHelper?.removeListener()
+        indicatorHelper = null
     }
 
-    private fun getItemCount(): Int = strategy?.getItemCount() ?: 0
-
-    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-        selectedItemPosition = position
-        intermediateSelectedItemPosition = position
-        offsetPercent = positionOffset * -1
-
-        invalidate()
-    }
-
-    override fun onPageSelected(position: Int) {
-        intermediateSelectedItemPosition = selectedItemPosition
-        selectedItemPosition = position
-
-        invalidate()
-    }
-
-    override fun onPageScrollStateChanged(state: Int) {
-        // Not implemented
-    }
-
+    private fun getItemCount(): Int = indicatorHelper?.getItemCount() ?: 0
 }
