@@ -1,7 +1,7 @@
-package ge.space.design.ui_components.stepper
+package ge.space.design.ui_components.stepper.recycler
 
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.spacedesignsystem.R
 import com.example.spacedesignsystem.databinding.SpItemBankCardShowcaseBinding
 import com.example.spacedesignsystem.databinding.SpLayoutStepperShowcaseBinding
@@ -10,16 +10,13 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.bank_cards.card.SPBankCardSupport
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
-import ge.space.spaceui.databinding.SpProgressNavigatorItemBinding
-import ge.space.ui.components.bank_cards.data.SPBankCardModel
 import ge.space.ui.components.bottomsheet.core.SPListAdapter
-import ge.space.ui.components.list_adapter.SPBaseListAdapter
 
-class SPStepperComponent : ShowCaseComponent {
+class SPPageIndicatorRecyclerComponent : ShowCaseComponent {
 
-    override fun getNameResId(): Int = R.string.stepper_showcase
+    override fun getNameResId(): Int = R.string.recycler_showcase
 
-    override fun getDescriptionResId(): Int = R.string.stepper_desc
+    override fun getDescriptionResId(): Int = R.string.recycler_desc
 
     override fun getComponentClass(): Class<*> = SPFactory::class.java
 
@@ -59,9 +56,10 @@ class SPStepperComponent : ShowCaseComponent {
             }
             adapter.setAdapterItems(SPButtonStyles.list)
             layoutBinding.recyclerview.layoutManager = LinearLayoutManager(environment.context, LinearLayoutManager.HORIZONTAL, false)
+            PagerSnapHelper().attachToRecyclerView(layoutBinding.recyclerview)
             layoutBinding.recyclerview.adapter = adapter
 
-            layoutBinding.recyclerviewPagerIndicatorHorizontal.attachToRecyclerView(layoutBinding.recyclerview)
+            layoutBinding.pagerIndicatorHorizontal.attachToRecyclerView(layoutBinding.recyclerview)
             return layoutBinding.root
         }
     }

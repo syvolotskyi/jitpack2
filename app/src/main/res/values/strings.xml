@@ -29,6 +29,9 @@
     <string name="controls_description">Controls description</string>
     <string name="controls">Controls</string>
 
+    <string name="page_indicator">Page indicator</string>
+    <string name="page_indicator_desc">Page indicator</string>
+
     <string name="toggle_switch_description">Toggle Switch description</string>
     <string name="toggle_switch">Toggle Switch</string>
 
@@ -100,8 +103,11 @@
     <string name="sandbox_showcase">Sandbox showcase</string>
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
-    <string name="stepper_showcase">Stepper showcase</string>
-    <string name="stepper_desc">Stepper desc</string>
+    <string name="recycler_showcase">Recycler view showcase</string>
+    <string name="recyclerr_desc">Page indicator with recycler view</string>
+
+    <string name="page_indicator_view_pager">View Pager</string>
+    <string name="page_indicator_view_pager_desc">Page indicator with View Pager</string>
 
     <string name="progress_navigator_showcase">Progress Navigator</string>
     <string name="progress_navigator_desc">Progress Navigator desc</string>

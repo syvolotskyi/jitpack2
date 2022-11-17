@@ -1,5 +1,7 @@
 package ge.space.ui.components.pager_indicator
 
+import SPRecyclerViewHelper
+import SPViewPagerHelper
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Canvas
@@ -13,12 +15,34 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import ge.space.spaceui.R
+import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
+import ge.space.ui.components.feature_list.SPFeatureListItem
+import ge.space.ui.components.feature_list.SPFeatureListItem.Orientation
 import ge.space.ui.components.pager_indicator.callbacks.SPPageChangeCallback
 import ge.space.ui.components.pager_indicator.callbacks.SPRecyclerScrollListener
 import ge.space.ui.components.pager_indicator.callbacks.SPOnPageChangeListener
+import ge.space.ui.components.pager_indicator.helper.SPViewPager2Helper
 import ge.space.ui.util.extension.getColorFromAttribute
 import kotlin.math.abs
 
+/**
+ * [SPPageIndicator] view extended from View generic that allows to change its configuration.
+ * There are 2 realized styles which can be applied to the view:
+ *
+ * <p>
+ *     1. SPPageIndicator
+ *     2. SPPageIndicator.Intro
+ * <p>
+ *
+ *
+ * @property dotCount [Int] Value which sets total count of visible dots .
+ * @property fadingDotCount [Int] Sets total count of visible fading dots.
+ * @property selectedDotSizePx [Int] Sets size of the selected dot.
+ * @property dotSizePx [Int] Sets size of the unselected dot.
+ * @property selectedDotColor [Int] Sets color of the selected dot.
+ * @property dotSeparationDistancePx [Int] Distance between dots.
+ * @property dotColor [Int]Sets color of the unselected dot.
+ */
 class SPPageIndicator @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -26,36 +50,73 @@ class SPPageIndicator @JvmOverloads constructor(
     defResStyle: Int = R.style.SPPageIndicator
 ) : View(context, attrs, defStyle, defResStyle) {
 
+    /* Sets total count of visible full dots*/
+    var dotCount = DEFAULT_DOT_COUNT
+        set(value) {
+            field = value
+            invalidate()
+        }
 
-    private val DEFAULT_DOT_COUNT = 5
-    private val DEFAULT_FADING_DOT_COUNT = 1
+    /* Sets total count of visible fading dots*/
+    var fadingDotCount = DEFAULT_FADING_DOT_COUNT
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+
+    /* Sets size of the selected dot */
+    var selectedDotSizePx = DEFAULT_OBTAIN_VAL
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    /* Sets size of the unselected dot */
+    var dotSizePx = DEFAULT_OBTAIN_VAL
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    /* Distance between dots */
+    var dotSeparationDistancePx = DEFAULT_OBTAIN_VAL
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    /* Sets color of the selected dot */
+    @ColorInt
+    var selectedDotColor: Int = context.getColorFromAttribute(R.attr.brand_primary)
+        set(value) {
+            field = value
+            selectedDotPaint.color = selectedDotColor
+            invalidate()
+        }
+
+    /* Sets color of the unselected dot*/
+    @ColorInt
+    var dotColor: Int = context.getColorFromAttribute(R.attr.brand_secondary)
+        set(value) {
+            field = value
+            dotPaint.color = dotColor
+            invalidate()
+        }
 
     private var indicatorHelper: SPPagerIndicatorHelper? = null
-
-    private var dotCount = DEFAULT_DOT_COUNT
-    private var fadingDotCount = DEFAULT_FADING_DOT_COUNT
-    private var selectedDotSizePx = 0
-
-    private var dotSizePx = 0
-    private var dotSeparationDistancePx = 0
-
-    @ColorInt
-    private var dotColor: Int = context.getColorFromAttribute(R.attr.brand_secondary)
-
-    @ColorInt
-    private var selectedDotColor: Int = context.getColorFromAttribute(R.attr.brand_primary)
     private var selectedDotPaint: Paint
     private var dotPaint: Paint
 
     /**
      * The current pager position. Used to draw the selected dot if different size/color.
      */
-    internal var selectedItemPosition: Int = 0
+    internal var selectedItemPosition: Int = DEFAULT_OBTAIN_VAL
 
     /**
      * A temporary value used to reflect changes/transition from one selected item to the next.
      */
-    internal var intermediateSelectedItemPosition: Int = 0
+    internal var intermediateSelectedItemPosition: Int = DEFAULT_OBTAIN_VAL
 
     /**
      * The scroll percentage of the viewpager or recyclerview.
@@ -137,6 +198,7 @@ class SPPageIndicator @JvmOverloads constructor(
         setMeasuredDimension(getCalculatedWidth(), minimumViewSize)
     }
 
+    /*  attach view indicator to Recycler View 2*/
     fun attachToRecyclerView(recyclerView: RecyclerView) {
         removeAllSources()
 
@@ -146,6 +208,7 @@ class SPPageIndicator @JvmOverloads constructor(
         )
     }
 
+    /*  attach view indicator to view pager */
     fun attachToViewPager(viewPager: ViewPager) {
         removeAllSources()
         indicatorHelper = SPViewPagerHelper(viewPager, SPOnPageChangeListener(this))
@@ -153,48 +216,12 @@ class SPPageIndicator @JvmOverloads constructor(
         selectedItemPosition = viewPager.currentItem
     }
 
+    /*  attach view indicator to view pager 2*/
     fun attachToViewPager2(viewPager2: ViewPager2) {
         removeAllSources()
-        indicatorHelper = SPViewPager2Strategy(viewPager2, SPPageChangeCallback(this))
+        indicatorHelper = SPViewPager2Helper(viewPager2, SPPageChangeCallback(this))
 
         selectedItemPosition = viewPager2.currentItem
-    }
-
-    fun setDotCount(count: Int) {
-        dotCount = count
-        invalidate()
-    }
-
-    fun setFadingDotCount(count: Int) {
-        fadingDotCount = count
-        invalidate()
-    }
-
-    fun setSelectedDotRadius(radius: Int) {
-        selectedDotSizePx = radius
-        invalidate()
-    }
-
-    fun setDotRadius(radius: Int) {
-        dotSizePx = radius
-        invalidate()
-    }
-
-    fun setDotSeparationDistance(distance: Int) {
-        dotSeparationDistancePx = distance
-        invalidate()
-    }
-
-    fun setDotColor(@ColorInt newDotColor: Int) {
-        dotColor = newDotColor
-        dotPaint.color = dotColor
-        invalidate()
-    }
-
-    fun setSelectedDotColor(@ColorInt newSelectedDotColor: Int) {
-        selectedDotColor = newSelectedDotColor
-        selectedDotPaint.color = selectedDotColor
-        invalidate()
     }
 
     internal fun onPageScrolled(position: Int, positionOffset: Float) {
@@ -301,4 +328,9 @@ class SPPageIndicator @JvmOverloads constructor(
     }
 
     private fun getItemCount(): Int = indicatorHelper?.getItemCount() ?: 0
+
+    companion object {
+        private const val DEFAULT_DOT_COUNT = 5
+        private const val DEFAULT_FADING_DOT_COUNT = 1
+    }
 }

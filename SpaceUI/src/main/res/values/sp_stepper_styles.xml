@@ -8,9 +8,11 @@
         <item name="selectedDotColor">?attr/accent_secondary_gray</item>
     </style>
 
-    <style name="SPStepper.Into" parent="SPPageIndicator">
+    <style name="SPPageIndicator.Into" parent="SPPageIndicator">
         <item name="selectedDotRadius">@dimen/dimen_p_10</item>
         <item name="dotRadius">@dimen/dimen_p_10</item>
+        <item name="dotCount">5</item>
+        <item name="fadingDotCount">0</item>
         <item name="dotSeparation">@dimen/dimen_p_8</item>
         <item name="dotColor">?attr/brand_secondary</item>
         <item name="selectedDotColor">?attr/brand_primary</item>
