@@ -16,13 +16,13 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView.Companion.DEFAULT_OBTAIN_VAL
-import ge.space.ui.components.feature_list.SPFeatureListItem
-import ge.space.ui.components.feature_list.SPFeatureListItem.Orientation
 import ge.space.ui.components.pager_indicator.callbacks.SPPageChangeCallback
 import ge.space.ui.components.pager_indicator.callbacks.SPRecyclerScrollListener
 import ge.space.ui.components.pager_indicator.callbacks.SPOnPageChangeListener
+import ge.space.ui.components.pager_indicator.helper.SPPagerIndicatorHelper
 import ge.space.ui.components.pager_indicator.helper.SPViewPager2Helper
 import ge.space.ui.util.extension.getColorFromAttribute
+import ge.space.ui.util.extension.withSideRatio
 import kotlin.math.abs
 
 /**
@@ -91,7 +91,16 @@ class SPPageIndicator @JvmOverloads constructor(
     var selectedDotColor: Int = context.getColorFromAttribute(R.attr.brand_primary)
         set(value) {
             field = value
-            selectedDotPaint.color = selectedDotColor
+            selectedDotPaint?.color = selectedDotColor
+            invalidate()
+        }
+
+
+    /* Sets color of the selected dot */
+    var centralizeSelectedDot: Boolean = false
+        set(value) {
+            field = value
+
             invalidate()
         }
 
@@ -100,13 +109,14 @@ class SPPageIndicator @JvmOverloads constructor(
     var dotColor: Int = context.getColorFromAttribute(R.attr.brand_secondary)
         set(value) {
             field = value
-            dotPaint.color = dotColor
+            dotPaint?.color = dotColor
             invalidate()
         }
 
     private var indicatorHelper: SPPagerIndicatorHelper? = null
-    private var selectedDotPaint: Paint
-    private var dotPaint: Paint
+    private var selectedDotPaint: Paint?=null
+    private var dotPaint: Paint?=null
+
 
     /**
      * The current pager position. Used to draw the selected dot if different size/color.
@@ -156,6 +166,10 @@ class SPPageIndicator @JvmOverloads constructor(
             R.styleable.SPPageIndicator_dotRadius,
             dotSizePx
         )
+        centralizeSelectedDot = getBoolean(
+            R.styleable.SPPageIndicator_centralizeSelectedDot,
+            true
+        )
         selectedDotSizePx = getDimensionPixelSize(
             R.styleable.SPPageIndicator_selectedDotRadius,
             selectedDotSizePx
@@ -179,15 +193,15 @@ class SPPageIndicator @JvmOverloads constructor(
         //draw circles for each item
         (0 until getItemCount())
             //transform position to coordinate
-            .map { position -> getDotCoordinate(position) }
-            .forEach { coordinate ->
+            .forEach { position ->
+               val coordinate = getDotCoordinate(position)
                 //get x and y position and draw
                 val (xPosition: Float, yPosition: Float) = getXYPositionsByCoordinate(coordinate)
                 canvas.drawCircle(
                     xPosition,
                     yPosition,
-                    getRadius(coordinate),
-                    getPaint(coordinate)
+                    getRadius(position, coordinate),
+                    getPaint(position, coordinate)
                 )
             }
     }
@@ -225,10 +239,13 @@ class SPPageIndicator @JvmOverloads constructor(
     }
 
     internal fun onPageScrolled(position: Int, positionOffset: Float) {
-        selectedItemPosition = position
-        intermediateSelectedItemPosition = position
-        offsetPercent = positionOffset * -1
-        invalidate()
+        if (!centralizeSelectedDot) {
+            selectedItemPosition = position
+            intermediateSelectedItemPosition = position
+            offsetPercent = positionOffset * -1
+
+            invalidate()
+        }
     }
 
     internal fun onPageSelected(position: Int) {
@@ -248,15 +265,16 @@ class SPPageIndicator @JvmOverloads constructor(
     }
 
     private fun getXYPositionsByCoordinate(coordinate: Float): Pair<Float, Float> {
-        val xPosition: Float = width / 2 + coordinate
+        val xPosition: Float = if (centralizeSelectedDot) width.toFloat().withSideRatio() + coordinate else coordinate
         val yPosition: Float = getDotYCoordinate().toFloat()
 
         return Pair(xPosition, yPosition)
     }
 
     private fun getDotCoordinate(position: Int): Float =
-        (position - intermediateSelectedItemPosition) * getDistanceBetweenTheCenterOfTwoDots() +
-                (getDistanceBetweenTheCenterOfTwoDots() * offsetPercent)
+        if (!centralizeSelectedDot) (getDistanceBetweenTheCenterOfTwoDots() * position) + dotSizePx.toFloat().withSideRatio()
+        else  ((position - intermediateSelectedItemPosition) * getDistanceBetweenTheCenterOfTwoDots() +
+                (getDistanceBetweenTheCenterOfTwoDots() * offsetPercent))
 
     /**
      * Get the y coordinate for a dot.
@@ -283,13 +301,15 @@ class SPPageIndicator @JvmOverloads constructor(
      * radius is calculated based on a interpolator percentage of how far the
      * viewpager/recyclerview has scrolled.
      */
-    private fun getRadius(coordinate: Float): Float {
+    private fun getRadius(position:Int, coordinate: Float): Float {
         val coordinateAbs = abs(coordinate)
         // Get the coordinate where dots begin showing as fading dots (x coordinates > half of width of all large dots)
-        val largeDotThreshold = dotCount.toFloat() / 2 * getDistanceBetweenTheCenterOfTwoDots()
+        val largeDotThreshold = dotCount.toFloat().withSideRatio() * getDistanceBetweenTheCenterOfTwoDots()
         return when {
-            coordinateAbs < getDistanceBetweenTheCenterOfTwoDots() / 2 -> selectedDotSizePx.toFloat() / 2
-            coordinateAbs <= largeDotThreshold -> dotSizePx.toFloat() / 2
+            !centralizeSelectedDot && position == selectedItemPosition -> selectedDotSizePx.toFloat().withSideRatio()
+            !centralizeSelectedDot && position != selectedItemPosition -> dotSizePx.toFloat().withSideRatio()
+            coordinateAbs < getDistanceBetweenTheCenterOfTwoDots() / 2 -> selectedDotSizePx.toFloat().withSideRatio()
+            coordinateAbs <= largeDotThreshold -> dotSizePx.toFloat().withSideRatio()
             else -> {
                 // Determine how close the dot is to the edge of the view for scaling the size of the dot
                 val percentTowardsEdge = (coordinateAbs - largeDotThreshold) /
@@ -306,9 +326,11 @@ class SPPageIndicator @JvmOverloads constructor(
      *
      * All other dots will be the normal specified dot color.
      */
-    private fun getPaint(coordinate: Float): Paint = when {
-        abs(coordinate) < getDistanceBetweenTheCenterOfTwoDots() / 2 -> selectedDotPaint
-        else -> dotPaint
+    private fun getPaint(position: Int, coordinate: Float): Paint = when {
+        !centralizeSelectedDot && position == selectedItemPosition-> selectedDotPaint!!
+        !centralizeSelectedDot && position != selectedItemPosition-> dotPaint!!
+        abs(coordinate) < getDistanceBetweenTheCenterOfTwoDots() / 2 -> selectedDotPaint!!
+        else -> dotPaint!!
     }
 
     /**

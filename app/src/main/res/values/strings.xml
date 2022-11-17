@@ -104,7 +104,7 @@
     <string name="sandbox_desc">Please use this showcase for you own purposes to test views</string>
 
     <string name="recycler_showcase">Recycler view showcase</string>
-    <string name="recyclerr_desc">Page indicator with recycler view</string>
+    <string name="recycler_desc">Page indicator with recycler view</string>
 
     <string name="page_indicator_view_pager">View Pager</string>
     <string name="page_indicator_view_pager_desc">Page indicator with View Pager</string>

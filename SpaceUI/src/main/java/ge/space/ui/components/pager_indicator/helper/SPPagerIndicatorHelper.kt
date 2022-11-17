@@ -1,4 +1,4 @@
-package ge.space.ui.components.pager_indicator
+package ge.space.ui.components.pager_indicator.helper
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager

@@ -1,5 +1,5 @@
 import androidx.recyclerview.widget.RecyclerView
-import ge.space.ui.components.pager_indicator.SPPagerIndicatorHelper
+import ge.space.ui.components.pager_indicator.helper.SPPagerIndicatorHelper
 
 /**
  * [SPRecyclerViewHelper] is child [SPPagerIndicatorHelper]. Allows to attach [SPPagerIndicator] with recycler view.

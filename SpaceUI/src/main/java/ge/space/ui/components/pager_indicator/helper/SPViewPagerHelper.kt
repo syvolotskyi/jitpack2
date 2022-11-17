@@ -1,5 +1,5 @@
 import androidx.viewpager.widget.ViewPager
-import ge.space.ui.components.pager_indicator.SPPagerIndicatorHelper
+import ge.space.ui.components.pager_indicator.helper.SPPagerIndicatorHelper
 
 /**
  * [SPViewPagerHelper] is child [SPPagerIndicatorHelper]. Allows to attach [SPPagerIndicator] with ViewPager.

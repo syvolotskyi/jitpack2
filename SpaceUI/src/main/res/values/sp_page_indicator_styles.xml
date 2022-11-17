@@ -13,6 +13,7 @@
         <item name="dotRadius">@dimen/dimen_p_10</item>
         <item name="dotCount">5</item>
         <item name="fadingDotCount">0</item>
+        <item name="centralizeSelectedDot">false</item>
         <item name="dotSeparation">@dimen/dimen_p_8</item>
         <item name="dotColor">?attr/brand_secondary</item>
         <item name="selectedDotColor">?attr/brand_primary</item>
