@@ -29,7 +29,7 @@ class SPExampleFragment : SPBottomSheetBaseFragment<String>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        SPButtonStyles.list.forEach { bankCardSample ->
+        SPButtonStyles.list.last().also {   bankCardSample ->
             val itemBinding = SpItemBankCardShowcaseBinding.inflate(
                 LayoutInflater.from(context).cloneInContext(ContextThemeWrapper(context, R.style.SPBankCardView_Base)),
                 binding.bankCardsLayout,
