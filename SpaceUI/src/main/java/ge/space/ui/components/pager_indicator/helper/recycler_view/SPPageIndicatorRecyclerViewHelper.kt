@@ -1,23 +1,25 @@
+package ge.space.ui.components.pager_indicator.helper.recycler_view
+
 import androidx.recyclerview.widget.RecyclerView
-import ge.space.ui.components.pager_indicator.helper.SPPagerIndicatorHelper
+import ge.space.ui.components.pager_indicator.helper.SPPageIndicatorStateHelper
 
 /**
- * [SPRecyclerViewHelper] is child [SPPagerIndicatorHelper]. Allows to attach [SPPagerIndicator] with recycler view.
+ * [SPPageIndicatorRecyclerViewHelper] is child [SPPageIndicatorStateHelper]. Allows to attach [SPPagerIndicator] with recycler view.
  *
  * @param recyclerView [RecyclerView] connected recycler view.
  * @param listener [RecyclerView.OnScrollListener] implementation of RecyclerView.OnScrollListener.
  */
-class SPRecyclerViewHelper(
+class SPPageIndicatorRecyclerViewHelper(
     var recyclerView: RecyclerView,
     var listener: RecyclerView.OnScrollListener
-) : SPPagerIndicatorHelper {
+) : SPPageIndicatorStateHelper {
 
     init {
         recyclerView.addOnScrollListener(listener)
     }
 
     override fun getItemCount(): Int = recyclerView.adapter?.itemCount ?: 0
-    override fun removeListener() {
-        recyclerView.removeOnScrollListener(listener)
-    }
+
+    override fun removeListener() = recyclerView.removeOnScrollListener(listener)
+
 }
