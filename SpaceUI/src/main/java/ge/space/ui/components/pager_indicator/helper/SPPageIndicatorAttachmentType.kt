@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
  * We support three types:
  * - [SPViewPager] for ViewPager 1
  * - [SPViewPager2] for ViewPager 2
- * - [SPRecyclerView] for ViewPager 2
+ * - [SPRecyclerView] for RecyclerView
  */
 sealed class SPPageIndicatorAttachmentType {
 
