@@ -13,7 +13,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ge.space.ui.components.pager_indicator.SPPageIndicator
+    <ge.space.ui.components.pager_indicator.core.SPPageIndicator
         android:id="@+id/pager_indicator_horizontal"
         style="@style/SPPageIndicator.Into"
         android:layout_width="wrap_content"

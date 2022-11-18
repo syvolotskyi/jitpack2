@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ge.space.ui.components.pager_indicator.SPPageIndicator
+    <ge.space.ui.components.pager_indicator.core.SPPageIndicator
         android:id="@+id/pager_indicator_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -11,6 +11,7 @@ import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.bank_cards.card.SPBankCardSupport
 import ge.space.design.ui_components.bank_cards.card.SPButtonStyles
 import ge.space.ui.components.bottomsheet.core.SPListAdapter
+import ge.space.ui.components.pager_indicator.helper.SPPageIndicatorAttachmentType
 
 class SPPageIndicatorRecyclerComponent : ShowCaseComponent {
 
@@ -59,7 +60,7 @@ class SPPageIndicatorRecyclerComponent : ShowCaseComponent {
             PagerSnapHelper().attachToRecyclerView(layoutBinding.recyclerview)
             layoutBinding.recyclerview.adapter = adapter
 
-            layoutBinding.pagerIndicatorHorizontal.attachToRecyclerView(layoutBinding.recyclerview)
+            layoutBinding.pagerIndicatorHorizontal.attachTo(SPPageIndicatorAttachmentType.SPRecyclerView(layoutBinding.recyclerview))
             return layoutBinding.root
         }
     }
