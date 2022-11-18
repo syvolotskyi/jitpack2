@@ -1,12 +1,14 @@
-package ge.space.ui.components.pager_indicator.callbacks
+package ge.space.ui.components.pager_indicator.helper.recycler_view
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ge.space.ui.components.pager_indicator.SPPageIndicator
+import ge.space.ui.components.pager_indicator.core.SPPageIndicator
 
-internal class SPRecyclerScrollListener(var recyclerView: RecyclerView, var pageIndicator: SPPageIndicator) :
-    RecyclerView.OnScrollListener() {
+internal class SPRecyclerScrollListener(
+    var recyclerView: RecyclerView,
+    var pageIndicator: SPPageIndicator
+) : RecyclerView.OnScrollListener() {
 
     /**
      * The previous most visible child page in the RecyclerView.
