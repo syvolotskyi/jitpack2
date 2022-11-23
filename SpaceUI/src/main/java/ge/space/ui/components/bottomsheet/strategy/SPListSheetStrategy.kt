@@ -2,9 +2,9 @@ package ge.space.ui.components.bottomsheet.strategy
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import ge.space.spaceui.databinding.SpBottomsheetListBinding
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
 import ge.space.ui.components.list_adapter.SPBaseListAdapter
 import ge.space.ui.components.list_adapter.SPBaseAdapterListener
 
@@ -24,16 +24,16 @@ open class SPListSheetStrategy<Data>(
     /**
      * Calls for initializing strategy
      *
-     * @param fm [FragmentManager] is supportFragmentManager
+     * @param sheetFragment [ SPBottomSheetFragment<*>] is a bottom sheet fragment
      * @param container [ViewGroup] is parent container
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
     override fun onCreate(
-        fm: FragmentManager,
+        sheetFragment: SPBottomSheetFragment<*>,
         container: ViewGroup,
         dismissEvent: (Data?) -> Unit
     ) {
-        super.onCreate(fm, container, dismissEvent)
+        super.onCreate(sheetFragment, container, dismissEvent)
         SpBottomsheetListBinding.inflate(LayoutInflater.from(container.context),container, true ).apply {
             decorator?.let { recyclerView.addItemDecoration(it) }
             adapter.adapterListener = object : SPBaseAdapterListener<Data> {

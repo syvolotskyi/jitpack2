@@ -199,6 +199,7 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
         private var description: String = EMPTY_TEXT
         private var listener: (SPTextFieldDropdown<Item>) -> Unit = { }
         private var default: Item? = null
+        private var isCancelable: Boolean = true
         private var view: SPTextFieldDropdown<Item>? = null
         private var items: List<Item> = emptyList()
         private var bottomSheetAdapter: SPBaseListAdapter<*, Item>? = null
@@ -284,6 +285,14 @@ class SPTextFieldDropdown<Item> @JvmOverloads constructor(
          */
         fun setDefault(default: Item): SPTextFieldDropdownBuilder<Item> {
             this.default = default
+
+            return this
+        }
+        /**
+         * Sets a default item
+         */
+        fun setIsCancelable(default: Boolean): SPTextFieldDropdownBuilder<Item> {
+            this.isCancelable = default
 
             return this
         }

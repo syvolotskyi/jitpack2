@@ -13,12 +13,26 @@
         android:orientation="vertical"
         android:paddingBottom="@dimen/dimen_p_40">
 
-        <LinearLayout
-            android:id="@+id/bankCardsLayout"
+        <ge.space.ui.components.buttons.SPButton
+            android:id="@+id/hideKeyboardButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" />
+            android:text="Hide keyboard" />
+        <ge.space.ui.components.text_fields.input.base.SPTextFieldInput
+            android:id="@+id/inputTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_p_16"
+            android:hint="@string/enter_you_details_here"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
+
+        <ge.space.ui.components.buttons.SPButton
+            android:id="@+id/backButton"
+            style="@style/SPButton.Primary_Size56"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_p_16"
+            android:text="Open Previus Fragment" />
 
         <ge.space.ui.components.buttons.SPButton
             android:id="@+id/nextButton"
@@ -28,12 +42,6 @@
             android:layout_marginVertical="@dimen/dimen_p_16"
             android:text="Open Next Fragment" />
 
-        <ge.space.ui.components.buttons.SPButton
-            android:id="@+id/saveButton"
-            style="@style/SPButton.Primary_Size56"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimen_p_16"
-            android:text="Save and close" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

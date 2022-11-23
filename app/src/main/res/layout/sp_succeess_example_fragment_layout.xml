@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dimen_p_40"
+    tools:ignore="MissingDefaultResource">
+
+
+    <ge.space.ui.components.buttons.SPButton
+        android:id="@+id/backButton"
+        style="@style/SPButton.Primary_Size56"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimen_p_16"
+        android:text="Well done! Open Previus Fragment" />
+
+
+</LinearLayout>
