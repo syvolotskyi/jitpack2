@@ -30,17 +30,6 @@ class SPDialogEditText(
     override val dismissHandler: SPDialogDismissHandler?
 ) : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
 
-    /*  private val title: String? by argument(KEY_TITLE, null)
-  */
-    /*  private val editTextChange: SPEditTextDialogChangeHandler? by argument(
-          KEY_EDIT_TEXT_CHANGE, null
-      )*/
-
-/*    override val buttonObjects: Array<SPEditTextDialogInfoHolder> by nonNullArgument(
-        KEY_BUTTON_OBJECT,
-        arrayOf()
-    )*/
-
     override val isButtonsMultiple: Boolean
         get() = IS_BUTTON_MULTIPLE
 
