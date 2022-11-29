@@ -1,18 +1,6 @@
 package ge.space.ui.components.dialogs.builder
 
-import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentActivity
 import ge.space.ui.components.dialogs.dialog_types.SPDialog
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_BUTTONS_VISIBLE
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_DIALOG_ICON
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_DISMISS
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_INFO_ICON_VISIBLE
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_LABEL
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_LABEL_VISIBLE
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_MULTIPLE
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_TITLE
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_TITLE_VISIBLE
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
@@ -26,16 +14,16 @@ import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
  */
 class SPInfoDialogBuilder : SPBaseDialogBuilder<SPDialog>() {
 
-    private var title: String? = null
-    private var label: String? = null
-    private var titleVisible: Boolean = true
-    private var labelVisible: Boolean = true
-    private var infoIconVisible: Boolean = true
-    private var buttonsVisible: Boolean = true
-    private var isMultiple: Boolean = false
-    private var buttons: Array<SPDialogInfoHolder> = arrayOf()
-    private var dismissHandler: SPDialogDismissHandler? = null
-    private var dialogIcon: SPDialogIcon = SPDialogIcon.Info()
+    internal var title: String? = null
+    internal var label: String? = null
+    internal var titleVisible: Boolean = true
+    internal var labelVisible: Boolean = true
+    internal var infoIconVisible: Boolean = true
+    internal var buttonsVisible: Boolean = true
+    internal var isMultiple: Boolean = false
+    internal var buttons: Array<SPDialogInfoHolder> = arrayOf()
+    internal var dismissHandler: SPDialogDismissHandler? = null
+    internal var dialogIcon: SPDialogIcon = SPDialogIcon.Info()
 
     /**
      * Defines data for the dialog bottom buttons visibility
@@ -142,21 +130,7 @@ class SPInfoDialogBuilder : SPBaseDialogBuilder<SPDialog>() {
     }
 
     /**
-     * Builds [SPDialog] by using properties with keys
+     * Builds [SPDialog] by using constructor
      */
-    override fun build(): SPDialog =
-        SPDialog().apply {
-            arguments = bundleOf(
-                KEY_TITLE to this@SPInfoDialogBuilder.title,
-                KEY_LABEL to this@SPInfoDialogBuilder.label,
-                KEY_INFO_ICON_VISIBLE to this@SPInfoDialogBuilder.infoIconVisible,
-                KEY_TITLE_VISIBLE to this@SPInfoDialogBuilder.titleVisible,
-                KEY_LABEL_VISIBLE to this@SPInfoDialogBuilder.labelVisible,
-                KEY_BUTTONS_VISIBLE to this@SPInfoDialogBuilder.buttonsVisible,
-                KEY_MULTIPLE to this@SPInfoDialogBuilder.isMultiple,
-                KEY_BUTTON_OBJECT to this@SPInfoDialogBuilder.buttons,
-                KEY_DISMISS to this@SPInfoDialogBuilder.dismissHandler,
-                KEY_DIALOG_ICON to this@SPInfoDialogBuilder.dialogIcon,
-            )
-        }
+    override fun build(): SPDialog = SPDialog(this)
 }

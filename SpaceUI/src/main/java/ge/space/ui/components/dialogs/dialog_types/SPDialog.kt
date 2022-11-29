@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
 import ge.space.ui.components.dialogs.base.SPBaseDialog
+import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
+import ge.space.ui.components.dialogs.builder.SPInfoDialogBuilder
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
@@ -27,36 +29,21 @@ import ge.space.ui.util.extension.*
  * @property isButtonsMultiple sets the dialog bottom buttons multiple flag
  * @property buttonsVisible describes the dialog bottom buttons visibility
  */
-class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
-
-    private val title: String? by argument(KEY_TITLE, null)
-
-    private val label: String? by argument(KEY_LABEL, null)
-
-    private val iconVisible: Boolean by nonNullArgument(KEY_INFO_ICON_VISIBLE, true)
-
-    private val titleVisible: Boolean by nonNullArgument(KEY_TITLE_VISIBLE, true)
-
-    private val labelVisible: Boolean by nonNullArgument(KEY_LABEL_VISIBLE, true)
-
-    private val buttonsVisible: Boolean by nonNullArgument(KEY_BUTTONS_VISIBLE, true)
-
-    private val dialogIcon: SPDialogIcon by nonNullArgument(
-        KEY_DIALOG_ICON,
-        SPDialogIcon.Info()
-    )
-
-    override val buttonObjects: Array<SPDialogInfoHolder> by nonNullArgument(
-        KEY_BUTTON_OBJECT,
-        arrayOf()
-    )
-
-    override val isButtonsMultiple: Boolean by nonNullArgument(KEY_MULTIPLE, false)
-
-    override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
+class SPDialog(
+    val title: String?,
+    val label: String?,
+    private val iconVisible: Boolean,
+    private val titleVisible: Boolean,
+    private val labelVisible: Boolean,
+    private val buttonsVisible: Boolean,
+    private val dialogIcon: SPDialogIcon,
+    override val buttonObjects: Array<SPDialogInfoHolder>,
+    override val isButtonsMultiple: Boolean,
+    override val dismissHandler: SPDialogDismissHandler?
+) : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
 
     override fun getViewBinding(): SpDialogLayoutBinding =
-            SpDialogLayoutBinding.inflate(LayoutInflater.from(context))
+        SpDialogLayoutBinding.inflate(LayoutInflater.from(context))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -127,5 +114,23 @@ class SPDialog : SPBaseDialog<SpDialogLayoutBinding, SPDialogInfoHolder>() {
         binding.lytRoot.onClick {
             dismiss()
         }
+    }
+
+    internal constructor(builder: SPInfoDialogBuilder) : this(
+        builder.title,
+        builder.label,
+        builder.infoIconVisible,
+        builder.titleVisible,
+        builder.labelVisible,
+        builder.buttonsVisible,
+        builder.dialogIcon,
+        builder.buttons,
+        builder.isMultiple,
+        builder.dismissHandler
+    )
+
+    companion object {
+        inline fun dialog(block: SPInfoDialogBuilder.() -> Unit) =
+            SPInfoDialogBuilder().apply(block).build()
     }
 }
