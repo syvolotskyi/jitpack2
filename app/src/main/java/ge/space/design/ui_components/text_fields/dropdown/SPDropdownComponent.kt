@@ -17,6 +17,7 @@ import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownIt
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.controls.radio.list_item.extentions.setData
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment.Companion.bottomSheet
 import ge.space.ui.components.bottomsheet.core.SPListAdapter
 import ge.space.ui.components.bottomsheet.strategy.SPFragmentSheetStrategy
 import ge.space.ui.components.text_fields.input.base.SPTextFieldInput
@@ -190,27 +191,20 @@ class SPDropdownComponent : ShowCaseComponent {
 
         private fun getBottomSheetFragment(
             view: FrameLayout
-        ) = SPBottomSheetBuilder<String>()
-            .setTitle(view.context.getString(R.string.component_bank_card))
-            .setStrategy(
-                SPFragmentSheetStrategy(
-                    SPExampleFragment()
-                )
-            )
-            .setResultListener {
-                Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show()
-            }
-            .build()
+        ) = bottomSheet<String>{
+            setTitle(view.context.getString(R.string.component_bank_card))
+            setStrategy(SPFragmentSheetStrategy(SPExampleFragment()))
+            setResultListener { Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show() }
+        }
 
         private fun showButtonBottomSheet(context: FragmentActivity) {
-            SPBottomSheetBuilder<String>()
-                .setTitle(context.getString(R.string.title_default_items))
-                .setDescription(context.getString(R.string.example_text))
-                .setBottomButton(context.getString(R.string.show_btn)) {
+            bottomSheet<String> {
+                setTitle(context.getString(R.string.title_default_items))
+                setDescription(context.getString(R.string.example_text))
+                setBottomButton(context.getString(R.string.show_btn)) {
                     Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
                 }
-                .build()
-                .show(context)
+            }.show(context)
         }
     }
 }

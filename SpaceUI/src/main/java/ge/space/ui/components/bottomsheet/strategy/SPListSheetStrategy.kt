@@ -17,7 +17,7 @@ import ge.space.ui.components.list_adapter.SPBaseAdapterListener
  */
 
 open class SPListSheetStrategy<Data>(
-    private val adapter: SPBaseListAdapter<*, Data>,
+    private val adapter:  SPBaseListAdapter<*, Data>,
     private val decorator: ItemDecoration? = null
 ) : SPBottomSheetStrategy<Data> {
 

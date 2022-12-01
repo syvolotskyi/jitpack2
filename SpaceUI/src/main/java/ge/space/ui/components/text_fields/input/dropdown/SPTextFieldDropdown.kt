@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import ge.space.spaceui.R
 import ge.space.ui.base.SPBaseView
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
+import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment.Companion.bottomSheet
 import ge.space.ui.components.list_adapter.SPBaseListAdapter
 import ge.space.ui.components.bottomsheet.strategy.SPListSheetStrategy
 import ge.space.ui.components.list_adapter.SPBaseAdapterListener
