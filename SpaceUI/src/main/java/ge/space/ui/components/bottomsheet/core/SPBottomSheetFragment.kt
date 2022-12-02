@@ -13,6 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
+import ge.space.ui.components.bottomsheet.builder.BottomSheetDsl
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
@@ -185,7 +186,7 @@ class SPBottomSheetFragment<Data>(private val titleStyle: Int?,
     )
 
     companion object {
-        inline fun <reified Data> bottomSheet(block: SPBottomSheetBuilder<Data>.() -> Unit) =
+        inline fun <reified Data> bottomSheet(block: @BottomSheetDsl SPBottomSheetBuilder<Data>.() -> Unit) =
             SPBottomSheetBuilder<Data>().apply(block).build()
     }
 }

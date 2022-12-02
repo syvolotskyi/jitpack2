@@ -9,11 +9,15 @@ import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPListSheetStrategy
 import ge.space.ui.util.extension.EMPTY_TEXT
 
+@DslMarker
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
+annotation class BottomSheetDsl
+
 /**
  * Builder class which allows to create [SPBottomSheetFragment]. Data is onResult return type
  */
-class SPBottomSheetBuilder<Data> :
-    SPBaseDialogBuilder<SPBottomSheetFragment<Data>>() {
+@BottomSheetDsl
+class SPBottomSheetBuilder<Data> : SPBaseDialogBuilder<SPBottomSheetFragment<Data>>() {
 
     internal var title: String? = null
     internal var titleStyle: Int? = null
