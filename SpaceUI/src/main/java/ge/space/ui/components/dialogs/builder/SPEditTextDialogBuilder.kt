@@ -6,9 +6,14 @@ import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.dialogs.data.*
 import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
 
+@DslMarker
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
+annotation class SPEditTextDialogDsl
+
 /**
  * Builder class which allows to create [SPDialogEditText]
  */
+@SPEditTextDialogDsl
 class SPEditTextDialogBuilder : SPBaseDialogBuilder<SPDialogEditText>() {
 
     internal var title: String? = null

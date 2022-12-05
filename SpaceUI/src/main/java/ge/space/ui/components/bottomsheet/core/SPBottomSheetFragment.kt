@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
-import ge.space.ui.components.bottomsheet.builder.BottomSheetDsl
+import ge.space.ui.components.bottomsheet.builder.SPBottomSheetDsl
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
@@ -24,21 +24,22 @@ import ge.space.ui.util.extension.*
 
 /**
  * [SPBottomSheetFragment] is a custom implementation of [BottomSheetDialogFragment]
- * Sets a strategy [setBottomStrategy] Bottomsheet always need to has strategy,
+ * Bottomsheet always need to has strategy,
  * and currently it support two type of strategy ([SPFragmentSheetStrategy<Data>] and [SPListSheetStrategy<Data>])
  * Data is onResult return type
  */
-class SPBottomSheetFragment<Data>(private val titleStyle: Int?,
-                                  private val descriptionStyle: Int?,
-                                  private val dialogTitleIcon: Int?,
-                                  private val dialogTitleMessage: String,
-                                  private val dialogButtonMessage: String,
-                                  private val initialState: Int,
-                                  private val dialogDescriptionMessage: String?,
-                                  private var bottomStrategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy(),
-                                  private var onResult: (Data?) -> Unit = {},
-                                  private var onBottomClickListenerResult: () -> Unit = {},
-                                  private val dismissDelayTime: Long = 500L
+class SPBottomSheetFragment<Data>(
+    private val titleStyle: Int?,
+    private val descriptionStyle: Int?,
+    private val dialogTitleIcon: Int?,
+    private val dialogTitleMessage: String,
+    private val dialogButtonMessage: String,
+    private val initialState: Int,
+    private val dialogDescriptionMessage: String?,
+    private var bottomStrategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy(),
+    private var onResult: (Data?) -> Unit = {},
+    private var onBottomClickListenerResult: () -> Unit = {},
+    private val dismissDelayTime: Long = 500L
 ) : BottomSheetDialogFragment() {
 
 
@@ -113,14 +114,6 @@ class SPBottomSheetFragment<Data>(private val titleStyle: Int?,
     private fun getTitleHeight() =
         getStatusBarHeight(requireActivity()) + resources.getDimensionPixelSize(R.dimen.dimen_p_24)
 
-    /**
-     * Sets a bottom sheet strategy
-     *
-     * @param value [SPBottomSheetStrategy] applies strategy
-     */
-    fun setBottomStrategy(value: SPBottomSheetStrategy<Data>) {
-        bottomStrategy = value
-    }
 
     /**
      * Sets a bottom button click listener
@@ -175,7 +168,7 @@ class SPBottomSheetFragment<Data>(private val titleStyle: Int?,
         builder.titleStyle,
         builder.descriptionStyle,
         builder.icon,
-        builder.title?: EMPTY_TEXT,
+        builder.title ?: EMPTY_TEXT,
         builder.buttonText,
         builder.initialState,
         builder.description,
@@ -186,7 +179,7 @@ class SPBottomSheetFragment<Data>(private val titleStyle: Int?,
     )
 
     companion object {
-        inline fun <reified Data> bottomSheet(block: @BottomSheetDsl SPBottomSheetBuilder<Data>.() -> Unit) =
+        inline fun <reified Data> bottomSheet(block: @SPBottomSheetDsl SPBottomSheetBuilder<Data>.() -> Unit) =
             SPBottomSheetBuilder<Data>().apply(block).build()
     }
 }

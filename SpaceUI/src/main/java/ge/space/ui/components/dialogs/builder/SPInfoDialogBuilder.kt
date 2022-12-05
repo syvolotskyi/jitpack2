@@ -9,9 +9,13 @@ import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
 
+@DslMarker
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
+annotation class SPInfoDialogDsl
 /**
  * Builder class which allows to create [SPDialog]
  */
+@SPEditTextDialogDsl
 class SPInfoDialogBuilder : SPBaseDialogBuilder<SPDialog>() {
 
     internal var title: String? = null

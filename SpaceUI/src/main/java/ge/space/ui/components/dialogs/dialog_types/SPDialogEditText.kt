@@ -8,6 +8,7 @@ import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
+import ge.space.ui.components.dialogs.builder.SPEditTextDialogDsl
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPEditTextDialogChangeHandler
 import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
@@ -25,7 +26,7 @@ import ge.space.ui.util.extension.onClick
  */
 class SPDialogEditText(
     val title: String?,
-    val editTextChange: SPEditTextDialogChangeHandler?,
+    private val editTextChange: SPEditTextDialogChangeHandler?,
     override val buttonObjects: Array<SPEditTextDialogInfoHolder> = arrayOf(),
     override val dismissHandler: SPDialogDismissHandler?
 ) : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
@@ -86,7 +87,7 @@ class SPDialogEditText(
     companion object {
         private const val IS_BUTTON_MULTIPLE = false
 
-        inline fun dialogEditText(block: SPEditTextDialogBuilder.() -> Unit) =
+        inline fun dialogEditText(block: @SPEditTextDialogDsl SPEditTextDialogBuilder.() -> Unit) =
             SPEditTextDialogBuilder().apply(block).build()
     }
 }

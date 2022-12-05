@@ -6,17 +6,16 @@ import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.bottomsheet.core.SPBottomSheetFragment
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
-import ge.space.ui.components.bottomsheet.strategy.SPListSheetStrategy
 import ge.space.ui.util.extension.EMPTY_TEXT
 
 @DslMarker
 @Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
-annotation class BottomSheetDsl
+annotation class SPBottomSheetDsl
 
 /**
  * Builder class which allows to create [SPBottomSheetFragment]. Data is onResult return type
  */
-@BottomSheetDsl
+@SPBottomSheetDsl
 class SPBottomSheetBuilder<Data> : SPBaseDialogBuilder<SPBottomSheetFragment<Data>>() {
 
     internal var title: String? = null

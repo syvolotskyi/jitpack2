@@ -2,15 +2,14 @@ package ge.space.ui.components.dialogs.dialog_types
 
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
 import ge.space.ui.components.dialogs.base.SPBaseDialog
-import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
 import ge.space.ui.components.dialogs.builder.SPInfoDialogBuilder
+import ge.space.ui.components.dialogs.builder.SPEditTextDialogDsl
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
@@ -130,7 +129,7 @@ class SPDialog(
     )
 
     companion object {
-        inline fun dialog(block: SPInfoDialogBuilder.() -> Unit) =
+        inline fun dialog(block: @SPEditTextDialogDsl SPInfoDialogBuilder.() -> Unit) =
             SPInfoDialogBuilder().apply(block).build()
     }
 }
