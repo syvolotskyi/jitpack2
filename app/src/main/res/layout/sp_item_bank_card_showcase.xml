@@ -8,12 +8,11 @@
 
     <ge.space.ui.components.bank_cards.card.SPBankCardView
         android:id="@+id/bankCard"
+        style="@style/SPBankCardView.Base"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sp_bank_card_view_margin_top"
-        android:layout_marginBottom="@dimen/sp_bank_card_small_margin"
-        style="@style/SPBankCardView.Base" />
-
+        android:layout_marginBottom="@dimen/sp_bank_card_small_margin" />
     <include layout="@layout/sp_layout_divider" />
 
 </LinearLayout>

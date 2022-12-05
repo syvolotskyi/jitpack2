@@ -23,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:windowSoftInputMode="stateAlwaysHidden|adjustNothing"
         android:paddingEnd="@dimen/sp_text_field_horizontal_text_padding"
         android:paddingBottom="@dimen/sp_text_field_vertical_text_padding"
         app:layout_constraintEnd_toStartOf="@id/infoImage"

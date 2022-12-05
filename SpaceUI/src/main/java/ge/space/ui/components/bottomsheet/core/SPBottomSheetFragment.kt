@@ -1,7 +1,9 @@
 package ge.space.ui.components.bottomsheet.core
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import ge.space.ui.components.bottomsheet.builder.SPBottomSheetDsl
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
+import ge.space.ui.components.bottomsheet.strategy.SPFragmentSheetStrategy
 import ge.space.ui.components.buttons.SPButton
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.util.extension.*
@@ -40,8 +43,7 @@ class SPBottomSheetFragment<Data>(
     private var onResult: (Data?) -> Unit = {},
     private var onBottomClickListenerResult: () -> Unit = {},
     private val dismissDelayTime: Long = 500L
-) : BottomSheetDialogFragment() {
-
+) : BottomSheetDialogFragment(), DialogInterface.OnKeyListener {
 
     private val binding by lazy {
         SpBottomsheetLayoutBinding.inflate(LayoutInflater.from(context))
@@ -51,14 +53,14 @@ class SPBottomSheetFragment<Data>(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = binding.root
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
+        setStyle(STYLE_NORMAL, R.style.SPBottomSheetDialogTheme)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dialog?.setOnKeyListener(this)
 
         binding.apply {
             titleMessageLabel.text = dialogTitleMessage
@@ -73,10 +75,10 @@ class SPBottomSheetFragment<Data>(
                 titleImage.show()
             }
 
-            bottomStrategy.onCreate(childFragmentManager, standardBottomSheet) {
-                onResult(it)
-                runDelayed(dismissDelayTime) {
-                    dismiss()
+            activity?.let {
+                bottomStrategy.onCreate(this@SPBottomSheetFragment, standardBottomSheet) {
+                    onResult(it)
+                    runDelayed(dismissDelayTime) { dismiss() }
                 }
             }
 
@@ -84,6 +86,62 @@ class SPBottomSheetFragment<Data>(
             handleTitleStyle()
             handleBottomButton()
         }
+    }
+
+    /**
+     * Listen to back button click and call popBackStack if the size of backStackEntryCount is bigger than 0
+     */
+    override fun onKey(p0: DialogInterface?, keyCode: Int, event: KeyEvent?): Boolean {
+        if ((keyCode == KeyEvent.KEYCODE_BACK && event?.action == KeyEvent.ACTION_DOWN)) {
+            childFragmentManager.backStackEntryCount.let {
+                return if (it > 0) {
+                    childFragmentManager.popBackStack()
+                    true
+                } else
+                    false
+            }
+        } else return false
+    }
+
+
+    /**
+     * Sets a bottom button click listener
+     *
+     * @param listener [() -> Unit] calls when button is clicked
+     */
+    fun setButtonClickListener(listener: () -> Unit) {
+        onBottomClickListenerResult = listener
+    }
+
+    /**
+     * Sets a Result listener
+     *
+     * @param listener [Data] calls when bottom sheet is dismissed
+     */
+    fun setResultListener(onResult: (Data?) -> Unit) {
+        this.onResult = onResult
+    }
+
+    /**
+     * Show popup dialog
+     */
+    fun show(fragmentActivity: FragmentActivity, tag: String = SPBaseDialog.DIALOG_FRAGMENT_TAG) {
+        try {
+            // Check if bottomsheet already exist by current tag
+            if (fragmentActivity.supportFragmentManager.findFragmentByTag(tag) == null) {
+                show(fragmentActivity.supportFragmentManager, tag)
+            }
+        } catch (ignored: IllegalStateException) {
+            ignored.printStackTrace()
+        }
+    }
+
+    /**
+     * If the bottomStrategy is SPFragmentSheetStrategy call onDestroy fun to unload Navigation
+     */
+    override fun onDestroy() {
+        (bottomStrategy as? SPFragmentSheetStrategy<Data>)?.onDestroy()
+        super.onDestroy()
     }
 
     private fun handleStartState() {
@@ -113,38 +171,6 @@ class SPBottomSheetFragment<Data>(
      */
     private fun getTitleHeight() =
         getStatusBarHeight(requireActivity()) + resources.getDimensionPixelSize(R.dimen.dimen_p_24)
-
-
-    /**
-     * Sets a bottom button click listener
-     *
-     * @param listener [() -> Unit] calls when button is clicked
-     */
-    fun setButtonClickListener(listener: () -> Unit) {
-        onBottomClickListenerResult = listener
-    }
-
-    /**
-     * Sets a Result listener
-     *
-     * @param listener [Data] calls when bottom sheet is dismissed
-     */
-    fun setResultListener(onResult: (Data?) -> Unit) {
-        this.onResult = onResult
-    }
-
-    /**
-     * Show popup dialog
-     */
-    fun show(fragmentActivity: FragmentActivity, tag: String = SPBaseDialog.DIALOG_FRAGMENT_TAG) {
-        try {
-            if (fragmentActivity.supportFragmentManager.findFragmentByTag(tag) == null) {
-                show(fragmentActivity.supportFragmentManager, tag)
-            }
-        } catch (ignored: IllegalStateException) {
-            ignored.printStackTrace()
-        }
-    }
 
     private fun handleTitleStyle() {
         titleStyle?.let { binding.titleMessageLabel.setTextStyle(it) }
@@ -182,4 +208,6 @@ class SPBottomSheetFragment<Data>(
         inline fun <reified Data> bottomSheet(block: @SPBottomSheetDsl SPBottomSheetBuilder<Data>.() -> Unit) =
             SPBottomSheetBuilder<Data>().apply(block).build()
     }
+
+
 }

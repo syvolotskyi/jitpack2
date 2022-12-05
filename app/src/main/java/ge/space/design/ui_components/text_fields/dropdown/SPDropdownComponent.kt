@@ -14,6 +14,7 @@ import ge.space.design.main.ShowCaseComponent
 import ge.space.design.main.util.SPShowCaseEnvironment
 import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getDefaultLangItem
 import ge.space.design.ui_components.text_fields.dropdown.SPTextFieldsDropdownItems.getLanguagesList
+import ge.space.design.ui_components.text_fields.dropdown.fragments.SPCardExampleFragment
 import ge.space.ui.components.bank_cards.data.SPEmptyChipStyle
 import ge.space.ui.components.controls.radio.list_item.extentions.setData
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
@@ -193,7 +194,7 @@ class SPDropdownComponent : ShowCaseComponent {
             view: FrameLayout
         ) = bottomSheet<String>{
             setTitle(view.context.getString(R.string.component_bank_card))
-            setStrategy(SPFragmentSheetStrategy(SPExampleFragment()))
+            setStrategy(SPFragmentSheetStrategy(SPCardExampleFragment()))
             setResultListener { Toast.makeText(view.context, it, Toast.LENGTH_SHORT).show() }
         }
 

@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name="ge.space.design.SPApp"
         android:theme="@style/AppThemeUI">
         <activity android:name="ge.space.design.main.ui.SPShowCaseActivity">
             <intent-filter>
