@@ -7,6 +7,8 @@ import ge.space.spaceui.databinding.SpDialogEditTextLayoutBinding
 import ge.space.ui.util.extension.argument
 import ge.space.ui.util.extension.nonNullArgument
 import ge.space.ui.components.dialogs.base.SPBaseDialog
+import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
+import ge.space.ui.components.dialogs.builder.SPEditTextDialogDsl
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPEditTextDialogChangeHandler
 import ge.space.ui.components.dialogs.data.SPEditTextDialogInfoHolder
@@ -22,23 +24,16 @@ import ge.space.ui.util.extension.onClick
  * @property buttonObjects describes dialog bottom buttons
  * @property editTextChange handles text change
  */
-class SPDialogEditText : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
-
-    private val title: String? by argument(KEY_TITLE, null)
-
-    private val editTextChange: SPEditTextDialogChangeHandler? by argument(
-        KEY_EDIT_TEXT_CHANGE, null
-    )
-
-    override val buttonObjects: Array<SPEditTextDialogInfoHolder> by nonNullArgument(
-        KEY_BUTTON_OBJECT,
-        arrayOf()
-    )
+class SPDialogEditText(
+    val title: String?,
+    private val editTextChange: SPEditTextDialogChangeHandler?,
+    override val buttonObjects: Array<SPEditTextDialogInfoHolder> = arrayOf(),
+    override val dismissHandler: SPDialogDismissHandler?
+) : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextDialogInfoHolder>() {
 
     override val isButtonsMultiple: Boolean
         get() = IS_BUTTON_MULTIPLE
 
-    override val dismissHandler: SPDialogDismissHandler? by argument(KEY_DISMISS, null)
 
     override fun getViewBinding(): SpDialogEditTextLayoutBinding =
         SpDialogEditTextLayoutBinding.inflate(LayoutInflater.from(context))
@@ -82,9 +77,17 @@ class SPDialogEditText : SPBaseDialog<SpDialogEditTextLayoutBinding, SPEditTextD
         }
     }
 
-    companion object {
-        const val KEY_EDIT_TEXT_CHANGE = "KEY_EDIT_TEXT_CHANGE"
+    internal constructor(builder: SPEditTextDialogBuilder) : this(
+        builder.title,
+        builder.onChange,
+        builder.buttons,
+        builder.dismissHandler
+    )
 
+    companion object {
         private const val IS_BUTTON_MULTIPLE = false
+
+        inline fun dialogEditText(block: @SPEditTextDialogDsl SPEditTextDialogBuilder.() -> Unit) =
+            SPEditTextDialogBuilder().apply(block).build()
     }
 }

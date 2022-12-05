@@ -1,6 +1,5 @@
 package ge.space.ui.components.bottomsheet.builder
 
-import androidx.core.os.bundleOf
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import ge.space.spaceui.R
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
@@ -9,23 +8,27 @@ import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
 import ge.space.ui.util.extension.EMPTY_TEXT
 
+@DslMarker
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
+annotation class SPBottomSheetDsl
+
 /**
  * Builder class which allows to create [SPBottomSheetFragment]. Data is onResult return type
  */
-class SPBottomSheetBuilder<Data> :
-    SPBaseDialogBuilder<SPBottomSheetFragment<Data>>() {
+@SPBottomSheetDsl
+class SPBottomSheetBuilder<Data> : SPBaseDialogBuilder<SPBottomSheetFragment<Data>>() {
 
-    private var title: String? = null
-    private var titleStyle: Int? = null
-    private var icon: Int? = null
-    private var description: String? = null
-    private var initialState: Int = STATE_COLLAPSED
-    private var descriptionStyle: Int? = null
-    private var resultListener: (Data?) -> Unit = {}
-    private var buttonText: String = EMPTY_TEXT
-    private var buttonClickListener: () -> Unit = {}
-    private var dismissDelayTime: Long = 500L
-    private var strategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy()
+    internal var title: String? = null
+    internal var titleStyle: Int? = null
+    internal var icon: Int? = null
+    internal var description: String? = null
+    internal var initialState: Int = STATE_COLLAPSED
+    internal var descriptionStyle: Int? = null
+    internal var resultListener: (Data?) -> Unit = {}
+    internal var buttonText: String = EMPTY_TEXT
+    internal var buttonClickListener: () -> Unit = {}
+    internal var dismissDelayTime: Long = 500L
+    internal var strategy: SPBottomSheetStrategy<Data> = SPEmptyStateStrategy()
 
     /**
      * Setting an icon
@@ -129,20 +132,5 @@ class SPBottomSheetBuilder<Data> :
      * Builds [SPBottomSheetFragment] by using properties with keys
      */
     override fun build(): SPBottomSheetFragment<Data> =
-        SPBottomSheetFragment<Data>().apply {
-            arguments = bundleOf(
-                SPBottomSheetFragment.KEY_TITLE to title,
-                SPBottomSheetFragment.KEY_TITLE_STYLE to titleStyle,
-                SPBottomSheetFragment.KEY_ICON to icon,
-                SPBottomSheetFragment.KEY_DESCRIPTION to description,
-                SPBottomSheetFragment.KEY_BUTTON_TITLE to buttonText,
-                SPBottomSheetFragment.KEY_INITIAL_STATE to initialState,
-                SPBottomSheetFragment.KEY_DESCRIPTION_STYLE to descriptionStyle,
-                SPBottomSheetFragment.KEY_DELAY_TIME to dismissDelayTime,
-            )
-
-            setBottomStrategy(strategy)
-            setButtonClickListener(buttonClickListener)
-            this.setResultListener(resultListener)
-        }
+        SPBottomSheetFragment(this)
 }

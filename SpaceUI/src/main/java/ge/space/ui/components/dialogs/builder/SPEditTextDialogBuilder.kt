@@ -1,26 +1,25 @@
 package ge.space.ui.components.dialogs.builder
 
-import androidx.core.os.bundleOf
-import androidx.fragment.app.FragmentActivity
-import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
-import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText.Companion.KEY_EDIT_TEXT_CHANGE
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_BUTTON_OBJECT
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_DISMISS
-import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.KEY_TITLE
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MAX_TWICE_BUTTONS
 import ge.space.ui.components.dialogs.base.SPBaseDialog.Companion.MIN_TWICE_BUTTONS
 import ge.space.ui.components.dialogs.base.SPBaseDialogBuilder
 import ge.space.ui.components.dialogs.data.*
+import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText
+
+@DslMarker
+@Target(AnnotationTarget.CLASS, AnnotationTarget.TYPE)
+annotation class SPEditTextDialogDsl
 
 /**
  * Builder class which allows to create [SPDialogEditText]
  */
+@SPEditTextDialogDsl
 class SPEditTextDialogBuilder : SPBaseDialogBuilder<SPDialogEditText>() {
 
-    private var title: String? = null
-    private var buttons: Array<SPEditTextDialogInfoHolder> = arrayOf()
-    private var dismissHandler: SPDialogDismissHandler? = null
-    private var onChange: SPEditTextDialogChangeHandler? = null
+    internal var title: String? = null
+    internal var buttons: Array<SPEditTextDialogInfoHolder> = arrayOf()
+    internal var dismissHandler: SPDialogDismissHandler? = null
+    internal var onChange: SPEditTextDialogChangeHandler? = null
 
     /**
      * Defines data for the dialog bottom buttons visibility
@@ -73,15 +72,8 @@ class SPEditTextDialogBuilder : SPBaseDialogBuilder<SPDialogEditText>() {
     }
 
     /**
-     * Builds [SPDialogEditText] by using properties with keys
+     * Builds [SPDialogEditText] by using constructor
      */
-    override fun build(): SPDialogEditText =
-        SPDialogEditText().apply {
-            arguments = bundleOf(
-                KEY_TITLE to this@SPEditTextDialogBuilder.title,
-                KEY_BUTTON_OBJECT to this@SPEditTextDialogBuilder.buttons,
-                KEY_DISMISS to this@SPEditTextDialogBuilder.dismissHandler,
-                KEY_EDIT_TEXT_CHANGE to this@SPEditTextDialogBuilder.onChange
-            )
-        }
+    override fun build(): SPDialogEditText = SPDialogEditText(this)
+
 }

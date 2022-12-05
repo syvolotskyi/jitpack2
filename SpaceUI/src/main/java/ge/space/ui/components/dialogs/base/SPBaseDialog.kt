@@ -128,16 +128,6 @@ abstract class SPBaseDialog<VB : ViewBinding, BT : SPButtonsDialogHolder> : Dial
     }
 
     companion object {
-        const val KEY_TITLE = "KEY_TITLE"
-        const val KEY_LABEL = "KEY_LABEL"
-        const val KEY_INFO_ICON_VISIBLE = "KEY_INFO_ICON_VISIBLE"
-        const val KEY_TITLE_VISIBLE = "KEY_TITLE_VISIBLE"
-        const val KEY_LABEL_VISIBLE = "KEY_LABEL_VISIBLE"
-        const val KEY_BUTTONS_VISIBLE = "KEY_BUTTONS_VISIBLE"
-        const val KEY_MULTIPLE = "KEY_MULTIPLE"
-        const val KEY_BUTTON_OBJECT = "KEY_BUTTON_OBJECT"
-        const val KEY_DISMISS = "KEY_DISMISS"
-        const val KEY_DIALOG_ICON = "KEY_DIALOG_ICON"
 
         const val LEFT_PAIR_INDEX = 0
         const val RIGHT_PAIR_INDEX = 1

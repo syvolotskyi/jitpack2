@@ -6,6 +6,8 @@ import ge.space.ui.components.dialogs.dialog_types.SPDialog
 import ge.space.ui.components.dialogs.builder.SPEditTextDialogBuilder
 import ge.space.ui.components.dialogs.builder.SPInfoDialogBuilder
 import ge.space.ui.components.dialogs.data.*
+import ge.space.ui.components.dialogs.dialog_types.SPDialog.Companion.dialog
+import ge.space.ui.components.dialogs.dialog_types.SPDialogEditText.Companion.dialogEditText
 
 /**
  * Creates and shows [SPDialog] by using both a title and a label with multiple buttons
@@ -117,9 +119,9 @@ private fun buildInfoDialog(
     buttonModels: ArrayList<SPDialogInfoHolder> = arrayListOf(),
     icon: SPDialogIcon = SPDialogIcon.Info(),
     dismiss: () -> Unit = { }
-) =
-    SPInfoDialogBuilder()
-        .initDialog(
+) = dialog {
+
+        initDialog(
             SPDialogData.SPInfoDialogData(
                 title = title,
                 label = label,
@@ -127,11 +129,11 @@ private fun buildInfoDialog(
                 buttons = buttonModels
             )
         )
-        .setIcon(icon)
-        .setDismissHandler {
+        setIcon(icon)
+        setDismissHandler {
             dismiss()
         }
-        .build()
+}
 
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPTitleLabelDialogData]
@@ -140,18 +142,15 @@ private fun buildRichTitleDialog(
     title: String?,
     label: String?,
     dismiss: () -> Unit = { }
-) =
-    SPInfoDialogBuilder()
-        .initDialog(
-            SPDialogData.SPTitleLabelDialogData(
-                title = title,
-                label = label
-            )
+) = dialog {
+    initDialog(
+        SPDialogData.SPTitleLabelDialogData(
+            title = title,
+            label = label
         )
-        .setDismissHandler {
-            dismiss()
-        }
-        .build()
+    )
+    setDismissHandler { dismiss() }
+}
 
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPTitleDialogData]
@@ -159,17 +158,10 @@ private fun buildRichTitleDialog(
 private fun buildTitleDialog(
     title: String,
     dismiss: () -> Unit = { }
-) =
-    SPInfoDialogBuilder()
-        .initDialog(
-            SPDialogData.SPTitleDialogData(
-                title = title
-            )
-        )
-        .setDismissHandler {
-            dismiss()
-        }
-        .build()
+) = dialog {
+    initDialog(SPDialogData.SPTitleDialogData(title = title))
+    setDismissHandler { dismiss() }
+}
 
 /**
  * Helper extension which helps to build [SPDialog] using [SPDialogData.SPLabelDialogData]
@@ -177,17 +169,11 @@ private fun buildTitleDialog(
 private fun buildLabelDialog(
     label: String,
     dismiss: () -> Unit = { }
-) =
-    SPInfoDialogBuilder()
-        .initDialog(
-            SPDialogData.SPLabelDialogData(
-                label = label
-            )
-        )
-        .setDismissHandler {
-            dismiss()
-        }
-        .build()
+) = dialog {
+    initDialog(SPDialogData.SPLabelDialogData(label = label))
+    setDismissHandler { dismiss() }
+}
+
 
 /**
  * Helper extension which helps to build [SPDialogEditText] using [SPEditTextDialogData]
@@ -197,14 +183,7 @@ private fun buildEditTextDialog(
     buttons: ArrayList<SPEditTextDialogInfoHolder>,
     dismiss: () -> Unit = { }
 ) =
-    SPEditTextDialogBuilder()
-        .initDialog(
-            SPEditTextDialogData(
-                title = title,
-                buttons = buttons
-            )
-        )
-        .setDismissHandler {
-            dismiss()
-        }
-        .build()
+    dialogEditText {
+        initDialog(SPEditTextDialogData(title = title, buttons = buttons))
+        setDismissHandler { dismiss() }
+    }
