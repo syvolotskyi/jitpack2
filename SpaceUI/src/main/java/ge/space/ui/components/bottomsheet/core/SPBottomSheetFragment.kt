@@ -17,8 +17,6 @@ import ge.space.spaceui.R
 import ge.space.spaceui.databinding.SpBottomsheetLayoutBinding
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetDsl
 import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
-import ge.space.ui.components.bottomsheet.builder.SPBottomSheetDsl
-import ge.space.ui.components.bottomsheet.builder.SPBottomSheetBuilder
 import ge.space.ui.components.bottomsheet.strategy.SPBottomSheetStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPEmptyStateStrategy
 import ge.space.ui.components.bottomsheet.strategy.SPFragmentSheetStrategy

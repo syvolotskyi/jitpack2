@@ -8,7 +8,6 @@ import ge.space.ui.util.extension.show
 
 /**
  * Strategy realization for [SPBottomSheetFragment].
- *  if you want to use bottomsheet you must override SPBottomSheetResultListener in your fragment
  * Data is onResult return type
  */
 
@@ -22,6 +21,7 @@ interface SPBottomSheetStrategy<Data> {
      * @param dismissEvent [() -> Unit)] calls when dialog is dismissed
      */
     fun onCreate(
-        sheetFragment: SPBottomSheetFragment<*>, container: ViewGroup, dismissEvent: (Data?) -> Unit) = container.show()
+        sheetFragment: SPBottomSheetFragment<*>, container: ViewGroup, dismissEvent: (Data?) -> Unit
+    ) = container.show()
 }
 
