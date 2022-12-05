@@ -9,7 +9,7 @@ import androidx.core.view.isGone
 import ge.space.spaceui.databinding.SpDialogLayoutBinding
 import ge.space.ui.components.dialogs.base.SPBaseDialog
 import ge.space.ui.components.dialogs.builder.SPInfoDialogBuilder
-import ge.space.ui.components.dialogs.builder.SPEditTextDialogDsl
+import ge.space.ui.components.dialogs.builder.SPInfoDialogDsl
 import ge.space.ui.components.dialogs.data.SPDialogDismissHandler
 import ge.space.ui.components.dialogs.data.SPDialogIcon
 import ge.space.ui.components.dialogs.data.SPDialogInfoHolder
@@ -129,7 +129,7 @@ class SPDialog(
     )
 
     companion object {
-        inline fun dialog(block: @SPEditTextDialogDsl SPInfoDialogBuilder.() -> Unit) =
+        inline fun dialog(block: @SPInfoDialogDsl SPInfoDialogBuilder.() -> Unit) =
             SPInfoDialogBuilder().apply(block).build()
     }
 }

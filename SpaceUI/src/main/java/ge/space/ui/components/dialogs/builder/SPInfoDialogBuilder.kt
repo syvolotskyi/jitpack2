@@ -15,7 +15,7 @@ annotation class SPInfoDialogDsl
 /**
  * Builder class which allows to create [SPDialog]
  */
-@SPEditTextDialogDsl
+@SPInfoDialogDsl
 class SPInfoDialogBuilder : SPBaseDialogBuilder<SPDialog>() {
 
     internal var title: String? = null
